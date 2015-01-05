@@ -25,5 +25,7 @@ dependencies {
 
     compile 'com.squareup.dagger:dagger:1.2.2'
     compile 'com.squareup.dagger:dagger-compiler:1.2.2'
+    compile 'com.google.protobuf:protobuf-java:2.6.0'
+    compile 'com.squareup.retrofit:retrofit:1.8.0'
     compile files('libs/Shutterbug-1.0.0.jar')
 }
