@@ -15,6 +15,10 @@ import com.orange.barrage.android.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.ui.TopicPage;
 import com.orange.barrage.android.ui.topic.PictureTopicAdapter;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.persistent.LevelDBDAO;
+import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
+
+import java.io.File;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -42,11 +46,25 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         ContextManager.init(this);
+        LevelDBDAO.getInstance().init();
 
         initComponents();
         initEvnets();
+
+        File file = new File("/leveldb");
+        boolean result = file.mkdirs();
+        Log.d(TAG, "file level db result:"+result);
+
+        LevelDBTestDAO dao = new LevelDBTestDAO();
+        dao.performShaedPreferences(1);
+        dao.performLevelDB(1);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LevelDBDAO.getInstance().destroy();
+    }
 
     public void initComponents(){
         mShowTopicPageButton = (ImageButton) findViewById(R.id.btn_show_topic_page);
@@ -84,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 hideAllViews(mMainLayout);
-                Toast.makeText(ContextManager.getContext(), "Show personal page", Toast.LENGTH_SHORT);
+                Toast.makeText(ContextManager.getContext(), "Show personal page", Toast.LENGTH_SHORT).show();
             }
         });
     }
