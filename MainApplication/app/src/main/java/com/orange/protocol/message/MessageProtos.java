@@ -445,6 +445,31 @@ public final class MessageProtos {
         getSnsIdBytes();
 
     /**
+     * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+     *
+     * <pre>
+     * 社交帐号资料
+     * </pre>
+     */
+    boolean hasSnsUser();
+    /**
+     * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+     *
+     * <pre>
+     * 社交帐号资料
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBSNSUser getSnsUser();
+    /**
+     * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+     *
+     * <pre>
+     * 社交帐号资料
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBSNSUserOrBuilder getSnsUserOrBuilder();
+
+    /**
      * <code>optional string password = 20;</code>
      */
     boolean hasPassword();
@@ -539,9 +564,22 @@ public final class MessageProtos {
               snsId_ = bs;
               break;
             }
+            case 50: {
+              com.orange.protocol.message.UserProtos.PBSNSUser.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = snsUser_.toBuilder();
+              }
+              snsUser_ = input.readMessage(com.orange.protocol.message.UserProtos.PBSNSUser.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(snsUser_);
+                snsUser_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
             case 162: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               password_ = bs;
               break;
             }
@@ -776,13 +814,46 @@ public final class MessageProtos {
       }
     }
 
+    public static final int SNSUSER_FIELD_NUMBER = 6;
+    private com.orange.protocol.message.UserProtos.PBSNSUser snsUser_;
+    /**
+     * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+     *
+     * <pre>
+     * 社交帐号资料
+     * </pre>
+     */
+    public boolean hasSnsUser() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+     *
+     * <pre>
+     * 社交帐号资料
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBSNSUser getSnsUser() {
+      return snsUser_;
+    }
+    /**
+     * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+     *
+     * <pre>
+     * 社交帐号资料
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBSNSUserOrBuilder getSnsUserOrBuilder() {
+      return snsUser_;
+    }
+
     public static final int PASSWORD_FIELD_NUMBER = 20;
     private java.lang.Object password_;
     /**
      * <code>optional string password = 20;</code>
      */
     public boolean hasPassword() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional string password = 20;</code>
@@ -824,6 +895,7 @@ public final class MessageProtos {
       email_ = "";
       mobile_ = "";
       snsId_ = "";
+      snsUser_ = com.orange.protocol.message.UserProtos.PBSNSUser.getDefaultInstance();
       password_ = "";
     }
     private byte memoizedIsInitialized = -1;
@@ -835,6 +907,12 @@ public final class MessageProtos {
       if (!hasType()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasSnsUser()) {
+        if (!getSnsUser().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -859,6 +937,9 @@ public final class MessageProtos {
         output.writeBytes(5, getSnsIdBytes());
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, snsUser_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeBytes(20, getPasswordBytes());
       }
       getUnknownFields().writeTo(output);
@@ -891,6 +972,10 @@ public final class MessageProtos {
           .computeBytesSize(5, getSnsIdBytes());
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, snsUser_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(20, getPasswordBytes());
       }
@@ -1003,6 +1088,7 @@ public final class MessageProtos {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSnsUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1021,8 +1107,14 @@ public final class MessageProtos {
         bitField0_ = (bitField0_ & ~0x00000008);
         snsId_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
-        password_ = "";
+        if (snsUserBuilder_ == null) {
+          snsUser_ = com.orange.protocol.message.UserProtos.PBSNSUser.getDefaultInstance();
+        } else {
+          snsUserBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000020);
+        password_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -1074,6 +1166,14 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
+        if (snsUserBuilder_ == null) {
+          result.snsUser_ = snsUser_;
+        } else {
+          result.snsUser_ = snsUserBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.password_ = password_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1114,8 +1214,11 @@ public final class MessageProtos {
           snsId_ = other.snsId_;
           onChanged();
         }
+        if (other.hasSnsUser()) {
+          mergeSnsUser(other.getSnsUser());
+        }
         if (other.hasPassword()) {
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
           password_ = other.password_;
           onChanged();
         }
@@ -1127,6 +1230,12 @@ public final class MessageProtos {
         if (!hasType()) {
           
           return false;
+        }
+        if (hasSnsUser()) {
+          if (!getSnsUser().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -1502,12 +1611,164 @@ public final class MessageProtos {
         return this;
       }
 
+      private com.orange.protocol.message.UserProtos.PBSNSUser snsUser_ = com.orange.protocol.message.UserProtos.PBSNSUser.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBSNSUser, com.orange.protocol.message.UserProtos.PBSNSUser.Builder, com.orange.protocol.message.UserProtos.PBSNSUserOrBuilder> snsUserBuilder_;
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public boolean hasSnsUser() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBSNSUser getSnsUser() {
+        if (snsUserBuilder_ == null) {
+          return snsUser_;
+        } else {
+          return snsUserBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public Builder setSnsUser(com.orange.protocol.message.UserProtos.PBSNSUser value) {
+        if (snsUserBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          snsUser_ = value;
+          onChanged();
+        } else {
+          snsUserBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public Builder setSnsUser(
+          com.orange.protocol.message.UserProtos.PBSNSUser.Builder builderForValue) {
+        if (snsUserBuilder_ == null) {
+          snsUser_ = builderForValue.build();
+          onChanged();
+        } else {
+          snsUserBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public Builder mergeSnsUser(com.orange.protocol.message.UserProtos.PBSNSUser value) {
+        if (snsUserBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              snsUser_ != com.orange.protocol.message.UserProtos.PBSNSUser.getDefaultInstance()) {
+            snsUser_ =
+              com.orange.protocol.message.UserProtos.PBSNSUser.newBuilder(snsUser_).mergeFrom(value).buildPartial();
+          } else {
+            snsUser_ = value;
+          }
+          onChanged();
+        } else {
+          snsUserBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public Builder clearSnsUser() {
+        if (snsUserBuilder_ == null) {
+          snsUser_ = com.orange.protocol.message.UserProtos.PBSNSUser.getDefaultInstance();
+          onChanged();
+        } else {
+          snsUserBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBSNSUser.Builder getSnsUserBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getSnsUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBSNSUserOrBuilder getSnsUserOrBuilder() {
+        if (snsUserBuilder_ != null) {
+          return snsUserBuilder_.getMessageOrBuilder();
+        } else {
+          return snsUser_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBSNSUser snsUser = 6;</code>
+       *
+       * <pre>
+       * 社交帐号资料
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBSNSUser, com.orange.protocol.message.UserProtos.PBSNSUser.Builder, com.orange.protocol.message.UserProtos.PBSNSUserOrBuilder> 
+          getSnsUserFieldBuilder() {
+        if (snsUserBuilder_ == null) {
+          snsUserBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBSNSUser, com.orange.protocol.message.UserProtos.PBSNSUser.Builder, com.orange.protocol.message.UserProtos.PBSNSUserOrBuilder>(
+                  getSnsUser(),
+                  getParentForChildren(),
+                  isClean());
+          snsUser_ = null;
+        }
+        return snsUserBuilder_;
+      }
+
       private java.lang.Object password_ = "";
       /**
        * <code>optional string password = 20;</code>
        */
       public boolean hasPassword() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional string password = 20;</code>
@@ -1550,7 +1811,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         password_ = value;
         onChanged();
         return this;
@@ -1559,7 +1820,7 @@ public final class MessageProtos {
        * <code>optional string password = 20;</code>
        */
       public Builder clearPassword() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         password_ = getDefaultInstance().getPassword();
         onChanged();
         return this;
@@ -1572,7 +1833,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         password_ = value;
         onChanged();
         return this;
@@ -2117,7 +2378,7 @@ public final class MessageProtos {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * refer to register type
+     * refer to PBRegisterType
      * </pre>
      */
     boolean hasType();
@@ -2125,7 +2386,7 @@ public final class MessageProtos {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * refer to register type
+     * refer to PBRegisterType
      * </pre>
      */
     int getType();
@@ -2142,23 +2403,6 @@ public final class MessageProtos {
      * <code>required .barrage.PBUser user = 2;</code>
      */
     com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder();
-
-    /**
-     * <code>optional int32 snsType = 3;</code>
-     *
-     * <pre>
-     * refer to ShareSDK shareType
-     * </pre>
-     */
-    boolean hasSnsType();
-    /**
-     * <code>optional int32 snsType = 3;</code>
-     *
-     * <pre>
-     * refer to ShareSDK shareType
-     * </pre>
-     */
-    int getSnsType();
 
     /**
      * <code>optional string inviteCode = 50;</code>
@@ -2256,14 +2500,9 @@ public final class MessageProtos {
               bitField0_ |= 0x00000002;
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              snsType_ = input.readInt32();
-              break;
-            }
             case 402: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               inviteCode_ = bs;
               break;
             }
@@ -2313,7 +2552,7 @@ public final class MessageProtos {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * refer to register type
+     * refer to PBRegisterType
      * </pre>
      */
     public boolean hasType() {
@@ -2323,7 +2562,7 @@ public final class MessageProtos {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * refer to register type
+     * refer to PBRegisterType
      * </pre>
      */
     public int getType() {
@@ -2351,29 +2590,6 @@ public final class MessageProtos {
       return user_;
     }
 
-    public static final int SNSTYPE_FIELD_NUMBER = 3;
-    private int snsType_;
-    /**
-     * <code>optional int32 snsType = 3;</code>
-     *
-     * <pre>
-     * refer to ShareSDK shareType
-     * </pre>
-     */
-    public boolean hasSnsType() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional int32 snsType = 3;</code>
-     *
-     * <pre>
-     * refer to ShareSDK shareType
-     * </pre>
-     */
-    public int getSnsType() {
-      return snsType_;
-    }
-
     public static final int INVITECODE_FIELD_NUMBER = 50;
     private java.lang.Object inviteCode_;
     /**
@@ -2384,7 +2600,7 @@ public final class MessageProtos {
      * </pre>
      */
     public boolean hasInviteCode() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional string inviteCode = 50;</code>
@@ -2431,7 +2647,6 @@ public final class MessageProtos {
     private void initFields() {
       type_ = 0;
       user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
-      snsType_ = 0;
       inviteCode_ = "";
     }
     private byte memoizedIsInitialized = -1;
@@ -2466,9 +2681,6 @@ public final class MessageProtos {
         output.writeMessage(2, user_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, snsType_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(50, getInviteCodeBytes());
       }
       getUnknownFields().writeTo(output);
@@ -2489,10 +2701,6 @@ public final class MessageProtos {
           .computeMessageSize(2, user_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, snsType_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(50, getInviteCodeBytes());
       }
@@ -2622,10 +2830,8 @@ public final class MessageProtos {
           userBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
-        snsType_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         inviteCode_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2669,10 +2875,6 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.snsType_ = snsType_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.inviteCode_ = inviteCode_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2696,11 +2898,8 @@ public final class MessageProtos {
         if (other.hasUser()) {
           mergeUser(other.getUser());
         }
-        if (other.hasSnsType()) {
-          setSnsType(other.getSnsType());
-        }
         if (other.hasInviteCode()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
           inviteCode_ = other.inviteCode_;
           onChanged();
         }
@@ -2748,7 +2947,7 @@ public final class MessageProtos {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * refer to register type
+       * refer to PBRegisterType
        * </pre>
        */
       public boolean hasType() {
@@ -2758,7 +2957,7 @@ public final class MessageProtos {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * refer to register type
+       * refer to PBRegisterType
        * </pre>
        */
       public int getType() {
@@ -2768,7 +2967,7 @@ public final class MessageProtos {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * refer to register type
+       * refer to PBRegisterType
        * </pre>
        */
       public Builder setType(int value) {
@@ -2781,7 +2980,7 @@ public final class MessageProtos {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * refer to register type
+       * refer to PBRegisterType
        * </pre>
        */
       public Builder clearType() {
@@ -2907,54 +3106,6 @@ public final class MessageProtos {
         return userBuilder_;
       }
 
-      private int snsType_ ;
-      /**
-       * <code>optional int32 snsType = 3;</code>
-       *
-       * <pre>
-       * refer to ShareSDK shareType
-       * </pre>
-       */
-      public boolean hasSnsType() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 snsType = 3;</code>
-       *
-       * <pre>
-       * refer to ShareSDK shareType
-       * </pre>
-       */
-      public int getSnsType() {
-        return snsType_;
-      }
-      /**
-       * <code>optional int32 snsType = 3;</code>
-       *
-       * <pre>
-       * refer to ShareSDK shareType
-       * </pre>
-       */
-      public Builder setSnsType(int value) {
-        bitField0_ |= 0x00000004;
-        snsType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 snsType = 3;</code>
-       *
-       * <pre>
-       * refer to ShareSDK shareType
-       * </pre>
-       */
-      public Builder clearSnsType() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        snsType_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object inviteCode_ = "";
       /**
        * <code>optional string inviteCode = 50;</code>
@@ -2964,7 +3115,7 @@ public final class MessageProtos {
        * </pre>
        */
       public boolean hasInviteCode() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional string inviteCode = 50;</code>
@@ -3019,7 +3170,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         inviteCode_ = value;
         onChanged();
         return this;
@@ -3032,7 +3183,7 @@ public final class MessageProtos {
        * </pre>
        */
       public Builder clearInviteCode() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         inviteCode_ = getDefaultInstance().getInviteCode();
         onChanged();
         return this;
@@ -3049,7 +3200,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         inviteCode_ = value;
         onChanged();
         return this;
@@ -20978,98 +21129,99 @@ public final class MessageProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\rMessage.proto\022\007barrage\032\014Common.proto\032\n" +
-      "User.proto\032\rBarrage.proto\"r\n\022PBLoginUser" +
-      "Request\022\014\n\004type\030\001 \002(\005\022\016\n\006xiaoji\030\002 \001(\t\022\r\n" +
-      "\005email\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\r\n\005snsId\030\005 " +
-      "\001(\t\022\020\n\010password\030\024 \001(\t\"4\n\023PBLoginUserResp" +
-      "onse\022\035\n\004user\030\001 \001(\0132\017.barrage.PBUser\"i\n\025P" +
-      "BRegisterUserRequest\022\014\n\004type\030\001 \002(\005\022\035\n\004us" +
-      "er\030\002 \002(\0132\017.barrage.PBUser\022\017\n\007snsType\030\003 \001" +
-      "(\005\022\022\n\ninviteCode\0302 \001(\t\"L\n\026PBRegisterUser" +
-      "Response\022\035\n\004user\030\001 \001(\0132\017.barrage.PBUser\022",
-      "\023\n\013isUserExist\030\002 \001(\010\"/\n\031PBVerifyInviteCo" +
-      "deRequest\022\022\n\ninviteCode\030\001 \002(\t\";\n\032PBVerif" +
-      "yInviteCodeResponse\022\035\n\004user\030\001 \001(\0132\017.barr" +
-      "age.PBUser\"&\n\023PBSearchUserRequest\022\017\n\007key" +
-      "word\030\001 \002(\t\"5\n\024PBSearchUserResponse\022\035\n\004us" +
-      "er\030\001 \003(\0132\017.barrage.PBUser\"8\n\027PBUpdateUse" +
-      "rInfoRequest\022\035\n\004user\030\001 \002(\0132\017.barrage.PBU" +
-      "ser\"9\n\030PBUpdateUserInfoResponse\022\035\n\004user\030" +
-      "\001 \001(\0132\017.barrage.PBUser\"m\n\026PBAddUserFrien" +
-      "dRequest\022\037\n\006friend\030\001 \001(\0132\017.barrage.PBUse",
-      "r\022\014\n\004memo\030\002 \001(\t\022\022\n\nsourceType\030\003 \001(\005\022\020\n\010s" +
-      "canCode\030\004 \001(\t\"\031\n\027PBAddUserFriendResponse" +
-      "\"\034\n\032PBGetUserFriendListRequest\"?\n\033PBGetU" +
-      "serFriendListResponse\022 \n\007friends\030\001 \003(\0132\017" +
-      ".barrage.PBUser\"S\n\032PBProcessUserFriendRe" +
-      "quest\022\020\n\010friendId\030\001 \002(\t\022\025\n\rprocessResult" +
-      "\030\002 \001(\005\022\014\n\004memo\030\003 \001(\t\"?\n\033PBProcessUserFri" +
-      "endResponse\022 \n\007friends\030\001 \001(\0132\017.barrage.P" +
-      "BUser\"4\n\023PBCreateFeedRequest\022\035\n\004feed\030\001 \002" +
-      "(\0132\017.barrage.PBFeed\"&\n\024PBCreateFeedRespo",
-      "nse\022\016\n\006feedId\030\001 \001(\t\";\n\022PBReplyFeedReques" +
-      "t\022%\n\006action\030\001 \002(\0132\025.barrage.PBFeedAction" +
-      "\"<\n\023PBReplyFeedResponse\022%\n\006action\030\001 \002(\0132" +
-      "\025.barrage.PBFeedAction\"G\n\034PBGetUserTimel" +
-      "ineFeedRequest\022\024\n\014offsetFeedId\030\001 \001(\t\022\021\n\005" +
-      "limit\030\002 \001(\005:\00220\"?\n\035PBGetUserTimelineFeed" +
-      "Response\022\036\n\005feeds\030\001 \003(\0132\017.barrage.PBFeed" +
-      "\"\356\006\n\rPBDataRequest\022\014\n\004type\030\001 \002(\005\022\021\n\trequ" +
-      "estId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\016\n\006userId\030\004" +
-      " \001(\t\022!\n\006device\030\036 \001(\0132\021.barrage.PBDevice\022",
-      "\023\n\013countryCode\030\037 \001(\t\022\024\n\014languageCode\030  \001" +
-      "(\t\022\022\n\nclientDate\030! \001(\005\0225\n\020loginUserReque" +
-      "st\030( \001(\0132\033.barrage.PBLoginUserRequest\022;\n" +
-      "\023registerUserRequest\030) \001(\0132\036.barrage.PBR" +
-      "egisterUserRequest\0227\n\021searchUserRequest\030" +
-      "* \001(\0132\034.barrage.PBSearchUserRequest\022?\n\025u" +
-      "pdateUserInfoRequest\030+ \001(\0132 .barrage.PBU" +
-      "pdateUserInfoRequest\022=\n\024addUserFriendReq" +
-      "uest\030, \001(\0132\037.barrage.PBAddUserFriendRequ" +
-      "est\022E\n\030getUserFriendListRequest\030- \001(\0132#.",
-      "barrage.PBGetUserFriendListRequest\022C\n\027ve" +
-      "rifyInviteCodeRequest\030. \001(\0132\".barrage.PB" +
-      "VerifyInviteCodeRequest\022E\n\030processUserFr" +
-      "iendRequest\030/ \001(\0132#.barrage.PBProcessUse" +
-      "rFriendRequest\0227\n\021createFeedRequest\030< \001(" +
-      "\0132\034.barrage.PBCreateFeedRequest\0225\n\020reply" +
-      "FeedRequest\030= \001(\0132\033.barrage.PBReplyFeedR" +
-      "equest\022I\n\032getUserTimelineFeedRequest\030> \001" +
-      "(\0132%.barrage.PBGetUserTimelineFeedReques" +
-      "t\"\304\006\n\016PBDataResponse\022\025\n\nresultCode\030\001 \002(\005",
-      ":\0010\022\021\n\trequestId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022" +
-      "\022\n\ntotalCount\030\004 \001(\005\022\022\n\nstringData\030\005 \001(\t\022" +
-      "7\n\021loginUserResponse\030( \001(\0132\034.barrage.PBL" +
-      "oginUserResponse\022=\n\024registerUserResponse" +
-      "\030) \001(\0132\037.barrage.PBRegisterUserResponse\022" +
-      "9\n\022searchUserResponse\030* \001(\0132\035.barrage.PB" +
-      "SearchUserResponse\022A\n\026updateUserInfoResp" +
-      "onse\030+ \001(\0132!.barrage.PBUpdateUserInfoRes" +
-      "ponse\022?\n\025addUserFriendResponse\030, \001(\0132 .b" +
-      "arrage.PBAddUserFriendResponse\022G\n\031getUse",
-      "rFriendListResponse\030- \001(\0132$.barrage.PBGe" +
-      "tUserFriendListResponse\022E\n\030verifyInviteC" +
-      "odeResponse\030. \001(\0132#.barrage.PBVerifyInvi" +
-      "teCodeResponse\022G\n\031processUserFriendRespo" +
-      "nse\030/ \001(\0132$.barrage.PBProcessUserFriendR" +
-      "esponse\0229\n\022createFeedResponse\030< \001(\0132\035.ba" +
-      "rrage.PBCreateFeedResponse\0227\n\021replyFeedR" +
-      "esponse\030= \001(\0132\034.barrage.PBReplyFeedRespo" +
-      "nse\022K\n\033getUserTimelineFeedResponse\030> \001(\013" +
-      "2&.barrage.PBGetUserTimelineFeedResponse",
-      "*Q\n\031PBProcessFriendResultType\022\021\n\rACCEPT_" +
-      "FRIEND\020\000\022\021\n\rREJECT_FRIEND\020\001\022\016\n\nREPLY_MEM" +
-      "O\020\002*\362\002\n\rPBMessageType\022\026\n\022MESSAGE_LOGIN_U" +
-      "SER\020\001\022\031\n\025MESSAGE_REGISTER_USER\020\002\022\027\n\023MESS" +
-      "AGE_SEARCH_USER\020\003\022\034\n\030MESSAGE_UPDATE_USER" +
-      "_INFO\020\004\022\033\n\027MESSAGE_ADD_USER_FRIEND\020\005\022 \n\034" +
-      "MESSAGE_GET_USER_FRIEND_LIST\020\006\022\037\n\033MESSAG" +
-      "E_PROCESS_USER_FRIEND\020\007\022\036\n\032MESSAGE_VERIF" +
-      "Y_INVITE_CODE\020\010\022\027\n\023MESSAGE_CREATE_FEED\020\036" +
-      "\022\026\n\022MESSAGE_REPLY_FEED\020\037\022\"\n\036MESSAGE_GET_",
-      "USER_TIMELINE_FEED\020 \022\"\n\036MESSAGE_GET_QINI" +
-      "U_UPLOAD_TOKEN\020dB,\n\033com.orange.protocol." +
-      "messageB\rMessageProtos"
+      "User.proto\032\rBarrage.proto\"\227\001\n\022PBLoginUse" +
+      "rRequest\022\014\n\004type\030\001 \002(\005\022\016\n\006xiaoji\030\002 \001(\t\022\r" +
+      "\n\005email\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\r\n\005snsId\030\005" +
+      " \001(\t\022#\n\007snsUser\030\006 \001(\0132\022.barrage.PBSNSUse" +
+      "r\022\020\n\010password\030\024 \001(\t\"4\n\023PBLoginUserRespon" +
+      "se\022\035\n\004user\030\001 \001(\0132\017.barrage.PBUser\"X\n\025PBR" +
+      "egisterUserRequest\022\014\n\004type\030\001 \002(\005\022\035\n\004user" +
+      "\030\002 \002(\0132\017.barrage.PBUser\022\022\n\ninviteCode\0302 " +
+      "\001(\t\"L\n\026PBRegisterUserResponse\022\035\n\004user\030\001 ",
+      "\001(\0132\017.barrage.PBUser\022\023\n\013isUserExist\030\002 \001(" +
+      "\010\"/\n\031PBVerifyInviteCodeRequest\022\022\n\ninvite" +
+      "Code\030\001 \002(\t\";\n\032PBVerifyInviteCodeResponse" +
+      "\022\035\n\004user\030\001 \001(\0132\017.barrage.PBUser\"&\n\023PBSea" +
+      "rchUserRequest\022\017\n\007keyword\030\001 \002(\t\"5\n\024PBSea" +
+      "rchUserResponse\022\035\n\004user\030\001 \003(\0132\017.barrage." +
+      "PBUser\"8\n\027PBUpdateUserInfoRequest\022\035\n\004use" +
+      "r\030\001 \002(\0132\017.barrage.PBUser\"9\n\030PBUpdateUser" +
+      "InfoResponse\022\035\n\004user\030\001 \001(\0132\017.barrage.PBU" +
+      "ser\"m\n\026PBAddUserFriendRequest\022\037\n\006friend\030",
+      "\001 \001(\0132\017.barrage.PBUser\022\014\n\004memo\030\002 \001(\t\022\022\n\n" +
+      "sourceType\030\003 \001(\005\022\020\n\010scanCode\030\004 \001(\t\"\031\n\027PB" +
+      "AddUserFriendResponse\"\034\n\032PBGetUserFriend" +
+      "ListRequest\"?\n\033PBGetUserFriendListRespon" +
+      "se\022 \n\007friends\030\001 \003(\0132\017.barrage.PBUser\"S\n\032" +
+      "PBProcessUserFriendRequest\022\020\n\010friendId\030\001" +
+      " \002(\t\022\025\n\rprocessResult\030\002 \001(\005\022\014\n\004memo\030\003 \001(" +
+      "\t\"?\n\033PBProcessUserFriendResponse\022 \n\007frie" +
+      "nds\030\001 \001(\0132\017.barrage.PBUser\"4\n\023PBCreateFe" +
+      "edRequest\022\035\n\004feed\030\001 \002(\0132\017.barrage.PBFeed",
+      "\"&\n\024PBCreateFeedResponse\022\016\n\006feedId\030\001 \001(\t" +
+      "\";\n\022PBReplyFeedRequest\022%\n\006action\030\001 \002(\0132\025" +
+      ".barrage.PBFeedAction\"<\n\023PBReplyFeedResp" +
+      "onse\022%\n\006action\030\001 \002(\0132\025.barrage.PBFeedAct" +
+      "ion\"G\n\034PBGetUserTimelineFeedRequest\022\024\n\014o" +
+      "ffsetFeedId\030\001 \001(\t\022\021\n\005limit\030\002 \001(\005:\00220\"?\n\035" +
+      "PBGetUserTimelineFeedResponse\022\036\n\005feeds\030\001" +
+      " \003(\0132\017.barrage.PBFeed\"\356\006\n\rPBDataRequest\022" +
+      "\014\n\004type\030\001 \002(\005\022\021\n\trequestId\030\002 \001(\005\022\017\n\007vers" +
+      "ion\030\003 \001(\005\022\016\n\006userId\030\004 \001(\t\022!\n\006device\030\036 \001(",
+      "\0132\021.barrage.PBDevice\022\023\n\013countryCode\030\037 \001(" +
+      "\t\022\024\n\014languageCode\030  \001(\t\022\022\n\nclientDate\030! " +
+      "\001(\005\0225\n\020loginUserRequest\030( \001(\0132\033.barrage." +
+      "PBLoginUserRequest\022;\n\023registerUserReques" +
+      "t\030) \001(\0132\036.barrage.PBRegisterUserRequest\022" +
+      "7\n\021searchUserRequest\030* \001(\0132\034.barrage.PBS" +
+      "earchUserRequest\022?\n\025updateUserInfoReques" +
+      "t\030+ \001(\0132 .barrage.PBUpdateUserInfoReques" +
+      "t\022=\n\024addUserFriendRequest\030, \001(\0132\037.barrag" +
+      "e.PBAddUserFriendRequest\022E\n\030getUserFrien",
+      "dListRequest\030- \001(\0132#.barrage.PBGetUserFr" +
+      "iendListRequest\022C\n\027verifyInviteCodeReque" +
+      "st\030. \001(\0132\".barrage.PBVerifyInviteCodeReq" +
+      "uest\022E\n\030processUserFriendRequest\030/ \001(\0132#" +
+      ".barrage.PBProcessUserFriendRequest\0227\n\021c" +
+      "reateFeedRequest\030< \001(\0132\034.barrage.PBCreat" +
+      "eFeedRequest\0225\n\020replyFeedRequest\030= \001(\0132\033" +
+      ".barrage.PBReplyFeedRequest\022I\n\032getUserTi" +
+      "melineFeedRequest\030> \001(\0132%.barrage.PBGetU" +
+      "serTimelineFeedRequest\"\304\006\n\016PBDataRespons",
+      "e\022\025\n\nresultCode\030\001 \002(\005:\0010\022\021\n\trequestId\030\002 " +
+      "\001(\005\022\017\n\007version\030\003 \001(\005\022\022\n\ntotalCount\030\004 \001(\005" +
+      "\022\022\n\nstringData\030\005 \001(\t\0227\n\021loginUserRespons" +
+      "e\030( \001(\0132\034.barrage.PBLoginUserResponse\022=\n" +
+      "\024registerUserResponse\030) \001(\0132\037.barrage.PB" +
+      "RegisterUserResponse\0229\n\022searchUserRespon" +
+      "se\030* \001(\0132\035.barrage.PBSearchUserResponse\022" +
+      "A\n\026updateUserInfoResponse\030+ \001(\0132!.barrag" +
+      "e.PBUpdateUserInfoResponse\022?\n\025addUserFri" +
+      "endResponse\030, \001(\0132 .barrage.PBAddUserFri",
+      "endResponse\022G\n\031getUserFriendListResponse" +
+      "\030- \001(\0132$.barrage.PBGetUserFriendListResp" +
+      "onse\022E\n\030verifyInviteCodeResponse\030. \001(\0132#" +
+      ".barrage.PBVerifyInviteCodeResponse\022G\n\031p" +
+      "rocessUserFriendResponse\030/ \001(\0132$.barrage" +
+      ".PBProcessUserFriendResponse\0229\n\022createFe" +
+      "edResponse\030< \001(\0132\035.barrage.PBCreateFeedR" +
+      "esponse\0227\n\021replyFeedResponse\030= \001(\0132\034.bar" +
+      "rage.PBReplyFeedResponse\022K\n\033getUserTimel" +
+      "ineFeedResponse\030> \001(\0132&.barrage.PBGetUse",
+      "rTimelineFeedResponse*Q\n\031PBProcessFriend" +
+      "ResultType\022\021\n\rACCEPT_FRIEND\020\000\022\021\n\rREJECT_" +
+      "FRIEND\020\001\022\016\n\nREPLY_MEMO\020\002*\362\002\n\rPBMessageTy" +
+      "pe\022\026\n\022MESSAGE_LOGIN_USER\020\001\022\031\n\025MESSAGE_RE" +
+      "GISTER_USER\020\002\022\027\n\023MESSAGE_SEARCH_USER\020\003\022\034" +
+      "\n\030MESSAGE_UPDATE_USER_INFO\020\004\022\033\n\027MESSAGE_" +
+      "ADD_USER_FRIEND\020\005\022 \n\034MESSAGE_GET_USER_FR" +
+      "IEND_LIST\020\006\022\037\n\033MESSAGE_PROCESS_USER_FRIE" +
+      "ND\020\007\022\036\n\032MESSAGE_VERIFY_INVITE_CODE\020\010\022\027\n\023" +
+      "MESSAGE_CREATE_FEED\020\036\022\026\n\022MESSAGE_REPLY_F",
+      "EED\020\037\022\"\n\036MESSAGE_GET_USER_TIMELINE_FEED\020" +
+      " \022\"\n\036MESSAGE_GET_QINIU_UPLOAD_TOKEN\020dB,\n" +
+      "\033com.orange.protocol.messageB\rMessagePro" +
+      "tos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -21091,7 +21243,7 @@ public final class MessageProtos {
     internal_static_barrage_PBLoginUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBLoginUserRequest_descriptor,
-        new java.lang.String[] { "Type", "Xiaoji", "Email", "Mobile", "SnsId", "Password", });
+        new java.lang.String[] { "Type", "Xiaoji", "Email", "Mobile", "SnsId", "SnsUser", "Password", });
     internal_static_barrage_PBLoginUserResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_barrage_PBLoginUserResponse_fieldAccessorTable = new
@@ -21103,7 +21255,7 @@ public final class MessageProtos {
     internal_static_barrage_PBRegisterUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBRegisterUserRequest_descriptor,
-        new java.lang.String[] { "Type", "User", "SnsType", "InviteCode", });
+        new java.lang.String[] { "Type", "User", "InviteCode", });
     internal_static_barrage_PBRegisterUserResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_barrage_PBRegisterUserResponse_fieldAccessorTable = new

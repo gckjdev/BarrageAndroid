@@ -191,6 +191,32 @@ public final class BarrageProtos {
     float getLatitude();
 
     /**
+     * <code>optional string cdnKey = 40;</code>
+     *
+     * <pre>
+     * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+     * </pre>
+     */
+    boolean hasCdnKey();
+    /**
+     * <code>optional string cdnKey = 40;</code>
+     *
+     * <pre>
+     * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+     * </pre>
+     */
+    java.lang.String getCdnKey();
+    /**
+     * <code>optional string cdnKey = 40;</code>
+     *
+     * <pre>
+     * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getCdnKeyBytes();
+
+    /**
      * <code>optional string image = 41;</code>
      *
      * <pre>
@@ -455,38 +481,44 @@ public final class BarrageProtos {
               latitude_ = input.readFloat();
               break;
             }
-            case 330: {
+            case 322: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000100;
+              cdnKey_ = bs;
+              break;
+            }
+            case 330: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000200;
               image_ = bs;
               break;
             }
             case 338: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               text_ = bs;
               break;
             }
             case 344: {
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000800;
               date_ = input.readInt32();
               break;
             }
             case 802: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
                 actions_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBFeedAction>();
-                mutable_bitField0_ |= 0x00001000;
+                mutable_bitField0_ |= 0x00002000;
               }
               actions_.add(input.readMessage(com.orange.protocol.message.BarrageProtos.PBFeedAction.PARSER, extensionRegistry));
               break;
             }
             case 808: {
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00001000;
               lastIndex_ = input.readInt32();
               break;
             }
             case 816: {
-              bitField0_ |= 0x00001000;
+              bitField0_ |= 0x00002000;
               newCount_ = input.readInt32();
               break;
             }
@@ -501,7 +533,7 @@ public final class BarrageProtos {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           toUsers_ = java.util.Collections.unmodifiableList(toUsers_);
         }
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           actions_ = java.util.Collections.unmodifiableList(actions_);
         }
         this.unknownFields = unknownFields.build();
@@ -821,6 +853,60 @@ public final class BarrageProtos {
       return latitude_;
     }
 
+    public static final int CDNKEY_FIELD_NUMBER = 40;
+    private java.lang.Object cdnKey_;
+    /**
+     * <code>optional string cdnKey = 40;</code>
+     *
+     * <pre>
+     * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+     * </pre>
+     */
+    public boolean hasCdnKey() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string cdnKey = 40;</code>
+     *
+     * <pre>
+     * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+     * </pre>
+     */
+    public java.lang.String getCdnKey() {
+      java.lang.Object ref = cdnKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cdnKey_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string cdnKey = 40;</code>
+     *
+     * <pre>
+     * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getCdnKeyBytes() {
+      java.lang.Object ref = cdnKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cdnKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int IMAGE_FIELD_NUMBER = 41;
     private java.lang.Object image_;
     /**
@@ -831,7 +917,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasImage() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional string image = 41;</code>
@@ -885,7 +971,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasText() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional string text = 42;</code>
@@ -939,7 +1025,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasDate() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional int32 date = 43;</code>
@@ -1017,7 +1103,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasLastIndex() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional int32 lastIndex = 101;</code>
@@ -1040,7 +1126,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasNewCount() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional int32 newCount = 102;</code>
@@ -1063,6 +1149,7 @@ public final class BarrageProtos {
       location_ = "";
       longitude_ = 0F;
       latitude_ = 0F;
+      cdnKey_ = "";
       image_ = "";
       text_ = "";
       date_ = 0;
@@ -1135,21 +1222,24 @@ public final class BarrageProtos {
         output.writeFloat(36, latitude_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeBytes(41, getImageBytes());
+        output.writeBytes(40, getCdnKeyBytes());
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeBytes(42, getTextBytes());
+        output.writeBytes(41, getImageBytes());
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBytes(42, getTextBytes());
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeInt32(43, date_);
       }
       for (int i = 0; i < actions_.size(); i++) {
         output.writeMessage(100, actions_.get(i));
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeInt32(101, lastIndex_);
       }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeInt32(102, newCount_);
       }
       getUnknownFields().writeTo(output);
@@ -1199,13 +1289,17 @@ public final class BarrageProtos {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(41, getImageBytes());
+          .computeBytesSize(40, getCdnKeyBytes());
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(42, getTextBytes());
+          .computeBytesSize(41, getImageBytes());
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(42, getTextBytes());
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(43, date_);
       }
@@ -1213,11 +1307,11 @@ public final class BarrageProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(100, actions_.get(i));
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(101, lastIndex_);
       }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(102, newCount_);
       }
@@ -1372,22 +1466,24 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000080);
         latitude_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000100);
-        image_ = "";
+        cdnKey_ = "";
         bitField0_ = (bitField0_ & ~0x00000200);
-        text_ = "";
+        image_ = "";
         bitField0_ = (bitField0_ & ~0x00000400);
-        date_ = 0;
+        text_ = "";
         bitField0_ = (bitField0_ & ~0x00000800);
+        date_ = 0;
+        bitField0_ = (bitField0_ & ~0x00001000);
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
         } else {
           actionsBuilder_.clear();
         }
         lastIndex_ = 0;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        newCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00004000);
+        newCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00008000);
         return this;
       }
 
@@ -1468,30 +1564,34 @@ public final class BarrageProtos {
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.image_ = image_;
+        result.cdnKey_ = cdnKey_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.text_ = text_;
+        result.image_ = image_;
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000400;
         }
+        result.text_ = text_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00000800;
+        }
         result.date_ = date_;
         if (actionsBuilder_ == null) {
-          if (((bitField0_ & 0x00001000) == 0x00001000)) {
+          if (((bitField0_ & 0x00002000) == 0x00002000)) {
             actions_ = java.util.Collections.unmodifiableList(actions_);
-            bitField0_ = (bitField0_ & ~0x00001000);
+            bitField0_ = (bitField0_ & ~0x00002000);
           }
           result.actions_ = actions_;
         } else {
           result.actions_ = actionsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.lastIndex_ = lastIndex_;
         if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
           to_bitField0_ |= 0x00001000;
+        }
+        result.lastIndex_ = lastIndex_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00002000;
         }
         result.newCount_ = newCount_;
         result.bitField0_ = to_bitField0_;
@@ -1564,13 +1664,18 @@ public final class BarrageProtos {
         if (other.hasLatitude()) {
           setLatitude(other.getLatitude());
         }
-        if (other.hasImage()) {
+        if (other.hasCdnKey()) {
           bitField0_ |= 0x00000200;
+          cdnKey_ = other.cdnKey_;
+          onChanged();
+        }
+        if (other.hasImage()) {
+          bitField0_ |= 0x00000400;
           image_ = other.image_;
           onChanged();
         }
         if (other.hasText()) {
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000800;
           text_ = other.text_;
           onChanged();
         }
@@ -1581,7 +1686,7 @@ public final class BarrageProtos {
           if (!other.actions_.isEmpty()) {
             if (actions_.isEmpty()) {
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
             } else {
               ensureActionsIsMutable();
               actions_.addAll(other.actions_);
@@ -1594,7 +1699,7 @@ public final class BarrageProtos {
               actionsBuilder_.dispose();
               actionsBuilder_ = null;
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
               actionsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getActionsFieldBuilder() : null;
@@ -2584,6 +2689,106 @@ public final class BarrageProtos {
         return this;
       }
 
+      private java.lang.Object cdnKey_ = "";
+      /**
+       * <code>optional string cdnKey = 40;</code>
+       *
+       * <pre>
+       * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+       * </pre>
+       */
+      public boolean hasCdnKey() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional string cdnKey = 40;</code>
+       *
+       * <pre>
+       * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+       * </pre>
+       */
+      public java.lang.String getCdnKey() {
+        java.lang.Object ref = cdnKey_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            cdnKey_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string cdnKey = 40;</code>
+       *
+       * <pre>
+       * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getCdnKeyBytes() {
+        java.lang.Object ref = cdnKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cdnKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string cdnKey = 40;</code>
+       *
+       * <pre>
+       * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+       * </pre>
+       */
+      public Builder setCdnKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        cdnKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cdnKey = 40;</code>
+       *
+       * <pre>
+       * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+       * </pre>
+       */
+      public Builder clearCdnKey() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        cdnKey_ = getDefaultInstance().getCdnKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cdnKey = 40;</code>
+       *
+       * <pre>
+       * 图片在CDN服务器上的key，参考 http://developer.qiniu.com/docs/v6/api/overview/concepts.html
+       * </pre>
+       */
+      public Builder setCdnKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        cdnKey_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object image_ = "";
       /**
        * <code>optional string image = 41;</code>
@@ -2593,7 +2798,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasImage() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional string image = 41;</code>
@@ -2648,7 +2853,7 @@ public final class BarrageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
         image_ = value;
         onChanged();
         return this;
@@ -2661,7 +2866,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearImage() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         image_ = getDefaultInstance().getImage();
         onChanged();
         return this;
@@ -2678,7 +2883,7 @@ public final class BarrageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
         image_ = value;
         onChanged();
         return this;
@@ -2693,7 +2898,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasText() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional string text = 42;</code>
@@ -2748,7 +2953,7 @@ public final class BarrageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000800;
         text_ = value;
         onChanged();
         return this;
@@ -2761,7 +2966,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearText() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         text_ = getDefaultInstance().getText();
         onChanged();
         return this;
@@ -2778,7 +2983,7 @@ public final class BarrageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000800;
         text_ = value;
         onChanged();
         return this;
@@ -2793,7 +2998,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasDate() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional int32 date = 43;</code>
@@ -2813,7 +3018,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setDate(int value) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         date_ = value;
         onChanged();
         return this;
@@ -2826,7 +3031,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearDate() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         date_ = 0;
         onChanged();
         return this;
@@ -2835,9 +3040,9 @@ public final class BarrageProtos {
       private java.util.List<com.orange.protocol.message.BarrageProtos.PBFeedAction> actions_ =
         java.util.Collections.emptyList();
       private void ensureActionsIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
           actions_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBFeedAction>(actions_);
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00002000;
          }
       }
 
@@ -3031,7 +3236,7 @@ public final class BarrageProtos {
       public Builder clearActions() {
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
           onChanged();
         } else {
           actionsBuilder_.clear();
@@ -3136,7 +3341,7 @@ public final class BarrageProtos {
           actionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.orange.protocol.message.BarrageProtos.PBFeedAction, com.orange.protocol.message.BarrageProtos.PBFeedAction.Builder, com.orange.protocol.message.BarrageProtos.PBFeedActionOrBuilder>(
                   actions_,
-                  ((bitField0_ & 0x00001000) == 0x00001000),
+                  ((bitField0_ & 0x00002000) == 0x00002000),
                   getParentForChildren(),
                   isClean());
           actions_ = null;
@@ -3153,7 +3358,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasLastIndex() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional int32 lastIndex = 101;</code>
@@ -3173,7 +3378,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setLastIndex(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         lastIndex_ = value;
         onChanged();
         return this;
@@ -3186,7 +3391,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearLastIndex() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         lastIndex_ = 0;
         onChanged();
         return this;
@@ -3201,7 +3406,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasNewCount() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional int32 newCount = 102;</code>
@@ -3221,7 +3426,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setNewCount(int value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00008000;
         newCount_ = value;
         onChanged();
         return this;
@@ -3234,7 +3439,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearNewCount() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         newCount_ = 0;
         onChanged();
         return this;
@@ -5331,22 +5536,22 @@ public final class BarrageProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\rBarrage.proto\022\007barrage\032\014Common.proto\032\n" +
-      "User.proto\"\334\002\n\006PBFeed\022\017\n\004type\030\001 \001(\005:\0010\022\016" +
+      "User.proto\"\354\002\n\006PBFeed\022\017\n\004type\030\001 \001(\005:\0010\022\016" +
       "\n\006feedId\030\002 \001(\t\022#\n\ncreateUser\030\003 \001(\0132\017.bar" +
       "rage.PBUser\022 \n\007toUsers\030\004 \003(\0132\017.barrage.P" +
       "BUser\022\030\n\topenToAll\030\005 \001(\010:\005false\022!\n\006devic" +
       "e\030\036 \001(\0132\021.barrage.PBDevice\022\020\n\010location\030\"" +
       " \001(\t\022\021\n\tlongitude\030# \001(\002\022\020\n\010latitude\030$ \001(" +
-      "\002\022\r\n\005image\030) \001(\t\022\014\n\004text\030* \001(\t\022\014\n\004date\030+" +
-      " \001(\005\022&\n\007actions\030d \003(\0132\025.barrage.PBFeedAc" +
-      "tion\022\021\n\tlastIndex\030e \001(\005\022\020\n\010newCount\030f \001(",
-      "\005\"\322\001\n\014PBFeedAction\022\020\n\010actionId\030\001 \001(\t\022\014\n\004" +
-      "type\030\002 \001(\005\022\016\n\006feedId\030\003 \001(\t\022\035\n\004user\030\004 \001(\013" +
-      "2\017.barrage.PBUser\022\014\n\004text\030\005 \001(\t\022\016\n\006avata" +
-      "r\030\006 \001(\t\022\030\n\nshowAvatar\030\007 \001(\010:\004true\022\014\n\004pos" +
-      "X\030\n \001(\002\022\014\n\004posY\030\013 \001(\002\022\021\n\tcolorMode\030\014 \001(\005" +
-      "\022\014\n\004date\030\024 \001(\005B,\n\033com.orange.protocol.me" +
-      "ssageB\rBarrageProtos"
+      "\002\022\016\n\006cdnKey\030( \001(\t\022\r\n\005image\030) \001(\t\022\014\n\004text" +
+      "\030* \001(\t\022\014\n\004date\030+ \001(\005\022&\n\007actions\030d \003(\0132\025." +
+      "barrage.PBFeedAction\022\021\n\tlastIndex\030e \001(\005\022",
+      "\020\n\010newCount\030f \001(\005\"\322\001\n\014PBFeedAction\022\020\n\010ac" +
+      "tionId\030\001 \001(\t\022\014\n\004type\030\002 \001(\005\022\016\n\006feedId\030\003 \001" +
+      "(\t\022\035\n\004user\030\004 \001(\0132\017.barrage.PBUser\022\014\n\004tex" +
+      "t\030\005 \001(\t\022\016\n\006avatar\030\006 \001(\t\022\030\n\nshowAvatar\030\007 " +
+      "\001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 \001(\002\022\021\n" +
+      "\tcolorMode\030\014 \001(\005\022\014\n\004date\030\024 \001(\005B,\n\033com.or" +
+      "ange.protocol.messageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5367,7 +5572,7 @@ public final class BarrageProtos {
     internal_static_barrage_PBFeed_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBFeed_descriptor,
-        new java.lang.String[] { "Type", "FeedId", "CreateUser", "ToUsers", "OpenToAll", "Device", "Location", "Longitude", "Latitude", "Image", "Text", "Date", "Actions", "LastIndex", "NewCount", });
+        new java.lang.String[] { "Type", "FeedId", "CreateUser", "ToUsers", "OpenToAll", "Device", "Location", "Longitude", "Latitude", "CdnKey", "Image", "Text", "Date", "Actions", "LastIndex", "NewCount", });
     internal_static_barrage_PBFeedAction_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_barrage_PBFeedAction_fieldAccessorTable = new

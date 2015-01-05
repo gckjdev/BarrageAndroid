@@ -420,71 +420,91 @@ public final class UserProtos {
 
   /**
    * Protobuf enum {@code barrage.PBLoginType}
+   *
+   * <pre>
+   * align with ShareSDK shareType
+   * </pre>
    */
   public enum PBLoginType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>LOGIN_XIAOJI = 1;</code>
+     * <code>LOGIN_XIAOJI = 100;</code>
      */
-    LOGIN_XIAOJI(0, 1),
+    LOGIN_XIAOJI(0, 100),
     /**
-     * <code>LOGIN_EMAIL = 2;</code>
+     * <code>LOGIN_EMAIL = 101;</code>
      */
-    LOGIN_EMAIL(1, 2),
+    LOGIN_EMAIL(1, 101),
     /**
-     * <code>LOGIN_QQ = 3;</code>
+     * <code>LOGIN_MOBILE = 102;</code>
      */
-    LOGIN_QQ(2, 3),
+    LOGIN_MOBILE(2, 102),
     /**
-     * <code>LOGIN_SINA = 4;</code>
+     * <code>LOGIN_QQ = 6;</code>
+     *
+     * <pre>
+     * QQ Space
+     * </pre>
      */
-    LOGIN_SINA(3, 4),
+    LOGIN_QQ(3, 6),
     /**
-     * <code>LOGIN_WEIXIN = 5;</code>
+     * <code>LOGIN_SINA = 1;</code>
      */
-    LOGIN_WEIXIN(4, 5),
+    LOGIN_SINA(4, 1),
     /**
-     * <code>LOGIN_MOBILE = 6;</code>
+     * <code>LOGIN_WEIXIN = 23;</code>
+     *
+     * <pre>
+     * WeChat Friend
+     * </pre>
      */
-    LOGIN_MOBILE(5, 6),
+    LOGIN_WEIXIN(5, 23),
     ;
 
     /**
-     * <code>LOGIN_XIAOJI = 1;</code>
+     * <code>LOGIN_XIAOJI = 100;</code>
      */
-    public static final int LOGIN_XIAOJI_VALUE = 1;
+    public static final int LOGIN_XIAOJI_VALUE = 100;
     /**
-     * <code>LOGIN_EMAIL = 2;</code>
+     * <code>LOGIN_EMAIL = 101;</code>
      */
-    public static final int LOGIN_EMAIL_VALUE = 2;
+    public static final int LOGIN_EMAIL_VALUE = 101;
     /**
-     * <code>LOGIN_QQ = 3;</code>
+     * <code>LOGIN_MOBILE = 102;</code>
      */
-    public static final int LOGIN_QQ_VALUE = 3;
+    public static final int LOGIN_MOBILE_VALUE = 102;
     /**
-     * <code>LOGIN_SINA = 4;</code>
+     * <code>LOGIN_QQ = 6;</code>
+     *
+     * <pre>
+     * QQ Space
+     * </pre>
      */
-    public static final int LOGIN_SINA_VALUE = 4;
+    public static final int LOGIN_QQ_VALUE = 6;
     /**
-     * <code>LOGIN_WEIXIN = 5;</code>
+     * <code>LOGIN_SINA = 1;</code>
      */
-    public static final int LOGIN_WEIXIN_VALUE = 5;
+    public static final int LOGIN_SINA_VALUE = 1;
     /**
-     * <code>LOGIN_MOBILE = 6;</code>
+     * <code>LOGIN_WEIXIN = 23;</code>
+     *
+     * <pre>
+     * WeChat Friend
+     * </pre>
      */
-    public static final int LOGIN_MOBILE_VALUE = 6;
+    public static final int LOGIN_WEIXIN_VALUE = 23;
 
 
     public final int getNumber() { return value; }
 
     public static PBLoginType valueOf(int value) {
       switch (value) {
-        case 1: return LOGIN_XIAOJI;
-        case 2: return LOGIN_EMAIL;
-        case 3: return LOGIN_QQ;
-        case 4: return LOGIN_SINA;
-        case 5: return LOGIN_WEIXIN;
-        case 6: return LOGIN_MOBILE;
+        case 100: return LOGIN_XIAOJI;
+        case 101: return LOGIN_EMAIL;
+        case 102: return LOGIN_MOBILE;
+        case 6: return LOGIN_QQ;
+        case 1: return LOGIN_SINA;
+        case 23: return LOGIN_WEIXIN;
         default: return null;
       }
     }
@@ -542,67 +562,67 @@ public final class UserProtos {
   public enum PBRegisterType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>REG_XIAOJI = 1;</code>
+     * <code>REG_XIAOJI = 100;</code>
      */
-    REG_XIAOJI(0, 1),
+    REG_XIAOJI(0, 100),
     /**
-     * <code>REG_EMAIL = 2;</code>
+     * <code>REG_EMAIL = 101;</code>
      */
-    REG_EMAIL(1, 2),
+    REG_EMAIL(1, 101),
     /**
-     * <code>REG_QQ = 3;</code>
+     * <code>REG_MOBILE = 102;</code>
      */
-    REG_QQ(2, 3),
+    REG_MOBILE(2, 102),
     /**
-     * <code>REG_SINA = 4;</code>
+     * <code>REG_QQ = 6;</code>
      */
-    REG_SINA(3, 4),
+    REG_QQ(3, 6),
     /**
-     * <code>REG_WEIXIN = 5;</code>
+     * <code>REG_SINA = 1;</code>
      */
-    REG_WEIXIN(4, 5),
+    REG_SINA(4, 1),
     /**
-     * <code>REG_MOBILE = 6;</code>
+     * <code>REG_WEIXIN = 23;</code>
      */
-    REG_MOBILE(5, 6),
+    REG_WEIXIN(5, 23),
     ;
 
     /**
-     * <code>REG_XIAOJI = 1;</code>
+     * <code>REG_XIAOJI = 100;</code>
      */
-    public static final int REG_XIAOJI_VALUE = 1;
+    public static final int REG_XIAOJI_VALUE = 100;
     /**
-     * <code>REG_EMAIL = 2;</code>
+     * <code>REG_EMAIL = 101;</code>
      */
-    public static final int REG_EMAIL_VALUE = 2;
+    public static final int REG_EMAIL_VALUE = 101;
     /**
-     * <code>REG_QQ = 3;</code>
+     * <code>REG_MOBILE = 102;</code>
      */
-    public static final int REG_QQ_VALUE = 3;
+    public static final int REG_MOBILE_VALUE = 102;
     /**
-     * <code>REG_SINA = 4;</code>
+     * <code>REG_QQ = 6;</code>
      */
-    public static final int REG_SINA_VALUE = 4;
+    public static final int REG_QQ_VALUE = 6;
     /**
-     * <code>REG_WEIXIN = 5;</code>
+     * <code>REG_SINA = 1;</code>
      */
-    public static final int REG_WEIXIN_VALUE = 5;
+    public static final int REG_SINA_VALUE = 1;
     /**
-     * <code>REG_MOBILE = 6;</code>
+     * <code>REG_WEIXIN = 23;</code>
      */
-    public static final int REG_MOBILE_VALUE = 6;
+    public static final int REG_WEIXIN_VALUE = 23;
 
 
     public final int getNumber() { return value; }
 
     public static PBRegisterType valueOf(int value) {
       switch (value) {
-        case 1: return REG_XIAOJI;
-        case 2: return REG_EMAIL;
-        case 3: return REG_QQ;
-        case 4: return REG_SINA;
-        case 5: return REG_WEIXIN;
-        case 6: return REG_MOBILE;
+        case 100: return REG_XIAOJI;
+        case 101: return REG_EMAIL;
+        case 102: return REG_MOBILE;
+        case 6: return REG_QQ;
+        case 1: return REG_SINA;
+        case 23: return REG_WEIXIN;
         default: return null;
       }
     }
@@ -652,6 +672,281 @@ public final class UserProtos {
     }
 
     // @@protoc_insertion_point(enum_scope:barrage.PBRegisterType)
+  }
+
+  /**
+   * Protobuf enum {@code barrage.PBBarrageStyle}
+   */
+  public enum PBBarrageStyle
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>POP_DECAY = 0;</code>
+     *
+     * <pre>
+     * 摩擦
+     * </pre>
+     */
+    POP_DECAY(0, 0),
+    /**
+     * <code>POP_SPRING = 1;</code>
+     *
+     * <pre>
+     * 弹簧
+     * </pre>
+     */
+    POP_SPRING(1, 1),
+    /**
+     * <code>POP_LINEAR = 2;</code>
+     *
+     * <pre>
+     * 匀速
+     * </pre>
+     */
+    POP_LINEAR(2, 2),
+    /**
+     * <code>POP_EASE_IN = 3;</code>
+     *
+     * <pre>
+     * 加速
+     * </pre>
+     */
+    POP_EASE_IN(3, 3),
+    /**
+     * <code>POP_EASE_OUT = 4;</code>
+     *
+     * <pre>
+     * 减速
+     * </pre>
+     */
+    POP_EASE_OUT(4, 4),
+    /**
+     * <code>POP_EASE_INOUT = 5;</code>
+     *
+     * <pre>
+     * 先加速再减速
+     * </pre>
+     */
+    POP_EASE_INOUT(5, 5),
+    ;
+
+    /**
+     * <code>POP_DECAY = 0;</code>
+     *
+     * <pre>
+     * 摩擦
+     * </pre>
+     */
+    public static final int POP_DECAY_VALUE = 0;
+    /**
+     * <code>POP_SPRING = 1;</code>
+     *
+     * <pre>
+     * 弹簧
+     * </pre>
+     */
+    public static final int POP_SPRING_VALUE = 1;
+    /**
+     * <code>POP_LINEAR = 2;</code>
+     *
+     * <pre>
+     * 匀速
+     * </pre>
+     */
+    public static final int POP_LINEAR_VALUE = 2;
+    /**
+     * <code>POP_EASE_IN = 3;</code>
+     *
+     * <pre>
+     * 加速
+     * </pre>
+     */
+    public static final int POP_EASE_IN_VALUE = 3;
+    /**
+     * <code>POP_EASE_OUT = 4;</code>
+     *
+     * <pre>
+     * 减速
+     * </pre>
+     */
+    public static final int POP_EASE_OUT_VALUE = 4;
+    /**
+     * <code>POP_EASE_INOUT = 5;</code>
+     *
+     * <pre>
+     * 先加速再减速
+     * </pre>
+     */
+    public static final int POP_EASE_INOUT_VALUE = 5;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBBarrageStyle valueOf(int value) {
+      switch (value) {
+        case 0: return POP_DECAY;
+        case 1: return POP_SPRING;
+        case 2: return POP_LINEAR;
+        case 3: return POP_EASE_IN;
+        case 4: return POP_EASE_OUT;
+        case 5: return POP_EASE_INOUT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBBarrageStyle>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBBarrageStyle>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBBarrageStyle>() {
+            public PBBarrageStyle findValueByNumber(int number) {
+              return PBBarrageStyle.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.UserProtos.getDescriptor().getEnumTypes().get(6);
+    }
+
+    private static final PBBarrageStyle[] VALUES = values();
+
+    public static PBBarrageStyle valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBBarrageStyle(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBBarrageStyle)
+  }
+
+  /**
+   * Protobuf enum {@code barrage.PBBarrageSpeed}
+   */
+  public enum PBBarrageSpeed
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NORMAL = 0;</code>
+     */
+    NORMAL(0, 0),
+    /**
+     * <code>SUPER_HIGH = 1;</code>
+     */
+    SUPER_HIGH(1, 1),
+    /**
+     * <code>HIGH = 2;</code>
+     */
+    HIGH(2, 2),
+    /**
+     * <code>LOW = 4;</code>
+     */
+    LOW(3, 4),
+    /**
+     * <code>VERY_LOW = 5;</code>
+     */
+    VERY_LOW(4, 5),
+    ;
+
+    /**
+     * <code>NORMAL = 0;</code>
+     */
+    public static final int NORMAL_VALUE = 0;
+    /**
+     * <code>SUPER_HIGH = 1;</code>
+     */
+    public static final int SUPER_HIGH_VALUE = 1;
+    /**
+     * <code>HIGH = 2;</code>
+     */
+    public static final int HIGH_VALUE = 2;
+    /**
+     * <code>LOW = 4;</code>
+     */
+    public static final int LOW_VALUE = 4;
+    /**
+     * <code>VERY_LOW = 5;</code>
+     */
+    public static final int VERY_LOW_VALUE = 5;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBBarrageSpeed valueOf(int value) {
+      switch (value) {
+        case 0: return NORMAL;
+        case 1: return SUPER_HIGH;
+        case 2: return HIGH;
+        case 4: return LOW;
+        case 5: return VERY_LOW;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBBarrageSpeed>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBBarrageSpeed>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBBarrageSpeed>() {
+            public PBBarrageSpeed findValueByNumber(int number) {
+              return PBBarrageSpeed.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.UserProtos.getDescriptor().getEnumTypes().get(7);
+    }
+
+    private static final PBBarrageSpeed[] VALUES = values();
+
+    public static PBBarrageSpeed valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBBarrageSpeed(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBBarrageSpeed)
   }
 
   public interface PBSNSUserOrBuilder extends
@@ -3263,6 +3558,40 @@ public final class UserProtos {
      * </pre>
      */
     int getAddStatus();
+
+    /**
+     * <code>optional int32 bStyle = 200;</code>
+     *
+     * <pre>
+     * 用户本地弹幕风格
+     * </pre>
+     */
+    boolean hasBStyle();
+    /**
+     * <code>optional int32 bStyle = 200;</code>
+     *
+     * <pre>
+     * 用户本地弹幕风格
+     * </pre>
+     */
+    int getBStyle();
+
+    /**
+     * <code>optional int32 bSpeed = 201;</code>
+     *
+     * <pre>
+     * 用户本地弹幕速度
+     * </pre>
+     */
+    boolean hasBSpeed();
+    /**
+     * <code>optional int32 bSpeed = 201;</code>
+     *
+     * <pre>
+     * 用户本地弹幕速度
+     * </pre>
+     */
+    int getBSpeed();
   }
   /**
    * Protobuf type {@code barrage.PBUser}
@@ -3553,6 +3882,16 @@ public final class UserProtos {
             case 848: {
               bitField1_ |= 0x00000010;
               addStatus_ = input.readInt32();
+              break;
+            }
+            case 1600: {
+              bitField1_ |= 0x00000020;
+              bStyle_ = input.readInt32();
+              break;
+            }
+            case 1608: {
+              bitField1_ |= 0x00000040;
+              bSpeed_ = input.readInt32();
               break;
             }
           }
@@ -5197,6 +5536,52 @@ public final class UserProtos {
       return addStatus_;
     }
 
+    public static final int BSTYLE_FIELD_NUMBER = 200;
+    private int bStyle_;
+    /**
+     * <code>optional int32 bStyle = 200;</code>
+     *
+     * <pre>
+     * 用户本地弹幕风格
+     * </pre>
+     */
+    public boolean hasBStyle() {
+      return ((bitField1_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 bStyle = 200;</code>
+     *
+     * <pre>
+     * 用户本地弹幕风格
+     * </pre>
+     */
+    public int getBStyle() {
+      return bStyle_;
+    }
+
+    public static final int BSPEED_FIELD_NUMBER = 201;
+    private int bSpeed_;
+    /**
+     * <code>optional int32 bSpeed = 201;</code>
+     *
+     * <pre>
+     * 用户本地弹幕速度
+     * </pre>
+     */
+    public boolean hasBSpeed() {
+      return ((bitField1_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 bSpeed = 201;</code>
+     *
+     * <pre>
+     * 用户本地弹幕速度
+     * </pre>
+     */
+    public int getBSpeed() {
+      return bSpeed_;
+    }
+
     private void initFields() {
       userId_ = "";
       nick_ = "";
@@ -5238,6 +5623,8 @@ public final class UserProtos {
       addDir_ = 0;
       replyMemo_ = "";
       addStatus_ = 0;
+      bStyle_ = 0;
+      bSpeed_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5393,6 +5780,12 @@ public final class UserProtos {
       }
       if (((bitField1_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(106, addStatus_);
+      }
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(200, bStyle_);
+      }
+      if (((bitField1_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(201, bSpeed_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5567,6 +5960,14 @@ public final class UserProtos {
       if (((bitField1_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(106, addStatus_);
+      }
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(200, bStyle_);
+      }
+      if (((bitField1_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(201, bSpeed_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5780,6 +6181,10 @@ public final class UserProtos {
         bitField1_ = (bitField1_ & ~0x00000040);
         addStatus_ = 0;
         bitField1_ = (bitField1_ & ~0x00000080);
+        bStyle_ = 0;
+        bitField1_ = (bitField1_ & ~0x00000100);
+        bSpeed_ = 0;
+        bitField1_ = (bitField1_ & ~0x00000200);
         return this;
       }
 
@@ -5985,6 +6390,14 @@ public final class UserProtos {
           to_bitField1_ |= 0x00000010;
         }
         result.addStatus_ = addStatus_;
+        if (((from_bitField1_ & 0x00000100) == 0x00000100)) {
+          to_bitField1_ |= 0x00000020;
+        }
+        result.bStyle_ = bStyle_;
+        if (((from_bitField1_ & 0x00000200) == 0x00000200)) {
+          to_bitField1_ |= 0x00000040;
+        }
+        result.bSpeed_ = bSpeed_;
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         onBuilt();
@@ -6214,6 +6627,12 @@ public final class UserProtos {
         }
         if (other.hasAddStatus()) {
           setAddStatus(other.getAddStatus());
+        }
+        if (other.hasBStyle()) {
+          setBStyle(other.getBStyle());
+        }
+        if (other.hasBSpeed()) {
+          setBSpeed(other.getBSpeed());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9818,6 +10237,102 @@ public final class UserProtos {
         return this;
       }
 
+      private int bStyle_ ;
+      /**
+       * <code>optional int32 bStyle = 200;</code>
+       *
+       * <pre>
+       * 用户本地弹幕风格
+       * </pre>
+       */
+      public boolean hasBStyle() {
+        return ((bitField1_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional int32 bStyle = 200;</code>
+       *
+       * <pre>
+       * 用户本地弹幕风格
+       * </pre>
+       */
+      public int getBStyle() {
+        return bStyle_;
+      }
+      /**
+       * <code>optional int32 bStyle = 200;</code>
+       *
+       * <pre>
+       * 用户本地弹幕风格
+       * </pre>
+       */
+      public Builder setBStyle(int value) {
+        bitField1_ |= 0x00000100;
+        bStyle_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bStyle = 200;</code>
+       *
+       * <pre>
+       * 用户本地弹幕风格
+       * </pre>
+       */
+      public Builder clearBStyle() {
+        bitField1_ = (bitField1_ & ~0x00000100);
+        bStyle_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int bSpeed_ ;
+      /**
+       * <code>optional int32 bSpeed = 201;</code>
+       *
+       * <pre>
+       * 用户本地弹幕速度
+       * </pre>
+       */
+      public boolean hasBSpeed() {
+        return ((bitField1_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 bSpeed = 201;</code>
+       *
+       * <pre>
+       * 用户本地弹幕速度
+       * </pre>
+       */
+      public int getBSpeed() {
+        return bSpeed_;
+      }
+      /**
+       * <code>optional int32 bSpeed = 201;</code>
+       *
+       * <pre>
+       * 用户本地弹幕速度
+       * </pre>
+       */
+      public Builder setBSpeed(int value) {
+        bitField1_ |= 0x00000200;
+        bSpeed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bSpeed = 201;</code>
+       *
+       * <pre>
+       * 用户本地弹幕速度
+       * </pre>
+       */
+      public Builder clearBSpeed() {
+        bitField1_ = (bitField1_ & ~0x00000200);
+        bSpeed_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:barrage.PBUser)
     }
 
@@ -12152,7 +12667,7 @@ public final class UserProtos {
       "\014\n\004nick\030\003 \001(\t\022\023\n\013accessToken\030\004 \001(\t\022\031\n\021ac" +
       "cessTokenSecret\030\005 \001(\t\022\024\n\014refreshToken\030\006 " +
       "\001(\t\022\023\n\013expiredTime\030\007 \001(\005\022\020\n\010qqOpenId\030\010 \001" +
-      "(\t\022\022\n\ncredential\030\024 \001(\t\"\246\006\n\006PBUser\022\016\n\006use" +
+      "(\t\022\022\n\ncredential\030\024 \001(\t\"\310\006\n\006PBUser\022\016\n\006use" +
       "rId\030\001 \002(\t\022\014\n\004nick\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022" +
       "\025\n\006gender\030\004 \001(\010:\005false\022$\n\010snsUsers\030\005 \003(\013" +
       "2\022.barrage.PBSNSUser\022\024\n\014xiaojiNumber\030\006 \001" +
@@ -12172,26 +12687,31 @@ public final class UserProtos {
       "fyStatus\030S \001(\005\022\021\n\taddConfig\030[ \001(\005\022\014\n\004tag" +
       "s\030d \003(\t\022\014\n\004memo\030e \001(\t\022\021\n\taddSource\030f \001(\005" +
       "\022\017\n\007addDate\030g \001(\005\022\016\n\006addDir\030h \001(\005\022\021\n\trep" +
-      "lyMemo\030i \001(\t\022\021\n\taddStatus\030j \001(\005\"E\n\tPBUse" +
-      "rTag\022\014\n\004name\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\022\036\n\005users\030" +
-      "\003 \003(\0132\017.barrage.PBUser\"V\n\rPBUserTagList\022" +
-      "#\n\007recents\030\001 \003(\0132\022.barrage.PBUserTag\022 \n\004" +
-      "tags\030\002 \003(\0132\022.barrage.PBUserTag*@\n\023Friend",
-      "AddSourceType\022\021\n\rADD_BY_SEARCH\020\001\022\026\n\022ADD_" +
-      "BY_SCAN_QRCODE\020\002*N\n\023FriendAddConfigType\022" +
-      "\022\n\016REQUIRE_ACCEPT\020\000\022\016\n\nACCEPT_ALL\020\001\022\023\n\017D" +
-      "ISALLOW_ADD_ME\020\002*N\n\026FriendRequestDirecti" +
-      "on\022\030\n\024REQ_DIRECTION_SENDER\020\000\022\032\n\026REQ_DIRE" +
-      "CTION_RECEIVER\020\001*N\n\023FriendAddStatusType\022" +
-      "\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020" +
-      "\n\014REQ_REJECTED\020\002*r\n\013PBLoginType\022\020\n\014LOGIN" +
-      "_XIAOJI\020\001\022\017\n\013LOGIN_EMAIL\020\002\022\014\n\010LOGIN_QQ\020\003" +
-      "\022\016\n\nLOGIN_SINA\020\004\022\020\n\014LOGIN_WEIXIN\020\005\022\020\n\014LO",
-      "GIN_MOBILE\020\006*i\n\016PBRegisterType\022\016\n\nREG_XI" +
-      "AOJI\020\001\022\r\n\tREG_EMAIL\020\002\022\n\n\006REG_QQ\020\003\022\014\n\010REG" +
-      "_SINA\020\004\022\016\n\nREG_WEIXIN\020\005\022\016\n\nREG_MOBILE\020\006B" +
-      ")\n\033com.orange.protocol.messageB\nUserProt" +
-      "os"
+      "lyMemo\030i \001(\t\022\021\n\taddStatus\030j \001(\005\022\017\n\006bStyl" +
+      "e\030\310\001 \001(\005\022\017\n\006bSpeed\030\311\001 \001(\005\"E\n\tPBUserTag\022\014" +
+      "\n\004name\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\022\036\n\005users\030\003 \003(\0132" +
+      "\017.barrage.PBUser\"V\n\rPBUserTagList\022#\n\007rec" +
+      "ents\030\001 \003(\0132\022.barrage.PBUserTag\022 \n\004tags\030\002",
+      " \003(\0132\022.barrage.PBUserTag*@\n\023FriendAddSou" +
+      "rceType\022\021\n\rADD_BY_SEARCH\020\001\022\026\n\022ADD_BY_SCA" +
+      "N_QRCODE\020\002*N\n\023FriendAddConfigType\022\022\n\016REQ" +
+      "UIRE_ACCEPT\020\000\022\016\n\nACCEPT_ALL\020\001\022\023\n\017DISALLO" +
+      "W_ADD_ME\020\002*N\n\026FriendRequestDirection\022\030\n\024" +
+      "REQ_DIRECTION_SENDER\020\000\022\032\n\026REQ_DIRECTION_" +
+      "RECEIVER\020\001*N\n\023FriendAddStatusType\022\023\n\017REQ" +
+      "_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020\n\014REQ_" +
+      "REJECTED\020\002*r\n\013PBLoginType\022\020\n\014LOGIN_XIAOJ" +
+      "I\020d\022\017\n\013LOGIN_EMAIL\020e\022\020\n\014LOGIN_MOBILE\020f\022\014",
+      "\n\010LOGIN_QQ\020\006\022\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN_WE" +
+      "IXIN\020\027*i\n\016PBRegisterType\022\016\n\nREG_XIAOJI\020d" +
+      "\022\r\n\tREG_EMAIL\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006REG_Q" +
+      "Q\020\006\022\014\n\010REG_SINA\020\001\022\016\n\nREG_WEIXIN\020\027*v\n\016PBB" +
+      "arrageStyle\022\r\n\tPOP_DECAY\020\000\022\016\n\nPOP_SPRING" +
+      "\020\001\022\016\n\nPOP_LINEAR\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014P" +
+      "OP_EASE_OUT\020\004\022\022\n\016POP_EASE_INOUT\020\005*M\n\016PBB" +
+      "arrageSpeed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022" +
+      "\010\n\004HIGH\020\002\022\007\n\003LOW\020\004\022\014\n\010VERY_LOW\020\005B)\n\033com." +
+      "orange.protocol.messageB\nUserProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12217,7 +12737,7 @@ public final class UserProtos {
     internal_static_barrage_PBUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBUser_descriptor,
-        new java.lang.String[] { "UserId", "Nick", "Avatar", "Gender", "SnsUsers", "XiaojiNumber", "Email", "Password", "Mobile", "QqOpenId", "SinaId", "WeixinId", "Birthday", "Zodiac", "BloodGroup", "RegDate", "RegFrom", "VisitDate", "AvatarBg", "Signature", "Location", "CountryCode", "Language", "Longitude", "Latitude", "Level", "Experience", "CurrentDevice", "Devices", "EmailVerifyStatus", "EmailVerifyCode", "MobileVerifyStatus", "AddConfig", "Tags", "Memo", "AddSource", "AddDate", "AddDir", "ReplyMemo", "AddStatus", });
+        new java.lang.String[] { "UserId", "Nick", "Avatar", "Gender", "SnsUsers", "XiaojiNumber", "Email", "Password", "Mobile", "QqOpenId", "SinaId", "WeixinId", "Birthday", "Zodiac", "BloodGroup", "RegDate", "RegFrom", "VisitDate", "AvatarBg", "Signature", "Location", "CountryCode", "Language", "Longitude", "Latitude", "Level", "Experience", "CurrentDevice", "Devices", "EmailVerifyStatus", "EmailVerifyCode", "MobileVerifyStatus", "AddConfig", "Tags", "Memo", "AddSource", "AddDate", "AddDir", "ReplyMemo", "AddStatus", "BStyle", "BSpeed", });
     internal_static_barrage_PBUserTag_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_barrage_PBUserTag_fieldAccessorTable = new

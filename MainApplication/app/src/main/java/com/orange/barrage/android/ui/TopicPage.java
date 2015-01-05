@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.orange.barrage.android.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.ui.component.PullDownView;
+import com.orange.barrage.android.util.network.BarrageNetworkClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,6 +128,8 @@ public class TopicPage extends LinearLayout {
                         Message msg = mUIHandler.obtainMessage(WHAT_DID_REFRESH);
                         msg.obj = "After refresh " + System.currentTimeMillis();
                         msg.sendToTarget();
+
+                        BarrageNetworkClient.test();
                     }
                 }).start();
             }
@@ -149,5 +152,7 @@ public class TopicPage extends LinearLayout {
                 }).start();
             }
         });
+
+        BarrageNetworkClient.test();
     }
 }
