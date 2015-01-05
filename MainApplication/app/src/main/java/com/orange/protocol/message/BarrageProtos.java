@@ -8,6 +8,379 @@ public final class BarrageProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code barrage.PBBarrageStyle}
+   */
+  public enum PBBarrageStyle
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>POP_DECAY = 0;</code>
+     *
+     * <pre>
+     * 摩擦
+     * </pre>
+     */
+    POP_DECAY(0, 0),
+    /**
+     * <code>POP_SPRING = 1;</code>
+     *
+     * <pre>
+     * 弹簧
+     * </pre>
+     */
+    POP_SPRING(1, 1),
+    /**
+     * <code>POP_LINEAR = 2;</code>
+     *
+     * <pre>
+     * 匀速
+     * </pre>
+     */
+    POP_LINEAR(2, 2),
+    /**
+     * <code>POP_EASE_IN = 3;</code>
+     *
+     * <pre>
+     * 加速
+     * </pre>
+     */
+    POP_EASE_IN(3, 3),
+    /**
+     * <code>POP_EASE_OUT = 4;</code>
+     *
+     * <pre>
+     * 减速
+     * </pre>
+     */
+    POP_EASE_OUT(4, 4),
+    /**
+     * <code>POP_EASE_INOUT = 5;</code>
+     *
+     * <pre>
+     * 先加速再减速
+     * </pre>
+     */
+    POP_EASE_INOUT(5, 5),
+    ;
+
+    /**
+     * <code>POP_DECAY = 0;</code>
+     *
+     * <pre>
+     * 摩擦
+     * </pre>
+     */
+    public static final int POP_DECAY_VALUE = 0;
+    /**
+     * <code>POP_SPRING = 1;</code>
+     *
+     * <pre>
+     * 弹簧
+     * </pre>
+     */
+    public static final int POP_SPRING_VALUE = 1;
+    /**
+     * <code>POP_LINEAR = 2;</code>
+     *
+     * <pre>
+     * 匀速
+     * </pre>
+     */
+    public static final int POP_LINEAR_VALUE = 2;
+    /**
+     * <code>POP_EASE_IN = 3;</code>
+     *
+     * <pre>
+     * 加速
+     * </pre>
+     */
+    public static final int POP_EASE_IN_VALUE = 3;
+    /**
+     * <code>POP_EASE_OUT = 4;</code>
+     *
+     * <pre>
+     * 减速
+     * </pre>
+     */
+    public static final int POP_EASE_OUT_VALUE = 4;
+    /**
+     * <code>POP_EASE_INOUT = 5;</code>
+     *
+     * <pre>
+     * 先加速再减速
+     * </pre>
+     */
+    public static final int POP_EASE_INOUT_VALUE = 5;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBBarrageStyle valueOf(int value) {
+      switch (value) {
+        case 0: return POP_DECAY;
+        case 1: return POP_SPRING;
+        case 2: return POP_LINEAR;
+        case 3: return POP_EASE_IN;
+        case 4: return POP_EASE_OUT;
+        case 5: return POP_EASE_INOUT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBBarrageStyle>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBBarrageStyle>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBBarrageStyle>() {
+            public PBBarrageStyle findValueByNumber(int number) {
+              return PBBarrageStyle.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.BarrageProtos.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final PBBarrageStyle[] VALUES = values();
+
+    public static PBBarrageStyle valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBBarrageStyle(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBBarrageStyle)
+  }
+
+  /**
+   * Protobuf enum {@code barrage.PBBarrageMode}
+   */
+  public enum PBBarrageMode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>FOR_COMMENT = 0;</code>
+     *
+     * <pre>
+     * 用于评论
+     * </pre>
+     */
+    FOR_COMMENT(0, 0),
+    /**
+     * <code>FOR_CHAT = 1;</code>
+     *
+     * <pre>
+     * 用于聊天
+     * </pre>
+     */
+    FOR_CHAT(1, 1),
+    ;
+
+    /**
+     * <code>FOR_COMMENT = 0;</code>
+     *
+     * <pre>
+     * 用于评论
+     * </pre>
+     */
+    public static final int FOR_COMMENT_VALUE = 0;
+    /**
+     * <code>FOR_CHAT = 1;</code>
+     *
+     * <pre>
+     * 用于聊天
+     * </pre>
+     */
+    public static final int FOR_CHAT_VALUE = 1;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBBarrageMode valueOf(int value) {
+      switch (value) {
+        case 0: return FOR_COMMENT;
+        case 1: return FOR_CHAT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBBarrageMode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBBarrageMode>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBBarrageMode>() {
+            public PBBarrageMode findValueByNumber(int number) {
+              return PBBarrageMode.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.BarrageProtos.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final PBBarrageMode[] VALUES = values();
+
+    public static PBBarrageMode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBBarrageMode(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBBarrageMode)
+  }
+
+  /**
+   * Protobuf enum {@code barrage.PBBarrageSpeed}
+   */
+  public enum PBBarrageSpeed
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NORMAL = 0;</code>
+     */
+    NORMAL(0, 0),
+    /**
+     * <code>SUPER_HIGH = 1;</code>
+     */
+    SUPER_HIGH(1, 1),
+    /**
+     * <code>HIGH = 2;</code>
+     */
+    HIGH(2, 2),
+    /**
+     * <code>LOW = 4;</code>
+     */
+    LOW(3, 4),
+    /**
+     * <code>VERY_LOW = 5;</code>
+     */
+    VERY_LOW(4, 5),
+    ;
+
+    /**
+     * <code>NORMAL = 0;</code>
+     */
+    public static final int NORMAL_VALUE = 0;
+    /**
+     * <code>SUPER_HIGH = 1;</code>
+     */
+    public static final int SUPER_HIGH_VALUE = 1;
+    /**
+     * <code>HIGH = 2;</code>
+     */
+    public static final int HIGH_VALUE = 2;
+    /**
+     * <code>LOW = 4;</code>
+     */
+    public static final int LOW_VALUE = 4;
+    /**
+     * <code>VERY_LOW = 5;</code>
+     */
+    public static final int VERY_LOW_VALUE = 5;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBBarrageSpeed valueOf(int value) {
+      switch (value) {
+        case 0: return NORMAL;
+        case 1: return SUPER_HIGH;
+        case 2: return HIGH;
+        case 4: return LOW;
+        case 5: return VERY_LOW;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBBarrageSpeed>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBBarrageSpeed>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBBarrageSpeed>() {
+            public PBBarrageSpeed findValueByNumber(int number) {
+              return PBBarrageSpeed.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.BarrageProtos.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final PBBarrageSpeed[] VALUES = values();
+
+    public static PBBarrageSpeed valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBBarrageSpeed(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBBarrageSpeed)
+  }
+
   public interface PBFeedOrBuilder extends
       // @@protoc_insertion_point(interface_extends:barrage.PBFeed)
       com.google.protobuf.MessageOrBuilder {
@@ -286,6 +659,23 @@ public final class BarrageProtos {
     int getDate();
 
     /**
+     * <code>optional int32 bMode = 50;</code>
+     *
+     * <pre>
+     * 弹幕风格，参考 PBBarrageMode
+     * </pre>
+     */
+    boolean hasBMode();
+    /**
+     * <code>optional int32 bMode = 50;</code>
+     *
+     * <pre>
+     * 弹幕风格，参考 PBBarrageMode
+     * </pre>
+     */
+    int getBMode();
+
+    /**
      * <code>repeated .barrage.PBFeedAction actions = 100;</code>
      *
      * <pre>
@@ -504,21 +894,26 @@ public final class BarrageProtos {
               date_ = input.readInt32();
               break;
             }
+            case 400: {
+              bitField0_ |= 0x00001000;
+              bMode_ = input.readInt32();
+              break;
+            }
             case 802: {
-              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
                 actions_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBFeedAction>();
-                mutable_bitField0_ |= 0x00002000;
+                mutable_bitField0_ |= 0x00004000;
               }
               actions_.add(input.readMessage(com.orange.protocol.message.BarrageProtos.PBFeedAction.PARSER, extensionRegistry));
               break;
             }
             case 808: {
-              bitField0_ |= 0x00001000;
+              bitField0_ |= 0x00002000;
               lastIndex_ = input.readInt32();
               break;
             }
             case 816: {
-              bitField0_ |= 0x00002000;
+              bitField0_ |= 0x00004000;
               newCount_ = input.readInt32();
               break;
             }
@@ -533,7 +928,7 @@ public final class BarrageProtos {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           toUsers_ = java.util.Collections.unmodifiableList(toUsers_);
         }
-        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
           actions_ = java.util.Collections.unmodifiableList(actions_);
         }
         this.unknownFields = unknownFields.build();
@@ -1038,6 +1433,29 @@ public final class BarrageProtos {
       return date_;
     }
 
+    public static final int BMODE_FIELD_NUMBER = 50;
+    private int bMode_;
+    /**
+     * <code>optional int32 bMode = 50;</code>
+     *
+     * <pre>
+     * 弹幕风格，参考 PBBarrageMode
+     * </pre>
+     */
+    public boolean hasBMode() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional int32 bMode = 50;</code>
+     *
+     * <pre>
+     * 弹幕风格，参考 PBBarrageMode
+     * </pre>
+     */
+    public int getBMode() {
+      return bMode_;
+    }
+
     public static final int ACTIONS_FIELD_NUMBER = 100;
     private java.util.List<com.orange.protocol.message.BarrageProtos.PBFeedAction> actions_;
     /**
@@ -1103,7 +1521,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasLastIndex() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional int32 lastIndex = 101;</code>
@@ -1126,7 +1544,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasNewCount() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional int32 newCount = 102;</code>
@@ -1153,6 +1571,7 @@ public final class BarrageProtos {
       image_ = "";
       text_ = "";
       date_ = 0;
+      bMode_ = 0;
       actions_ = java.util.Collections.emptyList();
       lastIndex_ = 0;
       newCount_ = 0;
@@ -1233,13 +1652,16 @@ public final class BarrageProtos {
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeInt32(43, date_);
       }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeInt32(50, bMode_);
+      }
       for (int i = 0; i < actions_.size(); i++) {
         output.writeMessage(100, actions_.get(i));
       }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeInt32(101, lastIndex_);
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         output.writeInt32(102, newCount_);
       }
       getUnknownFields().writeTo(output);
@@ -1303,15 +1725,19 @@ public final class BarrageProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(43, date_);
       }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(50, bMode_);
+      }
       for (int i = 0; i < actions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(100, actions_.get(i));
       }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(101, lastIndex_);
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(102, newCount_);
       }
@@ -1474,16 +1900,18 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000800);
         date_ = 0;
         bitField0_ = (bitField0_ & ~0x00001000);
+        bMode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00004000);
         } else {
           actionsBuilder_.clear();
         }
         lastIndex_ = 0;
-        bitField0_ = (bitField0_ & ~0x00004000);
-        newCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00008000);
+        newCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
 
@@ -1577,21 +2005,25 @@ public final class BarrageProtos {
           to_bitField0_ |= 0x00000800;
         }
         result.date_ = date_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.bMode_ = bMode_;
         if (actionsBuilder_ == null) {
-          if (((bitField0_ & 0x00002000) == 0x00002000)) {
+          if (((bitField0_ & 0x00004000) == 0x00004000)) {
             actions_ = java.util.Collections.unmodifiableList(actions_);
-            bitField0_ = (bitField0_ & ~0x00002000);
+            bitField0_ = (bitField0_ & ~0x00004000);
           }
           result.actions_ = actions_;
         } else {
           result.actions_ = actionsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
-          to_bitField0_ |= 0x00001000;
-        }
-        result.lastIndex_ = lastIndex_;
         if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
           to_bitField0_ |= 0x00002000;
+        }
+        result.lastIndex_ = lastIndex_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00004000;
         }
         result.newCount_ = newCount_;
         result.bitField0_ = to_bitField0_;
@@ -1682,11 +2114,14 @@ public final class BarrageProtos {
         if (other.hasDate()) {
           setDate(other.getDate());
         }
+        if (other.hasBMode()) {
+          setBMode(other.getBMode());
+        }
         if (actionsBuilder_ == null) {
           if (!other.actions_.isEmpty()) {
             if (actions_.isEmpty()) {
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00004000);
             } else {
               ensureActionsIsMutable();
               actions_.addAll(other.actions_);
@@ -1699,7 +2134,7 @@ public final class BarrageProtos {
               actionsBuilder_.dispose();
               actionsBuilder_ = null;
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00004000);
               actionsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getActionsFieldBuilder() : null;
@@ -3037,12 +3472,60 @@ public final class BarrageProtos {
         return this;
       }
 
+      private int bMode_ ;
+      /**
+       * <code>optional int32 bMode = 50;</code>
+       *
+       * <pre>
+       * 弹幕风格，参考 PBBarrageMode
+       * </pre>
+       */
+      public boolean hasBMode() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional int32 bMode = 50;</code>
+       *
+       * <pre>
+       * 弹幕风格，参考 PBBarrageMode
+       * </pre>
+       */
+      public int getBMode() {
+        return bMode_;
+      }
+      /**
+       * <code>optional int32 bMode = 50;</code>
+       *
+       * <pre>
+       * 弹幕风格，参考 PBBarrageMode
+       * </pre>
+       */
+      public Builder setBMode(int value) {
+        bitField0_ |= 0x00002000;
+        bMode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bMode = 50;</code>
+       *
+       * <pre>
+       * 弹幕风格，参考 PBBarrageMode
+       * </pre>
+       */
+      public Builder clearBMode() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        bMode_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.util.List<com.orange.protocol.message.BarrageProtos.PBFeedAction> actions_ =
         java.util.Collections.emptyList();
       private void ensureActionsIsMutable() {
-        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
+        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
           actions_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBFeedAction>(actions_);
-          bitField0_ |= 0x00002000;
+          bitField0_ |= 0x00004000;
          }
       }
 
@@ -3236,7 +3719,7 @@ public final class BarrageProtos {
       public Builder clearActions() {
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00004000);
           onChanged();
         } else {
           actionsBuilder_.clear();
@@ -3341,7 +3824,7 @@ public final class BarrageProtos {
           actionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.orange.protocol.message.BarrageProtos.PBFeedAction, com.orange.protocol.message.BarrageProtos.PBFeedAction.Builder, com.orange.protocol.message.BarrageProtos.PBFeedActionOrBuilder>(
                   actions_,
-                  ((bitField0_ & 0x00002000) == 0x00002000),
+                  ((bitField0_ & 0x00004000) == 0x00004000),
                   getParentForChildren(),
                   isClean());
           actions_ = null;
@@ -3358,7 +3841,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasLastIndex() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional int32 lastIndex = 101;</code>
@@ -3378,7 +3861,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setLastIndex(int value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00008000;
         lastIndex_ = value;
         onChanged();
         return this;
@@ -3391,7 +3874,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearLastIndex() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         lastIndex_ = 0;
         onChanged();
         return this;
@@ -3406,7 +3889,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasNewCount() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
+        return ((bitField0_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional int32 newCount = 102;</code>
@@ -3426,7 +3909,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setNewCount(int value) {
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00010000;
         newCount_ = value;
         onChanged();
         return this;
@@ -3439,7 +3922,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearNewCount() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         newCount_ = 0;
         onChanged();
         return this;
@@ -3690,6 +4173,23 @@ public final class BarrageProtos {
      * </pre>
      */
     int getDate();
+
+    /**
+     * <code>optional int32 bStyle = 30;</code>
+     *
+     * <pre>
+     * 弹幕出现形式，参考PBBarrageStyle
+     * </pre>
+     */
+    boolean hasBStyle();
+    /**
+     * <code>optional int32 bStyle = 30;</code>
+     *
+     * <pre>
+     * 弹幕出现形式，参考PBBarrageStyle
+     * </pre>
+     */
+    int getBStyle();
   }
   /**
    * Protobuf type {@code barrage.PBFeedAction}
@@ -3808,6 +4308,11 @@ public final class BarrageProtos {
             case 160: {
               bitField0_ |= 0x00000400;
               date_ = input.readInt32();
+              break;
+            }
+            case 240: {
+              bitField0_ |= 0x00000800;
+              bStyle_ = input.readInt32();
               break;
             }
           }
@@ -4237,6 +4742,29 @@ public final class BarrageProtos {
       return date_;
     }
 
+    public static final int BSTYLE_FIELD_NUMBER = 30;
+    private int bStyle_;
+    /**
+     * <code>optional int32 bStyle = 30;</code>
+     *
+     * <pre>
+     * 弹幕出现形式，参考PBBarrageStyle
+     * </pre>
+     */
+    public boolean hasBStyle() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional int32 bStyle = 30;</code>
+     *
+     * <pre>
+     * 弹幕出现形式，参考PBBarrageStyle
+     * </pre>
+     */
+    public int getBStyle() {
+      return bStyle_;
+    }
+
     private void initFields() {
       actionId_ = "";
       type_ = 0;
@@ -4249,6 +4777,7 @@ public final class BarrageProtos {
       posY_ = 0F;
       colorMode_ = 0;
       date_ = 0;
+      bStyle_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4302,6 +4831,9 @@ public final class BarrageProtos {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(20, date_);
       }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeInt32(30, bStyle_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -4354,6 +4886,10 @@ public final class BarrageProtos {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(20, date_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(30, bStyle_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4499,6 +5035,8 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000200);
         date_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        bStyle_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -4575,6 +5113,10 @@ public final class BarrageProtos {
           to_bitField0_ |= 0x00000400;
         }
         result.date_ = date_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.bStyle_ = bStyle_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4631,6 +5173,9 @@ public final class BarrageProtos {
         }
         if (other.hasDate()) {
           setDate(other.getDate());
+        }
+        if (other.hasBStyle()) {
+          setBStyle(other.getBStyle());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5505,6 +6050,54 @@ public final class BarrageProtos {
         return this;
       }
 
+      private int bStyle_ ;
+      /**
+       * <code>optional int32 bStyle = 30;</code>
+       *
+       * <pre>
+       * 弹幕出现形式，参考PBBarrageStyle
+       * </pre>
+       */
+      public boolean hasBStyle() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional int32 bStyle = 30;</code>
+       *
+       * <pre>
+       * 弹幕出现形式，参考PBBarrageStyle
+       * </pre>
+       */
+      public int getBStyle() {
+        return bStyle_;
+      }
+      /**
+       * <code>optional int32 bStyle = 30;</code>
+       *
+       * <pre>
+       * 弹幕出现形式，参考PBBarrageStyle
+       * </pre>
+       */
+      public Builder setBStyle(int value) {
+        bitField0_ |= 0x00000800;
+        bStyle_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bStyle = 30;</code>
+       *
+       * <pre>
+       * 弹幕出现形式，参考PBBarrageStyle
+       * </pre>
+       */
+      public Builder clearBStyle() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        bStyle_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:barrage.PBFeedAction)
     }
 
@@ -5536,22 +6129,29 @@ public final class BarrageProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\rBarrage.proto\022\007barrage\032\014Common.proto\032\n" +
-      "User.proto\"\354\002\n\006PBFeed\022\017\n\004type\030\001 \001(\005:\0010\022\016" +
+      "User.proto\"\373\002\n\006PBFeed\022\017\n\004type\030\001 \001(\005:\0010\022\016" +
       "\n\006feedId\030\002 \001(\t\022#\n\ncreateUser\030\003 \001(\0132\017.bar" +
       "rage.PBUser\022 \n\007toUsers\030\004 \003(\0132\017.barrage.P" +
       "BUser\022\030\n\topenToAll\030\005 \001(\010:\005false\022!\n\006devic" +
       "e\030\036 \001(\0132\021.barrage.PBDevice\022\020\n\010location\030\"" +
       " \001(\t\022\021\n\tlongitude\030# \001(\002\022\020\n\010latitude\030$ \001(" +
       "\002\022\016\n\006cdnKey\030( \001(\t\022\r\n\005image\030) \001(\t\022\014\n\004text" +
-      "\030* \001(\t\022\014\n\004date\030+ \001(\005\022&\n\007actions\030d \003(\0132\025." +
-      "barrage.PBFeedAction\022\021\n\tlastIndex\030e \001(\005\022",
-      "\020\n\010newCount\030f \001(\005\"\322\001\n\014PBFeedAction\022\020\n\010ac" +
-      "tionId\030\001 \001(\t\022\014\n\004type\030\002 \001(\005\022\016\n\006feedId\030\003 \001" +
-      "(\t\022\035\n\004user\030\004 \001(\0132\017.barrage.PBUser\022\014\n\004tex" +
-      "t\030\005 \001(\t\022\016\n\006avatar\030\006 \001(\t\022\030\n\nshowAvatar\030\007 " +
-      "\001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 \001(\002\022\021\n" +
-      "\tcolorMode\030\014 \001(\005\022\014\n\004date\030\024 \001(\005B,\n\033com.or" +
-      "ange.protocol.messageB\rBarrageProtos"
+      "\030* \001(\t\022\014\n\004date\030+ \001(\005\022\r\n\005bMode\0302 \001(\005\022&\n\007a" +
+      "ctions\030d \003(\0132\025.barrage.PBFeedAction\022\021\n\tl",
+      "astIndex\030e \001(\005\022\020\n\010newCount\030f \001(\005\"\342\001\n\014PBF" +
+      "eedAction\022\020\n\010actionId\030\001 \001(\t\022\014\n\004type\030\002 \001(" +
+      "\005\022\016\n\006feedId\030\003 \001(\t\022\035\n\004user\030\004 \001(\0132\017.barrag" +
+      "e.PBUser\022\014\n\004text\030\005 \001(\t\022\016\n\006avatar\030\006 \001(\t\022\030" +
+      "\n\nshowAvatar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014" +
+      "\n\004posY\030\013 \001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\014\n\004date\030" +
+      "\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005*v\n\016PBBarrageStyle\022" +
+      "\r\n\tPOP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_LI" +
+      "NEAR\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OUT\020" +
+      "\004\022\022\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017",
+      "\n\013FOR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarra" +
+      "geSpeed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004H" +
+      "IGH\020\002\022\007\n\003LOW\020\004\022\014\n\010VERY_LOW\020\005B,\n\033com.oran" +
+      "ge.protocol.messageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5572,13 +6172,13 @@ public final class BarrageProtos {
     internal_static_barrage_PBFeed_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBFeed_descriptor,
-        new java.lang.String[] { "Type", "FeedId", "CreateUser", "ToUsers", "OpenToAll", "Device", "Location", "Longitude", "Latitude", "CdnKey", "Image", "Text", "Date", "Actions", "LastIndex", "NewCount", });
+        new java.lang.String[] { "Type", "FeedId", "CreateUser", "ToUsers", "OpenToAll", "Device", "Location", "Longitude", "Latitude", "CdnKey", "Image", "Text", "Date", "BMode", "Actions", "LastIndex", "NewCount", });
     internal_static_barrage_PBFeedAction_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_barrage_PBFeedAction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBFeedAction_descriptor,
-        new java.lang.String[] { "ActionId", "Type", "FeedId", "User", "Text", "Avatar", "ShowAvatar", "PosX", "PosY", "ColorMode", "Date", });
+        new java.lang.String[] { "ActionId", "Type", "FeedId", "User", "Text", "Avatar", "ShowAvatar", "PosX", "PosY", "ColorMode", "Date", "BStyle", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
     com.orange.protocol.message.UserProtos.getDescriptor();
   }

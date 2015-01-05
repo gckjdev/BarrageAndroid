@@ -3,6 +3,7 @@ package com.orange.barrage.android.ui;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -10,7 +11,10 @@ import android.widget.ListView;
 
 import com.orange.barrage.android.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.ui.component.PullDownView;
+import com.orange.barrage.android.user.mission.UserMission;
+import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.util.network.BarrageNetworkClient;
+import com.orange.protocol.message.UserProtos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +133,15 @@ public class TopicPage extends LinearLayout {
                         msg.obj = "After refresh " + System.currentTimeMillis();
                         msg.sendToTarget();
 
-                        BarrageNetworkClient.test();
+//                        BarrageNetworkClient.test();
+
+                        UserMission.getInstance().regiseterUserByEmail("test@163.com", "password", "invite_code", new UserMissionCallback() {
+
+                            @Override
+                            public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+                                Log.d("test", "regiseterUserByEmail callback invoke test");
+                            }
+                        });
                     }
                 }).start();
             }
@@ -153,6 +165,6 @@ public class TopicPage extends LinearLayout {
             }
         });
 
-        BarrageNetworkClient.test();
+//        BarrageNetworkClient.test();
     }
 }

@@ -21,7 +21,7 @@ public class UserMission {
     private UserMission() {
     }
 
-    public void regiseterUser(int type,
+    private void regiseterUser(int type,
                               UserProtos.PBUser.Builder userBuilder,
                               String inviteCode,
                               UserMissionCallback callback) {
