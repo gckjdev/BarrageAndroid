@@ -659,6 +659,40 @@ public final class BarrageProtos {
     int getDate();
 
     /**
+     * <code>optional float width = 44;</code>
+     *
+     * <pre>
+     * 图片宽度
+     * </pre>
+     */
+    boolean hasWidth();
+    /**
+     * <code>optional float width = 44;</code>
+     *
+     * <pre>
+     * 图片宽度
+     * </pre>
+     */
+    float getWidth();
+
+    /**
+     * <code>optional float height = 45;</code>
+     *
+     * <pre>
+     * 图片高度
+     * </pre>
+     */
+    boolean hasHeight();
+    /**
+     * <code>optional float height = 45;</code>
+     *
+     * <pre>
+     * 图片高度
+     * </pre>
+     */
+    float getHeight();
+
+    /**
      * <code>optional int32 bMode = 50;</code>
      *
      * <pre>
@@ -894,26 +928,36 @@ public final class BarrageProtos {
               date_ = input.readInt32();
               break;
             }
-            case 400: {
+            case 357: {
               bitField0_ |= 0x00001000;
+              width_ = input.readFloat();
+              break;
+            }
+            case 365: {
+              bitField0_ |= 0x00002000;
+              height_ = input.readFloat();
+              break;
+            }
+            case 400: {
+              bitField0_ |= 0x00004000;
               bMode_ = input.readInt32();
               break;
             }
             case 802: {
-              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
                 actions_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBFeedAction>();
-                mutable_bitField0_ |= 0x00004000;
+                mutable_bitField0_ |= 0x00010000;
               }
               actions_.add(input.readMessage(com.orange.protocol.message.BarrageProtos.PBFeedAction.PARSER, extensionRegistry));
               break;
             }
             case 808: {
-              bitField0_ |= 0x00002000;
+              bitField0_ |= 0x00008000;
               lastIndex_ = input.readInt32();
               break;
             }
             case 816: {
-              bitField0_ |= 0x00004000;
+              bitField0_ |= 0x00010000;
               newCount_ = input.readInt32();
               break;
             }
@@ -928,7 +972,7 @@ public final class BarrageProtos {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           toUsers_ = java.util.Collections.unmodifiableList(toUsers_);
         }
-        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+        if (((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
           actions_ = java.util.Collections.unmodifiableList(actions_);
         }
         this.unknownFields = unknownFields.build();
@@ -1433,6 +1477,52 @@ public final class BarrageProtos {
       return date_;
     }
 
+    public static final int WIDTH_FIELD_NUMBER = 44;
+    private float width_;
+    /**
+     * <code>optional float width = 44;</code>
+     *
+     * <pre>
+     * 图片宽度
+     * </pre>
+     */
+    public boolean hasWidth() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional float width = 44;</code>
+     *
+     * <pre>
+     * 图片宽度
+     * </pre>
+     */
+    public float getWidth() {
+      return width_;
+    }
+
+    public static final int HEIGHT_FIELD_NUMBER = 45;
+    private float height_;
+    /**
+     * <code>optional float height = 45;</code>
+     *
+     * <pre>
+     * 图片高度
+     * </pre>
+     */
+    public boolean hasHeight() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>optional float height = 45;</code>
+     *
+     * <pre>
+     * 图片高度
+     * </pre>
+     */
+    public float getHeight() {
+      return height_;
+    }
+
     public static final int BMODE_FIELD_NUMBER = 50;
     private int bMode_;
     /**
@@ -1443,7 +1533,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasBMode() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional int32 bMode = 50;</code>
@@ -1521,7 +1611,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasLastIndex() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional int32 lastIndex = 101;</code>
@@ -1544,7 +1634,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasNewCount() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
+      return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional int32 newCount = 102;</code>
@@ -1571,6 +1661,8 @@ public final class BarrageProtos {
       image_ = "";
       text_ = "";
       date_ = 0;
+      width_ = 0F;
+      height_ = 0F;
       bMode_ = 0;
       actions_ = java.util.Collections.emptyList();
       lastIndex_ = 0;
@@ -1653,15 +1745,21 @@ public final class BarrageProtos {
         output.writeInt32(43, date_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeFloat(44, width_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeFloat(45, height_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         output.writeInt32(50, bMode_);
       }
       for (int i = 0; i < actions_.size(); i++) {
         output.writeMessage(100, actions_.get(i));
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         output.writeInt32(101, lastIndex_);
       }
-      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         output.writeInt32(102, newCount_);
       }
       getUnknownFields().writeTo(output);
@@ -1727,17 +1825,25 @@ public final class BarrageProtos {
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(44, width_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(45, height_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(50, bMode_);
       }
       for (int i = 0; i < actions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(100, actions_.get(i));
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(101, lastIndex_);
       }
-      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(102, newCount_);
       }
@@ -1900,18 +2006,22 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000800);
         date_ = 0;
         bitField0_ = (bitField0_ & ~0x00001000);
-        bMode_ = 0;
+        width_ = 0F;
         bitField0_ = (bitField0_ & ~0x00002000);
+        height_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        bMode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00008000);
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00010000);
         } else {
           actionsBuilder_.clear();
         }
         lastIndex_ = 0;
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         newCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         return this;
       }
 
@@ -2008,22 +2118,30 @@ public final class BarrageProtos {
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00001000;
         }
+        result.width_ = width_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00002000;
+        }
+        result.height_ = height_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00004000;
+        }
         result.bMode_ = bMode_;
         if (actionsBuilder_ == null) {
-          if (((bitField0_ & 0x00004000) == 0x00004000)) {
+          if (((bitField0_ & 0x00010000) == 0x00010000)) {
             actions_ = java.util.Collections.unmodifiableList(actions_);
-            bitField0_ = (bitField0_ & ~0x00004000);
+            bitField0_ = (bitField0_ & ~0x00010000);
           }
           result.actions_ = actions_;
         } else {
           result.actions_ = actionsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
-          to_bitField0_ |= 0x00002000;
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00008000;
         }
         result.lastIndex_ = lastIndex_;
-        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
-          to_bitField0_ |= 0x00004000;
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00010000;
         }
         result.newCount_ = newCount_;
         result.bitField0_ = to_bitField0_;
@@ -2114,6 +2232,12 @@ public final class BarrageProtos {
         if (other.hasDate()) {
           setDate(other.getDate());
         }
+        if (other.hasWidth()) {
+          setWidth(other.getWidth());
+        }
+        if (other.hasHeight()) {
+          setHeight(other.getHeight());
+        }
         if (other.hasBMode()) {
           setBMode(other.getBMode());
         }
@@ -2121,7 +2245,7 @@ public final class BarrageProtos {
           if (!other.actions_.isEmpty()) {
             if (actions_.isEmpty()) {
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00004000);
+              bitField0_ = (bitField0_ & ~0x00010000);
             } else {
               ensureActionsIsMutable();
               actions_.addAll(other.actions_);
@@ -2134,7 +2258,7 @@ public final class BarrageProtos {
               actionsBuilder_.dispose();
               actionsBuilder_ = null;
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00004000);
+              bitField0_ = (bitField0_ & ~0x00010000);
               actionsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getActionsFieldBuilder() : null;
@@ -3472,6 +3596,102 @@ public final class BarrageProtos {
         return this;
       }
 
+      private float width_ ;
+      /**
+       * <code>optional float width = 44;</code>
+       *
+       * <pre>
+       * 图片宽度
+       * </pre>
+       */
+      public boolean hasWidth() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional float width = 44;</code>
+       *
+       * <pre>
+       * 图片宽度
+       * </pre>
+       */
+      public float getWidth() {
+        return width_;
+      }
+      /**
+       * <code>optional float width = 44;</code>
+       *
+       * <pre>
+       * 图片宽度
+       * </pre>
+       */
+      public Builder setWidth(float value) {
+        bitField0_ |= 0x00002000;
+        width_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float width = 44;</code>
+       *
+       * <pre>
+       * 图片宽度
+       * </pre>
+       */
+      public Builder clearWidth() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        width_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float height_ ;
+      /**
+       * <code>optional float height = 45;</code>
+       *
+       * <pre>
+       * 图片高度
+       * </pre>
+       */
+      public boolean hasHeight() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional float height = 45;</code>
+       *
+       * <pre>
+       * 图片高度
+       * </pre>
+       */
+      public float getHeight() {
+        return height_;
+      }
+      /**
+       * <code>optional float height = 45;</code>
+       *
+       * <pre>
+       * 图片高度
+       * </pre>
+       */
+      public Builder setHeight(float value) {
+        bitField0_ |= 0x00004000;
+        height_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float height = 45;</code>
+       *
+       * <pre>
+       * 图片高度
+       * </pre>
+       */
+      public Builder clearHeight() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        height_ = 0F;
+        onChanged();
+        return this;
+      }
+
       private int bMode_ ;
       /**
        * <code>optional int32 bMode = 50;</code>
@@ -3481,7 +3701,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasBMode() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional int32 bMode = 50;</code>
@@ -3501,7 +3721,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setBMode(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00008000;
         bMode_ = value;
         onChanged();
         return this;
@@ -3514,7 +3734,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearBMode() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         bMode_ = 0;
         onChanged();
         return this;
@@ -3523,9 +3743,9 @@ public final class BarrageProtos {
       private java.util.List<com.orange.protocol.message.BarrageProtos.PBFeedAction> actions_ =
         java.util.Collections.emptyList();
       private void ensureActionsIsMutable() {
-        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
+        if (!((bitField0_ & 0x00010000) == 0x00010000)) {
           actions_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBFeedAction>(actions_);
-          bitField0_ |= 0x00004000;
+          bitField0_ |= 0x00010000;
          }
       }
 
@@ -3719,7 +3939,7 @@ public final class BarrageProtos {
       public Builder clearActions() {
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00010000);
           onChanged();
         } else {
           actionsBuilder_.clear();
@@ -3824,7 +4044,7 @@ public final class BarrageProtos {
           actionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.orange.protocol.message.BarrageProtos.PBFeedAction, com.orange.protocol.message.BarrageProtos.PBFeedAction.Builder, com.orange.protocol.message.BarrageProtos.PBFeedActionOrBuilder>(
                   actions_,
-                  ((bitField0_ & 0x00004000) == 0x00004000),
+                  ((bitField0_ & 0x00010000) == 0x00010000),
                   getParentForChildren(),
                   isClean());
           actions_ = null;
@@ -3841,7 +4061,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasLastIndex() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
+        return ((bitField0_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional int32 lastIndex = 101;</code>
@@ -3861,7 +4081,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setLastIndex(int value) {
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00020000;
         lastIndex_ = value;
         onChanged();
         return this;
@@ -3874,7 +4094,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearLastIndex() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         lastIndex_ = 0;
         onChanged();
         return this;
@@ -3889,7 +4109,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasNewCount() {
-        return ((bitField0_ & 0x00010000) == 0x00010000);
+        return ((bitField0_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional int32 newCount = 102;</code>
@@ -3909,7 +4129,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setNewCount(int value) {
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00040000;
         newCount_ = value;
         onChanged();
         return this;
@@ -3922,7 +4142,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearNewCount() {
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         newCount_ = 0;
         onChanged();
         return this;
@@ -6129,29 +6349,30 @@ public final class BarrageProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\rBarrage.proto\022\007barrage\032\014Common.proto\032\n" +
-      "User.proto\"\373\002\n\006PBFeed\022\017\n\004type\030\001 \001(\005:\0010\022\016" +
+      "User.proto\"\232\003\n\006PBFeed\022\017\n\004type\030\001 \001(\005:\0010\022\016" +
       "\n\006feedId\030\002 \001(\t\022#\n\ncreateUser\030\003 \001(\0132\017.bar" +
       "rage.PBUser\022 \n\007toUsers\030\004 \003(\0132\017.barrage.P" +
       "BUser\022\030\n\topenToAll\030\005 \001(\010:\005false\022!\n\006devic" +
       "e\030\036 \001(\0132\021.barrage.PBDevice\022\020\n\010location\030\"" +
       " \001(\t\022\021\n\tlongitude\030# \001(\002\022\020\n\010latitude\030$ \001(" +
       "\002\022\016\n\006cdnKey\030( \001(\t\022\r\n\005image\030) \001(\t\022\014\n\004text" +
-      "\030* \001(\t\022\014\n\004date\030+ \001(\005\022\r\n\005bMode\0302 \001(\005\022&\n\007a" +
-      "ctions\030d \003(\0132\025.barrage.PBFeedAction\022\021\n\tl",
-      "astIndex\030e \001(\005\022\020\n\010newCount\030f \001(\005\"\342\001\n\014PBF" +
-      "eedAction\022\020\n\010actionId\030\001 \001(\t\022\014\n\004type\030\002 \001(" +
-      "\005\022\016\n\006feedId\030\003 \001(\t\022\035\n\004user\030\004 \001(\0132\017.barrag" +
-      "e.PBUser\022\014\n\004text\030\005 \001(\t\022\016\n\006avatar\030\006 \001(\t\022\030" +
-      "\n\nshowAvatar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014" +
-      "\n\004posY\030\013 \001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\014\n\004date\030" +
-      "\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005*v\n\016PBBarrageStyle\022" +
-      "\r\n\tPOP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_LI" +
-      "NEAR\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OUT\020" +
-      "\004\022\022\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017",
-      "\n\013FOR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarra" +
-      "geSpeed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004H" +
-      "IGH\020\002\022\007\n\003LOW\020\004\022\014\n\010VERY_LOW\020\005B,\n\033com.oran" +
-      "ge.protocol.messageB\rBarrageProtos"
+      "\030* \001(\t\022\014\n\004date\030+ \001(\005\022\r\n\005width\030, \001(\002\022\016\n\006h" +
+      "eight\030- \001(\002\022\r\n\005bMode\0302 \001(\005\022&\n\007actions\030d ",
+      "\003(\0132\025.barrage.PBFeedAction\022\021\n\tlastIndex\030" +
+      "e \001(\005\022\020\n\010newCount\030f \001(\005\"\342\001\n\014PBFeedAction" +
+      "\022\020\n\010actionId\030\001 \001(\t\022\014\n\004type\030\002 \001(\005\022\016\n\006feed" +
+      "Id\030\003 \001(\t\022\035\n\004user\030\004 \001(\0132\017.barrage.PBUser\022" +
+      "\014\n\004text\030\005 \001(\t\022\016\n\006avatar\030\006 \001(\t\022\030\n\nshowAva" +
+      "tar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 " +
+      "\001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\014\n\004date\030\024 \001(\005\022\016\n\006" +
+      "bStyle\030\036 \001(\005*v\n\016PBBarrageStyle\022\r\n\tPOP_DE" +
+      "CAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_LINEAR\020\002\022\017\n" +
+      "\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OUT\020\004\022\022\n\016POP_",
+      "EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017\n\013FOR_COM" +
+      "MENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarrageSpeed\022\n" +
+      "\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH\020\002\022\007\n\003" +
+      "LOW\020\004\022\014\n\010VERY_LOW\020\005B,\n\033com.orange.protoc" +
+      "ol.messageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6172,7 +6393,7 @@ public final class BarrageProtos {
     internal_static_barrage_PBFeed_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBFeed_descriptor,
-        new java.lang.String[] { "Type", "FeedId", "CreateUser", "ToUsers", "OpenToAll", "Device", "Location", "Longitude", "Latitude", "CdnKey", "Image", "Text", "Date", "BMode", "Actions", "LastIndex", "NewCount", });
+        new java.lang.String[] { "Type", "FeedId", "CreateUser", "ToUsers", "OpenToAll", "Device", "Location", "Longitude", "Latitude", "CdnKey", "Image", "Text", "Date", "Width", "Height", "BMode", "Actions", "LastIndex", "NewCount", });
     internal_static_barrage_PBFeedAction_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_barrage_PBFeedAction_fieldAccessorTable = new

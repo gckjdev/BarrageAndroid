@@ -2,6 +2,7 @@ package com.orange.barrage.android.util.network;
 
 import android.util.Log;
 
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
 
@@ -36,8 +37,8 @@ public class BarrageNetworkClient {
                 .build()
                 .create(BarrageNetworkInterface.class);
 
-        // TODO get and set userId in request builder
-        requestBuilder.setUserId("this is dummy UserID in data request. hahaha, you didn't change me YET");
+        String userId = UserManager.getInstance().getUserId();
+        requestBuilder.setUserId(userId);
 
         requestBuilder.setType(type);
         requestBuilder.setRequestId((int)(System.currentTimeMillis()/1000));
@@ -63,8 +64,13 @@ public class BarrageNetworkClient {
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                Log.d("[HTTP]", "failure "+retrofitError.toString());
-                callback.handleFailure(null, retrofitError.getResponse().getStatus());
+                Log.e("[HTTP]", "failure "+retrofitError.toString(), retrofitError);
+                int code = 0;
+                if (retrofitError.getResponse() != null){
+                    code = retrofitError.getResponse().getStatus();
+                }
+
+                callback.handleFailure(null, code);
             }
         });
 

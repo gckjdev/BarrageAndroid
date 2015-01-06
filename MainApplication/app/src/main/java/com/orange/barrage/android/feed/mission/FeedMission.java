@@ -3,6 +3,7 @@ package com.orange.barrage.android.feed.mission;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.imagecdn.CreateImageInfoInterface;
 import com.orange.barrage.android.util.imagecdn.JpegImageInfo;
 import com.orange.barrage.android.util.imagecdn.QiuCdnManager;
@@ -100,13 +101,11 @@ public class FeedMission {
 
     }
 
-    private void submitFeedToServer(String cdnKey, String text, List<UserProtos.PBUser> toUsers, FeedMissionCallbackInterface callback) {
+    private void submitFeedToServer(String cdnKey, String text, List<UserProtos.PBUser> toUsers, final FeedMissionCallbackInterface callback) {
 
 
-        // TODO build device
 
-        // TODO add create user info
-
+        UserProtos.PBUser user = UserManager.getInstance().getUser();
         String imageURL = QiuCdnManager.getInstance().getUrl(cdnKey);
 
         BarrageProtos.PBFeed.Builder feedBuilder = BarrageProtos.PBFeed.newBuilder();
@@ -117,6 +116,9 @@ public class FeedMission {
         feedBuilder.setCdnKey(cdnKey);
         feedBuilder.setImage(imageURL);
         feedBuilder.addAllToUsers(toUsers);
+        feedBuilder.setCreateUser(user);
+
+        // TODO add device info
 
         BarrageProtos.PBFeed feed = feedBuilder.build();
 
@@ -132,24 +134,78 @@ public class FeedMission {
                 new BarrageNetworkCallback() {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
-                        // TODO
+                        String feedId = response.getCreateFeedResponse().getFeedId();
+                        Log.d("FeedMission", "create feed successfully, feedId="+feedId);
+                        callback.handleSuccess(feedId, null);
                     }
 
                     @Override
                     public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
-                        // TODO
+                        Log.d("FeedMission", "create feed failure, errorCode="+errorCode);
+                        callback.handleFailure(errorCode);
                     }
                 });
 
     }
 
-    public void replyFeed(BarrageProtos.PBFeedAction feedAction,
-                          FeedMissionCallbackInterface callbackInterface){
+    public void replyFeed(final BarrageProtos.PBFeedAction feedAction,
+                          final FeedMissionCallbackInterface callback){
+
+        MessageProtos.PBReplyFeedRequest.Builder replyBuilder = MessageProtos.PBReplyFeedRequest.newBuilder();
+        replyBuilder.setAction(feedAction);
+
+        MessageProtos.PBDataRequest.Builder reqBuilder = MessageProtos.PBDataRequest.newBuilder();
+        reqBuilder.setReplyFeedRequest(replyBuilder.build());
+
+        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_REPLY_FEED_VALUE,
+                reqBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+                        String actionId = response.getReplyFeedResponse().getAction().getActionId();
+                        Log.d("FeedMission", "reply feed successfully, actionId ="+actionId);
+                        callback.handleSuccess(actionId, null);
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        Log.d("FeedMission", "reply feed failure, errorCode="+errorCode);
+                        callback.handleFailure(errorCode);
+                    }
+                });
 
     }
 
-    public void getTimelineFeed(FeedMissionCallbackInterface callbackInterface){
+    public void getTimelineFeed(final FeedMissionCallbackInterface callback){
 
+        String offsetFeedId = "";
+        int limit = 10;
+
+        MessageProtos.PBGetUserTimelineFeedRequest.Builder timelineBuilder = MessageProtos.PBGetUserTimelineFeedRequest.newBuilder();
+        timelineBuilder.setOffsetFeedId(offsetFeedId);
+        timelineBuilder.setLimit(limit);
+
+        MessageProtos.PBDataRequest.Builder reqBuilder = MessageProtos.PBDataRequest.newBuilder();
+        reqBuilder.setGetUserTimelineFeedRequest(timelineBuilder.build());
+
+        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_GET_USER_TIMELINE_FEED_VALUE,
+                reqBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+                        List<BarrageProtos.PBFeed> list = response.getGetUserTimelineFeedResponse().getFeedsList();
+                        Log.d("FeedMission", "get timeline feed successfully, count ="+list.size());
+                        callback.handleSuccess(null, list);
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        Log.d("FeedMission", "get feed timeline, errorCode="+errorCode);
+                        callback.handleFailure(errorCode);
+                    }
+                });
     }
 
 }

@@ -135,13 +135,15 @@ public class TopicPage extends LinearLayout {
 
 //                        BarrageNetworkClient.test();
 
-                        UserMission.getInstance().regiseterUserByEmail("test@163.com", "password", "invite_code", new UserMissionCallback() {
+                        /* user test
+                        UserMission.getInstance().regiseterUserByEmail("test@163.com", "password", null, new UserMissionCallback() {
 
                             @Override
                             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
                                 Log.d("test", "regiseterUserByEmail callback invoke test");
                             }
                         });
+                        */
                     }
                 }).start();
             }

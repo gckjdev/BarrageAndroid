@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface FeedMissionCallbackInterface {
 
-    public void FeedMissionCallback(String id, List<BarrageProtos.PBFeed> list, int errorCode);
+    public void handleSuccess(String id, List<BarrageProtos.PBFeed> list);
+    public void handleFailure(int errorCode);
 }
