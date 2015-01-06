@@ -6,7 +6,12 @@ import android.util.Log;
 import com.orange.barrage.android.util.imagecdn.CreateImageInfoInterface;
 import com.orange.barrage.android.util.imagecdn.JpegImageInfo;
 import com.orange.barrage.android.util.imagecdn.QiuCdnManager;
+import com.orange.barrage.android.util.misc.DateUtil;
+import com.orange.barrage.android.util.network.BarrageNetworkCallback;
+import com.orange.barrage.android.util.network.BarrageNetworkClient;
 import com.orange.protocol.message.BarrageProtos;
+import com.orange.protocol.message.ConstantsProtos;
+import com.orange.protocol.message.MessageProtos;
 import com.orange.protocol.message.UserProtos;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCancellationSignal;
@@ -96,6 +101,45 @@ public class FeedMission {
     }
 
     private void submitFeedToServer(String cdnKey, String text, List<UserProtos.PBUser> toUsers, FeedMissionCallbackInterface callback) {
+
+
+        // TODO build device
+
+        // TODO add create user info
+
+        String imageURL = QiuCdnManager.getInstance().getUrl(cdnKey);
+
+        BarrageProtos.PBFeed.Builder feedBuilder = BarrageProtos.PBFeed.newBuilder();
+        feedBuilder.setFeedId("");
+        feedBuilder.setType(ConstantsProtos.PBFeedType.FEED_IMAGE_TEXT_VALUE);
+        feedBuilder.setDate(DateUtil.getNowTime());
+        feedBuilder.setText(text);
+        feedBuilder.setCdnKey(cdnKey);
+        feedBuilder.setImage(imageURL);
+        feedBuilder.addAllToUsers(toUsers);
+
+        BarrageProtos.PBFeed feed = feedBuilder.build();
+
+        MessageProtos.PBCreateFeedRequest.Builder feedReqBuilder = MessageProtos.PBCreateFeedRequest.newBuilder();
+        feedReqBuilder.setFeed(feed);
+
+        MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
+        dataRequestBuilder.setCreateFeedRequest(feedReqBuilder.build());
+
+        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_CREATE_FEED_VALUE,
+                dataRequestBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+                        // TODO
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        // TODO
+                    }
+                });
 
     }
 

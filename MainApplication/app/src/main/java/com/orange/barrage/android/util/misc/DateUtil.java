@@ -71,5 +71,8 @@ public class DateUtil
         }
         return dateFormat.format(date);
     }
-	
+
+    public static int getNowTime() {
+        return (int)(System.currentTimeMillis()/1000);
+    }
 }
