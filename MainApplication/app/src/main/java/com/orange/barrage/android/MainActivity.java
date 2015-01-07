@@ -20,6 +20,7 @@ import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 
 import java.io.File;
 
+@Deprecated
 public class MainActivity extends ActionBarActivity {
 
     private String TAG = "MainActivity";

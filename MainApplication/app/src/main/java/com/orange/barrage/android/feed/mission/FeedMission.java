@@ -3,6 +3,7 @@ package com.orange.barrage.android.feed.mission;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.orange.barrage.android.feed.model.FeedManager;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.imagecdn.CreateImageInfoInterface;
 import com.orange.barrage.android.util.imagecdn.JpegImageInfo;
@@ -197,6 +198,7 @@ public class FeedMission {
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         List<BarrageProtos.PBFeed> list = response.getGetUserTimelineFeedResponse().getFeedsList();
                         Log.d("FeedMission", "get timeline feed successfully, count ="+list.size());
+                        FeedManager.getInstance().storeUserTimeline(list);
                         callback.handleSuccess(null, list);
                     }
 
