@@ -3,10 +3,11 @@ package com.orange.barrage.android.feed.mission;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.orange.barrage.android.feed.model.FeedManager;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.imagecdn.CreateImageInfoInterface;
 import com.orange.barrage.android.util.imagecdn.JpegImageInfo;
-import com.orange.barrage.android.util.imagecdn.QiuCdnManager;
+import com.orange.barrage.android.util.imagecdn.QiNiuCdnManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.network.BarrageNetworkCallback;
 import com.orange.barrage.android.util.network.BarrageNetworkClient;
@@ -15,7 +16,6 @@ import com.orange.protocol.message.ConstantsProtos;
 import com.orange.protocol.message.MessageProtos;
 import com.orange.protocol.message.UserProtos;
 import com.qiniu.android.http.ResponseInfo;
-import com.qiniu.android.storage.UpCancellationSignal;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UpProgressHandler;
 import com.qiniu.android.storage.UploadManager;
@@ -50,7 +50,7 @@ public class FeedMission {
 
         // refer to http://developer.qiniu.com/docs/v6/sdk/android-sdk.html
         // prepare data for upload
-        String token = QiuCdnManager.getInstance().getToken();
+        String token = QiNiuCdnManager.getInstance().getToken();
         String key = imageInfo.createKey();
         byte[] data = imageInfo.getImageBytes(image, UPLOAD_IMAGE_QUALITY);
         if (data == null || data.length == 0){
@@ -106,7 +106,7 @@ public class FeedMission {
 
 
         UserProtos.PBUser user = UserManager.getInstance().getUser();
-        String imageURL = QiuCdnManager.getInstance().getUrl(cdnKey);
+        String imageURL = QiNiuCdnManager.getInstance().getUrl(cdnKey);
 
         BarrageProtos.PBFeed.Builder feedBuilder = BarrageProtos.PBFeed.newBuilder();
         feedBuilder.setFeedId("");
@@ -197,6 +197,7 @@ public class FeedMission {
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         List<BarrageProtos.PBFeed> list = response.getGetUserTimelineFeedResponse().getFeedsList();
                         Log.d("FeedMission", "get timeline feed successfully, count ="+list.size());
+                        FeedManager.getInstance().storeUserTimeline(list);
                         callback.handleSuccess(null, list);
                     }
 

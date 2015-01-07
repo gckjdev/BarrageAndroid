@@ -34,5 +34,10 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.8.0'
     compile 'com.qiniu:qiniu-android-sdk:7.0.1'
     compile 'com.loopj.android:android-async-http:1.4.5'
+
+    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.navercorp.pulltorefresh:library:3.2.0@aar'
+
     //compile files('libs/android-leveldb-release.aar')
+    //compile files('libs/Shutterbug-1.0.0.jar')
 }

@@ -3,14 +3,14 @@ package com.orange.barrage.android.util.imagecdn;
 /**
  * Created by pipi on 15/1/6.
  */
-public class QiuCdnManager {
-    private static QiuCdnManager ourInstance = new QiuCdnManager();
+public class QiNiuCdnManager {
+    private static QiNiuCdnManager ourInstance = new QiNiuCdnManager();
 
-    public static QiuCdnManager getInstance() {
+    public static QiNiuCdnManager getInstance() {
         return ourInstance;
     }
 
-    private QiuCdnManager() {
+    private QiNiuCdnManager() {
     }
 
     public String getToken(){
