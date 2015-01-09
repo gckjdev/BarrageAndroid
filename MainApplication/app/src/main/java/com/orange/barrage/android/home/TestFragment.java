@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.util.persistent.TestLevelDB;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
@@ -36,6 +37,9 @@ public class TestFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 FeedMission.getInstance().getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
