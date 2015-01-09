@@ -1,27 +1,26 @@
 package com.orange.barrage.android.util.persistent;
 
+import com.litl.leveldb.DB;
+import com.litl.leveldb.Iterator;
 import com.orange.barrage.android.util.ContextManager;
 
-import im.amomo.leveldb.DBFactory;
-import im.amomo.leveldb.LevelDB;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Rollin on 2015/1/5.
  */
 public class LevelDBDAO {
 
-    private static final String DB_NAME = "barrage";
+    private static final String DB_NAME_PREFIX = "/leveldb/";
+    private String mDBName;
 
-    private static LevelDBDAO sInstance = new LevelDBDAO();
+    private DB mLevelDB;
 
-    private LevelDB mLevelDB;
-
-    public static LevelDBDAO getInstance(){
-        return sInstance;
-    }
-
-    public void init(){
-        mLevelDB = DBFactory.open(ContextManager.getContext(), DB_NAME);
+    public LevelDBDAO(String dbName){
+        File dbFile = new File(DB_NAME_PREFIX+mDBName);
+        mLevelDB = new DB(dbFile);
     }
 
     public void destroy(){
@@ -30,14 +29,27 @@ public class LevelDBDAO {
     }
 
     public byte[] get(String key){
-        return mLevelDB.get(key);
+        return mLevelDB.get(key.getBytes());
     }
 
     public void put(String key, byte[] value){
-        mLevelDB.put(key, value);
+        mLevelDB.put(key.getBytes(), value);
+    }
+
+    public void delete(String key){
+        mLevelDB.delete(key.getBytes());
     }
 
     public boolean exists(String key){
-        return mLevelDB.exists(key);
+        return get(key) != null;
+    }
+
+    public List<Byte[]> list(){
+        List list = new ArrayList();
+        Iterator iterator = mLevelDB.iterator();
+        for(iterator.seekToFirst();iterator.isValid();iterator.next()){
+            list.add(iterator.getValue());
+        }
+        return list;
     }
 }

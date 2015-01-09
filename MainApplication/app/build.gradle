@@ -28,8 +28,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.2'
-    compile 'im.amomo.leveldb:leveldb:1.0.+@aar'
-
     compile 'com.squareup.dagger:dagger:1.2.2'
     compile 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'com.google.protobuf:protobuf-java:2.6.0'
@@ -42,5 +40,6 @@ dependencies {
 
     compile 'de.greenrobot:eventbus:2.4.0'
 
+    //compile files('libs/android-leveldb-release.aar')
     //compile files('libs/Shutterbug-1.0.0.jar')
 }

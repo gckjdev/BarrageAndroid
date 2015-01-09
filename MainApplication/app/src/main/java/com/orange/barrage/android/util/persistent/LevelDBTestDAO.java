@@ -7,9 +7,6 @@ import android.util.Log;
 
 import com.orange.barrage.android.util.ContextManager;
 
-import im.amomo.leveldb.DBFactory;
-import im.amomo.leveldb.LevelDB;
-
 /**
  * Created by Rollin on 2015/1/5.
  */
@@ -37,7 +34,7 @@ public class LevelDBTestDAO {
         long t0 = System.currentTimeMillis();
 
         byte[] value = "abc".getBytes();
-        LevelDBDAO db = LevelDBDAO.getInstance();
+        LevelDBDAO db = new LevelDBDAO("test_level");
 
         for (int i = 0; i < n; i++) {
             if (db.exists("foo")) {
