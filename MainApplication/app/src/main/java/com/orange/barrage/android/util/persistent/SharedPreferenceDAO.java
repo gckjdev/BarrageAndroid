@@ -21,7 +21,7 @@ public class SharedPreferenceDAO {
 
     private LevelDBDAO mLevelDBDAO;
 
-    public SharedPreferenceDAO(){
+    private SharedPreferenceDAO(){
         mLevelDBDAO = new LevelDBDAO(DB_SHARED_PREFERENCE);
     }
 
@@ -35,5 +35,9 @@ public class SharedPreferenceDAO {
 
     public void delete(String key){
         mLevelDBDAO.delete(key);
+    }
+
+    public void destroy(){
+        mLevelDBDAO.destroy();
     }
 }

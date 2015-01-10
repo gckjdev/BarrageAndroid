@@ -23,6 +23,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']//src/main
+            jni.srcDirs = []
+        }
+    }
 }
 
 dependencies {
@@ -39,7 +46,4 @@ dependencies {
     compile 'com.navercorp.pulltorefresh:library:3.2.0@aar'
 
     compile 'de.greenrobot:eventbus:2.4.0'
-
-    //compile files('libs/android-leveldb-release.aar')
-    //compile files('libs/Shutterbug-1.0.0.jar')
 }

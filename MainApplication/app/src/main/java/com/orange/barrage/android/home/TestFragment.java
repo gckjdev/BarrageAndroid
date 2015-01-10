@@ -7,11 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
-import com.orange.barrage.android.util.persistent.TestLevelDB;
+import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.misc.ToastUtil;
+import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
@@ -55,6 +58,17 @@ public class TestFragment extends Fragment {
         });
 
         // YOU CAN ADD SOME TEST CODE HERE
+
+        Button dbButton = (Button)getActivity().findViewById(R.id.test_db_button);
+        dbButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LevelDBTestDAO dao =  LevelDBTestDAO.getInstance();
+                dao.saveText("id1", "value1");
+                String value = dao.getText("id1");
+                Toast.makeText(ContextManager.getContext(),value, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

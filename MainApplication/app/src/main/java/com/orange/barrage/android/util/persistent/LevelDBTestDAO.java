@@ -5,45 +5,52 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.litl.leveldb.DB;
 import com.orange.barrage.android.util.ContextManager;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Rollin on 2015/1/5.
  */
-//FIXME: remove later
 public class LevelDBTestDAO {
 
-    private static String TAG = "LevelDBTestDAO";
+    private String TABLE_NAME = "level_test";
 
-    public void performShaedPreferences(int n) {
-        long t0 = System.currentTimeMillis();
+    private static LevelDBTestDAO sInstance;
 
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(ContextManager.getContext());
-
-        for (int i = 0; i < n; i++) {
-            long value = sharedPrefs.getLong("foo", 0L);
-            SharedPreferences.Editor editor = sharedPrefs.edit();
-            editor.putLong("foo", value + 1L);
-            editor.commit();
+    public static LevelDBTestDAO getInstance(){
+        if(sInstance==null){
+            sInstance = new LevelDBTestDAO();
         }
+        return sInstance;
+     }
 
-        Log.d(TAG, "SharedPreferences open, (get, put)*" + n + ": " + (System.currentTimeMillis() - t0) + "ms\n");
+    private LevelDBDAO mLevelDBDAO;
+
+    private LevelDBTestDAO(){
+        //init dao
+        mLevelDBDAO = new LevelDBDAO(TABLE_NAME);
     }
 
-    public void performLevelDB(int n) {
-        long t0 = System.currentTimeMillis();
+    public void saveText(String id, String text){
+        mLevelDBDAO.put(id, text.getBytes());
+    }
 
-        byte[] value = "abc".getBytes();
-        LevelDBDAO db = new LevelDBDAO("test_level");
-
-        for (int i = 0; i < n; i++) {
-            if (db.exists("foo")) {
-                value = db.get("foo");
-            } else {
-                db.put("foo", value);
-            }
+    public String getText(String id){
+        byte[] bytes = mLevelDBDAO.get(id);
+        if(bytes==null){
+            return null;
         }
+        return new String(bytes);
+    }
 
-        Log.d(TAG,"(get, put)*" + n + ": " + (System.currentTimeMillis() - t0) + "ms\n");
+    public void deleteText(String id){
+        mLevelDBDAO.delete(id);
+    }
+
+    public void destroy(){
+        mLevelDBDAO.destroy();
     }
 }
