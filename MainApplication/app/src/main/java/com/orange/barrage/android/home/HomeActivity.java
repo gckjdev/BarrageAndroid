@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.ContextManager;
 
 public class HomeActivity extends FragmentActivity {
 
@@ -25,6 +27,14 @@ public class HomeActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ContextManager.init(this);
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread thread, Throwable ex) {
+                Log.e("TAG", "uncaught exception thrown", ex);
+            }
+        });
+
         setContentView(R.layout.activity_home);
         initView();
     }

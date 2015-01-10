@@ -5,6 +5,7 @@ import com.litl.leveldb.Iterator;
 import com.orange.barrage.android.util.ContextManager;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,31 +14,30 @@ import java.util.List;
  */
 public class LevelDBDAO {
 
-    private static final String DB_NAME_PREFIX = "/leveldb/";
     private String mDBName;
 
     private DB mLevelDB;
 
     public LevelDBDAO(String dbName){
-        File dbFile = new File(DB_NAME_PREFIX+mDBName);
+        File dbFile = new File(ContextManager.getContext().getCacheDir(), dbName);
         mLevelDB = new DB(dbFile);
+        mLevelDB.open();
     }
 
     public void destroy(){
         mLevelDB.close();
-        mLevelDB = null;
     }
 
     public byte[] get(String key){
-        return mLevelDB.get(key.getBytes());
+        return mLevelDB.get(bytes(key));
     }
 
     public void put(String key, byte[] value){
-        mLevelDB.put(key.getBytes(), value);
+        mLevelDB.put(bytes(key), value);
     }
 
     public void delete(String key){
-        mLevelDB.delete(key.getBytes());
+        mLevelDB.delete(bytes(key));
     }
 
     public boolean exists(String key){
@@ -51,5 +51,13 @@ public class LevelDBDAO {
             list.add(iterator.getValue());
         }
         return list;
+    }
+
+    private byte[] bytes(String str) {
+        try {
+            return str.getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
