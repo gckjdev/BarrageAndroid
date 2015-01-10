@@ -290,13 +290,13 @@ public final class BarrageProtos {
      */
     HIGH(2, 2),
     /**
-     * <code>LOW = 4;</code>
+     * <code>LOW = 3;</code>
      */
-    LOW(3, 4),
+    LOW(3, 3),
     /**
-     * <code>VERY_LOW = 5;</code>
+     * <code>VERY_LOW = 4;</code>
      */
-    VERY_LOW(4, 5),
+    VERY_LOW(4, 4),
     ;
 
     /**
@@ -312,13 +312,13 @@ public final class BarrageProtos {
      */
     public static final int HIGH_VALUE = 2;
     /**
-     * <code>LOW = 4;</code>
+     * <code>LOW = 3;</code>
      */
-    public static final int LOW_VALUE = 4;
+    public static final int LOW_VALUE = 3;
     /**
-     * <code>VERY_LOW = 5;</code>
+     * <code>VERY_LOW = 4;</code>
      */
-    public static final int VERY_LOW_VALUE = 5;
+    public static final int VERY_LOW_VALUE = 4;
 
 
     public final int getNumber() { return value; }
@@ -328,8 +328,8 @@ public final class BarrageProtos {
         case 0: return NORMAL;
         case 1: return SUPER_HIGH;
         case 2: return HIGH;
-        case 4: return LOW;
-        case 5: return VERY_LOW;
+        case 3: return LOW;
+        case 4: return VERY_LOW;
         default: return null;
       }
     }
@@ -6371,7 +6371,7 @@ public final class BarrageProtos {
       "EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017\n\013FOR_COM" +
       "MENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarrageSpeed\022\n" +
       "\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH\020\002\022\007\n\003" +
-      "LOW\020\004\022\014\n\010VERY_LOW\020\005B,\n\033com.orange.protoc" +
+      "LOW\020\003\022\014\n\010VERY_LOW\020\004B,\n\033com.orange.protoc" +
       "ol.messageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
