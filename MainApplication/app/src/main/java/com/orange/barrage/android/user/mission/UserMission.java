@@ -7,19 +7,18 @@ import com.orange.barrage.android.util.network.BarrageNetworkClient;
 import com.orange.protocol.message.MessageProtos;
 import com.orange.protocol.message.UserProtos;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by pipi on 15/1/5.
  */
+//FIXME: Rollin, use public constructor for test purpose, fix later
+@Singleton
 public class UserMission {
 
-    private static UserMission ourInstance = new UserMission();
-
-    public static UserMission getInstance() {
-        return ourInstance;
-    }
-
-    private UserMission() {
-    }
+    @Inject
+    BarrageNetworkClient mBarrageNetworkClient;
 
     private void regiseterUser(int type,
                               UserProtos.PBUser.Builder userBuilder,
@@ -40,7 +39,7 @@ public class UserMission {
         MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
         dataRequestBuilder.setRegisterUserRequest(regBuilder.build());
 
-        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_REGISTER_USER_VALUE,
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_REGISTER_USER_VALUE,
                 dataRequestBuilder,
                 true,
                 new BarrageNetworkCallback() {
@@ -50,10 +49,9 @@ public class UserMission {
                         Log.d(UserMission.class.getName(), "regiseterUser success");
 
                         UserProtos.PBUser user = response.getRegisterUserResponse().getUser();
-                        if (user != null){
+                        if (user != null) {
                             // TODO success, store locally
-                        }
-                        else{
+                        } else {
                             // failure
                         }
                     }

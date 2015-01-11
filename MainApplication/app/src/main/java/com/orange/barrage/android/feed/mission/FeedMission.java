@@ -26,19 +26,23 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by pipi on 15/1/6.
  */
+@Singleton
 public class FeedMission {
 
-    private static FeedMission ourInstance = new FeedMission();
+    @Inject
+    BarrageNetworkClient mBarrageNetworkClient;
 
-    public static FeedMission getInstance() {
-        return ourInstance;
-    }
+    @Inject
+    UserManager mUserManager;
 
-    private FeedMission() {
-    }
+    @Inject
+    FeedManager mFeedManager;
 
     CreateImageInfoInterface imageInfo = new JpegImageInfo();
     public static float UPLOAD_IMAGE_QUALITY = 1.0f;
@@ -102,10 +106,7 @@ public class FeedMission {
     }
 
     private void submitFeedToServer(String cdnKey, String text, List<UserProtos.PBUser> toUsers, final FeedMissionCallbackInterface callback) {
-
-
-
-        UserProtos.PBUser user = UserManager.getInstance().getUser();
+        UserProtos.PBUser user = mUserManager.getUser();
         String imageURL = QiNiuCdnManager.getInstance().getUrl(cdnKey);
 
         BarrageProtos.PBFeed.Builder feedBuilder = BarrageProtos.PBFeed.newBuilder();
@@ -128,7 +129,7 @@ public class FeedMission {
         MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
         dataRequestBuilder.setCreateFeedRequest(feedReqBuilder.build());
 
-        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_CREATE_FEED_VALUE,
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_CREATE_FEED_VALUE,
                 dataRequestBuilder,
                 true,
                 new BarrageNetworkCallback() {
@@ -157,7 +158,7 @@ public class FeedMission {
         MessageProtos.PBDataRequest.Builder reqBuilder = MessageProtos.PBDataRequest.newBuilder();
         reqBuilder.setReplyFeedRequest(replyBuilder.build());
 
-        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_REPLY_FEED_VALUE,
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_REPLY_FEED_VALUE,
                 reqBuilder,
                 true,
                 new BarrageNetworkCallback() {
@@ -189,7 +190,7 @@ public class FeedMission {
         MessageProtos.PBDataRequest.Builder reqBuilder = MessageProtos.PBDataRequest.newBuilder();
         reqBuilder.setGetUserTimelineFeedRequest(timelineBuilder.build());
 
-        BarrageNetworkClient.getInstance().dataRequest(MessageProtos.PBMessageType.MESSAGE_GET_USER_TIMELINE_FEED_VALUE,
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_GET_USER_TIMELINE_FEED_VALUE,
                 reqBuilder,
                 true,
                 new BarrageNetworkCallback() {
@@ -197,7 +198,7 @@ public class FeedMission {
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         List<BarrageProtos.PBFeed> list = response.getGetUserTimelineFeedResponse().getFeedsList();
                         Log.d("FeedMission", "get timeline feed successfully, count ="+list.size());
-                        FeedManager.getInstance().storeUserTimeline(list);
+                        mFeedManager.storeUserTimeline(list);
                         callback.handleSuccess(null, list);
                     }
 

@@ -4,9 +4,12 @@ import com.orange.barrage.android.util.ContextManager;
 
 import java.util.logging.Level;
 
+import javax.inject.Singleton;
+
 /**
  * Created by Rollin on 2015/1/5.
  */
+@Singleton
 public class SharedPreferenceDAO {
     private static final String DB_SHARED_PREFERENCE="shared_preference";
 

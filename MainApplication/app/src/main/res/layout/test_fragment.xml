@@ -25,10 +25,18 @@
         android:text="Load Data"/>
 
     <Button
-        android:id="@+id/test_db_button"
+    android:id="@+id/test_db_button"
+    android:layout_width="wrap_content"
+    android:layout_height="100dp"
+    android:layout_toRightOf="@id/test_button"
+    android:layout_below="@id/textset"
+    android:text="Test LevelDB"/>
+
+    <Button
+        android:id="@+id/test_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_toRightOf="@id/test_button"
+        android:layout_toRightOf="@id/test_db_button"
         android:layout_below="@id/textset"
         android:text="Test LevelDB"/>
 </RelativeLayout>

@@ -1,7 +1,8 @@
 package com.orange.barrage.android.home;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,45 @@ import android.widget.Toast;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
+import com.orange.protocol.message.UserProtos;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import roboguice.fragment.RoboFragment;
+import roboguice.inject.InjectView;
 
 /**
  * Created by pipi on 15/1/6.
  */
-public class TestFragment extends Fragment {
+public class TestFragment extends RoboFragment {
+
+    @Inject
+    LevelDBTestDAO mLevelDBTestDAO;
+
+    @Inject
+    FeedMission mFeedMission;
+    @Inject
+    UserManager mUserManager;
+
+    @InjectView(R.id.test_button)
+    Button mTestButton;
+
+    @InjectView(R.id.textset)
+    TextView mTextView;
+
+    @InjectView(R.id.test_db_button)
+    Button mTestDBButton;
+
+    @InjectView(R.id.test_submit_button)
+    Button mSubmitFeedButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,39 +62,53 @@ public class TestFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        TextView tv=(TextView)getActivity().findViewById(R.id.textset);
-        tv.setText("Hello World");
 
-        Button button = (Button)getActivity().findViewById(R.id.test_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        mTextView.setText("Hello World");
+        mTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-                FeedMission.getInstance().getTimelineFeed(new FeedMissionCallbackInterface() {
+                mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess:", Toast.LENGTH_SHORT);
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure:"+ errorCode, Toast.LENGTH_SHORT);
                     }
                 });
             }
         });
 
-        // YOU CAN ADD SOME TEST CODE HERE
-
-        Button dbButton = (Button)getActivity().findViewById(R.id.test_db_button);
-        dbButton.setOnClickListener(new View.OnClickListener() {
+        mSubmitFeedButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                LevelDBTestDAO dao =  LevelDBTestDAO.getInstance();
-                dao.saveText("id1", "value1");
-                String value = dao.getText("id1");
+                //TODO: test code
+                final Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+                final String text = "Hello";
+                final List<UserProtos.PBUser> toUsers = new ArrayList<UserProtos.PBUser>();
+                toUsers.add(mUserManager.getUser());
+                mFeedMission.createFeed(image, text, toUsers, new FeedMissionCallbackInterface(){
+
+                    @Override
+                    public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess:", Toast.LENGTH_SHORT);
+                    }
+
+                    @Override
+                    public void handleFailure(int errorCode) {
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure:"+ errorCode, Toast.LENGTH_SHORT);
+                    }
+                });
+            }
+        });
+        // YOU CAN ADD SOME TEST CODE HERE
+        mTestDBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLevelDBTestDAO.saveText("id1", "value1");
+                String value = mLevelDBTestDAO.getText("id1");
                 Toast.makeText(ContextManager.getContext(),value, Toast.LENGTH_SHORT).show();
             }
         });

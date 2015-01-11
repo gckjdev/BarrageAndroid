@@ -19,27 +19,31 @@ import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
+import javax.inject.Inject;
+
 /**
  * Created by Rollin on 2015/1/1.
  */
 public class UserTimelineAdapter extends BaseAdapter{
 
-//    private PictureTopicData mData;
-
     private Context mContext;
 
+    @Inject
+    private FeedManager mFeedManager;
+
+    @Inject
     public UserTimelineAdapter(Context context){
         super();
         this.mContext = context;
     }
     @Override
     public int getCount() {
-        return FeedManager.getInstance().getUserTimeline().size();
+        return mFeedManager.getUserTimeline().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return FeedManager.getInstance().getUserTimeline().get(position);
+        return mFeedManager.getUserTimeline().get(position);
     }
 
     @Override
@@ -54,7 +58,7 @@ public class UserTimelineAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(this.mContext).inflate(R.layout.timeline_list_item, null);
         }
 
-        BarrageProtos.PBFeed feed = FeedManager.getInstance().getUserTimeline().get(position);
+        BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
 
         TextView userNickTextView = (TextView)convertView.findViewById(R.id.timeline_item_user_nick);
         userNickTextView.setText(feed.getCreateUser().getNick());

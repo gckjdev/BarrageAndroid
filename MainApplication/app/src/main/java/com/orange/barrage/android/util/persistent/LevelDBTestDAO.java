@@ -11,25 +11,20 @@ import com.orange.barrage.android.util.ContextManager;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by Rollin on 2015/1/5.
  */
+@Singleton
 public class LevelDBTestDAO {
 
     private String TABLE_NAME = "level_test";
 
-    private static LevelDBTestDAO sInstance;
-
-    public static LevelDBTestDAO getInstance(){
-        if(sInstance==null){
-            sInstance = new LevelDBTestDAO();
-        }
-        return sInstance;
-     }
-
     private LevelDBDAO mLevelDBDAO;
 
-    private LevelDBTestDAO(){
+    public LevelDBTestDAO(){
         //init dao
         mLevelDBDAO = new LevelDBDAO(TABLE_NAME);
     }

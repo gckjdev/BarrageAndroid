@@ -16,7 +16,9 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.ContextManager;
 
-public class HomeActivity extends FragmentActivity {
+import roboguice.activity.RoboFragmentActivity;
+
+public class HomeActivity extends RoboFragmentActivity {
 
     private static final String TAB_1_TAG = "tab_1";
     private static final String TAB_2_TAG = "tab_2";
@@ -27,14 +29,6 @@ public class HomeActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ContextManager.init(this);
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable ex) {
-                Log.e("TAG", "uncaught exception thrown", ex);
-            }
-        });
-
         setContentView(R.layout.activity_home);
         initView();
     }

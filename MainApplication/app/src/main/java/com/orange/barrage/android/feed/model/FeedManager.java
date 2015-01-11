@@ -5,19 +5,13 @@ import com.orange.protocol.message.BarrageProtos;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Singleton;
+
 /**
  * Created by pipi on 15/1/6.
  */
+@Singleton
 public class FeedManager {
-
-    private static FeedManager ourInstance = new FeedManager();
-
-    public static FeedManager getInstance() {
-        return ourInstance;
-    }
-
-    private FeedManager() {
-    }
 
     private List<BarrageProtos.PBFeed> userTimelineList = Collections.emptyList();
 

@@ -15,7 +15,9 @@ import android.util.Log;
 
 import com.orange.barrage.android.R;
 
-public class HomeContainerFragment extends Fragment {
+import roboguice.fragment.RoboFragment;
+
+public class HomeContainerFragment extends RoboFragment {
 
     public void replaceFragment(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();

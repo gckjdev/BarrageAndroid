@@ -19,13 +19,24 @@ import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import roboguice.fragment.RoboFragment;
+import roboguice.inject.InjectView;
+
 /**
  * Created by pipi on 15/1/6.
  */
-public class TimelineFragment extends Fragment {
+public class TimelineFragment extends RoboFragment {
 
-    private PullToRefreshListView listView;
-    private UserTimelineAdapter adapter;
+    @InjectView(R.id.timeline_listview)
+    PullToRefreshListView listView;
+
+    @Inject
+    UserTimelineAdapter adapter;
+
+    @Inject
+    FeedMission mFeedMission;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,12 +48,12 @@ public class TimelineFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        listView = (PullToRefreshListView) getActivity().findViewById(R.id.timeline_listview);
+        //listView = (PullToRefreshListView) getActivity().findViewById(R.id.timeline_listview);
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
                 Log.d("TimelineFragment", "onPullDownToRefresh");
-                FeedMission.getInstance().getTimelineFeed(new FeedMissionCallbackInterface() {
+                mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
                         listView.onRefreshComplete();
@@ -59,7 +70,7 @@ public class TimelineFragment extends Fragment {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
                 Log.d("TimelineFragment", "onPullUpToRefresh");
-                FeedMission.getInstance().getTimelineFeed(new FeedMissionCallbackInterface() {
+                mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
                         listView.onRefreshComplete();
@@ -74,7 +85,7 @@ public class TimelineFragment extends Fragment {
             }
         });
 
-        adapter = new UserTimelineAdapter(getActivity());
+        //adapter = new UserTimelineAdapter(getActivity());
         listView.setAdapter(adapter);
     }
 

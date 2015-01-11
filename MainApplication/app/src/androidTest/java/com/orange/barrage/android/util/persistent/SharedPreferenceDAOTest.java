@@ -2,10 +2,7 @@ package com.orange.barrage.android.util.persistent;
 
 import android.test.AndroidTestCase;
 
-import com.litl.leveldb.DB;
 import com.orange.barrage.android.util.ContextManager;
-
-import java.io.File;
 
 /**
  * Created by Rollin on 2015/1/10.

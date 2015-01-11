@@ -9,29 +9,34 @@ import com.orange.barrage.android.util.ContextManager;
  */
 public class LevelDBTestDAOTest extends AndroidTestCase {
 
+    private static LevelDBTestDAO mLevelDBTestDAO;
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         ContextManager.init(getContext());
+
+        if(mLevelDBTestDAO==null) {
+            mLevelDBTestDAO = new LevelDBTestDAO();
+        }
     }
 
     public void testSave(){
         String id = "id";
         String value ="saveItem";
-        LevelDBTestDAO.getInstance().saveText(id, value);
+        mLevelDBTestDAO.saveText(id, value);
 
-        String result = LevelDBTestDAO.getInstance().getText(id);
+        String result = mLevelDBTestDAO.getText(id);
         assertEquals(value, result);
     }
 
     public void testDelete(){
         String id="id1";
         String value = "abc";
-        LevelDBTestDAO.getInstance().saveText(id, value);
+        mLevelDBTestDAO.saveText(id, value);
 
-        LevelDBTestDAO.getInstance().deleteText(id);
-        String result = LevelDBTestDAO.getInstance().getText(id);
-        assertNull("value should be deleted",result);
+        mLevelDBTestDAO.deleteText(id);
+        String result = mLevelDBTestDAO.getText(id);
+        assertNull("value should be deleted", result);
     }
 
     @Override

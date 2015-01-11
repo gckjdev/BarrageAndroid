@@ -6,6 +6,9 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -14,17 +17,10 @@ import retrofit.client.Response;
 /**
  * Created by pipi on 15/1/5.
  */
+@Singleton
 public class BarrageNetworkClient {
 
-    private static BarrageNetworkClient ourInstance = new BarrageNetworkClient();
-
-    public static BarrageNetworkClient getInstance() {
-        return ourInstance;
-    }
-
-    private BarrageNetworkClient() {
-    }
-
+    @Inject UserManager mUserManager;
 
     public void dataRequest(int type,
                             MessageProtos.PBDataRequest.Builder requestBuilder,
@@ -37,7 +33,7 @@ public class BarrageNetworkClient {
                 .build()
                 .create(BarrageNetworkInterface.class);
 
-        String userId = UserManager.getInstance().getUserId();
+        String userId = mUserManager.getUserId();
         requestBuilder.setUserId(userId);
 
         requestBuilder.setType(type);
