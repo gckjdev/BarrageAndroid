@@ -6,10 +6,12 @@ import java.util.logging.Level;
 
 import javax.inject.Singleton;
 
+import roboguice.inject.ContextSingleton;
+
 /**
  * Created by Rollin on 2015/1/5.
  */
-@Singleton
+@ContextSingleton
 public class SharedPreferenceDAO {
     private static final String DB_SHARED_PREFERENCE="shared_preference";
 

@@ -70,12 +70,12 @@ public class TestFragment extends RoboFragment {
                 mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess:", Toast.LENGTH_SHORT);
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess timeline", Toast.LENGTH_SHORT);
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure:"+ errorCode, Toast.LENGTH_SHORT);
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure timeline:"+ errorCode, Toast.LENGTH_SHORT);
                     }
                 });
             }
@@ -93,12 +93,12 @@ public class TestFragment extends RoboFragment {
 
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess:", Toast.LENGTH_SHORT);
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess submit", Toast.LENGTH_SHORT);
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure:"+ errorCode, Toast.LENGTH_SHORT);
+                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure submit:"+ errorCode, Toast.LENGTH_SHORT);
                     }
                 });
             }

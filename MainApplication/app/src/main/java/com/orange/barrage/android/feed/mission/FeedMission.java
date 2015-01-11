@@ -29,10 +29,12 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import roboguice.inject.ContextSingleton;
+
 /**
  * Created by pipi on 15/1/6.
  */
-@Singleton
+@ContextSingleton
 public class FeedMission {
 
     @Inject

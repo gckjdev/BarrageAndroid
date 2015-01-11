@@ -14,10 +14,12 @@ import java.io.UnsupportedEncodingException;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import roboguice.inject.ContextSingleton;
+
 /**
  * Created by Rollin on 2015/1/5.
  */
-@Singleton
+@ContextSingleton
 public class LevelDBTestDAO {
 
     private String TABLE_NAME = "level_test";

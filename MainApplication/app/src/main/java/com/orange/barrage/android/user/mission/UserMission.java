@@ -10,11 +10,12 @@ import com.orange.protocol.message.UserProtos;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import roboguice.inject.ContextSingleton;
+
 /**
  * Created by pipi on 15/1/5.
  */
-//FIXME: Rollin, use public constructor for test purpose, fix later
-@Singleton
+@ContextSingleton
 public class UserMission {
 
     @Inject

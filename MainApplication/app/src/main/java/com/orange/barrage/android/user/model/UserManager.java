@@ -4,10 +4,12 @@ import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Singleton;
 
+import roboguice.inject.ContextSingleton;
+
 /**
  * Created by pipi on 15/1/5.
  */
-@Singleton
+@ContextSingleton
 public class UserManager {
 
     public String getUserId(){

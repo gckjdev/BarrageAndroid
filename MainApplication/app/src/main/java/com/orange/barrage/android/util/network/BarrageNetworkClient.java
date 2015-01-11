@@ -13,11 +13,12 @@ import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import roboguice.inject.ContextSingleton;
 
 /**
  * Created by pipi on 15/1/5.
  */
-@Singleton
+@ContextSingleton
 public class BarrageNetworkClient {
 
     @Inject UserManager mUserManager;

@@ -7,10 +7,12 @@ import java.util.List;
 
 import javax.inject.Singleton;
 
+import roboguice.inject.ContextSingleton;
+
 /**
  * Created by pipi on 15/1/6.
  */
-@Singleton
+@ContextSingleton
 public class FeedManager {
 
     private List<BarrageProtos.PBFeed> userTimelineList = Collections.emptyList();
