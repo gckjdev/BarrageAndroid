@@ -30,6 +30,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import roboguice.util.Ln;
+
 
 public class ImageUtil
 {
@@ -81,7 +83,7 @@ public class ImageUtil
         try {
             stream.close();
         } catch (IOException e) {
-            Log.e(UtilConstants.LOG_TAG, "<imageToJpeg> but catch exception" + e.toString(), e);
+            Ln.e("<imageToJpeg> but catch exception" + e.toString(), e);
         }
 
         return byteArray;

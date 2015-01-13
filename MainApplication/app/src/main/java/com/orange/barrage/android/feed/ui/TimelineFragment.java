@@ -23,6 +23,7 @@ import javax.inject.Inject;
 
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
+import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/6.
@@ -52,7 +53,7 @@ public class TimelineFragment extends RoboFragment {
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
-                Log.d("TimelineFragment", "onPullDownToRefresh");
+                Ln.d("onPullDownToRefresh");
                 mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
@@ -69,7 +70,7 @@ public class TimelineFragment extends RoboFragment {
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
-                Log.d("TimelineFragment", "onPullUpToRefresh");
+                Ln.d("onPullUpToRefresh");
                 mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {

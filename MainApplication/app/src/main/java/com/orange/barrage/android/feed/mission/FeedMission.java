@@ -30,6 +30,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import roboguice.inject.ContextSingleton;
+import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/6.
@@ -46,6 +47,9 @@ public class FeedMission {
     @Inject
     FeedManager mFeedManager;
 
+    @Inject
+    QiNiuCdnManager mCdnManager;
+
     CreateImageInfoInterface imageInfo = new JpegImageInfo();
     public static float UPLOAD_IMAGE_QUALITY = 1.0f;
 
@@ -56,11 +60,11 @@ public class FeedMission {
 
         // refer to http://developer.qiniu.com/docs/v6/sdk/android-sdk.html
         // prepare data for upload
-        String token = QiNiuCdnManager.getInstance().getToken();
+        String token = mCdnManager.getToken();
         String key = imageInfo.createKey();
         byte[] data = imageInfo.getImageBytes(image, UPLOAD_IMAGE_QUALITY);
         if (data == null || data.length == 0){
-            Log.e("FeedMission", "<createFeed> but image data null");
+            Ln.e("FeedMission", "<createFeed> but image data null");
             return;
         }
 
@@ -72,7 +76,7 @@ public class FeedMission {
 
             @Override
             public void progress(String s, double v) {
-                Log.d("QINIU", String.format("upload progress %s, %.2f", s, v));
+                Ln.d(String.format("upload progress %s, %.2f", s, v));
             }
         },
                 null
@@ -88,7 +92,7 @@ public class FeedMission {
                 new UpCompletionHandler() {
                     @Override
                     public void complete(String key, ResponseInfo info, JSONObject response) {
-                        Log.d("QINIU", "upload complete, info="+info.toString()+", response="+response.toString());
+                        Ln.d("upload complete, info=" + info.toString() + ", response=" + response.toString());
 
                         if (info.statusCode == 200){
                             try {
@@ -97,7 +101,7 @@ public class FeedMission {
                                 submitFeedToServer(cdnKey, text, toUsers, callback);
 
                             } catch (JSONException e) {
-                                Log.e("QINIU", "catch exception = "+e.toString(), e);
+                                Ln.e("QINIU", "catch exception = "+e.toString(), e);
                             }
                         }
 
@@ -109,7 +113,7 @@ public class FeedMission {
 
     private void submitFeedToServer(String cdnKey, String text, List<UserProtos.PBUser> toUsers, final FeedMissionCallbackInterface callback) {
         UserProtos.PBUser user = mUserManager.getUser();
-        String imageURL = QiNiuCdnManager.getInstance().getUrl(cdnKey);
+        String imageURL = mCdnManager.getUrl(cdnKey);
 
         BarrageProtos.PBFeed.Builder feedBuilder = BarrageProtos.PBFeed.newBuilder();
         feedBuilder.setFeedId("");
@@ -138,13 +142,13 @@ public class FeedMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         String feedId = response.getCreateFeedResponse().getFeedId();
-                        Log.d("FeedMission", "create feed successfully, feedId="+feedId);
+                        Ln.d("create feed successfully, feedId=" + feedId);
                         callback.handleSuccess(feedId, null);
                     }
 
                     @Override
                     public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
-                        Log.d("FeedMission", "create feed failure, errorCode="+errorCode);
+                        Ln.d("create feed failure, errorCode=" + errorCode);
                         callback.handleFailure(errorCode);
                     }
                 });
@@ -167,13 +171,13 @@ public class FeedMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         String actionId = response.getReplyFeedResponse().getAction().getActionId();
-                        Log.d("FeedMission", "reply feed successfully, actionId ="+actionId);
+                        Ln.d("FeedMission", "reply feed successfully, actionId =" + actionId);
                         callback.handleSuccess(actionId, null);
                     }
 
                     @Override
                     public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
-                        Log.d("FeedMission", "reply feed failure, errorCode="+errorCode);
+                        Ln.d("FeedMission", "reply feed failure, errorCode=" + errorCode);
                         callback.handleFailure(errorCode);
                     }
                 });
@@ -199,14 +203,14 @@ public class FeedMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         List<BarrageProtos.PBFeed> list = response.getGetUserTimelineFeedResponse().getFeedsList();
-                        Log.d("FeedMission", "get timeline feed successfully, count ="+list.size());
+                        Ln.d("get timeline feed successfully, count =" + list.size());
                         mFeedManager.storeUserTimeline(list);
                         callback.handleSuccess(null, list);
                     }
 
                     @Override
                     public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
-                        Log.d("FeedMission", "get feed timeline, errorCode="+errorCode);
+                        Ln.d("get feed timeline, errorCode=" + errorCode);
                         callback.handleFailure(errorCode);
                     }
                 });

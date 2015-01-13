@@ -14,7 +14,13 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.user.mission.UserMission;
+import com.orange.barrage.android.user.mission.UserMissionCallback;
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.protocol.message.UserProtos;
+
+import javax.inject.Inject;
 
 import roboguice.activity.RoboFragmentActivity;
 
@@ -25,6 +31,12 @@ public class HomeActivity extends RoboFragmentActivity {
     private static final String TAB_3_TAG = "tab_3";
 
     private FragmentTabHost mTabHost;
+
+    @Inject
+    UserMission mUserMission;
+
+    @Inject
+    UserManager mUserManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,20 @@ public class HomeActivity extends RoboFragmentActivity {
                 R.drawable.tab_select,"好友",R.drawable.tab_select),Tab3Container.class,null);
 
 
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        if (!mUserManager.hasUser()) {
+            String email = String.format("test%d@163.com", ((long)Math.random()) % 99999);
+            mUserMission.regiseterUserByEmail(email, "password", null, new UserMissionCallback() {
+                @Override
+                public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+                }
+            });
+        }
     }
 
     @Override

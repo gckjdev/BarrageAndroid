@@ -16,6 +16,7 @@ import android.util.Log;
 import com.orange.barrage.android.R;
 
 import roboguice.fragment.RoboFragment;
+import roboguice.util.Ln;
 
 public class HomeContainerFragment extends RoboFragment {
 
@@ -30,7 +31,7 @@ public class HomeContainerFragment extends RoboFragment {
     }
 
     public boolean popFragment() {
-        Log.e("HomeContainerFragment", "pop fragment: " + getChildFragmentManager().getBackStackEntryCount());
+        Ln.e("pop fragment: " + getChildFragmentManager().getBackStackEntryCount());
         boolean isPop = false;
         if (getChildFragmentManager().getBackStackEntryCount() > 0) {
             isPop = true;

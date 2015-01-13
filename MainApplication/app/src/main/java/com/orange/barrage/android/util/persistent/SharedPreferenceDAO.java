@@ -31,7 +31,7 @@ public class SharedPreferenceDAO {
     }
 
     public byte[] get(String key){
-        return mLevelDBDAO.get(key);
+        return mLevelDBDAO.getBytes(key);
     }
 
     public void put(String key, byte[] value){

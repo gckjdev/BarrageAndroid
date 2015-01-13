@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import android.net.Uri;
 import android.util.Log;
 
+import roboguice.util.Ln;
+
 public class HttpUtils {
 
 	public static JSONObject httpGet(Uri uri) {
@@ -22,10 +24,10 @@ public class HttpUtils {
 
 		try {
 			response = httpclient.execute(httpGet, strRespHandler);
-			Log.d(UtilConstants.LOG_TAG, "Get http response: " + response);
+			Ln.d("Get http response: " + response);
 			
 			jsonResponse = new JSONObject(response);
-			Log.d(UtilConstants.LOG_TAG, "Get Json response: " + jsonResponse);
+			Ln.d("Get Json response: " + jsonResponse);
 		} catch (Exception e) {
 			logException(e);
 		}
@@ -34,6 +36,6 @@ public class HttpUtils {
 	}
 
 	private static void logException(Exception e) {
-		Log.e(UtilConstants.LOG_TAG, "Get exception when handling http request/response!", e);
+		Ln.e(UtilConstants.LOG_TAG, "Get exception when handling http request/response!", e);
 	}
 }

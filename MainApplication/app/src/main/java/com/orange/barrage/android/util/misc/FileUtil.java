@@ -20,6 +20,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import roboguice.util.Ln;
+
 public class FileUtil {
 	private static final String TAG = null;
 	private static int len = 0;
@@ -80,7 +82,7 @@ public class FileUtil {
 	}
 
 	public static void logException(String filename, Exception e) {
-		Log.e(UtilConstants.LOG_TAG, "File operation failed, file name: " + filename, e);
+		Ln.e(UtilConstants.LOG_TAG, "File operation failed, file name: " + filename, e);
 	}
 	
 	
@@ -134,7 +136,7 @@ public class FileUtil {
 	
 	
 	public static boolean saveFileInSDCard(String fileName,String filePath,InputStream inputStream){
-		Log.d(TAG, "<saveFileInSDCard> and filepath = "+filePath);
+		Ln.d("<saveFileInSDCard> and filepath = " + filePath);
 		if (!checkFileIsExits(filePath))
 		{
 			creatDir(filePath);
@@ -159,14 +161,14 @@ public class FileUtil {
 			while ((length = inputStream.read(buffer)) != -1)
 			{
 				myOutput.write(buffer, 0, length);
-				Log.d(TAG, "file length = " + length);
+				Ln.d("file length = " + length);
 			}
 			myOutput.flush();
 			myInput.close();
 			myOutput.close();
 		} catch (Exception e)
 		{
-			Log.e(TAG, "<writeFile> but catch exception :" + e.toString(), e);
+			Ln.e(TAG, "<writeFile> but catch exception :" + e.toString(), e);
 		}
 
 		return flag;
@@ -178,7 +180,7 @@ public class FileUtil {
 			
 		if (!checkFileIsExits(filePath))
 		{
-			Log.e(TAG, "<readFile> but file not found filePath = "+filePath);
+			Ln.e(TAG, "<readFile> but file not found filePath = "+filePath);
 			return null;
 		}
 		File file = new File(filePath);	
@@ -189,7 +191,7 @@ public class FileUtil {
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
-			Log.e(TAG, "<readFile> but file not found filePath = "+filePath);
+			Ln.e(TAG, "<readFile> but file not found filePath = "+filePath);
 		}
 		return fileInputStream;
 	}
@@ -282,7 +284,7 @@ public static boolean checkFileIsExits(String filePath)
 			result = true;	
 		} catch (Exception e)
 		{
-			Log.e(TAG, "<copyAssetsFile> assets file = " +fileName + ", to dest file "
+			Ln.e(TAG, "<copyAssetsFile> assets file = " +fileName + ", to dest file "
 					+ targetFile + ", but catch exception " + e.toString(), e);
 			result = false;
 	} finally

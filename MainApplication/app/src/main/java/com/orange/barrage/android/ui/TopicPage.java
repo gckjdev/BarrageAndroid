@@ -140,7 +140,7 @@ public class TopicPage extends LinearLayout {
 
                             @Override
                             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
-                                Log.d("test", "regiseterUserByEmail callback invoke test");
+                                Ln.d("test", "regiseterUserByEmail callback invoke test");
                             }
                         });
                         */

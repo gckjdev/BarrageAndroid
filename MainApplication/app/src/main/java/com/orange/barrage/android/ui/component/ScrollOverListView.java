@@ -54,7 +54,7 @@ public class ScrollOverListView extends ListView
                 final int itemCount = getAdapter().getCount() - mBottomPosition;
 
                 final int deltaY = y - mLastY;
-                //DLog.d("lastY=%d y=%d", mLastY, y);
+                //DLn.d("lastY=%d y=%d", mLastY, y);
 
                 final int firstTop = getChildAt(0).getTop();
                 final int listPadding = getListPaddingTop();
@@ -71,7 +71,7 @@ public class ScrollOverListView extends ListView
                     return true;
                 }
 
-                //DLog.d("firstVisiblePosition=%d firstTop=%d listPaddingTop=%d deltaY=%d", firstVisiblePosition, firstTop, listPadding, deltaY);
+                //DLn.d("firstVisiblePosition=%d firstTop=%d listPaddingTop=%d deltaY=%d", firstVisiblePosition, firstTop, listPadding, deltaY);
                 if (firstVisiblePosition <= mTopPosition && firstTop >= listPadding && deltaY > 0) {
                     final boolean isHandleOnListViewTopAndPullDown;
                     isHandleOnListViewTopAndPullDown = mOnScrollOverListener.onListViewTopAndPullDown(deltaY);
@@ -81,7 +81,7 @@ public class ScrollOverListView extends ListView
                     }
                 }
 
-                // DLog.d("lastBottom=%d end=%d deltaY=%d", lastBottom, end, deltaY);
+                // DLn.d("lastBottom=%d end=%d deltaY=%d", lastBottom, end, deltaY);
                 if (firstVisiblePosition + childCount >= itemCount && lastBottom <= end && deltaY < 0) {
                     final boolean isHandleOnListViewBottomAndPullDown;
                     isHandleOnListViewBottomAndPullDown = mOnScrollOverListener.onListViewBottomAndPullUp(deltaY);

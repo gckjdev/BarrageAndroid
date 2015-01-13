@@ -12,13 +12,15 @@ import android.view.ViewGroup;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.ui.TimelineFragment;
 
+import roboguice.util.Ln;
+
 public class Tab2Container extends HomeContainerFragment {
 
     private boolean isViewInited = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d("TAB", "Tab2 onCreateView");
+        Ln.d("Tab2 onCreateView");
         return inflater.inflate(R.layout.fragment_home_container, null);
     }
 

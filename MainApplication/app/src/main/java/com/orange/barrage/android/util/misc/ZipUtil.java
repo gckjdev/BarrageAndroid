@@ -18,6 +18,8 @@ import java.util.zip.ZipInputStream;
 
 import android.util.Log;
 
+import roboguice.util.Ln;
+
 /**  
  * @description   
  * @version 1.0  
@@ -33,7 +35,7 @@ public class ZipUtil
 	 public static boolean unZipFile(String zipFilePath, String folderPath)
 		{
 			long startTime = System.currentTimeMillis();
-			//Log.d(TAG, "start unzip time"+startTime);
+			//Ln.d(TAG, "start unzip time"+startTime);
 			boolean zipSuccess = false;
 			String strEntry;
 			byte data[] = new byte[BUFF_SIZE];
@@ -92,11 +94,11 @@ public class ZipUtil
 					data = null;
 					long endTime = System.currentTimeMillis();
 					double unzipTime= (endTime-startTime)/1000;
-					Log.d(TAG, "unzip unzipTime = "+unzipTime);
+					Ln.d("unzip unzipTime = " + unzipTime);
 				}
 			} catch (Exception e)
 			{
-				Log.e(TAG, "<upZipFile> but catch exception :" + e.toString(), e);
+				Ln.e("<upZipFile> but catch exception :" + e.toString(), e);
 				//FileUtil.deleteFolder(folderPath);
 				return false;
 			}finally{

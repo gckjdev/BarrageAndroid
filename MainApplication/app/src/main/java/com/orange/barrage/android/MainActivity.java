@@ -20,6 +20,8 @@ import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 
 import java.io.File;
 
+import roboguice.util.Ln;
+
 @Deprecated
 public class MainActivity extends ActionBarActivity {
 
@@ -38,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable ex) {
-                Log.e("TAG", "uncaught exception thrown", ex);
+                Ln.e("uncaught exception thrown", ex);
             }
         });
         //FIXME: dummy data

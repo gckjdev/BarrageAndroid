@@ -2,8 +2,11 @@ package com.orange.barrage.android.user.mission;
 
 import android.util.Log;
 
+import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.network.BarrageNetworkCallback;
 import com.orange.barrage.android.util.network.BarrageNetworkClient;
+import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
 import com.orange.protocol.message.UserProtos;
 
@@ -11,23 +14,27 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import roboguice.inject.ContextSingleton;
+import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/5.
  */
-@ContextSingleton
+@Singleton
 public class UserMission {
 
     @Inject
     BarrageNetworkClient mBarrageNetworkClient;
 
+    @Inject
+    UserManager mUserManager;
+
     private void regiseterUser(int type,
                               UserProtos.PBUser.Builder userBuilder,
                               String inviteCode,
-                              UserMissionCallback callback) {
+                              final UserMissionCallback callback) {
 
 
-        userBuilder.setRegDate((int)(System.currentTimeMillis()/1000));
+        userBuilder.setRegDate(DateUtil.getNowTime());
         userBuilder.setUserId("");
 
         MessageProtos.PBRegisterUserRequest.Builder regBuilder = MessageProtos.PBRegisterUserRequest.newBuilder();
@@ -47,20 +54,23 @@ public class UserMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
 
-                        Log.d(UserMission.class.getName(), "regiseterUser success");
+                        Ln.d(UserMission.class.getName(), "regiseterUser success");
 
                         UserProtos.PBUser user = response.getRegisterUserResponse().getUser();
                         if (user != null) {
-                            // TODO success, store locally
+                            // success, store locally
+                            mUserManager.storeUser(user);
+                            callback.handleMessage(0, user);
                         } else {
-                            // failure
+                            // TODO no data???
                         }
+
                     }
 
                     @Override
                     public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
-                        // TODO failure handling
-                        Log.d(UserMission.class.getName(), "regiseterUser failure");
+                        Ln.d("regiseterUser failure");
+                        callback.handleMessage(errorCode, null);
                     }
                 });
     }
