@@ -98,7 +98,7 @@ public class ZipUtil
 				}
 			} catch (Exception e)
 			{
-				Ln.e("<upZipFile> but catch exception :" + e.toString(), e);
+				Ln.e(e, "<upZipFile> but catch exception :" + e.toString());
 				//FileUtil.deleteFolder(folderPath);
 				return false;
 			}finally{

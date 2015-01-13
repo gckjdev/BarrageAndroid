@@ -56,7 +56,7 @@ public class LevelDBDAO {
         try {
             str = new String(bytes, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            Ln.e(TAG, "getString but catch exception="+e.toString(), e);
+            Ln.e(e, "getString but catch exception="+e.toString());
         }
         return str;
     }
@@ -66,7 +66,7 @@ public class LevelDBDAO {
         try {
             bytes = value.getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            Ln.e(TAG, "putString but catch exception="+e.toString(), e);
+            Ln.e(e, "putString but catch exception="+e.toString());
         }
         mLevelDB.put(bytes(key), bytes);
     }
@@ -104,7 +104,7 @@ public class LevelDBDAO {
             Method parseFrom = c.getMethod("parseFrom", byte[].class);
             return (T)parseFrom.invoke(null, bytes);
         } catch (Exception e) {
-            Ln.e("get protocol buffer data but catch exception="+e.toString(), e);
+            Ln.e(e, "get protocol buffer data but catch exception="+e.toString());
         }
 
         return null;
@@ -135,7 +135,7 @@ public class LevelDBDAO {
         try {
             return str.getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            Ln.e(TAG, "convert to bytes but catch exception="+e.toString(), e);
+            Ln.e(e, "convert to bytes but catch exception="+e.toString());
             return null;
         }
     }

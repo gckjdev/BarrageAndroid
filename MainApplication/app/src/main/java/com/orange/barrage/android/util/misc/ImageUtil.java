@@ -83,7 +83,7 @@ public class ImageUtil
         try {
             stream.close();
         } catch (IOException e) {
-            Ln.e("<imageToJpeg> but catch exception" + e.toString(), e);
+            Ln.e(e, "<imageToJpeg> but catch exception" + e.toString());
         }
 
         return byteArray;

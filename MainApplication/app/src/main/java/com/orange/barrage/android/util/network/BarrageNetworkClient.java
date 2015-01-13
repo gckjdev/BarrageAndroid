@@ -66,7 +66,7 @@ public class BarrageNetworkClient {
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                Ln.e("failure "+retrofitError.toString(), retrofitError);
+                Ln.e(retrofitError, "failure "+retrofitError.toString());
                 int code = 0;
                 if (retrofitError.getResponse() != null){
                     code = retrofitError.getResponse().getStatus();

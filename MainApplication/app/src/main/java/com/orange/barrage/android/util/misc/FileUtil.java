@@ -82,7 +82,7 @@ public class FileUtil {
 	}
 
 	public static void logException(String filename, Exception e) {
-		Ln.e(UtilConstants.LOG_TAG, "File operation failed, file name: " + filename, e);
+		Ln.e(e, "File operation failed, file name: " + filename);
 	}
 	
 	
@@ -168,7 +168,7 @@ public class FileUtil {
 			myOutput.close();
 		} catch (Exception e)
 		{
-			Ln.e(TAG, "<writeFile> but catch exception :" + e.toString(), e);
+			Ln.e(e, "<writeFile> but catch exception :" + e.toString());
 		}
 
 		return flag;
@@ -180,7 +180,7 @@ public class FileUtil {
 			
 		if (!checkFileIsExits(filePath))
 		{
-			Ln.e(TAG, "<readFile> but file not found filePath = "+filePath);
+			Ln.e("<readFile> but file not found filePath = "+filePath);
 			return null;
 		}
 		File file = new File(filePath);	
@@ -191,7 +191,7 @@ public class FileUtil {
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
-			Ln.e(TAG, "<readFile> but file not found filePath = "+filePath);
+			Ln.e(e, "<readFile> but file not found filePath = "+filePath);
 		}
 		return fileInputStream;
 	}
@@ -284,8 +284,8 @@ public static boolean checkFileIsExits(String filePath)
 			result = true;	
 		} catch (Exception e)
 		{
-			Ln.e(TAG, "<copyAssetsFile> assets file = " +fileName + ", to dest file "
-					+ targetFile + ", but catch exception " + e.toString(), e);
+			Ln.e(e, "<copyAssetsFile> assets file = " +fileName + ", to dest file "
+					+ targetFile + ", but catch exception " + e.toString());
 			result = false;
 	} finally
 	{

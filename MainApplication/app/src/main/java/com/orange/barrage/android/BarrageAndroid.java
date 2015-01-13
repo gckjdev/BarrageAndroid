@@ -21,7 +21,7 @@ public class BarrageAndroid extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable ex) {
-                Ln.e("uncaught exception thrown "+ex.toString(), ex);
+                Ln.e(ex, "uncaughtException");
             }
         });
 

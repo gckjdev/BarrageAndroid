@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable ex) {
-                Ln.e("uncaught exception thrown", ex);
+                Ln.e(ex, "uncaught exception thrown");
             }
         });
         //FIXME: dummy data

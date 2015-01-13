@@ -64,7 +64,7 @@ public class FeedMission {
         String key = imageInfo.createKey();
         byte[] data = imageInfo.getImageBytes(image, UPLOAD_IMAGE_QUALITY);
         if (data == null || data.length == 0){
-            Ln.e("FeedMission", "<createFeed> but image data null");
+            Ln.e("<createFeed> but image data null");
             return;
         }
 
@@ -101,7 +101,7 @@ public class FeedMission {
                                 submitFeedToServer(cdnKey, text, toUsers, callback);
 
                             } catch (JSONException e) {
-                                Ln.e("QINIU", "catch exception = "+e.toString(), e);
+                                Ln.e(e, "catch exception = "+e.toString());
                             }
                         }
 
