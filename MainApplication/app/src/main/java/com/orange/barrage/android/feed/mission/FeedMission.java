@@ -13,6 +13,7 @@ import com.orange.barrage.android.util.network.BarrageNetworkCallback;
 import com.orange.barrage.android.util.network.BarrageNetworkClient;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.ConstantsProtos;
+import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
 import com.orange.protocol.message.UserProtos;
 import com.qiniu.android.http.ResponseInfo;
@@ -35,7 +36,7 @@ import roboguice.util.Ln;
 /**
  * Created by pipi on 15/1/6.
  */
-@ContextSingleton
+@Singleton
 public class FeedMission {
 
     @Inject
@@ -102,10 +103,15 @@ public class FeedMission {
 
                             } catch (JSONException e) {
                                 Ln.e(e, "catch exception = "+e.toString());
+
+                                // failure, invoke callback
+                                callback.handleFailure(ErrorProtos.PBError.ERROR_JSON_EXCEPTION_VALUE);
                             }
                         }
-
-                        // TODO invoke callback
+                        else {
+                            // failure, invoke callback
+                            callback.handleFailure(ErrorProtos.PBError.ERROR_UPLOAD_IMAGE_VALUE);
+                        }
                     }
                 }, options);
 

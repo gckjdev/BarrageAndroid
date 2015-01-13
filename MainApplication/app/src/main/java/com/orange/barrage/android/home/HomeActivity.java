@@ -1,13 +1,9 @@
 package com.orange.barrage.android.home;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -17,7 +13,6 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
-import com.orange.barrage.android.util.ContextManager;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -41,7 +36,7 @@ public class HomeActivity extends RoboFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.home_activity);
         initView();
     }
 

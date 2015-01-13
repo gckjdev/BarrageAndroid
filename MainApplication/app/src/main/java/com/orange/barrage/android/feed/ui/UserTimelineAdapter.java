@@ -2,6 +2,9 @@ package com.orange.barrage.android.feed.ui;
 
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,21 +24,31 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
+import roboguice.util.Ln;
+
 /**
  * Created by Rollin on 2015/1/1.
  */
 public class UserTimelineAdapter extends BaseAdapter{
 
     private Context mContext;
+    private Fragment mFragment;
 
     @Inject
     private FeedManager mFeedManager;
 
-    @Inject
-    public UserTimelineAdapter(Context context){
+//    @Inject
+//    public UserTimelineAdapter(Context context){
+//        super();
+//        this.mContext = context;
+//    }
+
+    public UserTimelineAdapter(Context context, TimelineFragment fragment) {
         super();
         this.mContext = context;
+        this.mFragment = fragment;
     }
+
     @Override
     public int getCount() {
         return mFeedManager.getUserTimeline().size();
@@ -67,6 +80,23 @@ public class UserTimelineAdapter extends BaseAdapter{
         dateTextView.setText(DateUtil.dateFormatToString(feed.getDate(), mContext));
 
         ImageView barrageView = (ImageView) convertView.findViewById(R.id.timeline_item_barage_image);
+        barrageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // goto reply view
+                Ln.d("click image view, go to reply");
+
+                ReplyFeedFragment replyFeedFragment = new ReplyFeedFragment();
+
+                FragmentTransaction transaction = mFragment.getChildFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.replace(R.id.fragment_home_container, replyFeedFragment);
+                transaction.commit();
+                mFragment.getChildFragmentManager().executePendingTransactions();
+
+            }
+        });
+
         Picasso.with(mContext)
                 .load(feed.getImage())
                 .placeholder(R.drawable.tab_home)           // default

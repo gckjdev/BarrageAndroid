@@ -31,10 +31,9 @@ import roboguice.util.Ln;
 public class TimelineFragment extends RoboFragment {
 
     @InjectView(R.id.timeline_listview)
-    PullToRefreshListView listView;
+    PullToRefreshListView mListView;
 
-    @Inject
-    UserTimelineAdapter adapter;
+    UserTimelineAdapter mAdapter;
 
     @Inject
     FeedMission mFeedMission;
@@ -50,20 +49,20 @@ public class TimelineFragment extends RoboFragment {
         super.onActivityCreated(savedInstanceState);
 
         //listView = (PullToRefreshListView) getActivity().findViewById(R.id.timeline_listview);
-        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
                 Ln.d("onPullDownToRefresh");
                 mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        listView.onRefreshComplete();
-                        adapter.notifyDataSetChanged();
+                        mListView.onRefreshComplete();
+                        mAdapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-                        listView.onRefreshComplete();
+                        mListView.onRefreshComplete();
                     }
                 });
             }
@@ -74,20 +73,20 @@ public class TimelineFragment extends RoboFragment {
                 mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        listView.onRefreshComplete();
-                        adapter.notifyDataSetChanged();
+                        mListView.onRefreshComplete();
+                        mAdapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-                        listView.onRefreshComplete();
+                        mListView.onRefreshComplete();
                     }
                 });
             }
         });
 
-        //adapter = new UserTimelineAdapter(getActivity());
-        listView.setAdapter(adapter);
+        mAdapter = new UserTimelineAdapter(getActivity(), this);
+        mListView.setAdapter(mAdapter);
     }
 
 //    @Override

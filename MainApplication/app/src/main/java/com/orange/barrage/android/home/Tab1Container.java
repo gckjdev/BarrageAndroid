@@ -1,7 +1,6 @@
 package com.orange.barrage.android.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ public class Tab1Container extends HomeContainerFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Ln.d("Tab1 onCreateView");
-        return inflater.inflate(R.layout.fragment_home_container, null);
+        return inflater.inflate(R.layout.home_container_fragment, null);
     }
 
     @Override
