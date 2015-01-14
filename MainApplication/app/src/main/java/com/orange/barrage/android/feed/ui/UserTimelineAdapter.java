@@ -22,6 +22,8 @@ import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import roboguice.util.Ln;
@@ -37,21 +39,26 @@ public class UserTimelineAdapter extends BaseAdapter{
     @Inject
     private FeedManager mFeedManager;
 
-//    @Inject
-//    public UserTimelineAdapter(Context context){
-//        super();
-//        this.mContext = context;
-//    }
-
-    public UserTimelineAdapter(Context context, TimelineFragment fragment) {
+    @Inject
+    public UserTimelineAdapter(Context context){
         super();
         this.mContext = context;
+    }
+
+    public void setFragment(Fragment fragment){
         this.mFragment = fragment;
     }
 
+//    public UserTimelineAdapter(Context context, TimelineFragment fragment) {
+//        super();
+//        this.mContext = context;
+//        this.mFragment = fragment;
+//    }
+
     @Override
     public int getCount() {
-        return mFeedManager.getUserTimeline().size();
+        List list = mFeedManager.getUserTimeline();
+        return list.size();
     }
 
     @Override
@@ -89,8 +96,8 @@ public class UserTimelineAdapter extends BaseAdapter{
                 ReplyFeedFragment replyFeedFragment = new ReplyFeedFragment();
 
                 FragmentTransaction transaction = mFragment.getChildFragmentManager().beginTransaction();
+                transaction.replace(R.id.timeline_fragment, replyFeedFragment);
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.fragment_home_container, replyFeedFragment);
                 transaction.commit();
                 mFragment.getChildFragmentManager().executePendingTransactions();
 

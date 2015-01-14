@@ -33,6 +33,7 @@ public class TimelineFragment extends RoboFragment {
     @InjectView(R.id.timeline_listview)
     PullToRefreshListView mListView;
 
+    @Inject
     UserTimelineAdapter mAdapter;
 
     @Inject
@@ -53,18 +54,7 @@ public class TimelineFragment extends RoboFragment {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
                 Ln.d("onPullDownToRefresh");
-                mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
-                    @Override
-                    public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        mListView.onRefreshComplete();
-                        mAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void handleFailure(int errorCode) {
-                        mListView.onRefreshComplete();
-                    }
-                });
+                loadTimeline();
             }
 
             @Override
@@ -85,9 +75,29 @@ public class TimelineFragment extends RoboFragment {
             }
         });
 
-        mAdapter = new UserTimelineAdapter(getActivity(), this);
+        mAdapter.setFragment(this);
         mListView.setAdapter(mAdapter);
+
+        loadTimeline();
     }
+
+    private void loadTimeline() {
+
+        mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
+            @Override
+            public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
+                mListView.onRefreshComplete();
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void handleFailure(int errorCode) {
+                mListView.onRefreshComplete();
+            }
+        });
+
+    }
+
 
 //    @Override
 //    public void onResume(){

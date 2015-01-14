@@ -13,6 +13,8 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.util.misc.DateUtil;
+import com.orange.barrage.android.util.misc.RandomUtil;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -60,7 +62,7 @@ public class HomeActivity extends RoboFragmentActivity {
         super.onStart();
 
         if (!mUserManager.hasUser()) {
-            String email = String.format("test%d@163.com", ((long)Math.random()) % 99999);
+            String email = String.format("test%d@163.com", DateUtil.getNowTime());
             mUserMission.regiseterUserByEmail(email, "password", null, new UserMissionCallback() {
                 @Override
                 public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
