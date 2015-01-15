@@ -1,17 +1,13 @@
 package com.orange.barrage.android.util.imagecdn;
 
+import javax.inject.Singleton;
+
 /**
  * Created by pipi on 15/1/6.
  */
+
+@Singleton
 public class QiNiuCdnManager {
-    private static QiNiuCdnManager ourInstance = new QiNiuCdnManager();
-
-    public static QiNiuCdnManager getInstance() {
-        return ourInstance;
-    }
-
-    private QiNiuCdnManager() {
-    }
 
     public String getToken(){
         // TODO online config later

@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.orange.barrage.android.util.ContextManager;
 
+import roboguice.util.Ln;
+
 /**
  * Created by Rollin on 2015/1/10.
  */
@@ -19,7 +21,7 @@ public class BarrageAndroid extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable ex) {
-                Log.e(TAG, "uncaught exception thrown", ex);
+                Ln.e(ex, "uncaughtException");
             }
         });
 

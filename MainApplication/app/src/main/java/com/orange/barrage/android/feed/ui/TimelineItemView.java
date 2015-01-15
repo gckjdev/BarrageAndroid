@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import com.orange.barrage.android.R;
 import com.orange.protocol.message.BarrageProtos;
 
+import roboguice.util.Ln;
+
 /**
  * Created by pipi on 15/1/7.
  */
@@ -34,7 +36,7 @@ public class TimelineItemView extends LinearLayout {
 //        text_url = (TextView) view.findViewById(R.id.text_url);
 
         if (view == null || barrageView == null){
-            Log.e("TimelineItemView", "view is null!!!");
+            Ln.e("view is null!!!");
             return;
         }
 

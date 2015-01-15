@@ -2,6 +2,9 @@ package com.orange.barrage.android.feed.ui;
 
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,11 @@ import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import javax.inject.Inject;
+
+import roboguice.util.Ln;
 
 /**
  * Created by Rollin on 2015/1/1.
@@ -24,6 +31,7 @@ import javax.inject.Inject;
 public class UserTimelineAdapter extends BaseAdapter{
 
     private Context mContext;
+    private Fragment mFragment;
 
     @Inject
     private FeedManager mFeedManager;
@@ -33,9 +41,21 @@ public class UserTimelineAdapter extends BaseAdapter{
         super();
         this.mContext = context;
     }
+
+    public void setFragment(Fragment fragment){
+        this.mFragment = fragment;
+    }
+
+//    public UserTimelineAdapter(Context context, TimelineFragment fragment) {
+//        super();
+//        this.mContext = context;
+//        this.mFragment = fragment;
+//    }
+
     @Override
     public int getCount() {
-        return mFeedManager.getUserTimeline().size();
+        List list = mFeedManager.getUserTimeline();
+        return list.size();
     }
 
     @Override
@@ -64,6 +84,23 @@ public class UserTimelineAdapter extends BaseAdapter{
         dateTextView.setText(DateUtil.dateFormatToString(feed.getDate(), mContext));
 
         ImageView barrageView = (ImageView) convertView.findViewById(R.id.timeline_item_barage_image);
+        barrageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // goto reply view
+                Ln.d("click image view, go to reply");
+
+                ReplyFeedFragment replyFeedFragment = new ReplyFeedFragment();
+
+                FragmentTransaction transaction = mFragment.getChildFragmentManager().beginTransaction();
+                transaction.replace(R.id.timeline_fragment, replyFeedFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                mFragment.getChildFragmentManager().executePendingTransactions();
+
+            }
+        });
+
         Picasso.with(mContext)
                 .load(feed.getImage())
                 .placeholder(R.drawable.tab_home)           // default

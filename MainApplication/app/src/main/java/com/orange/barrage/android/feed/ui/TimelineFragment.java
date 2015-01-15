@@ -23,6 +23,7 @@ import javax.inject.Inject;
 
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
+import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/6.
@@ -30,10 +31,10 @@ import roboguice.inject.InjectView;
 public class TimelineFragment extends RoboFragment {
 
     @InjectView(R.id.timeline_listview)
-    PullToRefreshListView listView;
+    PullToRefreshListView mListView;
 
     @Inject
-    UserTimelineAdapter adapter;
+    UserTimelineAdapter mAdapter;
 
     @Inject
     FeedMission mFeedMission;
@@ -49,45 +50,54 @@ public class TimelineFragment extends RoboFragment {
         super.onActivityCreated(savedInstanceState);
 
         //listView = (PullToRefreshListView) getActivity().findViewById(R.id.timeline_listview);
-        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
-                Log.d("TimelineFragment", "onPullDownToRefresh");
-                mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
-                    @Override
-                    public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        listView.onRefreshComplete();
-                        adapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void handleFailure(int errorCode) {
-                        listView.onRefreshComplete();
-                    }
-                });
+                Ln.d("onPullDownToRefresh");
+                loadTimeline();
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
-                Log.d("TimelineFragment", "onPullUpToRefresh");
+                Ln.d("onPullUpToRefresh");
                 mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        listView.onRefreshComplete();
-                        adapter.notifyDataSetChanged();
+                        mListView.onRefreshComplete();
+                        mAdapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-                        listView.onRefreshComplete();
+                        mListView.onRefreshComplete();
                     }
                 });
             }
         });
 
-        //adapter = new UserTimelineAdapter(getActivity());
-        listView.setAdapter(adapter);
+        mAdapter.setFragment(this);
+        mListView.setAdapter(mAdapter);
+
+        loadTimeline();
     }
+
+    private void loadTimeline() {
+
+        mFeedMission.getTimelineFeed(new FeedMissionCallbackInterface() {
+            @Override
+            public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
+                mListView.onRefreshComplete();
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void handleFailure(int errorCode) {
+                mListView.onRefreshComplete();
+            }
+        });
+
+    }
+
 
 //    @Override
 //    public void onResume(){

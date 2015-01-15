@@ -113,6 +113,8 @@ public class TestFragment extends RoboFragment {
                         ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure submit:"+ errorCode, Toast.LENGTH_SHORT);
                     }
                 });
+
+
             }
         });
         // YOU CAN ADD SOME TEST CODE HERE

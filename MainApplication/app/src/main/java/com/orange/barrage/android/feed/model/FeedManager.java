@@ -12,7 +12,7 @@ import roboguice.inject.ContextSingleton;
 /**
  * Created by pipi on 15/1/6.
  */
-@ContextSingleton
+@Singleton
 public class FeedManager {
 
     private List<BarrageProtos.PBFeed> userTimelineList = Collections.emptyList();
@@ -27,6 +27,11 @@ public class FeedManager {
 
     public void storeUserTimeline(List<BarrageProtos.PBFeed> list) {
         // TODO save into local cache
-        userTimelineList = list;
+        if (list == null){
+            userTimelineList = Collections.emptyList();
+        }
+        else {
+            userTimelineList = list;
+        }
     }
 }

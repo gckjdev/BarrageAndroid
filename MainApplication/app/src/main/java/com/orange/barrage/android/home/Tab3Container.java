@@ -4,13 +4,13 @@ package com.orange.barrage.android.home;
  * Created by pipi on 15/1/6.
  */
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.ui.TimelineFragment;
+
+import roboguice.util.Ln;
 
 public class Tab3Container extends HomeContainerFragment {
 
@@ -18,8 +18,8 @@ public class Tab3Container extends HomeContainerFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d("TAB", "Tab3 onCreateView");
-        return inflater.inflate(R.layout.fragment_home_container, null);
+        Ln.d("Tab3 onCreateView");
+        return inflater.inflate(R.layout.home_container_fragment, null);
     }
 
     @Override

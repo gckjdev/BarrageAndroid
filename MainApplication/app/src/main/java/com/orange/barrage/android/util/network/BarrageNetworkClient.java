@@ -3,6 +3,7 @@ package com.orange.barrage.android.util.network;
 import android.util.Log;
 
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
 
@@ -14,14 +15,16 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import roboguice.inject.ContextSingleton;
+import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/5.
  */
-@ContextSingleton
+@Singleton
 public class BarrageNetworkClient {
 
-    @Inject UserManager mUserManager;
+    @Inject
+    UserManager mUserManager;
 
     public void dataRequest(int type,
                             MessageProtos.PBDataRequest.Builder requestBuilder,
@@ -35,10 +38,12 @@ public class BarrageNetworkClient {
                 .create(BarrageNetworkInterface.class);
 
         String userId = mUserManager.getUserId();
-        requestBuilder.setUserId(userId);
+        if (userId != null) {
+            requestBuilder.setUserId(userId);
+        }
 
         requestBuilder.setType(type);
-        requestBuilder.setRequestId((int)(System.currentTimeMillis()/1000));
+        requestBuilder.setRequestId(DateUtil.getNowTime());
 
         MessageProtos.PBDataRequest req = requestBuilder.build();
         retrofitInterface.dataRequest(req, new Callback<MessageProtos.PBDataResponse>() {
@@ -46,22 +51,22 @@ public class BarrageNetworkClient {
             @Override
             public void success(MessageProtos.PBDataResponse pbDataResponse, Response response) {
                 if (pbDataResponse == null){
-                    Log.d("[HTTP]", "success but data response null");
+                    Ln.d("http success but data response null");
                     callback.handleFailure(null, ErrorProtos.PBError.ERROR_DATA_RESPONSE_NULL_VALUE);
                 }
                 else if (pbDataResponse.getResultCode() != 0){
-                    Log.d("[HTTP]", "success, but data response fail = "+pbDataResponse.toString());
+                    Ln.d("http success, but data response fail = "+pbDataResponse.toString());
                     callback.handleFailure(pbDataResponse, pbDataResponse.getResultCode());
                 }
                 else {
-                    Log.d("[HTTP]", "success "+pbDataResponse.toString());
+                    Ln.d("http success " + pbDataResponse.toString());
                     callback.handleSuccess(pbDataResponse);
                 }
             }
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                Log.e("[HTTP]", "failure "+retrofitError.toString(), retrofitError);
+                Ln.e(retrofitError, "failure "+retrofitError.toString());
                 int code = 0;
                 if (retrofitError.getResponse() != null){
                     code = retrofitError.getResponse().getStatus();
@@ -90,12 +95,12 @@ public class BarrageNetworkClient {
 
             @Override
             public void success(MessageProtos.PBDataResponse pbDataResponse, Response response) {
-                Log.d("Retrofit", "http success "+pbDataResponse.toString());
+                Ln.d("http success "+pbDataResponse.toString());
             }
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                Log.d("Retrofit", "http failure "+retrofitError.toString());
+                Ln.d("http failure "+retrofitError.toString());
             }
         });
     }

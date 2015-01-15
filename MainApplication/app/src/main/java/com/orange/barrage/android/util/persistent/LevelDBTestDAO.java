@@ -36,7 +36,7 @@ public class LevelDBTestDAO {
     }
 
     public String getText(String id){
-        byte[] bytes = mLevelDBDAO.get(id);
+        byte[] bytes = mLevelDBDAO.getBytes(id);
         if(bytes==null){
             return null;
         }
