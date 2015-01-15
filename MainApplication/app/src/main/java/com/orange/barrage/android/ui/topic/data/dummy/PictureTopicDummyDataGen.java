@@ -1,7 +1,7 @@
-package com.orange.barrage.android.data.dummy;
+package com.orange.barrage.android.ui.topic.data.dummy;
 
-import com.orange.barrage.android.data.PictureTopicData;
-import com.orange.barrage.android.model.PictureTopicItem;
+import com.orange.barrage.android.ui.topic.data.PictureTopicData;
+import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.orange.barrage.android.model;
+package com.orange.barrage.android.ui.topic.model;
 
 /**
  * Created by Rollin on 2014/11/30.
