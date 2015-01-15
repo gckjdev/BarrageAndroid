@@ -3,22 +3,29 @@ package com.orange.barrage.android.home;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
+
+import org.roboguice.shaded.goole.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,10 +60,15 @@ public class TestFragment extends RoboFragment {
     @InjectView(R.id.test_submit_button)
     Button mSubmitFeedButton;
 
+    @InjectView(R.id.picture_topic_main_widget)
+    PictureTopicMainWidget mMainWidget;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.test_fragment, container, false);
+        View inflate = inflater.inflate(R.layout.test_fragment, container, false);
+
+        return inflate;
     }
 
     @Override
@@ -112,6 +124,29 @@ public class TestFragment extends RoboFragment {
                 Toast.makeText(ContextManager.getContext(),value, Toast.LENGTH_SHORT).show();
             }
         });
+
+        initMainWidget();
     }
 
+    private void initMainWidget(){
+
+
+        mMainWidget.setImangeURL("http://115.29.249.57/uc_server/avatar.php?uid=2&size=middle");
+        mMainWidget.setSubtitle("Subtitle Text");
+
+        List<BarrageProtos.PBFeedAction> feedActionList = Lists.newArrayList();
+
+        String avatar = "http://www.ixinde.net/static/image/common/common_1_usergroup_icon.gif";
+
+        for(int i=0;i<10;i++){
+            String text = "text"+i;
+            float x = 19*i;
+            float y = 20 *i;
+
+            BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
+
+            feedActionList.add(action);
+        }
+        mMainWidget.setBarrageActions(feedActionList);
+    }
 }

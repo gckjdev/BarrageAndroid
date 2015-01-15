@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.orange.barrage.android.data.PictureTopicData;
-import com.orange.barrage.android.model.PictureTopicItem;
+import com.orange.barrage.android.ui.topic.data.PictureTopicData;
+import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
 import com.orange.barrage.android.util.ContextManager;
 
 /**
@@ -44,7 +44,6 @@ public class PictureTopicAdapter extends BaseAdapter{
             container = (PictureTopicContainer) convertView;
         }
         PictureTopicItem item = mData.getTopics().get(position);
-        container.setModel(item);
         return container;
     }
 }

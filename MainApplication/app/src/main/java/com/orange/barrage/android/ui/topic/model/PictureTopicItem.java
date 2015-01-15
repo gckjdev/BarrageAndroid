@@ -5,7 +5,6 @@ package com.orange.barrage.android.ui.topic.model;
  */
 public class PictureTopicItem {
 
-
     private long mId;
     private String mPictureUrl;
     private float mCurrentCommentProgress;

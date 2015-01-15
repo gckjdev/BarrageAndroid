@@ -10,11 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.data.PictureTopicData;
 import com.orange.barrage.android.feed.model.FeedManager;
-import com.orange.barrage.android.model.PictureTopicItem;
-import com.orange.barrage.android.ui.topic.PictureTopicContainer;
-import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
