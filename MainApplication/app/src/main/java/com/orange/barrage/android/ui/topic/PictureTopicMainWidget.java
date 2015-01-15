@@ -6,11 +6,14 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.applidium.shutterbug.FetchableImageView;
+import com.orange.barrage.android.R;
 import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
+import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.protocol.message.BarrageProtos;
 
 import org.roboguice.shaded.goole.common.collect.Lists;
@@ -28,7 +31,7 @@ public class PictureTopicMainWidget extends FrameLayout {
     //private PictureTopicItem mItem;
 
     //FIXME: change to view
-    private FetchableImageView mImage;
+    private ImageView mImage;
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;
 
@@ -39,12 +42,12 @@ public class PictureTopicMainWidget extends FrameLayout {
         this.mContext = context;
 
         mSubtitleView = new TextView(context);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM);
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);
         this.addView(mSubtitleView, params);
 
-        mImage = new FetchableImageView(context, null);
-
-        this.addView(mImage);
+        LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        mImage = new ImageView(context);
+        this.addView(mImage, imageParams);
     }
     @Inject
     public PictureTopicMainWidget(Context context){
@@ -52,7 +55,8 @@ public class PictureTopicMainWidget extends FrameLayout {
     }
 
     public void setImangeURL(String url){
-        mImage.setImage(url);
+        //FIXME:
+        mImage.setImageDrawable(this.getResources().getDrawable(R.drawable.btn_home));
     }
 
     public void setSubtitle(String title){

@@ -5,17 +5,19 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.applidium.shutterbug.FetchableImageView;
+import com.orange.barrage.android.R;
 import com.orange.protocol.message.BarrageProtos;
 
 /**
  * Created by Rollin on 2015/1/12.
  */
-public class FeedActionWidget extends FrameLayout {
+public class  FeedActionWidget extends LinearLayout {
 
-    private FetchableImageView mAvatarView;
+    private ImageView mAvatarView;
     private TextView mContent;
 
 
@@ -23,14 +25,14 @@ public class FeedActionWidget extends FrameLayout {
 
     public FeedActionWidget(Context context) {
         super(context);
+        setOrientation(HORIZONTAL);
 
-        mAvatarView = new FetchableImageView(context, null);
-        LayoutParams avatarParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.LEFT);
+        mAvatarView = new ImageView(context);
+        LayoutParams avatarParams = new LayoutParams(60, 60);
         addView(mAvatarView, avatarParams);
 
         mContent = new TextView(context);
-        LayoutParams contentParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.RIGHT);
-        //FIXME: text aligment
+        LayoutParams contentParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         addView(mContent, contentParams);
     }
 
@@ -45,7 +47,8 @@ public class FeedActionWidget extends FrameLayout {
     }
 
     public void setAvadar(String url){
-        mAvatarView.setImage(url);
+        //FIXME:
+        mAvatarView.setImageDrawable(this.getResources().getDrawable(R.drawable.btn_home));
     }
 
     public void setContent(String content){

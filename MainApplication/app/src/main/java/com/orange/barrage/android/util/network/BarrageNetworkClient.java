@@ -32,7 +32,7 @@ public class BarrageNetworkClient {
                             final BarrageNetworkCallback callback){
 
         BarrageNetworkInterface retrofitInterface = new RestAdapter.Builder()
-                .setEndpoint("http://192.168.36.200:8100/") // TODO move server URL to UMENG online config
+                .setEndpoint("http://192.168.199.222:8100/") // TODO move server URL to UMENG online config
                 .setConverter(new ProtoConverter())
                 .build()
                 .create(BarrageNetworkInterface.class);

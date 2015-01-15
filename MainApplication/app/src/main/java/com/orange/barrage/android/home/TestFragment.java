@@ -142,8 +142,8 @@ public class TestFragment extends RoboFragment {
 
         for(int i=0;i<10;i++){
             String text = "text"+i;
-            float x = 19*i;
-            float y = 20 *i;
+            float x = 40 * i;
+            float y = 40 * i;
 
             BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
 
