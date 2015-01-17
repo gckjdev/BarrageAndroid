@@ -13,8 +13,10 @@ import android.widget.TextView;
 import com.applidium.shutterbug.FetchableImageView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
+import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.protocol.message.BarrageProtos;
+import com.squareup.picasso.Picasso;
 
 import org.roboguice.shaded.goole.common.collect.Lists;
 
@@ -34,6 +36,7 @@ public class PictureTopicMainWidget extends FrameLayout {
     private ImageView mImage;
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;
+    private BarragePlayer mBarragePlayer;
 
     private Context mContext;
 
@@ -48,6 +51,9 @@ public class PictureTopicMainWidget extends FrameLayout {
         LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mImage = new ImageView(context);
         this.addView(mImage, imageParams);
+
+        //FIXME: can be change to a factory
+        mBarragePlayer = new BarragePlayerSpringImpl();
     }
     @Inject
     public PictureTopicMainWidget(Context context){
@@ -55,8 +61,7 @@ public class PictureTopicMainWidget extends FrameLayout {
     }
 
     public void setImangeURL(String url){
-        //FIXME:
-        mImage.setImageDrawable(this.getResources().getDrawable(R.drawable.btn_home));
+        Picasso.with(mContext).load(url).into(mImage);
     }
 
     public void setSubtitle(String title){
@@ -82,18 +87,35 @@ public class PictureTopicMainWidget extends FrameLayout {
 
             addView(actionWidget, params);
         }
+
+        mBarragePlayer.setBarrageViews(mFeedActionViews);
     }
 
     public void hideAllBarrageActions(){
-        for(View view:mFeedActionViews){
-            view.setVisibility(INVISIBLE);
-        }
+        mBarragePlayer.hideAllBarrage();
     }
 
     public void showAllBarrageActions(){
-        for(View view:mFeedActionViews){
-            view.setVisibility(VISIBLE);
-        }
+        mBarragePlayer.showAllBarrage();
     }
 
+    public void play(){
+        mBarragePlayer.play();
+    }
+
+    public void pause(){
+        mBarragePlayer.pause();
+    }
+
+    public void resume(){
+        mBarragePlayer.resume();
+    }
+
+    public void stop(){
+        mBarragePlayer.stop();
+    }
+
+    public void moveTo(float progress){
+        mBarragePlayer.moveTo(progress);
+    }
 }

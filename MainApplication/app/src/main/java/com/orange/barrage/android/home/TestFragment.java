@@ -3,14 +3,11 @@ package com.orange.barrage.android.home;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.Gravity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +15,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
+import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.ToastUtil;
@@ -29,6 +27,7 @@ import org.roboguice.shaded.goole.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -57,8 +56,17 @@ public class TestFragment extends RoboFragment {
     @InjectView(R.id.test_db_button)
     Button mTestDBButton;
 
-    @InjectView(R.id.test_submit_button)
-    Button mSubmitFeedButton;
+    @InjectView(R.id.play_button)
+    Button mPlayButton;
+
+    @InjectView(R.id.pause_button)
+    Button mPauseButton;
+
+    @InjectView(R.id.resume_button)
+    Button mResumeButton;
+
+    @InjectView(R.id.move_to_button)
+    Button mMoveToButton;
 
     @InjectView(R.id.picture_topic_main_widget)
     PictureTopicMainWidget mMainWidget;
@@ -93,30 +101,37 @@ public class TestFragment extends RoboFragment {
             }
         });
 
-        mSubmitFeedButton.setOnClickListener(new View.OnClickListener(){
+        mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: test code
-                final Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-                final String text = "Hello";
-                final List<UserProtos.PBUser> toUsers = new ArrayList<UserProtos.PBUser>();
-                toUsers.add(mUserManager.getUser());
-                mFeedMission.createFeed(image, text, toUsers, new FeedMissionCallbackInterface(){
-
-                    @Override
-                    public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess submit", Toast.LENGTH_SHORT);
-                    }
-
-                    @Override
-                    public void handleFailure(int errorCode) {
-                        ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure submit:"+ errorCode, Toast.LENGTH_SHORT);
-                    }
-                });
-
-
+                mMainWidget.play();
             }
         });
+
+        mPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainWidget.pause();
+            }
+        });
+
+        mResumeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainWidget.resume();
+            }
+        });
+
+        mMoveToButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float delta = new Random().nextFloat();
+                float progress = ((float)mCurrentCommentSize) * delta;
+                mMainWidget.moveTo(progress);
+                ToastUtil.showToastMessage(ContextManager.getContext(), "moveTo:"+progress, Toast.LENGTH_SHORT);
+            }
+        });
+
         // YOU CAN ADD SOME TEST CODE HERE
         mTestDBButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,21 +145,43 @@ public class TestFragment extends RoboFragment {
         initMainWidget();
     }
 
+    private void testSubmitFeed(){
+        final Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+        final String text = "Hello";
+        final List<UserProtos.PBUser> toUsers = new ArrayList<UserProtos.PBUser>();
+        toUsers.add(mUserManager.getUser());
+        mFeedMission.createFeed(image, text, toUsers, new FeedMissionCallbackInterface() {
+
+            @Override
+            public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
+                ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess submit", Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void handleFailure(int errorCode) {
+                ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure submit:" + errorCode, Toast.LENGTH_SHORT);
+            }
+        });
+    }
+
+    private int mCurrentCommentSize = 0;
+
     private void initMainWidget(){
-
-
-        mMainWidget.setImangeURL("http://115.29.249.57/uc_server/avatar.php?uid=2&size=middle");
+        String imageURL = PictureTopicDummyDataGen.getImange();
+        mMainWidget.setImangeURL(imageURL);
         mMainWidget.setSubtitle("Subtitle Text");
 
         List<BarrageProtos.PBFeedAction> feedActionList = Lists.newArrayList();
 
-        String avatar = "http://www.ixinde.net/static/image/common/common_1_usergroup_icon.gif";
+        Random random = new Random();
+        mCurrentCommentSize = 5 + random.nextInt(10);//[5, 15]
 
-        for(int i=0;i<10;i++){
-            String text = "text"+i;
-            float x = 40 * i;
-            float y = 40 * i;
+        for(int i=0;i<mCurrentCommentSize;i++){
+            String text = PictureTopicDummyDataGen.getFeedActionText();
+            float x = random.nextInt(500);
+            float y = random.nextInt(500);
 
+            String avatar = PictureTopicDummyDataGen.getAvatar();
             BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
 
             feedActionList.add(action);

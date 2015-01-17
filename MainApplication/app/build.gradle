@@ -47,4 +47,6 @@ dependencies {
     compile 'com.navercorp.pulltorefresh:library:3.2.0@aar'
 
     compile 'de.greenrobot:eventbus:2.4.0'
+
+    compile 'com.facebook.rebound:rebound:0.3.7'
 }

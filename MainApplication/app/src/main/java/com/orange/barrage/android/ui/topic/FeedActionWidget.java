@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.applidium.shutterbug.FetchableImageView;
 import com.orange.barrage.android.R;
 import com.orange.protocol.message.BarrageProtos;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Rollin on 2015/1/12.
@@ -22,9 +23,11 @@ public class  FeedActionWidget extends LinearLayout {
 
 
     private BarrageProtos.PBFeedAction mFeedAction;
+    private Context mContext;
 
     public FeedActionWidget(Context context) {
         super(context);
+        mContext = context;
         setOrientation(HORIZONTAL);
 
         mAvatarView = new ImageView(context);
@@ -47,8 +50,7 @@ public class  FeedActionWidget extends LinearLayout {
     }
 
     public void setAvadar(String url){
-        //FIXME:
-        mAvatarView.setImageDrawable(this.getResources().getDrawable(R.drawable.btn_home));
+        Picasso.with(mContext).load(url).into(mAvatarView);
     }
 
     public void setContent(String content){
