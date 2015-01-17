@@ -126,21 +126,33 @@ public class BarrageSpringChain implements SpringListener {
     }
 
     public void start(){
-        int size = mSprings.size();
-
         //stop all
         stop();
 
-        for(int i=0;i<size;i++){
+        int size = mSprings.size();
+
+        //find current view already set 1
+        int currentIndex = 0;
+        for(int i=0;i<size;i++) {
             final int index = i;
+            final Spring spring = mSprings.get(index);
+            if(spring.getCurrentValue()==1){
+                currentIndex++;
+            }
+        }
+
+        //start from progress not 1, to the end , and set them to 1.
+        for(int i=currentIndex;i<size;i++){
+            final Spring spring = mSprings.get(i);
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-                    mSprings.get(index).setEndValue(1);
+                    spring.setEndValue(1);
                 }
             };
             mRunnings.add(runnable);
-            mHandler.postDelayed(runnable, index * mDelayBetweenSpring);
+            int deltaIndex = i- currentIndex;
+            mHandler.postDelayed(runnable, deltaIndex * mDelayBetweenSpring);
         }
     }
 
