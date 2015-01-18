@@ -29,10 +29,6 @@ import javax.inject.Inject;
  */
 public class PictureTopicMainWidget extends FrameLayout {
 
-
-    //private PictureTopicItem mItem;
-
-    //FIXME: change to view
     private ImageView mImage;
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;

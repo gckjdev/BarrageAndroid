@@ -173,6 +173,8 @@ public class TestFragment extends RoboFragment {
 
     private int mCurrentCommentSize = 0;
 
+    private int mCommentLocationThreshold = 800;
+
     private void initMainWidget(){
         String imageURL = PictureTopicDummyDataGen.getImange();
         mMainWidget.setImangeURL(imageURL);
@@ -185,8 +187,8 @@ public class TestFragment extends RoboFragment {
 
         for(int i=0;i<mCurrentCommentSize;i++){
             String text = PictureTopicDummyDataGen.getFeedActionText();
-            float x = random.nextInt(500);
-            float y = random.nextInt(500);
+            float x = mCommentLocationThreshold * random.nextFloat();
+            float y =  mCommentLocationThreshold * random.nextFloat();
 
             String avatar = PictureTopicDummyDataGen.getAvatar();
             BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();

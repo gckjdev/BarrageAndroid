@@ -82,7 +82,7 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
         }
     }
 
-    private int mParentHeight = 1800;
+    private int mParentHeight = 900;
 
     @Override
     public void setBarrageViews(List<FeedActionWidget> views) {
