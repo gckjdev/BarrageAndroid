@@ -163,6 +163,26 @@ public class BarrageSpringChain implements SpringListener {
         mRunnings.clear();
     }
 
+    public void moveTo(float progress){
+        stop();
+        List<Spring> springs = mSprings;
+        //set all to 0
+        for(int i=0;i<springs.size();i++){
+            springs.get(i).setCurrentValue(0, true);
+        }
+
+        if(progress>0){
+            //start to move before progress.
+            int currentIndex = (int)progress;
+            for(int i=0;i<currentIndex;i++){
+                springs.get(i).setCurrentValue(1, true);
+            }
+
+            float currentSpringProgress = progress - (float)currentIndex;
+            springs.get(currentIndex).setCurrentValue(currentSpringProgress);
+        }
+    }
+
     public BarrageSpringChain setCurrentValue(double currentValue){
         int size = mSprings.size();
         for(int i=0;i<size;i++){

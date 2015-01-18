@@ -82,9 +82,12 @@ public class PictureTopicMainWidget extends FrameLayout {
             mFeedActionViews.add(actionWidget);
 
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            //FIXME: use top later instead of margin
             params.leftMargin = (int)action.getPosX();
             params.topMargin  =(int) action.getPosY();
-
+            //actionWidget.setTop((int)action.getPosX());
+            //actionWidget.setLeft((int)action.getPosY());
             addView(actionWidget, params);
         }
 

@@ -3,6 +3,7 @@ package com.orange.barrage.android.ui.topic.player;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
@@ -64,23 +65,7 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
 
     @Override
     public void moveTo(float progress) {
-        //FIXME: should move to BarrageSpringChain.
-        List<Spring> springs = mSpringChain.getAllSprings();
-        //set all to 0
-        for(int i=0;i<springs.size();i++){
-            springs.get(i).setCurrentValue(0, true);
-        }
-
-        if(progress>0){
-            //start to move before progress.
-            int currentIndex = (int)progress;
-            for(int i=0;i<currentIndex;i++){
-                springs.get(i).setCurrentValue(1, true);
-            }
-
-            float currentSpringProgress = progress - (float)currentIndex;
-            springs.get(currentIndex).setCurrentValue(currentSpringProgress);
-        }
+        mSpringChain.moveTo(progress);
     }
 
     @Override
@@ -97,7 +82,7 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
         }
     }
 
-    private int mParentHeight = 900;
+    private int mParentHeight = 1800;
 
     @Override
     public void setBarrageViews(List<FeedActionWidget> views) {
@@ -109,8 +94,10 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
             mSpringChain.addSpring(new SimpleSpringListener() {
                 @Override
                 public void onSpringUpdate(Spring spring) {
-                    //float val = (float) spring.getCurrentValue();
-                    float translationY = (float)SpringUtil.mapValueFromRangeToRange(spring.getCurrentValue(), 0, 1, mParentHeight, 0);
+                    //FIXME: use top later instead of margin
+                    FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)currentView.getLayoutParams();
+                    float initY = mParentHeight - layoutParams.topMargin;
+                    float translationY = (float)SpringUtil.mapValueFromRangeToRange(spring.getCurrentValue(), 0, 1, initY, 0);
                     currentView.setTranslationY(translationY);
                 }
             });
