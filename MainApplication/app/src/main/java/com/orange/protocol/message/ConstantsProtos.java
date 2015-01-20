@@ -261,104 +261,6 @@ public final class ConstantsProtos {
     // @@protoc_insertion_point(enum_scope:barrage.PBFeedActionType)
   }
 
-  /**
-   * Protobuf enum {@code barrage.PBColorMode}
-   */
-  public enum PBColorMode
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>BLACK_WHITE = 0;</code>
-     *
-     * <pre>
-     * 黑色字体白色阴影
-     * </pre>
-     */
-    BLACK_WHITE(0, 0),
-    /**
-     * <code>WHITE_BLACK = 1;</code>
-     *
-     * <pre>
-     * 白色字体黑色阴影
-     * </pre>
-     */
-    WHITE_BLACK(1, 1),
-    ;
-
-    /**
-     * <code>BLACK_WHITE = 0;</code>
-     *
-     * <pre>
-     * 黑色字体白色阴影
-     * </pre>
-     */
-    public static final int BLACK_WHITE_VALUE = 0;
-    /**
-     * <code>WHITE_BLACK = 1;</code>
-     *
-     * <pre>
-     * 白色字体黑色阴影
-     * </pre>
-     */
-    public static final int WHITE_BLACK_VALUE = 1;
-
-
-    public final int getNumber() { return value; }
-
-    public static PBColorMode valueOf(int value) {
-      switch (value) {
-        case 0: return BLACK_WHITE;
-        case 1: return WHITE_BLACK;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<PBColorMode>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<PBColorMode>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<PBColorMode>() {
-            public PBColorMode findValueByNumber(int number) {
-              return PBColorMode.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.orange.protocol.message.ConstantsProtos.getDescriptor().getEnumTypes().get(3);
-    }
-
-    private static final PBColorMode[] VALUES = values();
-
-    public static PBColorMode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private PBColorMode(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:barrage.PBColorMode)
-  }
-
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -372,10 +274,9 @@ public final class ConstantsProtos {
       "pe\022\026\n\022DEVICE_TYPE_IPHONE\020\001\022\027\n\023DEVICE_TYP" +
       "E_ANDROID\020\002\022\026\n\022DEVICE_TYPE_WINDOW\020\003*!\n\nP" +
       "BFeedType\022\023\n\017FEED_IMAGE_TEXT\020\000*+\n\020PBFeed" +
-      "ActionType\022\027\n\023ACTION_BARRAGE_TEXT\020\000*/\n\013P" +
-      "BColorMode\022\017\n\013BLACK_WHITE\020\000\022\017\n\013WHITE_BLA" +
-      "CK\020\001B.\n\033com.orange.protocol.messageB\017Con" +
-      "stantsProtos"
+      "ActionType\022\027\n\023ACTION_BARRAGE_TEXT\020\000B.\n\033c" +
+      "om.orange.protocol.messageB\017ConstantsPro" +
+      "tos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

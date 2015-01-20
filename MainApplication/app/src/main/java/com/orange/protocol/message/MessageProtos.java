@@ -177,13 +177,37 @@ public final class MessageProtos {
      */
     MESSAGE_GET_NEW_INVITE_CODE(8, 9),
     /**
+     * <code>MESSAGE_ADD_USER_TAG = 10;</code>
+     *
+     * <pre>
+     * 添加用户标签
+     * </pre>
+     */
+    MESSAGE_ADD_USER_TAG(9, 10),
+    /**
+     * <code>MESSAGE_DELETE_USER_TAG = 11;</code>
+     *
+     * <pre>
+     * 删除用户标签
+     * </pre>
+     */
+    MESSAGE_DELETE_USER_TAG(10, 11),
+    /**
+     * <code>MESSAGE_GET_USER_TAG_LIST = 12;</code>
+     *
+     * <pre>
+     * 获取用户标签列表
+     * </pre>
+     */
+    MESSAGE_GET_USER_TAG_LIST(11, 12),
+    /**
      * <code>MESSAGE_CREATE_FEED = 30;</code>
      *
      * <pre>
      * 分享消息
      * </pre>
      */
-    MESSAGE_CREATE_FEED(9, 30),
+    MESSAGE_CREATE_FEED(12, 30),
     /**
      * <code>MESSAGE_REPLY_FEED = 31;</code>
      *
@@ -191,7 +215,7 @@ public final class MessageProtos {
      * 回复消息（弹幕）
      * </pre>
      */
-    MESSAGE_REPLY_FEED(10, 31),
+    MESSAGE_REPLY_FEED(13, 31),
     /**
      * <code>MESSAGE_GET_USER_TIMELINE_FEED = 32;</code>
      *
@@ -199,7 +223,7 @@ public final class MessageProtos {
      * 获取用户消息流
      * </pre>
      */
-    MESSAGE_GET_USER_TIMELINE_FEED(11, 32),
+    MESSAGE_GET_USER_TIMELINE_FEED(14, 32),
     /**
      * <code>MESSAGE_GET_QINIU_UPLOAD_TOKEN = 100;</code>
      *
@@ -207,7 +231,7 @@ public final class MessageProtos {
      * 获取云存储TOKEN
      * </pre>
      */
-    MESSAGE_GET_QINIU_UPLOAD_TOKEN(12, 100),
+    MESSAGE_GET_QINIU_UPLOAD_TOKEN(15, 100),
     ;
 
     /**
@@ -283,6 +307,30 @@ public final class MessageProtos {
      */
     public static final int MESSAGE_GET_NEW_INVITE_CODE_VALUE = 9;
     /**
+     * <code>MESSAGE_ADD_USER_TAG = 10;</code>
+     *
+     * <pre>
+     * 添加用户标签
+     * </pre>
+     */
+    public static final int MESSAGE_ADD_USER_TAG_VALUE = 10;
+    /**
+     * <code>MESSAGE_DELETE_USER_TAG = 11;</code>
+     *
+     * <pre>
+     * 删除用户标签
+     * </pre>
+     */
+    public static final int MESSAGE_DELETE_USER_TAG_VALUE = 11;
+    /**
+     * <code>MESSAGE_GET_USER_TAG_LIST = 12;</code>
+     *
+     * <pre>
+     * 获取用户标签列表
+     * </pre>
+     */
+    public static final int MESSAGE_GET_USER_TAG_LIST_VALUE = 12;
+    /**
      * <code>MESSAGE_CREATE_FEED = 30;</code>
      *
      * <pre>
@@ -329,6 +377,9 @@ public final class MessageProtos {
         case 7: return MESSAGE_PROCESS_USER_FRIEND;
         case 8: return MESSAGE_VERIFY_INVITE_CODE;
         case 9: return MESSAGE_GET_NEW_INVITE_CODE;
+        case 10: return MESSAGE_ADD_USER_TAG;
+        case 11: return MESSAGE_DELETE_USER_TAG;
+        case 12: return MESSAGE_GET_USER_TAG_LIST;
         case 30: return MESSAGE_CREATE_FEED;
         case 31: return MESSAGE_REPLY_FEED;
         case 32: return MESSAGE_GET_USER_TIMELINE_FEED;
@@ -5978,14 +6029,26 @@ public final class MessageProtos {
 
     /**
      * <code>required string keyword = 1;</code>
+     *
+     * <pre>
+     * 查询关键字
+     * </pre>
      */
     boolean hasKeyword();
     /**
      * <code>required string keyword = 1;</code>
+     *
+     * <pre>
+     * 查询关键字
+     * </pre>
      */
     java.lang.String getKeyword();
     /**
      * <code>required string keyword = 1;</code>
+     *
+     * <pre>
+     * 查询关键字
+     * </pre>
      */
     com.google.protobuf.ByteString
         getKeywordBytes();
@@ -6092,12 +6155,20 @@ public final class MessageProtos {
     private java.lang.Object keyword_;
     /**
      * <code>required string keyword = 1;</code>
+     *
+     * <pre>
+     * 查询关键字
+     * </pre>
      */
     public boolean hasKeyword() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>required string keyword = 1;</code>
+     *
+     * <pre>
+     * 查询关键字
+     * </pre>
      */
     public java.lang.String getKeyword() {
       java.lang.Object ref = keyword_;
@@ -6115,6 +6186,10 @@ public final class MessageProtos {
     }
     /**
      * <code>required string keyword = 1;</code>
+     *
+     * <pre>
+     * 查询关键字
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getKeywordBytes() {
@@ -6372,12 +6447,20 @@ public final class MessageProtos {
       private java.lang.Object keyword_ = "";
       /**
        * <code>required string keyword = 1;</code>
+       *
+       * <pre>
+       * 查询关键字
+       * </pre>
        */
       public boolean hasKeyword() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>required string keyword = 1;</code>
+       *
+       * <pre>
+       * 查询关键字
+       * </pre>
        */
       public java.lang.String getKeyword() {
         java.lang.Object ref = keyword_;
@@ -6395,6 +6478,10 @@ public final class MessageProtos {
       }
       /**
        * <code>required string keyword = 1;</code>
+       *
+       * <pre>
+       * 查询关键字
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getKeywordBytes() {
@@ -6411,6 +6498,10 @@ public final class MessageProtos {
       }
       /**
        * <code>required string keyword = 1;</code>
+       *
+       * <pre>
+       * 查询关键字
+       * </pre>
        */
       public Builder setKeyword(
           java.lang.String value) {
@@ -6424,6 +6515,10 @@ public final class MessageProtos {
       }
       /**
        * <code>required string keyword = 1;</code>
+       *
+       * <pre>
+       * 查询关键字
+       * </pre>
        */
       public Builder clearKeyword() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -6433,6 +6528,10 @@ public final class MessageProtos {
       }
       /**
        * <code>required string keyword = 1;</code>
+       *
+       * <pre>
+       * 查询关键字
+       * </pre>
        */
       public Builder setKeywordBytes(
           com.google.protobuf.ByteString value) {
@@ -9601,9 +9700,3255 @@ public final class MessageProtos {
     // @@protoc_insertion_point(class_scope:barrage.PBAddUserFriendResponse)
   }
 
+  public interface PBAddUserTagRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBAddUserTagRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要添加的标签
+     * </pre>
+     */
+    boolean hasTag();
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要添加的标签
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTag getTag();
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要添加的标签
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBAddUserTagRequest}
+   */
+  public static final class PBAddUserTagRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBAddUserTagRequest)
+      PBAddUserTagRequestOrBuilder {
+    // Use PBAddUserTagRequest.newBuilder() to construct.
+    private PBAddUserTagRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBAddUserTagRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBAddUserTagRequest defaultInstance;
+    public static PBAddUserTagRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBAddUserTagRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBAddUserTagRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserTag.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = tag_.toBuilder();
+              }
+              tag_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserTag.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tag_);
+                tag_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.class, com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBAddUserTagRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PBAddUserTagRequest>() {
+      public PBAddUserTagRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBAddUserTagRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBAddUserTagRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserTag tag_;
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要添加的标签
+     * </pre>
+     */
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要添加的标签
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTag getTag() {
+      return tag_;
+    }
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要添加的标签
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder() {
+      return tag_;
+    }
+
+    private void initFields() {
+      tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getTag().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tag_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, tag_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBAddUserTagRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBAddUserTagRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBAddUserTagRequest)
+        com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.class, com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (tagBuilder_ == null) {
+          tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+        } else {
+          tagBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagRequest_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagRequest getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagRequest build() {
+        com.orange.protocol.message.MessageProtos.PBAddUserTagRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagRequest buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBAddUserTagRequest result = new com.orange.protocol.message.MessageProtos.PBAddUserTagRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (tagBuilder_ == null) {
+          result.tag_ = tag_;
+        } else {
+          result.tag_ = tagBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBAddUserTagRequest) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBAddUserTagRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBAddUserTagRequest other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          mergeTag(other.getTag());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTag()) {
+          
+          return false;
+        }
+        if (!getTag().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBAddUserTagRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBAddUserTagRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserTag tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> tagBuilder_;
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTag getTag() {
+        if (tagBuilder_ == null) {
+          return tag_;
+        } else {
+          return tagBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public Builder setTag(com.orange.protocol.message.UserProtos.PBUserTag value) {
+        if (tagBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tag_ = value;
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public Builder setTag(
+          com.orange.protocol.message.UserProtos.PBUserTag.Builder builderForValue) {
+        if (tagBuilder_ == null) {
+          tag_ = builderForValue.build();
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public Builder mergeTag(com.orange.protocol.message.UserProtos.PBUserTag value) {
+        if (tagBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tag_ != com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance()) {
+            tag_ =
+              com.orange.protocol.message.UserProtos.PBUserTag.newBuilder(tag_).mergeFrom(value).buildPartial();
+          } else {
+            tag_ = value;
+          }
+          onChanged();
+        } else {
+          tagBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public Builder clearTag() {
+        if (tagBuilder_ == null) {
+          tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+          onChanged();
+        } else {
+          tagBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTag.Builder getTagBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTagFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder() {
+        if (tagBuilder_ != null) {
+          return tagBuilder_.getMessageOrBuilder();
+        } else {
+          return tag_;
+        }
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要添加的标签
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> 
+          getTagFieldBuilder() {
+        if (tagBuilder_ == null) {
+          tagBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder>(
+                  getTag(),
+                  getParentForChildren(),
+                  isClean());
+          tag_ = null;
+        }
+        return tagBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBAddUserTagRequest)
+    }
+
+    static {
+      defaultInstance = new PBAddUserTagRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBAddUserTagRequest)
+  }
+
+  public interface PBAddUserTagResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBAddUserTagResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    boolean hasTags();
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagList getTags();
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBAddUserTagResponse}
+   */
+  public static final class PBAddUserTagResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBAddUserTagResponse)
+      PBAddUserTagResponseOrBuilder {
+    // Use PBAddUserTagResponse.newBuilder() to construct.
+    private PBAddUserTagResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBAddUserTagResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBAddUserTagResponse defaultInstance;
+    public static PBAddUserTagResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBAddUserTagResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBAddUserTagResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserTagList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = tags_.toBuilder();
+              }
+              tags_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserTagList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tags_);
+                tags_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.class, com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBAddUserTagResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PBAddUserTagResponse>() {
+      public PBAddUserTagResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBAddUserTagResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBAddUserTagResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TAGS_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserTagList tags_;
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    public boolean hasTags() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagList getTags() {
+      return tags_;
+    }
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder() {
+      return tags_;
+    }
+
+    private void initFields() {
+      tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasTags()) {
+        if (!getTags().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tags_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, tags_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBAddUserTagResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBAddUserTagResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBAddUserTagResponse)
+        com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.class, com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (tagsBuilder_ == null) {
+          tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+        } else {
+          tagsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBAddUserTagResponse_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagResponse getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagResponse build() {
+        com.orange.protocol.message.MessageProtos.PBAddUserTagResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagResponse buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBAddUserTagResponse result = new com.orange.protocol.message.MessageProtos.PBAddUserTagResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (tagsBuilder_ == null) {
+          result.tags_ = tags_;
+        } else {
+          result.tags_ = tagsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBAddUserTagResponse) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBAddUserTagResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBAddUserTagResponse other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance()) return this;
+        if (other.hasTags()) {
+          mergeTags(other.getTags());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (hasTags()) {
+          if (!getTags().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBAddUserTagResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBAddUserTagResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserTagList tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder> tagsBuilder_;
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public boolean hasTags() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagList getTags() {
+        if (tagsBuilder_ == null) {
+          return tags_;
+        } else {
+          return tagsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder setTags(com.orange.protocol.message.UserProtos.PBUserTagList value) {
+        if (tagsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tags_ = value;
+          onChanged();
+        } else {
+          tagsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder setTags(
+          com.orange.protocol.message.UserProtos.PBUserTagList.Builder builderForValue) {
+        if (tagsBuilder_ == null) {
+          tags_ = builderForValue.build();
+          onChanged();
+        } else {
+          tagsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder mergeTags(com.orange.protocol.message.UserProtos.PBUserTagList value) {
+        if (tagsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tags_ != com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance()) {
+            tags_ =
+              com.orange.protocol.message.UserProtos.PBUserTagList.newBuilder(tags_).mergeFrom(value).buildPartial();
+          } else {
+            tags_ = value;
+          }
+          onChanged();
+        } else {
+          tagsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder clearTags() {
+        if (tagsBuilder_ == null) {
+          tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+          onChanged();
+        } else {
+          tagsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagList.Builder getTagsBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTagsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder() {
+        if (tagsBuilder_ != null) {
+          return tagsBuilder_.getMessageOrBuilder();
+        } else {
+          return tags_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder> 
+          getTagsFieldBuilder() {
+        if (tagsBuilder_ == null) {
+          tagsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder>(
+                  getTags(),
+                  getParentForChildren(),
+                  isClean());
+          tags_ = null;
+        }
+        return tagsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBAddUserTagResponse)
+    }
+
+    static {
+      defaultInstance = new PBAddUserTagResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBAddUserTagResponse)
+  }
+
+  public interface PBDeleteUserTagRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBDeleteUserTagRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要删除的标签
+     * </pre>
+     */
+    boolean hasTag();
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要删除的标签
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTag getTag();
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要删除的标签
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBDeleteUserTagRequest}
+   */
+  public static final class PBDeleteUserTagRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBDeleteUserTagRequest)
+      PBDeleteUserTagRequestOrBuilder {
+    // Use PBDeleteUserTagRequest.newBuilder() to construct.
+    private PBDeleteUserTagRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBDeleteUserTagRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBDeleteUserTagRequest defaultInstance;
+    public static PBDeleteUserTagRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBDeleteUserTagRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBDeleteUserTagRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserTag.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = tag_.toBuilder();
+              }
+              tag_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserTag.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tag_);
+                tag_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.class, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBDeleteUserTagRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PBDeleteUserTagRequest>() {
+      public PBDeleteUserTagRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBDeleteUserTagRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBDeleteUserTagRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserTag tag_;
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要删除的标签
+     * </pre>
+     */
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要删除的标签
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTag getTag() {
+      return tag_;
+    }
+    /**
+     * <code>required .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 要删除的标签
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder() {
+      return tag_;
+    }
+
+    private void initFields() {
+      tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getTag().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tag_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, tag_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBDeleteUserTagRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBDeleteUserTagRequest)
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.class, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (tagBuilder_ == null) {
+          tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+        } else {
+          tagBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagRequest_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest build() {
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest result = new com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (tagBuilder_ == null) {
+          result.tag_ = tag_;
+        } else {
+          result.tag_ = tagBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          mergeTag(other.getTag());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTag()) {
+          
+          return false;
+        }
+        if (!getTag().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserTag tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> tagBuilder_;
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTag getTag() {
+        if (tagBuilder_ == null) {
+          return tag_;
+        } else {
+          return tagBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public Builder setTag(com.orange.protocol.message.UserProtos.PBUserTag value) {
+        if (tagBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tag_ = value;
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public Builder setTag(
+          com.orange.protocol.message.UserProtos.PBUserTag.Builder builderForValue) {
+        if (tagBuilder_ == null) {
+          tag_ = builderForValue.build();
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public Builder mergeTag(com.orange.protocol.message.UserProtos.PBUserTag value) {
+        if (tagBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tag_ != com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance()) {
+            tag_ =
+              com.orange.protocol.message.UserProtos.PBUserTag.newBuilder(tag_).mergeFrom(value).buildPartial();
+          } else {
+            tag_ = value;
+          }
+          onChanged();
+        } else {
+          tagBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public Builder clearTag() {
+        if (tagBuilder_ == null) {
+          tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+          onChanged();
+        } else {
+          tagBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTag.Builder getTagBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTagFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder() {
+        if (tagBuilder_ != null) {
+          return tagBuilder_.getMessageOrBuilder();
+        } else {
+          return tag_;
+        }
+      }
+      /**
+       * <code>required .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 要删除的标签
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> 
+          getTagFieldBuilder() {
+        if (tagBuilder_ == null) {
+          tagBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder>(
+                  getTag(),
+                  getParentForChildren(),
+                  isClean());
+          tag_ = null;
+        }
+        return tagBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBDeleteUserTagRequest)
+    }
+
+    static {
+      defaultInstance = new PBDeleteUserTagRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBDeleteUserTagRequest)
+  }
+
+  public interface PBDeleteUserTagResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBDeleteUserTagResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回删除后完整的标签列表
+     * </pre>
+     */
+    boolean hasTags();
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回删除后完整的标签列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagList getTags();
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回删除后完整的标签列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBDeleteUserTagResponse}
+   */
+  public static final class PBDeleteUserTagResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBDeleteUserTagResponse)
+      PBDeleteUserTagResponseOrBuilder {
+    // Use PBDeleteUserTagResponse.newBuilder() to construct.
+    private PBDeleteUserTagResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBDeleteUserTagResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBDeleteUserTagResponse defaultInstance;
+    public static PBDeleteUserTagResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBDeleteUserTagResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBDeleteUserTagResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserTagList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = tags_.toBuilder();
+              }
+              tags_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserTagList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tags_);
+                tags_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.class, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBDeleteUserTagResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PBDeleteUserTagResponse>() {
+      public PBDeleteUserTagResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBDeleteUserTagResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBDeleteUserTagResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TAGS_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserTagList tags_;
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回删除后完整的标签列表
+     * </pre>
+     */
+    public boolean hasTags() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回删除后完整的标签列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagList getTags() {
+      return tags_;
+    }
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回删除后完整的标签列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder() {
+      return tags_;
+    }
+
+    private void initFields() {
+      tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasTags()) {
+        if (!getTags().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tags_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, tags_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBDeleteUserTagResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBDeleteUserTagResponse)
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.class, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (tagsBuilder_ == null) {
+          tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+        } else {
+          tagsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBDeleteUserTagResponse_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse build() {
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse result = new com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (tagsBuilder_ == null) {
+          result.tags_ = tags_;
+        } else {
+          result.tags_ = tagsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance()) return this;
+        if (other.hasTags()) {
+          mergeTags(other.getTags());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (hasTags()) {
+          if (!getTags().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserTagList tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder> tagsBuilder_;
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public boolean hasTags() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagList getTags() {
+        if (tagsBuilder_ == null) {
+          return tags_;
+        } else {
+          return tagsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public Builder setTags(com.orange.protocol.message.UserProtos.PBUserTagList value) {
+        if (tagsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tags_ = value;
+          onChanged();
+        } else {
+          tagsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public Builder setTags(
+          com.orange.protocol.message.UserProtos.PBUserTagList.Builder builderForValue) {
+        if (tagsBuilder_ == null) {
+          tags_ = builderForValue.build();
+          onChanged();
+        } else {
+          tagsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public Builder mergeTags(com.orange.protocol.message.UserProtos.PBUserTagList value) {
+        if (tagsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tags_ != com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance()) {
+            tags_ =
+              com.orange.protocol.message.UserProtos.PBUserTagList.newBuilder(tags_).mergeFrom(value).buildPartial();
+          } else {
+            tags_ = value;
+          }
+          onChanged();
+        } else {
+          tagsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public Builder clearTags() {
+        if (tagsBuilder_ == null) {
+          tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+          onChanged();
+        } else {
+          tagsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagList.Builder getTagsBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTagsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder() {
+        if (tagsBuilder_ != null) {
+          return tagsBuilder_.getMessageOrBuilder();
+        } else {
+          return tags_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回删除后完整的标签列表
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder> 
+          getTagsFieldBuilder() {
+        if (tagsBuilder_ == null) {
+          tagsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder>(
+                  getTags(),
+                  getParentForChildren(),
+                  isClean());
+          tags_ = null;
+        }
+        return tagsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBDeleteUserTagResponse)
+    }
+
+    static {
+      defaultInstance = new PBDeleteUserTagResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBDeleteUserTagResponse)
+  }
+
+  public interface PBGetUserTagListRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBGetUserTagListRequest)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code barrage.PBGetUserTagListRequest}
+   */
+  public static final class PBGetUserTagListRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBGetUserTagListRequest)
+      PBGetUserTagListRequestOrBuilder {
+    // Use PBGetUserTagListRequest.newBuilder() to construct.
+    private PBGetUserTagListRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBGetUserTagListRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBGetUserTagListRequest defaultInstance;
+    public static PBGetUserTagListRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBGetUserTagListRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBGetUserTagListRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.class, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBGetUserTagListRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PBGetUserTagListRequest>() {
+      public PBGetUserTagListRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBGetUserTagListRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBGetUserTagListRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBGetUserTagListRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBGetUserTagListRequest)
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.class, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListRequest_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest build() {
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest result = new com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBGetUserTagListRequest)
+    }
+
+    static {
+      defaultInstance = new PBGetUserTagListRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBGetUserTagListRequest)
+  }
+
+  public interface PBGetUserTagListResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBGetUserTagListResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    boolean hasTags();
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagList getTags();
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBGetUserTagListResponse}
+   */
+  public static final class PBGetUserTagListResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBGetUserTagListResponse)
+      PBGetUserTagListResponseOrBuilder {
+    // Use PBGetUserTagListResponse.newBuilder() to construct.
+    private PBGetUserTagListResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBGetUserTagListResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBGetUserTagListResponse defaultInstance;
+    public static PBGetUserTagListResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBGetUserTagListResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBGetUserTagListResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserTagList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = tags_.toBuilder();
+              }
+              tags_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserTagList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tags_);
+                tags_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.class, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBGetUserTagListResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PBGetUserTagListResponse>() {
+      public PBGetUserTagListResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBGetUserTagListResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBGetUserTagListResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TAGS_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserTagList tags_;
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    public boolean hasTags() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagList getTags() {
+      return tags_;
+    }
+    /**
+     * <code>optional .barrage.PBUserTagList tags = 1;</code>
+     *
+     * <pre>
+     * 返回完整的标签列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder() {
+      return tags_;
+    }
+
+    private void initFields() {
+      tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasTags()) {
+        if (!getTags().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tags_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, tags_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBGetUserTagListResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBGetUserTagListResponse)
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.class, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (tagsBuilder_ == null) {
+          tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+        } else {
+          tagsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserTagListResponse_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse build() {
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse result = new com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (tagsBuilder_ == null) {
+          result.tags_ = tags_;
+        } else {
+          result.tags_ = tagsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance()) return this;
+        if (other.hasTags()) {
+          mergeTags(other.getTags());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (hasTags()) {
+          if (!getTags().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserTagList tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder> tagsBuilder_;
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public boolean hasTags() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagList getTags() {
+        if (tagsBuilder_ == null) {
+          return tags_;
+        } else {
+          return tagsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder setTags(com.orange.protocol.message.UserProtos.PBUserTagList value) {
+        if (tagsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tags_ = value;
+          onChanged();
+        } else {
+          tagsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder setTags(
+          com.orange.protocol.message.UserProtos.PBUserTagList.Builder builderForValue) {
+        if (tagsBuilder_ == null) {
+          tags_ = builderForValue.build();
+          onChanged();
+        } else {
+          tagsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder mergeTags(com.orange.protocol.message.UserProtos.PBUserTagList value) {
+        if (tagsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tags_ != com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance()) {
+            tags_ =
+              com.orange.protocol.message.UserProtos.PBUserTagList.newBuilder(tags_).mergeFrom(value).buildPartial();
+          } else {
+            tags_ = value;
+          }
+          onChanged();
+        } else {
+          tagsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public Builder clearTags() {
+        if (tagsBuilder_ == null) {
+          tags_ = com.orange.protocol.message.UserProtos.PBUserTagList.getDefaultInstance();
+          onChanged();
+        } else {
+          tagsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagList.Builder getTagsBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTagsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder getTagsOrBuilder() {
+        if (tagsBuilder_ != null) {
+          return tagsBuilder_.getMessageOrBuilder();
+        } else {
+          return tags_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTagList tags = 1;</code>
+       *
+       * <pre>
+       * 返回完整的标签列表
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder> 
+          getTagsFieldBuilder() {
+        if (tagsBuilder_ == null) {
+          tagsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserTagList, com.orange.protocol.message.UserProtos.PBUserTagList.Builder, com.orange.protocol.message.UserProtos.PBUserTagListOrBuilder>(
+                  getTags(),
+                  getParentForChildren(),
+                  isClean());
+          tags_ = null;
+        }
+        return tagsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBGetUserTagListResponse)
+    }
+
+    static {
+      defaultInstance = new PBGetUserTagListResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBGetUserTagListResponse)
+  }
+
   public interface PBGetUserFriendListRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:barrage.PBGetUserFriendListRequest)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 用于查询过滤的标签，没有表示所有
+     * </pre>
+     */
+    boolean hasTag();
+    /**
+     * <code>optional .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 用于查询过滤的标签，没有表示所有
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTag getTag();
+    /**
+     * <code>optional .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 用于查询过滤的标签，没有表示所有
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder();
   }
   /**
    * Protobuf type {@code barrage.PBGetUserFriendListRequest}
@@ -9639,6 +12984,7 @@ public final class MessageProtos {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -9654,6 +13000,19 @@ public final class MessageProtos {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserTag.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = tag_.toBuilder();
+              }
+              tag_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserTag.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tag_);
+                tag_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
               break;
             }
           }
@@ -9695,7 +13054,42 @@ public final class MessageProtos {
       return PARSER;
     }
 
+    private int bitField0_;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserTag tag_;
+    /**
+     * <code>optional .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 用于查询过滤的标签，没有表示所有
+     * </pre>
+     */
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 用于查询过滤的标签，没有表示所有
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTag getTag() {
+      return tag_;
+    }
+    /**
+     * <code>optional .barrage.PBUserTag tag = 1;</code>
+     *
+     * <pre>
+     * 用于查询过滤的标签，没有表示所有
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder() {
+      return tag_;
+    }
+
     private void initFields() {
+      tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9703,6 +13097,12 @@ public final class MessageProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (hasTag()) {
+        if (!getTag().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -9710,6 +13110,9 @@ public final class MessageProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, tag_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9719,6 +13122,10 @@ public final class MessageProtos {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, tag_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -9828,6 +13235,7 @@ public final class MessageProtos {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagFieldBuilder();
         }
       }
       private static Builder create() {
@@ -9836,6 +13244,12 @@ public final class MessageProtos {
 
       public Builder clear() {
         super.clear();
+        if (tagBuilder_ == null) {
+          tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+        } else {
+          tagBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -9862,6 +13276,17 @@ public final class MessageProtos {
 
       public com.orange.protocol.message.MessageProtos.PBGetUserFriendListRequest buildPartial() {
         com.orange.protocol.message.MessageProtos.PBGetUserFriendListRequest result = new com.orange.protocol.message.MessageProtos.PBGetUserFriendListRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (tagBuilder_ == null) {
+          result.tag_ = tag_;
+        } else {
+          result.tag_ = tagBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -9877,11 +13302,20 @@ public final class MessageProtos {
 
       public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBGetUserFriendListRequest other) {
         if (other == com.orange.protocol.message.MessageProtos.PBGetUserFriendListRequest.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          mergeTag(other.getTag());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (hasTag()) {
+          if (!getTag().isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -9901,6 +13335,159 @@ public final class MessageProtos {
           }
         }
         return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserTag tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> tagBuilder_;
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTag getTag() {
+        if (tagBuilder_ == null) {
+          return tag_;
+        } else {
+          return tagBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public Builder setTag(com.orange.protocol.message.UserProtos.PBUserTag value) {
+        if (tagBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tag_ = value;
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public Builder setTag(
+          com.orange.protocol.message.UserProtos.PBUserTag.Builder builderForValue) {
+        if (tagBuilder_ == null) {
+          tag_ = builderForValue.build();
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public Builder mergeTag(com.orange.protocol.message.UserProtos.PBUserTag value) {
+        if (tagBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              tag_ != com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance()) {
+            tag_ =
+              com.orange.protocol.message.UserProtos.PBUserTag.newBuilder(tag_).mergeFrom(value).buildPartial();
+          } else {
+            tag_ = value;
+          }
+          onChanged();
+        } else {
+          tagBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public Builder clearTag() {
+        if (tagBuilder_ == null) {
+          tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+          onChanged();
+        } else {
+          tagBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTag.Builder getTagBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTagFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder() {
+        if (tagBuilder_ != null) {
+          return tagBuilder_.getMessageOrBuilder();
+        } else {
+          return tag_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserTag tag = 1;</code>
+       *
+       * <pre>
+       * 用于查询过滤的标签，没有表示所有
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> 
+          getTagFieldBuilder() {
+        if (tagBuilder_ == null) {
+          tagBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserTag, com.orange.protocol.message.UserProtos.PBUserTag.Builder, com.orange.protocol.message.UserProtos.PBUserTagOrBuilder>(
+                  getTag(),
+                  getParentForChildren(),
+                  isClean());
+          tag_ = null;
+        }
+        return tagBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:barrage.PBGetUserFriendListRequest)
@@ -15436,6 +19023,45 @@ public final class MessageProtos {
     com.orange.protocol.message.MessageProtos.PBGetNewInviteCodeRequestOrBuilder getGetNewInviteCodeRequestOrBuilder();
 
     /**
+     * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+     */
+    boolean hasAddUserTagRequest();
+    /**
+     * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBAddUserTagRequest getAddUserTagRequest();
+    /**
+     * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder getAddUserTagRequestOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+     */
+    boolean hasDeleteUserTagRequest();
+    /**
+     * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest getDeleteUserTagRequest();
+    /**
+     * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder getDeleteUserTagRequestOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+     */
+    boolean hasGetUserTagListRequest();
+    /**
+     * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest getGetUserTagListRequest();
+    /**
+     * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder getGetUserTagListRequestOrBuilder();
+
+    /**
      * <code>optional .barrage.PBCreateFeedRequest createFeedRequest = 60;</code>
      *
      * <pre>
@@ -15706,9 +19332,48 @@ public final class MessageProtos {
               bitField0_ |= 0x00010000;
               break;
             }
+            case 394: {
+              com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00020000) == 0x00020000)) {
+                subBuilder = addUserTagRequest_.toBuilder();
+              }
+              addUserTagRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(addUserTagRequest_);
+                addUserTagRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00020000;
+              break;
+            }
+            case 402: {
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00040000) == 0x00040000)) {
+                subBuilder = deleteUserTagRequest_.toBuilder();
+              }
+              deleteUserTagRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deleteUserTagRequest_);
+                deleteUserTagRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00040000;
+              break;
+            }
+            case 410: {
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00080000) == 0x00080000)) {
+                subBuilder = getUserTagListRequest_.toBuilder();
+              }
+              getUserTagListRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getUserTagListRequest_);
+                getUserTagListRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00080000;
+              break;
+            }
             case 482: {
               com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.Builder subBuilder = null;
-              if (((bitField0_ & 0x00020000) == 0x00020000)) {
+              if (((bitField0_ & 0x00100000) == 0x00100000)) {
                 subBuilder = createFeedRequest_.toBuilder();
               }
               createFeedRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.PARSER, extensionRegistry);
@@ -15716,12 +19381,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(createFeedRequest_);
                 createFeedRequest_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00020000;
+              bitField0_ |= 0x00100000;
               break;
             }
             case 490: {
               com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.Builder subBuilder = null;
-              if (((bitField0_ & 0x00040000) == 0x00040000)) {
+              if (((bitField0_ & 0x00200000) == 0x00200000)) {
                 subBuilder = replyFeedRequest_.toBuilder();
               }
               replyFeedRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.PARSER, extensionRegistry);
@@ -15729,12 +19394,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(replyFeedRequest_);
                 replyFeedRequest_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00040000;
+              bitField0_ |= 0x00200000;
               break;
             }
             case 498: {
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.Builder subBuilder = null;
-              if (((bitField0_ & 0x00080000) == 0x00080000)) {
+              if (((bitField0_ & 0x00400000) == 0x00400000)) {
                 subBuilder = getUserTimelineFeedRequest_.toBuilder();
               }
               getUserTimelineFeedRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.PARSER, extensionRegistry);
@@ -15742,7 +19407,7 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(getUserTimelineFeedRequest_);
                 getUserTimelineFeedRequest_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00080000;
+              bitField0_ |= 0x00400000;
               break;
             }
           }
@@ -16193,6 +19858,69 @@ public final class MessageProtos {
       return getNewInviteCodeRequest_;
     }
 
+    public static final int ADDUSERTAGREQUEST_FIELD_NUMBER = 49;
+    private com.orange.protocol.message.MessageProtos.PBAddUserTagRequest addUserTagRequest_;
+    /**
+     * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+     */
+    public boolean hasAddUserTagRequest() {
+      return ((bitField0_ & 0x00020000) == 0x00020000);
+    }
+    /**
+     * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBAddUserTagRequest getAddUserTagRequest() {
+      return addUserTagRequest_;
+    }
+    /**
+     * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder getAddUserTagRequestOrBuilder() {
+      return addUserTagRequest_;
+    }
+
+    public static final int DELETEUSERTAGREQUEST_FIELD_NUMBER = 50;
+    private com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest deleteUserTagRequest_;
+    /**
+     * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+     */
+    public boolean hasDeleteUserTagRequest() {
+      return ((bitField0_ & 0x00040000) == 0x00040000);
+    }
+    /**
+     * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest getDeleteUserTagRequest() {
+      return deleteUserTagRequest_;
+    }
+    /**
+     * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder getDeleteUserTagRequestOrBuilder() {
+      return deleteUserTagRequest_;
+    }
+
+    public static final int GETUSERTAGLISTREQUEST_FIELD_NUMBER = 51;
+    private com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest getUserTagListRequest_;
+    /**
+     * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+     */
+    public boolean hasGetUserTagListRequest() {
+      return ((bitField0_ & 0x00080000) == 0x00080000);
+    }
+    /**
+     * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest getGetUserTagListRequest() {
+      return getUserTagListRequest_;
+    }
+    /**
+     * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder getGetUserTagListRequestOrBuilder() {
+      return getUserTagListRequest_;
+    }
+
     public static final int CREATEFEEDREQUEST_FIELD_NUMBER = 60;
     private com.orange.protocol.message.MessageProtos.PBCreateFeedRequest createFeedRequest_;
     /**
@@ -16203,7 +19931,7 @@ public final class MessageProtos {
      * </pre>
      */
     public boolean hasCreateFeedRequest() {
-      return ((bitField0_ & 0x00020000) == 0x00020000);
+      return ((bitField0_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .barrage.PBCreateFeedRequest createFeedRequest = 60;</code>
@@ -16232,7 +19960,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
      */
     public boolean hasReplyFeedRequest() {
-      return ((bitField0_ & 0x00040000) == 0x00040000);
+      return ((bitField0_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
@@ -16253,7 +19981,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
      */
     public boolean hasGetUserTimelineFeedRequest() {
-      return ((bitField0_ & 0x00080000) == 0x00080000);
+      return ((bitField0_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
@@ -16286,6 +20014,9 @@ public final class MessageProtos {
       verifyInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBVerifyInviteCodeRequest.getDefaultInstance();
       processUserFriendRequest_ = com.orange.protocol.message.MessageProtos.PBProcessUserFriendRequest.getDefaultInstance();
       getNewInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBGetNewInviteCodeRequest.getDefaultInstance();
+      addUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance();
+      deleteUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance();
+      getUserTagListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance();
       createFeedRequest_ = com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance();
       replyFeedRequest_ = com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.getDefaultInstance();
       getUserTimelineFeedRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.getDefaultInstance();
@@ -16336,6 +20067,12 @@ public final class MessageProtos {
           return false;
         }
       }
+      if (hasGetUserFriendListRequest()) {
+        if (!getGetUserFriendListRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasVerifyInviteCodeRequest()) {
         if (!getVerifyInviteCodeRequest().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -16344,6 +20081,18 @@ public final class MessageProtos {
       }
       if (hasProcessUserFriendRequest()) {
         if (!getProcessUserFriendRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasAddUserTagRequest()) {
+        if (!getAddUserTagRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasDeleteUserTagRequest()) {
+        if (!getDeleteUserTagRequest().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -16419,12 +20168,21 @@ public final class MessageProtos {
         output.writeMessage(48, getNewInviteCodeRequest_);
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        output.writeMessage(60, createFeedRequest_);
+        output.writeMessage(49, addUserTagRequest_);
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        output.writeMessage(61, replyFeedRequest_);
+        output.writeMessage(50, deleteUserTagRequest_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        output.writeMessage(51, getUserTagListRequest_);
+      }
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
+        output.writeMessage(60, createFeedRequest_);
+      }
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
+        output.writeMessage(61, replyFeedRequest_);
+      }
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
         output.writeMessage(62, getUserTimelineFeedRequest_);
       }
       getUnknownFields().writeTo(output);
@@ -16506,13 +20264,25 @@ public final class MessageProtos {
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(60, createFeedRequest_);
+          .computeMessageSize(49, addUserTagRequest_);
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(61, replyFeedRequest_);
+          .computeMessageSize(50, deleteUserTagRequest_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(51, getUserTagListRequest_);
+      }
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(60, createFeedRequest_);
+      }
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(61, replyFeedRequest_);
+      }
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(62, getUserTimelineFeedRequest_);
       }
@@ -16635,6 +20405,9 @@ public final class MessageProtos {
           getVerifyInviteCodeRequestFieldBuilder();
           getProcessUserFriendRequestFieldBuilder();
           getGetNewInviteCodeRequestFieldBuilder();
+          getAddUserTagRequestFieldBuilder();
+          getDeleteUserTagRequestFieldBuilder();
+          getGetUserTagListRequestFieldBuilder();
           getCreateFeedRequestFieldBuilder();
           getReplyFeedRequestFieldBuilder();
           getGetUserTimelineFeedRequestFieldBuilder();
@@ -16720,24 +20493,42 @@ public final class MessageProtos {
           getNewInviteCodeRequestBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00010000);
+        if (addUserTagRequestBuilder_ == null) {
+          addUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance();
+        } else {
+          addUserTagRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00020000);
+        if (deleteUserTagRequestBuilder_ == null) {
+          deleteUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance();
+        } else {
+          deleteUserTagRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00040000);
+        if (getUserTagListRequestBuilder_ == null) {
+          getUserTagListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance();
+        } else {
+          getUserTagListRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00080000);
         if (createFeedRequestBuilder_ == null) {
           createFeedRequest_ = com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance();
         } else {
           createFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         if (replyFeedRequestBuilder_ == null) {
           replyFeedRequest_ = com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.getDefaultInstance();
         } else {
           replyFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         if (getUserTimelineFeedRequestBuilder_ == null) {
           getUserTimelineFeedRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.getDefaultInstance();
         } else {
           getUserTimelineFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         return this;
       }
 
@@ -16877,21 +20668,45 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
           to_bitField0_ |= 0x00020000;
         }
+        if (addUserTagRequestBuilder_ == null) {
+          result.addUserTagRequest_ = addUserTagRequest_;
+        } else {
+          result.addUserTagRequest_ = addUserTagRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00040000;
+        }
+        if (deleteUserTagRequestBuilder_ == null) {
+          result.deleteUserTagRequest_ = deleteUserTagRequest_;
+        } else {
+          result.deleteUserTagRequest_ = deleteUserTagRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
+        }
+        if (getUserTagListRequestBuilder_ == null) {
+          result.getUserTagListRequest_ = getUserTagListRequest_;
+        } else {
+          result.getUserTagListRequest_ = getUserTagListRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
+          to_bitField0_ |= 0x00100000;
+        }
         if (createFeedRequestBuilder_ == null) {
           result.createFeedRequest_ = createFeedRequest_;
         } else {
           result.createFeedRequest_ = createFeedRequestBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
-          to_bitField0_ |= 0x00040000;
+        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
+          to_bitField0_ |= 0x00200000;
         }
         if (replyFeedRequestBuilder_ == null) {
           result.replyFeedRequest_ = replyFeedRequest_;
         } else {
           result.replyFeedRequest_ = replyFeedRequestBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
-          to_bitField0_ |= 0x00080000;
+        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
+          to_bitField0_ |= 0x00400000;
         }
         if (getUserTimelineFeedRequestBuilder_ == null) {
           result.getUserTimelineFeedRequest_ = getUserTimelineFeedRequest_;
@@ -16971,6 +20786,15 @@ public final class MessageProtos {
         if (other.hasGetNewInviteCodeRequest()) {
           mergeGetNewInviteCodeRequest(other.getGetNewInviteCodeRequest());
         }
+        if (other.hasAddUserTagRequest()) {
+          mergeAddUserTagRequest(other.getAddUserTagRequest());
+        }
+        if (other.hasDeleteUserTagRequest()) {
+          mergeDeleteUserTagRequest(other.getDeleteUserTagRequest());
+        }
+        if (other.hasGetUserTagListRequest()) {
+          mergeGetUserTagListRequest(other.getGetUserTagListRequest());
+        }
         if (other.hasCreateFeedRequest()) {
           mergeCreateFeedRequest(other.getCreateFeedRequest());
         }
@@ -17025,6 +20849,12 @@ public final class MessageProtos {
             return false;
           }
         }
+        if (hasGetUserFriendListRequest()) {
+          if (!getGetUserFriendListRequest().isInitialized()) {
+            
+            return false;
+          }
+        }
         if (hasVerifyInviteCodeRequest()) {
           if (!getVerifyInviteCodeRequest().isInitialized()) {
             
@@ -17033,6 +20863,18 @@ public final class MessageProtos {
         }
         if (hasProcessUserFriendRequest()) {
           if (!getProcessUserFriendRequest().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasAddUserTagRequest()) {
+          if (!getAddUserTagRequest().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasDeleteUserTagRequest()) {
+          if (!getDeleteUserTagRequest().isInitialized()) {
             
             return false;
           }
@@ -18623,6 +22465,354 @@ public final class MessageProtos {
         return getNewInviteCodeRequestBuilder_;
       }
 
+      private com.orange.protocol.message.MessageProtos.PBAddUserTagRequest addUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBAddUserTagRequest, com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder, com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder> addUserTagRequestBuilder_;
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public boolean hasAddUserTagRequest() {
+        return ((bitField0_ & 0x00020000) == 0x00020000);
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagRequest getAddUserTagRequest() {
+        if (addUserTagRequestBuilder_ == null) {
+          return addUserTagRequest_;
+        } else {
+          return addUserTagRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public Builder setAddUserTagRequest(com.orange.protocol.message.MessageProtos.PBAddUserTagRequest value) {
+        if (addUserTagRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          addUserTagRequest_ = value;
+          onChanged();
+        } else {
+          addUserTagRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public Builder setAddUserTagRequest(
+          com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder builderForValue) {
+        if (addUserTagRequestBuilder_ == null) {
+          addUserTagRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          addUserTagRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public Builder mergeAddUserTagRequest(com.orange.protocol.message.MessageProtos.PBAddUserTagRequest value) {
+        if (addUserTagRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00020000) == 0x00020000) &&
+              addUserTagRequest_ != com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance()) {
+            addUserTagRequest_ =
+              com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.newBuilder(addUserTagRequest_).mergeFrom(value).buildPartial();
+          } else {
+            addUserTagRequest_ = value;
+          }
+          onChanged();
+        } else {
+          addUserTagRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public Builder clearAddUserTagRequest() {
+        if (addUserTagRequestBuilder_ == null) {
+          addUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          addUserTagRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00020000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder getAddUserTagRequestBuilder() {
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return getAddUserTagRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder getAddUserTagRequestOrBuilder() {
+        if (addUserTagRequestBuilder_ != null) {
+          return addUserTagRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return addUserTagRequest_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagRequest addUserTagRequest = 49;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBAddUserTagRequest, com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder, com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder> 
+          getAddUserTagRequestFieldBuilder() {
+        if (addUserTagRequestBuilder_ == null) {
+          addUserTagRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBAddUserTagRequest, com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.Builder, com.orange.protocol.message.MessageProtos.PBAddUserTagRequestOrBuilder>(
+                  getAddUserTagRequest(),
+                  getParentForChildren(),
+                  isClean());
+          addUserTagRequest_ = null;
+        }
+        return addUserTagRequestBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest deleteUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder> deleteUserTagRequestBuilder_;
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public boolean hasDeleteUserTagRequest() {
+        return ((bitField0_ & 0x00040000) == 0x00040000);
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest getDeleteUserTagRequest() {
+        if (deleteUserTagRequestBuilder_ == null) {
+          return deleteUserTagRequest_;
+        } else {
+          return deleteUserTagRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public Builder setDeleteUserTagRequest(com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest value) {
+        if (deleteUserTagRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deleteUserTagRequest_ = value;
+          onChanged();
+        } else {
+          deleteUserTagRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00040000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public Builder setDeleteUserTagRequest(
+          com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder builderForValue) {
+        if (deleteUserTagRequestBuilder_ == null) {
+          deleteUserTagRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          deleteUserTagRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00040000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public Builder mergeDeleteUserTagRequest(com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest value) {
+        if (deleteUserTagRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00040000) == 0x00040000) &&
+              deleteUserTagRequest_ != com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance()) {
+            deleteUserTagRequest_ =
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.newBuilder(deleteUserTagRequest_).mergeFrom(value).buildPartial();
+          } else {
+            deleteUserTagRequest_ = value;
+          }
+          onChanged();
+        } else {
+          deleteUserTagRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00040000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public Builder clearDeleteUserTagRequest() {
+        if (deleteUserTagRequestBuilder_ == null) {
+          deleteUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          deleteUserTagRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00040000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder getDeleteUserTagRequestBuilder() {
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return getDeleteUserTagRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder getDeleteUserTagRequestOrBuilder() {
+        if (deleteUserTagRequestBuilder_ != null) {
+          return deleteUserTagRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return deleteUserTagRequest_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagRequest deleteUserTagRequest = 50;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder> 
+          getDeleteUserTagRequestFieldBuilder() {
+        if (deleteUserTagRequestBuilder_ == null) {
+          deleteUserTagRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.Builder, com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequestOrBuilder>(
+                  getDeleteUserTagRequest(),
+                  getParentForChildren(),
+                  isClean());
+          deleteUserTagRequest_ = null;
+        }
+        return deleteUserTagRequestBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest getUserTagListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder> getUserTagListRequestBuilder_;
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public boolean hasGetUserTagListRequest() {
+        return ((bitField0_ & 0x00080000) == 0x00080000);
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest getGetUserTagListRequest() {
+        if (getUserTagListRequestBuilder_ == null) {
+          return getUserTagListRequest_;
+        } else {
+          return getUserTagListRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public Builder setGetUserTagListRequest(com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest value) {
+        if (getUserTagListRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getUserTagListRequest_ = value;
+          onChanged();
+        } else {
+          getUserTagListRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public Builder setGetUserTagListRequest(
+          com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder builderForValue) {
+        if (getUserTagListRequestBuilder_ == null) {
+          getUserTagListRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          getUserTagListRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public Builder mergeGetUserTagListRequest(com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest value) {
+        if (getUserTagListRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00080000) == 0x00080000) &&
+              getUserTagListRequest_ != com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance()) {
+            getUserTagListRequest_ =
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.newBuilder(getUserTagListRequest_).mergeFrom(value).buildPartial();
+          } else {
+            getUserTagListRequest_ = value;
+          }
+          onChanged();
+        } else {
+          getUserTagListRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public Builder clearGetUserTagListRequest() {
+        if (getUserTagListRequestBuilder_ == null) {
+          getUserTagListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          getUserTagListRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00080000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder getGetUserTagListRequestBuilder() {
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return getGetUserTagListRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder getGetUserTagListRequestOrBuilder() {
+        if (getUserTagListRequestBuilder_ != null) {
+          return getUserTagListRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return getUserTagListRequest_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListRequest getUserTagListRequest = 51;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder> 
+          getGetUserTagListRequestFieldBuilder() {
+        if (getUserTagListRequestBuilder_ == null) {
+          getUserTagListRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.Builder, com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder>(
+                  getGetUserTagListRequest(),
+                  getParentForChildren(),
+                  isClean());
+          getUserTagListRequest_ = null;
+        }
+        return getUserTagListRequestBuilder_;
+      }
+
       private com.orange.protocol.message.MessageProtos.PBCreateFeedRequest createFeedRequest_ = com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.orange.protocol.message.MessageProtos.PBCreateFeedRequest, com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.Builder, com.orange.protocol.message.MessageProtos.PBCreateFeedRequestOrBuilder> createFeedRequestBuilder_;
@@ -18634,7 +22824,7 @@ public final class MessageProtos {
        * </pre>
        */
       public boolean hasCreateFeedRequest() {
-        return ((bitField0_ & 0x00020000) == 0x00020000);
+        return ((bitField0_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .barrage.PBCreateFeedRequest createFeedRequest = 60;</code>
@@ -18667,7 +22857,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         return this;
       }
       /**
@@ -18685,7 +22875,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         return this;
       }
       /**
@@ -18697,7 +22887,7 @@ public final class MessageProtos {
        */
       public Builder mergeCreateFeedRequest(com.orange.protocol.message.MessageProtos.PBCreateFeedRequest value) {
         if (createFeedRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00020000) == 0x00020000) &&
+          if (((bitField0_ & 0x00100000) == 0x00100000) &&
               createFeedRequest_ != com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance()) {
             createFeedRequest_ =
               com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.newBuilder(createFeedRequest_).mergeFrom(value).buildPartial();
@@ -18708,7 +22898,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         return this;
       }
       /**
@@ -18725,7 +22915,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         return this;
       }
       /**
@@ -18736,7 +22926,7 @@ public final class MessageProtos {
        * </pre>
        */
       public com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.Builder getCreateFeedRequestBuilder() {
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         onChanged();
         return getCreateFeedRequestFieldBuilder().getBuilder();
       }
@@ -18782,7 +22972,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
        */
       public boolean hasReplyFeedRequest() {
-        return ((bitField0_ & 0x00040000) == 0x00040000);
+        return ((bitField0_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
@@ -18807,7 +22997,7 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -18821,7 +23011,7 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -18829,7 +23019,7 @@ public final class MessageProtos {
        */
       public Builder mergeReplyFeedRequest(com.orange.protocol.message.MessageProtos.PBReplyFeedRequest value) {
         if (replyFeedRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00040000) == 0x00040000) &&
+          if (((bitField0_ & 0x00200000) == 0x00200000) &&
               replyFeedRequest_ != com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.getDefaultInstance()) {
             replyFeedRequest_ =
               com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.newBuilder(replyFeedRequest_).mergeFrom(value).buildPartial();
@@ -18840,7 +23030,7 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -18853,14 +23043,14 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.Builder getReplyFeedRequestBuilder() {
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         onChanged();
         return getReplyFeedRequestFieldBuilder().getBuilder();
       }
@@ -18898,7 +23088,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
        */
       public boolean hasGetUserTimelineFeedRequest() {
-        return ((bitField0_ & 0x00080000) == 0x00080000);
+        return ((bitField0_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
@@ -18923,7 +23113,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         return this;
       }
       /**
@@ -18937,7 +23127,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         return this;
       }
       /**
@@ -18945,7 +23135,7 @@ public final class MessageProtos {
        */
       public Builder mergeGetUserTimelineFeedRequest(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest value) {
         if (getUserTimelineFeedRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00080000) == 0x00080000) &&
+          if (((bitField0_ & 0x00400000) == 0x00400000) &&
               getUserTimelineFeedRequest_ != com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.getDefaultInstance()) {
             getUserTimelineFeedRequest_ =
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.newBuilder(getUserTimelineFeedRequest_).mergeFrom(value).buildPartial();
@@ -18956,7 +23146,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         return this;
       }
       /**
@@ -18969,14 +23159,14 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         return this;
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.Builder getGetUserTimelineFeedRequestBuilder() {
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         onChanged();
         return getGetUserTimelineFeedRequestFieldBuilder().getBuilder();
       }
@@ -19220,6 +23410,45 @@ public final class MessageProtos {
      * <code>optional .barrage.PBGetNewInviteCodeResponse getNewInviteCodeResponse = 48;</code>
      */
     com.orange.protocol.message.MessageProtos.PBGetNewInviteCodeResponseOrBuilder getGetNewInviteCodeResponseOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+     */
+    boolean hasAddUserTagResponse();
+    /**
+     * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBAddUserTagResponse getAddUserTagResponse();
+    /**
+     * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder getAddUserTagResponseOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+     */
+    boolean hasDeleteUserTagResponse();
+    /**
+     * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse getDeleteUserTagResponse();
+    /**
+     * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder getDeleteUserTagResponseOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+     */
+    boolean hasGetUserTagListResponse();
+    /**
+     * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse getGetUserTagListResponse();
+    /**
+     * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder getGetUserTagListResponseOrBuilder();
 
     /**
      * <code>optional .barrage.PBCreateFeedResponse createFeedResponse = 60;</code>
@@ -19467,9 +23696,48 @@ public final class MessageProtos {
               bitField0_ |= 0x00002000;
               break;
             }
+            case 394: {
+              com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00004000) == 0x00004000)) {
+                subBuilder = addUserTagResponse_.toBuilder();
+              }
+              addUserTagResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(addUserTagResponse_);
+                addUserTagResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00004000;
+              break;
+            }
+            case 402: {
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00008000) == 0x00008000)) {
+                subBuilder = deleteUserTagResponse_.toBuilder();
+              }
+              deleteUserTagResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deleteUserTagResponse_);
+                deleteUserTagResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00008000;
+              break;
+            }
+            case 410: {
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00010000) == 0x00010000)) {
+                subBuilder = getUserTagListResponse_.toBuilder();
+              }
+              getUserTagListResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getUserTagListResponse_);
+                getUserTagListResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00010000;
+              break;
+            }
             case 482: {
               com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.Builder subBuilder = null;
-              if (((bitField0_ & 0x00004000) == 0x00004000)) {
+              if (((bitField0_ & 0x00020000) == 0x00020000)) {
                 subBuilder = createFeedResponse_.toBuilder();
               }
               createFeedResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.PARSER, extensionRegistry);
@@ -19477,12 +23745,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(createFeedResponse_);
                 createFeedResponse_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00004000;
+              bitField0_ |= 0x00020000;
               break;
             }
             case 490: {
               com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.Builder subBuilder = null;
-              if (((bitField0_ & 0x00008000) == 0x00008000)) {
+              if (((bitField0_ & 0x00040000) == 0x00040000)) {
                 subBuilder = replyFeedResponse_.toBuilder();
               }
               replyFeedResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.PARSER, extensionRegistry);
@@ -19490,12 +23758,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(replyFeedResponse_);
                 replyFeedResponse_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00008000;
+              bitField0_ |= 0x00040000;
               break;
             }
             case 498: {
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.Builder subBuilder = null;
-              if (((bitField0_ & 0x00010000) == 0x00010000)) {
+              if (((bitField0_ & 0x00080000) == 0x00080000)) {
                 subBuilder = getUserTimelineFeedResponse_.toBuilder();
               }
               getUserTimelineFeedResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.PARSER, extensionRegistry);
@@ -19503,7 +23771,7 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(getUserTimelineFeedResponse_);
                 getUserTimelineFeedResponse_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00010000;
+              bitField0_ |= 0x00080000;
               break;
             }
           }
@@ -19869,6 +24137,69 @@ public final class MessageProtos {
       return getNewInviteCodeResponse_;
     }
 
+    public static final int ADDUSERTAGRESPONSE_FIELD_NUMBER = 49;
+    private com.orange.protocol.message.MessageProtos.PBAddUserTagResponse addUserTagResponse_;
+    /**
+     * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+     */
+    public boolean hasAddUserTagResponse() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBAddUserTagResponse getAddUserTagResponse() {
+      return addUserTagResponse_;
+    }
+    /**
+     * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder getAddUserTagResponseOrBuilder() {
+      return addUserTagResponse_;
+    }
+
+    public static final int DELETEUSERTAGRESPONSE_FIELD_NUMBER = 50;
+    private com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse deleteUserTagResponse_;
+    /**
+     * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+     */
+    public boolean hasDeleteUserTagResponse() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse getDeleteUserTagResponse() {
+      return deleteUserTagResponse_;
+    }
+    /**
+     * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder getDeleteUserTagResponseOrBuilder() {
+      return deleteUserTagResponse_;
+    }
+
+    public static final int GETUSERTAGLISTRESPONSE_FIELD_NUMBER = 51;
+    private com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse getUserTagListResponse_;
+    /**
+     * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+     */
+    public boolean hasGetUserTagListResponse() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    /**
+     * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse getGetUserTagListResponse() {
+      return getUserTagListResponse_;
+    }
+    /**
+     * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder getGetUserTagListResponseOrBuilder() {
+      return getUserTagListResponse_;
+    }
+
     public static final int CREATEFEEDRESPONSE_FIELD_NUMBER = 60;
     private com.orange.protocol.message.MessageProtos.PBCreateFeedResponse createFeedResponse_;
     /**
@@ -19879,7 +24210,7 @@ public final class MessageProtos {
      * </pre>
      */
     public boolean hasCreateFeedResponse() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
+      return ((bitField0_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .barrage.PBCreateFeedResponse createFeedResponse = 60;</code>
@@ -19908,7 +24239,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
      */
     public boolean hasReplyFeedResponse() {
-      return ((bitField0_ & 0x00008000) == 0x00008000);
+      return ((bitField0_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
@@ -19929,7 +24260,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
      */
     public boolean hasGetUserTimelineFeedResponse() {
-      return ((bitField0_ & 0x00010000) == 0x00010000);
+      return ((bitField0_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
@@ -19959,6 +24290,9 @@ public final class MessageProtos {
       verifyInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBVerifyInviteCodeResponse.getDefaultInstance();
       processUserFriendResponse_ = com.orange.protocol.message.MessageProtos.PBProcessUserFriendResponse.getDefaultInstance();
       getNewInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBGetNewInviteCodeResponse.getDefaultInstance();
+      addUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance();
+      deleteUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance();
+      getUserTagListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance();
       createFeedResponse_ = com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance();
       replyFeedResponse_ = com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.getDefaultInstance();
       getUserTimelineFeedResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.getDefaultInstance();
@@ -20011,6 +24345,24 @@ public final class MessageProtos {
       }
       if (hasProcessUserFriendResponse()) {
         if (!getProcessUserFriendResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasAddUserTagResponse()) {
+        if (!getAddUserTagResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasDeleteUserTagResponse()) {
+        if (!getDeleteUserTagResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasGetUserTagListResponse()) {
+        if (!getGetUserTagListResponse().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -20077,12 +24429,21 @@ public final class MessageProtos {
         output.writeMessage(48, getNewInviteCodeResponse_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        output.writeMessage(60, createFeedResponse_);
+        output.writeMessage(49, addUserTagResponse_);
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
-        output.writeMessage(61, replyFeedResponse_);
+        output.writeMessage(50, deleteUserTagResponse_);
       }
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeMessage(51, getUserTagListResponse_);
+      }
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
+        output.writeMessage(60, createFeedResponse_);
+      }
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
+        output.writeMessage(61, replyFeedResponse_);
+      }
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
         output.writeMessage(62, getUserTimelineFeedResponse_);
       }
       getUnknownFields().writeTo(output);
@@ -20152,13 +24513,25 @@ public final class MessageProtos {
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(60, createFeedResponse_);
+          .computeMessageSize(49, addUserTagResponse_);
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(61, replyFeedResponse_);
+          .computeMessageSize(50, deleteUserTagResponse_);
       }
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(51, getUserTagListResponse_);
+      }
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(60, createFeedResponse_);
+      }
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(61, replyFeedResponse_);
+      }
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(62, getUserTimelineFeedResponse_);
       }
@@ -20280,6 +24653,9 @@ public final class MessageProtos {
           getVerifyInviteCodeResponseFieldBuilder();
           getProcessUserFriendResponseFieldBuilder();
           getGetNewInviteCodeResponseFieldBuilder();
+          getAddUserTagResponseFieldBuilder();
+          getDeleteUserTagResponseFieldBuilder();
+          getGetUserTagListResponseFieldBuilder();
           getCreateFeedResponseFieldBuilder();
           getReplyFeedResponseFieldBuilder();
           getGetUserTimelineFeedResponseFieldBuilder();
@@ -20355,24 +24731,42 @@ public final class MessageProtos {
           getNewInviteCodeResponseBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00002000);
+        if (addUserTagResponseBuilder_ == null) {
+          addUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance();
+        } else {
+          addUserTagResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00004000);
+        if (deleteUserTagResponseBuilder_ == null) {
+          deleteUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance();
+        } else {
+          deleteUserTagResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00008000);
+        if (getUserTagListResponseBuilder_ == null) {
+          getUserTagListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance();
+        } else {
+          getUserTagListResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00010000);
         if (createFeedResponseBuilder_ == null) {
           createFeedResponse_ = com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance();
         } else {
           createFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         if (replyFeedResponseBuilder_ == null) {
           replyFeedResponse_ = com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.getDefaultInstance();
         } else {
           replyFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         if (getUserTimelineFeedResponseBuilder_ == null) {
           getUserTimelineFeedResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.getDefaultInstance();
         } else {
           getUserTimelineFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
 
@@ -20496,21 +24890,45 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
           to_bitField0_ |= 0x00004000;
         }
+        if (addUserTagResponseBuilder_ == null) {
+          result.addUserTagResponse_ = addUserTagResponse_;
+        } else {
+          result.addUserTagResponse_ = addUserTagResponseBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        if (deleteUserTagResponseBuilder_ == null) {
+          result.deleteUserTagResponse_ = deleteUserTagResponse_;
+        } else {
+          result.deleteUserTagResponse_ = deleteUserTagResponseBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
+        }
+        if (getUserTagListResponseBuilder_ == null) {
+          result.getUserTagListResponse_ = getUserTagListResponse_;
+        } else {
+          result.getUserTagListResponse_ = getUserTagListResponseBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00020000;
+        }
         if (createFeedResponseBuilder_ == null) {
           result.createFeedResponse_ = createFeedResponse_;
         } else {
           result.createFeedResponse_ = createFeedResponseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
-          to_bitField0_ |= 0x00008000;
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00040000;
         }
         if (replyFeedResponseBuilder_ == null) {
           result.replyFeedResponse_ = replyFeedResponse_;
         } else {
           result.replyFeedResponse_ = replyFeedResponseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
-          to_bitField0_ |= 0x00010000;
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
         }
         if (getUserTimelineFeedResponseBuilder_ == null) {
           result.getUserTimelineFeedResponse_ = getUserTimelineFeedResponse_;
@@ -20577,6 +24995,15 @@ public final class MessageProtos {
         if (other.hasGetNewInviteCodeResponse()) {
           mergeGetNewInviteCodeResponse(other.getGetNewInviteCodeResponse());
         }
+        if (other.hasAddUserTagResponse()) {
+          mergeAddUserTagResponse(other.getAddUserTagResponse());
+        }
+        if (other.hasDeleteUserTagResponse()) {
+          mergeDeleteUserTagResponse(other.getDeleteUserTagResponse());
+        }
+        if (other.hasGetUserTagListResponse()) {
+          mergeGetUserTagListResponse(other.getGetUserTagListResponse());
+        }
         if (other.hasCreateFeedResponse()) {
           mergeCreateFeedResponse(other.getCreateFeedResponse());
         }
@@ -20633,6 +25060,24 @@ public final class MessageProtos {
         }
         if (hasProcessUserFriendResponse()) {
           if (!getProcessUserFriendResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasAddUserTagResponse()) {
+          if (!getAddUserTagResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasDeleteUserTagResponse()) {
+          if (!getDeleteUserTagResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasGetUserTagListResponse()) {
+          if (!getGetUserTagListResponse().isInitialized()) {
             
             return false;
           }
@@ -21995,6 +26440,354 @@ public final class MessageProtos {
         return getNewInviteCodeResponseBuilder_;
       }
 
+      private com.orange.protocol.message.MessageProtos.PBAddUserTagResponse addUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBAddUserTagResponse, com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder, com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder> addUserTagResponseBuilder_;
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public boolean hasAddUserTagResponse() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagResponse getAddUserTagResponse() {
+        if (addUserTagResponseBuilder_ == null) {
+          return addUserTagResponse_;
+        } else {
+          return addUserTagResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public Builder setAddUserTagResponse(com.orange.protocol.message.MessageProtos.PBAddUserTagResponse value) {
+        if (addUserTagResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          addUserTagResponse_ = value;
+          onChanged();
+        } else {
+          addUserTagResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public Builder setAddUserTagResponse(
+          com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder builderForValue) {
+        if (addUserTagResponseBuilder_ == null) {
+          addUserTagResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          addUserTagResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public Builder mergeAddUserTagResponse(com.orange.protocol.message.MessageProtos.PBAddUserTagResponse value) {
+        if (addUserTagResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00004000) == 0x00004000) &&
+              addUserTagResponse_ != com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance()) {
+            addUserTagResponse_ =
+              com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.newBuilder(addUserTagResponse_).mergeFrom(value).buildPartial();
+          } else {
+            addUserTagResponse_ = value;
+          }
+          onChanged();
+        } else {
+          addUserTagResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public Builder clearAddUserTagResponse() {
+        if (addUserTagResponseBuilder_ == null) {
+          addUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          addUserTagResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00004000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder getAddUserTagResponseBuilder() {
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return getAddUserTagResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder getAddUserTagResponseOrBuilder() {
+        if (addUserTagResponseBuilder_ != null) {
+          return addUserTagResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return addUserTagResponse_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBAddUserTagResponse addUserTagResponse = 49;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBAddUserTagResponse, com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder, com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder> 
+          getAddUserTagResponseFieldBuilder() {
+        if (addUserTagResponseBuilder_ == null) {
+          addUserTagResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBAddUserTagResponse, com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.Builder, com.orange.protocol.message.MessageProtos.PBAddUserTagResponseOrBuilder>(
+                  getAddUserTagResponse(),
+                  getParentForChildren(),
+                  isClean());
+          addUserTagResponse_ = null;
+        }
+        return addUserTagResponseBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse deleteUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder> deleteUserTagResponseBuilder_;
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public boolean hasDeleteUserTagResponse() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse getDeleteUserTagResponse() {
+        if (deleteUserTagResponseBuilder_ == null) {
+          return deleteUserTagResponse_;
+        } else {
+          return deleteUserTagResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public Builder setDeleteUserTagResponse(com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse value) {
+        if (deleteUserTagResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deleteUserTagResponse_ = value;
+          onChanged();
+        } else {
+          deleteUserTagResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public Builder setDeleteUserTagResponse(
+          com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder builderForValue) {
+        if (deleteUserTagResponseBuilder_ == null) {
+          deleteUserTagResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          deleteUserTagResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public Builder mergeDeleteUserTagResponse(com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse value) {
+        if (deleteUserTagResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00008000) == 0x00008000) &&
+              deleteUserTagResponse_ != com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance()) {
+            deleteUserTagResponse_ =
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.newBuilder(deleteUserTagResponse_).mergeFrom(value).buildPartial();
+          } else {
+            deleteUserTagResponse_ = value;
+          }
+          onChanged();
+        } else {
+          deleteUserTagResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public Builder clearDeleteUserTagResponse() {
+        if (deleteUserTagResponseBuilder_ == null) {
+          deleteUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          deleteUserTagResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00008000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder getDeleteUserTagResponseBuilder() {
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return getDeleteUserTagResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder getDeleteUserTagResponseOrBuilder() {
+        if (deleteUserTagResponseBuilder_ != null) {
+          return deleteUserTagResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return deleteUserTagResponse_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBDeleteUserTagResponse deleteUserTagResponse = 50;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder> 
+          getDeleteUserTagResponseFieldBuilder() {
+        if (deleteUserTagResponseBuilder_ == null) {
+          deleteUserTagResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.Builder, com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponseOrBuilder>(
+                  getDeleteUserTagResponse(),
+                  getParentForChildren(),
+                  isClean());
+          deleteUserTagResponse_ = null;
+        }
+        return deleteUserTagResponseBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse getUserTagListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder> getUserTagListResponseBuilder_;
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public boolean hasGetUserTagListResponse() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse getGetUserTagListResponse() {
+        if (getUserTagListResponseBuilder_ == null) {
+          return getUserTagListResponse_;
+        } else {
+          return getUserTagListResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public Builder setGetUserTagListResponse(com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse value) {
+        if (getUserTagListResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getUserTagListResponse_ = value;
+          onChanged();
+        } else {
+          getUserTagListResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public Builder setGetUserTagListResponse(
+          com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder builderForValue) {
+        if (getUserTagListResponseBuilder_ == null) {
+          getUserTagListResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          getUserTagListResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public Builder mergeGetUserTagListResponse(com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse value) {
+        if (getUserTagListResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00010000) == 0x00010000) &&
+              getUserTagListResponse_ != com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance()) {
+            getUserTagListResponse_ =
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.newBuilder(getUserTagListResponse_).mergeFrom(value).buildPartial();
+          } else {
+            getUserTagListResponse_ = value;
+          }
+          onChanged();
+        } else {
+          getUserTagListResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public Builder clearGetUserTagListResponse() {
+        if (getUserTagListResponseBuilder_ == null) {
+          getUserTagListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          getUserTagListResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00010000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder getGetUserTagListResponseBuilder() {
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return getGetUserTagListResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder getGetUserTagListResponseOrBuilder() {
+        if (getUserTagListResponseBuilder_ != null) {
+          return getUserTagListResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return getUserTagListResponse_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder> 
+          getGetUserTagListResponseFieldBuilder() {
+        if (getUserTagListResponseBuilder_ == null) {
+          getUserTagListResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.Builder, com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder>(
+                  getGetUserTagListResponse(),
+                  getParentForChildren(),
+                  isClean());
+          getUserTagListResponse_ = null;
+        }
+        return getUserTagListResponseBuilder_;
+      }
+
       private com.orange.protocol.message.MessageProtos.PBCreateFeedResponse createFeedResponse_ = com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.orange.protocol.message.MessageProtos.PBCreateFeedResponse, com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.Builder, com.orange.protocol.message.MessageProtos.PBCreateFeedResponseOrBuilder> createFeedResponseBuilder_;
@@ -22006,7 +26799,7 @@ public final class MessageProtos {
        * </pre>
        */
       public boolean hasCreateFeedResponse() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
+        return ((bitField0_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .barrage.PBCreateFeedResponse createFeedResponse = 60;</code>
@@ -22039,7 +26832,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00020000;
         return this;
       }
       /**
@@ -22057,7 +26850,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00020000;
         return this;
       }
       /**
@@ -22069,7 +26862,7 @@ public final class MessageProtos {
        */
       public Builder mergeCreateFeedResponse(com.orange.protocol.message.MessageProtos.PBCreateFeedResponse value) {
         if (createFeedResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00004000) == 0x00004000) &&
+          if (((bitField0_ & 0x00020000) == 0x00020000) &&
               createFeedResponse_ != com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance()) {
             createFeedResponse_ =
               com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.newBuilder(createFeedResponse_).mergeFrom(value).buildPartial();
@@ -22080,7 +26873,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00020000;
         return this;
       }
       /**
@@ -22097,7 +26890,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
       /**
@@ -22108,7 +26901,7 @@ public final class MessageProtos {
        * </pre>
        */
       public com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.Builder getCreateFeedResponseBuilder() {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00020000;
         onChanged();
         return getCreateFeedResponseFieldBuilder().getBuilder();
       }
@@ -22154,7 +26947,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
        */
       public boolean hasReplyFeedResponse() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
+        return ((bitField0_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
@@ -22179,7 +26972,7 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00040000;
         return this;
       }
       /**
@@ -22193,7 +26986,7 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00040000;
         return this;
       }
       /**
@@ -22201,7 +26994,7 @@ public final class MessageProtos {
        */
       public Builder mergeReplyFeedResponse(com.orange.protocol.message.MessageProtos.PBReplyFeedResponse value) {
         if (replyFeedResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00008000) == 0x00008000) &&
+          if (((bitField0_ & 0x00040000) == 0x00040000) &&
               replyFeedResponse_ != com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.getDefaultInstance()) {
             replyFeedResponse_ =
               com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.newBuilder(replyFeedResponse_).mergeFrom(value).buildPartial();
@@ -22212,7 +27005,7 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00040000;
         return this;
       }
       /**
@@ -22225,14 +27018,14 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         return this;
       }
       /**
        * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.Builder getReplyFeedResponseBuilder() {
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00040000;
         onChanged();
         return getReplyFeedResponseFieldBuilder().getBuilder();
       }
@@ -22270,7 +27063,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
        */
       public boolean hasGetUserTimelineFeedResponse() {
-        return ((bitField0_ & 0x00010000) == 0x00010000);
+        return ((bitField0_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
@@ -22295,7 +27088,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00080000;
         return this;
       }
       /**
@@ -22309,7 +27102,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00080000;
         return this;
       }
       /**
@@ -22317,7 +27110,7 @@ public final class MessageProtos {
        */
       public Builder mergeGetUserTimelineFeedResponse(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse value) {
         if (getUserTimelineFeedResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00010000) == 0x00010000) &&
+          if (((bitField0_ & 0x00080000) == 0x00080000) &&
               getUserTimelineFeedResponse_ != com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.getDefaultInstance()) {
             getUserTimelineFeedResponse_ =
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.newBuilder(getUserTimelineFeedResponse_).mergeFrom(value).buildPartial();
@@ -22328,7 +27121,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00080000;
         return this;
       }
       /**
@@ -22341,14 +27134,14 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.Builder getGetUserTimelineFeedResponseBuilder() {
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00080000;
         onChanged();
         return getGetUserTimelineFeedResponseFieldBuilder().getBuilder();
       }
@@ -22461,6 +27254,36 @@ public final class MessageProtos {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_barrage_PBAddUserFriendResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBAddUserTagRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBAddUserTagRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBAddUserTagResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBAddUserTagResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBDeleteUserTagRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBDeleteUserTagRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBDeleteUserTagResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBDeleteUserTagResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBGetUserTagListRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBGetUserTagListRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBGetUserTagListResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBGetUserTagListResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_barrage_PBGetUserFriendListRequest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -22554,81 +27377,102 @@ public final class MessageProtos {
       "Request\022\037\n\006friend\030\001 \001(\0132\017.barrage.PBUser" +
       "\022\014\n\004memo\030\002 \001(\t\022\022\n\nsourceType\030\003 \001(\005\022\020\n\010sc" +
       "anCode\030\004 \001(\t\"\031\n\027PBAddUserFriendResponse\"" +
-      "\034\n\032PBGetUserFriendListRequest\"?\n\033PBGetUs" +
-      "erFriendListResponse\022 \n\007friends\030\001 \003(\0132\017." +
-      "barrage.PBUser\"S\n\032PBProcessUserFriendReq" +
-      "uest\022\020\n\010friendId\030\001 \002(\t\022\025\n\rprocessResult\030" +
-      "\002 \001(\005\022\014\n\004memo\030\003 \001(\t\"?\n\033PBProcessUserFrie",
-      "ndResponse\022 \n\007friends\030\001 \001(\0132\017.barrage.PB" +
-      "User\"4\n\023PBCreateFeedRequest\022\035\n\004feed\030\001 \002(" +
-      "\0132\017.barrage.PBFeed\"&\n\024PBCreateFeedRespon" +
-      "se\022\016\n\006feedId\030\001 \001(\t\";\n\022PBReplyFeedRequest" +
-      "\022%\n\006action\030\001 \002(\0132\025.barrage.PBFeedAction\"" +
-      "<\n\023PBReplyFeedResponse\022%\n\006action\030\001 \002(\0132\025" +
-      ".barrage.PBFeedAction\"G\n\034PBGetUserTimeli" +
-      "neFeedRequest\022\024\n\014offsetFeedId\030\001 \001(\t\022\021\n\005l" +
-      "imit\030\002 \001(\005:\00220\"?\n\035PBGetUserTimelineFeedR" +
-      "esponse\022\036\n\005feeds\030\001 \003(\0132\017.barrage.PBFeed\"",
-      "\263\007\n\rPBDataRequest\022\014\n\004type\030\001 \002(\005\022\021\n\treque" +
-      "stId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\016\n\006userId\030\004 " +
-      "\001(\t\022!\n\006device\030\036 \001(\0132\021.barrage.PBDevice\022\023" +
-      "\n\013countryCode\030\037 \001(\t\022\024\n\014languageCode\030  \001(" +
-      "\t\022\022\n\nclientDate\030! \001(\005\0225\n\020loginUserReques" +
-      "t\030( \001(\0132\033.barrage.PBLoginUserRequest\022;\n\023" +
-      "registerUserRequest\030) \001(\0132\036.barrage.PBRe" +
-      "gisterUserRequest\0227\n\021searchUserRequest\030*" +
-      " \001(\0132\034.barrage.PBSearchUserRequest\022?\n\025up" +
-      "dateUserInfoRequest\030+ \001(\0132 .barrage.PBUp",
-      "dateUserInfoRequest\022=\n\024addUserFriendRequ" +
-      "est\030, \001(\0132\037.barrage.PBAddUserFriendReque" +
-      "st\022E\n\030getUserFriendListRequest\030- \001(\0132#.b" +
-      "arrage.PBGetUserFriendListRequest\022C\n\027ver" +
-      "ifyInviteCodeRequest\030. \001(\0132\".barrage.PBV" +
-      "erifyInviteCodeRequest\022E\n\030processUserFri" +
-      "endRequest\030/ \001(\0132#.barrage.PBProcessUser" +
-      "FriendRequest\022C\n\027getNewInviteCodeRequest" +
-      "\0300 \001(\0132\".barrage.PBGetNewInviteCodeReque" +
-      "st\0227\n\021createFeedRequest\030< \001(\0132\034.barrage.",
-      "PBCreateFeedRequest\0225\n\020replyFeedRequest\030" +
-      "= \001(\0132\033.barrage.PBReplyFeedRequest\022I\n\032ge" +
-      "tUserTimelineFeedRequest\030> \001(\0132%.barrage" +
-      ".PBGetUserTimelineFeedRequest\"\213\007\n\016PBData" +
-      "Response\022\025\n\nresultCode\030\001 \002(\005:\0010\022\021\n\treque" +
-      "stId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\022\n\ntotalCoun" +
-      "t\030\004 \001(\005\022\022\n\nstringData\030\005 \001(\t\0227\n\021loginUser" +
-      "Response\030( \001(\0132\034.barrage.PBLoginUserResp" +
-      "onse\022=\n\024registerUserResponse\030) \001(\0132\037.bar" +
-      "rage.PBRegisterUserResponse\0229\n\022searchUse",
-      "rResponse\030* \001(\0132\035.barrage.PBSearchUserRe" +
-      "sponse\022A\n\026updateUserInfoResponse\030+ \001(\0132!" +
-      ".barrage.PBUpdateUserInfoResponse\022?\n\025add" +
-      "UserFriendResponse\030, \001(\0132 .barrage.PBAdd" +
-      "UserFriendResponse\022G\n\031getUserFriendListR" +
-      "esponse\030- \001(\0132$.barrage.PBGetUserFriendL" +
-      "istResponse\022E\n\030verifyInviteCodeResponse\030" +
-      ". \001(\0132#.barrage.PBVerifyInviteCodeRespon" +
-      "se\022G\n\031processUserFriendResponse\030/ \001(\0132$." +
-      "barrage.PBProcessUserFriendResponse\022E\n\030g",
-      "etNewInviteCodeResponse\0300 \001(\0132#.barrage." +
-      "PBGetNewInviteCodeResponse\0229\n\022createFeed" +
-      "Response\030< \001(\0132\035.barrage.PBCreateFeedRes" +
-      "ponse\0227\n\021replyFeedResponse\030= \001(\0132\034.barra" +
-      "ge.PBReplyFeedResponse\022K\n\033getUserTimelin" +
-      "eFeedResponse\030> \001(\0132&.barrage.PBGetUserT" +
-      "imelineFeedResponse*Q\n\031PBProcessFriendRe" +
-      "sultType\022\021\n\rACCEPT_FRIEND\020\000\022\021\n\rREJECT_FR" +
-      "IEND\020\001\022\016\n\nREPLY_MEMO\020\002*\223\003\n\rPBMessageType" +
-      "\022\026\n\022MESSAGE_LOGIN_USER\020\001\022\031\n\025MESSAGE_REGI",
-      "STER_USER\020\002\022\027\n\023MESSAGE_SEARCH_USER\020\003\022\034\n\030" +
-      "MESSAGE_UPDATE_USER_INFO\020\004\022\033\n\027MESSAGE_AD" +
-      "D_USER_FRIEND\020\005\022 \n\034MESSAGE_GET_USER_FRIE" +
-      "ND_LIST\020\006\022\037\n\033MESSAGE_PROCESS_USER_FRIEND" +
-      "\020\007\022\036\n\032MESSAGE_VERIFY_INVITE_CODE\020\010\022\037\n\033ME" +
-      "SSAGE_GET_NEW_INVITE_CODE\020\t\022\027\n\023MESSAGE_C" +
-      "REATE_FEED\020\036\022\026\n\022MESSAGE_REPLY_FEED\020\037\022\"\n\036" +
-      "MESSAGE_GET_USER_TIMELINE_FEED\020 \022\"\n\036MESS" +
-      "AGE_GET_QINIU_UPLOAD_TOKEN\020dB,\n\033com.oran" +
-      "ge.protocol.messageB\rMessageProtos"
+      "6\n\023PBAddUserTagRequest\022\037\n\003tag\030\001 \002(\0132\022.ba" +
+      "rrage.PBUserTag\"<\n\024PBAddUserTagResponse\022" +
+      "$\n\004tags\030\001 \001(\0132\026.barrage.PBUserTagList\"9\n" +
+      "\026PBDeleteUserTagRequest\022\037\n\003tag\030\001 \002(\0132\022.b" +
+      "arrage.PBUserTag\"?\n\027PBDeleteUserTagRespo",
+      "nse\022$\n\004tags\030\001 \001(\0132\026.barrage.PBUserTagLis" +
+      "t\"\031\n\027PBGetUserTagListRequest\"@\n\030PBGetUse" +
+      "rTagListResponse\022$\n\004tags\030\001 \001(\0132\026.barrage" +
+      ".PBUserTagList\"=\n\032PBGetUserFriendListReq" +
+      "uest\022\037\n\003tag\030\001 \001(\0132\022.barrage.PBUserTag\"?\n" +
+      "\033PBGetUserFriendListResponse\022 \n\007friends\030" +
+      "\001 \003(\0132\017.barrage.PBUser\"S\n\032PBProcessUserF" +
+      "riendRequest\022\020\n\010friendId\030\001 \002(\t\022\025\n\rproces" +
+      "sResult\030\002 \001(\005\022\014\n\004memo\030\003 \001(\t\"?\n\033PBProcess" +
+      "UserFriendResponse\022 \n\007friends\030\001 \001(\0132\017.ba",
+      "rrage.PBUser\"4\n\023PBCreateFeedRequest\022\035\n\004f" +
+      "eed\030\001 \002(\0132\017.barrage.PBFeed\"&\n\024PBCreateFe" +
+      "edResponse\022\016\n\006feedId\030\001 \001(\t\";\n\022PBReplyFee" +
+      "dRequest\022%\n\006action\030\001 \002(\0132\025.barrage.PBFee" +
+      "dAction\"<\n\023PBReplyFeedResponse\022%\n\006action" +
+      "\030\001 \002(\0132\025.barrage.PBFeedAction\"G\n\034PBGetUs" +
+      "erTimelineFeedRequest\022\024\n\014offsetFeedId\030\001 " +
+      "\001(\t\022\021\n\005limit\030\002 \001(\005:\00220\"?\n\035PBGetUserTimel" +
+      "ineFeedResponse\022\036\n\005feeds\030\001 \003(\0132\017.barrage" +
+      ".PBFeed\"\354\010\n\rPBDataRequest\022\014\n\004type\030\001 \002(\005\022",
+      "\021\n\trequestId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\016\n\006u" +
+      "serId\030\004 \001(\t\022!\n\006device\030\036 \001(\0132\021.barrage.PB" +
+      "Device\022\023\n\013countryCode\030\037 \001(\t\022\024\n\014languageC" +
+      "ode\030  \001(\t\022\022\n\nclientDate\030! \001(\005\0225\n\020loginUs" +
+      "erRequest\030( \001(\0132\033.barrage.PBLoginUserReq" +
+      "uest\022;\n\023registerUserRequest\030) \001(\0132\036.barr" +
+      "age.PBRegisterUserRequest\0227\n\021searchUserR" +
+      "equest\030* \001(\0132\034.barrage.PBSearchUserReque" +
+      "st\022?\n\025updateUserInfoRequest\030+ \001(\0132 .barr" +
+      "age.PBUpdateUserInfoRequest\022=\n\024addUserFr",
+      "iendRequest\030, \001(\0132\037.barrage.PBAddUserFri" +
+      "endRequest\022E\n\030getUserFriendListRequest\030-" +
+      " \001(\0132#.barrage.PBGetUserFriendListReques" +
+      "t\022C\n\027verifyInviteCodeRequest\030. \001(\0132\".bar" +
+      "rage.PBVerifyInviteCodeRequest\022E\n\030proces" +
+      "sUserFriendRequest\030/ \001(\0132#.barrage.PBPro" +
+      "cessUserFriendRequest\022C\n\027getNewInviteCod" +
+      "eRequest\0300 \001(\0132\".barrage.PBGetNewInviteC" +
+      "odeRequest\0227\n\021addUserTagRequest\0301 \001(\0132\034." +
+      "barrage.PBAddUserTagRequest\022=\n\024deleteUse",
+      "rTagRequest\0302 \001(\0132\037.barrage.PBDeleteUser" +
+      "TagRequest\022?\n\025getUserTagListRequest\0303 \001(" +
+      "\0132 .barrage.PBGetUserTagListRequest\0227\n\021c" +
+      "reateFeedRequest\030< \001(\0132\034.barrage.PBCreat" +
+      "eFeedRequest\0225\n\020replyFeedRequest\030= \001(\0132\033" +
+      ".barrage.PBReplyFeedRequest\022I\n\032getUserTi" +
+      "melineFeedRequest\030> \001(\0132%.barrage.PBGetU" +
+      "serTimelineFeedRequest\"\312\010\n\016PBDataRespons" +
+      "e\022\025\n\nresultCode\030\001 \002(\005:\0010\022\021\n\trequestId\030\002 " +
+      "\001(\005\022\017\n\007version\030\003 \001(\005\022\022\n\ntotalCount\030\004 \001(\005",
+      "\022\022\n\nstringData\030\005 \001(\t\0227\n\021loginUserRespons" +
+      "e\030( \001(\0132\034.barrage.PBLoginUserResponse\022=\n" +
+      "\024registerUserResponse\030) \001(\0132\037.barrage.PB" +
+      "RegisterUserResponse\0229\n\022searchUserRespon" +
+      "se\030* \001(\0132\035.barrage.PBSearchUserResponse\022" +
+      "A\n\026updateUserInfoResponse\030+ \001(\0132!.barrag" +
+      "e.PBUpdateUserInfoResponse\022?\n\025addUserFri" +
+      "endResponse\030, \001(\0132 .barrage.PBAddUserFri" +
+      "endResponse\022G\n\031getUserFriendListResponse" +
+      "\030- \001(\0132$.barrage.PBGetUserFriendListResp",
+      "onse\022E\n\030verifyInviteCodeResponse\030. \001(\0132#" +
+      ".barrage.PBVerifyInviteCodeResponse\022G\n\031p" +
+      "rocessUserFriendResponse\030/ \001(\0132$.barrage" +
+      ".PBProcessUserFriendResponse\022E\n\030getNewIn" +
+      "viteCodeResponse\0300 \001(\0132#.barrage.PBGetNe" +
+      "wInviteCodeResponse\0229\n\022addUserTagRespons" +
+      "e\0301 \001(\0132\035.barrage.PBAddUserTagResponse\022?" +
+      "\n\025deleteUserTagResponse\0302 \001(\0132 .barrage." +
+      "PBDeleteUserTagResponse\022A\n\026getUserTagLis" +
+      "tResponse\0303 \001(\0132!.barrage.PBGetUserTagLi",
+      "stResponse\0229\n\022createFeedResponse\030< \001(\0132\035" +
+      ".barrage.PBCreateFeedResponse\0227\n\021replyFe" +
+      "edResponse\030= \001(\0132\034.barrage.PBReplyFeedRe" +
+      "sponse\022K\n\033getUserTimelineFeedResponse\030> " +
+      "\001(\0132&.barrage.PBGetUserTimelineFeedRespo" +
+      "nse*Q\n\031PBProcessFriendResultType\022\021\n\rACCE" +
+      "PT_FRIEND\020\000\022\021\n\rREJECT_FRIEND\020\001\022\016\n\nREPLY_" +
+      "MEMO\020\002*\351\003\n\rPBMessageType\022\026\n\022MESSAGE_LOGI" +
+      "N_USER\020\001\022\031\n\025MESSAGE_REGISTER_USER\020\002\022\027\n\023M" +
+      "ESSAGE_SEARCH_USER\020\003\022\034\n\030MESSAGE_UPDATE_U",
+      "SER_INFO\020\004\022\033\n\027MESSAGE_ADD_USER_FRIEND\020\005\022" +
+      " \n\034MESSAGE_GET_USER_FRIEND_LIST\020\006\022\037\n\033MES" +
+      "SAGE_PROCESS_USER_FRIEND\020\007\022\036\n\032MESSAGE_VE" +
+      "RIFY_INVITE_CODE\020\010\022\037\n\033MESSAGE_GET_NEW_IN" +
+      "VITE_CODE\020\t\022\030\n\024MESSAGE_ADD_USER_TAG\020\n\022\033\n" +
+      "\027MESSAGE_DELETE_USER_TAG\020\013\022\035\n\031MESSAGE_GE" +
+      "T_USER_TAG_LIST\020\014\022\027\n\023MESSAGE_CREATE_FEED" +
+      "\020\036\022\026\n\022MESSAGE_REPLY_FEED\020\037\022\"\n\036MESSAGE_GE" +
+      "T_USER_TIMELINE_FEED\020 \022\"\n\036MESSAGE_GET_QI" +
+      "NIU_UPLOAD_TOKEN\020dB,\n\033com.orange.protoco",
+      "l.messageB\rMessageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -22729,78 +27573,114 @@ public final class MessageProtos {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBAddUserFriendResponse_descriptor,
         new java.lang.String[] { });
-    internal_static_barrage_PBGetUserFriendListRequest_descriptor =
+    internal_static_barrage_PBAddUserTagRequest_descriptor =
       getDescriptor().getMessageTypes().get(14);
+    internal_static_barrage_PBAddUserTagRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBAddUserTagRequest_descriptor,
+        new java.lang.String[] { "Tag", });
+    internal_static_barrage_PBAddUserTagResponse_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_barrage_PBAddUserTagResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBAddUserTagResponse_descriptor,
+        new java.lang.String[] { "Tags", });
+    internal_static_barrage_PBDeleteUserTagRequest_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_barrage_PBDeleteUserTagRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBDeleteUserTagRequest_descriptor,
+        new java.lang.String[] { "Tag", });
+    internal_static_barrage_PBDeleteUserTagResponse_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_barrage_PBDeleteUserTagResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBDeleteUserTagResponse_descriptor,
+        new java.lang.String[] { "Tags", });
+    internal_static_barrage_PBGetUserTagListRequest_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_barrage_PBGetUserTagListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBGetUserTagListRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_barrage_PBGetUserTagListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_barrage_PBGetUserTagListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBGetUserTagListResponse_descriptor,
+        new java.lang.String[] { "Tags", });
+    internal_static_barrage_PBGetUserFriendListRequest_descriptor =
+      getDescriptor().getMessageTypes().get(20);
     internal_static_barrage_PBGetUserFriendListRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserFriendListRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Tag", });
     internal_static_barrage_PBGetUserFriendListResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_barrage_PBGetUserFriendListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserFriendListResponse_descriptor,
         new java.lang.String[] { "Friends", });
     internal_static_barrage_PBProcessUserFriendRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_barrage_PBProcessUserFriendRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBProcessUserFriendRequest_descriptor,
         new java.lang.String[] { "FriendId", "ProcessResult", "Memo", });
     internal_static_barrage_PBProcessUserFriendResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_barrage_PBProcessUserFriendResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBProcessUserFriendResponse_descriptor,
         new java.lang.String[] { "Friends", });
     internal_static_barrage_PBCreateFeedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_barrage_PBCreateFeedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBCreateFeedRequest_descriptor,
         new java.lang.String[] { "Feed", });
     internal_static_barrage_PBCreateFeedResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_barrage_PBCreateFeedResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBCreateFeedResponse_descriptor,
         new java.lang.String[] { "FeedId", });
     internal_static_barrage_PBReplyFeedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_barrage_PBReplyFeedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBReplyFeedRequest_descriptor,
         new java.lang.String[] { "Action", });
     internal_static_barrage_PBReplyFeedResponse_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_barrage_PBReplyFeedResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBReplyFeedResponse_descriptor,
         new java.lang.String[] { "Action", });
     internal_static_barrage_PBGetUserTimelineFeedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_barrage_PBGetUserTimelineFeedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserTimelineFeedRequest_descriptor,
         new java.lang.String[] { "OffsetFeedId", "Limit", });
     internal_static_barrage_PBGetUserTimelineFeedResponse_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_barrage_PBGetUserTimelineFeedResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserTimelineFeedResponse_descriptor,
         new java.lang.String[] { "Feeds", });
     internal_static_barrage_PBDataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_barrage_PBDataRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBDataRequest_descriptor,
-        new java.lang.String[] { "Type", "RequestId", "Version", "UserId", "Device", "CountryCode", "LanguageCode", "ClientDate", "LoginUserRequest", "RegisterUserRequest", "SearchUserRequest", "UpdateUserInfoRequest", "AddUserFriendRequest", "GetUserFriendListRequest", "VerifyInviteCodeRequest", "ProcessUserFriendRequest", "GetNewInviteCodeRequest", "CreateFeedRequest", "ReplyFeedRequest", "GetUserTimelineFeedRequest", });
+        new java.lang.String[] { "Type", "RequestId", "Version", "UserId", "Device", "CountryCode", "LanguageCode", "ClientDate", "LoginUserRequest", "RegisterUserRequest", "SearchUserRequest", "UpdateUserInfoRequest", "AddUserFriendRequest", "GetUserFriendListRequest", "VerifyInviteCodeRequest", "ProcessUserFriendRequest", "GetNewInviteCodeRequest", "AddUserTagRequest", "DeleteUserTagRequest", "GetUserTagListRequest", "CreateFeedRequest", "ReplyFeedRequest", "GetUserTimelineFeedRequest", });
     internal_static_barrage_PBDataResponse_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_barrage_PBDataResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBDataResponse_descriptor,
-        new java.lang.String[] { "ResultCode", "RequestId", "Version", "TotalCount", "StringData", "LoginUserResponse", "RegisterUserResponse", "SearchUserResponse", "UpdateUserInfoResponse", "AddUserFriendResponse", "GetUserFriendListResponse", "VerifyInviteCodeResponse", "ProcessUserFriendResponse", "GetNewInviteCodeResponse", "CreateFeedResponse", "ReplyFeedResponse", "GetUserTimelineFeedResponse", });
+        new java.lang.String[] { "ResultCode", "RequestId", "Version", "TotalCount", "StringData", "LoginUserResponse", "RegisterUserResponse", "SearchUserResponse", "UpdateUserInfoResponse", "AddUserFriendResponse", "GetUserFriendListResponse", "VerifyInviteCodeResponse", "ProcessUserFriendResponse", "GetNewInviteCodeResponse", "AddUserTagResponse", "DeleteUserTagResponse", "GetUserTagListResponse", "CreateFeedResponse", "ReplyFeedResponse", "GetUserTimelineFeedResponse", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
     com.orange.protocol.message.UserProtos.getDescriptor();
     com.orange.protocol.message.BarrageProtos.getDescriptor();
