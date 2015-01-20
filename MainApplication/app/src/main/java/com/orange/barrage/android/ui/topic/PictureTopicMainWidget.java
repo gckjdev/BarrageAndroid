@@ -29,10 +29,6 @@ import javax.inject.Inject;
  */
 public class PictureTopicMainWidget extends FrameLayout {
 
-
-    //private PictureTopicItem mItem;
-
-    //FIXME: change to view
     private ImageView mImage;
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;
@@ -82,9 +78,12 @@ public class PictureTopicMainWidget extends FrameLayout {
             mFeedActionViews.add(actionWidget);
 
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            //FIXME: use top later instead of margin
             params.leftMargin = (int)action.getPosX();
             params.topMargin  =(int) action.getPosY();
-
+            //actionWidget.setTop((int)action.getPosX());
+            //actionWidget.setLeft((int)action.getPosY());
             addView(actionWidget, params);
         }
 

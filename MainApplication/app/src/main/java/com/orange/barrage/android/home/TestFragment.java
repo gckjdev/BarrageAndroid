@@ -3,6 +3,7 @@ package com.orange.barrage.android.home;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,22 +126,28 @@ public class TestFragment extends RoboFragment {
         mMoveToButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                float delta = new Random().nextFloat();
-                float progress = ((float)mCurrentCommentSize) * delta;
-                mMainWidget.moveTo(progress);
-                ToastUtil.showToastMessage(ContextManager.getContext(), "moveTo:"+progress, Toast.LENGTH_SHORT);
+                Random random = new Random();
+                float start = ((float)mCurrentCommentSize) *  random.nextFloat();
+                float end = ((float)mCurrentCommentSize) *  random.nextFloat();
+                ToastUtil.showToastMessage(ContextManager.getContext(), String.format("from %1$.3f to %2$.3f", start,end), Toast.LENGTH_SHORT);
+
+                float frameCount = 100;
+
+                Handler handler = new Handler();
+                for(int i=0;i<frameCount ;i++){
+                    final float currentProgress = start + i*(end-start)/frameCount;
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMainWidget.moveTo(currentProgress);
+                            ToastUtil.showToastMessage(ContextManager.getContext(), String.format("current %1$.3f", currentProgress), Toast.LENGTH_SHORT);
+                        }
+                    }, i * 100);
+                }
+
             }
         });
 
-        // YOU CAN ADD SOME TEST CODE HERE
-        mTestDBButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mLevelDBTestDAO.saveText("id1", "value1");
-                String value = mLevelDBTestDAO.getText("id1");
-                Toast.makeText(ContextManager.getContext(),value, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         initMainWidget();
     }
@@ -166,6 +173,8 @@ public class TestFragment extends RoboFragment {
 
     private int mCurrentCommentSize = 0;
 
+    private int mCommentLocationThreshold = 800;
+
     private void initMainWidget(){
         String imageURL = PictureTopicDummyDataGen.getImange();
         mMainWidget.setImangeURL(imageURL);
@@ -178,8 +187,8 @@ public class TestFragment extends RoboFragment {
 
         for(int i=0;i<mCurrentCommentSize;i++){
             String text = PictureTopicDummyDataGen.getFeedActionText();
-            float x = random.nextInt(500);
-            float y = random.nextInt(500);
+            float x = mCommentLocationThreshold * random.nextFloat();
+            float y =  mCommentLocationThreshold * random.nextFloat();
 
             String avatar = PictureTopicDummyDataGen.getAvatar();
             BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
