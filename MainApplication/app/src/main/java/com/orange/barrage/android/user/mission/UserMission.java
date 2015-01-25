@@ -35,6 +35,8 @@ public class UserMission {
 
 
         userBuilder.setRegDate(DateUtil.getNowTime());
+        //FIXME: should generate userId
+        //userBuilder.getEmail()
         userBuilder.setUserId("");
 
         MessageProtos.PBRegisterUserRequest.Builder regBuilder = MessageProtos.PBRegisterUserRequest.newBuilder();

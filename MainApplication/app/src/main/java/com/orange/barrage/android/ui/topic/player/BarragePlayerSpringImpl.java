@@ -22,9 +22,13 @@ import java.util.List;
  */
 public class BarragePlayerSpringImpl implements BarragePlayer {
 
+    private final static int MAIN_SPRING_CONFIG_INDEX = 3;
     private List<FeedActionWidget> mViews;
     private final BarrageSpringChain mSpringChain;
     private Handler mHandler;
+
+    //FIXME: change it later
+    private int mParentHeight = 900;
 
     public BarragePlayerSpringImpl(){
         mSpringChain = BarrageSpringChain.create();
@@ -41,8 +45,8 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
     public void playFrom(int index) {
         //mSpringChain.setCurrentValue(index);
         moveTo(index);
-        int mainIndex = 3;
-        for(int i=0;i<mainIndex;i++){
+        int mainIndex = MAIN_SPRING_CONFIG_INDEX;
+        for(int i=0;i<mainIndex && i<mSpringChain.getAllSprings().size();i++){
             mSpringChain.setControlSpringIndex(i);
         }
         mSpringChain.start();
@@ -81,8 +85,6 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
             view.setVisibility(View.VISIBLE);
         }
     }
-
-    private int mParentHeight = 900;
 
     @Override
     public void setBarrageViews(List<FeedActionWidget> views) {

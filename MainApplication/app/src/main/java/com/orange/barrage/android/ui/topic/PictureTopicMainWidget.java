@@ -1,6 +1,7 @@
 package com.orange.barrage.android.ui.topic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import com.applidium.shutterbug.FetchableImageView;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.activity.FeedReplyActivity;
 import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
+import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.protocol.message.BarrageProtos;
@@ -29,6 +32,8 @@ import javax.inject.Inject;
  */
 public class PictureTopicMainWidget extends FrameLayout {
 
+    private PictureTopicModel mModel;
+
     private ImageView mImage;
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;
@@ -39,6 +44,7 @@ public class PictureTopicMainWidget extends FrameLayout {
     public PictureTopicMainWidget(Context context, AttributeSet set){
         super(context, set);
         this.mContext = context;
+        mModel = new PictureTopicModel();
 
         mSubtitleView = new TextView(context);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);
@@ -50,21 +56,38 @@ public class PictureTopicMainWidget extends FrameLayout {
 
         //FIXME: can be change to a factory
         mBarragePlayer = new BarragePlayerSpringImpl();
+
+        mImage.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+                //FIXME: how to use message.
+                Intent intent = new Intent(mContext, FeedReplyActivity.class);
+                //intent.putExtra("imageUrl", mImageUrl);
+                //intent.putExtra("subtitle", mSubtitleText);
+                intent.putExtra("model", mModel);
+                mContext.startActivity(intent);
+            }
+        });
     }
+
     @Inject
     public PictureTopicMainWidget(Context context){
         this(context, null);
+
     }
 
     public void setImangeURL(String url){
         Picasso.with(mContext).load(url).into(mImage);
+        mModel.setImageUrl(url);
     }
 
     public void setSubtitle(String title){
         mSubtitleView.setText(title);
+        mModel.setSubtitleText(title);
     }
 
     public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList){
+        mModel.setFeedActionLis(feedActionList);
 
         if(mFeedActionViews!=null) {
             for (View view : mFeedActionViews) {
@@ -116,5 +139,12 @@ public class PictureTopicMainWidget extends FrameLayout {
 
     public void moveTo(float progress){
         mBarragePlayer.moveTo(progress);
+    }
+
+    public void setModel(PictureTopicModel model) {
+        mModel = model;
+        setSubtitle(model.getSubtitleText());
+        setImangeURL(model.getImageUrl());
+        setBarrageActions(model.getFeedActionLis());
     }
 }

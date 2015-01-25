@@ -3,7 +3,6 @@ package com.orange.barrage.android.feed.ui;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.model.FeedManager;
-import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
@@ -72,7 +70,7 @@ public class UserTimelineAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null){
-            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.timeline_list_item, null);
+            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, null);
         }
 
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);

@@ -1,7 +1,6 @@
 package com.orange.barrage.android.feed.ui;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,7 +28,7 @@ public class TimelineItemView extends LinearLayout {
 
     public void initView(Context c){
         this.mContext = c;
-        View view = LayoutInflater.from(this.mContext).inflate(R.layout.timeline_list_item, null);
+        View view = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, null);
         barrageView = (ImageView) view.findViewById(R.id.timeline_item_barage_image);
 //        text_id = (TextView) view.findViewById(R.id.text_id);
 //        text_info = (TextView) view.findViewById(R.id.text_info);

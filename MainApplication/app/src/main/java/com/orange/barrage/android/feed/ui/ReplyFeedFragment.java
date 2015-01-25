@@ -67,7 +67,7 @@ public class ReplyFeedFragment extends RoboFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.feed_reply_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_feed_reply, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

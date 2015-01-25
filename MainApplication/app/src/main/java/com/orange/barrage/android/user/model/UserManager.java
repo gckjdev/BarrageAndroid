@@ -14,7 +14,7 @@ import roboguice.inject.ContextSingleton;
 @Singleton
 public class UserManager {
 
-    private static final String KEY_USER_DATA = "KEY_USER_DATA";
+    public static final String KEY_USER_DATA = "KEY_USER_DATA";
 
     @Inject
     DefaultDBDAO defaultDBDAO;

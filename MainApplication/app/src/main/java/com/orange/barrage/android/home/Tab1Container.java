@@ -17,7 +17,7 @@ public class Tab1Container extends HomeContainerFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Ln.d("Tab1 onCreateView");
-        return inflater.inflate(R.layout.home_container_fragment, null);
+        return inflater.inflate(R.layout.fragment_home_container, null);
     }
 
     @Override

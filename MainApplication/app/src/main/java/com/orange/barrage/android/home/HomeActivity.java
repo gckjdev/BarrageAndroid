@@ -11,11 +11,7 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.mission.UserMission;
-import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
-import com.orange.barrage.android.util.misc.DateUtil;
-import com.orange.barrage.android.util.misc.RandomUtil;
-import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
 
@@ -38,7 +34,7 @@ public class HomeActivity extends RoboFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.activity_home);
         initView();
     }
 
@@ -61,14 +57,6 @@ public class HomeActivity extends RoboFragmentActivity {
     public void onStart(){
         super.onStart();
 
-        if (!mUserManager.hasUser()) {
-            String email = String.format("test%d@163.com", DateUtil.getNowTime());
-            mUserMission.regiseterUserByEmail(email, "password", null, new UserMissionCallback() {
-                @Override
-                public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
-                }
-            });
-        }
     }
 
     @Override
@@ -92,7 +80,7 @@ public class HomeActivity extends RoboFragmentActivity {
 
     private TabHost.TabSpec setIndicator(Context ctx, TabHost.TabSpec spec,
                                  int resid, String string, int genresIcon) {
-        View v = LayoutInflater.from(ctx).inflate(R.layout.tab_item, null);
+        View v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item, null);
         v.setBackgroundResource(resid);
         TextView tv = (TextView)v.findViewById(R.id.txt_tabtxt);
         ImageView img = (ImageView)v.findViewById(R.id.img_tabtxt);

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/reply_feed_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/reply_feed_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/action_cancel"/>
+
+        <Button
+            android:id="@+id/reply_feed_btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/action_send"/>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/picture_topic_main_widget_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+            android:id="@+id/picture_topic_main_widget"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            />
+    </FrameLayout>
+</LinearLayout>

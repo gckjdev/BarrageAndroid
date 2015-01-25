@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,11 @@ import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
+import com.orange.barrage.android.user.mission.UserMission;
+import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
@@ -45,6 +47,10 @@ public class TestFragment extends RoboFragment {
 
     @Inject
     FeedMission mFeedMission;
+
+    @Inject
+    UserMission mUserMission;
+
     @Inject
     UserManager mUserManager;
 
@@ -75,7 +81,7 @@ public class TestFragment extends RoboFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View inflate = inflater.inflate(R.layout.test_fragment, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_test, container, false);
 
         return inflate;
     }
@@ -109,6 +115,23 @@ public class TestFragment extends RoboFragment {
             }
         });
 
+        mTestDBButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if (!mUserManager.hasUser()) {
+                    String email = String.format("test%d@163.com", DateUtil.getNowTime());
+                    mUserMission.regiseterUserByEmail(email, "password", null, new UserMissionCallback() {
+                        @Override
+                        public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+                            ToastUtil.showToastMessage(ContextManager.getContext(), "new user added", Toast.LENGTH_SHORT);
+                        }
+                    });
+                }else{
+                    ToastUtil.showToastMessage(ContextManager.getContext(), "user already existed", Toast.LENGTH_SHORT);
+                }
+            }
+        });
+
         mPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +146,9 @@ public class TestFragment extends RoboFragment {
             }
         });
 
+        final Handler handler = new Handler();
+        final List<Runnable> runnings = new ArrayList<>();
+
         mMoveToButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,16 +159,24 @@ public class TestFragment extends RoboFragment {
 
                 float frameCount = 100;
 
-                Handler handler = new Handler();
+                for(Runnable r: runnings){
+                    handler.removeCallbacks(r);
+                }
+                runnings.clear();
+
                 for(int i=0;i<frameCount ;i++){
                     final float currentProgress = start + i*(end-start)/frameCount;
-                    handler.postDelayed(new Runnable() {
+                    Runnable r = new Runnable() {
                         @Override
                         public void run() {
                             mMainWidget.moveTo(currentProgress);
+
                             ToastUtil.showToastMessage(ContextManager.getContext(), String.format("current %1$.3f", currentProgress), Toast.LENGTH_SHORT);
                         }
-                    }, i * 100);
+                    };
+                    runnings.add(r);
+
+                    handler.postDelayed(r, i * 100);
                 }
 
             }
