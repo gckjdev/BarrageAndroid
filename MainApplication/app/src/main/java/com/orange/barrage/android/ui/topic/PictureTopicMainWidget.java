@@ -8,16 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.applidium.shutterbug.FetchableImageView;
-import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.activity.FeedReplyActivity;
-import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
-import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -40,14 +35,15 @@ public class PictureTopicMainWidget extends FrameLayout {
     private BarragePlayer mBarragePlayer;
 
     private Context mContext;
+    private PictureTopicMode mMode;
 
-    public PictureTopicMainWidget(Context context, AttributeSet set){
+    public PictureTopicMainWidget(Context context, AttributeSet set) {
         super(context, set);
         this.mContext = context;
         mModel = new PictureTopicModel();
 
         mSubtitleView = new TextView(context);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         this.addView(mSubtitleView, params);
 
         LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
@@ -56,46 +52,54 @@ public class PictureTopicMainWidget extends FrameLayout {
 
         //FIXME: can be change to a factory
         mBarragePlayer = new BarragePlayerSpringImpl();
+        mMode = PictureTopicMode.LIST;
 
         mImage.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
 
-                //FIXME: how to use message.
-                Intent intent = new Intent(mContext, FeedReplyActivity.class);
-                //intent.putExtra("imageUrl", mImageUrl);
-                //intent.putExtra("subtitle", mSubtitleText);
-                intent.putExtra("model", mModel);
-                mContext.startActivity(intent);
+                switch (mMode) {
+                    case LIST: {
+                        Intent intent = new Intent(mContext, FeedReplyActivity.class);
+                        intent.putExtra("model", mModel);
+                        mContext.startActivity(intent);
+                        break;
+                    }
+                    case COMMENT:
+                        break;
+                }
             }
         });
     }
 
     @Inject
-    public PictureTopicMainWidget(Context context){
+    public PictureTopicMainWidget(Context context) {
         this(context, null);
-
     }
 
-    public void setImangeURL(String url){
+    public void setMode(PictureTopicMode mode) {
+        mMode = mode;
+    }
+
+    public void setImangeURL(String url) {
         Picasso.with(mContext).load(url).into(mImage);
         mModel.setImageUrl(url);
     }
 
-    public void setSubtitle(String title){
+    public void setSubtitle(String title) {
         mSubtitleView.setText(title);
         mModel.setSubtitleText(title);
     }
 
-    public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList){
+    public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
         mModel.setFeedActionLis(feedActionList);
 
-        if(mFeedActionViews!=null) {
+        if (mFeedActionViews != null) {
             for (View view : mFeedActionViews) {
                 removeView(view);
             }
         }
         mFeedActionViews = Lists.newArrayList();
-        for(BarrageProtos.PBFeedAction action :feedActionList){
+        for (BarrageProtos.PBFeedAction action : feedActionList) {
             FeedActionWidget actionWidget = new FeedActionWidget(mContext);
             actionWidget.setFeedAction(action);
             mFeedActionViews.add(actionWidget);
@@ -103,8 +107,8 @@ public class PictureTopicMainWidget extends FrameLayout {
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
             //FIXME: use top later instead of margin
-            params.leftMargin = (int)action.getPosX();
-            params.topMargin  =(int) action.getPosY();
+            params.leftMargin = (int) action.getPosX();
+            params.topMargin = (int) action.getPosY();
             //actionWidget.setTop((int)action.getPosX());
             //actionWidget.setLeft((int)action.getPosY());
             addView(actionWidget, params);
@@ -113,31 +117,31 @@ public class PictureTopicMainWidget extends FrameLayout {
         mBarragePlayer.setBarrageViews(mFeedActionViews);
     }
 
-    public void hideAllBarrageActions(){
+    public void hideAllBarrageActions() {
         mBarragePlayer.hideAllBarrage();
     }
 
-    public void showAllBarrageActions(){
+    public void showAllBarrageActions() {
         mBarragePlayer.showAllBarrage();
     }
 
-    public void play(){
+    public void play() {
         mBarragePlayer.play();
     }
 
-    public void pause(){
+    public void pause() {
         mBarragePlayer.pause();
     }
 
-    public void resume(){
+    public void resume() {
         mBarragePlayer.resume();
     }
 
-    public void stop(){
+    public void stop() {
         mBarragePlayer.stop();
     }
 
-    public void moveTo(float progress){
+    public void moveTo(float progress) {
         mBarragePlayer.moveTo(progress);
     }
 

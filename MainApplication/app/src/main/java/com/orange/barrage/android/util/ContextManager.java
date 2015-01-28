@@ -11,10 +11,10 @@ public class ContextManager {
 
     public static void init(Context context){
         sContext = context;
-    }
-
-    public static Context getContext() {
-        return sContext;
-    }
-
 }
+
+public static Context getContext() {
+        return sContext;
+        }
+
+        }

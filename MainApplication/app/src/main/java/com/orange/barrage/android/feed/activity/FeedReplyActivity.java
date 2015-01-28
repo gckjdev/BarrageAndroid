@@ -9,6 +9,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.ui.component.DraggableOnTouchListener;
 import com.orange.barrage.android.ui.topic.FeedActionWidget;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
+import com.orange.barrage.android.ui.topic.PictureTopicMode;
 import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.util.ContextManager;
@@ -52,6 +53,7 @@ public class FeedReplyActivity extends RoboFragmentActivity {
         PictureTopicModel model = (PictureTopicModel)getIntent().getSerializableExtra("model");
         mMainWidget.setModel(model);
         mMainWidget.hideAllBarrageActions();
+        mMainWidget.setMode(PictureTopicMode.COMMENT);
 
         //FIXME :get curent user
         mFeedActionWidget.setAvadar(PictureTopicDummyDataGen.getAvatar());

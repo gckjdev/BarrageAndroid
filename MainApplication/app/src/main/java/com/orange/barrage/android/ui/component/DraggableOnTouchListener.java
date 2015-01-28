@@ -13,6 +13,9 @@ public class DraggableOnTouchListener implements View.OnTouchListener {
     private final int STATE_DRAGGING = 1;
 
     private int mState = STATE_IDEAL;
+
+    private float mLastX,mLastY;
+
     @Override
     public boolean onTouch(View view, MotionEvent event) {
 
@@ -23,20 +26,19 @@ public class DraggableOnTouchListener implements View.OnTouchListener {
                 mState = STATE_DRAGGING;
                 handled = true;
                 break;
-            //case MotionEvent.ACTION_CANCEL:
+
+            case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 mState = STATE_IDEAL;
-                //handled = true;
                 break;
 
             case MotionEvent.ACTION_MOVE:
                 switch (mState){
                     case STATE_DRAGGING:
-                        view.setY(event.getY() - view.getHeight()/2);
-                        view.setX(event.getX() - view.getWidth()/2);
-
+                        //FIXME: how to handle this widget?
+                        view.setY(event.getRawY() - view.getTop());
+                        view.setX(event.getRawX() - view.getLeft());
                         Ln.d("view x : %.2f, y: %.2f", view.getX(), view.getY());
-                        //handled = true;
                         break;
 
                     default:
