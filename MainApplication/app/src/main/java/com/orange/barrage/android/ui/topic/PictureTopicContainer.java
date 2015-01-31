@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.LinearLayout;
 
 import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
+import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 
 
 /**
@@ -11,6 +12,7 @@ import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
  */
 public class PictureTopicContainer extends LinearLayout{
 
+    private PictureTopicModel mModel;
     private PictureTopicTopWidget mTopWidget;
     private PictureTopicMainWidget mMainWidget;
     private PictureTopicBottomWidget mBottomWidget;
@@ -19,6 +21,7 @@ public class PictureTopicContainer extends LinearLayout{
         super(context);
         setOrientation(LinearLayout.VERTICAL);
 
+        mModel = new PictureTopicModel();
         //init components
         initComponents(context);
     }

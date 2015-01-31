@@ -12,6 +12,8 @@ public class PictureTopicModel implements Serializable{
 
     private String mImageUrl;
     private String mSubtitleText;
+    private BarrageProtos.PBFeed mFeed;
+
     private List<BarrageProtos.PBFeedAction> mFeedActionLis;
 
     public String getImageUrl() {
@@ -36,5 +38,13 @@ public class PictureTopicModel implements Serializable{
 
     public void setFeedActionLis(List<BarrageProtos.PBFeedAction> feedActionLis) {
         mFeedActionLis = feedActionLis;
+    }
+
+    public BarrageProtos.PBFeed getFeed() {
+        return mFeed;
+    }
+
+    public void setFeed(BarrageProtos.PBFeed feed) {
+        mFeed = feed;
     }
 }

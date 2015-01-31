@@ -3,6 +3,7 @@ package com.orange.barrage.android.ui.topic;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,11 +22,14 @@ public class  FeedActionWidget extends LinearLayout {
     private ImageView mAvatarView;
     private TextView mContent;
 
-
     private BarrageProtos.PBFeedAction mFeedAction;
     private Context mContext;
 
     public FeedActionWidget(Context context) {
+        this(context,false);
+    }
+
+    public FeedActionWidget(Context context, boolean editable) {
         super(context);
         mContext = context;
         setOrientation(HORIZONTAL);
@@ -34,7 +38,11 @@ public class  FeedActionWidget extends LinearLayout {
         LayoutParams avatarParams = new LayoutParams(60, 60);
         addView(mAvatarView, avatarParams);
 
-        mContent = new TextView(context);
+        if(editable){
+            mContent = new EditText(context);
+        }else{
+            mContent = new TextView(context);
+        }
         LayoutParams contentParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         addView(mContent, contentParams);
     }

@@ -10,4 +10,8 @@
     <string name="action_send">Send</string>
     <string name="action_cancel">Cancel</string>
 
+    <string name="take_photo">Take Photo</string>
+    <string name="picture_selection">Pictures Album</string>
+    <string name="add_subtitle">Click to add Subtitle</string>
+    <string name="action_next">Next</string>
 </resources>

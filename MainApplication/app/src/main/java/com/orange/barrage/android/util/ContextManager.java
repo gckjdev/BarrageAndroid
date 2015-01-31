@@ -1,5 +1,6 @@
 package com.orange.barrage.android.util;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -7,14 +8,13 @@ import android.content.Context;
  */
 public class ContextManager {
 
-    private static Context sContext;
+    private static Context sApplicationContext;
 
-    public static void init(Context context){
-        sContext = context;
+    public static void init(Context context) {
+        sApplicationContext = context;
+    }
+
+    public static Context getContext() {
+        return sApplicationContext;
+    }
 }
-
-public static Context getContext() {
-        return sContext;
-        }
-
-        }

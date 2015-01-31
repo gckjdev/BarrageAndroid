@@ -90,6 +90,12 @@ public class PictureTopicMainWidget extends FrameLayout {
         mModel.setSubtitleText(title);
     }
 
+    public void setBarrageFeed(BarrageProtos.PBFeed feed){
+        mModel.setFeed(feed);
+
+        setSubtitle(feed.getText());
+        setImangeURL(feed.getImage());
+    }
     public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
         mModel.setFeedActionLis(feedActionList);
 

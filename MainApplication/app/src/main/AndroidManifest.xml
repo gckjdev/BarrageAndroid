@@ -3,6 +3,8 @@
     package="com.orange.barrage.android" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -16,10 +18,12 @@
             android:label="@string/title_activity_home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.orange.barrage.android.feed.activity.FeedReplyActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.orange.barrage.android.feed.activity.FeedCreateActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

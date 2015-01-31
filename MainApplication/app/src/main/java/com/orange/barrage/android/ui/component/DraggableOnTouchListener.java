@@ -2,6 +2,7 @@ package com.orange.barrage.android.ui.component;
 
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewParent;
 
 import roboguice.util.Ln;
 
@@ -15,7 +16,7 @@ public class DraggableOnTouchListener implements View.OnTouchListener {
     private int mState = STATE_IDEAL;
 
     private float mLastX,mLastY;
-
+    private int[] location = new int[2];
     @Override
     public boolean onTouch(View view, MotionEvent event) {
 
@@ -36,9 +37,14 @@ public class DraggableOnTouchListener implements View.OnTouchListener {
                 switch (mState){
                     case STATE_DRAGGING:
                         //FIXME: how to handle this widget?
-                        view.setY(event.getRawY() - view.getTop());
-                        view.setX(event.getRawX() - view.getLeft());
-                        Ln.d("view x : %.2f, y: %.2f", view.getX(), view.getY());
+                        ViewParent parent = view.getParent();
+                        float parentTop = 0;
+                        if(parent instanceof View){
+                            parentTop = ((View) parent).getTop();
+                        }
+                        view.setY(event.getRawY() - parentTop);
+                        view.setX(event.getRawX());
+
                         break;
 
                     default:

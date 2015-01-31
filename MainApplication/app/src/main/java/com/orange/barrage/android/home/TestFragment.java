@@ -1,19 +1,25 @@
 package com.orange.barrage.android.home;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.feed.ui.FeedPhotoSourceSelectionLayout;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.user.mission.UserMission;
@@ -21,6 +27,7 @@ import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.DateUtil;
+import com.orange.barrage.android.util.misc.PopupWindowUtil;
 import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
@@ -36,6 +43,8 @@ import javax.inject.Inject;
 
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
+
+import static com.orange.barrage.android.util.misc.PopupWindowUtil.*;
 
 /**
  * Created by pipi on 15/1/6.
@@ -57,11 +66,11 @@ public class TestFragment extends RoboFragment {
     @InjectView(R.id.test_button)
     Button mTestButton;
 
-    @InjectView(R.id.textset)
-    TextView mTextView;
-
     @InjectView(R.id.test_db_button)
     Button mTestDBButton;
+
+    @InjectView(R.id.test_create_feed_button)
+    Button mCreateFeedButton;
 
     @InjectView(R.id.play_button)
     Button mPlayButton;
@@ -90,7 +99,16 @@ public class TestFragment extends RoboFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mTextView.setText("Hello World");
+        mCreateFeedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FeedPhotoSourceSelectionLayout sourceSelection = new FeedPhotoSourceSelectionLayout(ContextManager.getContext());
+                //FIXME: screen size, change to dp px later
+                PopupWindow window = PopupWindowUtil.getPopupWindow(sourceSelection, new ColorDrawable(Color.RED), ContextManager.getContext(), 600, 400);
+                window.showAtLocation(TestFragment.this.getView(), Gravity.CENTER, 0, 0);
+            }
+        });
+
         mTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
