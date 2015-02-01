@@ -27,9 +27,9 @@ public class PictureTopicContainer extends LinearLayout{
     }
 
     private void initComponents(Context context) {
-        mTopWidget = new PictureTopicTopWidget(context);
-        mMainWidget = new PictureTopicMainWidget(context);
-        mBottomWidget = new PictureTopicBottomWidget(context);
+        mTopWidget = new PictureTopicTopWidget(context, this);
+        mMainWidget = new PictureTopicMainWidget(context, null, this);
+        mBottomWidget = new PictureTopicBottomWidget(context, this);
 
         this.addView(mTopWidget);
         this.addView(mMainWidget);
@@ -48,4 +48,12 @@ public class PictureTopicContainer extends LinearLayout{
         return mBottomWidget;
     }
 
+    public void setModel(PictureTopicModel model) {
+        mModel = model;
+        mMainWidget.setModel(mModel);
+    }
+
+    public PictureTopicModel getModel() {
+        return mModel;
+    }
 }

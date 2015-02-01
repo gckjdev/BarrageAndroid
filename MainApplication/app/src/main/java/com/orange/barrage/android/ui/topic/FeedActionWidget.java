@@ -64,4 +64,8 @@ public class  FeedActionWidget extends LinearLayout {
     public void setContent(String content){
         mContent.setText(content);
     }
+
+    public String getContent(){
+        return mContent.getText() == null?"":mContent.getText().toString();
+    }
 }

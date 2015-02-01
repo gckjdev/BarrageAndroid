@@ -204,25 +204,6 @@ public class TestFragment extends RoboFragment {
         initMainWidget();
     }
 
-    private void testSubmitFeed(){
-        final Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-        final String text = "Hello";
-        final List<UserProtos.PBUser> toUsers = new ArrayList<UserProtos.PBUser>();
-        toUsers.add(mUserManager.getUser());
-        mFeedMission.createFeed(image, text, toUsers, new FeedMissionCallbackInterface() {
-
-            @Override
-            public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                ToastUtil.showToastMessage(ContextManager.getContext(), "handleSuccess submit", Toast.LENGTH_SHORT);
-            }
-
-            @Override
-            public void handleFailure(int errorCode) {
-                ToastUtil.showToastMessage(ContextManager.getContext(), "handleFailure submit:" + errorCode, Toast.LENGTH_SHORT);
-            }
-        });
-    }
-
     private int mCurrentCommentSize = 0;
 
     private int mCommentLocationThreshold = 800;

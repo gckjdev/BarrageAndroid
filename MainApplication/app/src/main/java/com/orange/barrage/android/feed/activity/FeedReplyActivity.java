@@ -86,12 +86,13 @@ public class FeedReplyActivity extends RoboFragmentActivity {
         mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String avatar = "";
-                String text = "";
-                float x = 0;
-                float y = 0;
-                String feedId = "";
-                BarrageProtos.PBFeedAction feedAction = BarrageProtos.PBFeedAction.newBuilder().setFeedId(feedId).setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
+
+                PictureTopicModel model = (PictureTopicModel) getIntent().getSerializableExtra("model");
+                String text = mFeedActionWidget.getContent();
+                float x = mFeedActionWidget.getX();
+                float y = mFeedActionWidget.getY();
+                String feedId = model.getFeed().getFeedId();
+                BarrageProtos.PBFeedAction feedAction = BarrageProtos.PBFeedAction.newBuilder().setFeedId(feedId).setText(text).setPosX(x).setPosY(y).build();
                 mFeedMission.replyFeed(feedAction, new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {

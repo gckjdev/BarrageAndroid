@@ -10,9 +10,11 @@ import android.widget.TextView;
 public class PictureTopicTopWidget extends LinearLayout{
 
 
-    public PictureTopicTopWidget(Context context){
+    private PictureTopicContainer mContainer;
 
+    public PictureTopicTopWidget(Context context, PictureTopicContainer container){
         super(context);
+        mContainer = container;
 
         TextView view = new TextView(context);
         view.setText("Top Container");

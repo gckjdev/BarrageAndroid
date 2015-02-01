@@ -28,8 +28,6 @@ import javax.inject.Inject;
  */
 public class PictureTopicMainWidget extends FrameLayout {
 
-    private PictureTopicModel mModel;
-
     private ImageView mImage;
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;
@@ -38,11 +36,15 @@ public class PictureTopicMainWidget extends FrameLayout {
     private Context mContext;
     private PictureTopicMode mMode;
 
+    private PictureTopicContainer mContainer;
+    public PictureTopicMainWidget(Context context,AttributeSet set, PictureTopicContainer container) {
+        this(context, set);
+        mContainer = container;
+    }
+
     public PictureTopicMainWidget(Context context, AttributeSet set) {
         super(context, set);
         this.mContext = context;
-        mModel = new PictureTopicModel();
-
         mSubtitleView = new TextView(context);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         this.addView(mSubtitleView, params);
@@ -61,7 +63,7 @@ public class PictureTopicMainWidget extends FrameLayout {
                 switch (mMode) {
                     case LIST: {
                         Intent intent = new Intent(mContext, FeedReplyActivity.class);
-                        intent.putExtra("model", mModel);
+                        intent.putExtra("model", mContainer.getModel());
                         mContext.startActivity(intent);
                         break;
                     }
@@ -83,23 +85,13 @@ public class PictureTopicMainWidget extends FrameLayout {
 
     public void setImangeURL(String url) {
         Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage);
-        mModel.setImageUrl(url);
     }
 
     public void setSubtitle(String title) {
         mSubtitleView.setText(title);
-        mModel.setSubtitleText(title);
     }
 
-    public void setBarrageFeed(BarrageProtos.PBFeed feed){
-        mModel.setFeed(feed);
-
-        setSubtitle(feed.getText());
-        setImangeURL(feed.getImage());
-    }
     public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
-        mModel.setFeedActionLis(feedActionList);
-
         if (mFeedActionViews != null) {
             for (View view : mFeedActionViews) {
                 removeView(view);
@@ -153,7 +145,6 @@ public class PictureTopicMainWidget extends FrameLayout {
     }
 
     public void setModel(PictureTopicModel model) {
-        mModel = model;
         setSubtitle(model.getSubtitleText());
         setImangeURL(model.getImageUrl());
         setBarrageActions(model.getFeedActionLis());

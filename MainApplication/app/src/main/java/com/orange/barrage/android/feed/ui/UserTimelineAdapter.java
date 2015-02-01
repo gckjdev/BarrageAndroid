@@ -80,7 +80,7 @@ public class UserTimelineAdapter extends BaseAdapter{
 
         PictureTopicModel model = new PictureTopicModel();
         model.setFeed(feed);
-
+        container.setModel(model);
 //        if (convertView == null){
 //            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, null);
 //        }
