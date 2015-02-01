@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.activity.FeedReplyActivity;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
@@ -81,7 +82,7 @@ public class PictureTopicMainWidget extends FrameLayout {
     }
 
     public void setImangeURL(String url) {
-        Picasso.with(mContext).load(url).into(mImage);
+        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage);
         mModel.setImageUrl(url);
     }
 

@@ -46,5 +46,8 @@ public class PictureTopicModel implements Serializable{
 
     public void setFeed(BarrageProtos.PBFeed feed) {
         mFeed = feed;
+        setSubtitleText(feed.getText());
+        setImageUrl(feed.getImage());
+        setFeedActionLis(feed.getActionsList());
     }
 }

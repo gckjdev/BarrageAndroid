@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.model.FeedManager;
+import com.orange.barrage.android.ui.topic.PictureTopicContainer;
+import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
@@ -69,41 +71,51 @@ public class UserTimelineAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (convertView == null){
-            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, null);
+        if(convertView == null){
+            convertView = new PictureTopicContainer(this.mContext);
         }
 
+        PictureTopicContainer container = (PictureTopicContainer) convertView;
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
 
-        TextView userNickTextView = (TextView)convertView.findViewById(R.id.timeline_item_user_nick);
-        userNickTextView.setText(feed.getCreateUser().getNick());
+        PictureTopicModel model = new PictureTopicModel();
+        model.setFeed(feed);
 
-        TextView dateTextView = (TextView)convertView.findViewById(R.id.timeline_item_date);
-        dateTextView.setText(DateUtil.dateFormatToString(feed.getDate(), mContext));
-
-        ImageView barrageView = (ImageView) convertView.findViewById(R.id.timeline_item_barage_image);
-        barrageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // goto reply view
-                Ln.d("click image view, go to reply");
-
-                ReplyFeedFragment replyFeedFragment = new ReplyFeedFragment();
-
-                FragmentTransaction transaction = mFragment.getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.timeline_fragment, replyFeedFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-                mFragment.getChildFragmentManager().executePendingTransactions();
-
-            }
-        });
-
-        Picasso.with(mContext)
-                .load(feed.getImage())
-                .placeholder(R.drawable.tab_home)           // default
-                .error(R.drawable.tab_friend)               // error loading
-                .into(barrageView);
+//        if (convertView == null){
+//            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, null);
+//        }
+//
+//        BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
+//
+//        TextView userNickTextView = (TextView)convertView.findViewById(R.id.timeline_item_user_nick);
+//        userNickTextView.setText(feed.getCreateUser().getNick());
+//
+//        TextView dateTextView = (TextView)convertView.findViewById(R.id.timeline_item_date);
+//        dateTextView.setText(DateUtil.dateFormatToString(feed.getDate(), mContext));
+//
+//        ImageView barrageView = (ImageView) convertView.findViewById(R.id.timeline_item_barage_image);
+//        barrageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // goto reply view
+//                Ln.d("click image view, go to reply");
+//
+//                ReplyFeedFragment replyFeedFragment = new ReplyFeedFragment();
+//
+//                FragmentTransaction transaction = mFragment.getChildFragmentManager().beginTransaction();
+//                transaction.replace(R.id.timeline_fragment, replyFeedFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//                mFragment.getChildFragmentManager().executePendingTransactions();
+//
+//            }
+//        });
+//
+//        Picasso.with(mContext)
+//                .load(feed.getImage())
+//                .placeholder(R.drawable.tab_home)           // default
+//                .error(R.drawable.tab_friend)               // error loading
+//                .into(barrageView);
 
         return convertView;
     }

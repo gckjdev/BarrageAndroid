@@ -16,6 +16,7 @@ import com.orange.protocol.message.UserProtos;
 import org.roboguice.shaded.goole.common.collect.Lists;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -57,10 +58,19 @@ public class FeedCreateSelectFriendActivity extends RoboFragmentActivity {
             @Override
             public void onClick(View v) {
                 String path = getIntent().getStringExtra("path");
-                final Bitmap image = BitmapFactory.decodeFile(path);
+
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 4;
+                final Bitmap image = BitmapFactory.decodeFile(path, options);
                 final String text = getIntent().getStringExtra("subtitle");
 
-                List<UserProtos.PBUser> toUsers = Lists.newArrayList(mUserManager.getUser());
+
+                List<UserProtos.PBUser> toUsers = Lists.newArrayList();
+                int selectSize = 10;
+                for (int i = 0; i < selectSize; i++) {
+                    UserProtos.PBUser friend = UserProtos.PBUser.newBuilder().setUserId("123_"+i).build();
+                    toUsers.add(friend);
+                }
                 mFeedMission.createFeed(image, text, toUsers, new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
