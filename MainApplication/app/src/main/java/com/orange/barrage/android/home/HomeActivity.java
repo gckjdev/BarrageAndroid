@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -28,6 +29,7 @@ import com.orange.barrage.android.util.ContextManager;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import javax.inject.Inject;
@@ -130,7 +132,7 @@ public class HomeActivity extends RoboFragmentActivity {
 
     public void onEvent(ActionImageCaptureEvent event){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        ActivityCompat.startActivityForResult(this, intent, REQUEST_CODE_PICK_IMAGE, null);
+        ActivityCompat.startActivityForResult(this, intent, REQUEST_CODE_TAKEN_PICTURE, null);
     }
 
     @Override
@@ -139,32 +141,10 @@ public class HomeActivity extends RoboFragmentActivity {
             return;
         }
 
-        Uri imageUri = null;
+        Bitmap photo =null;
+        String picturePath = null;
         if( requestCode == REQUEST_CODE_PICK_IMAGE ) {
-            imageUri = data.getData();
-            //......
-        }else if(requestCode ==REQUEST_CODE_TAKEN_PICTURE){
-            imageUri = data.getData();
-            if(imageUri == null){
-                //use bundle to get data
-                Bundle bundle = data.getExtras();
-                if (bundle != null) {
-                    Bitmap photo = (Bitmap) bundle.get("data"); //get bitmap
-
-                    String path = getCacheDir()+"temp.jpg";
-                    saveImage( photo, path);
-
-                    imageUri = Uri.fromFile(new File(path));
-                } else {
-                    Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
-                    return;
-                }
-            }else{
-                //to do find the path of pic by uri
-            }
-        }
-
-        if(imageUri !=null){
+            Uri imageUri = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
             Cursor cursor = getContentResolver().query(imageUri,
@@ -172,10 +152,33 @@ public class HomeActivity extends RoboFragmentActivity {
             cursor.moveToFirst();
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+            picturePath = cursor.getString(columnIndex);
             cursor.close();
 
+            if(picturePath.endsWith("jpg") || picturePath.endsWith("png")){
+                try {
+                    //FIXME to big for intent, exceeds 1MB
+                    //photo =
+                    BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                }catch (FileNotFoundException e){
+                    Ln.e(e, "error while loading picture");
+                }
+            }
+        } else if (requestCode == REQUEST_CODE_TAKEN_PICTURE) {
+            Bundle bundle = data.getExtras();
+            if (bundle != null) {
+                photo = (Bitmap) bundle.get("data");
+                picturePath = getCacheDir() + "/temp.jpg";
+                if(photo!=null){
+                    saveImage(photo, picturePath);
+                }
+            }
+        }
+
+        //convert to path
+        if(photo != null || picturePath !=null){
             Intent intent = new Intent(ContextManager.getContext(), FeedCreateActivity.class);
+            //intent.putExtra("photo", photo);
             intent.putExtra("path", picturePath);
             startActivity(intent);
         }

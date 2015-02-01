@@ -24,6 +24,8 @@
         </activity>
         <activity android:name="com.orange.barrage.android.feed.activity.FeedReplyActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.orange.barrage.android.feed.activity.FeedCreateActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.orange.barrage.android.feed.activity.FeedCreateSelectFriendActivity" android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
