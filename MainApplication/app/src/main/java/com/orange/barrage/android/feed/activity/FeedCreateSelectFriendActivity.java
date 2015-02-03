@@ -1,5 +1,7 @@
 package com.orange.barrage.android.feed.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -74,14 +76,14 @@ public class FeedCreateSelectFriendActivity extends RoboFragmentActivity {
                 mFeedMission.createFeed(image, text, toUsers, new FeedMissionCallbackInterface() {
                     @Override
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                        //FIXME: how to finish all
+                        Intent intent = new Intent();
+                        setResult(Activity.RESULT_FIRST_USER, intent);
                         finish();
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
-                        //FIXME: how to finish all
-                        finish();
+                        //FIXME: hold on here.
                     }
                 });
 

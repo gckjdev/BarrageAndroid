@@ -1,5 +1,6 @@
 package com.orange.barrage.android.feed.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.RequestCodes;
 
 import roboguice.activity.RoboFragmentActivity;
 import roboguice.inject.InjectView;
@@ -18,6 +20,7 @@ import roboguice.inject.InjectView;
  * Created by Rollin on 2015/1/31.
  */
 public class FeedCreateActivity extends RoboFragmentActivity {
+
 
     @InjectView(R.id.picture_image_view)
     private ImageView mFeedImage;
@@ -58,7 +61,7 @@ public class FeedCreateActivity extends RoboFragmentActivity {
                 intent.putExtra("subtitle",value);
                 intent.putExtra("path", getIntent().getStringExtra("path"));
                 //intent.putExtra("bitmap", getIntent().getParcelableExtra("photo"));
-                startActivity(intent);
+                startActivityForResult(intent, RequestCodes.FEED_CREATE_SELECT_FRIENDS);
             }
         });
 
@@ -68,5 +71,14 @@ public class FeedCreateActivity extends RoboFragmentActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode== RequestCodes.FEED_CREATE_SELECT_FRIENDS && data != null){
+            setResult(Activity.RESULT_FIRST_USER, data);
+            finish();
+        }
     }
 }

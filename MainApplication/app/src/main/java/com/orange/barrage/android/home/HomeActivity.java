@@ -22,13 +22,13 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.ActionImageCaptureEvent;
 import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.feed.activity.FeedCreateActivity;
-import com.orange.barrage.android.feed.ui.FeedPhotoSourceSelectionLayout;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.activity.RequestCodes;
+import com.orange.barrage.android.util.misc.ToastUtil;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -37,8 +37,6 @@ import javax.inject.Inject;
 import de.greenrobot.event.EventBus;
 import roboguice.activity.RoboFragmentActivity;
 import roboguice.util.Ln;
-
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class HomeActivity extends RoboFragmentActivity {
 
@@ -120,30 +118,29 @@ public class HomeActivity extends RoboFragmentActivity {
     }
 
 
-    //FIXME: need to change to request code constants
-    public static final int REQUEST_CODE_PICK_IMAGE =1;
-    public static final int  REQUEST_CODE_TAKEN_PICTURE =2;
+
 
     public void onEvent(ActionPickEvent event){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(event.getType());
-        ActivityCompat.startActivityForResult(this, intent, REQUEST_CODE_PICK_IMAGE, null);
+        ActivityCompat.startActivityForResult(this, intent, RequestCodes.FEED_CREATE_PICK_IMAGE, null);
     }
 
     public void onEvent(ActionImageCaptureEvent event){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        ActivityCompat.startActivityForResult(this, intent, REQUEST_CODE_TAKEN_PICTURE, null);
+        ActivityCompat.startActivityForResult(this, intent, RequestCodes.FEED_CREATE_TAKEN_PICTURE, null);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) {
+        if (resultCode != RESULT_OK && resultCode != RESULT_FIRST_USER) {
             return;
         }
 
+
         Bitmap photo =null;
         String picturePath = null;
-        if( requestCode == REQUEST_CODE_PICK_IMAGE ) {
+        if( requestCode == RequestCodes.FEED_CREATE_PICK_IMAGE) {
             Uri imageUri = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
@@ -164,13 +161,19 @@ public class HomeActivity extends RoboFragmentActivity {
                     Ln.e(e, "error while loading picture");
                 }
             }
-        } else if (requestCode == REQUEST_CODE_TAKEN_PICTURE) {
+        } else if (requestCode == RequestCodes.FEED_CREATE_TAKEN_PICTURE) {
             Bundle bundle = data.getExtras();
             if (bundle != null) {
                 photo = (Bitmap) bundle.get("data");
                 picturePath = getCacheDir() + "/temp.jpg";
                 if(photo!=null){
                     saveImage(photo, picturePath);
+                }
+            }
+        }else  if(requestCode==RequestCodes.FEED_CREATE_REQUEST_CODE){
+            if(resultCode==Activity.RESULT_FIRST_USER){
+                if(data != null) {
+                    ToastUtil.showToastMessage(this,"Create Feed Successfully", Toast.LENGTH_SHORT);
                 }
             }
         }
@@ -180,7 +183,7 @@ public class HomeActivity extends RoboFragmentActivity {
             Intent intent = new Intent(ContextManager.getContext(), FeedCreateActivity.class);
             //intent.putExtra("photo", photo);
             intent.putExtra("path", picturePath);
-            startActivity(intent);
+            startActivityForResult(intent, RequestCodes.FEED_CREATE_REQUEST_CODE);
         }
     }
 
