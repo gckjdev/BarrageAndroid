@@ -783,6 +783,138 @@ public final class UserProtos {
     // @@protoc_insertion_point(enum_scope:barrage.PBTagColor)
   }
 
+  /**
+   * Protobuf enum {@code barrage.PBInviteCodeStatus}
+   */
+  public enum PBInviteCodeStatus
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>CODE_STATUS_READY = 0;</code>
+     *
+     * <pre>
+     * 可用
+     * </pre>
+     */
+    CODE_STATUS_READY(0, 0),
+    /**
+     * <code>CODE_STATUS_SENT = 1;</code>
+     *
+     * <pre>
+     * 已经给某个用户
+     * </pre>
+     */
+    CODE_STATUS_SENT(1, 1),
+    /**
+     * <code>CODE_STATUS_USED = 2;</code>
+     *
+     * <pre>
+     * 已经使用
+     * </pre>
+     */
+    CODE_STATUS_USED(2, 2),
+    /**
+     * <code>CODE_STATUS_INVALID = 3;</code>
+     *
+     * <pre>
+     * 无效
+     * </pre>
+     */
+    CODE_STATUS_INVALID(3, 3),
+    ;
+
+    /**
+     * <code>CODE_STATUS_READY = 0;</code>
+     *
+     * <pre>
+     * 可用
+     * </pre>
+     */
+    public static final int CODE_STATUS_READY_VALUE = 0;
+    /**
+     * <code>CODE_STATUS_SENT = 1;</code>
+     *
+     * <pre>
+     * 已经给某个用户
+     * </pre>
+     */
+    public static final int CODE_STATUS_SENT_VALUE = 1;
+    /**
+     * <code>CODE_STATUS_USED = 2;</code>
+     *
+     * <pre>
+     * 已经使用
+     * </pre>
+     */
+    public static final int CODE_STATUS_USED_VALUE = 2;
+    /**
+     * <code>CODE_STATUS_INVALID = 3;</code>
+     *
+     * <pre>
+     * 无效
+     * </pre>
+     */
+    public static final int CODE_STATUS_INVALID_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBInviteCodeStatus valueOf(int value) {
+      switch (value) {
+        case 0: return CODE_STATUS_READY;
+        case 1: return CODE_STATUS_SENT;
+        case 2: return CODE_STATUS_USED;
+        case 3: return CODE_STATUS_INVALID;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBInviteCodeStatus>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBInviteCodeStatus>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBInviteCodeStatus>() {
+            public PBInviteCodeStatus findValueByNumber(int number) {
+              return PBInviteCodeStatus.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.UserProtos.getDescriptor().getEnumTypes().get(7);
+    }
+
+    private static final PBInviteCodeStatus[] VALUES = values();
+
+    public static PBInviteCodeStatus valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBInviteCodeStatus(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBInviteCodeStatus)
+  }
+
   public interface PBSNSUserOrBuilder extends
       // @@protoc_insertion_point(interface_extends:barrage.PBSNSUser)
       com.google.protobuf.MessageOrBuilder {
@@ -10827,28 +10959,52 @@ public final class UserProtos {
 
     /**
      * <code>optional string name = 1;</code>
+     *
+     * <pre>
+     * tag里面的文字
+     * </pre>
      */
     boolean hasName();
     /**
      * <code>optional string name = 1;</code>
+     *
+     * <pre>
+     * tag里面的文字
+     * </pre>
      */
     java.lang.String getName();
     /**
      * <code>optional string name = 1;</code>
+     *
+     * <pre>
+     * tag里面的文字
+     * </pre>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
      * <code>optional string tid = 2;</code>
+     *
+     * <pre>
+     * tag的唯一标签
+     * </pre>
      */
     boolean hasTid();
     /**
      * <code>optional string tid = 2;</code>
+     *
+     * <pre>
+     * tag的唯一标签
+     * </pre>
      */
     java.lang.String getTid();
     /**
      * <code>optional string tid = 2;</code>
+     *
+     * <pre>
+     * tag的唯一标签
+     * </pre>
      */
     com.google.protobuf.ByteString
         getTidBytes();
@@ -11107,12 +11263,20 @@ public final class UserProtos {
     private java.lang.Object name_;
     /**
      * <code>optional string name = 1;</code>
+     *
+     * <pre>
+     * tag里面的文字
+     * </pre>
      */
     public boolean hasName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional string name = 1;</code>
+     *
+     * <pre>
+     * tag里面的文字
+     * </pre>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -11130,6 +11294,10 @@ public final class UserProtos {
     }
     /**
      * <code>optional string name = 1;</code>
+     *
+     * <pre>
+     * tag里面的文字
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -11149,12 +11317,20 @@ public final class UserProtos {
     private java.lang.Object tid_;
     /**
      * <code>optional string tid = 2;</code>
+     *
+     * <pre>
+     * tag的唯一标签
+     * </pre>
      */
     public boolean hasTid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional string tid = 2;</code>
+     *
+     * <pre>
+     * tag的唯一标签
+     * </pre>
      */
     public java.lang.String getTid() {
       java.lang.Object ref = tid_;
@@ -11172,6 +11348,10 @@ public final class UserProtos {
     }
     /**
      * <code>optional string tid = 2;</code>
+     *
+     * <pre>
+     * tag的唯一标签
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getTidBytes() {
@@ -11712,12 +11892,20 @@ public final class UserProtos {
       private java.lang.Object name_ = "";
       /**
        * <code>optional string name = 1;</code>
+       *
+       * <pre>
+       * tag里面的文字
+       * </pre>
        */
       public boolean hasName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional string name = 1;</code>
+       *
+       * <pre>
+       * tag里面的文字
+       * </pre>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -11735,6 +11923,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string name = 1;</code>
+       *
+       * <pre>
+       * tag里面的文字
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -11751,6 +11943,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string name = 1;</code>
+       *
+       * <pre>
+       * tag里面的文字
+       * </pre>
        */
       public Builder setName(
           java.lang.String value) {
@@ -11764,6 +11960,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string name = 1;</code>
+       *
+       * <pre>
+       * tag里面的文字
+       * </pre>
        */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -11773,6 +11973,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string name = 1;</code>
+       *
+       * <pre>
+       * tag里面的文字
+       * </pre>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -11788,12 +11992,20 @@ public final class UserProtos {
       private java.lang.Object tid_ = "";
       /**
        * <code>optional string tid = 2;</code>
+       *
+       * <pre>
+       * tag的唯一标签
+       * </pre>
        */
       public boolean hasTid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional string tid = 2;</code>
+       *
+       * <pre>
+       * tag的唯一标签
+       * </pre>
        */
       public java.lang.String getTid() {
         java.lang.Object ref = tid_;
@@ -11811,6 +12023,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string tid = 2;</code>
+       *
+       * <pre>
+       * tag的唯一标签
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getTidBytes() {
@@ -11827,6 +12043,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string tid = 2;</code>
+       *
+       * <pre>
+       * tag的唯一标签
+       * </pre>
        */
       public Builder setTid(
           java.lang.String value) {
@@ -11840,6 +12060,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string tid = 2;</code>
+       *
+       * <pre>
+       * tag的唯一标签
+       * </pre>
        */
       public Builder clearTid() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -11849,6 +12073,10 @@ public final class UserProtos {
       }
       /**
        * <code>optional string tid = 2;</code>
+       *
+       * <pre>
+       * tag的唯一标签
+       * </pre>
        */
       public Builder setTidBytes(
           com.google.protobuf.ByteString value) {
@@ -13256,6 +13484,67 @@ public final class UserProtos {
      */
     com.orange.protocol.message.UserProtos.PBUserOrBuilder getFriendsOrBuilder(
         int index);
+
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    java.util.List<com.orange.protocol.message.UserProtos.PBUser> 
+        getRequestFriendsList();
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUser getRequestFriends(int index);
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    int getRequestFriendsCount();
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    java.util.List<? extends com.orange.protocol.message.UserProtos.PBUserOrBuilder> 
+        getRequestFriendsOrBuilderList();
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserOrBuilder getRequestFriendsOrBuilder(
+        int index);
+
+    /**
+     * <code>optional int32 requestNewCount = 3;</code>
+     *
+     * <pre>
+     * 新的好友请求数目
+     * </pre>
+     */
+    boolean hasRequestNewCount();
+    /**
+     * <code>optional int32 requestNewCount = 3;</code>
+     *
+     * <pre>
+     * 新的好友请求数目
+     * </pre>
+     */
+    int getRequestNewCount();
   }
   /**
    * Protobuf type {@code barrage.PBUserFriendList}
@@ -13317,6 +13606,19 @@ public final class UserProtos {
               friends_.add(input.readMessage(com.orange.protocol.message.UserProtos.PBUser.PARSER, extensionRegistry));
               break;
             }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                requestFriends_ = new java.util.ArrayList<com.orange.protocol.message.UserProtos.PBUser>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              requestFriends_.add(input.readMessage(com.orange.protocol.message.UserProtos.PBUser.PARSER, extensionRegistry));
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000001;
+              requestNewCount_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -13327,6 +13629,9 @@ public final class UserProtos {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           friends_ = java.util.Collections.unmodifiableList(friends_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          requestFriends_ = java.util.Collections.unmodifiableList(requestFriends_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -13359,6 +13664,7 @@ public final class UserProtos {
       return PARSER;
     }
 
+    private int bitField0_;
     public static final int FRIENDS_FIELD_NUMBER = 1;
     private java.util.List<com.orange.protocol.message.UserProtos.PBUser> friends_;
     /**
@@ -13414,8 +13720,88 @@ public final class UserProtos {
       return friends_.get(index);
     }
 
+    public static final int REQUESTFRIENDS_FIELD_NUMBER = 2;
+    private java.util.List<com.orange.protocol.message.UserProtos.PBUser> requestFriends_;
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    public java.util.List<com.orange.protocol.message.UserProtos.PBUser> getRequestFriendsList() {
+      return requestFriends_;
+    }
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    public java.util.List<? extends com.orange.protocol.message.UserProtos.PBUserOrBuilder> 
+        getRequestFriendsOrBuilderList() {
+      return requestFriends_;
+    }
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    public int getRequestFriendsCount() {
+      return requestFriends_.size();
+    }
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUser getRequestFriends(int index) {
+      return requestFriends_.get(index);
+    }
+    /**
+     * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+     *
+     * <pre>
+     * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserOrBuilder getRequestFriendsOrBuilder(
+        int index) {
+      return requestFriends_.get(index);
+    }
+
+    public static final int REQUESTNEWCOUNT_FIELD_NUMBER = 3;
+    private int requestNewCount_;
+    /**
+     * <code>optional int32 requestNewCount = 3;</code>
+     *
+     * <pre>
+     * 新的好友请求数目
+     * </pre>
+     */
+    public boolean hasRequestNewCount() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 requestNewCount = 3;</code>
+     *
+     * <pre>
+     * 新的好友请求数目
+     * </pre>
+     */
+    public int getRequestNewCount() {
+      return requestNewCount_;
+    }
+
     private void initFields() {
       friends_ = java.util.Collections.emptyList();
+      requestFriends_ = java.util.Collections.emptyList();
+      requestNewCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13425,6 +13811,12 @@ public final class UserProtos {
 
       for (int i = 0; i < getFriendsCount(); i++) {
         if (!getFriends(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getRequestFriendsCount(); i++) {
+        if (!getRequestFriends(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -13439,6 +13831,12 @@ public final class UserProtos {
       for (int i = 0; i < friends_.size(); i++) {
         output.writeMessage(1, friends_.get(i));
       }
+      for (int i = 0; i < requestFriends_.size(); i++) {
+        output.writeMessage(2, requestFriends_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(3, requestNewCount_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13451,6 +13849,14 @@ public final class UserProtos {
       for (int i = 0; i < friends_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, friends_.get(i));
+      }
+      for (int i = 0; i < requestFriends_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, requestFriends_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, requestNewCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13562,6 +13968,7 @@ public final class UserProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getFriendsFieldBuilder();
+          getRequestFriendsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -13576,6 +13983,14 @@ public final class UserProtos {
         } else {
           friendsBuilder_.clear();
         }
+        if (requestFriendsBuilder_ == null) {
+          requestFriends_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          requestFriendsBuilder_.clear();
+        }
+        requestNewCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -13603,6 +14018,7 @@ public final class UserProtos {
       public com.orange.protocol.message.UserProtos.PBUserFriendList buildPartial() {
         com.orange.protocol.message.UserProtos.PBUserFriendList result = new com.orange.protocol.message.UserProtos.PBUserFriendList(this);
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (friendsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             friends_ = java.util.Collections.unmodifiableList(friends_);
@@ -13612,6 +14028,20 @@ public final class UserProtos {
         } else {
           result.friends_ = friendsBuilder_.build();
         }
+        if (requestFriendsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            requestFriends_ = java.util.Collections.unmodifiableList(requestFriends_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.requestFriends_ = requestFriends_;
+        } else {
+          result.requestFriends_ = requestFriendsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.requestNewCount_ = requestNewCount_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -13653,6 +14083,35 @@ public final class UserProtos {
             }
           }
         }
+        if (requestFriendsBuilder_ == null) {
+          if (!other.requestFriends_.isEmpty()) {
+            if (requestFriends_.isEmpty()) {
+              requestFriends_ = other.requestFriends_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRequestFriendsIsMutable();
+              requestFriends_.addAll(other.requestFriends_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.requestFriends_.isEmpty()) {
+            if (requestFriendsBuilder_.isEmpty()) {
+              requestFriendsBuilder_.dispose();
+              requestFriendsBuilder_ = null;
+              requestFriends_ = other.requestFriends_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              requestFriendsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRequestFriendsFieldBuilder() : null;
+            } else {
+              requestFriendsBuilder_.addAllMessages(other.requestFriends_);
+            }
+          }
+        }
+        if (other.hasRequestNewCount()) {
+          setRequestNewCount(other.getRequestNewCount());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -13660,6 +14119,12 @@ public final class UserProtos {
       public final boolean isInitialized() {
         for (int i = 0; i < getFriendsCount(); i++) {
           if (!getFriends(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getRequestFriendsCount(); i++) {
+          if (!getRequestFriends(i).isInitialized()) {
             
             return false;
           }
@@ -13998,6 +14463,366 @@ public final class UserProtos {
         return friendsBuilder_;
       }
 
+      private java.util.List<com.orange.protocol.message.UserProtos.PBUser> requestFriends_ =
+        java.util.Collections.emptyList();
+      private void ensureRequestFriendsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          requestFriends_ = new java.util.ArrayList<com.orange.protocol.message.UserProtos.PBUser>(requestFriends_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder> requestFriendsBuilder_;
+
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.UserProtos.PBUser> getRequestFriendsList() {
+        if (requestFriendsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(requestFriends_);
+        } else {
+          return requestFriendsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public int getRequestFriendsCount() {
+        if (requestFriendsBuilder_ == null) {
+          return requestFriends_.size();
+        } else {
+          return requestFriendsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUser getRequestFriends(int index) {
+        if (requestFriendsBuilder_ == null) {
+          return requestFriends_.get(index);
+        } else {
+          return requestFriendsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder setRequestFriends(
+          int index, com.orange.protocol.message.UserProtos.PBUser value) {
+        if (requestFriendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRequestFriendsIsMutable();
+          requestFriends_.set(index, value);
+          onChanged();
+        } else {
+          requestFriendsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder setRequestFriends(
+          int index, com.orange.protocol.message.UserProtos.PBUser.Builder builderForValue) {
+        if (requestFriendsBuilder_ == null) {
+          ensureRequestFriendsIsMutable();
+          requestFriends_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          requestFriendsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder addRequestFriends(com.orange.protocol.message.UserProtos.PBUser value) {
+        if (requestFriendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRequestFriendsIsMutable();
+          requestFriends_.add(value);
+          onChanged();
+        } else {
+          requestFriendsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder addRequestFriends(
+          int index, com.orange.protocol.message.UserProtos.PBUser value) {
+        if (requestFriendsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRequestFriendsIsMutable();
+          requestFriends_.add(index, value);
+          onChanged();
+        } else {
+          requestFriendsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder addRequestFriends(
+          com.orange.protocol.message.UserProtos.PBUser.Builder builderForValue) {
+        if (requestFriendsBuilder_ == null) {
+          ensureRequestFriendsIsMutable();
+          requestFriends_.add(builderForValue.build());
+          onChanged();
+        } else {
+          requestFriendsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder addRequestFriends(
+          int index, com.orange.protocol.message.UserProtos.PBUser.Builder builderForValue) {
+        if (requestFriendsBuilder_ == null) {
+          ensureRequestFriendsIsMutable();
+          requestFriends_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          requestFriendsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder addAllRequestFriends(
+          java.lang.Iterable<? extends com.orange.protocol.message.UserProtos.PBUser> values) {
+        if (requestFriendsBuilder_ == null) {
+          ensureRequestFriendsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, requestFriends_);
+          onChanged();
+        } else {
+          requestFriendsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder clearRequestFriends() {
+        if (requestFriendsBuilder_ == null) {
+          requestFriends_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          requestFriendsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public Builder removeRequestFriends(int index) {
+        if (requestFriendsBuilder_ == null) {
+          ensureRequestFriendsIsMutable();
+          requestFriends_.remove(index);
+          onChanged();
+        } else {
+          requestFriendsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUser.Builder getRequestFriendsBuilder(
+          int index) {
+        return getRequestFriendsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserOrBuilder getRequestFriendsOrBuilder(
+          int index) {
+        if (requestFriendsBuilder_ == null) {
+          return requestFriends_.get(index);  } else {
+          return requestFriendsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public java.util.List<? extends com.orange.protocol.message.UserProtos.PBUserOrBuilder> 
+           getRequestFriendsOrBuilderList() {
+        if (requestFriendsBuilder_ != null) {
+          return requestFriendsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(requestFriends_);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUser.Builder addRequestFriendsBuilder() {
+        return getRequestFriendsFieldBuilder().addBuilder(
+            com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUser.Builder addRequestFriendsBuilder(
+          int index) {
+        return getRequestFriendsFieldBuilder().addBuilder(
+            index, com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBUser requestFriends = 2;</code>
+       *
+       * <pre>
+       * 新的好友请求列表（包括自己请求的和别人向自己发起的请求）
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.UserProtos.PBUser.Builder> 
+           getRequestFriendsBuilderList() {
+        return getRequestFriendsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder> 
+          getRequestFriendsFieldBuilder() {
+        if (requestFriendsBuilder_ == null) {
+          requestFriendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder>(
+                  requestFriends_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          requestFriends_ = null;
+        }
+        return requestFriendsBuilder_;
+      }
+
+      private int requestNewCount_ ;
+      /**
+       * <code>optional int32 requestNewCount = 3;</code>
+       *
+       * <pre>
+       * 新的好友请求数目
+       * </pre>
+       */
+      public boolean hasRequestNewCount() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 requestNewCount = 3;</code>
+       *
+       * <pre>
+       * 新的好友请求数目
+       * </pre>
+       */
+      public int getRequestNewCount() {
+        return requestNewCount_;
+      }
+      /**
+       * <code>optional int32 requestNewCount = 3;</code>
+       *
+       * <pre>
+       * 新的好友请求数目
+       * </pre>
+       */
+      public Builder setRequestNewCount(int value) {
+        bitField0_ |= 0x00000004;
+        requestNewCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 requestNewCount = 3;</code>
+       *
+       * <pre>
+       * 新的好友请求数目
+       * </pre>
+       */
+      public Builder clearRequestNewCount() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        requestNewCount_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:barrage.PBUserFriendList)
     }
 
@@ -14007,6 +14832,2927 @@ public final class UserProtos {
     }
 
     // @@protoc_insertion_point(class_scope:barrage.PBUserFriendList)
+  }
+
+  public interface PBInviteCodeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBInviteCode)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string code = 1;</code>
+     */
+    boolean hasCode();
+    /**
+     * <code>required string code = 1;</code>
+     */
+    java.lang.String getCode();
+    /**
+     * <code>required string code = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getCodeBytes();
+
+    /**
+     * <code>optional int32 status = 2;</code>
+     *
+     * <pre>
+     * 状态，参考PBInviteCodeStatus
+     * </pre>
+     */
+    boolean hasStatus();
+    /**
+     * <code>optional int32 status = 2;</code>
+     *
+     * <pre>
+     * 状态，参考PBInviteCodeStatus
+     * </pre>
+     */
+    int getStatus();
+
+    /**
+     * <code>optional string sendTo = 3;</code>
+     *
+     * <pre>
+     * 发放给谁（文字信息，自定义填写）
+     * </pre>
+     */
+    boolean hasSendTo();
+    /**
+     * <code>optional string sendTo = 3;</code>
+     *
+     * <pre>
+     * 发放给谁（文字信息，自定义填写）
+     * </pre>
+     */
+    java.lang.String getSendTo();
+    /**
+     * <code>optional string sendTo = 3;</code>
+     *
+     * <pre>
+     * 发放给谁（文字信息，自定义填写）
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSendToBytes();
+
+    /**
+     * <code>optional int32 sendType = 4;</code>
+     *
+     * <pre>
+     * 发放渠道，参考ShareSDK ShareType
+     * </pre>
+     */
+    boolean hasSendType();
+    /**
+     * <code>optional int32 sendType = 4;</code>
+     *
+     * <pre>
+     * 发放渠道，参考ShareSDK ShareType
+     * </pre>
+     */
+    int getSendType();
+
+    /**
+     * <code>optional string ownerUserId = 5;</code>
+     *
+     * <pre>
+     * 邀请码拥有者
+     * </pre>
+     */
+    boolean hasOwnerUserId();
+    /**
+     * <code>optional string ownerUserId = 5;</code>
+     *
+     * <pre>
+     * 邀请码拥有者
+     * </pre>
+     */
+    java.lang.String getOwnerUserId();
+    /**
+     * <code>optional string ownerUserId = 5;</code>
+     *
+     * <pre>
+     * 邀请码拥有者
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getOwnerUserIdBytes();
+
+    /**
+     * <code>optional string usedByUserId = 6;</code>
+     *
+     * <pre>
+     * 邀请码使用者
+     * </pre>
+     */
+    boolean hasUsedByUserId();
+    /**
+     * <code>optional string usedByUserId = 6;</code>
+     *
+     * <pre>
+     * 邀请码使用者
+     * </pre>
+     */
+    java.lang.String getUsedByUserId();
+    /**
+     * <code>optional string usedByUserId = 6;</code>
+     *
+     * <pre>
+     * 邀请码使用者
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getUsedByUserIdBytes();
+  }
+  /**
+   * Protobuf type {@code barrage.PBInviteCode}
+   */
+  public static final class PBInviteCode extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBInviteCode)
+      PBInviteCodeOrBuilder {
+    // Use PBInviteCode.newBuilder() to construct.
+    private PBInviteCode(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBInviteCode(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBInviteCode defaultInstance;
+    public static PBInviteCode getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBInviteCode getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBInviteCode(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              code_ = bs;
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              status_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              sendTo_ = bs;
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              sendType_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              ownerUserId_ = bs;
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              usedByUserId_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.UserProtos.internal_static_barrage_PBInviteCode_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.UserProtos.internal_static_barrage_PBInviteCode_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.UserProtos.PBInviteCode.class, com.orange.protocol.message.UserProtos.PBInviteCode.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBInviteCode> PARSER =
+        new com.google.protobuf.AbstractParser<PBInviteCode>() {
+      public PBInviteCode parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBInviteCode(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBInviteCode> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int CODE_FIELD_NUMBER = 1;
+    private java.lang.Object code_;
+    /**
+     * <code>required string code = 1;</code>
+     */
+    public boolean hasCode() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string code = 1;</code>
+     */
+    public java.lang.String getCode() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          code_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string code = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCodeBytes() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        code_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private int status_;
+    /**
+     * <code>optional int32 status = 2;</code>
+     *
+     * <pre>
+     * 状态，参考PBInviteCodeStatus
+     * </pre>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 status = 2;</code>
+     *
+     * <pre>
+     * 状态，参考PBInviteCodeStatus
+     * </pre>
+     */
+    public int getStatus() {
+      return status_;
+    }
+
+    public static final int SENDTO_FIELD_NUMBER = 3;
+    private java.lang.Object sendTo_;
+    /**
+     * <code>optional string sendTo = 3;</code>
+     *
+     * <pre>
+     * 发放给谁（文字信息，自定义填写）
+     * </pre>
+     */
+    public boolean hasSendTo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string sendTo = 3;</code>
+     *
+     * <pre>
+     * 发放给谁（文字信息，自定义填写）
+     * </pre>
+     */
+    public java.lang.String getSendTo() {
+      java.lang.Object ref = sendTo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sendTo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string sendTo = 3;</code>
+     *
+     * <pre>
+     * 发放给谁（文字信息，自定义填写）
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSendToBytes() {
+      java.lang.Object ref = sendTo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sendTo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SENDTYPE_FIELD_NUMBER = 4;
+    private int sendType_;
+    /**
+     * <code>optional int32 sendType = 4;</code>
+     *
+     * <pre>
+     * 发放渠道，参考ShareSDK ShareType
+     * </pre>
+     */
+    public boolean hasSendType() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 sendType = 4;</code>
+     *
+     * <pre>
+     * 发放渠道，参考ShareSDK ShareType
+     * </pre>
+     */
+    public int getSendType() {
+      return sendType_;
+    }
+
+    public static final int OWNERUSERID_FIELD_NUMBER = 5;
+    private java.lang.Object ownerUserId_;
+    /**
+     * <code>optional string ownerUserId = 5;</code>
+     *
+     * <pre>
+     * 邀请码拥有者
+     * </pre>
+     */
+    public boolean hasOwnerUserId() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string ownerUserId = 5;</code>
+     *
+     * <pre>
+     * 邀请码拥有者
+     * </pre>
+     */
+    public java.lang.String getOwnerUserId() {
+      java.lang.Object ref = ownerUserId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          ownerUserId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string ownerUserId = 5;</code>
+     *
+     * <pre>
+     * 邀请码拥有者
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getOwnerUserIdBytes() {
+      java.lang.Object ref = ownerUserId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ownerUserId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USEDBYUSERID_FIELD_NUMBER = 6;
+    private java.lang.Object usedByUserId_;
+    /**
+     * <code>optional string usedByUserId = 6;</code>
+     *
+     * <pre>
+     * 邀请码使用者
+     * </pre>
+     */
+    public boolean hasUsedByUserId() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional string usedByUserId = 6;</code>
+     *
+     * <pre>
+     * 邀请码使用者
+     * </pre>
+     */
+    public java.lang.String getUsedByUserId() {
+      java.lang.Object ref = usedByUserId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          usedByUserId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string usedByUserId = 6;</code>
+     *
+     * <pre>
+     * 邀请码使用者
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getUsedByUserIdBytes() {
+      java.lang.Object ref = usedByUserId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usedByUserId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      code_ = "";
+      status_ = 0;
+      sendTo_ = "";
+      sendType_ = 0;
+      ownerUserId_ = "";
+      usedByUserId_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getCodeBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, status_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getSendToBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, sendType_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getOwnerUserIdBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getUsedByUserIdBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getCodeBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, status_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getSendToBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, sendType_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getOwnerUserIdBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getUsedByUserIdBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.UserProtos.PBInviteCode parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.UserProtos.PBInviteCode prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBInviteCode}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBInviteCode)
+        com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.UserProtos.internal_static_barrage_PBInviteCode_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.UserProtos.internal_static_barrage_PBInviteCode_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.UserProtos.PBInviteCode.class, com.orange.protocol.message.UserProtos.PBInviteCode.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.UserProtos.PBInviteCode.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        code_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sendTo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sendType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        ownerUserId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        usedByUserId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.UserProtos.internal_static_barrage_PBInviteCode_descriptor;
+      }
+
+      public com.orange.protocol.message.UserProtos.PBInviteCode getDefaultInstanceForType() {
+        return com.orange.protocol.message.UserProtos.PBInviteCode.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.UserProtos.PBInviteCode build() {
+        com.orange.protocol.message.UserProtos.PBInviteCode result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.UserProtos.PBInviteCode buildPartial() {
+        com.orange.protocol.message.UserProtos.PBInviteCode result = new com.orange.protocol.message.UserProtos.PBInviteCode(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.code_ = code_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.sendTo_ = sendTo_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.sendType_ = sendType_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.ownerUserId_ = ownerUserId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.usedByUserId_ = usedByUserId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.UserProtos.PBInviteCode) {
+          return mergeFrom((com.orange.protocol.message.UserProtos.PBInviteCode)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.UserProtos.PBInviteCode other) {
+        if (other == com.orange.protocol.message.UserProtos.PBInviteCode.getDefaultInstance()) return this;
+        if (other.hasCode()) {
+          bitField0_ |= 0x00000001;
+          code_ = other.code_;
+          onChanged();
+        }
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
+        }
+        if (other.hasSendTo()) {
+          bitField0_ |= 0x00000004;
+          sendTo_ = other.sendTo_;
+          onChanged();
+        }
+        if (other.hasSendType()) {
+          setSendType(other.getSendType());
+        }
+        if (other.hasOwnerUserId()) {
+          bitField0_ |= 0x00000010;
+          ownerUserId_ = other.ownerUserId_;
+          onChanged();
+        }
+        if (other.hasUsedByUserId()) {
+          bitField0_ |= 0x00000020;
+          usedByUserId_ = other.usedByUserId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCode()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.UserProtos.PBInviteCode parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.UserProtos.PBInviteCode) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object code_ = "";
+      /**
+       * <code>required string code = 1;</code>
+       */
+      public boolean hasCode() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string code = 1;</code>
+       */
+      public java.lang.String getCode() {
+        java.lang.Object ref = code_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            code_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string code = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCodeBytes() {
+        java.lang.Object ref = code_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          code_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string code = 1;</code>
+       */
+      public Builder setCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string code = 1;</code>
+       */
+      public Builder clearCode() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        code_ = getDefaultInstance().getCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string code = 1;</code>
+       */
+      public Builder setCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        code_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int status_ ;
+      /**
+       * <code>optional int32 status = 2;</code>
+       *
+       * <pre>
+       * 状态，参考PBInviteCodeStatus
+       * </pre>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 status = 2;</code>
+       *
+       * <pre>
+       * 状态，参考PBInviteCodeStatus
+       * </pre>
+       */
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>optional int32 status = 2;</code>
+       *
+       * <pre>
+       * 状态，参考PBInviteCodeStatus
+       * </pre>
+       */
+      public Builder setStatus(int value) {
+        bitField0_ |= 0x00000002;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 status = 2;</code>
+       *
+       * <pre>
+       * 状态，参考PBInviteCodeStatus
+       * </pre>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sendTo_ = "";
+      /**
+       * <code>optional string sendTo = 3;</code>
+       *
+       * <pre>
+       * 发放给谁（文字信息，自定义填写）
+       * </pre>
+       */
+      public boolean hasSendTo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string sendTo = 3;</code>
+       *
+       * <pre>
+       * 发放给谁（文字信息，自定义填写）
+       * </pre>
+       */
+      public java.lang.String getSendTo() {
+        java.lang.Object ref = sendTo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            sendTo_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string sendTo = 3;</code>
+       *
+       * <pre>
+       * 发放给谁（文字信息，自定义填写）
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSendToBytes() {
+        java.lang.Object ref = sendTo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sendTo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string sendTo = 3;</code>
+       *
+       * <pre>
+       * 发放给谁（文字信息，自定义填写）
+       * </pre>
+       */
+      public Builder setSendTo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sendTo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sendTo = 3;</code>
+       *
+       * <pre>
+       * 发放给谁（文字信息，自定义填写）
+       * </pre>
+       */
+      public Builder clearSendTo() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sendTo_ = getDefaultInstance().getSendTo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sendTo = 3;</code>
+       *
+       * <pre>
+       * 发放给谁（文字信息，自定义填写）
+       * </pre>
+       */
+      public Builder setSendToBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sendTo_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int sendType_ ;
+      /**
+       * <code>optional int32 sendType = 4;</code>
+       *
+       * <pre>
+       * 发放渠道，参考ShareSDK ShareType
+       * </pre>
+       */
+      public boolean hasSendType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 sendType = 4;</code>
+       *
+       * <pre>
+       * 发放渠道，参考ShareSDK ShareType
+       * </pre>
+       */
+      public int getSendType() {
+        return sendType_;
+      }
+      /**
+       * <code>optional int32 sendType = 4;</code>
+       *
+       * <pre>
+       * 发放渠道，参考ShareSDK ShareType
+       * </pre>
+       */
+      public Builder setSendType(int value) {
+        bitField0_ |= 0x00000008;
+        sendType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 sendType = 4;</code>
+       *
+       * <pre>
+       * 发放渠道，参考ShareSDK ShareType
+       * </pre>
+       */
+      public Builder clearSendType() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        sendType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ownerUserId_ = "";
+      /**
+       * <code>optional string ownerUserId = 5;</code>
+       *
+       * <pre>
+       * 邀请码拥有者
+       * </pre>
+       */
+      public boolean hasOwnerUserId() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string ownerUserId = 5;</code>
+       *
+       * <pre>
+       * 邀请码拥有者
+       * </pre>
+       */
+      public java.lang.String getOwnerUserId() {
+        java.lang.Object ref = ownerUserId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            ownerUserId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string ownerUserId = 5;</code>
+       *
+       * <pre>
+       * 邀请码拥有者
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getOwnerUserIdBytes() {
+        java.lang.Object ref = ownerUserId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ownerUserId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string ownerUserId = 5;</code>
+       *
+       * <pre>
+       * 邀请码拥有者
+       * </pre>
+       */
+      public Builder setOwnerUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        ownerUserId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string ownerUserId = 5;</code>
+       *
+       * <pre>
+       * 邀请码拥有者
+       * </pre>
+       */
+      public Builder clearOwnerUserId() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        ownerUserId_ = getDefaultInstance().getOwnerUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string ownerUserId = 5;</code>
+       *
+       * <pre>
+       * 邀请码拥有者
+       * </pre>
+       */
+      public Builder setOwnerUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        ownerUserId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object usedByUserId_ = "";
+      /**
+       * <code>optional string usedByUserId = 6;</code>
+       *
+       * <pre>
+       * 邀请码使用者
+       * </pre>
+       */
+      public boolean hasUsedByUserId() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional string usedByUserId = 6;</code>
+       *
+       * <pre>
+       * 邀请码使用者
+       * </pre>
+       */
+      public java.lang.String getUsedByUserId() {
+        java.lang.Object ref = usedByUserId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            usedByUserId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string usedByUserId = 6;</code>
+       *
+       * <pre>
+       * 邀请码使用者
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getUsedByUserIdBytes() {
+        java.lang.Object ref = usedByUserId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usedByUserId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string usedByUserId = 6;</code>
+       *
+       * <pre>
+       * 邀请码使用者
+       * </pre>
+       */
+      public Builder setUsedByUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        usedByUserId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string usedByUserId = 6;</code>
+       *
+       * <pre>
+       * 邀请码使用者
+       * </pre>
+       */
+      public Builder clearUsedByUserId() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        usedByUserId_ = getDefaultInstance().getUsedByUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string usedByUserId = 6;</code>
+       *
+       * <pre>
+       * 邀请码使用者
+       * </pre>
+       */
+      public Builder setUsedByUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        usedByUserId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBInviteCode)
+    }
+
+    static {
+      defaultInstance = new PBInviteCode(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBInviteCode)
+  }
+
+  public interface PBUserInviteCodeListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBUserInviteCodeList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string userId = 1;</code>
+     *
+     * <pre>
+     * 用户ID
+     * </pre>
+     */
+    boolean hasUserId();
+    /**
+     * <code>optional string userId = 1;</code>
+     *
+     * <pre>
+     * 用户ID
+     * </pre>
+     */
+    java.lang.String getUserId();
+    /**
+     * <code>optional string userId = 1;</code>
+     *
+     * <pre>
+     * 用户ID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
+
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> 
+        getAvailableCodesList();
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBInviteCode getAvailableCodes(int index);
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    int getAvailableCodesCount();
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    java.util.List<? extends com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+        getAvailableCodesOrBuilderList();
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder getAvailableCodesOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> 
+        getSentCodesList();
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBInviteCode getSentCodes(int index);
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    int getSentCodesCount();
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    java.util.List<? extends com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+        getSentCodesOrBuilderList();
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder getSentCodesOrBuilder(
+        int index);
+
+    /**
+     * <code>optional int32 applyCount = 4;</code>
+     *
+     * <pre>
+     * 当日已申请邀请码数量，服务器返回
+     * </pre>
+     */
+    boolean hasApplyCount();
+    /**
+     * <code>optional int32 applyCount = 4;</code>
+     *
+     * <pre>
+     * 当日已申请邀请码数量，服务器返回
+     * </pre>
+     */
+    int getApplyCount();
+  }
+  /**
+   * Protobuf type {@code barrage.PBUserInviteCodeList}
+   */
+  public static final class PBUserInviteCodeList extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBUserInviteCodeList)
+      PBUserInviteCodeListOrBuilder {
+    // Use PBUserInviteCodeList.newBuilder() to construct.
+    private PBUserInviteCodeList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBUserInviteCodeList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBUserInviteCodeList defaultInstance;
+    public static PBUserInviteCodeList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBUserInviteCodeList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBUserInviteCodeList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              userId_ = bs;
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                availableCodes_ = new java.util.ArrayList<com.orange.protocol.message.UserProtos.PBInviteCode>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              availableCodes_.add(input.readMessage(com.orange.protocol.message.UserProtos.PBInviteCode.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                sentCodes_ = new java.util.ArrayList<com.orange.protocol.message.UserProtos.PBInviteCode>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              sentCodes_.add(input.readMessage(com.orange.protocol.message.UserProtos.PBInviteCode.PARSER, extensionRegistry));
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000002;
+              applyCount_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          availableCodes_ = java.util.Collections.unmodifiableList(availableCodes_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          sentCodes_ = java.util.Collections.unmodifiableList(sentCodes_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.UserProtos.internal_static_barrage_PBUserInviteCodeList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.UserProtos.internal_static_barrage_PBUserInviteCodeList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.class, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBUserInviteCodeList> PARSER =
+        new com.google.protobuf.AbstractParser<PBUserInviteCodeList>() {
+      public PBUserInviteCodeList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBUserInviteCodeList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBUserInviteCodeList> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private java.lang.Object userId_;
+    /**
+     * <code>optional string userId = 1;</code>
+     *
+     * <pre>
+     * 用户ID
+     * </pre>
+     */
+    public boolean hasUserId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional string userId = 1;</code>
+     *
+     * <pre>
+     * 用户ID
+     * </pre>
+     */
+    public java.lang.String getUserId() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          userId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string userId = 1;</code>
+     *
+     * <pre>
+     * 用户ID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AVAILABLECODES_FIELD_NUMBER = 2;
+    private java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> availableCodes_;
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    public java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> getAvailableCodesList() {
+      return availableCodes_;
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    public java.util.List<? extends com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+        getAvailableCodesOrBuilderList() {
+      return availableCodes_;
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    public int getAvailableCodesCount() {
+      return availableCodes_.size();
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBInviteCode getAvailableCodes(int index) {
+      return availableCodes_.get(index);
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+     *
+     * <pre>
+     * 可用邀请码信息
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder getAvailableCodesOrBuilder(
+        int index) {
+      return availableCodes_.get(index);
+    }
+
+    public static final int SENTCODES_FIELD_NUMBER = 3;
+    private java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> sentCodes_;
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    public java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> getSentCodesList() {
+      return sentCodes_;
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    public java.util.List<? extends com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+        getSentCodesOrBuilderList() {
+      return sentCodes_;
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    public int getSentCodesCount() {
+      return sentCodes_.size();
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBInviteCode getSentCodes(int index) {
+      return sentCodes_.get(index);
+    }
+    /**
+     * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+     *
+     * <pre>
+     * 已用邀请码信息
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder getSentCodesOrBuilder(
+        int index) {
+      return sentCodes_.get(index);
+    }
+
+    public static final int APPLYCOUNT_FIELD_NUMBER = 4;
+    private int applyCount_;
+    /**
+     * <code>optional int32 applyCount = 4;</code>
+     *
+     * <pre>
+     * 当日已申请邀请码数量，服务器返回
+     * </pre>
+     */
+    public boolean hasApplyCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 applyCount = 4;</code>
+     *
+     * <pre>
+     * 当日已申请邀请码数量，服务器返回
+     * </pre>
+     */
+    public int getApplyCount() {
+      return applyCount_;
+    }
+
+    private void initFields() {
+      userId_ = "";
+      availableCodes_ = java.util.Collections.emptyList();
+      sentCodes_ = java.util.Collections.emptyList();
+      applyCount_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getAvailableCodesCount(); i++) {
+        if (!getAvailableCodes(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getSentCodesCount(); i++) {
+        if (!getSentCodes(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getUserIdBytes());
+      }
+      for (int i = 0; i < availableCodes_.size(); i++) {
+        output.writeMessage(2, availableCodes_.get(i));
+      }
+      for (int i = 0; i < sentCodes_.size(); i++) {
+        output.writeMessage(3, sentCodes_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(4, applyCount_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getUserIdBytes());
+      }
+      for (int i = 0; i < availableCodes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, availableCodes_.get(i));
+      }
+      for (int i = 0; i < sentCodes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, sentCodes_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, applyCount_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.UserProtos.PBUserInviteCodeList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.UserProtos.PBUserInviteCodeList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBUserInviteCodeList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBUserInviteCodeList)
+        com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.UserProtos.internal_static_barrage_PBUserInviteCodeList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.UserProtos.internal_static_barrage_PBUserInviteCodeList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.UserProtos.PBUserInviteCodeList.class, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.UserProtos.PBUserInviteCodeList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAvailableCodesFieldBuilder();
+          getSentCodesFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        userId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (availableCodesBuilder_ == null) {
+          availableCodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          availableCodesBuilder_.clear();
+        }
+        if (sentCodesBuilder_ == null) {
+          sentCodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          sentCodesBuilder_.clear();
+        }
+        applyCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.UserProtos.internal_static_barrage_PBUserInviteCodeList_descriptor;
+      }
+
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getDefaultInstanceForType() {
+        return com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList build() {
+        com.orange.protocol.message.UserProtos.PBUserInviteCodeList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList buildPartial() {
+        com.orange.protocol.message.UserProtos.PBUserInviteCodeList result = new com.orange.protocol.message.UserProtos.PBUserInviteCodeList(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.userId_ = userId_;
+        if (availableCodesBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            availableCodes_ = java.util.Collections.unmodifiableList(availableCodes_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.availableCodes_ = availableCodes_;
+        } else {
+          result.availableCodes_ = availableCodesBuilder_.build();
+        }
+        if (sentCodesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            sentCodes_ = java.util.Collections.unmodifiableList(sentCodes_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.sentCodes_ = sentCodes_;
+        } else {
+          result.sentCodes_ = sentCodesBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.applyCount_ = applyCount_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.UserProtos.PBUserInviteCodeList) {
+          return mergeFrom((com.orange.protocol.message.UserProtos.PBUserInviteCodeList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.UserProtos.PBUserInviteCodeList other) {
+        if (other == com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance()) return this;
+        if (other.hasUserId()) {
+          bitField0_ |= 0x00000001;
+          userId_ = other.userId_;
+          onChanged();
+        }
+        if (availableCodesBuilder_ == null) {
+          if (!other.availableCodes_.isEmpty()) {
+            if (availableCodes_.isEmpty()) {
+              availableCodes_ = other.availableCodes_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureAvailableCodesIsMutable();
+              availableCodes_.addAll(other.availableCodes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.availableCodes_.isEmpty()) {
+            if (availableCodesBuilder_.isEmpty()) {
+              availableCodesBuilder_.dispose();
+              availableCodesBuilder_ = null;
+              availableCodes_ = other.availableCodes_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              availableCodesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getAvailableCodesFieldBuilder() : null;
+            } else {
+              availableCodesBuilder_.addAllMessages(other.availableCodes_);
+            }
+          }
+        }
+        if (sentCodesBuilder_ == null) {
+          if (!other.sentCodes_.isEmpty()) {
+            if (sentCodes_.isEmpty()) {
+              sentCodes_ = other.sentCodes_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureSentCodesIsMutable();
+              sentCodes_.addAll(other.sentCodes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.sentCodes_.isEmpty()) {
+            if (sentCodesBuilder_.isEmpty()) {
+              sentCodesBuilder_.dispose();
+              sentCodesBuilder_ = null;
+              sentCodes_ = other.sentCodes_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              sentCodesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSentCodesFieldBuilder() : null;
+            } else {
+              sentCodesBuilder_.addAllMessages(other.sentCodes_);
+            }
+          }
+        }
+        if (other.hasApplyCount()) {
+          setApplyCount(other.getApplyCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getAvailableCodesCount(); i++) {
+          if (!getAvailableCodes(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getSentCodesCount(); i++) {
+          if (!getSentCodes(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.UserProtos.PBUserInviteCodeList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.UserProtos.PBUserInviteCodeList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object userId_ = "";
+      /**
+       * <code>optional string userId = 1;</code>
+       *
+       * <pre>
+       * 用户ID
+       * </pre>
+       */
+      public boolean hasUserId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       *
+       * <pre>
+       * 用户ID
+       * </pre>
+       */
+      public java.lang.String getUserId() {
+        java.lang.Object ref = userId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            userId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       *
+       * <pre>
+       * 用户ID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        java.lang.Object ref = userId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       *
+       * <pre>
+       * 用户ID
+       * </pre>
+       */
+      public Builder setUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       *
+       * <pre>
+       * 用户ID
+       * </pre>
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userId_ = getDefaultInstance().getUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       *
+       * <pre>
+       * 用户ID
+       * </pre>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> availableCodes_ =
+        java.util.Collections.emptyList();
+      private void ensureAvailableCodesIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          availableCodes_ = new java.util.ArrayList<com.orange.protocol.message.UserProtos.PBInviteCode>(availableCodes_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBInviteCode, com.orange.protocol.message.UserProtos.PBInviteCode.Builder, com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> availableCodesBuilder_;
+
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> getAvailableCodesList() {
+        if (availableCodesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(availableCodes_);
+        } else {
+          return availableCodesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public int getAvailableCodesCount() {
+        if (availableCodesBuilder_ == null) {
+          return availableCodes_.size();
+        } else {
+          return availableCodesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode getAvailableCodes(int index) {
+        if (availableCodesBuilder_ == null) {
+          return availableCodes_.get(index);
+        } else {
+          return availableCodesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder setAvailableCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode value) {
+        if (availableCodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAvailableCodesIsMutable();
+          availableCodes_.set(index, value);
+          onChanged();
+        } else {
+          availableCodesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder setAvailableCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode.Builder builderForValue) {
+        if (availableCodesBuilder_ == null) {
+          ensureAvailableCodesIsMutable();
+          availableCodes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          availableCodesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder addAvailableCodes(com.orange.protocol.message.UserProtos.PBInviteCode value) {
+        if (availableCodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAvailableCodesIsMutable();
+          availableCodes_.add(value);
+          onChanged();
+        } else {
+          availableCodesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder addAvailableCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode value) {
+        if (availableCodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAvailableCodesIsMutable();
+          availableCodes_.add(index, value);
+          onChanged();
+        } else {
+          availableCodesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder addAvailableCodes(
+          com.orange.protocol.message.UserProtos.PBInviteCode.Builder builderForValue) {
+        if (availableCodesBuilder_ == null) {
+          ensureAvailableCodesIsMutable();
+          availableCodes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          availableCodesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder addAvailableCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode.Builder builderForValue) {
+        if (availableCodesBuilder_ == null) {
+          ensureAvailableCodesIsMutable();
+          availableCodes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          availableCodesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder addAllAvailableCodes(
+          java.lang.Iterable<? extends com.orange.protocol.message.UserProtos.PBInviteCode> values) {
+        if (availableCodesBuilder_ == null) {
+          ensureAvailableCodesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, availableCodes_);
+          onChanged();
+        } else {
+          availableCodesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder clearAvailableCodes() {
+        if (availableCodesBuilder_ == null) {
+          availableCodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          availableCodesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public Builder removeAvailableCodes(int index) {
+        if (availableCodesBuilder_ == null) {
+          ensureAvailableCodesIsMutable();
+          availableCodes_.remove(index);
+          onChanged();
+        } else {
+          availableCodesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode.Builder getAvailableCodesBuilder(
+          int index) {
+        return getAvailableCodesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder getAvailableCodesOrBuilder(
+          int index) {
+        if (availableCodesBuilder_ == null) {
+          return availableCodes_.get(index);  } else {
+          return availableCodesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public java.util.List<? extends com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+           getAvailableCodesOrBuilderList() {
+        if (availableCodesBuilder_ != null) {
+          return availableCodesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(availableCodes_);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode.Builder addAvailableCodesBuilder() {
+        return getAvailableCodesFieldBuilder().addBuilder(
+            com.orange.protocol.message.UserProtos.PBInviteCode.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode.Builder addAvailableCodesBuilder(
+          int index) {
+        return getAvailableCodesFieldBuilder().addBuilder(
+            index, com.orange.protocol.message.UserProtos.PBInviteCode.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode availableCodes = 2;</code>
+       *
+       * <pre>
+       * 可用邀请码信息
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode.Builder> 
+           getAvailableCodesBuilderList() {
+        return getAvailableCodesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBInviteCode, com.orange.protocol.message.UserProtos.PBInviteCode.Builder, com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+          getAvailableCodesFieldBuilder() {
+        if (availableCodesBuilder_ == null) {
+          availableCodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBInviteCode, com.orange.protocol.message.UserProtos.PBInviteCode.Builder, com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder>(
+                  availableCodes_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          availableCodes_ = null;
+        }
+        return availableCodesBuilder_;
+      }
+
+      private java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> sentCodes_ =
+        java.util.Collections.emptyList();
+      private void ensureSentCodesIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          sentCodes_ = new java.util.ArrayList<com.orange.protocol.message.UserProtos.PBInviteCode>(sentCodes_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBInviteCode, com.orange.protocol.message.UserProtos.PBInviteCode.Builder, com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> sentCodesBuilder_;
+
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode> getSentCodesList() {
+        if (sentCodesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sentCodes_);
+        } else {
+          return sentCodesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public int getSentCodesCount() {
+        if (sentCodesBuilder_ == null) {
+          return sentCodes_.size();
+        } else {
+          return sentCodesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode getSentCodes(int index) {
+        if (sentCodesBuilder_ == null) {
+          return sentCodes_.get(index);
+        } else {
+          return sentCodesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder setSentCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode value) {
+        if (sentCodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSentCodesIsMutable();
+          sentCodes_.set(index, value);
+          onChanged();
+        } else {
+          sentCodesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder setSentCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode.Builder builderForValue) {
+        if (sentCodesBuilder_ == null) {
+          ensureSentCodesIsMutable();
+          sentCodes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          sentCodesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder addSentCodes(com.orange.protocol.message.UserProtos.PBInviteCode value) {
+        if (sentCodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSentCodesIsMutable();
+          sentCodes_.add(value);
+          onChanged();
+        } else {
+          sentCodesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder addSentCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode value) {
+        if (sentCodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSentCodesIsMutable();
+          sentCodes_.add(index, value);
+          onChanged();
+        } else {
+          sentCodesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder addSentCodes(
+          com.orange.protocol.message.UserProtos.PBInviteCode.Builder builderForValue) {
+        if (sentCodesBuilder_ == null) {
+          ensureSentCodesIsMutable();
+          sentCodes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          sentCodesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder addSentCodes(
+          int index, com.orange.protocol.message.UserProtos.PBInviteCode.Builder builderForValue) {
+        if (sentCodesBuilder_ == null) {
+          ensureSentCodesIsMutable();
+          sentCodes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          sentCodesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder addAllSentCodes(
+          java.lang.Iterable<? extends com.orange.protocol.message.UserProtos.PBInviteCode> values) {
+        if (sentCodesBuilder_ == null) {
+          ensureSentCodesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, sentCodes_);
+          onChanged();
+        } else {
+          sentCodesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder clearSentCodes() {
+        if (sentCodesBuilder_ == null) {
+          sentCodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          sentCodesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public Builder removeSentCodes(int index) {
+        if (sentCodesBuilder_ == null) {
+          ensureSentCodesIsMutable();
+          sentCodes_.remove(index);
+          onChanged();
+        } else {
+          sentCodesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode.Builder getSentCodesBuilder(
+          int index) {
+        return getSentCodesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder getSentCodesOrBuilder(
+          int index) {
+        if (sentCodesBuilder_ == null) {
+          return sentCodes_.get(index);  } else {
+          return sentCodesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public java.util.List<? extends com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+           getSentCodesOrBuilderList() {
+        if (sentCodesBuilder_ != null) {
+          return sentCodesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(sentCodes_);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode.Builder addSentCodesBuilder() {
+        return getSentCodesFieldBuilder().addBuilder(
+            com.orange.protocol.message.UserProtos.PBInviteCode.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBInviteCode.Builder addSentCodesBuilder(
+          int index) {
+        return getSentCodesFieldBuilder().addBuilder(
+            index, com.orange.protocol.message.UserProtos.PBInviteCode.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBInviteCode sentCodes = 3;</code>
+       *
+       * <pre>
+       * 已用邀请码信息
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.UserProtos.PBInviteCode.Builder> 
+           getSentCodesBuilderList() {
+        return getSentCodesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBInviteCode, com.orange.protocol.message.UserProtos.PBInviteCode.Builder, com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder> 
+          getSentCodesFieldBuilder() {
+        if (sentCodesBuilder_ == null) {
+          sentCodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBInviteCode, com.orange.protocol.message.UserProtos.PBInviteCode.Builder, com.orange.protocol.message.UserProtos.PBInviteCodeOrBuilder>(
+                  sentCodes_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          sentCodes_ = null;
+        }
+        return sentCodesBuilder_;
+      }
+
+      private int applyCount_ ;
+      /**
+       * <code>optional int32 applyCount = 4;</code>
+       *
+       * <pre>
+       * 当日已申请邀请码数量，服务器返回
+       * </pre>
+       */
+      public boolean hasApplyCount() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 applyCount = 4;</code>
+       *
+       * <pre>
+       * 当日已申请邀请码数量，服务器返回
+       * </pre>
+       */
+      public int getApplyCount() {
+        return applyCount_;
+      }
+      /**
+       * <code>optional int32 applyCount = 4;</code>
+       *
+       * <pre>
+       * 当日已申请邀请码数量，服务器返回
+       * </pre>
+       */
+      public Builder setApplyCount(int value) {
+        bitField0_ |= 0x00000008;
+        applyCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 applyCount = 4;</code>
+       *
+       * <pre>
+       * 当日已申请邀请码数量，服务器返回
+       * </pre>
+       */
+      public Builder clearApplyCount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        applyCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBUserInviteCodeList)
+    }
+
+    static {
+      defaultInstance = new PBUserInviteCodeList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBUserInviteCodeList)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
@@ -14034,6 +17780,16 @@ public final class UserProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_barrage_PBUserFriendList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBInviteCode_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBInviteCode_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBUserInviteCodeList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBUserInviteCodeList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -14075,24 +17831,36 @@ public final class UserProtos {
       "\022\020\n\010isCustom\030\003 \001(\010\022\r\n\005color\030\004 \001(\005\022\036\n\005use",
       "rs\030\n \003(\0132\017.barrage.PBUser\022\017\n\007userIds\030\013 \003" +
       "(\t\"1\n\rPBUserTagList\022 \n\004tags\030\001 \003(\0132\022.barr" +
-      "age.PBUserTag\"4\n\020PBUserFriendList\022 \n\007fri" +
-      "ends\030\001 \003(\0132\017.barrage.PBUser*@\n\023FriendAdd" +
-      "SourceType\022\021\n\rADD_BY_SEARCH\020\001\022\026\n\022ADD_BY_" +
-      "SCAN_QRCODE\020\002*N\n\023FriendAddConfigType\022\022\n\016" +
-      "REQUIRE_ACCEPT\020\000\022\016\n\nACCEPT_ALL\020\001\022\023\n\017DISA" +
-      "LLOW_ADD_ME\020\002*N\n\026FriendRequestDirection\022" +
-      "\030\n\024REQ_DIRECTION_SENDER\020\000\022\032\n\026REQ_DIRECTI" +
-      "ON_RECEIVER\020\001*N\n\023FriendAddStatusType\022\023\n\017",
-      "REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020\n\014R" +
-      "EQ_REJECTED\020\002*r\n\013PBLoginType\022\020\n\014LOGIN_XI" +
-      "AOJI\020d\022\017\n\013LOGIN_EMAIL\020e\022\020\n\014LOGIN_MOBILE\020" +
-      "f\022\014\n\010LOGIN_QQ\020\006\022\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN" +
-      "_WEIXIN\020\027*i\n\016PBRegisterType\022\016\n\nREG_XIAOJ" +
-      "I\020d\022\r\n\tREG_EMAIL\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006RE" +
-      "G_QQ\020\006\022\014\n\010REG_SINA\020\001\022\016\n\nREG_WEIXIN\020\027*E\n\n" +
-      "PBTagColor\022\n\n\006SYSTEM\020\000\022\n\n\006CUSTOM\020\001\022\n\n\006MY" +
-      "SELF\020\002\022\007\n\003HOT\020\003\022\n\n\006RECENT\020\004B)\n\033com.orang" +
-      "e.protocol.messageB\nUserProtos"
+      "age.PBUserTag\"v\n\020PBUserFriendList\022 \n\007fri" +
+      "ends\030\001 \003(\0132\017.barrage.PBUser\022\'\n\016requestFr" +
+      "iends\030\002 \003(\0132\017.barrage.PBUser\022\027\n\017requestN" +
+      "ewCount\030\003 \001(\005\"y\n\014PBInviteCode\022\014\n\004code\030\001 " +
+      "\002(\t\022\016\n\006status\030\002 \001(\005\022\016\n\006sendTo\030\003 \001(\t\022\020\n\010s" +
+      "endType\030\004 \001(\005\022\023\n\013ownerUserId\030\005 \001(\t\022\024\n\014us" +
+      "edByUserId\030\006 \001(\t\"\223\001\n\024PBUserInviteCodeLis" +
+      "t\022\016\n\006userId\030\001 \001(\t\022-\n\016availableCodes\030\002 \003(",
+      "\0132\025.barrage.PBInviteCode\022(\n\tsentCodes\030\003 " +
+      "\003(\0132\025.barrage.PBInviteCode\022\022\n\napplyCount" +
+      "\030\004 \001(\005*@\n\023FriendAddSourceType\022\021\n\rADD_BY_" +
+      "SEARCH\020\001\022\026\n\022ADD_BY_SCAN_QRCODE\020\002*N\n\023Frie" +
+      "ndAddConfigType\022\022\n\016REQUIRE_ACCEPT\020\000\022\016\n\nA" +
+      "CCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020\002*N\n\026Frie" +
+      "ndRequestDirection\022\030\n\024REQ_DIRECTION_SEND" +
+      "ER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020\001*N\n\023Frie" +
+      "ndAddStatusType\022\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014" +
+      "REQ_ACCEPTED\020\001\022\020\n\014REQ_REJECTED\020\002*r\n\013PBLo",
+      "ginType\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOGIN_EMAIL" +
+      "\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ\020\006\022\016\n\nLO" +
+      "GIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016PBRegist" +
+      "erType\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EMAIL\020e\022\016\n" +
+      "\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG_SINA\020\001\022" +
+      "\016\n\nREG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n\006SYSTEM\020" +
+      "\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT\020\003\022\n\n\006RE" +
+      "CENT\020\004*p\n\022PBInviteCodeStatus\022\025\n\021CODE_STA" +
+      "TUS_READY\020\000\022\024\n\020CODE_STATUS_SENT\020\001\022\024\n\020COD" +
+      "E_STATUS_USED\020\002\022\027\n\023CODE_STATUS_INVALID\020\003",
+      "B)\n\033com.orange.protocol.messageB\nUserPro" +
+      "tos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -14136,7 +17904,19 @@ public final class UserProtos {
     internal_static_barrage_PBUserFriendList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBUserFriendList_descriptor,
-        new java.lang.String[] { "Friends", });
+        new java.lang.String[] { "Friends", "RequestFriends", "RequestNewCount", });
+    internal_static_barrage_PBInviteCode_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_barrage_PBInviteCode_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBInviteCode_descriptor,
+        new java.lang.String[] { "Code", "Status", "SendTo", "SendType", "OwnerUserId", "UsedByUserId", });
+    internal_static_barrage_PBUserInviteCodeList_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_barrage_PBUserInviteCodeList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBUserInviteCodeList_descriptor,
+        new java.lang.String[] { "UserId", "AvailableCodes", "SentCodes", "ApplyCount", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
   }
 

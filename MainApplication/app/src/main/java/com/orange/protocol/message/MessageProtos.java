@@ -201,13 +201,37 @@ public final class MessageProtos {
      */
     MESSAGE_GET_USER_TAG_LIST(11, 12),
     /**
+     * <code>MESSAGE_GET_USER_INVITE_CODE_LIST = 13;</code>
+     *
+     * <pre>
+     * 获取用户邀请码列表
+     * </pre>
+     */
+    MESSAGE_GET_USER_INVITE_CODE_LIST(12, 13),
+    /**
+     * <code>MESSAGE_APPLY_INVITE_CODE = 14;</code>
+     *
+     * <pre>
+     * 申请邀请码
+     * </pre>
+     */
+    MESSAGE_APPLY_INVITE_CODE(13, 14),
+    /**
+     * <code>MESSAGE_UPDATE_INVITE_CODE = 15;</code>
+     *
+     * <pre>
+     * 更新邀请码状态
+     * </pre>
+     */
+    MESSAGE_UPDATE_INVITE_CODE(14, 15),
+    /**
      * <code>MESSAGE_CREATE_FEED = 30;</code>
      *
      * <pre>
      * 分享消息
      * </pre>
      */
-    MESSAGE_CREATE_FEED(12, 30),
+    MESSAGE_CREATE_FEED(15, 30),
     /**
      * <code>MESSAGE_REPLY_FEED = 31;</code>
      *
@@ -215,7 +239,7 @@ public final class MessageProtos {
      * 回复消息（弹幕）
      * </pre>
      */
-    MESSAGE_REPLY_FEED(13, 31),
+    MESSAGE_REPLY_FEED(16, 31),
     /**
      * <code>MESSAGE_GET_USER_TIMELINE_FEED = 32;</code>
      *
@@ -223,7 +247,7 @@ public final class MessageProtos {
      * 获取用户消息流
      * </pre>
      */
-    MESSAGE_GET_USER_TIMELINE_FEED(14, 32),
+    MESSAGE_GET_USER_TIMELINE_FEED(17, 32),
     /**
      * <code>MESSAGE_GET_QINIU_UPLOAD_TOKEN = 100;</code>
      *
@@ -231,7 +255,7 @@ public final class MessageProtos {
      * 获取云存储TOKEN
      * </pre>
      */
-    MESSAGE_GET_QINIU_UPLOAD_TOKEN(15, 100),
+    MESSAGE_GET_QINIU_UPLOAD_TOKEN(18, 100),
     ;
 
     /**
@@ -331,6 +355,30 @@ public final class MessageProtos {
      */
     public static final int MESSAGE_GET_USER_TAG_LIST_VALUE = 12;
     /**
+     * <code>MESSAGE_GET_USER_INVITE_CODE_LIST = 13;</code>
+     *
+     * <pre>
+     * 获取用户邀请码列表
+     * </pre>
+     */
+    public static final int MESSAGE_GET_USER_INVITE_CODE_LIST_VALUE = 13;
+    /**
+     * <code>MESSAGE_APPLY_INVITE_CODE = 14;</code>
+     *
+     * <pre>
+     * 申请邀请码
+     * </pre>
+     */
+    public static final int MESSAGE_APPLY_INVITE_CODE_VALUE = 14;
+    /**
+     * <code>MESSAGE_UPDATE_INVITE_CODE = 15;</code>
+     *
+     * <pre>
+     * 更新邀请码状态
+     * </pre>
+     */
+    public static final int MESSAGE_UPDATE_INVITE_CODE_VALUE = 15;
+    /**
      * <code>MESSAGE_CREATE_FEED = 30;</code>
      *
      * <pre>
@@ -380,6 +428,9 @@ public final class MessageProtos {
         case 10: return MESSAGE_ADD_USER_TAG;
         case 11: return MESSAGE_DELETE_USER_TAG;
         case 12: return MESSAGE_GET_USER_TAG_LIST;
+        case 13: return MESSAGE_GET_USER_INVITE_CODE_LIST;
+        case 14: return MESSAGE_APPLY_INVITE_CODE;
+        case 15: return MESSAGE_UPDATE_INVITE_CODE;
         case 30: return MESSAGE_CREATE_FEED;
         case 31: return MESSAGE_REPLY_FEED;
         case 32: return MESSAGE_GET_USER_TIMELINE_FEED;
@@ -433,6 +484,121 @@ public final class MessageProtos {
     }
 
     // @@protoc_insertion_point(enum_scope:barrage.PBMessageType)
+  }
+
+  /**
+   * Protobuf enum {@code barrage.PBGetUserFriendListType}
+   */
+  public enum PBGetUserFriendListType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TYPE_FRIEND_LIST = 0;</code>
+     *
+     * <pre>
+     * 返回好友列表
+     * </pre>
+     */
+    TYPE_FRIEND_LIST(0, 0),
+    /**
+     * <code>TYPE_REQUEST_FRIEND_LIST = 1;</code>
+     *
+     * <pre>
+     * 返回好友请求列表
+     * </pre>
+     */
+    TYPE_REQUEST_FRIEND_LIST(1, 1),
+    /**
+     * <code>TYPE_ALL = 10;</code>
+     *
+     * <pre>
+     * 返回所有
+     * </pre>
+     */
+    TYPE_ALL(2, 10),
+    ;
+
+    /**
+     * <code>TYPE_FRIEND_LIST = 0;</code>
+     *
+     * <pre>
+     * 返回好友列表
+     * </pre>
+     */
+    public static final int TYPE_FRIEND_LIST_VALUE = 0;
+    /**
+     * <code>TYPE_REQUEST_FRIEND_LIST = 1;</code>
+     *
+     * <pre>
+     * 返回好友请求列表
+     * </pre>
+     */
+    public static final int TYPE_REQUEST_FRIEND_LIST_VALUE = 1;
+    /**
+     * <code>TYPE_ALL = 10;</code>
+     *
+     * <pre>
+     * 返回所有
+     * </pre>
+     */
+    public static final int TYPE_ALL_VALUE = 10;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBGetUserFriendListType valueOf(int value) {
+      switch (value) {
+        case 0: return TYPE_FRIEND_LIST;
+        case 1: return TYPE_REQUEST_FRIEND_LIST;
+        case 10: return TYPE_ALL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBGetUserFriendListType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBGetUserFriendListType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBGetUserFriendListType>() {
+            public PBGetUserFriendListType findValueByNumber(int number) {
+              return PBGetUserFriendListType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final PBGetUserFriendListType[] VALUES = values();
+
+    public static PBGetUserFriendListType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBGetUserFriendListType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBGetUserFriendListType)
   }
 
   public interface PBLoginUserRequestOrBuilder extends
@@ -6021,6 +6187,3012 @@ public final class MessageProtos {
     }
 
     // @@protoc_insertion_point(class_scope:barrage.PBGetNewInviteCodeResponse)
+  }
+
+  public interface PBGetUserInviteCodeListRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBGetUserInviteCodeListRequest)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code barrage.PBGetUserInviteCodeListRequest}
+   */
+  public static final class PBGetUserInviteCodeListRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBGetUserInviteCodeListRequest)
+      PBGetUserInviteCodeListRequestOrBuilder {
+    // Use PBGetUserInviteCodeListRequest.newBuilder() to construct.
+    private PBGetUserInviteCodeListRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBGetUserInviteCodeListRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBGetUserInviteCodeListRequest defaultInstance;
+    public static PBGetUserInviteCodeListRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBGetUserInviteCodeListRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBGetUserInviteCodeListRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.class, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBGetUserInviteCodeListRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PBGetUserInviteCodeListRequest>() {
+      public PBGetUserInviteCodeListRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBGetUserInviteCodeListRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBGetUserInviteCodeListRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBGetUserInviteCodeListRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBGetUserInviteCodeListRequest)
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.class, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListRequest_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest build() {
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest result = new com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBGetUserInviteCodeListRequest)
+    }
+
+    static {
+      defaultInstance = new PBGetUserInviteCodeListRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBGetUserInviteCodeListRequest)
+  }
+
+  public interface PBGetUserInviteCodeListResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBGetUserInviteCodeListResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     */
+    boolean hasCodeList();
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList();
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBGetUserInviteCodeListResponse}
+   */
+  public static final class PBGetUserInviteCodeListResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBGetUserInviteCodeListResponse)
+      PBGetUserInviteCodeListResponseOrBuilder {
+    // Use PBGetUserInviteCodeListResponse.newBuilder() to construct.
+    private PBGetUserInviteCodeListResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBGetUserInviteCodeListResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBGetUserInviteCodeListResponse defaultInstance;
+    public static PBGetUserInviteCodeListResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBGetUserInviteCodeListResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBGetUserInviteCodeListResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = codeList_.toBuilder();
+              }
+              codeList_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserInviteCodeList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(codeList_);
+                codeList_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.class, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBGetUserInviteCodeListResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PBGetUserInviteCodeListResponse>() {
+      public PBGetUserInviteCodeListResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBGetUserInviteCodeListResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBGetUserInviteCodeListResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int CODELIST_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_;
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     */
+    public boolean hasCodeList() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+      return codeList_;
+    }
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+      return codeList_;
+    }
+
+    private void initFields() {
+      codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasCodeList()) {
+        if (!getCodeList().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, codeList_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, codeList_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBGetUserInviteCodeListResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBGetUserInviteCodeListResponse)
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.class, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCodeListFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBGetUserInviteCodeListResponse_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse build() {
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse result = new com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (codeListBuilder_ == null) {
+          result.codeList_ = codeList_;
+        } else {
+          result.codeList_ = codeListBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance()) return this;
+        if (other.hasCodeList()) {
+          mergeCodeList(other.getCodeList());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (hasCodeList()) {
+          if (!getCodeList().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> codeListBuilder_;
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public boolean hasCodeList() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+        if (codeListBuilder_ == null) {
+          return codeList_;
+        } else {
+          return codeListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public Builder setCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          codeList_ = value;
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public Builder setCodeList(
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder builderForValue) {
+        if (codeListBuilder_ == null) {
+          codeList_ = builderForValue.build();
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public Builder mergeCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              codeList_ != com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance()) {
+            codeList_ =
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.newBuilder(codeList_).mergeFrom(value).buildPartial();
+          } else {
+            codeList_ = value;
+          }
+          onChanged();
+        } else {
+          codeListBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public Builder clearCodeList() {
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+          onChanged();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder getCodeListBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getCodeListFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+        if (codeListBuilder_ != null) {
+          return codeListBuilder_.getMessageOrBuilder();
+        } else {
+          return codeList_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> 
+          getCodeListFieldBuilder() {
+        if (codeListBuilder_ == null) {
+          codeListBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder>(
+                  getCodeList(),
+                  getParentForChildren(),
+                  isClean());
+          codeList_ = null;
+        }
+        return codeListBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBGetUserInviteCodeListResponse)
+    }
+
+    static {
+      defaultInstance = new PBGetUserInviteCodeListResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBGetUserInviteCodeListResponse)
+  }
+
+  public interface PBApplyInviteCodeRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBApplyInviteCodeRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 count = 1;</code>
+     *
+     * <pre>
+     * 申请的数量
+     * </pre>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional int32 count = 1;</code>
+     *
+     * <pre>
+     * 申请的数量
+     * </pre>
+     */
+    int getCount();
+  }
+  /**
+   * Protobuf type {@code barrage.PBApplyInviteCodeRequest}
+   */
+  public static final class PBApplyInviteCodeRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBApplyInviteCodeRequest)
+      PBApplyInviteCodeRequestOrBuilder {
+    // Use PBApplyInviteCodeRequest.newBuilder() to construct.
+    private PBApplyInviteCodeRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBApplyInviteCodeRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBApplyInviteCodeRequest defaultInstance;
+    public static PBApplyInviteCodeRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBApplyInviteCodeRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBApplyInviteCodeRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              count_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.class, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBApplyInviteCodeRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PBApplyInviteCodeRequest>() {
+      public PBApplyInviteCodeRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBApplyInviteCodeRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBApplyInviteCodeRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int COUNT_FIELD_NUMBER = 1;
+    private int count_;
+    /**
+     * <code>optional int32 count = 1;</code>
+     *
+     * <pre>
+     * 申请的数量
+     * </pre>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 count = 1;</code>
+     *
+     * <pre>
+     * 申请的数量
+     * </pre>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    private void initFields() {
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBApplyInviteCodeRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBApplyInviteCodeRequest)
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.class, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeRequest_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest build() {
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest result = new com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance()) return this;
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int count_ ;
+      /**
+       * <code>optional int32 count = 1;</code>
+       *
+       * <pre>
+       * 申请的数量
+       * </pre>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 count = 1;</code>
+       *
+       * <pre>
+       * 申请的数量
+       * </pre>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional int32 count = 1;</code>
+       *
+       * <pre>
+       * 申请的数量
+       * </pre>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000001;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count = 1;</code>
+       *
+       * <pre>
+       * 申请的数量
+       * </pre>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBApplyInviteCodeRequest)
+    }
+
+    static {
+      defaultInstance = new PBApplyInviteCodeRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBApplyInviteCodeRequest)
+  }
+
+  public interface PBApplyInviteCodeResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBApplyInviteCodeResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    boolean hasCodeList();
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList();
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBApplyInviteCodeResponse}
+   */
+  public static final class PBApplyInviteCodeResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBApplyInviteCodeResponse)
+      PBApplyInviteCodeResponseOrBuilder {
+    // Use PBApplyInviteCodeResponse.newBuilder() to construct.
+    private PBApplyInviteCodeResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBApplyInviteCodeResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBApplyInviteCodeResponse defaultInstance;
+    public static PBApplyInviteCodeResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBApplyInviteCodeResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBApplyInviteCodeResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = codeList_.toBuilder();
+              }
+              codeList_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserInviteCodeList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(codeList_);
+                codeList_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.class, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBApplyInviteCodeResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PBApplyInviteCodeResponse>() {
+      public PBApplyInviteCodeResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBApplyInviteCodeResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBApplyInviteCodeResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int CODELIST_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_;
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    public boolean hasCodeList() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+      return codeList_;
+    }
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+      return codeList_;
+    }
+
+    private void initFields() {
+      codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasCodeList()) {
+        if (!getCodeList().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, codeList_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, codeList_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBApplyInviteCodeResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBApplyInviteCodeResponse)
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.class, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCodeListFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBApplyInviteCodeResponse_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse build() {
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse result = new com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (codeListBuilder_ == null) {
+          result.codeList_ = codeList_;
+        } else {
+          result.codeList_ = codeListBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance()) return this;
+        if (other.hasCodeList()) {
+          mergeCodeList(other.getCodeList());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (hasCodeList()) {
+          if (!getCodeList().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> codeListBuilder_;
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public boolean hasCodeList() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+        if (codeListBuilder_ == null) {
+          return codeList_;
+        } else {
+          return codeListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder setCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          codeList_ = value;
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder setCodeList(
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder builderForValue) {
+        if (codeListBuilder_ == null) {
+          codeList_ = builderForValue.build();
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder mergeCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              codeList_ != com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance()) {
+            codeList_ =
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.newBuilder(codeList_).mergeFrom(value).buildPartial();
+          } else {
+            codeList_ = value;
+          }
+          onChanged();
+        } else {
+          codeListBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder clearCodeList() {
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+          onChanged();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder getCodeListBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getCodeListFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+        if (codeListBuilder_ != null) {
+          return codeListBuilder_.getMessageOrBuilder();
+        } else {
+          return codeList_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> 
+          getCodeListFieldBuilder() {
+        if (codeListBuilder_ == null) {
+          codeListBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder>(
+                  getCodeList(),
+                  getParentForChildren(),
+                  isClean());
+          codeList_ = null;
+        }
+        return codeListBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBApplyInviteCodeResponse)
+    }
+
+    static {
+      defaultInstance = new PBApplyInviteCodeResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBApplyInviteCodeResponse)
+  }
+
+  public interface PBUpdateInviteCodeRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBUpdateInviteCodeRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 要更新的完整列表
+     * </pre>
+     */
+    boolean hasCodeList();
+    /**
+     * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 要更新的完整列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList();
+    /**
+     * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 要更新的完整列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBUpdateInviteCodeRequest}
+   */
+  public static final class PBUpdateInviteCodeRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBUpdateInviteCodeRequest)
+      PBUpdateInviteCodeRequestOrBuilder {
+    // Use PBUpdateInviteCodeRequest.newBuilder() to construct.
+    private PBUpdateInviteCodeRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBUpdateInviteCodeRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBUpdateInviteCodeRequest defaultInstance;
+    public static PBUpdateInviteCodeRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBUpdateInviteCodeRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBUpdateInviteCodeRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = codeList_.toBuilder();
+              }
+              codeList_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserInviteCodeList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(codeList_);
+                codeList_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.class, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBUpdateInviteCodeRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PBUpdateInviteCodeRequest>() {
+      public PBUpdateInviteCodeRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBUpdateInviteCodeRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBUpdateInviteCodeRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int CODELIST_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_;
+    /**
+     * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 要更新的完整列表
+     * </pre>
+     */
+    public boolean hasCodeList() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 要更新的完整列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+      return codeList_;
+    }
+    /**
+     * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 要更新的完整列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+      return codeList_;
+    }
+
+    private void initFields() {
+      codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasCodeList()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getCodeList().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, codeList_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, codeList_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBUpdateInviteCodeRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBUpdateInviteCodeRequest)
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.class, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCodeListFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeRequest_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest build() {
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest result = new com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (codeListBuilder_ == null) {
+          result.codeList_ = codeList_;
+        } else {
+          result.codeList_ = codeListBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance()) return this;
+        if (other.hasCodeList()) {
+          mergeCodeList(other.getCodeList());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCodeList()) {
+          
+          return false;
+        }
+        if (!getCodeList().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> codeListBuilder_;
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public boolean hasCodeList() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+        if (codeListBuilder_ == null) {
+          return codeList_;
+        } else {
+          return codeListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public Builder setCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          codeList_ = value;
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public Builder setCodeList(
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder builderForValue) {
+        if (codeListBuilder_ == null) {
+          codeList_ = builderForValue.build();
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public Builder mergeCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              codeList_ != com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance()) {
+            codeList_ =
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.newBuilder(codeList_).mergeFrom(value).buildPartial();
+          } else {
+            codeList_ = value;
+          }
+          onChanged();
+        } else {
+          codeListBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public Builder clearCodeList() {
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+          onChanged();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder getCodeListBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getCodeListFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+        if (codeListBuilder_ != null) {
+          return codeListBuilder_.getMessageOrBuilder();
+        } else {
+          return codeList_;
+        }
+      }
+      /**
+       * <code>required .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 要更新的完整列表
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> 
+          getCodeListFieldBuilder() {
+        if (codeListBuilder_ == null) {
+          codeListBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder>(
+                  getCodeList(),
+                  getParentForChildren(),
+                  isClean());
+          codeList_ = null;
+        }
+        return codeListBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBUpdateInviteCodeRequest)
+    }
+
+    static {
+      defaultInstance = new PBUpdateInviteCodeRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBUpdateInviteCodeRequest)
+  }
+
+  public interface PBUpdateInviteCodeResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBUpdateInviteCodeResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    boolean hasCodeList();
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList();
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBUpdateInviteCodeResponse}
+   */
+  public static final class PBUpdateInviteCodeResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBUpdateInviteCodeResponse)
+      PBUpdateInviteCodeResponseOrBuilder {
+    // Use PBUpdateInviteCodeResponse.newBuilder() to construct.
+    private PBUpdateInviteCodeResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBUpdateInviteCodeResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBUpdateInviteCodeResponse defaultInstance;
+    public static PBUpdateInviteCodeResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBUpdateInviteCodeResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBUpdateInviteCodeResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = codeList_.toBuilder();
+              }
+              codeList_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUserInviteCodeList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(codeList_);
+                codeList_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.class, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBUpdateInviteCodeResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PBUpdateInviteCodeResponse>() {
+      public PBUpdateInviteCodeResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBUpdateInviteCodeResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBUpdateInviteCodeResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int CODELIST_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_;
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    public boolean hasCodeList() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+      return codeList_;
+    }
+    /**
+     * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+     *
+     * <pre>
+     * 返回完整列表
+     * </pre>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+      return codeList_;
+    }
+
+    private void initFields() {
+      codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasCodeList()) {
+        if (!getCodeList().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, codeList_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, codeList_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBUpdateInviteCodeResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBUpdateInviteCodeResponse)
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.class, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCodeListFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.MessageProtos.internal_static_barrage_PBUpdateInviteCodeResponse_descriptor;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse getDefaultInstanceForType() {
+        return com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse build() {
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse buildPartial() {
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse result = new com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (codeListBuilder_ == null) {
+          result.codeList_ = codeList_;
+        } else {
+          result.codeList_ = codeListBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse) {
+          return mergeFrom((com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse other) {
+        if (other == com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance()) return this;
+        if (other.hasCodeList()) {
+          mergeCodeList(other.getCodeList());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (hasCodeList()) {
+          if (!getCodeList().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUserInviteCodeList codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> codeListBuilder_;
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public boolean hasCodeList() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList getCodeList() {
+        if (codeListBuilder_ == null) {
+          return codeList_;
+        } else {
+          return codeListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder setCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          codeList_ = value;
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder setCodeList(
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder builderForValue) {
+        if (codeListBuilder_ == null) {
+          codeList_ = builderForValue.build();
+          onChanged();
+        } else {
+          codeListBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder mergeCodeList(com.orange.protocol.message.UserProtos.PBUserInviteCodeList value) {
+        if (codeListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              codeList_ != com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance()) {
+            codeList_ =
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList.newBuilder(codeList_).mergeFrom(value).buildPartial();
+          } else {
+            codeList_ = value;
+          }
+          onChanged();
+        } else {
+          codeListBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public Builder clearCodeList() {
+        if (codeListBuilder_ == null) {
+          codeList_ = com.orange.protocol.message.UserProtos.PBUserInviteCodeList.getDefaultInstance();
+          onChanged();
+        } else {
+          codeListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder getCodeListBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getCodeListFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder getCodeListOrBuilder() {
+        if (codeListBuilder_ != null) {
+          return codeListBuilder_.getMessageOrBuilder();
+        } else {
+          return codeList_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUserInviteCodeList codeList = 1;</code>
+       *
+       * <pre>
+       * 返回完整列表
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder> 
+          getCodeListFieldBuilder() {
+        if (codeListBuilder_ == null) {
+          codeListBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUserInviteCodeList, com.orange.protocol.message.UserProtos.PBUserInviteCodeList.Builder, com.orange.protocol.message.UserProtos.PBUserInviteCodeListOrBuilder>(
+                  getCodeList(),
+                  getParentForChildren(),
+                  isClean());
+          codeList_ = null;
+        }
+        return codeListBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBUpdateInviteCodeResponse)
+    }
+
+    static {
+      defaultInstance = new PBUpdateInviteCodeResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBUpdateInviteCodeResponse)
   }
 
   public interface PBSearchUserRequestOrBuilder extends
@@ -13105,6 +16277,23 @@ public final class MessageProtos {
      * </pre>
      */
     com.orange.protocol.message.UserProtos.PBUserTagOrBuilder getTagOrBuilder();
+
+    /**
+     * <code>optional int32 type = 2;</code>
+     *
+     * <pre>
+     * 参考
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>optional int32 type = 2;</code>
+     *
+     * <pre>
+     * 参考
+     * </pre>
+     */
+    int getType();
   }
   /**
    * Protobuf type {@code barrage.PBGetUserFriendListRequest}
@@ -13169,6 +16358,11 @@ public final class MessageProtos {
                 tag_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              type_ = input.readInt32();
               break;
             }
           }
@@ -13244,8 +16438,32 @@ public final class MessageProtos {
       return tag_;
     }
 
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>optional int32 type = 2;</code>
+     *
+     * <pre>
+     * 参考
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 type = 2;</code>
+     *
+     * <pre>
+     * 参考
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
     private void initFields() {
       tag_ = com.orange.protocol.message.UserProtos.PBUserTag.getDefaultInstance();
+      type_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13269,6 +16487,9 @@ public final class MessageProtos {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, tag_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, type_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13281,6 +16502,10 @@ public final class MessageProtos {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, tag_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, type_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13406,6 +16631,8 @@ public final class MessageProtos {
           tagBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -13442,6 +16669,10 @@ public final class MessageProtos {
         } else {
           result.tag_ = tagBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13460,6 +16691,9 @@ public final class MessageProtos {
         if (other == com.orange.protocol.message.MessageProtos.PBGetUserFriendListRequest.getDefaultInstance()) return this;
         if (other.hasTag()) {
           mergeTag(other.getTag());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -13644,6 +16878,54 @@ public final class MessageProtos {
           tag_ = null;
         }
         return tagBuilder_;
+      }
+
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 2;</code>
+       *
+       * <pre>
+       * 参考
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 type = 2;</code>
+       *
+       * <pre>
+       * 参考
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>optional int32 type = 2;</code>
+       *
+       * <pre>
+       * 参考
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000002;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 type = 2;</code>
+       *
+       * <pre>
+       * 参考
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:barrage.PBGetUserFriendListRequest)
@@ -19050,6 +22332,45 @@ public final class MessageProtos {
     com.orange.protocol.message.MessageProtos.PBGetUserTagListRequestOrBuilder getGetUserTagListRequestOrBuilder();
 
     /**
+     * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+     */
+    boolean hasGetUserInviteCodeListRequest();
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest getGetUserInviteCodeListRequest();
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder getGetUserInviteCodeListRequestOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+     */
+    boolean hasApplyInviteCodeRequest();
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest getApplyInviteCodeRequest();
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder getApplyInviteCodeRequestOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+     */
+    boolean hasUpdateInviteCodeRequest();
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest getUpdateInviteCodeRequest();
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder getUpdateInviteCodeRequestOrBuilder();
+
+    /**
      * <code>optional .barrage.PBCreateFeedRequest createFeedRequest = 60;</code>
      *
      * <pre>
@@ -19359,9 +22680,48 @@ public final class MessageProtos {
               bitField0_ |= 0x00080000;
               break;
             }
+            case 418: {
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00100000) == 0x00100000)) {
+                subBuilder = getUserInviteCodeListRequest_.toBuilder();
+              }
+              getUserInviteCodeListRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getUserInviteCodeListRequest_);
+                getUserInviteCodeListRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00100000;
+              break;
+            }
+            case 426: {
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00200000) == 0x00200000)) {
+                subBuilder = applyInviteCodeRequest_.toBuilder();
+              }
+              applyInviteCodeRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(applyInviteCodeRequest_);
+                applyInviteCodeRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00200000;
+              break;
+            }
+            case 434: {
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00400000) == 0x00400000)) {
+                subBuilder = updateInviteCodeRequest_.toBuilder();
+              }
+              updateInviteCodeRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(updateInviteCodeRequest_);
+                updateInviteCodeRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00400000;
+              break;
+            }
             case 482: {
               com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.Builder subBuilder = null;
-              if (((bitField0_ & 0x00100000) == 0x00100000)) {
+              if (((bitField0_ & 0x00800000) == 0x00800000)) {
                 subBuilder = createFeedRequest_.toBuilder();
               }
               createFeedRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.PARSER, extensionRegistry);
@@ -19369,12 +22729,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(createFeedRequest_);
                 createFeedRequest_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00100000;
+              bitField0_ |= 0x00800000;
               break;
             }
             case 490: {
               com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.Builder subBuilder = null;
-              if (((bitField0_ & 0x00200000) == 0x00200000)) {
+              if (((bitField0_ & 0x01000000) == 0x01000000)) {
                 subBuilder = replyFeedRequest_.toBuilder();
               }
               replyFeedRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.PARSER, extensionRegistry);
@@ -19382,12 +22742,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(replyFeedRequest_);
                 replyFeedRequest_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00200000;
+              bitField0_ |= 0x01000000;
               break;
             }
             case 498: {
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.Builder subBuilder = null;
-              if (((bitField0_ & 0x00400000) == 0x00400000)) {
+              if (((bitField0_ & 0x02000000) == 0x02000000)) {
                 subBuilder = getUserTimelineFeedRequest_.toBuilder();
               }
               getUserTimelineFeedRequest_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.PARSER, extensionRegistry);
@@ -19395,7 +22755,7 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(getUserTimelineFeedRequest_);
                 getUserTimelineFeedRequest_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00400000;
+              bitField0_ |= 0x02000000;
               break;
             }
           }
@@ -19909,6 +23269,69 @@ public final class MessageProtos {
       return getUserTagListRequest_;
     }
 
+    public static final int GETUSERINVITECODELISTREQUEST_FIELD_NUMBER = 52;
+    private com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest_;
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+     */
+    public boolean hasGetUserInviteCodeListRequest() {
+      return ((bitField0_ & 0x00100000) == 0x00100000);
+    }
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest getGetUserInviteCodeListRequest() {
+      return getUserInviteCodeListRequest_;
+    }
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder getGetUserInviteCodeListRequestOrBuilder() {
+      return getUserInviteCodeListRequest_;
+    }
+
+    public static final int APPLYINVITECODEREQUEST_FIELD_NUMBER = 53;
+    private com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest applyInviteCodeRequest_;
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+     */
+    public boolean hasApplyInviteCodeRequest() {
+      return ((bitField0_ & 0x00200000) == 0x00200000);
+    }
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest getApplyInviteCodeRequest() {
+      return applyInviteCodeRequest_;
+    }
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder getApplyInviteCodeRequestOrBuilder() {
+      return applyInviteCodeRequest_;
+    }
+
+    public static final int UPDATEINVITECODEREQUEST_FIELD_NUMBER = 54;
+    private com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest updateInviteCodeRequest_;
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+     */
+    public boolean hasUpdateInviteCodeRequest() {
+      return ((bitField0_ & 0x00400000) == 0x00400000);
+    }
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest getUpdateInviteCodeRequest() {
+      return updateInviteCodeRequest_;
+    }
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder getUpdateInviteCodeRequestOrBuilder() {
+      return updateInviteCodeRequest_;
+    }
+
     public static final int CREATEFEEDREQUEST_FIELD_NUMBER = 60;
     private com.orange.protocol.message.MessageProtos.PBCreateFeedRequest createFeedRequest_;
     /**
@@ -19919,7 +23342,7 @@ public final class MessageProtos {
      * </pre>
      */
     public boolean hasCreateFeedRequest() {
-      return ((bitField0_ & 0x00100000) == 0x00100000);
+      return ((bitField0_ & 0x00800000) == 0x00800000);
     }
     /**
      * <code>optional .barrage.PBCreateFeedRequest createFeedRequest = 60;</code>
@@ -19948,7 +23371,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
      */
     public boolean hasReplyFeedRequest() {
-      return ((bitField0_ & 0x00200000) == 0x00200000);
+      return ((bitField0_ & 0x01000000) == 0x01000000);
     }
     /**
      * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
@@ -19969,7 +23392,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
      */
     public boolean hasGetUserTimelineFeedRequest() {
-      return ((bitField0_ & 0x00400000) == 0x00400000);
+      return ((bitField0_ & 0x02000000) == 0x02000000);
     }
     /**
      * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
@@ -20005,6 +23428,9 @@ public final class MessageProtos {
       addUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBAddUserTagRequest.getDefaultInstance();
       deleteUserTagRequest_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagRequest.getDefaultInstance();
       getUserTagListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListRequest.getDefaultInstance();
+      getUserInviteCodeListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance();
+      applyInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance();
+      updateInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance();
       createFeedRequest_ = com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance();
       replyFeedRequest_ = com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.getDefaultInstance();
       getUserTimelineFeedRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.getDefaultInstance();
@@ -20081,6 +23507,12 @@ public final class MessageProtos {
       }
       if (hasDeleteUserTagRequest()) {
         if (!getDeleteUserTagRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasUpdateInviteCodeRequest()) {
+        if (!getUpdateInviteCodeRequest().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -20165,12 +23597,21 @@ public final class MessageProtos {
         output.writeMessage(51, getUserTagListRequest_);
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
-        output.writeMessage(60, createFeedRequest_);
+        output.writeMessage(52, getUserInviteCodeListRequest_);
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        output.writeMessage(61, replyFeedRequest_);
+        output.writeMessage(53, applyInviteCodeRequest_);
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
+        output.writeMessage(54, updateInviteCodeRequest_);
+      }
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        output.writeMessage(60, createFeedRequest_);
+      }
+      if (((bitField0_ & 0x01000000) == 0x01000000)) {
+        output.writeMessage(61, replyFeedRequest_);
+      }
+      if (((bitField0_ & 0x02000000) == 0x02000000)) {
         output.writeMessage(62, getUserTimelineFeedRequest_);
       }
       getUnknownFields().writeTo(output);
@@ -20264,13 +23705,25 @@ public final class MessageProtos {
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(60, createFeedRequest_);
+          .computeMessageSize(52, getUserInviteCodeListRequest_);
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(61, replyFeedRequest_);
+          .computeMessageSize(53, applyInviteCodeRequest_);
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(54, updateInviteCodeRequest_);
+      }
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(60, createFeedRequest_);
+      }
+      if (((bitField0_ & 0x01000000) == 0x01000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(61, replyFeedRequest_);
+      }
+      if (((bitField0_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(62, getUserTimelineFeedRequest_);
       }
@@ -20396,6 +23849,9 @@ public final class MessageProtos {
           getAddUserTagRequestFieldBuilder();
           getDeleteUserTagRequestFieldBuilder();
           getGetUserTagListRequestFieldBuilder();
+          getGetUserInviteCodeListRequestFieldBuilder();
+          getApplyInviteCodeRequestFieldBuilder();
+          getUpdateInviteCodeRequestFieldBuilder();
           getCreateFeedRequestFieldBuilder();
           getReplyFeedRequestFieldBuilder();
           getGetUserTimelineFeedRequestFieldBuilder();
@@ -20499,24 +23955,42 @@ public final class MessageProtos {
           getUserTagListRequestBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00080000);
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          getUserInviteCodeListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance();
+        } else {
+          getUserInviteCodeListRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00100000);
+        if (applyInviteCodeRequestBuilder_ == null) {
+          applyInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance();
+        } else {
+          applyInviteCodeRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00200000);
+        if (updateInviteCodeRequestBuilder_ == null) {
+          updateInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance();
+        } else {
+          updateInviteCodeRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00400000);
         if (createFeedRequestBuilder_ == null) {
           createFeedRequest_ = com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance();
         } else {
           createFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         if (replyFeedRequestBuilder_ == null) {
           replyFeedRequest_ = com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.getDefaultInstance();
         } else {
           replyFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00200000);
+        bitField0_ = (bitField0_ & ~0x01000000);
         if (getUserTimelineFeedRequestBuilder_ == null) {
           getUserTimelineFeedRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.getDefaultInstance();
         } else {
           getUserTimelineFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x02000000);
         return this;
       }
 
@@ -20680,21 +24154,45 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
           to_bitField0_ |= 0x00100000;
         }
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          result.getUserInviteCodeListRequest_ = getUserInviteCodeListRequest_;
+        } else {
+          result.getUserInviteCodeListRequest_ = getUserInviteCodeListRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
+          to_bitField0_ |= 0x00200000;
+        }
+        if (applyInviteCodeRequestBuilder_ == null) {
+          result.applyInviteCodeRequest_ = applyInviteCodeRequest_;
+        } else {
+          result.applyInviteCodeRequest_ = applyInviteCodeRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
+          to_bitField0_ |= 0x00400000;
+        }
+        if (updateInviteCodeRequestBuilder_ == null) {
+          result.updateInviteCodeRequest_ = updateInviteCodeRequest_;
+        } else {
+          result.updateInviteCodeRequest_ = updateInviteCodeRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
+          to_bitField0_ |= 0x00800000;
+        }
         if (createFeedRequestBuilder_ == null) {
           result.createFeedRequest_ = createFeedRequest_;
         } else {
           result.createFeedRequest_ = createFeedRequestBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
-          to_bitField0_ |= 0x00200000;
+        if (((from_bitField0_ & 0x01000000) == 0x01000000)) {
+          to_bitField0_ |= 0x01000000;
         }
         if (replyFeedRequestBuilder_ == null) {
           result.replyFeedRequest_ = replyFeedRequest_;
         } else {
           result.replyFeedRequest_ = replyFeedRequestBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
-          to_bitField0_ |= 0x00400000;
+        if (((from_bitField0_ & 0x02000000) == 0x02000000)) {
+          to_bitField0_ |= 0x02000000;
         }
         if (getUserTimelineFeedRequestBuilder_ == null) {
           result.getUserTimelineFeedRequest_ = getUserTimelineFeedRequest_;
@@ -20783,6 +24281,15 @@ public final class MessageProtos {
         if (other.hasGetUserTagListRequest()) {
           mergeGetUserTagListRequest(other.getGetUserTagListRequest());
         }
+        if (other.hasGetUserInviteCodeListRequest()) {
+          mergeGetUserInviteCodeListRequest(other.getGetUserInviteCodeListRequest());
+        }
+        if (other.hasApplyInviteCodeRequest()) {
+          mergeApplyInviteCodeRequest(other.getApplyInviteCodeRequest());
+        }
+        if (other.hasUpdateInviteCodeRequest()) {
+          mergeUpdateInviteCodeRequest(other.getUpdateInviteCodeRequest());
+        }
         if (other.hasCreateFeedRequest()) {
           mergeCreateFeedRequest(other.getCreateFeedRequest());
         }
@@ -20863,6 +24370,12 @@ public final class MessageProtos {
         }
         if (hasDeleteUserTagRequest()) {
           if (!getDeleteUserTagRequest().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUpdateInviteCodeRequest()) {
+          if (!getUpdateInviteCodeRequest().isInitialized()) {
             
             return false;
           }
@@ -22801,6 +26314,354 @@ public final class MessageProtos {
         return getUserTagListRequestBuilder_;
       }
 
+      private com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder> getUserInviteCodeListRequestBuilder_;
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public boolean hasGetUserInviteCodeListRequest() {
+        return ((bitField0_ & 0x00100000) == 0x00100000);
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest getGetUserInviteCodeListRequest() {
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          return getUserInviteCodeListRequest_;
+        } else {
+          return getUserInviteCodeListRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public Builder setGetUserInviteCodeListRequest(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest value) {
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getUserInviteCodeListRequest_ = value;
+          onChanged();
+        } else {
+          getUserInviteCodeListRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public Builder setGetUserInviteCodeListRequest(
+          com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder builderForValue) {
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          getUserInviteCodeListRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          getUserInviteCodeListRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public Builder mergeGetUserInviteCodeListRequest(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest value) {
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00100000) == 0x00100000) &&
+              getUserInviteCodeListRequest_ != com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance()) {
+            getUserInviteCodeListRequest_ =
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.newBuilder(getUserInviteCodeListRequest_).mergeFrom(value).buildPartial();
+          } else {
+            getUserInviteCodeListRequest_ = value;
+          }
+          onChanged();
+        } else {
+          getUserInviteCodeListRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public Builder clearGetUserInviteCodeListRequest() {
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          getUserInviteCodeListRequest_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          getUserInviteCodeListRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00100000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder getGetUserInviteCodeListRequestBuilder() {
+        bitField0_ |= 0x00100000;
+        onChanged();
+        return getGetUserInviteCodeListRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder getGetUserInviteCodeListRequestOrBuilder() {
+        if (getUserInviteCodeListRequestBuilder_ != null) {
+          return getUserInviteCodeListRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return getUserInviteCodeListRequest_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListRequest getUserInviteCodeListRequest = 52;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder> 
+          getGetUserInviteCodeListRequestFieldBuilder() {
+        if (getUserInviteCodeListRequestBuilder_ == null) {
+          getUserInviteCodeListRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequest.Builder, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListRequestOrBuilder>(
+                  getGetUserInviteCodeListRequest(),
+                  getParentForChildren(),
+                  isClean());
+          getUserInviteCodeListRequest_ = null;
+        }
+        return getUserInviteCodeListRequestBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest applyInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder> applyInviteCodeRequestBuilder_;
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public boolean hasApplyInviteCodeRequest() {
+        return ((bitField0_ & 0x00200000) == 0x00200000);
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest getApplyInviteCodeRequest() {
+        if (applyInviteCodeRequestBuilder_ == null) {
+          return applyInviteCodeRequest_;
+        } else {
+          return applyInviteCodeRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public Builder setApplyInviteCodeRequest(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest value) {
+        if (applyInviteCodeRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          applyInviteCodeRequest_ = value;
+          onChanged();
+        } else {
+          applyInviteCodeRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public Builder setApplyInviteCodeRequest(
+          com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder builderForValue) {
+        if (applyInviteCodeRequestBuilder_ == null) {
+          applyInviteCodeRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          applyInviteCodeRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public Builder mergeApplyInviteCodeRequest(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest value) {
+        if (applyInviteCodeRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00200000) == 0x00200000) &&
+              applyInviteCodeRequest_ != com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance()) {
+            applyInviteCodeRequest_ =
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.newBuilder(applyInviteCodeRequest_).mergeFrom(value).buildPartial();
+          } else {
+            applyInviteCodeRequest_ = value;
+          }
+          onChanged();
+        } else {
+          applyInviteCodeRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public Builder clearApplyInviteCodeRequest() {
+        if (applyInviteCodeRequestBuilder_ == null) {
+          applyInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          applyInviteCodeRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00200000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder getApplyInviteCodeRequestBuilder() {
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return getApplyInviteCodeRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder getApplyInviteCodeRequestOrBuilder() {
+        if (applyInviteCodeRequestBuilder_ != null) {
+          return applyInviteCodeRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return applyInviteCodeRequest_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeRequest applyInviteCodeRequest = 53;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder> 
+          getApplyInviteCodeRequestFieldBuilder() {
+        if (applyInviteCodeRequestBuilder_ == null) {
+          applyInviteCodeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequest.Builder, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeRequestOrBuilder>(
+                  getApplyInviteCodeRequest(),
+                  getParentForChildren(),
+                  isClean());
+          applyInviteCodeRequest_ = null;
+        }
+        return applyInviteCodeRequestBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest updateInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder> updateInviteCodeRequestBuilder_;
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public boolean hasUpdateInviteCodeRequest() {
+        return ((bitField0_ & 0x00400000) == 0x00400000);
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest getUpdateInviteCodeRequest() {
+        if (updateInviteCodeRequestBuilder_ == null) {
+          return updateInviteCodeRequest_;
+        } else {
+          return updateInviteCodeRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public Builder setUpdateInviteCodeRequest(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest value) {
+        if (updateInviteCodeRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          updateInviteCodeRequest_ = value;
+          onChanged();
+        } else {
+          updateInviteCodeRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00400000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public Builder setUpdateInviteCodeRequest(
+          com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder builderForValue) {
+        if (updateInviteCodeRequestBuilder_ == null) {
+          updateInviteCodeRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          updateInviteCodeRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00400000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public Builder mergeUpdateInviteCodeRequest(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest value) {
+        if (updateInviteCodeRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00400000) == 0x00400000) &&
+              updateInviteCodeRequest_ != com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance()) {
+            updateInviteCodeRequest_ =
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.newBuilder(updateInviteCodeRequest_).mergeFrom(value).buildPartial();
+          } else {
+            updateInviteCodeRequest_ = value;
+          }
+          onChanged();
+        } else {
+          updateInviteCodeRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00400000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public Builder clearUpdateInviteCodeRequest() {
+        if (updateInviteCodeRequestBuilder_ == null) {
+          updateInviteCodeRequest_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          updateInviteCodeRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00400000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder getUpdateInviteCodeRequestBuilder() {
+        bitField0_ |= 0x00400000;
+        onChanged();
+        return getUpdateInviteCodeRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder getUpdateInviteCodeRequestOrBuilder() {
+        if (updateInviteCodeRequestBuilder_ != null) {
+          return updateInviteCodeRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return updateInviteCodeRequest_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeRequest updateInviteCodeRequest = 54;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder> 
+          getUpdateInviteCodeRequestFieldBuilder() {
+        if (updateInviteCodeRequestBuilder_ == null) {
+          updateInviteCodeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequest.Builder, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeRequestOrBuilder>(
+                  getUpdateInviteCodeRequest(),
+                  getParentForChildren(),
+                  isClean());
+          updateInviteCodeRequest_ = null;
+        }
+        return updateInviteCodeRequestBuilder_;
+      }
+
       private com.orange.protocol.message.MessageProtos.PBCreateFeedRequest createFeedRequest_ = com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.orange.protocol.message.MessageProtos.PBCreateFeedRequest, com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.Builder, com.orange.protocol.message.MessageProtos.PBCreateFeedRequestOrBuilder> createFeedRequestBuilder_;
@@ -22812,7 +26673,7 @@ public final class MessageProtos {
        * </pre>
        */
       public boolean hasCreateFeedRequest() {
-        return ((bitField0_ & 0x00100000) == 0x00100000);
+        return ((bitField0_ & 0x00800000) == 0x00800000);
       }
       /**
        * <code>optional .barrage.PBCreateFeedRequest createFeedRequest = 60;</code>
@@ -22845,7 +26706,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00800000;
         return this;
       }
       /**
@@ -22863,7 +26724,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00800000;
         return this;
       }
       /**
@@ -22875,7 +26736,7 @@ public final class MessageProtos {
        */
       public Builder mergeCreateFeedRequest(com.orange.protocol.message.MessageProtos.PBCreateFeedRequest value) {
         if (createFeedRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00100000) == 0x00100000) &&
+          if (((bitField0_ & 0x00800000) == 0x00800000) &&
               createFeedRequest_ != com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.getDefaultInstance()) {
             createFeedRequest_ =
               com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.newBuilder(createFeedRequest_).mergeFrom(value).buildPartial();
@@ -22886,7 +26747,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00800000;
         return this;
       }
       /**
@@ -22903,7 +26764,7 @@ public final class MessageProtos {
         } else {
           createFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         return this;
       }
       /**
@@ -22914,7 +26775,7 @@ public final class MessageProtos {
        * </pre>
        */
       public com.orange.protocol.message.MessageProtos.PBCreateFeedRequest.Builder getCreateFeedRequestBuilder() {
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00800000;
         onChanged();
         return getCreateFeedRequestFieldBuilder().getBuilder();
       }
@@ -22960,7 +26821,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
        */
       public boolean hasReplyFeedRequest() {
-        return ((bitField0_ & 0x00200000) == 0x00200000);
+        return ((bitField0_ & 0x01000000) == 0x01000000);
       }
       /**
        * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
@@ -22985,7 +26846,7 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x01000000;
         return this;
       }
       /**
@@ -22999,7 +26860,7 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x01000000;
         return this;
       }
       /**
@@ -23007,7 +26868,7 @@ public final class MessageProtos {
        */
       public Builder mergeReplyFeedRequest(com.orange.protocol.message.MessageProtos.PBReplyFeedRequest value) {
         if (replyFeedRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00200000) == 0x00200000) &&
+          if (((bitField0_ & 0x01000000) == 0x01000000) &&
               replyFeedRequest_ != com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.getDefaultInstance()) {
             replyFeedRequest_ =
               com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.newBuilder(replyFeedRequest_).mergeFrom(value).buildPartial();
@@ -23018,7 +26879,7 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x01000000;
         return this;
       }
       /**
@@ -23031,14 +26892,14 @@ public final class MessageProtos {
         } else {
           replyFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00200000);
+        bitField0_ = (bitField0_ & ~0x01000000);
         return this;
       }
       /**
        * <code>optional .barrage.PBReplyFeedRequest replyFeedRequest = 61;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBReplyFeedRequest.Builder getReplyFeedRequestBuilder() {
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x01000000;
         onChanged();
         return getReplyFeedRequestFieldBuilder().getBuilder();
       }
@@ -23076,7 +26937,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
        */
       public boolean hasGetUserTimelineFeedRequest() {
-        return ((bitField0_ & 0x00400000) == 0x00400000);
+        return ((bitField0_ & 0x02000000) == 0x02000000);
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
@@ -23101,7 +26962,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00400000;
+        bitField0_ |= 0x02000000;
         return this;
       }
       /**
@@ -23115,7 +26976,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00400000;
+        bitField0_ |= 0x02000000;
         return this;
       }
       /**
@@ -23123,7 +26984,7 @@ public final class MessageProtos {
        */
       public Builder mergeGetUserTimelineFeedRequest(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest value) {
         if (getUserTimelineFeedRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00400000) == 0x00400000) &&
+          if (((bitField0_ & 0x02000000) == 0x02000000) &&
               getUserTimelineFeedRequest_ != com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.getDefaultInstance()) {
             getUserTimelineFeedRequest_ =
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.newBuilder(getUserTimelineFeedRequest_).mergeFrom(value).buildPartial();
@@ -23134,7 +26995,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00400000;
+        bitField0_ |= 0x02000000;
         return this;
       }
       /**
@@ -23147,14 +27008,14 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedRequestBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x02000000);
         return this;
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedRequest getUserTimelineFeedRequest = 62;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedRequest.Builder getGetUserTimelineFeedRequestBuilder() {
-        bitField0_ |= 0x00400000;
+        bitField0_ |= 0x02000000;
         onChanged();
         return getGetUserTimelineFeedRequestFieldBuilder().getBuilder();
       }
@@ -23437,6 +27298,45 @@ public final class MessageProtos {
      * <code>optional .barrage.PBGetUserTagListResponse getUserTagListResponse = 51;</code>
      */
     com.orange.protocol.message.MessageProtos.PBGetUserTagListResponseOrBuilder getGetUserTagListResponseOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+     */
+    boolean hasGetUserInviteCodeListResponse();
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse getGetUserInviteCodeListResponse();
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder getGetUserInviteCodeListResponseOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+     */
+    boolean hasApplyInviteCodeResponse();
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse getApplyInviteCodeResponse();
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder getApplyInviteCodeResponseOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+     */
+    boolean hasUpdateInviteCodeResponse();
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse getUpdateInviteCodeResponse();
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+     */
+    com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder getUpdateInviteCodeResponseOrBuilder();
 
     /**
      * <code>optional .barrage.PBCreateFeedResponse createFeedResponse = 60;</code>
@@ -23723,9 +27623,48 @@ public final class MessageProtos {
               bitField0_ |= 0x00010000;
               break;
             }
+            case 418: {
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00020000) == 0x00020000)) {
+                subBuilder = getUserInviteCodeListResponse_.toBuilder();
+              }
+              getUserInviteCodeListResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getUserInviteCodeListResponse_);
+                getUserInviteCodeListResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00020000;
+              break;
+            }
+            case 426: {
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00040000) == 0x00040000)) {
+                subBuilder = applyInviteCodeResponse_.toBuilder();
+              }
+              applyInviteCodeResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(applyInviteCodeResponse_);
+                applyInviteCodeResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00040000;
+              break;
+            }
+            case 434: {
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00080000) == 0x00080000)) {
+                subBuilder = updateInviteCodeResponse_.toBuilder();
+              }
+              updateInviteCodeResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(updateInviteCodeResponse_);
+                updateInviteCodeResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00080000;
+              break;
+            }
             case 482: {
               com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.Builder subBuilder = null;
-              if (((bitField0_ & 0x00020000) == 0x00020000)) {
+              if (((bitField0_ & 0x00100000) == 0x00100000)) {
                 subBuilder = createFeedResponse_.toBuilder();
               }
               createFeedResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.PARSER, extensionRegistry);
@@ -23733,12 +27672,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(createFeedResponse_);
                 createFeedResponse_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00020000;
+              bitField0_ |= 0x00100000;
               break;
             }
             case 490: {
               com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.Builder subBuilder = null;
-              if (((bitField0_ & 0x00040000) == 0x00040000)) {
+              if (((bitField0_ & 0x00200000) == 0x00200000)) {
                 subBuilder = replyFeedResponse_.toBuilder();
               }
               replyFeedResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.PARSER, extensionRegistry);
@@ -23746,12 +27685,12 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(replyFeedResponse_);
                 replyFeedResponse_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00040000;
+              bitField0_ |= 0x00200000;
               break;
             }
             case 498: {
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.Builder subBuilder = null;
-              if (((bitField0_ & 0x00080000) == 0x00080000)) {
+              if (((bitField0_ & 0x00400000) == 0x00400000)) {
                 subBuilder = getUserTimelineFeedResponse_.toBuilder();
               }
               getUserTimelineFeedResponse_ = input.readMessage(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.PARSER, extensionRegistry);
@@ -23759,7 +27698,7 @@ public final class MessageProtos {
                 subBuilder.mergeFrom(getUserTimelineFeedResponse_);
                 getUserTimelineFeedResponse_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00080000;
+              bitField0_ |= 0x00400000;
               break;
             }
           }
@@ -24188,6 +28127,69 @@ public final class MessageProtos {
       return getUserTagListResponse_;
     }
 
+    public static final int GETUSERINVITECODELISTRESPONSE_FIELD_NUMBER = 52;
+    private com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse_;
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+     */
+    public boolean hasGetUserInviteCodeListResponse() {
+      return ((bitField0_ & 0x00020000) == 0x00020000);
+    }
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse getGetUserInviteCodeListResponse() {
+      return getUserInviteCodeListResponse_;
+    }
+    /**
+     * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder getGetUserInviteCodeListResponseOrBuilder() {
+      return getUserInviteCodeListResponse_;
+    }
+
+    public static final int APPLYINVITECODERESPONSE_FIELD_NUMBER = 53;
+    private com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse applyInviteCodeResponse_;
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+     */
+    public boolean hasApplyInviteCodeResponse() {
+      return ((bitField0_ & 0x00040000) == 0x00040000);
+    }
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse getApplyInviteCodeResponse() {
+      return applyInviteCodeResponse_;
+    }
+    /**
+     * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder getApplyInviteCodeResponseOrBuilder() {
+      return applyInviteCodeResponse_;
+    }
+
+    public static final int UPDATEINVITECODERESPONSE_FIELD_NUMBER = 54;
+    private com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse updateInviteCodeResponse_;
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+     */
+    public boolean hasUpdateInviteCodeResponse() {
+      return ((bitField0_ & 0x00080000) == 0x00080000);
+    }
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse getUpdateInviteCodeResponse() {
+      return updateInviteCodeResponse_;
+    }
+    /**
+     * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+     */
+    public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder getUpdateInviteCodeResponseOrBuilder() {
+      return updateInviteCodeResponse_;
+    }
+
     public static final int CREATEFEEDRESPONSE_FIELD_NUMBER = 60;
     private com.orange.protocol.message.MessageProtos.PBCreateFeedResponse createFeedResponse_;
     /**
@@ -24198,7 +28200,7 @@ public final class MessageProtos {
      * </pre>
      */
     public boolean hasCreateFeedResponse() {
-      return ((bitField0_ & 0x00020000) == 0x00020000);
+      return ((bitField0_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .barrage.PBCreateFeedResponse createFeedResponse = 60;</code>
@@ -24227,7 +28229,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
      */
     public boolean hasReplyFeedResponse() {
-      return ((bitField0_ & 0x00040000) == 0x00040000);
+      return ((bitField0_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
@@ -24248,7 +28250,7 @@ public final class MessageProtos {
      * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
      */
     public boolean hasGetUserTimelineFeedResponse() {
-      return ((bitField0_ & 0x00080000) == 0x00080000);
+      return ((bitField0_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
@@ -24281,6 +28283,9 @@ public final class MessageProtos {
       addUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBAddUserTagResponse.getDefaultInstance();
       deleteUserTagResponse_ = com.orange.protocol.message.MessageProtos.PBDeleteUserTagResponse.getDefaultInstance();
       getUserTagListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTagListResponse.getDefaultInstance();
+      getUserInviteCodeListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance();
+      applyInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance();
+      updateInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance();
       createFeedResponse_ = com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance();
       replyFeedResponse_ = com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.getDefaultInstance();
       getUserTimelineFeedResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.getDefaultInstance();
@@ -24351,6 +28356,24 @@ public final class MessageProtos {
       }
       if (hasGetUserTagListResponse()) {
         if (!getGetUserTagListResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasGetUserInviteCodeListResponse()) {
+        if (!getGetUserInviteCodeListResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasApplyInviteCodeResponse()) {
+        if (!getApplyInviteCodeResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasUpdateInviteCodeResponse()) {
+        if (!getUpdateInviteCodeResponse().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -24426,12 +28449,21 @@ public final class MessageProtos {
         output.writeMessage(51, getUserTagListResponse_);
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        output.writeMessage(60, createFeedResponse_);
+        output.writeMessage(52, getUserInviteCodeListResponse_);
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        output.writeMessage(61, replyFeedResponse_);
+        output.writeMessage(53, applyInviteCodeResponse_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        output.writeMessage(54, updateInviteCodeResponse_);
+      }
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
+        output.writeMessage(60, createFeedResponse_);
+      }
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
+        output.writeMessage(61, replyFeedResponse_);
+      }
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
         output.writeMessage(62, getUserTimelineFeedResponse_);
       }
       getUnknownFields().writeTo(output);
@@ -24513,13 +28545,25 @@ public final class MessageProtos {
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(60, createFeedResponse_);
+          .computeMessageSize(52, getUserInviteCodeListResponse_);
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(61, replyFeedResponse_);
+          .computeMessageSize(53, applyInviteCodeResponse_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(54, updateInviteCodeResponse_);
+      }
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(60, createFeedResponse_);
+      }
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(61, replyFeedResponse_);
+      }
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(62, getUserTimelineFeedResponse_);
       }
@@ -24644,6 +28688,9 @@ public final class MessageProtos {
           getAddUserTagResponseFieldBuilder();
           getDeleteUserTagResponseFieldBuilder();
           getGetUserTagListResponseFieldBuilder();
+          getGetUserInviteCodeListResponseFieldBuilder();
+          getApplyInviteCodeResponseFieldBuilder();
+          getUpdateInviteCodeResponseFieldBuilder();
           getCreateFeedResponseFieldBuilder();
           getReplyFeedResponseFieldBuilder();
           getGetUserTimelineFeedResponseFieldBuilder();
@@ -24737,24 +28784,42 @@ public final class MessageProtos {
           getUserTagListResponseBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00010000);
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          getUserInviteCodeListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance();
+        } else {
+          getUserInviteCodeListResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00020000);
+        if (applyInviteCodeResponseBuilder_ == null) {
+          applyInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance();
+        } else {
+          applyInviteCodeResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00040000);
+        if (updateInviteCodeResponseBuilder_ == null) {
+          updateInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance();
+        } else {
+          updateInviteCodeResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00080000);
         if (createFeedResponseBuilder_ == null) {
           createFeedResponse_ = com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance();
         } else {
           createFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         if (replyFeedResponseBuilder_ == null) {
           replyFeedResponse_ = com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.getDefaultInstance();
         } else {
           replyFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         if (getUserTimelineFeedResponseBuilder_ == null) {
           getUserTimelineFeedResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.getDefaultInstance();
         } else {
           getUserTimelineFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         return this;
       }
 
@@ -24902,21 +28967,45 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
           to_bitField0_ |= 0x00020000;
         }
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          result.getUserInviteCodeListResponse_ = getUserInviteCodeListResponse_;
+        } else {
+          result.getUserInviteCodeListResponse_ = getUserInviteCodeListResponseBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00040000;
+        }
+        if (applyInviteCodeResponseBuilder_ == null) {
+          result.applyInviteCodeResponse_ = applyInviteCodeResponse_;
+        } else {
+          result.applyInviteCodeResponse_ = applyInviteCodeResponseBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
+        }
+        if (updateInviteCodeResponseBuilder_ == null) {
+          result.updateInviteCodeResponse_ = updateInviteCodeResponse_;
+        } else {
+          result.updateInviteCodeResponse_ = updateInviteCodeResponseBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
+          to_bitField0_ |= 0x00100000;
+        }
         if (createFeedResponseBuilder_ == null) {
           result.createFeedResponse_ = createFeedResponse_;
         } else {
           result.createFeedResponse_ = createFeedResponseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
-          to_bitField0_ |= 0x00040000;
+        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
+          to_bitField0_ |= 0x00200000;
         }
         if (replyFeedResponseBuilder_ == null) {
           result.replyFeedResponse_ = replyFeedResponse_;
         } else {
           result.replyFeedResponse_ = replyFeedResponseBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
-          to_bitField0_ |= 0x00080000;
+        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
+          to_bitField0_ |= 0x00400000;
         }
         if (getUserTimelineFeedResponseBuilder_ == null) {
           result.getUserTimelineFeedResponse_ = getUserTimelineFeedResponse_;
@@ -24992,6 +29081,15 @@ public final class MessageProtos {
         if (other.hasGetUserTagListResponse()) {
           mergeGetUserTagListResponse(other.getGetUserTagListResponse());
         }
+        if (other.hasGetUserInviteCodeListResponse()) {
+          mergeGetUserInviteCodeListResponse(other.getGetUserInviteCodeListResponse());
+        }
+        if (other.hasApplyInviteCodeResponse()) {
+          mergeApplyInviteCodeResponse(other.getApplyInviteCodeResponse());
+        }
+        if (other.hasUpdateInviteCodeResponse()) {
+          mergeUpdateInviteCodeResponse(other.getUpdateInviteCodeResponse());
+        }
         if (other.hasCreateFeedResponse()) {
           mergeCreateFeedResponse(other.getCreateFeedResponse());
         }
@@ -25066,6 +29164,24 @@ public final class MessageProtos {
         }
         if (hasGetUserTagListResponse()) {
           if (!getGetUserTagListResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasGetUserInviteCodeListResponse()) {
+          if (!getGetUserInviteCodeListResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasApplyInviteCodeResponse()) {
+          if (!getApplyInviteCodeResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUpdateInviteCodeResponse()) {
+          if (!getUpdateInviteCodeResponse().isInitialized()) {
             
             return false;
           }
@@ -26776,6 +30892,354 @@ public final class MessageProtos {
         return getUserTagListResponseBuilder_;
       }
 
+      private com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder> getUserInviteCodeListResponseBuilder_;
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public boolean hasGetUserInviteCodeListResponse() {
+        return ((bitField0_ & 0x00020000) == 0x00020000);
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse getGetUserInviteCodeListResponse() {
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          return getUserInviteCodeListResponse_;
+        } else {
+          return getUserInviteCodeListResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public Builder setGetUserInviteCodeListResponse(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse value) {
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getUserInviteCodeListResponse_ = value;
+          onChanged();
+        } else {
+          getUserInviteCodeListResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public Builder setGetUserInviteCodeListResponse(
+          com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder builderForValue) {
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          getUserInviteCodeListResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          getUserInviteCodeListResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public Builder mergeGetUserInviteCodeListResponse(com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse value) {
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00020000) == 0x00020000) &&
+              getUserInviteCodeListResponse_ != com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance()) {
+            getUserInviteCodeListResponse_ =
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.newBuilder(getUserInviteCodeListResponse_).mergeFrom(value).buildPartial();
+          } else {
+            getUserInviteCodeListResponse_ = value;
+          }
+          onChanged();
+        } else {
+          getUserInviteCodeListResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00020000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public Builder clearGetUserInviteCodeListResponse() {
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          getUserInviteCodeListResponse_ = com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          getUserInviteCodeListResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00020000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder getGetUserInviteCodeListResponseBuilder() {
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return getGetUserInviteCodeListResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder getGetUserInviteCodeListResponseOrBuilder() {
+        if (getUserInviteCodeListResponseBuilder_ != null) {
+          return getUserInviteCodeListResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return getUserInviteCodeListResponse_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBGetUserInviteCodeListResponse getUserInviteCodeListResponse = 52;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder> 
+          getGetUserInviteCodeListResponseFieldBuilder() {
+        if (getUserInviteCodeListResponseBuilder_ == null) {
+          getUserInviteCodeListResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponse.Builder, com.orange.protocol.message.MessageProtos.PBGetUserInviteCodeListResponseOrBuilder>(
+                  getGetUserInviteCodeListResponse(),
+                  getParentForChildren(),
+                  isClean());
+          getUserInviteCodeListResponse_ = null;
+        }
+        return getUserInviteCodeListResponseBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse applyInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder> applyInviteCodeResponseBuilder_;
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public boolean hasApplyInviteCodeResponse() {
+        return ((bitField0_ & 0x00040000) == 0x00040000);
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse getApplyInviteCodeResponse() {
+        if (applyInviteCodeResponseBuilder_ == null) {
+          return applyInviteCodeResponse_;
+        } else {
+          return applyInviteCodeResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public Builder setApplyInviteCodeResponse(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse value) {
+        if (applyInviteCodeResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          applyInviteCodeResponse_ = value;
+          onChanged();
+        } else {
+          applyInviteCodeResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00040000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public Builder setApplyInviteCodeResponse(
+          com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder builderForValue) {
+        if (applyInviteCodeResponseBuilder_ == null) {
+          applyInviteCodeResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          applyInviteCodeResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00040000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public Builder mergeApplyInviteCodeResponse(com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse value) {
+        if (applyInviteCodeResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00040000) == 0x00040000) &&
+              applyInviteCodeResponse_ != com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance()) {
+            applyInviteCodeResponse_ =
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.newBuilder(applyInviteCodeResponse_).mergeFrom(value).buildPartial();
+          } else {
+            applyInviteCodeResponse_ = value;
+          }
+          onChanged();
+        } else {
+          applyInviteCodeResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00040000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public Builder clearApplyInviteCodeResponse() {
+        if (applyInviteCodeResponseBuilder_ == null) {
+          applyInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          applyInviteCodeResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00040000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder getApplyInviteCodeResponseBuilder() {
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return getApplyInviteCodeResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder getApplyInviteCodeResponseOrBuilder() {
+        if (applyInviteCodeResponseBuilder_ != null) {
+          return applyInviteCodeResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return applyInviteCodeResponse_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBApplyInviteCodeResponse applyInviteCodeResponse = 53;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder> 
+          getApplyInviteCodeResponseFieldBuilder() {
+        if (applyInviteCodeResponseBuilder_ == null) {
+          applyInviteCodeResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponse.Builder, com.orange.protocol.message.MessageProtos.PBApplyInviteCodeResponseOrBuilder>(
+                  getApplyInviteCodeResponse(),
+                  getParentForChildren(),
+                  isClean());
+          applyInviteCodeResponse_ = null;
+        }
+        return applyInviteCodeResponseBuilder_;
+      }
+
+      private com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse updateInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder> updateInviteCodeResponseBuilder_;
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public boolean hasUpdateInviteCodeResponse() {
+        return ((bitField0_ & 0x00080000) == 0x00080000);
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse getUpdateInviteCodeResponse() {
+        if (updateInviteCodeResponseBuilder_ == null) {
+          return updateInviteCodeResponse_;
+        } else {
+          return updateInviteCodeResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public Builder setUpdateInviteCodeResponse(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse value) {
+        if (updateInviteCodeResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          updateInviteCodeResponse_ = value;
+          onChanged();
+        } else {
+          updateInviteCodeResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public Builder setUpdateInviteCodeResponse(
+          com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder builderForValue) {
+        if (updateInviteCodeResponseBuilder_ == null) {
+          updateInviteCodeResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          updateInviteCodeResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public Builder mergeUpdateInviteCodeResponse(com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse value) {
+        if (updateInviteCodeResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00080000) == 0x00080000) &&
+              updateInviteCodeResponse_ != com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance()) {
+            updateInviteCodeResponse_ =
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.newBuilder(updateInviteCodeResponse_).mergeFrom(value).buildPartial();
+          } else {
+            updateInviteCodeResponse_ = value;
+          }
+          onChanged();
+        } else {
+          updateInviteCodeResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public Builder clearUpdateInviteCodeResponse() {
+        if (updateInviteCodeResponseBuilder_ == null) {
+          updateInviteCodeResponse_ = com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          updateInviteCodeResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00080000);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder getUpdateInviteCodeResponseBuilder() {
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return getUpdateInviteCodeResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      public com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder getUpdateInviteCodeResponseOrBuilder() {
+        if (updateInviteCodeResponseBuilder_ != null) {
+          return updateInviteCodeResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return updateInviteCodeResponse_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUpdateInviteCodeResponse updateInviteCodeResponse = 54;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder> 
+          getUpdateInviteCodeResponseFieldBuilder() {
+        if (updateInviteCodeResponseBuilder_ == null) {
+          updateInviteCodeResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponse.Builder, com.orange.protocol.message.MessageProtos.PBUpdateInviteCodeResponseOrBuilder>(
+                  getUpdateInviteCodeResponse(),
+                  getParentForChildren(),
+                  isClean());
+          updateInviteCodeResponse_ = null;
+        }
+        return updateInviteCodeResponseBuilder_;
+      }
+
       private com.orange.protocol.message.MessageProtos.PBCreateFeedResponse createFeedResponse_ = com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.orange.protocol.message.MessageProtos.PBCreateFeedResponse, com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.Builder, com.orange.protocol.message.MessageProtos.PBCreateFeedResponseOrBuilder> createFeedResponseBuilder_;
@@ -26787,7 +31251,7 @@ public final class MessageProtos {
        * </pre>
        */
       public boolean hasCreateFeedResponse() {
-        return ((bitField0_ & 0x00020000) == 0x00020000);
+        return ((bitField0_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .barrage.PBCreateFeedResponse createFeedResponse = 60;</code>
@@ -26820,7 +31284,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         return this;
       }
       /**
@@ -26838,7 +31302,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         return this;
       }
       /**
@@ -26850,7 +31314,7 @@ public final class MessageProtos {
        */
       public Builder mergeCreateFeedResponse(com.orange.protocol.message.MessageProtos.PBCreateFeedResponse value) {
         if (createFeedResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00020000) == 0x00020000) &&
+          if (((bitField0_ & 0x00100000) == 0x00100000) &&
               createFeedResponse_ != com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.getDefaultInstance()) {
             createFeedResponse_ =
               com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.newBuilder(createFeedResponse_).mergeFrom(value).buildPartial();
@@ -26861,7 +31325,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         return this;
       }
       /**
@@ -26878,7 +31342,7 @@ public final class MessageProtos {
         } else {
           createFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         return this;
       }
       /**
@@ -26889,7 +31353,7 @@ public final class MessageProtos {
        * </pre>
        */
       public com.orange.protocol.message.MessageProtos.PBCreateFeedResponse.Builder getCreateFeedResponseBuilder() {
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00100000;
         onChanged();
         return getCreateFeedResponseFieldBuilder().getBuilder();
       }
@@ -26935,7 +31399,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
        */
       public boolean hasReplyFeedResponse() {
-        return ((bitField0_ & 0x00040000) == 0x00040000);
+        return ((bitField0_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
@@ -26960,7 +31424,7 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -26974,7 +31438,7 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -26982,7 +31446,7 @@ public final class MessageProtos {
        */
       public Builder mergeReplyFeedResponse(com.orange.protocol.message.MessageProtos.PBReplyFeedResponse value) {
         if (replyFeedResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00040000) == 0x00040000) &&
+          if (((bitField0_ & 0x00200000) == 0x00200000) &&
               replyFeedResponse_ != com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.getDefaultInstance()) {
             replyFeedResponse_ =
               com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.newBuilder(replyFeedResponse_).mergeFrom(value).buildPartial();
@@ -26993,7 +31457,7 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -27006,14 +31470,14 @@ public final class MessageProtos {
         } else {
           replyFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .barrage.PBReplyFeedResponse replyFeedResponse = 61;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBReplyFeedResponse.Builder getReplyFeedResponseBuilder() {
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00200000;
         onChanged();
         return getReplyFeedResponseFieldBuilder().getBuilder();
       }
@@ -27051,7 +31515,7 @@ public final class MessageProtos {
        * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
        */
       public boolean hasGetUserTimelineFeedResponse() {
-        return ((bitField0_ & 0x00080000) == 0x00080000);
+        return ((bitField0_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
@@ -27076,7 +31540,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         return this;
       }
       /**
@@ -27090,7 +31554,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         return this;
       }
       /**
@@ -27098,7 +31562,7 @@ public final class MessageProtos {
        */
       public Builder mergeGetUserTimelineFeedResponse(com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse value) {
         if (getUserTimelineFeedResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00080000) == 0x00080000) &&
+          if (((bitField0_ & 0x00400000) == 0x00400000) &&
               getUserTimelineFeedResponse_ != com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.getDefaultInstance()) {
             getUserTimelineFeedResponse_ =
               com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.newBuilder(getUserTimelineFeedResponse_).mergeFrom(value).buildPartial();
@@ -27109,7 +31573,7 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         return this;
       }
       /**
@@ -27122,14 +31586,14 @@ public final class MessageProtos {
         } else {
           getUserTimelineFeedResponseBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         return this;
       }
       /**
        * <code>optional .barrage.PBGetUserTimelineFeedResponse getUserTimelineFeedResponse = 62;</code>
        */
       public com.orange.protocol.message.MessageProtos.PBGetUserTimelineFeedResponse.Builder getGetUserTimelineFeedResponseBuilder() {
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00400000;
         onChanged();
         return getGetUserTimelineFeedResponseFieldBuilder().getBuilder();
       }
@@ -27211,6 +31675,36 @@ public final class MessageProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_barrage_PBGetNewInviteCodeResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBGetUserInviteCodeListRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBGetUserInviteCodeListRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBGetUserInviteCodeListResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBGetUserInviteCodeListResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBApplyInviteCodeRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBApplyInviteCodeRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBApplyInviteCodeResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBApplyInviteCodeResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBUpdateInviteCodeRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBUpdateInviteCodeRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBUpdateInviteCodeResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBUpdateInviteCodeResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_barrage_PBSearchUserRequest_descriptor;
   private static
@@ -27356,112 +31850,138 @@ public final class MessageProtos {
       "\022\035\n\004user\030\001 \001(\0132\017.barrage.PBUser\"-\n\031PBGet" +
       "NewInviteCodeRequest\022\020\n\005count\030\001 \001(\005:\0011\"1" +
       "\n\032PBGetNewInviteCodeResponse\022\023\n\013inviteCo" +
-      "des\030\001 \003(\t\"I\n\023PBSearchUserRequest\022\017\n\007keyw" +
-      "ord\030\001 \002(\t\022\016\n\006offset\030\002 \001(\005\022\021\n\005limit\030\003 \001(\005" +
-      ":\00230\"6\n\024PBSearchUserResponse\022\036\n\005users\030\001 " +
-      "\003(\0132\017.barrage.PBUser\"8\n\027PBUpdateUserInfo",
-      "Request\022\035\n\004user\030\001 \002(\0132\017.barrage.PBUser\"9" +
-      "\n\030PBUpdateUserInfoResponse\022\035\n\004user\030\001 \001(\013" +
-      "2\017.barrage.PBUser\"6\n\023PBAddUserTagRequest" +
-      "\022\037\n\003tag\030\001 \002(\0132\022.barrage.PBUserTag\"<\n\024PBA" +
-      "ddUserTagResponse\022$\n\004tags\030\001 \001(\0132\026.barrag" +
-      "e.PBUserTagList\"9\n\026PBDeleteUserTagReques" +
-      "t\022\037\n\003tag\030\001 \002(\0132\022.barrage.PBUserTag\"?\n\027PB" +
-      "DeleteUserTagResponse\022$\n\004tags\030\001 \001(\0132\026.ba" +
-      "rrage.PBUserTagList\"\031\n\027PBGetUserTagListR" +
-      "equest\"@\n\030PBGetUserTagListResponse\022$\n\004ta",
-      "gs\030\001 \001(\0132\026.barrage.PBUserTagList\"m\n\026PBAd" +
-      "dUserFriendRequest\022\037\n\006friend\030\001 \001(\0132\017.bar" +
-      "rage.PBUser\022\014\n\004memo\030\002 \001(\t\022\022\n\nsourceType\030" +
-      "\003 \001(\005\022\020\n\010scanCode\030\004 \001(\t\"\031\n\027PBAddUserFrie" +
-      "ndResponse\"=\n\032PBGetUserFriendListRequest" +
-      "\022\037\n\003tag\030\001 \001(\0132\022.barrage.PBUserTag\"I\n\033PBG" +
-      "etUserFriendListResponse\022*\n\007friends\030\001 \001(" +
-      "\0132\031.barrage.PBUserFriendList\"S\n\032PBProces" +
-      "sUserFriendRequest\022\020\n\010friendId\030\001 \002(\t\022\025\n\r" +
-      "processResult\030\002 \001(\005\022\014\n\004memo\030\003 \001(\t\"?\n\033PBP",
-      "rocessUserFriendResponse\022 \n\007friends\030\001 \001(" +
-      "\0132\017.barrage.PBUser\"4\n\023PBCreateFeedReques" +
-      "t\022\035\n\004feed\030\001 \002(\0132\017.barrage.PBFeed\"&\n\024PBCr" +
-      "eateFeedResponse\022\016\n\006feedId\030\001 \001(\t\";\n\022PBRe" +
-      "plyFeedRequest\022%\n\006action\030\001 \002(\0132\025.barrage" +
-      ".PBFeedAction\"<\n\023PBReplyFeedResponse\022%\n\006" +
-      "action\030\001 \002(\0132\025.barrage.PBFeedAction\"G\n\034P" +
-      "BGetUserTimelineFeedRequest\022\024\n\014offsetFee" +
-      "dId\030\001 \001(\t\022\021\n\005limit\030\002 \001(\005:\00220\"?\n\035PBGetUse" +
-      "rTimelineFeedResponse\022\036\n\005feeds\030\001 \003(\0132\017.b",
-      "arrage.PBFeed\"\354\010\n\rPBDataRequest\022\014\n\004type\030" +
-      "\001 \002(\005\022\021\n\trequestId\030\002 \001(\005\022\017\n\007version\030\003 \001(" +
-      "\005\022\016\n\006userId\030\004 \001(\t\022!\n\006device\030\036 \001(\0132\021.barr" +
-      "age.PBDevice\022\023\n\013countryCode\030\037 \001(\t\022\024\n\014lan" +
-      "guageCode\030  \001(\t\022\022\n\nclientDate\030! \001(\005\0225\n\020l" +
-      "oginUserRequest\030( \001(\0132\033.barrage.PBLoginU" +
-      "serRequest\022;\n\023registerUserRequest\030) \001(\0132" +
-      "\036.barrage.PBRegisterUserRequest\0227\n\021searc" +
-      "hUserRequest\030* \001(\0132\034.barrage.PBSearchUse" +
-      "rRequest\022?\n\025updateUserInfoRequest\030+ \001(\0132",
-      " .barrage.PBUpdateUserInfoRequest\022=\n\024add" +
-      "UserFriendRequest\030, \001(\0132\037.barrage.PBAddU" +
-      "serFriendRequest\022E\n\030getUserFriendListReq" +
-      "uest\030- \001(\0132#.barrage.PBGetUserFriendList" +
-      "Request\022C\n\027verifyInviteCodeRequest\030. \001(\013" +
-      "2\".barrage.PBVerifyInviteCodeRequest\022E\n\030" +
-      "processUserFriendRequest\030/ \001(\0132#.barrage" +
-      ".PBProcessUserFriendRequest\022C\n\027getNewInv" +
-      "iteCodeRequest\0300 \001(\0132\".barrage.PBGetNewI" +
-      "nviteCodeRequest\0227\n\021addUserTagRequest\0301 ",
-      "\001(\0132\034.barrage.PBAddUserTagRequest\022=\n\024del" +
-      "eteUserTagRequest\0302 \001(\0132\037.barrage.PBDele" +
-      "teUserTagRequest\022?\n\025getUserTagListReques" +
-      "t\0303 \001(\0132 .barrage.PBGetUserTagListReques" +
-      "t\0227\n\021createFeedRequest\030< \001(\0132\034.barrage.P" +
-      "BCreateFeedRequest\0225\n\020replyFeedRequest\030=" +
-      " \001(\0132\033.barrage.PBReplyFeedRequest\022I\n\032get" +
-      "UserTimelineFeedRequest\030> \001(\0132%.barrage." +
-      "PBGetUserTimelineFeedRequest\"\312\010\n\016PBDataR" +
-      "esponse\022\025\n\nresultCode\030\001 \002(\005:\0010\022\021\n\treques",
-      "tId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\022\n\ntotalCount" +
-      "\030\004 \001(\005\022\022\n\nstringData\030\005 \001(\t\0227\n\021loginUserR" +
-      "esponse\030( \001(\0132\034.barrage.PBLoginUserRespo" +
-      "nse\022=\n\024registerUserResponse\030) \001(\0132\037.barr" +
-      "age.PBRegisterUserResponse\0229\n\022searchUser" +
-      "Response\030* \001(\0132\035.barrage.PBSearchUserRes" +
-      "ponse\022A\n\026updateUserInfoResponse\030+ \001(\0132!." +
-      "barrage.PBUpdateUserInfoResponse\022?\n\025addU" +
-      "serFriendResponse\030, \001(\0132 .barrage.PBAddU" +
-      "serFriendResponse\022G\n\031getUserFriendListRe",
-      "sponse\030- \001(\0132$.barrage.PBGetUserFriendLi" +
-      "stResponse\022E\n\030verifyInviteCodeResponse\030." +
-      " \001(\0132#.barrage.PBVerifyInviteCodeRespons" +
-      "e\022G\n\031processUserFriendResponse\030/ \001(\0132$.b" +
-      "arrage.PBProcessUserFriendResponse\022E\n\030ge" +
-      "tNewInviteCodeResponse\0300 \001(\0132#.barrage.P" +
-      "BGetNewInviteCodeResponse\0229\n\022addUserTagR" +
-      "esponse\0301 \001(\0132\035.barrage.PBAddUserTagResp" +
-      "onse\022?\n\025deleteUserTagResponse\0302 \001(\0132 .ba" +
-      "rrage.PBDeleteUserTagResponse\022A\n\026getUser",
-      "TagListResponse\0303 \001(\0132!.barrage.PBGetUse" +
-      "rTagListResponse\0229\n\022createFeedResponse\030<" +
-      " \001(\0132\035.barrage.PBCreateFeedResponse\0227\n\021r" +
-      "eplyFeedResponse\030= \001(\0132\034.barrage.PBReply" +
-      "FeedResponse\022K\n\033getUserTimelineFeedRespo" +
-      "nse\030> \001(\0132&.barrage.PBGetUserTimelineFee" +
-      "dResponse*Q\n\031PBProcessFriendResultType\022\021" +
-      "\n\rACCEPT_FRIEND\020\000\022\021\n\rREJECT_FRIEND\020\001\022\016\n\n" +
-      "REPLY_MEMO\020\002*\351\003\n\rPBMessageType\022\026\n\022MESSAG" +
-      "E_LOGIN_USER\020\001\022\031\n\025MESSAGE_REGISTER_USER\020",
-      "\002\022\027\n\023MESSAGE_SEARCH_USER\020\003\022\034\n\030MESSAGE_UP" +
-      "DATE_USER_INFO\020\004\022\033\n\027MESSAGE_ADD_USER_FRI" +
-      "END\020\005\022 \n\034MESSAGE_GET_USER_FRIEND_LIST\020\006\022" +
-      "\037\n\033MESSAGE_PROCESS_USER_FRIEND\020\007\022\036\n\032MESS" +
-      "AGE_VERIFY_INVITE_CODE\020\010\022\037\n\033MESSAGE_GET_" +
-      "NEW_INVITE_CODE\020\t\022\030\n\024MESSAGE_ADD_USER_TA" +
-      "G\020\n\022\033\n\027MESSAGE_DELETE_USER_TAG\020\013\022\035\n\031MESS" +
-      "AGE_GET_USER_TAG_LIST\020\014\022\027\n\023MESSAGE_CREAT" +
-      "E_FEED\020\036\022\026\n\022MESSAGE_REPLY_FEED\020\037\022\"\n\036MESS" +
-      "AGE_GET_USER_TIMELINE_FEED\020 \022\"\n\036MESSAGE_",
-      "GET_QINIU_UPLOAD_TOKEN\020dB,\n\033com.orange.p" +
-      "rotocol.messageB\rMessageProtos"
+      "des\030\001 \003(\t\" \n\036PBGetUserInviteCodeListRequ" +
+      "est\"R\n\037PBGetUserInviteCodeListResponse\022/" +
+      "\n\010codeList\030\001 \001(\0132\035.barrage.PBUserInviteC" +
+      "odeList\")\n\030PBApplyInviteCodeRequest\022\r\n\005c",
+      "ount\030\001 \001(\005\"L\n\031PBApplyInviteCodeResponse\022" +
+      "/\n\010codeList\030\001 \001(\0132\035.barrage.PBUserInvite" +
+      "CodeList\"L\n\031PBUpdateInviteCodeRequest\022/\n" +
+      "\010codeList\030\001 \002(\0132\035.barrage.PBUserInviteCo" +
+      "deList\"M\n\032PBUpdateInviteCodeResponse\022/\n\010" +
+      "codeList\030\001 \001(\0132\035.barrage.PBUserInviteCod" +
+      "eList\"I\n\023PBSearchUserRequest\022\017\n\007keyword\030" +
+      "\001 \002(\t\022\016\n\006offset\030\002 \001(\005\022\021\n\005limit\030\003 \001(\005:\00230" +
+      "\"6\n\024PBSearchUserResponse\022\036\n\005users\030\001 \003(\0132" +
+      "\017.barrage.PBUser\"8\n\027PBUpdateUserInfoRequ",
+      "est\022\035\n\004user\030\001 \002(\0132\017.barrage.PBUser\"9\n\030PB" +
+      "UpdateUserInfoResponse\022\035\n\004user\030\001 \001(\0132\017.b" +
+      "arrage.PBUser\"6\n\023PBAddUserTagRequest\022\037\n\003" +
+      "tag\030\001 \002(\0132\022.barrage.PBUserTag\"<\n\024PBAddUs" +
+      "erTagResponse\022$\n\004tags\030\001 \001(\0132\026.barrage.PB" +
+      "UserTagList\"9\n\026PBDeleteUserTagRequest\022\037\n" +
+      "\003tag\030\001 \002(\0132\022.barrage.PBUserTag\"?\n\027PBDele" +
+      "teUserTagResponse\022$\n\004tags\030\001 \001(\0132\026.barrag" +
+      "e.PBUserTagList\"\031\n\027PBGetUserTagListReque" +
+      "st\"@\n\030PBGetUserTagListResponse\022$\n\004tags\030\001",
+      " \001(\0132\026.barrage.PBUserTagList\"m\n\026PBAddUse" +
+      "rFriendRequest\022\037\n\006friend\030\001 \001(\0132\017.barrage" +
+      ".PBUser\022\014\n\004memo\030\002 \001(\t\022\022\n\nsourceType\030\003 \001(" +
+      "\005\022\020\n\010scanCode\030\004 \001(\t\"\031\n\027PBAddUserFriendRe" +
+      "sponse\"K\n\032PBGetUserFriendListRequest\022\037\n\003" +
+      "tag\030\001 \001(\0132\022.barrage.PBUserTag\022\014\n\004type\030\002 " +
+      "\001(\005\"I\n\033PBGetUserFriendListResponse\022*\n\007fr" +
+      "iends\030\001 \001(\0132\031.barrage.PBUserFriendList\"S" +
+      "\n\032PBProcessUserFriendRequest\022\020\n\010friendId" +
+      "\030\001 \002(\t\022\025\n\rprocessResult\030\002 \001(\005\022\014\n\004memo\030\003 ",
+      "\001(\t\"?\n\033PBProcessUserFriendResponse\022 \n\007fr" +
+      "iends\030\001 \001(\0132\017.barrage.PBUser\"4\n\023PBCreate" +
+      "FeedRequest\022\035\n\004feed\030\001 \002(\0132\017.barrage.PBFe" +
+      "ed\"&\n\024PBCreateFeedResponse\022\016\n\006feedId\030\001 \001" +
+      "(\t\";\n\022PBReplyFeedRequest\022%\n\006action\030\001 \002(\013" +
+      "2\025.barrage.PBFeedAction\"<\n\023PBReplyFeedRe" +
+      "sponse\022%\n\006action\030\001 \002(\0132\025.barrage.PBFeedA" +
+      "ction\"G\n\034PBGetUserTimelineFeedRequest\022\024\n" +
+      "\014offsetFeedId\030\001 \001(\t\022\021\n\005limit\030\002 \001(\005:\00220\"?" +
+      "\n\035PBGetUserTimelineFeedResponse\022\036\n\005feeds",
+      "\030\001 \003(\0132\017.barrage.PBFeed\"\303\n\n\rPBDataReques" +
+      "t\022\014\n\004type\030\001 \002(\005\022\021\n\trequestId\030\002 \001(\005\022\017\n\007ve" +
+      "rsion\030\003 \001(\005\022\016\n\006userId\030\004 \001(\t\022!\n\006device\030\036 " +
+      "\001(\0132\021.barrage.PBDevice\022\023\n\013countryCode\030\037 " +
+      "\001(\t\022\024\n\014languageCode\030  \001(\t\022\022\n\nclientDate\030" +
+      "! \001(\005\0225\n\020loginUserRequest\030( \001(\0132\033.barrag" +
+      "e.PBLoginUserRequest\022;\n\023registerUserRequ" +
+      "est\030) \001(\0132\036.barrage.PBRegisterUserReques" +
+      "t\0227\n\021searchUserRequest\030* \001(\0132\034.barrage.P" +
+      "BSearchUserRequest\022?\n\025updateUserInfoRequ",
+      "est\030+ \001(\0132 .barrage.PBUpdateUserInfoRequ" +
+      "est\022=\n\024addUserFriendRequest\030, \001(\0132\037.barr" +
+      "age.PBAddUserFriendRequest\022E\n\030getUserFri" +
+      "endListRequest\030- \001(\0132#.barrage.PBGetUser" +
+      "FriendListRequest\022C\n\027verifyInviteCodeReq" +
+      "uest\030. \001(\0132\".barrage.PBVerifyInviteCodeR" +
+      "equest\022E\n\030processUserFriendRequest\030/ \001(\013" +
+      "2#.barrage.PBProcessUserFriendRequest\022C\n" +
+      "\027getNewInviteCodeRequest\0300 \001(\0132\".barrage" +
+      ".PBGetNewInviteCodeRequest\0227\n\021addUserTag",
+      "Request\0301 \001(\0132\034.barrage.PBAddUserTagRequ" +
+      "est\022=\n\024deleteUserTagRequest\0302 \001(\0132\037.barr" +
+      "age.PBDeleteUserTagRequest\022?\n\025getUserTag" +
+      "ListRequest\0303 \001(\0132 .barrage.PBGetUserTag" +
+      "ListRequest\022M\n\034getUserInviteCodeListRequ" +
+      "est\0304 \001(\0132\'.barrage.PBGetUserInviteCodeL" +
+      "istRequest\022A\n\026applyInviteCodeRequest\0305 \001" +
+      "(\0132!.barrage.PBApplyInviteCodeRequest\022C\n" +
+      "\027updateInviteCodeRequest\0306 \001(\0132\".barrage" +
+      ".PBUpdateInviteCodeRequest\0227\n\021createFeed",
+      "Request\030< \001(\0132\034.barrage.PBCreateFeedRequ" +
+      "est\0225\n\020replyFeedRequest\030= \001(\0132\033.barrage." +
+      "PBReplyFeedRequest\022I\n\032getUserTimelineFee" +
+      "dRequest\030> \001(\0132%.barrage.PBGetUserTimeli" +
+      "neFeedRequest\"\247\n\n\016PBDataResponse\022\025\n\nresu" +
+      "ltCode\030\001 \002(\005:\0010\022\021\n\trequestId\030\002 \001(\005\022\017\n\007ve" +
+      "rsion\030\003 \001(\005\022\022\n\ntotalCount\030\004 \001(\005\022\022\n\nstrin" +
+      "gData\030\005 \001(\t\0227\n\021loginUserResponse\030( \001(\0132\034" +
+      ".barrage.PBLoginUserResponse\022=\n\024register" +
+      "UserResponse\030) \001(\0132\037.barrage.PBRegisterU",
+      "serResponse\0229\n\022searchUserResponse\030* \001(\0132" +
+      "\035.barrage.PBSearchUserResponse\022A\n\026update" +
+      "UserInfoResponse\030+ \001(\0132!.barrage.PBUpdat" +
+      "eUserInfoResponse\022?\n\025addUserFriendRespon" +
+      "se\030, \001(\0132 .barrage.PBAddUserFriendRespon" +
+      "se\022G\n\031getUserFriendListResponse\030- \001(\0132$." +
+      "barrage.PBGetUserFriendListResponse\022E\n\030v" +
+      "erifyInviteCodeResponse\030. \001(\0132#.barrage." +
+      "PBVerifyInviteCodeResponse\022G\n\031processUse" +
+      "rFriendResponse\030/ \001(\0132$.barrage.PBProces",
+      "sUserFriendResponse\022E\n\030getNewInviteCodeR" +
+      "esponse\0300 \001(\0132#.barrage.PBGetNewInviteCo" +
+      "deResponse\0229\n\022addUserTagResponse\0301 \001(\0132\035" +
+      ".barrage.PBAddUserTagResponse\022?\n\025deleteU" +
+      "serTagResponse\0302 \001(\0132 .barrage.PBDeleteU" +
+      "serTagResponse\022A\n\026getUserTagListResponse" +
+      "\0303 \001(\0132!.barrage.PBGetUserTagListRespons" +
+      "e\022O\n\035getUserInviteCodeListResponse\0304 \001(\013" +
+      "2(.barrage.PBGetUserInviteCodeListRespon" +
+      "se\022C\n\027applyInviteCodeResponse\0305 \001(\0132\".ba",
+      "rrage.PBApplyInviteCodeResponse\022E\n\030updat" +
+      "eInviteCodeResponse\0306 \001(\0132#.barrage.PBUp" +
+      "dateInviteCodeResponse\0229\n\022createFeedResp" +
+      "onse\030< \001(\0132\035.barrage.PBCreateFeedRespons" +
+      "e\0227\n\021replyFeedResponse\030= \001(\0132\034.barrage.P" +
+      "BReplyFeedResponse\022K\n\033getUserTimelineFee" +
+      "dResponse\030> \001(\0132&.barrage.PBGetUserTimel" +
+      "ineFeedResponse*Q\n\031PBProcessFriendResult" +
+      "Type\022\021\n\rACCEPT_FRIEND\020\000\022\021\n\rREJECT_FRIEND" +
+      "\020\001\022\016\n\nREPLY_MEMO\020\002*\317\004\n\rPBMessageType\022\026\n\022",
+      "MESSAGE_LOGIN_USER\020\001\022\031\n\025MESSAGE_REGISTER" +
+      "_USER\020\002\022\027\n\023MESSAGE_SEARCH_USER\020\003\022\034\n\030MESS" +
+      "AGE_UPDATE_USER_INFO\020\004\022\033\n\027MESSAGE_ADD_US" +
+      "ER_FRIEND\020\005\022 \n\034MESSAGE_GET_USER_FRIEND_L" +
+      "IST\020\006\022\037\n\033MESSAGE_PROCESS_USER_FRIEND\020\007\022\036" +
+      "\n\032MESSAGE_VERIFY_INVITE_CODE\020\010\022\037\n\033MESSAG" +
+      "E_GET_NEW_INVITE_CODE\020\t\022\030\n\024MESSAGE_ADD_U" +
+      "SER_TAG\020\n\022\033\n\027MESSAGE_DELETE_USER_TAG\020\013\022\035" +
+      "\n\031MESSAGE_GET_USER_TAG_LIST\020\014\022%\n!MESSAGE" +
+      "_GET_USER_INVITE_CODE_LIST\020\r\022\035\n\031MESSAGE_",
+      "APPLY_INVITE_CODE\020\016\022\036\n\032MESSAGE_UPDATE_IN" +
+      "VITE_CODE\020\017\022\027\n\023MESSAGE_CREATE_FEED\020\036\022\026\n\022" +
+      "MESSAGE_REPLY_FEED\020\037\022\"\n\036MESSAGE_GET_USER" +
+      "_TIMELINE_FEED\020 \022\"\n\036MESSAGE_GET_QINIU_UP" +
+      "LOAD_TOKEN\020d*[\n\027PBGetUserFriendListType\022" +
+      "\024\n\020TYPE_FRIEND_LIST\020\000\022\034\n\030TYPE_REQUEST_FR" +
+      "IEND_LIST\020\001\022\014\n\010TYPE_ALL\020\nB,\n\033com.orange." +
+      "protocol.messageB\rMessageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -27526,150 +32046,186 @@ public final class MessageProtos {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetNewInviteCodeResponse_descriptor,
         new java.lang.String[] { "InviteCodes", });
-    internal_static_barrage_PBSearchUserRequest_descriptor =
+    internal_static_barrage_PBGetUserInviteCodeListRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
+    internal_static_barrage_PBGetUserInviteCodeListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBGetUserInviteCodeListRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_barrage_PBGetUserInviteCodeListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_barrage_PBGetUserInviteCodeListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBGetUserInviteCodeListResponse_descriptor,
+        new java.lang.String[] { "CodeList", });
+    internal_static_barrage_PBApplyInviteCodeRequest_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_barrage_PBApplyInviteCodeRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBApplyInviteCodeRequest_descriptor,
+        new java.lang.String[] { "Count", });
+    internal_static_barrage_PBApplyInviteCodeResponse_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_barrage_PBApplyInviteCodeResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBApplyInviteCodeResponse_descriptor,
+        new java.lang.String[] { "CodeList", });
+    internal_static_barrage_PBUpdateInviteCodeRequest_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_barrage_PBUpdateInviteCodeRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBUpdateInviteCodeRequest_descriptor,
+        new java.lang.String[] { "CodeList", });
+    internal_static_barrage_PBUpdateInviteCodeResponse_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_barrage_PBUpdateInviteCodeResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBUpdateInviteCodeResponse_descriptor,
+        new java.lang.String[] { "CodeList", });
+    internal_static_barrage_PBSearchUserRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
     internal_static_barrage_PBSearchUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBSearchUserRequest_descriptor,
         new java.lang.String[] { "Keyword", "Offset", "Limit", });
     internal_static_barrage_PBSearchUserResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_barrage_PBSearchUserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBSearchUserResponse_descriptor,
         new java.lang.String[] { "Users", });
     internal_static_barrage_PBUpdateUserInfoRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_barrage_PBUpdateUserInfoRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBUpdateUserInfoRequest_descriptor,
         new java.lang.String[] { "User", });
     internal_static_barrage_PBUpdateUserInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_barrage_PBUpdateUserInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBUpdateUserInfoResponse_descriptor,
         new java.lang.String[] { "User", });
     internal_static_barrage_PBAddUserTagRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_barrage_PBAddUserTagRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBAddUserTagRequest_descriptor,
         new java.lang.String[] { "Tag", });
     internal_static_barrage_PBAddUserTagResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_barrage_PBAddUserTagResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBAddUserTagResponse_descriptor,
         new java.lang.String[] { "Tags", });
     internal_static_barrage_PBDeleteUserTagRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_barrage_PBDeleteUserTagRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBDeleteUserTagRequest_descriptor,
         new java.lang.String[] { "Tag", });
     internal_static_barrage_PBDeleteUserTagResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_barrage_PBDeleteUserTagResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBDeleteUserTagResponse_descriptor,
         new java.lang.String[] { "Tags", });
     internal_static_barrage_PBGetUserTagListRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_barrage_PBGetUserTagListRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserTagListRequest_descriptor,
         new java.lang.String[] { });
     internal_static_barrage_PBGetUserTagListResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_barrage_PBGetUserTagListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserTagListResponse_descriptor,
         new java.lang.String[] { "Tags", });
     internal_static_barrage_PBAddUserFriendRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_barrage_PBAddUserFriendRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBAddUserFriendRequest_descriptor,
         new java.lang.String[] { "Friend", "Memo", "SourceType", "ScanCode", });
     internal_static_barrage_PBAddUserFriendResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_barrage_PBAddUserFriendResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBAddUserFriendResponse_descriptor,
         new java.lang.String[] { });
     internal_static_barrage_PBGetUserFriendListRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_barrage_PBGetUserFriendListRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserFriendListRequest_descriptor,
-        new java.lang.String[] { "Tag", });
+        new java.lang.String[] { "Tag", "Type", });
     internal_static_barrage_PBGetUserFriendListResponse_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_barrage_PBGetUserFriendListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserFriendListResponse_descriptor,
         new java.lang.String[] { "Friends", });
     internal_static_barrage_PBProcessUserFriendRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_barrage_PBProcessUserFriendRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBProcessUserFriendRequest_descriptor,
         new java.lang.String[] { "FriendId", "ProcessResult", "Memo", });
     internal_static_barrage_PBProcessUserFriendResponse_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_barrage_PBProcessUserFriendResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBProcessUserFriendResponse_descriptor,
         new java.lang.String[] { "Friends", });
     internal_static_barrage_PBCreateFeedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_barrage_PBCreateFeedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBCreateFeedRequest_descriptor,
         new java.lang.String[] { "Feed", });
     internal_static_barrage_PBCreateFeedResponse_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_barrage_PBCreateFeedResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBCreateFeedResponse_descriptor,
         new java.lang.String[] { "FeedId", });
     internal_static_barrage_PBReplyFeedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_barrage_PBReplyFeedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBReplyFeedRequest_descriptor,
         new java.lang.String[] { "Action", });
     internal_static_barrage_PBReplyFeedResponse_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_barrage_PBReplyFeedResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBReplyFeedResponse_descriptor,
         new java.lang.String[] { "Action", });
     internal_static_barrage_PBGetUserTimelineFeedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_barrage_PBGetUserTimelineFeedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserTimelineFeedRequest_descriptor,
         new java.lang.String[] { "OffsetFeedId", "Limit", });
     internal_static_barrage_PBGetUserTimelineFeedResponse_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_barrage_PBGetUserTimelineFeedResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetUserTimelineFeedResponse_descriptor,
         new java.lang.String[] { "Feeds", });
     internal_static_barrage_PBDataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_barrage_PBDataRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBDataRequest_descriptor,
-        new java.lang.String[] { "Type", "RequestId", "Version", "UserId", "Device", "CountryCode", "LanguageCode", "ClientDate", "LoginUserRequest", "RegisterUserRequest", "SearchUserRequest", "UpdateUserInfoRequest", "AddUserFriendRequest", "GetUserFriendListRequest", "VerifyInviteCodeRequest", "ProcessUserFriendRequest", "GetNewInviteCodeRequest", "AddUserTagRequest", "DeleteUserTagRequest", "GetUserTagListRequest", "CreateFeedRequest", "ReplyFeedRequest", "GetUserTimelineFeedRequest", });
+        new java.lang.String[] { "Type", "RequestId", "Version", "UserId", "Device", "CountryCode", "LanguageCode", "ClientDate", "LoginUserRequest", "RegisterUserRequest", "SearchUserRequest", "UpdateUserInfoRequest", "AddUserFriendRequest", "GetUserFriendListRequest", "VerifyInviteCodeRequest", "ProcessUserFriendRequest", "GetNewInviteCodeRequest", "AddUserTagRequest", "DeleteUserTagRequest", "GetUserTagListRequest", "GetUserInviteCodeListRequest", "ApplyInviteCodeRequest", "UpdateInviteCodeRequest", "CreateFeedRequest", "ReplyFeedRequest", "GetUserTimelineFeedRequest", });
     internal_static_barrage_PBDataResponse_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_barrage_PBDataResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBDataResponse_descriptor,
-        new java.lang.String[] { "ResultCode", "RequestId", "Version", "TotalCount", "StringData", "LoginUserResponse", "RegisterUserResponse", "SearchUserResponse", "UpdateUserInfoResponse", "AddUserFriendResponse", "GetUserFriendListResponse", "VerifyInviteCodeResponse", "ProcessUserFriendResponse", "GetNewInviteCodeResponse", "AddUserTagResponse", "DeleteUserTagResponse", "GetUserTagListResponse", "CreateFeedResponse", "ReplyFeedResponse", "GetUserTimelineFeedResponse", });
+        new java.lang.String[] { "ResultCode", "RequestId", "Version", "TotalCount", "StringData", "LoginUserResponse", "RegisterUserResponse", "SearchUserResponse", "UpdateUserInfoResponse", "AddUserFriendResponse", "GetUserFriendListResponse", "VerifyInviteCodeResponse", "ProcessUserFriendResponse", "GetNewInviteCodeResponse", "AddUserTagResponse", "DeleteUserTagResponse", "GetUserTagListResponse", "GetUserInviteCodeListResponse", "ApplyInviteCodeResponse", "UpdateInviteCodeResponse", "CreateFeedResponse", "ReplyFeedResponse", "GetUserTimelineFeedResponse", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
     com.orange.protocol.message.UserProtos.getDescriptor();
     com.orange.protocol.message.BarrageProtos.getDescriptor();

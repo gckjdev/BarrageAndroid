@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.applidium.shutterbug.FetchableImageView;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -58,7 +59,12 @@ public class  FeedActionWidget extends LinearLayout {
     }
 
     public void setAvadar(String url){
-        Picasso.with(mContext).load(url).into(mAvatarView);
+        if (StringUtil.isEmpty(url)){
+//            Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mAvatarView);
+        }
+        else{
+            Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mAvatarView);
+        }
     }
 
     public void setContent(String content){
