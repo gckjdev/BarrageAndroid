@@ -112,13 +112,13 @@ public final class UserProtos {
      */
     ACCEPT_ALL(1, 1),
     /**
-     * <code>DISALLOW_ADD_ME = 2;</code>
+     * <code>DISALLOW_ADD_ME = 7;</code>
      *
      * <pre>
      * 不允许任何人添加我为好友
      * </pre>
      */
-    DISALLOW_ADD_ME(2, 2),
+    DISALLOW_ADD_ME(2, 7),
     ;
 
     /**
@@ -138,13 +138,13 @@ public final class UserProtos {
      */
     public static final int ACCEPT_ALL_VALUE = 1;
     /**
-     * <code>DISALLOW_ADD_ME = 2;</code>
+     * <code>DISALLOW_ADD_ME = 7;</code>
      *
      * <pre>
      * 不允许任何人添加我为好友
      * </pre>
      */
-    public static final int DISALLOW_ADD_ME_VALUE = 2;
+    public static final int DISALLOW_ADD_ME_VALUE = 7;
 
 
     public final int getNumber() { return value; }
@@ -153,7 +153,7 @@ public final class UserProtos {
       switch (value) {
         case 0: return REQUIRE_ACCEPT;
         case 1: return ACCEPT_ALL;
-        case 2: return DISALLOW_ADD_ME;
+        case 7: return DISALLOW_ADD_ME;
         default: return null;
       }
     }
@@ -226,6 +226,14 @@ public final class UserProtos {
      * </pre>
      */
     REQ_DIRECTION_RECEIVER(1, 1),
+    /**
+     * <code>REQ_DIRECTION_NONE = 2;</code>
+     *
+     * <pre>
+     * 不存在
+     * </pre>
+     */
+    REQ_DIRECTION_NONE(2, 2),
     ;
 
     /**
@@ -244,6 +252,14 @@ public final class UserProtos {
      * </pre>
      */
     public static final int REQ_DIRECTION_RECEIVER_VALUE = 1;
+    /**
+     * <code>REQ_DIRECTION_NONE = 2;</code>
+     *
+     * <pre>
+     * 不存在
+     * </pre>
+     */
+    public static final int REQ_DIRECTION_NONE_VALUE = 2;
 
 
     public final int getNumber() { return value; }
@@ -252,6 +268,7 @@ public final class UserProtos {
       switch (value) {
         case 0: return REQ_DIRECTION_SENDER;
         case 1: return REQ_DIRECTION_RECEIVER;
+        case 2: return REQ_DIRECTION_NONE;
         default: return null;
       }
     }
@@ -332,6 +349,14 @@ public final class UserProtos {
      * </pre>
      */
     REQ_REJECTED(2, 2),
+    /**
+     * <code>REQ_STATUS_NONE = 7;</code>
+     *
+     * <pre>
+     * 没有请求/接受关系
+     * </pre>
+     */
+    REQ_STATUS_NONE(3, 7),
     ;
 
     /**
@@ -358,6 +383,14 @@ public final class UserProtos {
      * </pre>
      */
     public static final int REQ_REJECTED_VALUE = 2;
+    /**
+     * <code>REQ_STATUS_NONE = 7;</code>
+     *
+     * <pre>
+     * 没有请求/接受关系
+     * </pre>
+     */
+    public static final int REQ_STATUS_NONE_VALUE = 7;
 
 
     public final int getNumber() { return value; }
@@ -367,6 +400,7 @@ public final class UserProtos {
         case 0: return REQ_WAIT_ACCEPT;
         case 1: return REQ_ACCEPTED;
         case 2: return REQ_REJECTED;
+        case 7: return REQ_STATUS_NONE;
         default: return null;
       }
     }
@@ -10984,7 +11018,7 @@ public final class UserProtos {
         getNameBytes();
 
     /**
-     * <code>optional string tid = 2;</code>
+     * <code>required string tid = 2;</code>
      *
      * <pre>
      * tag的唯一标签
@@ -10992,7 +11026,7 @@ public final class UserProtos {
      */
     boolean hasTid();
     /**
-     * <code>optional string tid = 2;</code>
+     * <code>required string tid = 2;</code>
      *
      * <pre>
      * tag的唯一标签
@@ -11000,7 +11034,7 @@ public final class UserProtos {
      */
     java.lang.String getTid();
     /**
-     * <code>optional string tid = 2;</code>
+     * <code>required string tid = 2;</code>
      *
      * <pre>
      * tag的唯一标签
@@ -11316,7 +11350,7 @@ public final class UserProtos {
     public static final int TID_FIELD_NUMBER = 2;
     private java.lang.Object tid_;
     /**
-     * <code>optional string tid = 2;</code>
+     * <code>required string tid = 2;</code>
      *
      * <pre>
      * tag的唯一标签
@@ -11326,7 +11360,7 @@ public final class UserProtos {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional string tid = 2;</code>
+     * <code>required string tid = 2;</code>
      *
      * <pre>
      * tag的唯一标签
@@ -11347,7 +11381,7 @@ public final class UserProtos {
       }
     }
     /**
-     * <code>optional string tid = 2;</code>
+     * <code>required string tid = 2;</code>
      *
      * <pre>
      * tag的唯一标签
@@ -11527,6 +11561,10 @@ public final class UserProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasTid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       for (int i = 0; i < getUsersCount(); i++) {
         if (!getUsers(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -11861,6 +11899,10 @@ public final class UserProtos {
       }
 
       public final boolean isInitialized() {
+        if (!hasTid()) {
+          
+          return false;
+        }
         for (int i = 0; i < getUsersCount(); i++) {
           if (!getUsers(i).isInitialized()) {
             
@@ -11991,7 +12033,7 @@ public final class UserProtos {
 
       private java.lang.Object tid_ = "";
       /**
-       * <code>optional string tid = 2;</code>
+       * <code>required string tid = 2;</code>
        *
        * <pre>
        * tag的唯一标签
@@ -12001,7 +12043,7 @@ public final class UserProtos {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional string tid = 2;</code>
+       * <code>required string tid = 2;</code>
        *
        * <pre>
        * tag的唯一标签
@@ -12022,7 +12064,7 @@ public final class UserProtos {
         }
       }
       /**
-       * <code>optional string tid = 2;</code>
+       * <code>required string tid = 2;</code>
        *
        * <pre>
        * tag的唯一标签
@@ -12042,7 +12084,7 @@ public final class UserProtos {
         }
       }
       /**
-       * <code>optional string tid = 2;</code>
+       * <code>required string tid = 2;</code>
        *
        * <pre>
        * tag的唯一标签
@@ -12059,7 +12101,7 @@ public final class UserProtos {
         return this;
       }
       /**
-       * <code>optional string tid = 2;</code>
+       * <code>required string tid = 2;</code>
        *
        * <pre>
        * tag的唯一标签
@@ -12072,7 +12114,7 @@ public final class UserProtos {
         return this;
       }
       /**
-       * <code>optional string tid = 2;</code>
+       * <code>required string tid = 2;</code>
        *
        * <pre>
        * tag的唯一标签
@@ -17827,7 +17869,7 @@ public final class UserProtos {
       "addSource\030f \001(\005\022\017\n\007addDate\030g \001(\005\022\016\n\006addD" +
       "ir\030h \001(\005\022\021\n\treplyMemo\030i \001(\t\022\021\n\taddStatus" +
       "\030j \001(\005\022\017\n\006bStyle\030\310\001 \001(\005\022\017\n\006bSpeed\030\311\001 \001(\005" +
-      "\"x\n\tPBUserTag\022\014\n\004name\030\001 \001(\t\022\013\n\003tid\030\002 \001(\t" +
+      "\"x\n\tPBUserTag\022\014\n\004name\030\001 \001(\t\022\013\n\003tid\030\002 \002(\t" +
       "\022\020\n\010isCustom\030\003 \001(\010\022\r\n\005color\030\004 \001(\005\022\036\n\005use",
       "rs\030\n \003(\0132\017.barrage.PBUser\022\017\n\007userIds\030\013 \003" +
       "(\t\"1\n\rPBUserTagList\022 \n\004tags\030\001 \003(\0132\022.barr" +
@@ -17844,23 +17886,24 @@ public final class UserProtos {
       "\030\004 \001(\005*@\n\023FriendAddSourceType\022\021\n\rADD_BY_" +
       "SEARCH\020\001\022\026\n\022ADD_BY_SCAN_QRCODE\020\002*N\n\023Frie" +
       "ndAddConfigType\022\022\n\016REQUIRE_ACCEPT\020\000\022\016\n\nA" +
-      "CCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020\002*N\n\026Frie" +
+      "CCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020\007*f\n\026Frie" +
       "ndRequestDirection\022\030\n\024REQ_DIRECTION_SEND" +
-      "ER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020\001*N\n\023Frie" +
-      "ndAddStatusType\022\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014" +
-      "REQ_ACCEPTED\020\001\022\020\n\014REQ_REJECTED\020\002*r\n\013PBLo",
-      "ginType\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOGIN_EMAIL" +
-      "\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ\020\006\022\016\n\nLO" +
-      "GIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016PBRegist" +
-      "erType\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EMAIL\020e\022\016\n" +
-      "\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG_SINA\020\001\022" +
-      "\016\n\nREG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n\006SYSTEM\020" +
-      "\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT\020\003\022\n\n\006RE" +
-      "CENT\020\004*p\n\022PBInviteCodeStatus\022\025\n\021CODE_STA" +
-      "TUS_READY\020\000\022\024\n\020CODE_STATUS_SENT\020\001\022\024\n\020COD" +
-      "E_STATUS_USED\020\002\022\027\n\023CODE_STATUS_INVALID\020\003",
-      "B)\n\033com.orange.protocol.messageB\nUserPro" +
-      "tos"
+      "ER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020\001\022\026\n\022REQ_" +
+      "DIRECTION_NONE\020\002*c\n\023FriendAddStatusType\022" +
+      "\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020",
+      "\n\014REQ_REJECTED\020\002\022\023\n\017REQ_STATUS_NONE\020\007*r\n" +
+      "\013PBLoginType\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOGIN_" +
+      "EMAIL\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ\020\006\022" +
+      "\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016PBR" +
+      "egisterType\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EMAIL" +
+      "\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG_SI" +
+      "NA\020\001\022\016\n\nREG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n\006SY" +
+      "STEM\020\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT\020\003\022" +
+      "\n\n\006RECENT\020\004*p\n\022PBInviteCodeStatus\022\025\n\021COD" +
+      "E_STATUS_READY\020\000\022\024\n\020CODE_STATUS_SENT\020\001\022\024",
+      "\n\020CODE_STATUS_USED\020\002\022\027\n\023CODE_STATUS_INVA" +
+      "LID\020\003B)\n\033com.orange.protocol.messageB\nUs" +
+      "erProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
