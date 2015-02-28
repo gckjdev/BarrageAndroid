@@ -3604,7 +3604,7 @@ public final class UserProtos {
         getReplyMemoBytes();
 
     /**
-     * <code>optional int32 addStatus = 106;</code>
+     * <code>optional int32 addStatus = 106 [default = 7];</code>
      *
      * <pre>
      * 好友：回复状态，参考FriendAddStatusType
@@ -3612,7 +3612,7 @@ public final class UserProtos {
      */
     boolean hasAddStatus();
     /**
-     * <code>optional int32 addStatus = 106;</code>
+     * <code>optional int32 addStatus = 106 [default = 7];</code>
      *
      * <pre>
      * 好友：回复状态，参考FriendAddStatusType
@@ -5706,7 +5706,7 @@ public final class UserProtos {
     public static final int ADDSTATUS_FIELD_NUMBER = 106;
     private int addStatus_;
     /**
-     * <code>optional int32 addStatus = 106;</code>
+     * <code>optional int32 addStatus = 106 [default = 7];</code>
      *
      * <pre>
      * 好友：回复状态，参考FriendAddStatusType
@@ -5716,7 +5716,7 @@ public final class UserProtos {
       return ((bitField1_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 addStatus = 106;</code>
+     * <code>optional int32 addStatus = 106 [default = 7];</code>
      *
      * <pre>
      * 好友：回复状态，参考FriendAddStatusType
@@ -5814,7 +5814,7 @@ public final class UserProtos {
       addDate_ = 0;
       addDir_ = 0;
       replyMemo_ = "";
-      addStatus_ = 0;
+      addStatus_ = 7;
       bStyle_ = 0;
       bSpeed_ = 0;
     }
@@ -6395,7 +6395,7 @@ public final class UserProtos {
         bitField1_ = (bitField1_ & ~0x00000080);
         replyMemo_ = "";
         bitField1_ = (bitField1_ & ~0x00000100);
-        addStatus_ = 0;
+        addStatus_ = 7;
         bitField1_ = (bitField1_ & ~0x00000200);
         bStyle_ = 0;
         bitField1_ = (bitField1_ & ~0x00000400);
@@ -10832,9 +10832,9 @@ public final class UserProtos {
         return this;
       }
 
-      private int addStatus_ ;
+      private int addStatus_ = 7;
       /**
-       * <code>optional int32 addStatus = 106;</code>
+       * <code>optional int32 addStatus = 106 [default = 7];</code>
        *
        * <pre>
        * 好友：回复状态，参考FriendAddStatusType
@@ -10844,7 +10844,7 @@ public final class UserProtos {
         return ((bitField1_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>optional int32 addStatus = 106;</code>
+       * <code>optional int32 addStatus = 106 [default = 7];</code>
        *
        * <pre>
        * 好友：回复状态，参考FriendAddStatusType
@@ -10854,7 +10854,7 @@ public final class UserProtos {
         return addStatus_;
       }
       /**
-       * <code>optional int32 addStatus = 106;</code>
+       * <code>optional int32 addStatus = 106 [default = 7];</code>
        *
        * <pre>
        * 好友：回复状态，参考FriendAddStatusType
@@ -10867,7 +10867,7 @@ public final class UserProtos {
         return this;
       }
       /**
-       * <code>optional int32 addStatus = 106;</code>
+       * <code>optional int32 addStatus = 106 [default = 7];</code>
        *
        * <pre>
        * 好友：回复状态，参考FriendAddStatusType
@@ -10875,7 +10875,7 @@ public final class UserProtos {
        */
       public Builder clearAddStatus() {
         bitField1_ = (bitField1_ & ~0x00000200);
-        addStatus_ = 0;
+        addStatus_ = 7;
         onChanged();
         return this;
       }
@@ -17846,7 +17846,7 @@ public final class UserProtos {
       "\014\n\004nick\030\003 \001(\t\022\023\n\013accessToken\030\004 \001(\t\022\031\n\021ac" +
       "cessTokenSecret\030\005 \001(\t\022\024\n\014refreshToken\030\006 " +
       "\001(\t\022\023\n\013expiredTime\030\007 \001(\005\022\020\n\010qqOpenId\030\010 \001" +
-      "(\t\022\022\n\ncredential\030\024 \001(\t\"\377\006\n\006PBUser\022\016\n\006use" +
+      "(\t\022\022\n\ncredential\030\024 \001(\t\"\202\007\n\006PBUser\022\016\n\006use" +
       "rId\030\001 \002(\t\022\014\n\004nick\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022" +
       "\025\n\006gender\030\004 \001(\010:\005false\022$\n\010snsUsers\030\005 \003(\013" +
       "2\022.barrage.PBSNSUser\022\024\n\014xiaojiNumber\030\006 \001" +
@@ -17867,43 +17867,43 @@ public final class UserProtos {
       "tus\030S \001(\005\022\021\n\taddConfig\030[ \001(\005\022 \n\004tags\030d \003" +
       "(\0132\022.barrage.PBUserTag\022\014\n\004memo\030e \001(\t\022\021\n\t" +
       "addSource\030f \001(\005\022\017\n\007addDate\030g \001(\005\022\016\n\006addD" +
-      "ir\030h \001(\005\022\021\n\treplyMemo\030i \001(\t\022\021\n\taddStatus" +
-      "\030j \001(\005\022\017\n\006bStyle\030\310\001 \001(\005\022\017\n\006bSpeed\030\311\001 \001(\005" +
-      "\"x\n\tPBUserTag\022\014\n\004name\030\001 \001(\t\022\013\n\003tid\030\002 \002(\t" +
-      "\022\020\n\010isCustom\030\003 \001(\010\022\r\n\005color\030\004 \001(\005\022\036\n\005use",
-      "rs\030\n \003(\0132\017.barrage.PBUser\022\017\n\007userIds\030\013 \003" +
-      "(\t\"1\n\rPBUserTagList\022 \n\004tags\030\001 \003(\0132\022.barr" +
-      "age.PBUserTag\"v\n\020PBUserFriendList\022 \n\007fri" +
-      "ends\030\001 \003(\0132\017.barrage.PBUser\022\'\n\016requestFr" +
-      "iends\030\002 \003(\0132\017.barrage.PBUser\022\027\n\017requestN" +
-      "ewCount\030\003 \001(\005\"y\n\014PBInviteCode\022\014\n\004code\030\001 " +
-      "\002(\t\022\016\n\006status\030\002 \001(\005\022\016\n\006sendTo\030\003 \001(\t\022\020\n\010s" +
-      "endType\030\004 \001(\005\022\023\n\013ownerUserId\030\005 \001(\t\022\024\n\014us" +
-      "edByUserId\030\006 \001(\t\"\223\001\n\024PBUserInviteCodeLis" +
-      "t\022\016\n\006userId\030\001 \001(\t\022-\n\016availableCodes\030\002 \003(",
-      "\0132\025.barrage.PBInviteCode\022(\n\tsentCodes\030\003 " +
-      "\003(\0132\025.barrage.PBInviteCode\022\022\n\napplyCount" +
-      "\030\004 \001(\005*@\n\023FriendAddSourceType\022\021\n\rADD_BY_" +
-      "SEARCH\020\001\022\026\n\022ADD_BY_SCAN_QRCODE\020\002*N\n\023Frie" +
-      "ndAddConfigType\022\022\n\016REQUIRE_ACCEPT\020\000\022\016\n\nA" +
-      "CCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020\007*f\n\026Frie" +
-      "ndRequestDirection\022\030\n\024REQ_DIRECTION_SEND" +
-      "ER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020\001\022\026\n\022REQ_" +
-      "DIRECTION_NONE\020\002*c\n\023FriendAddStatusType\022" +
-      "\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020",
-      "\n\014REQ_REJECTED\020\002\022\023\n\017REQ_STATUS_NONE\020\007*r\n" +
-      "\013PBLoginType\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOGIN_" +
-      "EMAIL\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ\020\006\022" +
-      "\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016PBR" +
-      "egisterType\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EMAIL" +
-      "\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG_SI" +
-      "NA\020\001\022\016\n\nREG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n\006SY" +
-      "STEM\020\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT\020\003\022" +
-      "\n\n\006RECENT\020\004*p\n\022PBInviteCodeStatus\022\025\n\021COD" +
-      "E_STATUS_READY\020\000\022\024\n\020CODE_STATUS_SENT\020\001\022\024",
-      "\n\020CODE_STATUS_USED\020\002\022\027\n\023CODE_STATUS_INVA" +
-      "LID\020\003B)\n\033com.orange.protocol.messageB\nUs" +
-      "erProtos"
+      "ir\030h \001(\005\022\021\n\treplyMemo\030i \001(\t\022\024\n\taddStatus" +
+      "\030j \001(\005:\0017\022\017\n\006bStyle\030\310\001 \001(\005\022\017\n\006bSpeed\030\311\001 " +
+      "\001(\005\"x\n\tPBUserTag\022\014\n\004name\030\001 \001(\t\022\013\n\003tid\030\002 " +
+      "\002(\t\022\020\n\010isCustom\030\003 \001(\010\022\r\n\005color\030\004 \001(\005\022\036\n\005",
+      "users\030\n \003(\0132\017.barrage.PBUser\022\017\n\007userIds\030" +
+      "\013 \003(\t\"1\n\rPBUserTagList\022 \n\004tags\030\001 \003(\0132\022.b" +
+      "arrage.PBUserTag\"v\n\020PBUserFriendList\022 \n\007" +
+      "friends\030\001 \003(\0132\017.barrage.PBUser\022\'\n\016reques" +
+      "tFriends\030\002 \003(\0132\017.barrage.PBUser\022\027\n\017reque" +
+      "stNewCount\030\003 \001(\005\"y\n\014PBInviteCode\022\014\n\004code" +
+      "\030\001 \002(\t\022\016\n\006status\030\002 \001(\005\022\016\n\006sendTo\030\003 \001(\t\022\020" +
+      "\n\010sendType\030\004 \001(\005\022\023\n\013ownerUserId\030\005 \001(\t\022\024\n" +
+      "\014usedByUserId\030\006 \001(\t\"\223\001\n\024PBUserInviteCode" +
+      "List\022\016\n\006userId\030\001 \001(\t\022-\n\016availableCodes\030\002",
+      " \003(\0132\025.barrage.PBInviteCode\022(\n\tsentCodes" +
+      "\030\003 \003(\0132\025.barrage.PBInviteCode\022\022\n\napplyCo" +
+      "unt\030\004 \001(\005*@\n\023FriendAddSourceType\022\021\n\rADD_" +
+      "BY_SEARCH\020\001\022\026\n\022ADD_BY_SCAN_QRCODE\020\002*N\n\023F" +
+      "riendAddConfigType\022\022\n\016REQUIRE_ACCEPT\020\000\022\016" +
+      "\n\nACCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020\007*f\n\026F" +
+      "riendRequestDirection\022\030\n\024REQ_DIRECTION_S" +
+      "ENDER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020\001\022\026\n\022R" +
+      "EQ_DIRECTION_NONE\020\002*c\n\023FriendAddStatusTy" +
+      "pe\022\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020",
+      "\001\022\020\n\014REQ_REJECTED\020\002\022\023\n\017REQ_STATUS_NONE\020\007" +
+      "*r\n\013PBLoginType\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOG" +
+      "IN_EMAIL\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ" +
+      "\020\006\022\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016" +
+      "PBRegisterType\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EM" +
+      "AIL\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG" +
+      "_SINA\020\001\022\016\n\nREG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n" +
+      "\006SYSTEM\020\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT" +
+      "\020\003\022\n\n\006RECENT\020\004*p\n\022PBInviteCodeStatus\022\025\n\021" +
+      "CODE_STATUS_READY\020\000\022\024\n\020CODE_STATUS_SENT\020",
+      "\001\022\024\n\020CODE_STATUS_USED\020\002\022\027\n\023CODE_STATUS_I" +
+      "NVALID\020\003B)\n\033com.orange.protocol.messageB" +
+      "\nUserProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

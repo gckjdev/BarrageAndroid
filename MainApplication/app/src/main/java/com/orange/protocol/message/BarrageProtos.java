@@ -4527,6 +4527,23 @@ public final class BarrageProtos {
     int getAngel();
 
     /**
+     * <code>optional bool hasBg = 19 [default = true];</code>
+     *
+     * <pre>
+     * 弹幕是否有背景
+     * </pre>
+     */
+    boolean hasHasBg();
+    /**
+     * <code>optional bool hasBg = 19 [default = true];</code>
+     *
+     * <pre>
+     * 弹幕是否有背景
+     * </pre>
+     */
+    boolean getHasBg();
+
+    /**
      * <code>optional int32 date = 20;</code>
      *
      * <pre>
@@ -4684,13 +4701,18 @@ public final class BarrageProtos {
               angel_ = input.readInt32();
               break;
             }
-            case 160: {
+            case 152: {
               bitField0_ |= 0x00001000;
+              hasBg_ = input.readBool();
+              break;
+            }
+            case 160: {
+              bitField0_ |= 0x00002000;
               date_ = input.readInt32();
               break;
             }
             case 240: {
-              bitField0_ |= 0x00002000;
+              bitField0_ |= 0x00004000;
               bStyle_ = input.readInt32();
               break;
             }
@@ -5144,6 +5166,29 @@ public final class BarrageProtos {
       return angel_;
     }
 
+    public static final int HASBG_FIELD_NUMBER = 19;
+    private boolean hasBg_;
+    /**
+     * <code>optional bool hasBg = 19 [default = true];</code>
+     *
+     * <pre>
+     * 弹幕是否有背景
+     * </pre>
+     */
+    public boolean hasHasBg() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional bool hasBg = 19 [default = true];</code>
+     *
+     * <pre>
+     * 弹幕是否有背景
+     * </pre>
+     */
+    public boolean getHasBg() {
+      return hasBg_;
+    }
+
     public static final int DATE_FIELD_NUMBER = 20;
     private int date_;
     /**
@@ -5154,7 +5199,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasDate() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional int32 date = 20;</code>
@@ -5177,7 +5222,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasBStyle() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional int32 bStyle = 30;</code>
@@ -5203,6 +5248,7 @@ public final class BarrageProtos {
       colorMode_ = 0;
       color_ = 0;
       angel_ = 0;
+      hasBg_ = true;
       date_ = 0;
       bStyle_ = 0;
     }
@@ -5262,9 +5308,12 @@ public final class BarrageProtos {
         output.writeInt32(18, angel_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(20, date_);
+        output.writeBool(19, hasBg_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeInt32(20, date_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         output.writeInt32(30, bStyle_);
       }
       getUnknownFields().writeTo(output);
@@ -5326,9 +5375,13 @@ public final class BarrageProtos {
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(20, date_);
+          .computeBoolSize(19, hasBg_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(20, date_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(30, bStyle_);
       }
@@ -5478,10 +5531,12 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000400);
         angel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000800);
-        date_ = 0;
+        hasBg_ = true;
         bitField0_ = (bitField0_ & ~0x00001000);
-        bStyle_ = 0;
+        date_ = 0;
         bitField0_ = (bitField0_ & ~0x00002000);
+        bStyle_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
 
@@ -5565,9 +5620,13 @@ public final class BarrageProtos {
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00001000;
         }
-        result.date_ = date_;
+        result.hasBg_ = hasBg_;
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00002000;
+        }
+        result.date_ = date_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
         }
         result.bStyle_ = bStyle_;
         result.bitField0_ = to_bitField0_;
@@ -5629,6 +5688,9 @@ public final class BarrageProtos {
         }
         if (other.hasAngel()) {
           setAngel(other.getAngel());
+        }
+        if (other.hasHasBg()) {
+          setHasBg(other.getHasBg());
         }
         if (other.hasDate()) {
           setDate(other.getDate());
@@ -6557,6 +6619,54 @@ public final class BarrageProtos {
         return this;
       }
 
+      private boolean hasBg_ = true;
+      /**
+       * <code>optional bool hasBg = 19 [default = true];</code>
+       *
+       * <pre>
+       * 弹幕是否有背景
+       * </pre>
+       */
+      public boolean hasHasBg() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>optional bool hasBg = 19 [default = true];</code>
+       *
+       * <pre>
+       * 弹幕是否有背景
+       * </pre>
+       */
+      public boolean getHasBg() {
+        return hasBg_;
+      }
+      /**
+       * <code>optional bool hasBg = 19 [default = true];</code>
+       *
+       * <pre>
+       * 弹幕是否有背景
+       * </pre>
+       */
+      public Builder setHasBg(boolean value) {
+        bitField0_ |= 0x00001000;
+        hasBg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool hasBg = 19 [default = true];</code>
+       *
+       * <pre>
+       * 弹幕是否有背景
+       * </pre>
+       */
+      public Builder clearHasBg() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        hasBg_ = true;
+        onChanged();
+        return this;
+      }
+
       private int date_ ;
       /**
        * <code>optional int32 date = 20;</code>
@@ -6566,7 +6676,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasDate() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional int32 date = 20;</code>
@@ -6586,7 +6696,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setDate(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
         date_ = value;
         onChanged();
         return this;
@@ -6599,7 +6709,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearDate() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         date_ = 0;
         onChanged();
         return this;
@@ -6614,7 +6724,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasBStyle() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional int32 bStyle = 30;</code>
@@ -6634,7 +6744,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder setBStyle(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         bStyle_ = value;
         onChanged();
         return this;
@@ -6647,7 +6757,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearBStyle() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         bStyle_ = 0;
         onChanged();
         return this;
@@ -6694,23 +6804,24 @@ public final class BarrageProtos {
       "\030* \001(\t\022\014\n\004date\030+ \001(\005\022\r\n\005width\030, \001(\002\022\016\n\006h" +
       "eight\030- \001(\002\022\r\n\005bMode\0302 \001(\005\022&\n\007actions\030d ",
       "\003(\0132\025.barrage.PBFeedAction\022\021\n\tlastIndex\030" +
-      "e \001(\005\022\020\n\010newCount\030f \001(\005\"\200\002\n\014PBFeedAction" +
+      "e \001(\005\022\020\n\010newCount\030f \001(\005\"\225\002\n\014PBFeedAction" +
       "\022\020\n\010actionId\030\001 \001(\t\022\014\n\004type\030\002 \001(\005\022\016\n\006feed" +
       "Id\030\003 \001(\t\022\035\n\004user\030\004 \001(\0132\017.barrage.PBUser\022" +
       "\014\n\004text\030\005 \001(\t\022\016\n\006avatar\030\006 \001(\t\022\030\n\nshowAva" +
       "tar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 " +
       "\001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\r\n\005color\030\r \001(\005\022\r\n" +
-      "\005angel\030\022 \001(\005\022\014\n\004date\030\024 \001(\005\022\016\n\006bStyle\030\036 \001" +
-      "(\005*v\n\016PBBarrageStyle\022\r\n\tPOP_DECAY\020\000\022\016\n\nP" +
-      "OP_SPRING\020\001\022\016\n\nPOP_LINEAR\020\002\022\017\n\013POP_EASE_",
-      "IN\020\003\022\020\n\014POP_EASE_OUT\020\004\022\022\n\016POP_EASE_INOUT" +
-      "\020\005*.\n\rPBBarrageMode\022\017\n\013FOR_COMMENT\020\000\022\014\n\010" +
-      "FOR_CHAT\020\001*M\n\016PBBarrageSpeed\022\n\n\006NORMAL\020\000" +
-      "\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH\020\002\022\007\n\003LOW\020\003\022\014\n\010V" +
-      "ERY_LOW\020\004*_\n\013PBColorMode\022\027\n\023WHITE_TEXT_B" +
-      "LACK_BG\020\000\022\027\n\023BLACK_TEXT_WHITE_BG\020\001\022\036\n\032CU" +
-      "STOM_TEXT_TRANSPARENT_BG\020\002B,\n\033com.orange" +
-      ".protocol.messageB\rBarrageProtos"
+      "\005angel\030\022 \001(\005\022\023\n\005hasBg\030\023 \001(\010:\004true\022\014\n\004dat" +
+      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005*v\n\016PBBarrageStyl" +
+      "e\022\r\n\tPOP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_",
+      "LINEAR\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OU" +
+      "T\020\004\022\022\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrageMode" +
+      "\022\017\n\013FOR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBar" +
+      "rageSpeed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n" +
+      "\004HIGH\020\002\022\007\n\003LOW\020\003\022\014\n\010VERY_LOW\020\004*_\n\013PBColo" +
+      "rMode\022\027\n\023WHITE_TEXT_BLACK_BG\020\000\022\027\n\023BLACK_" +
+      "TEXT_WHITE_BG\020\001\022\036\n\032CUSTOM_TEXT_TRANSPARE" +
+      "NT_BG\020\002B,\n\033com.orange.protocol.messageB\r" +
+      "BarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6737,7 +6848,7 @@ public final class BarrageProtos {
     internal_static_barrage_PBFeedAction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBFeedAction_descriptor,
-        new java.lang.String[] { "ActionId", "Type", "FeedId", "User", "Text", "Avatar", "ShowAvatar", "PosX", "PosY", "ColorMode", "Color", "Angel", "Date", "BStyle", });
+        new java.lang.String[] { "ActionId", "Type", "FeedId", "User", "Text", "Avatar", "ShowAvatar", "PosX", "PosY", "ColorMode", "Color", "Angel", "HasBg", "Date", "BStyle", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
     com.orange.protocol.message.UserProtos.getDescriptor();
   }
