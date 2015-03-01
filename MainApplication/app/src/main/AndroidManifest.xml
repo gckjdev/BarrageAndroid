@@ -3,8 +3,6 @@
     package="com.orange.barrage.android" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -18,14 +16,48 @@
             android:label="@string/title_activity_home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <action android:name="android.media.action.IMAGE_CAPTURE" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.orange.barrage.android.feed.activity.FeedReplyActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.orange.barrage.android.feed.activity.FeedCreateActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.orange.barrage.android.feed.activity.FeedCreateSelectFriendActivity" android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".feed.activity.FeedReplyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feed.activity.FeedCreateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feed.activity.FeedCreateSelectFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
+            android:label="@string/title_activity_login_home_with_invite_code" >
+        </activity>
+        <activity
+            android:name=".user.ui.login.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".user.ui.login.EmailLoginActivity"
+            android:label="@string/title_activity_email_login" >
+        </activity>
+        <activity
+            android:name=".user.ui.login.MobileLoginActivity"
+            android:label="@string/title_activity_mobile_login" >
+        </activity>
+        <activity
+            android:name=".user.ui.invitecode.EnterInviteCodeActivity"
+            android:label="@string/title_activity_enter_invite_code" >
+        </activity>
+        <activity
+            android:name=".user.ui.invitecode.InviteCodePassActivity"
+            android:label="@string/title_activity_invite_code_pass" >
+        </activity>
+        <activity
+            android:name=".user.ui.register.EmailRegisterActivity"
+            android:label="@string/title_activity_email_register" >
+        </activity>
     </application>
 
 </manifest>

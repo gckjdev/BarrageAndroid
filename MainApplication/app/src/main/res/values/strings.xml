@@ -6,13 +6,19 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">BIBIJI</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="action_send">Send</string>
     <string name="action_cancel">Cancel</string>
-
     <string name="take_photo">Take Photo</string>
     <string name="picture_selection">Pictures Album</string>
     <string name="add_subtitle">Click to add Subtitle</string>
     <string name="action_next">Next</string>
     <string name="action_ok">OK</string>
+    <string name="title_activity_login_home_with_invite_code">Login Home</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_email_login">EmailLoginActivity</string>
+    <string name="title_activity_mobile_login">MobileLoginActivity</string>
+    <string name="title_activity_enter_invite_code">EnterInviteCodeActivity</string>
+    <string name="title_activity_invite_code_pass">InviteCodePassActivity</string>
+    <string name="title_activity_email_register">EmailRegisterActivity</string>
+
 </resources>
