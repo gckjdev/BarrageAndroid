@@ -3,6 +3,7 @@ package com.orange.barrage.android.util.network;
 import android.util.Log;
 
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.util.config.BarrageConfigManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
@@ -26,14 +27,16 @@ public class BarrageNetworkClient {
     @Inject
     UserManager mUserManager;
 
+    @Inject
+    BarrageConfigManager mConfigManager;
+
     public void dataRequest(int type,
                             MessageProtos.PBDataRequest.Builder requestBuilder,
                             boolean isPostError,
                             final BarrageNetworkCallback callback){
 
         BarrageNetworkInterface retrofitInterface = new RestAdapter.Builder()
-                .setEndpoint("http://192.168.36.200:8100/") // TODO move server URL to UMENG online config
-//                .setEndpoint("http://192.168.199.222:8100/") // TODO move server URL to UMENG online config
+                .setEndpoint(mConfigManager.TRAFFIC_SERVER_URL)
                 .setConverter(new ProtoConverter())
                 .build()
                 .create(BarrageNetworkInterface.class);

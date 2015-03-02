@@ -17,6 +17,9 @@ import roboguice.inject.ContextSingleton;
 @ContextSingleton
 public class BarrageConfigManager {
 
+    // TODO change dynamically while get updated
+    public static String TRAFFIC_SERVER_URL = getString("TRAFFIC_SERVER_URL", "http://112.74.107.152:8100/?");
+
     public BarrageConfigManager(){
         MobclickAgent.updateOnlineConfig(ContextManager.getContext());
         MobclickAgent.setOnlineConfigureListener(new UmengOnlineConfigureListener(){
@@ -27,7 +30,7 @@ public class BarrageConfigManager {
         });
     }
 
-    public String getString(String key, String defaultValue){
+    public static String getString(String key, String defaultValue){
         String value = MobclickAgent.getConfigParams( ContextManager.getContext(), key );
         if (value == null){
             return defaultValue;
@@ -36,7 +39,7 @@ public class BarrageConfigManager {
         return value;
     }
 
-    public int getInt(String key, int defaultValue){
+    public static int getInt(String key, int defaultValue){
         String value = MobclickAgent.getConfigParams( ContextManager.getContext(), key );
         if (value == null){
             return defaultValue;
@@ -45,7 +48,7 @@ public class BarrageConfigManager {
         return Integer.parseInt(value.trim());
     }
 
-    public boolean getBoolean(String key, boolean defaultValue){
+    public static boolean getBoolean(String key, boolean defaultValue){
         String value = MobclickAgent.getConfigParams( ContextManager.getContext(), key );
         if (value == null){
             return defaultValue;
