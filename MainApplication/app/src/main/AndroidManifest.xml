@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
     <application
         android:name=".BarrageAndroid"
@@ -20,6 +23,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data android:value="5493c606fd98c571830006cb" android:name="UMENG_APPKEY"></meta-data>
+            <meta-data android:value="Default" android:name="UMENG_CHANNEL"/>
         </activity>
         <activity
             android:name=".feed.activity.FeedReplyActivity"

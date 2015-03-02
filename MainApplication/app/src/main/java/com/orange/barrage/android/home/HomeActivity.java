@@ -27,6 +27,7 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.activity.RequestCodes;
 import com.orange.barrage.android.util.misc.ToastUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
@@ -60,6 +61,8 @@ public class HomeActivity extends RoboFragmentActivity {
     }
 
     private void initView() {
+
+        MobclickAgent.updateOnlineConfig(this);
 
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
@@ -197,5 +200,15 @@ public class HomeActivity extends RoboFragmentActivity {
         } catch (Exception e) {
             Ln.e(e, "error while save photo from camera");
         }
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }
