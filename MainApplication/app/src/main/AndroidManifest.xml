@@ -14,6 +14,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <meta-data android:value="5493c606fd98c571830006cb" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="Default" android:name="UMENG_CHANNEL"/>
+
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
@@ -24,8 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data android:value="5493c606fd98c571830006cb" android:name="UMENG_APPKEY"></meta-data>
-            <meta-data android:value="Default" android:name="UMENG_CHANNEL"/>
         </activity>
         <activity
             android:name=".feed.activity.FeedReplyActivity"
