@@ -1,6 +1,7 @@
 package com.orange.barrage.android.util.config;
 
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.misc.StringUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.analytics.onlineconfig.UmengOnlineConfigureListener;
 
@@ -14,11 +15,9 @@ import roboguice.inject.ContextSingleton;
  * Created by pipi on 15/3/2.
  */
 
-@ContextSingleton
+@Singleton
 public class BarrageConfigManager {
 
-    // TODO change dynamically while get updated
-    public static String TRAFFIC_SERVER_URL = getString("TRAFFIC_SERVER_URL", "http://112.74.107.152:8100/?");
 
     public BarrageConfigManager(){
         MobclickAgent.updateOnlineConfig(ContextManager.getContext());
@@ -30,9 +29,15 @@ public class BarrageConfigManager {
         });
     }
 
+    // Add Configuration Items Below, Don't add Above!!!
+
+    // TODO change dynamically while get updated
+    public static String TRAFFIC_SERVER_URL = getString("TRAFFIC_SERVER_URL", "http://112.74.107.152:8100/?");
+
+
     public static String getString(String key, String defaultValue){
         String value = MobclickAgent.getConfigParams( ContextManager.getContext(), key );
-        if (value == null){
+        if (StringUtil.isEmpty(value)){
             return defaultValue;
         }
 
@@ -41,7 +46,7 @@ public class BarrageConfigManager {
 
     public static int getInt(String key, int defaultValue){
         String value = MobclickAgent.getConfigParams( ContextManager.getContext(), key );
-        if (value == null){
+        if (StringUtil.isEmpty(value)){
             return defaultValue;
         }
 
@@ -50,7 +55,7 @@ public class BarrageConfigManager {
 
     public static boolean getBoolean(String key, boolean defaultValue){
         String value = MobclickAgent.getConfigParams( ContextManager.getContext(), key );
-        if (value == null){
+        if (StringUtil.isEmpty(value)){
             return defaultValue;
         }
 
