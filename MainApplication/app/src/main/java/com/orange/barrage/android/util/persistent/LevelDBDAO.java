@@ -33,6 +33,7 @@ public class LevelDBDAO {
     private DB mLevelDB;
 
     public LevelDBDAO(String dbName){
+        // TODO database shall not use cached dir?
         File dbFile = new File(ContextManager.getContext().getCacheDir(), dbName);
         mLevelDB = new DB(dbFile);
         mLevelDB.open();
