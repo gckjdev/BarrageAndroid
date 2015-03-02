@@ -92,4 +92,103 @@ public class UserMission {
                 inviteCode,
                 callback);
     }
+
+    public void regiseterUserByMobile(String mobile,
+                                      String password,
+                                      String inviteCode,
+                                      UserMissionCallback callback){
+
+        UserProtos.PBUser.Builder builder = UserProtos.PBUser.newBuilder();
+        builder.setMobile(mobile);
+        builder.setPassword(password);
+
+        regiseterUser(UserProtos.PBRegisterType.REG_MOBILE_VALUE,
+                builder,
+                inviteCode,
+                callback);
+    }
+
+    private void loginUser(final MessageProtos.PBLoginUserRequest.Builder loginUserBuilder,
+                           final UserMissionCallback callback) {
+
+        MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
+        dataRequestBuilder.setLoginUserRequest(loginUserBuilder);
+
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_LOGIN_USER_VALUE,
+                dataRequestBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+
+                        Ln.d(UserMission.class.getName(), "loginUser success");
+
+                        UserProtos.PBUser user = response.getLoginUserResponse().getUser();
+                        if (user != null) {
+                            // success, store locally
+                            mUserManager.storeUser(user);
+                            callback.handleMessage(0, user);
+                        } else {
+                            // TODO no data???
+                        }
+
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        Ln.d("loginUser failure");
+                        callback.handleMessage(errorCode, null);
+                    }
+                });
+    }
+
+    public void loginUserByEmail(String email,
+                                 String password,
+                                 UserMissionCallback callback){
+
+        MessageProtos.PBLoginUserRequest.Builder builder = MessageProtos.PBLoginUserRequest.newBuilder();
+        builder.setType(UserProtos.PBLoginType.LOGIN_EMAIL_VALUE);
+        builder.setEmail(email);
+        builder.setPassword(password);
+
+        loginUser(builder, callback);
+    }
+
+    public void loginUserByMobile(String mobile,
+                                 String password,
+                                 UserMissionCallback callback){
+
+        MessageProtos.PBLoginUserRequest.Builder builder = MessageProtos.PBLoginUserRequest.newBuilder();
+        builder.setType(UserProtos.PBLoginType.LOGIN_MOBILE_VALUE);
+        builder.setEmail(mobile);
+        builder.setPassword(password);
+
+        loginUser(builder, callback);
+    }
+
+    public void verifyInviteCode(final String code, final UserMissionCallback callback){
+
+        MessageProtos.PBVerifyInviteCodeRequest.Builder builder = MessageProtos.PBVerifyInviteCodeRequest.newBuilder();
+        builder.setInviteCode(code);
+
+        MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
+        dataRequestBuilder.setVerifyInviteCodeRequest(builder);
+
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_VERIFY_INVITE_CODE_VALUE,
+                dataRequestBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+                        Ln.d(UserMission.class.getName(), "verifyInviteCode success");
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        Ln.d("verifyInviteCode failure");
+                        callback.handleMessage(errorCode, null);
+                    }
+                });
+    }
+
 }
