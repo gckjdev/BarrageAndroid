@@ -18,7 +18,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.orange.barrage.android.R;
+
 import com.orange.barrage.android.event.ActionImageCaptureEvent;
 import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.feed.activity.FeedCreateActivity;
@@ -27,7 +27,7 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.activity.RequestCodes;
 import com.orange.barrage.android.util.misc.ToastUtil;
-import com.umeng.analytics.MobclickAgent;
+import com.orange.barrage.android.R;
 
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
@@ -62,7 +62,7 @@ public class HomeActivity extends RoboFragmentActivity {
 
     private void initView() {
 
-        MobclickAgent.updateOnlineConfig(this);
+      //  MobclickAgent.updateOnlineConfig(this);
 
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
@@ -110,14 +110,17 @@ public class HomeActivity extends RoboFragmentActivity {
 
     private TabHost.TabSpec setIndicator(Context ctx, TabHost.TabSpec spec,
                                  int resid, String string, int genresIcon) {
-        View v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item, null);
+        View v = null;
+        if(resid == R.drawable.x_fabiao)
+            v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item_center, null);
+        else{
+            v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item, null);
+            TextView tv = (TextView)v.findViewById(R.id.txt_tabtxt);
+            tv.setText(string);
+        }
 
-        TextView tv = (TextView)v.findViewById(R.id.txt_tabtxt);
         ImageView img = (ImageView)v.findViewById(R.id.img_tabtxt);
 
-        if(resid == R.drawable.x_fabiao) tv.setVisibility(View.GONE);
-
-        tv.setText(string);
         img.setImageResource(resid);
         return spec.setIndicator(v);
     }
@@ -204,11 +207,11 @@ public class HomeActivity extends RoboFragmentActivity {
 
     public void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
+        //MobclickAgent.onResume(this);
     }
 
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
+       // MobclickAgent.onPause(this);
     }
 }

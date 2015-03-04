@@ -27,5 +27,19 @@
     <dimen name="y_activity_invite_code_2_width">280dip</dimen>
     <dimen name="y_activity_invite_code_3_width">120dip</dimen>
     <dimen name="y_activity_invite_code_4_width">135dip</dimen>
+    <!--登录界面-->
+    <dimen name="y_activity_login_1_height">40dip</dimen>
+    <dimen name="y_activity_login_2_height">17dip</dimen>
 
+    <!--注册界面 -->
+    <dimen name="y_zhuche_1_height">30dip</dimen>
+    <dimen name="y_zhuche_2_height">52dip</dimen>
+    <dimen name="y_zhuche_3_height">16dip</dimen>
+    <dimen name="y_zhuche_4_height">38dip</dimen>
+    <dimen name="y_zhuche_5_height">34dip</dimen>
+
+    <!--主界面菜单的高度-->
+    <dimen name="y_mainview_menu_height">60dip</dimen>
+    <!--字体大小-->
+    <dimen name="y_font_34hao">17dp</dimen>
 </resources>

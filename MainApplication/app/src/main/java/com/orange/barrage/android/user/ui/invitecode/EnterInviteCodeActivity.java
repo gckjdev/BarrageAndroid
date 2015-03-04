@@ -4,37 +4,83 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.user.mission.UserMission;
+import com.orange.barrage.android.user.mission.UserMissionCallback;
+import com.orange.barrage.android.user.model.InviteCodeManager;
+import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.ToastUtil;
+import com.orange.protocol.message.UserProtos;
 
-public class EnterInviteCodeActivity extends ActionBarActivity {
+import javax.inject.Inject;
+
+import roboguice.inject.InjectView;
+import roboguice.util.Ln;
+
+public class EnterInviteCodeActivity extends BarrageCommonActivity {
+
+    @Inject
+    UserMission mUserMission;
+
+    @InjectView(R.id.codeEditText)
+    EditText mCodeEditText;
+
+    @Inject
+    InviteCodeManager mInviteCodeManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_invite_code);
+
+        mCodeEditText.setText(mInviteCodeManager.getCurrentInviteCode());
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_enter_invite_code, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    /**
+     * 提交邀请码
+     * @param v
+     */
+    public void onClickSendCode(View v){
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        String code = mCodeEditText.getText().toString();
+
+        if(code == null || code.length() == 0){
+            ToastUtil.makeTextShort(R.string.codeisnull , this);
+            return ;
         }
+        progresShow();
+        mInviteCodeManager.setCurrentInviteCode(code);
 
-        return super.onOptionsItemSelected(item);
+        mUserMission.verifyInviteCode(code, new UserMissionCallback() {
+            @Override
+            public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+             Ln.d("verfiy invite code, error code=" + errorCode);
+                if (errorCode == 0) {
+                    // success, goto register
+                    ActivityIntent.startIntent(EnterInviteCodeActivity.this, InviteCodePassActivity.class);
+                }
+                progresClose();
+            }
+        });
+
+
     }
+
+
+    /**
+     * 发送照片
+     * @param v
+     */
+    public void onClickSendPhoto(View v){
+
+    }
+
+
+
 }

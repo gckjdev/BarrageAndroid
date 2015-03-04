@@ -314,4 +314,13 @@
 
     <color name="y_inivite_code_pass">#DFDFDF</color>
     <color name="y_inivite_code_pass_font">#848484</color>
+    <color name="y_bg_1">#f8f8f8</color>
+
+    <!--灰色-->
+    <color name="y_gray">#848484</color>
+    <!--背景颜色-->
+    <color name="y_bg">#f8f8f8</color>
+    <!-- 按钮红色-->
+    <color name="y_red">#ec5152</color>
+
 </resources>

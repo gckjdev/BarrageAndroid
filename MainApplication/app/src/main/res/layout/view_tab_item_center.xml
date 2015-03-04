@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y_mainview_menu_height"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/img_tabtxt"
+        style="@style/wrap_content"
+        android:src="@drawable/x_fabiao"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>
