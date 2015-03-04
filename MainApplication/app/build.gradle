@@ -49,4 +49,5 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
 
     compile 'com.facebook.rebound:rebound:0.3.7'
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

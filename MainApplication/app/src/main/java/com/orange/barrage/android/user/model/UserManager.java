@@ -1,5 +1,6 @@
 package com.orange.barrage.android.user.model;
 
+import com.orange.barrage.android.util.model.CommonManager;
 import com.orange.barrage.android.util.persistent.barrage.DefaultDBDAO;
 import com.orange.protocol.message.UserProtos;
 
@@ -12,7 +13,7 @@ import roboguice.inject.ContextSingleton;
  * Created by pipi on 15/1/5.
  */
 @Singleton
-public class UserManager {
+public class UserManager extends CommonManager {
 
     public static final String KEY_USER_DATA = "KEY_USER_DATA";
 
