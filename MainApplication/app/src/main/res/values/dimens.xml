@@ -2,4 +2,30 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!---第一屏幕的-->
+    <dimen name="y_activity_home_with_invite_code_main_height">152dip</dimen>
+    <dimen name="y_activity_home_with_invite_code_1_height">38dip</dimen>
+    <dimen name="y_activity_home_with_invite_code_2_height">24dip</dimen>
+    <dimen name="y_activity_home_with_invite_code_3_height">38dip</dimen>
+    <dimen name="y_activity_home_with_invite_code_button_height">38dip</dimen>
+    <dimen name="y_activity_home_with_invite_code_button_width">240dip</dimen>
+    
+    <!--输入注册码屏幕-->
+    <dimen name="y_activity_invite_code_1_height">49dip</dimen>
+    <dimen name="y_activity_invite_code_2_height">52dip</dimen>
+    <dimen name="y_activity_invite_code_3_height">16dip</dimen>
+    <dimen name="y_activity_invite_code_4_height">39dip</dimen>
+    <dimen name="y_activity_invite_code_5_height">39dip</dimen>
+    <dimen name="y_activity_invite_code_6_height">26dip</dimen>
+    <dimen name="y_activity_invite_code_7_height">26dip</dimen>
+    <dimen name="y_activity_invite_code_8_height">120dip</dimen>
+    <dimen name="y_activity_invite_code_9_height">20dip</dimen>
+    <dimen name="y_activity_invite_code_10_height">25dip</dimen>
+    <dimen name="y_activity_invite_code_11_height">34dip</dimen>
+    <dimen name="y_activity_invite_code_1_width">270dip</dimen>
+    <dimen name="y_activity_invite_code_2_width">280dip</dimen>
+    <dimen name="y_activity_invite_code_3_width">120dip</dimen>
+    <dimen name="y_activity_invite_code_4_width">135dip</dimen>
+
 </resources>

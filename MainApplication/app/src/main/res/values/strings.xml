@@ -21,4 +21,14 @@
     <string name="title_activity_invite_code_pass">InviteCodePassActivity</string>
     <string name="title_activity_email_register">EmailRegisterActivity</string>
 
+    <string name = "y_shouyue">首页</string>
+    <string name ="y_haiyou">好友</string>
+    <string name="y_first_center">任性发图，愉快弹屏</string>
+    <string name="y_first_yaoqingzhucema">邀请注册码</string>
+    <string name="y_first_haveId">已经有账号？</string>
+    <string name="y_first_load">直接登录</string>
+    <string name ="y_input_inivie_code">请输入邀请码</string>
+    <string name="y_tijiao">提交</string>
+    <string name="y_shenghezhong">审核中...</string>
+    <string name="y_input_invie_code_photoshuo">或者拍一张你自己觉得非常有趣的\n照片给我们审核获取邀请码</string>
 </resources>

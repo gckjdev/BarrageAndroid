@@ -63,14 +63,14 @@ public class HomeActivity extends RoboFragmentActivity {
 
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+        mTabHost.getTabWidget().setDividerDrawable(R.color.white);
 
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_1_TAG),
-                R.drawable.tab_select,"首页",R.drawable.tab_select),Tab1Container.class,null);
+                R.drawable.x_shouye,"首页",R.drawable.tab_select),Tab1Container.class,null);
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_2_TAG),
-                R.drawable.tab_select,"发表",R.drawable.tab_select),Tab2Container.class,null);
+                R.drawable.x_fabiao,"",R.drawable.tab_select),Tab2Container.class,null);
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_3_TAG),
-                R.drawable.tab_select,"好友",R.drawable.tab_select),Tab3Container.class,null);
-
+                R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
 
     }
 
@@ -108,22 +108,22 @@ public class HomeActivity extends RoboFragmentActivity {
     private TabHost.TabSpec setIndicator(Context ctx, TabHost.TabSpec spec,
                                  int resid, String string, int genresIcon) {
         View v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item, null);
-        v.setBackgroundResource(resid);
+
         TextView tv = (TextView)v.findViewById(R.id.txt_tabtxt);
         ImageView img = (ImageView)v.findViewById(R.id.img_tabtxt);
 
+        if(resid == R.drawable.x_fabiao) tv.setVisibility(View.GONE);
+
         tv.setText(string);
-        img.setBackgroundResource(genresIcon);
+        img.setImageResource(resid);
         return spec.setIndicator(v);
     }
-
-
-
 
     public void onEvent(ActionPickEvent event){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(event.getType());
         ActivityCompat.startActivityForResult(this, intent, RequestCodes.FEED_CREATE_PICK_IMAGE, null);
+
     }
 
     public void onEvent(ActionImageCaptureEvent event){

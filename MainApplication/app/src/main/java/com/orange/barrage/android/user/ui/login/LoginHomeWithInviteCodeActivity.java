@@ -1,40 +1,56 @@
 package com.orange.barrage.android.user.ui.login;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import  com.orange.barrage.android.R;
+import com.orange.barrage.android.home.HomeActivity;
+import com.orange.barrage.android.user.ui.invitecode.InviteCodePassActivity;
+import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
-import com.orange.barrage.android.R;
+import roboguice.inject.InjectView;
 
-public class LoginHomeWithInviteCodeActivity extends ActionBarActivity {
+public class LoginHomeWithInviteCodeActivity extends BarrageCommonActivity implements View.OnClickListener {
+
+
+    @InjectView(R.id.load)
+    TextView mLoad;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_home_with_invite_code);
+        initView();
+    }
+
+    private void initView(){
+      //  mLoad.setText(Html.fromHtml("<u>"+getString(R.string.y_first_load)+"</u>"));
+        mLoad.setOnClickListener(this);
+    }
+
+    /**
+     * 跳转注册码界面
+     * @param v
+     */
+    public void onClickZhuMa(View v){
+        ActivityIntent.startIntent(this , InviteCodePassActivity.class);
+    }
+
+    /**
+     * 直接跳转到登录界面
+     * @param v
+     */
+    public void onClick(View v){
+        ActivityIntent.startIntent(this , HomeActivity.class);
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login_home_with_invite_code, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

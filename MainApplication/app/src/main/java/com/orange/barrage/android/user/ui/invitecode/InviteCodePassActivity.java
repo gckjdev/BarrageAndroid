@@ -4,10 +4,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
-public class InviteCodePassActivity extends ActionBarActivity {
+public class InviteCodePassActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +17,22 @@ public class InviteCodePassActivity extends ActionBarActivity {
         setContentView(R.layout.activity_invite_code_pass);
     }
 
+    /**
+     * 提交邀请码
+     * @param v
+     */
+    public void onClickSendCode(View v){
+
+    }
+
+
+    /**
+     * 发送照片
+     * @param v
+     */
+    public void onClickSendPhoto(View v){
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
