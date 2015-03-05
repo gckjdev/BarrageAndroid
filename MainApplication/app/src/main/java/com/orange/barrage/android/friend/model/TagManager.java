@@ -7,6 +7,7 @@ import com.orange.barrage.android.util.model.CommonManager;
 import com.orange.barrage.android.util.persistent.ShareUserDBDAO;
 import com.orange.protocol.message.UserProtos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,6 +29,9 @@ public class TagManager extends CommonManager {
 
     @Inject
     ShareUserDBDAO mUserDB;
+
+    @Inject
+    FriendManager mFriendManager;
 
     public boolean isTagNameExist(String name) {
         return false;
@@ -96,10 +100,47 @@ public class TagManager extends CommonManager {
     }
 
     public List<UserProtos.PBUser> userListByTag(UserProtos.PBUserTag tag){
-        return null;
+
+        List<UserProtos.PBUser> userList = new ArrayList<UserProtos.PBUser>();
+
+        List<String> userIdList = tag.getUserIdsList();
+        if (userIdList == null || userIdList.size() == 0){
+            return userList;
+        }
+
+        List<UserProtos.PBUser> allFriends = mFriendManager.getFriendList();
+        if (allFriends == null){
+            return userList;
+        }
+
+        for (String userId : userIdList){
+            for (UserProtos.PBUser userFriend : allFriends){
+                if (userFriend.getUserId().equalsIgnoreCase(userId)){
+                    userList.add(userFriend);
+                }
+            }
+        }
+
+        return userList;
     }
 
     public UserProtos.PBUserTag getTagById(String tagId){
+
+        if (StringUtil.isEmpty(tagId)){
+            return null;
+        }
+
+        UserProtos.PBUserTagList list = allTags();
+        if (list == null){
+            return null;
+        }
+
+        for (UserProtos.PBUserTag tag : list.getTagsList()){
+            if (tag.getTid().equalsIgnoreCase(tagId)){
+                return tag;
+            }
+        }
+
         return null;
     }
 }
