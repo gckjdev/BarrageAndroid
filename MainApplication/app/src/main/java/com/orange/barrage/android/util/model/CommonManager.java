@@ -10,5 +10,5 @@ import javax.inject.Inject;
 public class CommonManager {
 
     @Inject
-    BarrageConfigManager mConfigManager;
+    protected BarrageConfigManager mConfigManager;
 }

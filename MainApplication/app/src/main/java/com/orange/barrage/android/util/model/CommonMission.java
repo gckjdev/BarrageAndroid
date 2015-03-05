@@ -1,6 +1,7 @@
 package com.orange.barrage.android.util.model;
 
 import com.orange.barrage.android.util.config.BarrageConfigManager;
+import com.orange.barrage.android.util.network.BarrageNetworkClient;
 
 import javax.inject.Inject;
 
@@ -10,5 +11,8 @@ import javax.inject.Inject;
 public class CommonMission {
 
     @Inject
-    BarrageConfigManager mConfigManager;
+    protected BarrageConfigManager mConfigManager;
+
+    @Inject
+    protected BarrageNetworkClient mBarrageNetworkClient;
 }

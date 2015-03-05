@@ -1,5 +1,6 @@
 package com.orange.barrage.android.user.model;
 
+import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.barrage.android.util.model.CommonManager;
 import com.orange.barrage.android.util.persistent.barrage.DefaultDBDAO;
 import com.orange.protocol.message.UserProtos;
@@ -65,5 +66,14 @@ public class UserManager extends CommonManager {
         else{
             return true;
         }
+    }
+
+    static final String PASSWORD_KEY = "PASSWORD_KEY_DRAW_DSAQC";     // must align with client settings
+
+    public static String encryptPassword(String password) {
+        if (password == null)
+            return null;
+
+        return StringUtil.md5base64encode(password + PASSWORD_KEY);
     }
 }

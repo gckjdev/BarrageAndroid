@@ -1,19 +1,24 @@
 package com.orange.barrage.android.util.misc;
 
 import java.util.UUID;
+
+import com.loopj.android.http.Base64;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import roboguice.util.Ln;
 
 public class StringUtil {
-	public static boolean isEmpty(String str){
-		return (str == null || str.length() == 0||str.trim().equalsIgnoreCase(""));
-	}
+    public static boolean isEmpty(String str){
+        return (str == null || str.length() == 0||str.trim().equalsIgnoreCase(""));
+    }
 
-	public static boolean isNotEmpty(String str){
-		return !(str == null || str.length() == 0);
-	}
+    public static boolean isNotEmpty(String str){
+        return !(str == null || str.length() == 0);
+    }
 
 
     public static String createUUID() {
@@ -50,5 +55,41 @@ public class StringUtil {
         return m.matches();
     }
 
+
+
+    public static String md5base64encode(String input) {
+        try {
+            if (input == null)
+                return null;
+
+            if (input.length() == 0)
+                return null;
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(input.getBytes("UTF-8"));
+            byte[] enc = md.digest();
+            String base64str = Base64.encodeToString(enc, 0);
+            return base64str;
+
+        }
+        catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+        catch (UnsupportedEncodingException e) {
+            return null;
+        }
+
+    }
+
+    public static String base64encode(String input) {
+        if (input == null)
+            return null;
+
+        if (input.length() == 0)
+            return null;
+
+        String base64str = Base64.encodeToString(input.getBytes(), 0);
+        return base64str;
+    }
 
 }
