@@ -14,7 +14,6 @@ import roboguice.util.Ln;
 /**
  * Created by pipi on 15/1/7.
  */
-@Deprecated
 public class TimelineItemView extends LinearLayout {
 
     private Context mContext;
