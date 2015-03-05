@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import  com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
+import com.orange.barrage.android.user.ui.invitecode.EnterInviteCodeActivity;
 import com.orange.barrage.android.user.ui.invitecode.InviteCodePassActivity;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
@@ -32,7 +33,7 @@ public class LoginHomeWithInviteCodeActivity extends BarrageCommonActivity imple
     }
 
     private void initView(){
-      //  mLoad.setText(Html.fromHtml("<u>"+getString(R.string.y_first_load)+"</u>"));
+        mLoad.setText(Html.fromHtml("<u>"+getString(R.string.y_first_load)+"</u>"));
         mLoad.setOnClickListener(this);
     }
 
@@ -41,7 +42,7 @@ public class LoginHomeWithInviteCodeActivity extends BarrageCommonActivity imple
      * @param v
      */
     public void onClickZhuMa(View v){
-        ActivityIntent.startIntent(this , InviteCodePassActivity.class);
+        ActivityIntent.startIntent(this , EnterInviteCodeActivity.class);
     }
 
     /**

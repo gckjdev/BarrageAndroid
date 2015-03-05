@@ -31,4 +31,17 @@
     <string name="y_tijiao">提交</string>
     <string name="y_shenghezhong">审核中...</string>
     <string name="y_input_invie_code_photoshuo">或者拍一张你自己觉得非常有趣的\n照片给我们审核获取邀请码</string>
+    <string name="y_logn_text">请选择相应的登录方式</string>
+    <string name ="y_long_other_idea">其他注册方式</string>
+
+    <string name="y_logn">登录</string>
+    <string name="y_inputphone">请输手机号</string>
+    <string name="y_inputpwd">请输入密码</string>
+    <string name = "y_zhuce">注册</string>
+
+    <string name="codeisnull">邀请码不可以为空</string>
+    <string name="pleaseinput">请输入正确的电话号码</string>
+    <string name="y_pleaseinputpwd">请输入密码</string>
+    <string name="y_reginfail">注册失败</string>
+
 </resources>

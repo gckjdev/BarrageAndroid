@@ -181,6 +181,7 @@ public class UserMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         Ln.d(UserMission.class.getName(), "verifyInviteCode success");
+                        callback.handleMessage(0, null);
                     }
 
                     @Override

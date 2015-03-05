@@ -20,9 +20,15 @@
     </style>
     <!--第一个页面-->
     <style name="y_first_button">
-        <item name="android:background">@color/y_firstview_button_color</item>
+        <item name="android:background">@drawable/y_button_shape</item>
         <item name="android:text">34dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="y_logn_all_denglu" parent="wrap_content" >
+        <item name="android:layout_marginTop">14dip</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    
 </resources>

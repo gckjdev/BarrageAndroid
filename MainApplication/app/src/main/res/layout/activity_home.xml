@@ -12,9 +12,10 @@
     <android.support.v4.app.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/x_bottom_caidan_bgrepaint"
-        >
+        android:gravity="center"
+        android:paddingTop="8dip"
+        android:layout_height="@dimen/y_mainview_menu_height"
+        android:background="@drawable/x_bottom_caidan_bgrepaint">
 
         <FrameLayout
             android:id="@android:id/tabcontent"
@@ -24,8 +25,8 @@
 
     </android.support.v4.app.FragmentTabHost>
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
-        android:layout_height="10dip" />
-
+        android:layout_height="4dip" />
+-->
 </LinearLayout>

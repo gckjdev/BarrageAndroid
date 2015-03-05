@@ -5,11 +5,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
+
+import com.google.inject.Inject;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.home.HomeActivity;
+import com.orange.barrage.android.user.mission.UserMission;
+import com.orange.barrage.android.user.mission.UserMissionCallback;
+import com.orange.barrage.android.user.model.InviteCodeManager;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.ToastUtil;
+import com.orange.protocol.message.UserProtos;
+
+import roboguice.inject.InjectView;
 
 public class InviteCodePassActivity extends BarrageCommonActivity {
+
+
+    @InjectView(R.id.id)
+    EditText mPhoneEdiText;
+
+    @InjectView(R.id.pwd)
+    EditText mPwdEdiTet;
+
+    @Inject
+    UserMission mUserMission;
+
+    @Inject
+    InviteCodeManager mInviteCodeManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,42 +42,43 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
         setContentView(R.layout.activity_invite_code_pass);
     }
 
-    /**
-     * 提交邀请码
-     * @param v
-     */
-    public void onClickSendCode(View v){
 
-    }
+    public void onClickSend(View v){
 
-
-    /**
-     * 发送照片
-     * @param v
-     */
-    public void onClickSendPhoto(View v){
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_invite_code_pass, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        String pwd = mPwdEdiTet.getText().toString();
+        String id = mPhoneEdiText.getText().toString();
+        if(id == null || id.length() != 11){
+            ToastUtil.makeTextShort( R.string.pleaseinput,this);
+            return;
+        }
+        if(pwd == null || pwd.length() == 0){
+            ToastUtil.makeTextShort(R.string.y_pleaseinputpwd , this);
+            return;
         }
 
-        return super.onOptionsItemSelected(item);
+        progresShow();
+
+        String inviteCode = mInviteCodeManager.getCurrentInviteCode();
+
+
+
+        mUserMission.regiseterUserByMobile(id , pwd , inviteCode, new UserMissionCallback() {
+            @Override
+            public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+             if(errorCode == 0 ){
+                ActivityIntent.startIntent(InviteCodePassActivity.this , HomeActivity.class);
+             }else{
+                 ToastUtil.makeTextShort(R.string.y_reginfail,InviteCodePassActivity.this);
+             }
+              progresClose();
+            }
+        });
+
     }
+
+
+
+
+
+
 }

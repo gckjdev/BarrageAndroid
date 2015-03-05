@@ -2,8 +2,12 @@ package com.orange.barrage.android.util.activity;
 
 
 
+import android.app.ProgressDialog;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import roboguice.activity.RoboActivity;
@@ -17,17 +21,31 @@ import com.orange.barrage.android.R;
  */
 public class BarrageCommonActivity extends RoboActivity {
 
+    /*进度条*/
+    private ProgressDialogshow mProgressDialog;
 
-    Resources mResource;
-    protected  String getStrings(int resid){
-        if(mResource == null) mResource = getResources();
-        return mResource.getString(resid);
+    /**
+     *
+     * @param savedInstanceState
+     * @param layoutresid 布局资源
+     * @param titleid  屏幕标题的字符串资源
+     * @param rightid  右边按钮的图标资源
+     */
+    protected  void onCreate(Bundle savedInstanceState , int layoutresid, int titleid , int rightid){
+        onCreate(savedInstanceState ,layoutresid , getString(titleid) , rightid);
     }
 
-    protected  String[] getArrays(int resid){
-        if(mResource == null) mResource = getResources();
-
-        return mResource.getStringArray(resid);
+    /**
+     *
+     * @param savedInstanceState
+     * @param titleString 屏幕标题的字符串
+     * @param rightid 右边按钮的图标资源
+     */
+    protected void onCreate(Bundle savedInstanceState,int layoutresid ,String titleString , int rightid ){
+        super.onCreate(savedInstanceState);
+        setContentView(layoutresid);
+        setTitleText(titleString);
+        setRightButton(rightid);
     }
 
     /**
@@ -42,9 +60,36 @@ public class BarrageCommonActivity extends RoboActivity {
      * @param s
      */
     public void setTitleText(String s){
-        TextView mTitle = ((TextView)findViewById(R.id.title));
-         mTitle.setText(s);
+        TextView mTitle = ((TextView)findViewById(R.id.top_title));
+        if(mTitle != null)
+            mTitle.setText(s);
     }
+
+    public void setRightButton(int resid){
+        if(resid < 0) return ;
+        ImageButton image
+         = ((ImageButton)(findViewById(R.id.top_right)));
+        image.setImageResource(resid);
+    }
+
+
+    /**
+     * 打开等待进度条
+     */
+    protected  void progresShow(){
+        if(mProgressDialog == null){
+            mProgressDialog = new ProgressDialogshow(this , "","");
+        }
+        mProgressDialog.show();
+    }
+
+    /**
+     * 关闭等待进度条
+     */
+    protected  void progresClose(){
+        if(mProgressDialog != null) mProgressDialog.close();
+    }
+
 
     /**
      * 点击按钮
