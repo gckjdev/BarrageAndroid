@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface GetTagListCallback {
 
-    void handleMessage(int errorCode, List<UserProtos.PBUserTagList> tagList);
+    void handleMessage(int errorCode, UserProtos.PBUserTagList tagList);
 }

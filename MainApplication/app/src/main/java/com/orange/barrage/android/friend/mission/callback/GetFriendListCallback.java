@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface GetFriendListCallback {
 
-    void handleMessage(int errorCode, List<UserProtos.PBUserFriendList> friendList);
+    void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList);
 
 }
