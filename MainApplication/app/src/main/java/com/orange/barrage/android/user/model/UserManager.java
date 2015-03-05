@@ -76,4 +76,14 @@ public class UserManager extends CommonManager {
 
         return StringUtil.md5base64encode(password + PASSWORD_KEY);
     }
+
+    public boolean isMe(String userId) {
+        UserProtos.PBUser user = getUser();
+        if (user == null) {
+            return false;
+        }
+        else{
+            return user.getUserId().equalsIgnoreCase(userId);
+        }
+    }
 }
