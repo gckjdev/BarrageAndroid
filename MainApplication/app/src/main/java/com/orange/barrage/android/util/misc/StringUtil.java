@@ -1,8 +1,8 @@
 package com.orange.barrage.android.util.misc;
 
-import java.util.UUID;
+import android.util.Base64;
 
-import com.loopj.android.http.Base64;
+import java.util.UUID;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -68,7 +68,7 @@ public class StringUtil {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(input.getBytes("UTF-8"));
             byte[] enc = md.digest();
-            String base64str = Base64.encodeToString(enc, 0);
+            String base64str = Base64.encodeToString(enc, Base64.NO_WRAP);
             return base64str;
 
         }
@@ -88,7 +88,7 @@ public class StringUtil {
         if (input.length() == 0)
             return null;
 
-        String base64str = Base64.encodeToString(input.getBytes(), 0);
+        String base64str = Base64.encodeToString(input.getBytes(), Base64.NO_WRAP);
         return base64str;
     }
 
