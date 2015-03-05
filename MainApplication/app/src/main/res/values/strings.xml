@@ -44,4 +44,8 @@
     <string name="y_pleaseinputpwd">请输入密码</string>
     <string name="y_reginfail">注册失败</string>
 
+    <string name="y_pleaseinputEmail">请输入邮箱</string>
+    <string name="y_pleaseinoutEmailRight">请输入正确的邮箱</string>
+    <string name="y_pleaseinputQQ">请输入QQ</string>
+
 </resources>

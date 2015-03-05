@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.orange.barrage.android.BarrageAndroid;
 import  com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.user.ui.invitecode.EnterInviteCodeActivity;
@@ -24,11 +26,17 @@ public class LoginHomeWithInviteCodeActivity extends BarrageCommonActivity imple
     @InjectView(R.id.load)
     TextView mLoad;
 
+    private BarrageAndroid mBarrageAdnroid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_home_with_invite_code);
+
+        mBarrageAdnroid = (BarrageAndroid)getApplication();
+        mBarrageAdnroid.addActivity(this);
+
         initView();
     }
 
@@ -50,7 +58,7 @@ public class LoginHomeWithInviteCodeActivity extends BarrageCommonActivity imple
      * @param v
      */
     public void onClick(View v){
-        ActivityIntent.startIntent(this , HomeActivity.class);
+        ActivityIntent.startIntent(this , LoginActivity.class);
     }
 
 

@@ -6,20 +6,23 @@
     >
 
     <ImageButton
+        android:onClick="onClickQQ"
         style="@style/y_logn_all_denglu"
         android:src="@drawable/x_logn_qq"/>
     <ImageButton
-
+        android:onClick="onClickXinliang"
         style="@style/y_logn_all_denglu"
         android:src="@drawable/x_logn_xinliang"/>
     <ImageButton
+        android:onClick="onClickWeixin"
         style="@style/y_logn_all_denglu"
         android:src="@drawable/x_logn_weixin"/>
     <ImageButton
-
+        android:onClick="onClickEmail"
         style="@style/y_logn_all_denglu"
         android:src="@drawable/x_logn_email"/>
     <ImageButton
+        android:onClick="onClickPhone"
         style="@style/y_logn_all_denglu"
         android:src="@drawable/x_logn_phone"/>
 

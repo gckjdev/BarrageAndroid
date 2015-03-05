@@ -68,6 +68,8 @@
             android:name=".user.ui.register.EmailRegisterActivity"
             android:label="@string/title_activity_email_register" >
         </activity>
+        <activity android:name=".user.ui.login.LoginEditeTextActivtiy"
+            android:label="LoginEditeTextActivtiy"></activity>
     </application>
 
 </manifest>

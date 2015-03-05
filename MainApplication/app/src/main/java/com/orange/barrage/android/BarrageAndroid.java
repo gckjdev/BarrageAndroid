@@ -1,9 +1,14 @@
 package com.orange.barrage.android;
 
+import android.app.Activity;
 import android.app.Application;
-import android.util.Log;
 
 import com.orange.barrage.android.util.ContextManager;
+
+import org.apache.velocity.runtime.directive.Foreach;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import roboguice.util.Ln;
 
@@ -13,6 +18,9 @@ import roboguice.util.Ln;
 public class BarrageAndroid extends Application {
 
     private final String TAG = "BarrageAndroid";
+
+    private List<Activity> mList = null;
+
     @Override
     public void onCreate(){
         super.onCreate();
@@ -24,7 +32,26 @@ public class BarrageAndroid extends Application {
                 Ln.e(ex, "uncaughtException");
             }
         });
-
-        //injection
     }
+
+    public void addActivity(Activity activity){
+        if(mList == null) mList = new ArrayList<Activity>();
+
+        mList.add(activity);
+    }
+
+    public void pushActivity(){
+        if(mList == null) return;
+        mList.remove(mList.size() - 1);
+    }
+
+    public void clearActivity(){
+        if(mList == null) return;
+        for(Activity a : mList){
+            if(a.isFinishing()) a.finish();
+        }
+    }
+
+
+
 }

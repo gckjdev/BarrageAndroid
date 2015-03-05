@@ -4,6 +4,7 @@ import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.barrage.android.util.persistent.SharedPreferenceDAO;
 import com.orange.barrage.android.util.persistent.barrage.DefaultDBDAO;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
@@ -13,6 +14,7 @@ import javax.inject.Singleton;
 @Singleton
 public class InviteCodeManager {
 
+    @Inject
     DefaultDBDAO mDefaultDBDAO;
 
     private static final String CURRENT_INVITE_CODE = "CURRENT_INVITE_CODE";

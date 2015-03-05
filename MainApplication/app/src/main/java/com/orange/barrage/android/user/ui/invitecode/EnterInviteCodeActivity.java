@@ -2,6 +2,7 @@ package com.orange.barrage.android.user.ui.invitecode;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_invite_code);
-
+        getmBarrageAndroid().addActivity(this);
         mCodeEditText.setText(mInviteCodeManager.getCurrentInviteCode());
     }
 
@@ -73,6 +74,8 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
     }
 
 
+
+
     /**
      * 发送照片
      * @param v
@@ -82,5 +85,21 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
     }
 
 
+    @Override
+    public void onClickFinish(View v) {
 
+        mBarrageAndroid.pushActivity();
+
+        super.onClickFinish(v);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            mBarrageAndroid.pushActivity();
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 }

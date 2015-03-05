@@ -7,48 +7,9 @@
 
     <include layout="@layout/activity_view_top"/>
 
-    <TextView
-        android:background="@color/y_inivite_code_pass"
-        android:layout_width="match_parent"
-        android:layout_height="1dip" />
-    <EditText
-        android:layout_marginTop="@dimen/y_zhuche_1_height"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y_zhuche_2_height"
-        android:inputType="number"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/y_inputphone"
-        android:background="@color/white"
-        android:id="@+id/id" />
 
-    <TextView
-        android:background="@color/y_inivite_code_pass"
-        android:layout_width="match_parent"
-        android:layout_height="1dip" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y_zhuche_2_height"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/y_inputpwd"
-        android:background="@color/white"
-        android:id="@+id/pwd" />
-    <TextView
-        android:background="@color/y_inivite_code_pass"
-        android:layout_width="match_parent"
-        android:layout_height="1dip" />
-
-    <Button
-        android:layout_marginTop="@dimen/y_activity_invite_code_3_height"
-        android:layout_gravity="center"
-        android:text="@string/y_tijiao"
-        android:onClick="onClickSend"
-        style="@style/y_first_button"
-        android:layout_width="@dimen/y_activity_invite_code_1_width"
-        android:layout_height="@dimen/y_activity_invite_code_5_height" />
+    <include layout="@layout/activity_logn_edittext_center"/>
 
     <TextView android:text="@string/y_long_other_idea"
         android:layout_gravity="center"

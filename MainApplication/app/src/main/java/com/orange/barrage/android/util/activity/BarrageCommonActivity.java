@@ -2,18 +2,15 @@ package com.orange.barrage.android.util.activity;
 
 
 
-import android.app.ProgressDialog;
-import android.content.res.Resources;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import roboguice.activity.RoboActivity;
-import roboguice.inject.InjectResource;
-import roboguice.inject.InjectView;
 
+import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
 
 /**
@@ -24,6 +21,10 @@ public class BarrageCommonActivity extends RoboActivity {
     /*进度条*/
     private ProgressDialogshow mProgressDialog;
 
+    /*Application*/
+    protected BarrageAndroid mBarrageAndroid;
+
+
     /**
      *
      * @param savedInstanceState
@@ -33,6 +34,7 @@ public class BarrageCommonActivity extends RoboActivity {
      */
     protected  void onCreate(Bundle savedInstanceState , int layoutresid, int titleid , int rightid){
         onCreate(savedInstanceState ,layoutresid , getString(titleid) , rightid);
+
     }
 
     /**
@@ -47,6 +49,12 @@ public class BarrageCommonActivity extends RoboActivity {
         setTitleText(titleString);
         setRightButton(rightid);
     }
+
+    protected  BarrageAndroid getmBarrageAndroid(){
+        mBarrageAndroid = (BarrageAndroid)getApplication();
+        return mBarrageAndroid;
+    }
+
 
     /**
      * 设置标题
@@ -70,6 +78,14 @@ public class BarrageCommonActivity extends RoboActivity {
         ImageButton image
          = ((ImageButton)(findViewById(R.id.top_right)));
         image.setImageResource(resid);
+    }
+
+    public String getIntentString(String key){
+        return getIntent().getStringExtra(key);
+    }
+
+    public int getIntentInt(String key ,int defaultValue){
+        return getIntent().getIntExtra(key , defaultValue);
     }
 
 
