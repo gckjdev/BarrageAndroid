@@ -1,4 +1,4 @@
-package com.orange.barrage.android.user.ui.common;
+package com.orange.barrage.android.user.ui.view;
 
 import android.content.Context;
 import android.view.View;
