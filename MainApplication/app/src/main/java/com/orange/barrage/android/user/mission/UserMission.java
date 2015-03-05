@@ -160,7 +160,7 @@ public class UserMission {
 
         MessageProtos.PBLoginUserRequest.Builder builder = MessageProtos.PBLoginUserRequest.newBuilder();
         builder.setType(UserProtos.PBLoginType.LOGIN_MOBILE_VALUE);
-        builder.setEmail(mobile);
+        builder.setMobile(mobile);
         builder.setPassword(password);
 
         loginUser(builder, callback);

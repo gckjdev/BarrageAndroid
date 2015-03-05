@@ -17,6 +17,7 @@ import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.InviteCodeManager;
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.login.LoginEditeTextActivtiy;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
@@ -123,6 +124,8 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
         progresShow();
 
         String inviteCode = mInviteCodeManager.getCurrentInviteCode();
+
+        pwd = UserManager.encryptPassword(pwd);
 
         if(mType == PHONE) {
 

@@ -10,6 +10,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.ToastUtil;
@@ -57,6 +58,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState , R.layout.activity_login_edittext , R.string.y_logn , -1);
 
+        getmBarrageAndroid();
         initView();
 
     }
@@ -105,7 +107,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
             return;
         }
 
-
+        pwd = UserManager.encryptPassword(pwd);
 
         progresShow();
 
@@ -131,7 +133,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
     private void dealLoginResult(int errorCode ){
 
         if(errorCode == 0){
-            ActivityIntent.startIntent(this , HomeActivity.class);
+            ActivityIntent.startIntent(this, HomeActivity.class);
             mBarrageAndroid.clearActivity();
             finish();
         }

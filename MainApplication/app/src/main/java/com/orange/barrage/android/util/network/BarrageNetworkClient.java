@@ -53,6 +53,7 @@ public class BarrageNetworkClient {
         requestBuilder.setRequestId(DateUtil.getNowTime());
 
         MessageProtos.PBDataRequest req = requestBuilder.build();
+        Ln.d("send data request="+req.toString());
         retrofitInterface.dataRequest(req, new Callback<MessageProtos.PBDataResponse>() {
 
             @Override

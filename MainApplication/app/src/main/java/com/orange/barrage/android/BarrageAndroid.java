@@ -48,10 +48,7 @@ public class BarrageAndroid extends Application {
     public void clearActivity(){
         if(mList == null) return;
         for(Activity a : mList){
-            if(a.isFinishing()) a.finish();
+            if(!a.isFinishing()) a.finish();
         }
     }
-
-
-
 }
