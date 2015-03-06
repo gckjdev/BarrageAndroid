@@ -62,7 +62,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         // TODO show date
         int createDate = model.getFeed().getDate();
 
-        
+
     }
 
 

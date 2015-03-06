@@ -17,6 +17,7 @@ import android.widget.SimpleAdapter;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.imagecdn.ImageDealTools;
+import com.orange.barrage.android.util.misc.image.RoundedTransformation;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
