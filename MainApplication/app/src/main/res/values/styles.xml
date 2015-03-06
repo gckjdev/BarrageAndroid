@@ -13,6 +13,14 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="wrap_match">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="match_wrap">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
     <!--设计主界面下面按钮字体-->
     <style name="y_main_bttom_font" parent="match_content">
         <item name="android:gravity">center</item>
@@ -28,7 +36,13 @@
     <style name="y_logn_all_denglu" parent="wrap_content" >
         <item name="android:layout_marginTop">14dip</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">#00000000</item>
     </style>
-    
+    <style name="y_main_view_icon" >
+        <item name ="android:layout_height" >28dip</item>
+        <item name = "android:layout_width">28dip</item>
+        <item name="android:layout_marginRight">13dip</item>
+        <item name="android:onClick">onClick</item>
+        <!--<item name="android:visibility">gone</item>
+    --></style>
 </resources>

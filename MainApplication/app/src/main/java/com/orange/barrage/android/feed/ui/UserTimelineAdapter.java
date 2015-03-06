@@ -71,21 +71,24 @@ public class UserTimelineAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if(convertView == null){
-            convertView = new PictureTopicContainer(this.mContext);
-        }
-
-        PictureTopicContainer container = (PictureTopicContainer) convertView;
-        BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
-
-        PictureTopicModel model = new PictureTopicModel();
-        model.setFeed(feed);
-        container.setModel(model);
-//        if (convertView == null){
-//            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, null);
+//        if(convertView == null){
+//            convertView = new PictureTopicContainer(this.mContext);
 //        }
 //
+//        PictureTopicContainer container = (PictureTopicContainer) convertView;
 //        BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
+//
+//        PictureTopicModel model = new PictureTopicModel();
+//        model.setFeed(feed);
+//        container.setModel(model);
+        if (convertView == null){
+            convertView = new TimelineItemView(mContext);
+        }
+
+        BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
+        PictureTopicModel model = new PictureTopicModel();
+        model.setFeed(feed);
+        ((TimelineItemView)convertView).setModel(model);
 //
 //        TextView userNickTextView = (TextView)convertView.findViewById(R.id.timeline_item_user_nick);
 //        userNickTextView.setText(feed.getCreateUser().getNick());

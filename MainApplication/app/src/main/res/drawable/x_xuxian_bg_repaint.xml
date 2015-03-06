@@ -4,4 +4,4 @@
 
     android:src ="@drawable/y_xuxian"
 
-    android:tileModeX="repeat" />
+    android:tileModeY="repeat" />

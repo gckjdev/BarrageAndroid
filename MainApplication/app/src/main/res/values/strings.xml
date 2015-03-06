@@ -47,5 +47,8 @@
     <string name="y_pleaseinputEmail">请输入邮箱</string>
     <string name="y_pleaseinoutEmailRight">请输入正确的邮箱</string>
     <string name="y_pleaseinputQQ">请输入QQ</string>
-
+    
+    
+    <string name="y_todaycut_pleaseseeme">今天青春的外拍，求关注</string>
+    
 </resources>

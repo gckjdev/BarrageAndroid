@@ -42,4 +42,8 @@
     <dimen name="y_mainview_menu_height">60dip</dimen>
     <!--字体大小-->
     <dimen name="y_font_34hao">17dp</dimen>
+
+
+    <dimen name="y_head_portrait_raduio">41dip</dimen>
+
 </resources>

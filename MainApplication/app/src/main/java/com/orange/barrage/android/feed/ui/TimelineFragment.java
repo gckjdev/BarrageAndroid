@@ -46,7 +46,7 @@ public class TimelineFragment extends RoboFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //listView = (PullToRefreshListView) getActivity().findViewById(R.id.timeline_listview);
+//        listView = (PullToRefreshListView) getActivity().findViewById(R.id.timeline_listview);
         mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> listViewPullToRefreshBase) {
