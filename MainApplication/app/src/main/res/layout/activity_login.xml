@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/y_bg_1"
+    android:background="@color/b_bg_color_gray"
 
     >
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y_activity_login_2_height" />
     <include layout="@layout/activity_logn_other_idea"
-        android:background="@color/y_bg_1"></include>
+        android:background="@color/b_bg_color_gray"></include>
 
 
 </LinearLayout>

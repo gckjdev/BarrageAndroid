@@ -56,9 +56,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState , R.layout.activity_login_edittext , R.string.y_logn , -1);
-
-        getmBarrageAndroid();
+        super.onCreate(savedInstanceState, R.layout.activity_login_edittext, R.string.y_logn, -1);
         initView();
 
     }
@@ -109,7 +107,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
 
         pwd = UserManager.encryptPassword(pwd);
 
-        progresShow();
+        progresShow("");
 
         if(isPhone) {
         //    mUserInfoManager.setPhoneString(id);

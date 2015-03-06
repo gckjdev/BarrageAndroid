@@ -14,7 +14,7 @@ public class ProgressDialogshow {
 	private ProgressDialog progressDialog = null;
 	
 	/**
-	 * ���õȴ������
+	 *
 	 * @param message
 	 */
 	public void setMessage(String message){
@@ -22,7 +22,7 @@ public class ProgressDialogshow {
 	}
 	
 	/**
-	 * ���ñ���
+	 *
 	 * @param title
 	 */
 	public void setTitle(String title){

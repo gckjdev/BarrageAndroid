@@ -1,10 +1,7 @@
 package com.orange.barrage.android.user.ui.invitecode;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -37,7 +34,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_invite_code);
-        getmBarrageAndroid().addActivity(this);
+        mBarrageAndroid.addActivity(this);
         mCodeEditText.setText(mInviteCodeManager.getCurrentInviteCode());
     }
 
@@ -55,7 +52,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
             ToastUtil.makeTextShort(R.string.codeisnull , this);
             return ;
         }
-        progresShow();
+        progresShow("");
         mInviteCodeManager.setCurrentInviteCode(code);
 
         mUserMission.verifyInviteCode(code, new UserMissionCallback() {

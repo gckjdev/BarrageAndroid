@@ -23,18 +23,15 @@ public class LoginActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState ,R.layout.activity_login , R.string.y_logn , -1);
-
-        getmBarrageAndroid().addActivity(this);
+        mBarrageAndroid.addActivity(this);
     }
 
     public void onClickQQ(View v){
-
-
-
     }
+
     public void onClickXinliang(View v){
-
     }
+
     public void onClickWeixin(View v){
 
     }

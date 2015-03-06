@@ -1,10 +1,7 @@
 package com.orange.barrage.android.user.ui.invitecode;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,7 +15,6 @@ import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.InviteCodeManager;
 import com.orange.barrage.android.user.model.UserManager;
-import com.orange.barrage.android.user.ui.login.LoginEditeTextActivtiy;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.ToastUtil;
@@ -121,7 +117,7 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
             return;
         }
 
-        progresShow();
+        progresShow("");
 
         String inviteCode = mInviteCodeManager.getCurrentInviteCode();
 
@@ -147,7 +143,7 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
     private void dealResult(int errorCode){
         if (errorCode == 0) {
             ActivityIntent.startIntent(InviteCodePassActivity.this, HomeActivity.class);
-            getmBarrageAndroid().clearActivity();
+            mBarrageAndroid.clearActivity();
             finish();
         } else {
             ToastUtil.makeTextShort(R.string.y_reginfail, InviteCodePassActivity.this);

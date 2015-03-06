@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:textColor="@color/white"
-        android:textSize="@dimen/y_font_34hao"
+        android:textSize="@dimen/b_font_navigation_title"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

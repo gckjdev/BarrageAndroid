@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@color/y_bg"
+    android:background="@color/b_bg_color_gray"
     android:orientation="vertical">
 
     <include layout="@layout/activity_view_top"/>
@@ -19,7 +19,7 @@
     <ImageButton
         style="@style/wrap_content"
         android:layout_gravity="center"
-        android:background="@color/y_bg"
+        android:background="@color/b_bg_color_gray"
 
         android:src="@drawable/y_zhuche_xiala"
         android:onClick="onClickSF" />

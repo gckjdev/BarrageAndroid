@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:layout_height="@dimen/y_activity_home_with_invite_code_button_height"
             android:layout_width="@dimen/y_activity_home_with_invite_code_button_width"
-            style="@style/y_first_button"
+            style="@style/button_color_red"
             android:layout_marginTop="@dimen/y_activity_home_with_invite_code_1_height"
             android:text="@string/y_first_yaoqingzhucema" />
 

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.orange.barrage.android.R;
 
+@Deprecated
 public class EmailLoginActivity extends ActionBarActivity {
 
     @Override

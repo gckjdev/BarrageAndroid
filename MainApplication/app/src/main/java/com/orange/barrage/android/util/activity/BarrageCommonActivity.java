@@ -24,7 +24,6 @@ public class BarrageCommonActivity extends RoboActivity {
     /*Application*/
     protected BarrageAndroid mBarrageAndroid;
 
-
     /**
      *
      * @param savedInstanceState
@@ -34,7 +33,6 @@ public class BarrageCommonActivity extends RoboActivity {
      */
     protected  void onCreate(Bundle savedInstanceState , int layoutresid, int titleid , int rightid){
         onCreate(savedInstanceState ,layoutresid , getString(titleid) , rightid);
-
     }
 
     /**
@@ -45,16 +43,13 @@ public class BarrageCommonActivity extends RoboActivity {
      */
     protected void onCreate(Bundle savedInstanceState,int layoutresid ,String titleString , int rightid ){
         super.onCreate(savedInstanceState);
+
+        mBarrageAndroid = (BarrageAndroid)getApplication();
+
         setContentView(layoutresid);
         setTitleText(titleString);
         setRightButton(rightid);
     }
-
-    protected  BarrageAndroid getmBarrageAndroid(){
-        mBarrageAndroid = (BarrageAndroid)getApplication();
-        return mBarrageAndroid;
-    }
-
 
     /**
      * 设置标题
@@ -75,8 +70,7 @@ public class BarrageCommonActivity extends RoboActivity {
 
     public void setRightButton(int resid){
         if(resid < 0) return ;
-        ImageButton image
-         = ((ImageButton)(findViewById(R.id.top_right)));
+        ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
         image.setImageResource(resid);
     }
 
@@ -89,12 +83,14 @@ public class BarrageCommonActivity extends RoboActivity {
     }
 
 
+
     /**
      * 打开等待进度条
+     * @param text
      */
-    protected  void progresShow(){
+    protected  void progresShow(String text){
         if(mProgressDialog == null){
-            mProgressDialog = new ProgressDialogshow(this , "","");
+            mProgressDialog = new ProgressDialogshow(this , "", text);
         }
         mProgressDialog.show();
     }
@@ -103,7 +99,8 @@ public class BarrageCommonActivity extends RoboActivity {
      * 关闭等待进度条
      */
     protected  void progresClose(){
-        if(mProgressDialog != null) mProgressDialog.close();
+        if(mProgressDialog != null)
+            mProgressDialog.close();
     }
 
 
