@@ -59,7 +59,10 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
                 placeholder(R.drawable.tab_home).
                 error(R.drawable.tab_friend).into(barrageView);
 
+        // TODO show date
+        int createDate = model.getFeed().getDate();
 
+        
     }
 
 

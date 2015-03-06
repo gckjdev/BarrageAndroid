@@ -35,7 +35,6 @@ public class UserAvatarView extends ImageButton {
     }
 
     public void setImageBitmap(String url){
-
         Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(this , mCallback);
     }
 
@@ -43,11 +42,8 @@ public class UserAvatarView extends ImageButton {
         @Override
         public void onSuccess() {
             Bitmap bitmap = ((BitmapDrawable)getDrawable()).getBitmap();
-
             bitmap = ImageDealTools.getRoundedCornerBitmap(bitmap);
-
             setImageBitmap(bitmap);
-
         }
 
         @Override
@@ -56,21 +52,10 @@ public class UserAvatarView extends ImageButton {
         }
     };
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
-    }
-
-
-    /**
-     * 点击头像
-     * @param v
-     */
-    public void onClick(View v){
-
     }
 
 

@@ -1,6 +1,7 @@
 package com.orange.barrage.android.ui.topic.model;
 
 import com.orange.protocol.message.BarrageProtos;
+import com.orange.protocol.message.UserProtos;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,6 +43,14 @@ public class PictureTopicModel implements Serializable{
 
     public BarrageProtos.PBFeed getFeed() {
         return mFeed;
+    }
+
+    public int getIntDate(){
+        return mFeed.getDate();
+    }
+
+    public List<UserProtos.PBUser> getToUsers(){
+        return mFeed.getToUsersList();
     }
 
     public void setFeed(BarrageProtos.PBFeed feed) {
