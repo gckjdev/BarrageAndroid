@@ -7,7 +7,7 @@
 
     <include layout="@layout/activity_view_top"/>
 
-    <include layout="@layout/activity_logn_edittext"/>
+    <include layout="@layout/activity_logn_edit"/>
 
     <TextView android:text="@string/y_long_other_idea"
         android:layout_gravity="center"

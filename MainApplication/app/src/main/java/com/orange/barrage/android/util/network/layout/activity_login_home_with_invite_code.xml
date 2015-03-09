@@ -20,10 +20,7 @@
 
         <Button
             android:onClick="onClickZhuMa"
-            android:layout_gravity="center"
-            android:layout_height="@dimen/y_activity_home_with_invite_code_button_height"
-            android:layout_width="@dimen/y_activity_home_with_invite_code_button_width"
-            style="@style/button_color_red"
+            style="@style/b_button_color_red"
             android:layout_marginTop="@dimen/y_activity_home_with_invite_code_1_height"
             android:text="@string/y_first_yaoqingzhucema" />
 
@@ -34,7 +31,7 @@
             style="@style/wrap_content">
             <TextView
                 style="@style/wrap_content"
-                android:textColor="@color/y_firstview_haveid_color"
+                android:textColor="@color/b_font_black"
 
                 android:textSize="13dp"
                 android:text="@string/y_first_haveId"/>

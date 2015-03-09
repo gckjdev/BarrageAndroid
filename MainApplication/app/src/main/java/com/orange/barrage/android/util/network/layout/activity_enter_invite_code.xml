@@ -25,12 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="1dip" />
     <Button
-        android:layout_width="@dimen/y_activity_invite_code_1_width"
-        android:layout_height="@dimen/y_activity_invite_code_4_height"
+
         android:text="@string/y_tijiao"
-        style="@style/button_color_red"
+        style="@style/b_button_color_red"
         android:layout_marginTop="@dimen/y_activity_invite_code_3_height"
-        android:layout_gravity="center"
+
         android:onClick="onClickSendCode"
         android:id="@+id/button2" />
 
@@ -78,7 +77,7 @@
     <Button
         android:layout_width="@dimen/y_activity_invite_code_4_width"
         android:layout_height="@dimen/y_activity_invite_code_11_height"
-        style="@style/button_color_red"
+        style="@style/b_button_color_red"
         android:text="@string/y_tijiao"
         android:visibility="gone"
         android:onClick="onClickSendPhoto"

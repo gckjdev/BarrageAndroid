@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dip" />
     <EditText
-
         android:layout_marginTop="@dimen/y_zhuche_1_height"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y_zhuche_2_height"
@@ -20,11 +19,7 @@
         android:gravity="center"
         android:hint="@string/y_inputphone"
         android:background="@color/white"
-        android:id="@+id/id" >
-
-        <requestFocus/>
-
-    </EditText>
+        android:id="@+id/id" />
 
     <TextView
         android:background="@color/y_inivite_code_pass"
@@ -46,14 +41,10 @@
         android:layout_height="1dip" />
 
     <Button
-        android:id="@+id/sendbutton"
         android:layout_marginTop="@dimen/y_activity_invite_code_3_height"
         android:layout_gravity="center"
         android:text="@string/y_tijiao"
-        android:onClick="onClickSend"
-        style="@style/button_color_red"
+        style="@style/b_button_color_red"
         android:layout_width="@dimen/y_activity_invite_code_1_width"
         android:layout_height="@dimen/y_activity_invite_code_5_height" />
-
-
 </LinearLayout>
