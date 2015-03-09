@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
@@ -22,12 +23,12 @@ import roboguice.util.Ln;
 public class TimelineItemView extends LinearLayout implements View.OnClickListener {
 
     private Context mContext;
-    private ImageView barrageView;
+//    private ImageView barrageView;
 
     private ImageButton mShareButton;
 
     private ImageButton mPlayerButton;
-
+    private PictureTopicMainWidget mBarrageWidget;
 
     public TimelineItemView(Context context) {
         super(context);
@@ -38,11 +39,19 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     public void initView(Context c){
         this.mContext = c;
         View view = LayoutInflater.from(this.mContext).inflate(R.layout.view_timeline_list_item, this);
-        barrageView = (ImageView) view.findViewById(R.id.timeline_item_barage_image);
+//        barrageView = (ImageView) view.findViewById(R.id.timeline_item_barage_image);
         mShareButton = (ImageButton)view.findViewById(R.id.shareButton);
         mPlayerButton = (ImageButton)view.findViewById(R.id.playerButton);
+        mBarrageWidget = (PictureTopicMainWidget)view.findViewById(R.id.timeline_item_barage_view);
 
-        mPlayerButton.setOnClickListener(this);
+        mPlayerButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Ln.d("play barrage");
+                mBarrageWidget.play();
+            }
+        });
+
         mShareButton.setOnClickListener(this);
 
 
@@ -51,18 +60,19 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
     public void setModel(PictureTopicModel model) {
         // TODO
-        barrageView.setImageResource(R.drawable.tab_home);
+//        barrageView.setImageResource(R.drawable.tab_home);
 
         ((TextView)findViewById(R.id.titleText)).setText(model.getSubtitleText()+"djsfjsdfs");
 
-        Picasso.with(mContext).load(model.getImageUrl()).
-                placeholder(R.drawable.tab_home).
-                error(R.drawable.tab_friend).into(barrageView);
+//        Picasso.with(mContext).load(model.getImageUrl()).
+//                placeholder(R.drawable.tab_home).
+//                error(R.drawable.tab_friend).into(barrageView);
 
         // TODO show date
         int createDate = model.getFeed().getDate();
 
-        
+        mBarrageWidget.setModel(model);
+
     }
 
 
