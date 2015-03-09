@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.MessageCenter;
 
 import roboguice.util.Ln;
 
@@ -29,11 +30,18 @@ public class Tab2Container extends HomeContainerFragment {
             isViewInited = true;
             initView();
         }
+
+
+
     }
+
 
     private void initView() {
         // TODO set fragment here
-        replaceFragment(new TestFragment(), false);
+        TestFragment f = new TestFragment();
+        replaceFragment(f, false);
+        f.setMenuVisibility(false);
+
     }
 
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tint="@color/b_color_gray"
+    android:src="@drawable/y_logn_qq"
+
+    />

@@ -58,5 +58,6 @@ public class PictureTopicModel implements Serializable{
         setSubtitleText(feed.getText());
         setImageUrl(feed.getImage());
         setFeedActionLis(feed.getActionsList());
+        feed.getActionsList();
     }
 }

@@ -3,5 +3,4 @@
 <bitmap xmlns:android ="http://schemas.android.com/apk/res/android"
 
     android:src ="@drawable/y_bottom_caidan_bg"
-
     android:tileModeX="repeat" />

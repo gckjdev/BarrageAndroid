@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="19.70dip"
+    android:thickness ="0dip"
+
+    android:shape="ring">
+    <!-- 填充的颜色 -->
+    <solid android:color="@color/b_color_alpha" />
+    <!-- 设置按钮的四个角为弧形 -->
+    <!-- android:radius 弧形的半径 -->
+    <stroke android:color="@color/white"
+        android:width="0.75dip"/>
+
+
+
+</shape>
+
+

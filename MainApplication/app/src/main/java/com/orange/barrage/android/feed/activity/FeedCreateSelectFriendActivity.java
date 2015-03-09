@@ -52,6 +52,7 @@ public class FeedCreateSelectFriendActivity extends RoboFragmentActivity {
     }
 
     private void initComponents() {
+
     }
 
     private void initEvents() {

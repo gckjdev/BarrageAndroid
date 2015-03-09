@@ -1,0 +1,4 @@
+<?xml version = "1" encoding = "UTF-8" ?>
+<bitmap xmlns:android ="http://schemas.android.com/apk/res/android"
+    android:tint="@color/b_color_gray"
+    android:src ="@drawable/y_more_and_more" />

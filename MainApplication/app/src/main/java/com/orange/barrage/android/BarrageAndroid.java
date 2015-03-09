@@ -21,6 +21,9 @@ public class BarrageAndroid extends Application {
 
     private List<Activity> mList = null;
 
+
+
+
     @Override
     public void onCreate(){
         super.onCreate();
@@ -39,6 +42,9 @@ public class BarrageAndroid extends Application {
 
         mList.add(activity);
     }
+
+
+
 
     public void pushActivity(){
         if(mList == null) return;

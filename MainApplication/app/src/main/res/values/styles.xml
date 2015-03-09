@@ -28,10 +28,13 @@
     </style>
 
     <!--第一个页面-->
-    <style name="button_color_red">
+    <style name="b_button_color_red">
         <item name="android:background">@drawable/y_button_shape</item>
         <item name="android:text">34dp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">@dimen/y_activity_invite_code_5_height</item>
+        <item name="android:layout_width">@dimen/y_activity_invite_code_1_width</item>
     </style>
 
     <style name="y_logn_all_denglu" parent="wrap_content" >
@@ -46,4 +49,60 @@
         <item name="android:onClick">onClick</item>
         <!--<item name="android:visibility">gone</item>
     --></style>
+    <style name="b_edieText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/y_zhuche_2_height</item>
+        <item name="android:ems">10</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="b_pop_photo_and_camera_linearlayout" parent="match_content" >
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="b_pop_photo_and_camera_font" parent="wrap_content">
+        <item name="android:textColor">@color/b_font_black</item>
+        <item name="android:layout_marginTop">12dip</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    
+    <style name="comments" >
+        <item name="android:layout_height">@dimen/b_comments_icon</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingLeft">41dip</item>
+        <item name="android:background">@drawable/x_comments_edittext_bg</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="b_color_ring">
+        <item name="android:layout_marginLeft">14dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_width">40dip</item>
+    </style>
+
+    <style name="b_comments_bottom_menu_main" parent="match_content">
+
+        <item name="android:layout_weight">1</item>
+
+    </style>
+
+    <style name="b_comments_bottom_menu_button" parent="wrap_content">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/b_color_alpha</item>
+    </style>
+    
 </resources>

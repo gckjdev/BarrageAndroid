@@ -3,9 +3,17 @@ package com.orange.barrage.android.util.activity;
 
 
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import roboguice.activity.RoboActivity;
@@ -16,13 +24,15 @@ import com.orange.barrage.android.R;
 /**
  * Created by youjiannuo on 2015/3/3.
  */
-public class BarrageCommonActivity extends RoboActivity {
+public class BarrageCommonActivity extends RoboActivity  {
 
     /*进度条*/
     private ProgressDialogshow mProgressDialog;
 
     /*Application*/
     protected BarrageAndroid mBarrageAndroid;
+
+
 
     /**
      *
@@ -34,6 +44,9 @@ public class BarrageCommonActivity extends RoboActivity {
     protected  void onCreate(Bundle savedInstanceState , int layoutresid, int titleid , int rightid){
         onCreate(savedInstanceState ,layoutresid , getString(titleid) , rightid);
     }
+
+
+
 
     /**
      *
@@ -50,6 +63,14 @@ public class BarrageCommonActivity extends RoboActivity {
         setTitleText(titleString);
         setRightButton(rightid);
     }
+
+
+    protected  void setNavigationBackgroundChangeOtherType(){
+
+        ((RelativeLayout)findViewById(R.id.top_main)).setBackgroundColor(Color.rgb(12,12,12));
+
+    }
+
 
     /**
      * 设置标题
@@ -70,8 +91,19 @@ public class BarrageCommonActivity extends RoboActivity {
 
     public void setRightButton(int resid){
         if(resid < 0) return ;
-        ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
-        image.setImageResource(resid);
+
+        try {
+            Drawable drawable = getDrawable(resid);
+            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
+            image.setImageDrawable(drawable);
+            image.setVisibility(View.VISIBLE);
+        }catch (Exception e){
+            TextView tv = (TextView)findViewById(R.id.top_right_text);
+            tv.setText(getString(resid));
+            tv.setVisibility(View.VISIBLE);
+        }
+
+
     }
 
     public String getIntentString(String key){

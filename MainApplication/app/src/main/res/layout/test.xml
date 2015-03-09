@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+
+
+    <EditText
+        android:background="@drawable/x_comments_edittext_bg"
+        android:text="21323"
+        android:paddingLeft="41dip"
+        android:layout_width="wrap_content"
+        android:layout_height="41dip" />
+    <com.orange.barrage.android.user.ui.view.UserAvatarView
+        android:background="@drawable/x_comments_bg"
+        android:layout_height="41dip"
+        android:layout_width="41dip"
+        />
+</RelativeLayout>

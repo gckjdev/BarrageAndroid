@@ -21,6 +21,11 @@
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".feed.activity.FeedReplyActivity"
@@ -34,11 +39,7 @@
         <activity
             android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
             android:label="@string/title_activity_login_home_with_invite_code" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".user.ui.login.LoginActivity"
@@ -74,6 +75,11 @@
 
         <activity android:name=".user.ui.view.Text"></activity>
 
+        <activity android:name=".feed.activity.FeedPublishedActivity">
+
+        </activity>
+
+        <activity android:name=".feed.activity.CommentActivity"></activity>
 
     </application>
 
