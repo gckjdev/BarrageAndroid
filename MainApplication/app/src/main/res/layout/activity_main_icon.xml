@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="44dip"
+    android:background="@color/b_bg_color_gray">
+
+    
+    <LinearLayout
+        android:id="@+id/iconlayout"
+        style="@style/wrap_content"
+        android:layout_centerInParent="true">
+        <com.orange.barrage.android.user.ui.view.UserAvatarView
+
+            style = "@style/y_main_view_icon" />
+        <com.orange.barrage.android.user.ui.view.UserAvatarView
+
+            style = "@style/y_main_view_icon" />
+        <com.orange.barrage.android.user.ui.view.UserAvatarView
+
+            style = "@style/y_main_view_icon" />
+        <com.orange.barrage.android.user.ui.view.UserAvatarView
+
+            style = "@style/y_main_view_icon" />
+        <com.orange.barrage.android.user.ui.view.UserAvatarView
+
+            style = "@style/y_main_view_icon" />
+    </LinearLayout>
+    
+    
+    <ImageButton
+        style="@style/wrap_content"
+        android:src="@drawable/y_zhuche_xiala"
+        android:background="#0000"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="15dip"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

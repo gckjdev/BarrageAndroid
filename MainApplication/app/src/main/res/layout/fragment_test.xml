@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/test_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Load Data"/>
+
+    <Button
+    android:id="@+id/test_db_button"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_toRightOf="@id/test_button"
+    android:text="LevelDB"/>
+
+    <Button
+        android:id="@+id/test_create_feed_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/test_db_button"
+        android:text="Create Feed"/>
+
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/test_button"
+        android:text="Play"/>
+
+    <Button
+        android:id="@+id/pause_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/play_button"
+        android:layout_below="@id/test_button"
+        android:text="Pause"/>
+
+    <Button
+        android:id="@+id/resume_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/pause_button"
+        android:layout_below="@id/test_button"
+        android:text="Resume"/>
+
+    <Button
+        android:id="@+id/move_to_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/resume_button"
+        android:layout_below="@id/test_button"
+        android:text="Move to"/>
+
+    <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+        android:id="@+id/picture_topic_main_widget"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/play_button"
+            />
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/b_bg_color_gray"
+
+    >
+
+   <include layout="@layout/activity_view_top"/>
+   <TextView
+
+       style="@style/wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginTop="@dimen/y_activity_login_1_height"
+       android:text="@string/y_logn_text"
+       android:textColor="@color/y_inivite_code_pass_font"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y_activity_login_2_height" />
+    <include layout="@layout/activity_logn_other_idea"
+        android:background="@color/b_bg_color_gray"></include>
+
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id = "@+id/zhuche_other_id"
+    >
+
+    <ImageButton
+        android:onClick="onClickQQ"
+        style="@style/y_logn_all_denglu"
+        android:src="@drawable/x_logn_qq"/>
+    <ImageButton
+        android:onClick="onClickXinliang"
+        style="@style/y_logn_all_denglu"
+        android:src="@drawable/x_logn_xinliang"/>
+    <ImageButton
+        android:onClick="onClickWeixin"
+        style="@style/y_logn_all_denglu"
+        android:src="@drawable/x_logn_weixin"/>
+    <ImageButton
+        android:onClick="onClickEmail"
+        style="@style/y_logn_all_denglu"
+        android:src="@drawable/x_logn_email"/>
+    <ImageButton
+        android:onClick="onClickPhone"
+        style="@style/y_logn_all_denglu"
+        android:src="@drawable/x_logn_phone"/>
+
+
+
+</LinearLayout>

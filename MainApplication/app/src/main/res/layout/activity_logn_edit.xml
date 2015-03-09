@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/b_bg_color_gray"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:background="@color/y_inivite_code_pass"
+        android:layout_width="match_parent"
+        android:layout_height="1dip" />
+    <EditText
+        android:layout_marginTop="@dimen/y_zhuche_1_height"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y_zhuche_2_height"
+        android:inputType="number"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/y_inputphone"
+        android:background="@color/white"
+        android:id="@+id/id" />
+
+    <TextView
+        android:background="@color/y_inivite_code_pass"
+        android:layout_width="match_parent"
+        android:layout_height="1dip" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y_zhuche_2_height"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/y_inputpwd"
+        android:background="@color/white"
+        android:id="@+id/pwd" />
+    <TextView
+        android:background="@color/y_inivite_code_pass"
+        android:layout_width="match_parent"
+        android:layout_height="1dip" />
+
+    <Button
+        android:layout_marginTop="@dimen/y_activity_invite_code_3_height"
+        android:layout_gravity="center"
+        android:text="@string/y_tijiao"
+        style="@style/b_button_color_red"
+        android:layout_width="@dimen/y_activity_invite_code_1_width"
+        android:layout_height="@dimen/y_activity_invite_code_5_height" />
+</LinearLayout>
