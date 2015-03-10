@@ -3,14 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:src="@drawable/ic_launcher"
+    <com.orange.barrage.android.user.ui.view.UserAvatarView
         android:scaleType="center"
-        android:id="@+id/imageview"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/friend_avatar_view"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_width="50dip"
+        android:layout_height="50dip" />
     <TextView
         android:layout_width="wrap_content"
         android:text="HelloWorld"

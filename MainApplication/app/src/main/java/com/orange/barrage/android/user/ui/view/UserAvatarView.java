@@ -18,6 +18,7 @@ import android.widget.SimpleAdapter;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.imagecdn.ImageDealTools;
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
+import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -29,13 +30,23 @@ import java.util.zip.Inflater;
 public class UserAvatarView extends ImageButton {
 
     private Context mContext;
+    UserProtos.PBUser user;
 
     public UserAvatarView(Context context , AttributeSet attrs) {
         super(context , attrs);
         mContext = context;
     }
 
-    public void setImageBitmap(String url){
+    public void loadUser(UserProtos.PBUser user){
+
+        // set user data
+        this.user = user;
+
+        // load avatar image
+        setAvartUrl(user.getAvatar());
+    }
+
+    public void setAvartUrl(String url){
         Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(this , mCallback);
     }
 
