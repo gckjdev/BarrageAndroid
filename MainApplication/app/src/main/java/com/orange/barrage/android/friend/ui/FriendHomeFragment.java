@@ -1,16 +1,23 @@
 package com.orange.barrage.android.friend.ui;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.friend.mission.FriendMission;
+import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
+import com.orange.protocol.message.UserProtos;
+
+import javax.inject.Inject;
 
 import roboguice.fragment.RoboFragment;
+import roboguice.inject.InjectView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +28,16 @@ import roboguice.fragment.RoboFragment;
  * create an instance of this fragment.
  */
 public class FriendHomeFragment extends RoboFragment {
+
+    @InjectView(R.id.friend_list_view)
+    ListView mListView;
+
+    @Inject
+    FriendListAdapter mAdapter;
+
+    @Inject
+    FriendMission mFriendMission;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +78,30 @@ public class FriendHomeFragment extends RoboFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mListView.setAdapter(mAdapter);
+
+        loadFriendList();
+    }
+
+    private void loadFriendList() {
+        mFriendMission.syncFriend(new GetFriendListCallback() {
+            @Override
+            public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
+
+                if (errorCode == 0){
+                    mAdapter.notifyDataSetChanged();
+                }
+
+            }
+        });
     }
 
     @Override

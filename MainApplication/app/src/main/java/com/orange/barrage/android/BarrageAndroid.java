@@ -5,8 +5,6 @@ import android.app.Application;
 
 import com.orange.barrage.android.util.ContextManager;
 
-import org.apache.velocity.runtime.directive.Foreach;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +16,8 @@ import roboguice.util.Ln;
 public class BarrageAndroid extends Application {
 
     private final String TAG = "BarrageAndroid";
-
+    //创建了Activity的集合，用来管理Activity的
     private List<Activity> mList = null;
-
-
-
 
     @Override
     public void onCreate(){
@@ -53,6 +48,7 @@ public class BarrageAndroid extends Application {
 
     public void clearActivity(){
         if(mList == null) return;
+        //第一个参数是类型，第二个参数是名称，第三个参数表示需要遍历的集合
         for(Activity a : mList){
             if(!a.isFinishing()) a.finish();
         }

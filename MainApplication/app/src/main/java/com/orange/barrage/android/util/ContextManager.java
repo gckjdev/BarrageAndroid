@@ -1,6 +1,5 @@
 package com.orange.barrage.android.util;
 
-import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -13,7 +12,7 @@ public class ContextManager {
     public static void init(Context context) {
         sApplicationContext = context;
     }
-
+    //返回一个全局的Context对象
     public static Context getContext() {
         return sApplicationContext;
     }

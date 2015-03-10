@@ -13,10 +13,4 @@ public class UserIconFloatWindow extends LinearLayout {
         super(context, attrs);
     }
 
-
-    
-
-
-
-
 }
