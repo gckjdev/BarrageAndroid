@@ -1,5 +1,6 @@
 package com.orange.barrage.android.user.ui.view;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -31,6 +32,7 @@ public class UserAvatarView extends ImageButton {
 
     private Context mContext;
     UserProtos.PBUser user;
+    int borderWidth = 4;
 
     public UserAvatarView(Context context , AttributeSet attrs) {
         super(context , attrs);
@@ -47,7 +49,17 @@ public class UserAvatarView extends ImageButton {
     }
 
     public void setAvartUrl(String url){
-        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(this , mCallback);
+
+        int width = 50;
+        int height = 50;
+
+        Picasso.with(mContext)
+                .load(url)
+                .transform(new RoundedTransformation(width/2, borderWidth))
+                .resize(width, height)
+                .placeholder(R.drawable.tab_home)       // TODO change to right default
+                .error(R.drawable.tab_friend)           // TODO change to right default
+                .into(this , null);
     }
 
     Callback mCallback = new Callback() {
@@ -67,7 +79,7 @@ public class UserAvatarView extends ImageButton {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
+//        ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
     }
 
 
