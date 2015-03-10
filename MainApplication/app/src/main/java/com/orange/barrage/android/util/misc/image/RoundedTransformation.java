@@ -45,7 +45,7 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
 
         Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
-        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-2, paint);
+        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint);
 
         if (source != output) {
             source.recycle();
@@ -56,7 +56,7 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
         paint1.setStyle(Paint.Style.STROKE);
         paint1.setAntiAlias(true);
         paint1.setStrokeWidth(margin);
-        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-2, paint1);
+        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint1);
 
 
         return output;

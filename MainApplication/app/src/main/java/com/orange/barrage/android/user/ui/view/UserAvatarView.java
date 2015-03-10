@@ -50,6 +50,7 @@ public class UserAvatarView extends ImageButton {
 
     public void setAvartUrl(String url){
 
+        // TODO get height and width from layout configuration
         int width = 100;
         int height = 100;
 
