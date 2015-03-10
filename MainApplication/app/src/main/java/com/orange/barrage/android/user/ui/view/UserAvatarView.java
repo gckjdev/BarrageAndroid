@@ -50,8 +50,8 @@ public class UserAvatarView extends ImageButton {
 
     public void setAvartUrl(String url){
 
-        int width = 50;
-        int height = 50;
+        int width = 100;
+        int height = 100;
 
         Picasso.with(mContext)
                 .load(url)
