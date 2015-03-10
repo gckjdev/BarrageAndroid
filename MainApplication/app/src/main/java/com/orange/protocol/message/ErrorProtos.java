@@ -173,6 +173,22 @@ public final class ErrorProtos {
      * <code>ERROR_UPLOAD_IMAGE = 3000003;</code>
      */
     ERROR_UPLOAD_IMAGE(36, 3000003),
+    /**
+     * <code>ERROR_FEED_ID_NULL = 3000004;</code>
+     */
+    ERROR_FEED_ID_NULL(37, 3000004),
+    /**
+     * <code>ERROR_FEED_ACTION_ID_NULL = 3000005;</code>
+     */
+    ERROR_FEED_ACTION_ID_NULL(38, 3000005),
+    /**
+     * <code>ERROR_FEED_NOT_FOUND = 3000006;</code>
+     */
+    ERROR_FEED_NOT_FOUND(39, 3000006),
+    /**
+     * <code>ERROR_FEED_ACTION_NOT_FOUND = 3000007;</code>
+     */
+    ERROR_FEED_ACTION_NOT_FOUND(40, 3000007),
     ;
 
     /**
@@ -335,6 +351,22 @@ public final class ErrorProtos {
      * <code>ERROR_UPLOAD_IMAGE = 3000003;</code>
      */
     public static final int ERROR_UPLOAD_IMAGE_VALUE = 3000003;
+    /**
+     * <code>ERROR_FEED_ID_NULL = 3000004;</code>
+     */
+    public static final int ERROR_FEED_ID_NULL_VALUE = 3000004;
+    /**
+     * <code>ERROR_FEED_ACTION_ID_NULL = 3000005;</code>
+     */
+    public static final int ERROR_FEED_ACTION_ID_NULL_VALUE = 3000005;
+    /**
+     * <code>ERROR_FEED_NOT_FOUND = 3000006;</code>
+     */
+    public static final int ERROR_FEED_NOT_FOUND_VALUE = 3000006;
+    /**
+     * <code>ERROR_FEED_ACTION_NOT_FOUND = 3000007;</code>
+     */
+    public static final int ERROR_FEED_ACTION_NOT_FOUND_VALUE = 3000007;
 
 
     public final int getNumber() { return value; }
@@ -378,6 +410,10 @@ public final class ErrorProtos {
         case 3000001: return ERROR_FEED_ACTION_INVALID;
         case 3000002: return ERROR_CREATE_IMAGE;
         case 3000003: return ERROR_UPLOAD_IMAGE;
+        case 3000004: return ERROR_FEED_ID_NULL;
+        case 3000005: return ERROR_FEED_ACTION_ID_NULL;
+        case 3000006: return ERROR_FEED_NOT_FOUND;
+        case 3000007: return ERROR_FEED_ACTION_NOT_FOUND;
         default: return null;
       }
     }
@@ -438,7 +474,7 @@ public final class ErrorProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013Error.proto\022\007barrage*\245\t\n\007PBError\022\032\n\024ER" +
+      "\n\013Error.proto\022\007barrage*\243\n\n\007PBError\022\032\n\024ER" +
       "ROR_READ_POST_DATA\020\301\204=\022\033\n\025ERROR_PARSE_PO" +
       "ST_DATA\020\302\204=\022\037\n\031ERROR_NO_SERVICE_FOR_TYPE" +
       "\020\303\204=\022#\n\035ERROR_SERVICE_CATCH_EXCEPTION\020\304\204" +
@@ -468,8 +504,11 @@ public final class ErrorProtos {
       "NS_NO_CREDENTIAL\020\230\211z\022\030\n\022ERROR_MOBILE_EXI" +
       "ST\020\231\211z\022 \n\031ERROR_FEED_ACTION_INVALID\020\301\215\267\001" +
       "\022\031\n\022ERROR_CREATE_IMAGE\020\302\215\267\001\022\031\n\022ERROR_UPL",
-      "OAD_IMAGE\020\303\215\267\001B*\n\033com.orange.protocol.me" +
-      "ssageB\013ErrorProtos"
+      "OAD_IMAGE\020\303\215\267\001\022\031\n\022ERROR_FEED_ID_NULL\020\304\215\267" +
+      "\001\022 \n\031ERROR_FEED_ACTION_ID_NULL\020\305\215\267\001\022\033\n\024E" +
+      "RROR_FEED_NOT_FOUND\020\306\215\267\001\022\"\n\033ERROR_FEED_A" +
+      "CTION_NOT_FOUND\020\307\215\267\001B*\n\033com.orange.proto" +
+      "col.messageB\013ErrorProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

@@ -1,5 +1,6 @@
 package com.orange.barrage.android.feed.model;
 
+import com.orange.barrage.android.util.persistent.LevelDBDAO;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.Collections;
@@ -14,6 +15,9 @@ import roboguice.inject.ContextSingleton;
  */
 @Singleton
 public class FeedManager {
+
+    private static final String FEED_CACHED_DB_NAME = "feed_db.db";
+    LevelDBDAO mFeedDB = new LevelDBDAO(FEED_CACHED_DB_NAME);
 
     private List<BarrageProtos.PBFeed> userTimelineList = Collections.emptyList();
 
