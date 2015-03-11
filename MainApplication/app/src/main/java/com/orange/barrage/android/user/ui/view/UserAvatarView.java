@@ -56,8 +56,7 @@ public class UserAvatarView extends ImageButton {
 
         Picasso.with(mContext)
                 .load(url)
-                .transform(new RoundedTransformation(width/2, borderWidth))
-                .resize(width, height)
+                .transform(new RoundedTransformation(borderWidth))
                 .placeholder(R.drawable.tab_home)       // TODO change to right default
                 .error(R.drawable.tab_friend)           // TODO change to right default
                 .into(this , null);
