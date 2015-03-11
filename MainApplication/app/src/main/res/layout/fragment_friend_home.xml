@@ -9,7 +9,7 @@
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:divider="#e7e7e7"
-        android:dividerHeight="2dp"
+        android:dividerHeight="1dp"
         android:id="@+id/friend_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

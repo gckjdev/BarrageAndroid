@@ -28,11 +28,11 @@ import java.util.zip.Inflater;
 /**
  * Created by pipi on 15/3/5.
  */
-public class UserAvatarView extends ImageButton {
+public class UserAvatarView extends ImageView {
 
     private Context mContext;
     UserProtos.PBUser user;
-    int borderWidth = 4;
+    int borderWidth = 8;
 
     public UserAvatarView(Context context , AttributeSet attrs) {
         super(context , attrs);
@@ -56,12 +56,14 @@ public class UserAvatarView extends ImageButton {
 
         Picasso.with(mContext)
                 .load(url)
+                .resize(300,300)
                 .transform(new RoundedTransformation(borderWidth))
                 .placeholder(R.drawable.tab_home)       // TODO change to right default
                 .error(R.drawable.tab_friend)           // TODO change to right default
                 .into(this , null);
     }
 
+    @Deprecated
     Callback mCallback = new Callback() {
         @Override
         public void onSuccess() {
