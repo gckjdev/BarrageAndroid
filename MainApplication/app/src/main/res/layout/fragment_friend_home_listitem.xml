@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:minHeight="60dp"
     android:layout_height="60dp">
-    <ImageView
-        android:src="@drawable/ic_launcher"
+
+    <com.orange.barrage.android.user.ui.view.UserAvatarView
         android:scaleType="center"
-        android:id="@+id/imageview"
+        android:id="@+id/friend_avatar_view"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="18dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="50dp"
+        android:layout_height="fill_parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:text="HelloWorld"
@@ -21,9 +22,7 @@
         android:textColor="#333333"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageview"
-        android:layout_toRightOf="@+id/imageview"
-        android:layout_toEndOf="@+id/imageview"
+        android:layout_toRightOf="@+id/friend_avatar_view"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="13dp" />
     <TextView

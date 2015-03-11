@@ -9,16 +9,22 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.model.FriendManager;
+import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
+
+import roboguice.inject.InjectView;
 
 /**
  * Created by pipi on 15/3/10.
  */
 public class FriendListItemView extends LinearLayout{
     private Context mContext;
-    public ImageView mImageView;
+//    public ImageView mImageView;
+
+    private UserAvatarView mAvatarView;
+
     public TextView mTextView1;
     public TextView mTextView2;
     private View view;
@@ -41,9 +47,9 @@ public class FriendListItemView extends LinearLayout{
     public void initView(Context context)
     {
         this.mContext = context;
-        view = LayoutInflater.from(this.mContext).inflate(R.layout.fragment_friend_home_listitem,null);
+        view = LayoutInflater.from(this.mContext).inflate(R.layout.fragment_friend_home_listitem, this);
 
-        addView(view);
+//        addView(view);
         //
 
     }
@@ -51,7 +57,7 @@ public class FriendListItemView extends LinearLayout{
     public void setFriend(UserProtos.PBUser friend){
         this.pbFriend = friend;
 
-        mImageView = (ImageView)view.findViewById(R.id.imageview);
+        mAvatarView = (UserAvatarView)view.findViewById(R.id.friend_avatar_view);
         mTextView1 = (TextView)view.findViewById(R.id.textview1);
         mTextView2 = (TextView)view.findViewById(R.id.textview2);
 
@@ -59,7 +65,11 @@ public class FriendListItemView extends LinearLayout{
         String signature = pbFriend.getSignature();
         mTextView1.setText(nick);
         mTextView2.setText(signature);
-        mImageView.setBackgroundResource(R.drawable.ic_launcher);
+
+
+        mAvatarView.loadUser(pbFriend);
+
+
 
         // Toast.makeText(mContext,"内容为:"+nick+signature,Toast.LENGTH_LONG).show();
     }

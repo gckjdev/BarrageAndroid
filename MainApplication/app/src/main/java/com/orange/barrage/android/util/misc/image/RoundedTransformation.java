@@ -26,6 +26,8 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
     private final int radius;
     private final int margin;  // dp
 
+    private final int borderColor = Color.WHITE;
+
     // radius is corner radii in dp
     // margin is the board in dp
     public RoundedTransformation(final int radius, final int margin) {
@@ -43,18 +45,18 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
 
         Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
-        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-2, paint);
+        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint);
 
         if (source != output) {
             source.recycle();
         }
 
         Paint paint1 = new Paint();
-        paint1.setColor(Color.RED);
+        paint1.setColor(borderColor);
         paint1.setStyle(Paint.Style.STROKE);
         paint1.setAntiAlias(true);
-        paint1.setStrokeWidth(2);
-        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-2, paint1);
+        paint1.setStrokeWidth(margin);
+        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint1);
 
 
         return output;

@@ -1,5 +1,6 @@
 package com.orange.barrage.android.user.ui.view;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -18,6 +19,7 @@ import android.widget.SimpleAdapter;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.imagecdn.ImageDealTools;
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
+import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -29,14 +31,36 @@ import java.util.zip.Inflater;
 public class UserAvatarView extends ImageButton {
 
     private Context mContext;
+    UserProtos.PBUser user;
+    int borderWidth = 4;
 
     public UserAvatarView(Context context , AttributeSet attrs) {
         super(context , attrs);
         mContext = context;
     }
 
-    public void setImageBitmap(String url){
-        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(this , mCallback);
+    public void loadUser(UserProtos.PBUser user){
+
+        // set user data
+        this.user = user;
+
+        // load avatar image
+        setAvartUrl(user.getAvatar());
+    }
+
+    public void setAvartUrl(String url){
+
+        // TODO get height and width from layout configuration
+        int width = 100;
+        int height = 100;
+
+        Picasso.with(mContext)
+                .load(url)
+                .transform(new RoundedTransformation(width/2, borderWidth))
+                .resize(width, height)
+                .placeholder(R.drawable.tab_home)       // TODO change to right default
+                .error(R.drawable.tab_friend)           // TODO change to right default
+                .into(this , null);
     }
 
     Callback mCallback = new Callback() {
@@ -56,7 +80,7 @@ public class UserAvatarView extends ImageButton {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
+//        ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
     }
 
 

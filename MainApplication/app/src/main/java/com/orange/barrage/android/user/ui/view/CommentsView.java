@@ -2,8 +2,6 @@ package com.orange.barrage.android.user.ui.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.nfc.Tag;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.ui.topic.model.User;
 
 /**
  * Created by youjiannuo on 2015/3/9.
@@ -86,7 +83,7 @@ public class CommentsView extends ViewGroup {
     public void setIconUrl(String url){
 
         if(mUserAvatarView != null)
-            mUserAvatarView.setImageBitmap(url);
+            mUserAvatarView.setAvartUrl(url);
 
     }
 
