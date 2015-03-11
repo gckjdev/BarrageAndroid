@@ -5,6 +5,7 @@ import android.content.Context;
 /**
  * Created by Rollin on 2014/12/6.
  */
+//用来管理Context(上下文的)
 public class ContextManager {
 
     private static Context sApplicationContext;

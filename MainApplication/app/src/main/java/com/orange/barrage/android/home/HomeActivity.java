@@ -1,26 +1,19 @@
 package com.orange.barrage.android.home;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
+import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.ActionImageCaptureEvent;
 import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
@@ -33,7 +26,6 @@ import com.orange.barrage.android.util.System.SystemTools;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.FramgActivity;
 import com.orange.barrage.android.util.activity.RequestCodes;
-import com.orange.barrage.android.R;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -45,6 +37,7 @@ import roboguice.util.Ln;
 
 public class HomeActivity extends FramgActivity {
 
+    //这里才是主页面，就是那三个tab页面
     private static final String TAB_1_TAG = "tab_1";
     private static final String TAB_2_TAG = "tab_2";
     private static final String TAB_3_TAG = "tab_3";
@@ -56,7 +49,7 @@ public class HomeActivity extends FramgActivity {
 
 
     @Inject
-    UserMission mUserMission;
+    UserMission    mUserMission;
 
     @Inject
     UserManager mUserManager;
