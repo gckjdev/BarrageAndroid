@@ -27,7 +27,7 @@ import roboguice.inject.InjectView;
  * Use the {@link FriendHomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FriendHomeFragment extends RoboFragment {
+public class FriendHomeFragment extends RoboFragment{
 
     @InjectView(R.id.friend_list_view)
     ListView mListView;
@@ -89,6 +89,7 @@ public class FriendHomeFragment extends RoboFragment {
         mListView.setAdapter(mAdapter);
 
         loadFriendList();
+
     }
 
     private void loadFriendList() {

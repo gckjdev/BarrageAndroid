@@ -1,6 +1,7 @@
 package com.orange.barrage.android.friend.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
 import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.protocol.message.UserProtos;
 
@@ -76,6 +78,12 @@ public class FriendListAdapter extends BaseAdapter {
         //每一项的位置，然后设置
         UserProtos.PBUser friend = mFriendManager.getFriendList().get(position);
         view.setFriend(friend);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               context.startActivity(new Intent(context, RequestAddFriendActivity.class));
+            }
+        });
         return view;
         //这里改动的
 /*
