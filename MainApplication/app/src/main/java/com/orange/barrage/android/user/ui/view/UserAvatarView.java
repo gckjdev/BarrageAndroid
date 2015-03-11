@@ -63,6 +63,7 @@ public class UserAvatarView extends ImageView {
                 .into(this , null);
     }
 
+    @Deprecated
     Callback mCallback = new Callback() {
         @Override
         public void onSuccess() {
