@@ -23,16 +23,12 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
 
      */
 
-    private final int radius;
-    private final int margin;  // dp
-
     private final int borderColor = Color.WHITE;
+    private int borderWidth = 4;
 
-    // radius is corner radii in dp
-    // margin is the board in dp
-    public RoundedTransformation(final int radius, final int margin) {
-        this.radius = radius;
-        this.margin = margin;
+    // borderWidth is the board in dp
+    public RoundedTransformation(int borderWidth) {
+        this.borderWidth = borderWidth;
     }
 
     @Override
@@ -43,9 +39,12 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
         paint.setAntiAlias(true);
         paint.setShader(new BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
 
-        Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
+        int width = source.getWidth();
+        int height = source.getHeight();
+
+        Bitmap output = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
-        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint);
+        canvas.drawCircle((width - borderWidth*2)/2, (height - borderWidth*2)/2, width/2-borderWidth, paint);
 
         if (source != output) {
             source.recycle();
@@ -55,9 +54,9 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
         paint1.setColor(borderColor);
         paint1.setStyle(Paint.Style.STROKE);
         paint1.setAntiAlias(true);
-        paint1.setStrokeWidth(margin);
-        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint1);
-
+        paint1.setStrokeWidth(borderWidth);
+        canvas.drawCircle((width - borderWidth*2)/2, (height - borderWidth*2)/2, width/2-borderWidth, paint1);
+//        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-margin, paint1);
 
         return output;
     }
