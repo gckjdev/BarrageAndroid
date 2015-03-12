@@ -36,19 +36,12 @@ public class FriendListItemView extends LinearLayout{
         this.mContext = context;
 
         initView(mContext);
-       // View view = LayoutInflater.from(this.mContext).inflate(R.layout.fragment_friend_home_listitem,null);
     }
-
-
 
     public void initView(Context context)
     {
         this.mContext = context;
         view = LayoutInflater.from(this.mContext).inflate(R.layout.fragment_friend_home_listitem, this);
-
-//        addView(view);
-        //
-
     }
 
     public void setFriend(UserProtos.PBUser friend){
@@ -60,14 +53,10 @@ public class FriendListItemView extends LinearLayout{
 
         String nick = pbFriend.getNick();
         String signature = pbFriend.getSignature();
+
         friend_nick.setText(nick);
         friend_signature.setText(signature);
 
-
         mAvatarView.loadUser(pbFriend);
-
-
-
-        // Toast.makeText(mContext,"内容为:"+nick+signature,Toast.LENGTH_LONG).show();
     }
 }

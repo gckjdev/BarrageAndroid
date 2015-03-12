@@ -51,4 +51,13 @@
     <!---弹幕的直径-->
     <dimen name="b_comments_icon">41dip</dimen>
 
+    <!-- 标准 List View 分割线的间隔高度 -->
+    <dimen name="b_list_view_divider_height">1dp</dimen>
+
+    <!-- 标准 List View 大字体 -->
+    <dimen name="b_list_view_font_big">16sp</dimen>
+
+    <!-- 标准 List View 中字体 -->
+    <dimen name="b_list_view_font_medium">13sp</dimen>
+
 </resources>

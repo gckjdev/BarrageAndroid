@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageview"
 
-            android:layout_marginLeft="12.0dip"
+            android:layout_marginLeft="12dip"
             android:src="@drawable/search_friend" />
         <EditText
             android:layout_width="200dp"
@@ -28,7 +28,7 @@
             android:textColor="#ff333333"
             android:textSize="16.0dip"
             android:background="@null"
-            android:id="@+id/search_edittest"
+            android:id="@+id/search_edit_text"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageview"
             android:layout_toEndOf="@+id/imageview"
@@ -37,8 +37,8 @@
     </RelativeLayout>
     <ListView
         android:layout_marginTop="15dp"
-        android:divider="#e7e7e7"
-        android:dividerHeight="3dp"
+        android:divider="@color/b_list_view_divider"
+        android:dividerHeight="@dimen/b_list_view_divider_height"
         android:background="@android:color/white"
         android:id="@+id/search_listview"
         android:layout_width="match_parent"
