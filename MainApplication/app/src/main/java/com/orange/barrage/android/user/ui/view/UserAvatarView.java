@@ -37,8 +37,6 @@ public class UserAvatarView extends CircularImageView {
     public UserAvatarView(Context context , AttributeSet attrs) {
         super(context , attrs);
         mContext = context;
-
-
     }
 
     public void loadUser(UserProtos.PBUser user){
