@@ -107,7 +107,7 @@ public class BarrageCommonActivity extends RoboActivity  {
             TextView tv = (TextView)findViewById(R.id.top_right_text);
             tv.setText(getString(resid));
             tv.setVisibility(View.VISIBLE);
-        }
+    }
 
 
     }

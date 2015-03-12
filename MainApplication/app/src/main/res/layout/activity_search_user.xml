@@ -27,7 +27,9 @@
             android:hint="昵称/邮箱/手机号/微博"
             android:textColor="#ff333333"
             android:textSize="16.0dip"
+            android:imeOptions="actionSearch"
             android:background="@null"
+            android:singleLine="true"
             android:id="@+id/search_edit_text"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageview"
@@ -43,6 +45,5 @@
         android:id="@+id/search_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         </ListView>
 </LinearLayout>

@@ -24,6 +24,7 @@
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,6 +43,7 @@
         <activity
             android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
             android:label="@string/title_activity_login_home_with_invite_code" >
+
         </activity>
         <activity
             android:name=".user.ui.login.LoginActivity"
@@ -82,6 +84,7 @@
         </activity>
         <activity
             android:name=".friend.activity.SearchUserActivity"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/title_activity_search_user" >
         </activity>
         <activity

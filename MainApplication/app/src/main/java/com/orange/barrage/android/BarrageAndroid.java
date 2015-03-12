@@ -52,7 +52,7 @@ public class BarrageAndroid extends Application {
     public void clearActivity(){
         if(mList == null) return;
         //第一个参数是类型，第二个参数是名称，第三个参数表示需要遍历的集合
-        for(Activity a : mList){
+            for(Activity a : mList){
             //假如Activity没有在运行的话，则结束进程
             if(!a.isFinishing()) a.finish();
         }
