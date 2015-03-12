@@ -14,6 +14,12 @@
     <TextView
         style="@style/b_homepage_pop_line" />
     <TextView
+        style="@style/b_homepage_pop_item"
+        android:text="@string/b_add_lable"
+        android:drawableLeft="@drawable/y_add_label" />
+    <TextView
+        style="@style/b_homepage_pop_line" />
+    <TextView
         android:text="@string/b_own_info"
         style="@style/b_homepage_pop_item"
         android:drawableLeft="@drawable/y_own_first" />

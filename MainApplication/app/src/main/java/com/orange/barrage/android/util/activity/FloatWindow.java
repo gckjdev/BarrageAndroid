@@ -96,7 +96,7 @@ public class FloatWindow  {
        }
         initMppWindow();
 //        mPpWindow.showAsDropDown(parentView);
-        mPpWindow.showAsDropDown(parentView , 40 , 40 );
+        mPpWindow.showAsDropDown(parentView , -40 , 0 );
     }
 
     public void show(){

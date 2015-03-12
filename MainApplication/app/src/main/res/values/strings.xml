@@ -52,8 +52,9 @@
 
     
     <string name="b_add_friends">添加好友</string>
-    <string name="b_own_info">   个人资料</string>
-    <string name="b_feedback">   意见反馈</string>
+    <string name="b_own_info">个人资料</string>
+    <string name="b_feedback">意见反馈</string>
+    <string name="b_add_lable">添加标签</string>
 
     <string name="title_activity_request_add_friend">RequestAddFriendActivity</string>
     <string name="title_activity_search_user">SearchUserActivity</string>

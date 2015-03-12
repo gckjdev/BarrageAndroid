@@ -49,6 +49,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
 
     private FloatWindow mFloatWindow;
 
+    private View mPopWindowItemView;
 
     @Inject
     UserMission    mUserMission;
@@ -86,7 +87,16 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
                 R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
 
 
-
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if(tabId.equals(TAB_1_TAG)){
+                    mPopWindowItemView.setVisibility(View.GONE);
+                }else if(tabId.equals(TAB_3_TAG)){
+                    mPopWindowItemView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
 
     }
@@ -288,13 +298,19 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
                View v1 = childs.getChildAt(0);
                View v2 = childs.getChildAt(2);
                View v3 = childs.getChildAt(4);
+               View v4 = childs.getChildAt(6);
 
                v1.setTag(1);
                v3.setTag(3);
                v2.setTag(2);
+               v4.setTag(4);
+
                v1.setOnClickListener(this);
                v2.setOnClickListener(this);
                v3.setOnClickListener(this);
+               v4.setOnClickListener(this);
+
+               mPopWindowItemView = v2;
            }
 
        }
@@ -308,10 +324,16 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         int position = (int)v.getTag();
         if(position == 1){
             //添加好友
+
         }else if(position == 2){
-            //个人资料
+            //添加标签
+
         }else if(position == 3){
+            //个人资料
+
+        }else if(position == 4){
             //意见反馈
+
         }
     }
 }
