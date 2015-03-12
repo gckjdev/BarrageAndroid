@@ -98,11 +98,13 @@ public class BarrageCommonActivity extends RoboActivity  {
     }
 
 
-    //关闭导航栏左边的按钮
-    public void closeLeftButton(){
+    // 隐藏导航栏左边的按钮
+    public void hideLeftButton(){
 
-        Button button = (Button) findViewById(R.id.top_back_button);
-        if(button != null) button.setVisibility(View.GONE);
+        ImageButton button = (ImageButton) findViewById(R.id.top_back_button);
+        if (button != null){
+            button.setVisibility(View.GONE);
+        }
 
     }
 
