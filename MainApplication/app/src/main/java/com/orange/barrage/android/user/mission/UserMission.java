@@ -192,4 +192,7 @@ public class UserMission {
                 });
     }
 
+    public void searchUser(String keyword, int offset, int limit, SearchUserCallback callback){
+    }
+
 }
