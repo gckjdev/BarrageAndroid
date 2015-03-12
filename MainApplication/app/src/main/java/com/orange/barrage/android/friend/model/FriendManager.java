@@ -7,7 +7,6 @@ import com.orange.barrage.android.util.model.CommonManager;
 import com.orange.barrage.android.util.persistent.ShareUserDBDAO;
 import com.orange.protocol.message.UserProtos;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -175,6 +174,7 @@ public class FriendManager extends CommonManager {
         }
 
         List<UserProtos.PBUser> friendList = getFriendList();
+        //第一个参数是类型，第二个参数是名称，第三个参数是需要遍历的集合
         for (UserProtos.PBUser user : friendList){
             if (friendId.equalsIgnoreCase(user.getUserId())){
                 return user;

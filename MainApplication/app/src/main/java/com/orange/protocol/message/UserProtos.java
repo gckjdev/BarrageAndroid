@@ -95,7 +95,7 @@ public final class UserProtos {
    */
   public enum FriendAddConfigType
       implements com.google.protobuf.ProtocolMessageEnum {
-    /**
+     /**
      * <code>REQUIRE_ACCEPT = 0;</code>
      *
      * <pre>

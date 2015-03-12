@@ -10,6 +10,8 @@ import com.orange.protocol.message.ErrorProtos;
 import com.orange.protocol.message.MessageProtos;
 import com.orange.protocol.message.UserProtos;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -190,6 +192,37 @@ public class UserMission {
                         callback.handleMessage(errorCode, null);
                     }
                 });
+    }
+
+    public void searchUser(final String keyword, final int offset, final int limit, final SearchUserCallback callback){
+
+        MessageProtos.PBSearchUserRequest.Builder builder = MessageProtos.PBSearchUserRequest.newBuilder();
+        builder.setKeyword(keyword);
+        builder.setLimit(limit);
+        builder.setOffset(offset);
+
+        MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
+        dataRequestBuilder.setSearchUserRequest(builder);
+
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_SEARCH_USER_VALUE,
+                dataRequestBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+
+                        List<UserProtos.PBUser> userList = response.getSearchUserResponse().getUsersList();
+                        Ln.d(UserMission.class.getName(), "searchUser success, keyword="+keyword+", offset="+offset+", limit="+limit);
+                        callback.handleMessage(0, userList);
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        Ln.w("searchUser failure, keyword="+keyword+", offset="+offset+", limit="+limit);
+                        callback.handleMessage(errorCode, null);
+                    }
+                });
+
     }
 
 }

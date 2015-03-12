@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.orange.barrage.android.friend.activity.SearchUserActivity">
+
+    <include layout="@layout/activity_view_top" />
+    <RelativeLayout
+        android:id="@+id/add_friend_layout"
+        android:layout_marginTop="13dp"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageview"
+
+            android:layout_marginLeft="12dip"
+            android:src="@drawable/search_friend" />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="昵称/邮箱/手机号/微博"
+            android:textColor="#ff333333"
+            android:textSize="16.0dip"
+            android:background="@null"
+            android:id="@+id/search_edit_text"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageview"
+            android:layout_toEndOf="@+id/imageview"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp" />
+    </RelativeLayout>
+    <ListView
+        android:layout_marginTop="15dp"
+        android:divider="@color/b_list_view_divider"
+        android:dividerHeight="@dimen/b_list_view_divider_height"
+        android:background="@android:color/white"
+        android:id="@+id/search_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </ListView>
+</LinearLayout>

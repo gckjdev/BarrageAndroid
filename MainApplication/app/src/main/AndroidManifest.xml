@@ -4,9 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".BarrageAndroid"
@@ -14,9 +14,12 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-        <meta-data android:value="5493c606fd98c571830006cb" android:name="UMENG_APPKEY"></meta-data>
-        <meta-data android:value="Default" android:name="UMENG_CHANNEL"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5493c606fd98c571830006cb" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Default" />
 
         <activity
             android:name=".home.HomeActivity"
@@ -36,11 +39,14 @@
             android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
             android:label="@string/title_activity_login_home_with_invite_code" >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".user.ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
-
         </activity>
         <activity
             android:name=".user.ui.login.EmailLoginActivity"
@@ -58,33 +64,36 @@
             android:name=".user.ui.invitecode.InviteCodePassActivity"
             android:label="@string/title_activity_invite_code_pass" >
         </activity>
-        <activity android:name=".user.ui.register.MainRegisterActivity">
-
+        <activity android:name=".user.ui.register.MainRegisterActivity" >
         </activity>
         <activity
             android:name=".user.ui.register.EmailRegisterActivity"
             android:label="@string/title_activity_email_register" >
         </activity>
-        <activity android:name=".user.ui.login.LoginEditeTextActivtiy"
-            android:label="LoginEditeTextActivtiy"></activity>
-
-
-        <activity android:name=".user.ui.view.Text"></activity>
-
-        <activity android:name=".feed.activity.FeedPublishedActivity">
-
+        <activity
+            android:name=".user.ui.login.LoginEditeTextActivtiy"
+            android:label="LoginEditeTextActivtiy" />
+        <activity android:name=".user.ui.view.Text" />
+        <activity android:name=".feed.activity.FeedPublishedActivity" >
         </activity>
-        <activity android:name=".feed.activity.CommentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".friend.activity.RequestAddFriendActivity"
+            android:label="@string/title_activity_request_add_friend" >
+        </activity>
+        <activity
+            android:name=".friend.activity.SearchUserActivity"
+            android:label="@string/title_activity_search_user" >
+        </activity>
+
+        <activity android:name=".feed.activity.CommentActivity">
+
         </activity>
 
         <activity android:name=".user.ui.login.HomePageActivity">
 
         </activity>
+
 
     </application>
 

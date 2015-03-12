@@ -23,6 +23,10 @@ import roboguice.activity.RoboActivity;
 import com.litl.leveldb.NotFoundException;
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.friend.mission.FriendMission;
+import com.orange.barrage.android.user.mission.UserMission;
+
+import javax.inject.Inject;
 
 /**
  * Created by youjiannuo on 2015/3/3.
@@ -35,6 +39,12 @@ public class BarrageCommonActivity extends RoboActivity  {
     /*Application*/
     protected BarrageAndroid mBarrageAndroid;
 
+
+    @Inject
+    protected UserMission mUserMission;
+
+    @Inject
+    protected FriendMission mFriendMission;
 
 
     /**
@@ -103,7 +113,8 @@ public class BarrageCommonActivity extends RoboActivity  {
 
 
     public void setRightButton(int resid){
-        if(resid < 0) return ;
+        if(resid <= 0)
+            return ;
 
         try {
             TextView tv = (TextView)findViewById(R.id.top_right_text);

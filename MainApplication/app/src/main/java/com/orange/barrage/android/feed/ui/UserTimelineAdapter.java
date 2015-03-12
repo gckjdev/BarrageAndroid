@@ -3,27 +3,17 @@ package com.orange.barrage.android.feed.ui;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.model.FeedManager;
-import com.orange.barrage.android.ui.topic.PictureTopicContainer;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
-import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.protocol.message.BarrageProtos;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import javax.inject.Inject;
-
-import roboguice.util.Ln;
 
 /**
  * Created by Rollin on 2015/1/1.

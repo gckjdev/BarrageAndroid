@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="44dip"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dip"
     android:id="@+id/top_main"
     android:background="@drawable/title_top_bg">
+
     <ImageButton
         android:text="back"
         android:layout_marginLeft="10dip"
@@ -33,7 +35,8 @@
         android:layout_alignParentEnd="true"
         android:onClick="onClickRight"
         android:visibility="gone"
-        android:layout_marginRight="18dip"  />
+        android:layout_marginRight="18dip" />
+
     <TextView
         android:id="@+id/top_right_text"
         android:text="发送"
@@ -45,5 +48,5 @@
         android:layout_alignParentEnd="true"
         android:onClick="onClickRight"
         android:visibility="gone"
-        android:layout_marginRight="18dip"  />
+        android:layout_marginRight="18dip" />
 </RelativeLayout>

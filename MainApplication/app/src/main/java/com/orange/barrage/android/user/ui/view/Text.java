@@ -17,7 +17,7 @@ public class Text extends Activity{
 
         UserAvatarView mm = (UserAvatarView)findViewById(R.id.view);
 
-        mm.setImageBitmap("http://edu.online.sh.cn/education/gb/content/attachement/jpg/site1/20130712/4487fc9b69f01349f5d444.jpg");
+        mm.setAvartUrl("http://edu.online.sh.cn/education/gb/content/attachement/jpg/site1/20130712/4487fc9b69f01349f5d444.jpg");
 
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:minHeight="50dp"
+    android:layout_height="50dp">
+
+    <com.orange.barrage.android.user.ui.view.UserAvatarView
+        android:scaleType="fitXY"
+        android:layout_centerVertical="true"
+        android:id="@+id/friend_avatar_view"
+        android:layout_marginLeft="18dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/friend_nick"
+        android:text="我的昵称很长很长"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/b_list_view_font_big"
+        android:textColor="@color/b_font_black"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/friend_avatar_view"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="13dp" />
+    <TextView
+        android:text="这个是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长的签名"
+        android:textSize="@dimen/b_list_view_font_medium"
+        android:textColor="@color/b_color_gray"
+        android:id="@+id/friend_signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="17dp"
+        android:layout_alignTop="@+id/friend_nick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp" />
+</RelativeLayout>

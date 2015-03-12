@@ -51,8 +51,8 @@ import static com.orange.barrage.android.util.misc.PopupWindowUtil.*;
  */
 public class TestFragment extends RoboFragment {
 
-    @Inject
-    LevelDBTestDAO mLevelDBTestDAO;
+//    @Inject
+//    LevelDBTestDAO mLevelDBTestDAO;
 
     @Inject
     FeedMission mFeedMission;

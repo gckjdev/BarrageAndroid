@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.orange.barrage.android"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -53,4 +53,6 @@ dependencies {
 
     compile 'com.squareup.phrase:phrase:1.0.3'
     compile 'com.soundcloud.android:android-crop:0.9.10@aar'
+
+    compile 'com.pkmmte.view:circularimageview:1.1'
 }

@@ -3,17 +3,13 @@ package com.orange.barrage.android.feed.ui;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
-import com.orange.protocol.message.BarrageProtos;
-import com.squareup.picasso.Picasso;
 
 import roboguice.util.Ln;
 
@@ -53,8 +49,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         });
 
         mShareButton.setOnClickListener(this);
-
-
     }
 
 

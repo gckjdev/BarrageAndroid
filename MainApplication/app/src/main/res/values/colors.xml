@@ -41,5 +41,6 @@
     <!--字体颜色-->
     <color name="b_font_black">#333333</color>
 
+    <color name="b_list_view_divider">#e7e7e7</color>
 
 </resources>

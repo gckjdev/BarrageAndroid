@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context="com.orange.barrage.android.friend.ui.FriendHomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ListView
+        android:divider="@color/b_list_view_divider"
+        android:dividerHeight="@dimen/b_list_view_divider_height"
+        android:id="@+id/friend_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>

@@ -2,7 +2,9 @@ package com.orange.barrage.android.user.ui.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+
 import android.graphics.BitmapFactory;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+
 import com.orange.barrage.android.util.imagecdn.ImageDealTools;
+
 
 /**
  * Created by youjiannuo on 2015/3/9.
@@ -93,7 +97,7 @@ public class CommentsView extends LinearLayout {
     public void setIconUrl(String url){
 
         if(mUserAvatarView != null)
-            mUserAvatarView.setImageBitmap(url);
+            mUserAvatarView.setAvartUrl(url);
 
     }
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.friend.ui.FriendHomeFragment;
 
 import roboguice.util.Ln;
 
@@ -33,7 +34,7 @@ public class Tab3Container extends HomeContainerFragment {
 
     private void initView() {
         // TODO set fragment here
-        replaceFragment(new TestFragment(), false);
+        replaceFragment(new FriendHomeFragment(), false);
     }
 
 }
