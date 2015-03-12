@@ -3,19 +3,14 @@ package com.orange.barrage.android.util.activity;
 
 
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.graphics.Bitmap;
+
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import roboguice.activity.RoboActivity;
@@ -106,7 +101,7 @@ public class BarrageCommonActivity extends RoboActivity  {
     //关闭导航栏左边的按钮
     public void closeLeftButton(){
 
-        Button button = (Button) findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.top_back_button);
         if(button != null) button.setVisibility(View.GONE);
 
     }
@@ -117,7 +112,7 @@ public class BarrageCommonActivity extends RoboActivity  {
             return ;
 
         try {
-            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
+            ImageButton image = ((ImageButton)(findViewById(R.id.top_right_button)));
             image.setImageResource(resid);
             image.setVisibility(View.VISIBLE);
         }catch (NotFoundException e){

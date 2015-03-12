@@ -73,7 +73,7 @@ public class FramgActivity extends RoboFragmentActivity {
 
     //关闭导航栏左边的按钮
     public void closeLeftButton(){
-        ImageButton button = (ImageButton) findViewById(R.id.button);
+        ImageButton button = (ImageButton) findViewById(R.id.top_right_button);
         if(button != null) button.setVisibility(View.GONE);
     }
 
@@ -82,7 +82,7 @@ public class FramgActivity extends RoboFragmentActivity {
         if(resid < 0) return ;
 
         try {
-            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
+            ImageButton image = ((ImageButton)(findViewById(R.id.top_right_button)));
             image.setImageResource(resid);
             image.setVisibility(View.VISIBLE);
         }catch (NotFoundException e){
