@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    style="@style/wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/popLinearLayout"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:layout_width="155dip"
+        android:layout_height="wrap_content">
+
+    <TextView
+        style="@style/b_homepage_pop_item"
+        android:text="@string/b_add_friends"
+        android:drawableLeft="@drawable/y_add_friends" />
+    <TextView
+        style="@style/b_homepage_pop_line" />
+    <TextView
+        style="@style/b_homepage_pop_item"
+        android:text="@string/b_add_lable"
+        android:drawableLeft="@drawable/y_add_label" />
+    <TextView
+        style="@style/b_homepage_pop_line" />
+    <TextView
+        android:text="@string/b_own_info"
+        style="@style/b_homepage_pop_item"
+        android:drawableLeft="@drawable/y_own_first" />
+    <TextView
+        style="@style/b_homepage_pop_line" />
+    <TextView
+        style="@style/b_homepage_pop_item"
+        android:text="@string/b_feedback"
+        android:drawableLeft="@drawable/y_add_label" />
+    </LinearLayout>
+
+    <TextView
+        android:background="@color/b_color_alpha"
+        android:layout_width="10dip"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -18,13 +18,13 @@ import javax.inject.Inject;
  */
 public class FriendListItemView extends LinearLayout{
     private Context mContext;
-//    public ImageView mImageView;
 
     private UserAvatarView mAvatarView;
 
     public TextView friend_nick;
     public TextView friend_signature;
     private View view;
+
     //凡是需要用户的时候，就设置这样一个用户变量,这样就以用户为单位进行操作了
     UserProtos.PBUser pbFriend;
 

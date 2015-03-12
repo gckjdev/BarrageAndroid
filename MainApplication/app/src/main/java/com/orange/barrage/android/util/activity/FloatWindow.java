@@ -32,7 +32,7 @@ public class FloatWindow  {
     }
 
 
-    public  FloatWindow(int layoutid , Context context , int height , int width){
+    public  FloatWindow(int layoutid , Context context , int width , int height){
 
         this.mContext = context;
         this.mLayoutid = layoutid;
@@ -82,6 +82,8 @@ public class FloatWindow  {
     }
 
 
+//    public void show(View parentView , int)
+
 
     /**
      * 显示浮动窗口
@@ -94,6 +96,7 @@ public class FloatWindow  {
        }
         initMppWindow();
         mPpWindow.showAsDropDown(parentView);
+
     }
 
     public void show(){

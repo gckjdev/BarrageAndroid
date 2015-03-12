@@ -9,7 +9,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -19,11 +21,13 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
+import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.File.FileTools;
 import com.orange.barrage.android.util.System.SystemTools;
 import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.FloatWindow;
 import com.orange.barrage.android.util.activity.FramgActivity;
 import com.orange.barrage.android.util.activity.RequestCodes;
 
@@ -35,7 +39,7 @@ import javax.inject.Inject;
 import de.greenrobot.event.EventBus;
 import roboguice.util.Ln;
 
-public class HomeActivity extends FramgActivity {
+public class HomeActivity extends FramgActivity implements View.OnClickListener {
 
     //这里才是主页面，就是那三个tab页面
     private static final String TAB_1_TAG = "tab_1";
@@ -44,9 +48,11 @@ public class HomeActivity extends FramgActivity {
 
     private FragmentTabHost mTabHost;
 
-    /*当前显示界面的View*/
-    private View mCurrentView;
+    private FloatWindow mFloatWindow;
 
+    private View mPopWindowItemView;
+
+    private String mTag = TAB_1_TAG;
 
     @Inject
     UserMission    mUserMission;
@@ -61,7 +67,7 @@ public class HomeActivity extends FramgActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.drawable.y_more_and_more_press);
+        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.string.select_a_friend);
 
         initView();
     }
@@ -79,13 +85,22 @@ public class HomeActivity extends FramgActivity {
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_1_TAG),
                 R.drawable.x_shouye,"首页",R.drawable.tab_select),Tab1Container.class,null);
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_2_TAG),
-                R.drawable.x_fabiao,"",R.drawable.tab_select),Tab2Container.class,null);
+                R.drawable.x_all_alph,"",R.drawable.tab_select),Tab2Container.class,null);
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_3_TAG),
                 R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
 
 
-        mCurrentView = mTabHost.getCurrentView();
-
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if(mPopWindowItemView == null) return;
+                if(tabId.equals(TAB_1_TAG)){
+                    mPopWindowItemView.setVisibility(View.GONE);
+                }else if(tabId.equals(TAB_3_TAG)){
+                    mPopWindowItemView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
 
     }
@@ -273,5 +288,58 @@ public class HomeActivity extends FramgActivity {
     public void onPause() {
         super.onPause();
        // MobclickAgent.onPause(this);
+    }
+
+
+    @Override
+    public void onClickRight(View v) {
+        boolean is = false;
+       if(mFloatWindow == null){
+           is = true;
+           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , 320 , ViewGroup.LayoutParams.WRAP_CONTENT);
+       }
+
+       mFloatWindow.show(v);
+
+        LinearLayout childs = (LinearLayout)(mFloatWindow.getContextView().findViewById(R.id.popLinearLayout));
+        if(is && childs != null){
+
+            View v1 = childs.getChildAt(0);
+            View v2 = childs.getChildAt(2);
+            View v3 = childs.getChildAt(4);
+            View v4 = childs.getChildAt(6);
+
+            v1.setTag(1);
+            v3.setTag(3);
+            v2.setTag(2);
+            v4.setTag(4);
+
+            v1.setOnClickListener(this);
+            v2.setOnClickListener(this);
+            v3.setOnClickListener(this);
+            v4.setOnClickListener(this);
+
+            mPopWindowItemView = v2;
+        }
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int position = (int)v.getTag();
+        if(position == 1){
+            //添加好友
+            ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
+        }else if(position == 2){
+            //添加标签
+
+        }else if(position == 3){
+            //个人资料
+
+        }else if(position == 4){
+            //意见反馈
+
+        }
     }
 }

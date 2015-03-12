@@ -8,6 +8,11 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
     <application
         android:name=".BarrageAndroid"
         android:allowBackup="true"
@@ -25,11 +30,6 @@
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".feed.activity.FeedReplyActivity"
@@ -43,6 +43,7 @@
         <activity
             android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
             android:label="@string/title_activity_login_home_with_invite_code" >
+
 
         </activity>
         <activity
@@ -77,21 +78,50 @@
         <activity android:name=".user.ui.view.Text" />
         <activity android:name=".feed.activity.FeedPublishedActivity" >
         </activity>
-        <activity android:name=".feed.activity.CommentActivity" />
+
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend" >
         </activity>
         <activity
             android:name=".friend.activity.SearchUserActivity"
-            android:windowSoftInputMode="adjustPan"
             android:label="@string/title_activity_search_user" >
         </activity>
-        <activity
 
-            android:name=".friend.activity.FriendDetailActivity"
-            android:label="@string/title_activity_friend_detail" >
+        <activity android:name=".feed.activity.CommentActivity">
+
         </activity>
+
+        <activity android:name=".user.ui.login.HomePageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--Share SDK Activities -->
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--Share SDK 微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

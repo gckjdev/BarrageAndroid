@@ -16,23 +16,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
+import com.orange.barrage.android.user.mission.SearchUserCallback;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.protocol.message.UserProtos;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
 
 public class SearchUserActivity extends BarrageCommonActivity {
-    //injectView说明注入的一个控件
+
+    private static final int SEARCH_USER_RESULT_LIMIT = 30;
+
+    private int mOffset = 0;
+
     @InjectView(R.id.search_edit_text)
     private EditText mSearchEditText;
 
     @InjectView(R.id.search_listview)
     private ListView mSearchResultListView;
 
-    //如果是注入一个类，直接@Inject即可
     @Inject
     SearchFriendListAdapter mAdapter;
 
@@ -71,6 +76,8 @@ public class SearchUserActivity extends BarrageCommonActivity {
                 }
 
                 handler.post(eChanged);
+
+                doSearch(mSearchEditText.getText().toString());
 
             }
         });
@@ -129,22 +136,13 @@ public class SearchUserActivity extends BarrageCommonActivity {
 
     public void doSearch(String searchKeyword){
 
-        // just for test
-        mFriendMission.syncFriend(new GetFriendListCallback() {
-                @Override
-                public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
-                    // update data
-                mAdapter.setFriendList(friendList.getFriendsList());
+        mUserMission.searchUser(searchKeyword, mOffset, SEARCH_USER_RESULT_LIMIT, new SearchUserCallback() {
+            @Override
+            public void handleMessage(int errorCode, List<UserProtos.PBUser> pbUserList) {
+                // update data and reload UI
+                mAdapter.setFriendList(pbUserList);
                 mAdapter.notifyDataSetChanged();
             }
         });
-
-
-//        mUserMission.searchUser(searchKeyword, offset, limit, new SearchUserCallback() {
-//            @Override
-//            public void handleMessage(int errorCode, List<UserProtos.PBUser> pbUserList) {
-//
-//            }
-//        });
     }
 }

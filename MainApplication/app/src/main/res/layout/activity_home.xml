@@ -13,34 +13,48 @@
 
 
     <RelativeLayout
+        android:background="@drawable/x_bottom_caidan_bgrepaint"
         android:layout_width="match_parent"
+        android:paddingTop="8dip"
         android:layout_height="@dimen/y_mainview_menu_height">
 
     <android.support.v4.app.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:paddingTop="8dip"
-        android:layout_height="@dimen/y_mainview_menu_height"
-        android:background="@drawable/x_bottom_caidan_bgrepaint">
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="48dip">
 
-        <FrameLayout
+
+            <FrameLayout
             android:id="@android:id/tabcontent"
+            android:layout_gravity="center"
             android:layout_width="0dip"
             android:layout_height="0dip"
             android:layout_weight="0" />
 
     </android.support.v4.app.FragmentTabHost>
+
+    <LinearLayout
+        style="@style/match_content">
+        <TextView
+            android:layout_weight="1"
+            style="@style/match_content"
+            android:background="@color/b_color_alpha"/>
         <ImageButton
             android:onClick="onCLickCamer"
-            style="@style/wrap_content"
+            style="@style/match_content"
+            android:layout_weight="1"
             android:background="@color/b_color_alpha"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:src="@drawable/x_fabiao"/>
+        <TextView
+            android:layout_weight="1"
+            style="@style/match_content"
+            android:background="@color/b_color_alpha"/>
+    </LinearLayout>
 </RelativeLayout>
-    <!--<TextView
-        android:layout_width="match_parent"
-        android:layout_height="4dip" />
+<!--<TextView
+    android:layout_width="match_parent"
+    android:layout_height="4dip" />
 -->
 </LinearLayout>

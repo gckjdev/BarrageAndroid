@@ -1,15 +1,22 @@
 package com.orange.barrage.android.util.activity;
 
 
+import com.orange.barrage.android.BarrageAndroid;
 
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import roboguice.activity.RoboActivity;
+
+import com.litl.leveldb.NotFoundException;
 
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
@@ -94,21 +101,31 @@ public class BarrageCommonActivity extends RoboActivity  {
             mTitle.setText(s);
     }
 
+
+    // 隐藏导航栏左边的按钮
+    public void hideLeftButton(){
+
+        ImageButton button = (ImageButton) findViewById(R.id.top_back_button);
+        if (button != null){
+            button.setVisibility(View.GONE);
+        }
+
+    }
+
+
     public void setRightButton(int resid){
         if(resid <= 0)
             return ;
 
         try {
-            Drawable drawable = getDrawable(resid);
-            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
-            image.setImageDrawable(drawable);
+            ImageButton image = ((ImageButton)(findViewById(R.id.top_right_button)));
+            image.setImageResource(resid);
             image.setVisibility(View.VISIBLE);
-        }catch (Exception e){
+        }catch (NotFoundException e){
             TextView tv = (TextView)findViewById(R.id.top_right_text);
             tv.setText(getString(resid));
             tv.setVisibility(View.VISIBLE);
     }
-
 
     }
 
