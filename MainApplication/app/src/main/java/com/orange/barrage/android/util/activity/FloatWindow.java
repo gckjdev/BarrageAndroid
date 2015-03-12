@@ -32,7 +32,7 @@ public class FloatWindow  {
     }
 
 
-    public  FloatWindow(int layoutid , Context context , int height , int width){
+    public  FloatWindow(int layoutid , Context context , int width , int height){
 
         this.mContext = context;
         this.mLayoutid = layoutid;

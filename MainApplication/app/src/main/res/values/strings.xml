@@ -57,4 +57,8 @@
     <string name="b_share_main">分享</string>
     <string name="b_comment">评论</string>
     <string name="b_send">发送</string>
+    
+    <string name="b_add_friends">添加好友</string>
+    <string name="b_own_info">   个人资料</string>
+    <string name="b_feedback">   意见反馈</string>
 </resources>

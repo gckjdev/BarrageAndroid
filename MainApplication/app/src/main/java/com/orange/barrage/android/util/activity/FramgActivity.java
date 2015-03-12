@@ -2,13 +2,16 @@ package com.orange.barrage.android.util.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.litl.leveldb.NotFoundException;
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
 
 import roboguice.activity.RoboFragmentActivity;
+import roboguice.inject.InjectView;
 
 /**
  * Created by youjiannuo on 2015/3/9.
@@ -20,6 +23,8 @@ public class FramgActivity extends RoboFragmentActivity {
 
     /*Application*/
     protected BarrageAndroid mBarrageAndroid;
+
+
 
     /**
      *
@@ -46,6 +51,7 @@ public class FramgActivity extends RoboFragmentActivity {
         setContentView(layoutresid);
         setTitleText(titleString);
         setRightButton(rightid);
+        closeLeftButton();
     }
 
     /**
@@ -65,10 +71,26 @@ public class FramgActivity extends RoboFragmentActivity {
             mTitle.setText(s);
     }
 
+    //关闭导航栏左边的按钮
+    public void closeLeftButton(){
+        ImageButton button = (ImageButton) findViewById(R.id.button);
+        if(button != null) button.setVisibility(View.GONE);
+    }
+
+
     public void setRightButton(int resid){
         if(resid < 0) return ;
-        ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
-        image.setImageResource(resid);
+
+        try {
+            TextView tv = (TextView)findViewById(R.id.top_right_text);
+            tv.setText(getString(resid));
+            tv.setVisibility(View.VISIBLE);
+        }catch (NotFoundException e){
+            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
+            image.setImageResource(resid);
+            image.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public String getIntentString(String key){

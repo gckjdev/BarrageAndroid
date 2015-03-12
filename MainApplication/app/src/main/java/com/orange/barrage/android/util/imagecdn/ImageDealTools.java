@@ -64,5 +64,23 @@ public class ImageDealTools {
     }
 
 
+    /**
+     * 获取一个圆
+     * @return
+     */
+    public static Bitmap getBitmapCircle(int color , int radius){
+        Bitmap bitmap = Bitmap.createBitmap(radius * 2 , radius * 2 , Bitmap.Config.ARGB_8888);
+        Paint paint = new Paint();
+
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.STROKE);
+        Canvas canvas = new Canvas(bitmap);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN)); //因为我们先画了图所以DST_IN
+        canvas.drawCircle(radius, radius, radius, paint); //r=radius, 圆心(r,r)
+
+        return bitmap;
+    }
+
+
 
 }

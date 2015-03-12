@@ -11,13 +11,16 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import roboguice.activity.RoboActivity;
 
+import com.litl.leveldb.NotFoundException;
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
 
@@ -89,20 +92,28 @@ public class BarrageCommonActivity extends RoboActivity  {
             mTitle.setText(s);
     }
 
+
+    //关闭导航栏左边的按钮
+    public void closeLeftButton(){
+
+        Button button = (Button) findViewById(R.id.button);
+        if(button != null) button.setVisibility(View.GONE);
+
+    }
+
+
     public void setRightButton(int resid){
         if(resid < 0) return ;
 
         try {
-            Drawable drawable = getDrawable(resid);
-            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
-            image.setImageDrawable(drawable);
-            image.setVisibility(View.VISIBLE);
-        }catch (Exception e){
             TextView tv = (TextView)findViewById(R.id.top_right_text);
             tv.setText(getString(resid));
             tv.setVisibility(View.VISIBLE);
+        }catch (NotFoundException e){
+            ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
+            image.setImageResource(resid);
+            image.setVisibility(View.VISIBLE);
         }
-
 
     }
 

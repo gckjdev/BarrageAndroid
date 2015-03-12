@@ -83,9 +83,11 @@
     <style name="comments" >
         <item name="android:layout_height">@dimen/b_comments_icon</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:paddingLeft">41dip</item>
-        <item name="android:background">@drawable/x_comments_edittext_bg</item>
+        <item name="android:paddingLeft">51dip</item>
+        <item name="android:background">@drawable/y_dotted_box</item>
         <item name="android:visibility">gone</item>
+        <item name = "android:alpha">0.6</item>
+        <item name="android:paddingRight">30dip</item>
     </style>
 
     <style name="b_color_ring">
@@ -104,5 +106,20 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:background">@color/b_color_alpha</item>
     </style>
-    
+
+    <style name="b_homepage_pop_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dip</item>
+        <item name="android:paddingLeft">26dip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="b_homepage_pop_line">
+        <item name="android:layout_height">1dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">#262626</item>
+    </style>
+
 </resources>

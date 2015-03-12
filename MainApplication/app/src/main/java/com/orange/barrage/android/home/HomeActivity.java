@@ -15,7 +15,9 @@ import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.File.FileTools;
 import com.orange.barrage.android.util.System.SystemTools;
 import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.FloatWindow;
 import com.orange.barrage.android.util.activity.FramgActivity;
 import com.orange.barrage.android.util.activity.RequestCodes;
 import com.orange.barrage.android.R;
@@ -43,7 +46,7 @@ import javax.inject.Inject;
 import de.greenrobot.event.EventBus;
 import roboguice.util.Ln;
 
-public class HomeActivity extends FramgActivity {
+public class HomeActivity extends FramgActivity implements View.OnClickListener {
 
     private static final String TAB_1_TAG = "tab_1";
     private static final String TAB_2_TAG = "tab_2";
@@ -51,8 +54,7 @@ public class HomeActivity extends FramgActivity {
 
     private FragmentTabHost mTabHost;
 
-    /*当前显示界面的View*/
-    private View mCurrentView;
+    private FloatWindow mFloatWindow;
 
 
     @Inject
@@ -91,7 +93,6 @@ public class HomeActivity extends FramgActivity {
                 R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
 
 
-        mCurrentView = mTabHost.getCurrentView();
 
 
 
@@ -280,5 +281,44 @@ public class HomeActivity extends FramgActivity {
     public void onPause() {
         super.onPause();
        // MobclickAgent.onPause(this);
+    }
+
+
+    @Override
+    public void onClickRight(View v) {
+       if(mFloatWindow == null){
+           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , 310 , ViewGroup.LayoutParams.WRAP_CONTENT);
+
+           LinearLayout childs = (LinearLayout)mFloatWindow.getContextView();
+           if(childs != null){
+
+               View v1 = childs.getChildAt(0);
+               View v2 = childs.getChildAt(2);
+               View v3 = childs.getChildAt(4);
+
+               v1.setTag(1);
+               v3.setTag(3);
+               v2.setTag(2);
+               v1.setOnClickListener(this);
+               v2.setOnClickListener(this);
+               v3.setOnClickListener(this);
+           }
+
+       }
+
+       mFloatWindow.show(v);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int position = (int)v.getTag();
+        if(position == 1){
+            //添加好友
+        }else if(position == 2){
+            //个人资料
+        }else if(position == 3){
+            //意见反馈
+        }
     }
 }

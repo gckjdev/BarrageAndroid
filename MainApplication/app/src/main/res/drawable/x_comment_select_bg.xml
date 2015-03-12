@@ -1,0 +1,8 @@
+<?xmls vsrsion = "1" encoding = "1" ?>
+<shape
+    xmlns:android1="http://schemas.android.com/apk/res/android">
+
+    <solid android1:color="@color/b_color_gray" />
+    <corners android1:radius="100dip" />
+
+</shape>
