@@ -39,10 +39,7 @@
             android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
             android:label="@string/title_activity_login_home_with_invite_code" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".user.ui.login.LoginActivity"
@@ -91,7 +88,10 @@
         </activity>
 
         <activity android:name=".user.ui.login.HomePageActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 

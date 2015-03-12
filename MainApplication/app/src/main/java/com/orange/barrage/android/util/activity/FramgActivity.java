@@ -82,13 +82,14 @@ public class FramgActivity extends RoboFragmentActivity {
         if(resid < 0) return ;
 
         try {
-            TextView tv = (TextView)findViewById(R.id.top_right_text);
-            tv.setText(getString(resid));
-            tv.setVisibility(View.VISIBLE);
-        }catch (NotFoundException e){
             ImageButton image = ((ImageButton)(findViewById(R.id.top_right)));
             image.setImageResource(resid);
             image.setVisibility(View.VISIBLE);
+        }catch (NotFoundException e){
+
+            TextView tv = (TextView)findViewById(R.id.top_right_text);
+            tv.setText(getString(resid));
+            tv.setVisibility(View.VISIBLE);
         }
 
     }

@@ -15,7 +15,7 @@
         android:onClick="onClickFinish"
         android:src="@drawable/x_top_back"
         android:background="#00000000"
-        android:id="@+id/button" />
+        android:id="@+id/top_back_button" />
 
     <TextView
         android:id="@+id/top_title"
@@ -28,14 +28,17 @@
         android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:id="@+id/top_right"
+        android:id="@+id/top_right_button"
         style="@style/wrap_content"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:onClick="onClickRight"
+        android:src="@drawable/x_more_and_more"
+        android:background="@drawable/x_more_and_more"
         android:visibility="gone"
-        android:layout_marginRight="18dip" />
+        android:layout_marginRight="18dp"
+        android:layout_below="@+id/top_right_text"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="18dp" />
 
     <TextView
         android:id="@+id/top_right_text"
@@ -43,10 +46,9 @@
         android:textColor="@drawable/x_top_send"
         style="@style/wrap_content"
         android:textSize="14dip"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:onClick="onClickRight"
         android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
         android:layout_marginRight="18dip" />
 </RelativeLayout>
