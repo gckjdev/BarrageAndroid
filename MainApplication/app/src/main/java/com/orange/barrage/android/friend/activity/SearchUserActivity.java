@@ -69,15 +69,15 @@ public class SearchUserActivity extends BarrageCommonActivity {
                  * 所以这里我们就需要加上数据的修改的动作了。
                  */
                 //如果编辑框为空，则列表消失
-                if (s.length() == 0) {
-                   mSearchResultListView.setVisibility(View.INVISIBLE);
-                } else {
-                   // mSearchResultListView.setVisibility(View.VISIBLE);
-                }
-
-                handler.post(eChanged);
-
-                doSearch(mSearchEditText.getText().toString());
+//                if (s.length() == 0) {
+//                   mSearchResultListView.setVisibility(View.INVISIBLE);
+//                } else {
+//                   // mSearchResultListView.setVisibility(View.VISIBLE);
+//                }
+//
+//                handler.post(eChanged);
+//
+//                doSearch(mSearchEditText.getText().toString());
 
             }
         });
@@ -122,9 +122,9 @@ public class SearchUserActivity extends BarrageCommonActivity {
                                         InputMethodManager.HIDE_NOT_ALWAYS);
 
                         mSearchResultListView.setVisibility(View.VISIBLE);
-                        //这里的监听是判断文本框输入是否为空，如果为空，则隐藏ListView
-                        setSearchTextChanged();
-                        doSearch("");
+//                        //这里的监听是判断文本框输入是否为空，如果为空，则隐藏ListView
+//                        setSearchTextChanged();
+                        doSearch(mSearchEditText.getText().toString());
                     }
                     return true;
                 }
