@@ -84,6 +84,11 @@
             android:name=".friend.activity.SearchUserActivity"
             android:label="@string/title_activity_search_user" >
         </activity>
+        <activity
+
+            android:name=".friend.activity.FriendDetailActivity"
+            android:label="@string/title_activity_friend_detail" >
+        </activity>
     </application>
 
 </manifest>

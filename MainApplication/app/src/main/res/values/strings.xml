@@ -51,5 +51,6 @@
     <string name="b_send">发送</string>
     <string name="title_activity_request_add_friend">RequestAddFriendActivity</string>
     <string name="title_activity_search_user">SearchUserActivity</string>
+    <string name="title_activity_friend_detail">FriendDetailActivity</string>
 
 </resources>

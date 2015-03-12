@@ -3,23 +3,18 @@ package com.orange.barrage.android.util.activity;
 
 
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import roboguice.activity.RoboActivity;
-
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
+
+import roboguice.activity.RoboActivity;
 
 /**
  * Created by youjiannuo on 2015/3/3.
