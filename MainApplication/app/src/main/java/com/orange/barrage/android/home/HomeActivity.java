@@ -21,6 +21,7 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
+import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.File.FileTools;
@@ -51,6 +52,8 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
 
     private View mPopWindowItemView;
 
+    private String mTag = TAB_1_TAG;
+
     @Inject
     UserMission    mUserMission;
 
@@ -64,7 +67,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.drawable.y_more_and_more_press);
+        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.string.select_a_friend);
 
         initView();
     }
@@ -90,6 +93,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
+                if(mPopWindowItemView == null) return;
                 if(tabId.equals(TAB_1_TAG)){
                     mPopWindowItemView.setVisibility(View.GONE);
                 }else if(tabId.equals(TAB_3_TAG)){
@@ -289,33 +293,35 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
 
     @Override
     public void onClickRight(View v) {
+        boolean is = false;
        if(mFloatWindow == null){
-           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , 310 , ViewGroup.LayoutParams.WRAP_CONTENT);
-
-           LinearLayout childs = (LinearLayout)mFloatWindow.getContextView();
-           if(childs != null){
-
-               View v1 = childs.getChildAt(0);
-               View v2 = childs.getChildAt(2);
-               View v3 = childs.getChildAt(4);
-               View v4 = childs.getChildAt(6);
-
-               v1.setTag(1);
-               v3.setTag(3);
-               v2.setTag(2);
-               v4.setTag(4);
-
-               v1.setOnClickListener(this);
-               v2.setOnClickListener(this);
-               v3.setOnClickListener(this);
-               v4.setOnClickListener(this);
-
-               mPopWindowItemView = v2;
-           }
-
+           is = true;
+           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , 320 , ViewGroup.LayoutParams.WRAP_CONTENT);
        }
 
        mFloatWindow.show(v);
+
+        LinearLayout childs = (LinearLayout)(mFloatWindow.getContextView().findViewById(R.id.popLinearLayout));
+        if(is && childs != null){
+
+            View v1 = childs.getChildAt(0);
+            View v2 = childs.getChildAt(2);
+            View v3 = childs.getChildAt(4);
+            View v4 = childs.getChildAt(6);
+
+            v1.setTag(1);
+            v3.setTag(3);
+            v2.setTag(2);
+            v4.setTag(4);
+
+            v1.setOnClickListener(this);
+            v2.setOnClickListener(this);
+            v3.setOnClickListener(this);
+            v4.setOnClickListener(this);
+
+            mPopWindowItemView = v2;
+        }
+
     }
 
 
@@ -324,7 +330,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         int position = (int)v.getTag();
         if(position == 1){
             //添加好友
-
+            ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
         }else if(position == 2){
             //添加标签
 
