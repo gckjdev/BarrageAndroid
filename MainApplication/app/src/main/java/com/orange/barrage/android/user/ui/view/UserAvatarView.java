@@ -20,6 +20,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.imagecdn.ImageDealTools;
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
 import com.orange.protocol.message.UserProtos;
+import com.pkmmte.view.CircularImageView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -28,24 +29,31 @@ import java.util.zip.Inflater;
 /**
  * Created by pipi on 15/3/5.
  */
-public class UserAvatarView extends ImageView {
+public class UserAvatarView extends CircularImageView {
 
     private Context mContext;
     UserProtos.PBUser user;
-    int borderWidth = 8;
 
     public UserAvatarView(Context context , AttributeSet attrs) {
         super(context , attrs);
         mContext = context;
+
+
     }
 
     public void loadUser(UserProtos.PBUser user){
+
+        setBorderWidth(10);
+        setBorderColor(Color.RED);
+        setSelectorStrokeWidth(10);
+        setSelectorStrokeColor(Color.BLUE);
 
         // set user data
         this.user = user;
 
         // load avatar image
         setAvartUrl(user.getAvatar());
+
     }
 
     public void setAvartUrl(String url){
@@ -56,8 +64,8 @@ public class UserAvatarView extends ImageView {
 
         Picasso.with(mContext)
                 .load(url)
-                .resize(300,300)
-                .transform(new RoundedTransformation(borderWidth))
+//                .resize(300,300)
+//                .transform(new RoundedTransformation(borderWidth))
                 .placeholder(R.drawable.tab_home)       // TODO change to right default
                 .error(R.drawable.tab_friend)           // TODO change to right default
                 .into(this , null);
@@ -78,11 +86,11 @@ public class UserAvatarView extends ImageView {
         }
     };
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-//        ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
-    }
+//    @Override
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+////        ImageDealTools.DrawRoundStroke(canvas , getWidth() , getHeight() ,Color.WHITE);
+//    }
 
 
 }

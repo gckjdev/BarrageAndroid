@@ -27,6 +27,10 @@ import roboguice.inject.InjectView;
 
 public class SearchUserActivity extends BarrageCommonActivity {
 
+    private static final int SEARCH_USER_RESULT_LIMIT = 30;
+
+    private int mOffset = 0;
+
     @InjectView(R.id.search_edit_text)
     private EditText mSearchEditText;
 
@@ -70,8 +74,7 @@ public class SearchUserActivity extends BarrageCommonActivity {
                 }
                 handler.post(eChanged);
 
-                // for test
-                doSearch("");
+                doSearch(mSearchEditText.getText().toString());
             }
         });
     }
@@ -100,21 +103,22 @@ public class SearchUserActivity extends BarrageCommonActivity {
     public void doSearch(String searchKeyword){
 
         // just for test
-        mFriendMission.syncFriend(new GetFriendListCallback() {
+//        mFriendMission.syncFriend(new GetFriendListCallback() {
+//            @Override
+//            public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
+//                // update data
+//                mAdapter.setFriendList(friendList.getFriendsList());
+//                mAdapter.notifyDataSetChanged();
+//            }
+//        });
+
+        mUserMission.searchUser(searchKeyword, mOffset, SEARCH_USER_RESULT_LIMIT, new SearchUserCallback() {
             @Override
-            public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
-                // update data
-                mAdapter.setFriendList(friendList.getFriendsList());
+            public void handleMessage(int errorCode, List<UserProtos.PBUser> pbUserList) {
+                // update data and reload UI
+                mAdapter.setFriendList(pbUserList);
                 mAdapter.notifyDataSetChanged();
             }
         });
-
-
-//        mUserMission.searchUser(searchKeyword, offset, limit, new SearchUserCallback() {
-//            @Override
-//            public void handleMessage(int errorCode, List<UserProtos.PBUser> pbUserList) {
-//
-//            }
-//        });
     }
 }
