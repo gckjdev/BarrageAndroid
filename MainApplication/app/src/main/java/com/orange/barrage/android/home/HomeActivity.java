@@ -81,7 +81,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_1_TAG),
                 R.drawable.x_shouye,"首页",R.drawable.tab_select),Tab1Container.class,null);
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_2_TAG),
-                R.drawable.x_fabiao,"",R.drawable.tab_select),Tab2Container.class,null);
+                R.drawable.x_all_alph,"",R.drawable.tab_select),Tab2Container.class,null);
         mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_3_TAG),
                 R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
 

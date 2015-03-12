@@ -82,6 +82,8 @@ public class FloatWindow  {
     }
 
 
+//    public void show(View parentView , int)
+
 
     /**
      * 显示浮动窗口
@@ -93,7 +95,8 @@ public class FloatWindow  {
            return;
        }
         initMppWindow();
-        mPpWindow.showAsDropDown(parentView);
+//        mPpWindow.showAsDropDown(parentView);
+        mPpWindow.showAsDropDown(parentView , 40 , 40 );
     }
 
     public void show(){
