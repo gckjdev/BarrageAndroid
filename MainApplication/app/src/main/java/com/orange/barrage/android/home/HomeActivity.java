@@ -51,6 +51,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
     private FloatWindow mFloatWindow;
 
     private View mPopWindowItemView;
+    private View mPopWindowItemLine;
 
     private String mTag = TAB_1_TAG;
 
@@ -305,6 +306,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
             View v3 = childs.getChildAt(4);
             View v4 = childs.getChildAt(6);
 
+
             v1.setTag(1);
             v3.setTag(3);
             v2.setTag(2);
@@ -314,16 +316,17 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
             v2.setOnClickListener(this);
             v3.setOnClickListener(this);
             v4.setOnClickListener(this);
-
+            mPopWindowItemLine = childs.getChildAt(1);
             mPopWindowItemView = v2;
         }
-        if(mPopWindowItemView == null) return;
+        if(mPopWindowItemView == null || mPopWindowItemLine == null) return;
         if(mTag.equals(TAB_1_TAG)){
             mPopWindowItemView.setVisibility(View.GONE);
+            mPopWindowItemLine.setVisibility(View.GONE);
         }else if(mTag.equals(TAB_3_TAG)){
             mPopWindowItemView.setVisibility(View.VISIBLE);
+            mPopWindowItemLine.setVisibility(View.VISIBLE);
         }
-
     }
 
 

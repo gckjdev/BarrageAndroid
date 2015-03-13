@@ -116,13 +116,15 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		
-		if(event.getAction() == MotionEvent.ACTION_MOVE){
-			new Asy().execute(event.getX() , event.getY());
-		}else if(event.getAction() == MotionEvent.ACTION_UP){
-			mMoveInfo.v = null;
+		if(mMoveInfo == null) return super.onTouchEvent(event);
+
+        if(event.getAction() == MotionEvent.ACTION_MOVE){
+            startMove(event.getX() - mMoveInfo.childX , event.getY() - mMoveInfo.childY);
+		}else if(event.getAction() == MotionEvent.ACTION_UP ||event.getAction() == MotionEvent.ACTION_CANCEL){
+                mMoveInfo.clear();
 		}
-		return super.onTouchEvent(event);
+
+        return super.onTouchEvent(event);
 	}
 
 	
@@ -138,23 +140,30 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 		protected void onPostExecute(RelativeLayout.LayoutParams result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			if(result == null || mMoveInfo.v == null) return;
-			mMoveInfo.v.setLayoutParams(result);
+
 		}
 	}
-	
+
+    private void startMove(float l ,float t){
+        RelativeLayout.LayoutParams result = getMoveLayoutPrams(l , t);
+        if(result == null || mMoveInfo.v == null) return;
+        mMoveInfo.v.setLayoutParams(result);
+    }
+
+
 	private RelativeLayout.LayoutParams getMoveLayoutPrams(float l ,float t){
-		if(!mMoveInfo.isMove(l, t)) return null;
+		if(mMoveInfo == null || !mMoveInfo.isMove()) return null;
 		
 		RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mMoveInfo.v.getLayoutParams();
-		params.leftMargin = (int) l;
-		params.topMargin = (int) t;
+		params.leftMargin = mMoveInfo.getLeft(l);
+		params.topMargin = mMoveInfo.getTop(t);
 		
 		return params;
 	}
 
     class StayViewInfo{
         public  View v;
+
 
         private boolean isMove;
 
@@ -175,12 +184,33 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 	class MoveInfo{
 		
 		public View v;
-		
-		public boolean isMove(float x ,float y){
-			return (v != null) &&
-			(x + v.getWidth() <= MoveViewParentRelativity.this.getWidth())
-			&&y + v.getHeight() <= MoveViewParentRelativity.this.getHeight();
+
+
+        public float childX = 0;
+        public float childY = 0;
+
+
+        public int getLeft(float x){
+            int l = (int)((x + v.getWidth() < MoveViewParentRelativity.this.getWidth()) ?
+                    x : MoveViewParentRelativity.this.getWidth() - v.getWidth());
+
+
+           return l ;
+        }
+
+        public int getTop(float y){
+            return (int)(y + v.getHeight() < MoveViewParentRelativity.this.getHeight() ? y : MoveViewParentRelativity.this.getHeight() - v.getHeight());
+        }
+
+		public boolean isMove(){
+			return (v != null);
 		}
+
+        public void clear(){
+            childX = 0;
+            childY = 0;
+            v = null;
+        }
 		
 	}
 	public class LayoutParams extends RelativeLayout.LayoutParams{
@@ -198,8 +228,11 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 
             StayViewInfo stayViewInfo = (StayViewInfo)v.getTag();
 
-            if(stayViewInfo.getIsMove())
+            if(stayViewInfo.getIsMove()) {
                 mMoveInfo.v = stayViewInfo.v;
+                mMoveInfo.childY = event.getY();
+                mMoveInfo.childX = event.getX();
+            }
         }
         return true;
     }
