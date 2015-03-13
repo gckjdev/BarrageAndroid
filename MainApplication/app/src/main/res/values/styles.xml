@@ -27,7 +27,7 @@
         <item name="android:textSize">20dp</item>
     </style>
 
-    <!--第一个页面-->
+    <!--通用红色按钮 -->
     <style name="b_button_color_red">
         <item name="android:background">@drawable/y_button_shape</item>
         <item name="android:text">34dp</item>

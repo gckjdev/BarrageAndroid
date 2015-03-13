@@ -10,6 +10,10 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.protocol.message.BarrageProtos;
+import com.orange.protocol.message.UserProtos;
+
+import java.util.List;
 
 import roboguice.util.Ln;
 
@@ -64,6 +68,11 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
         // TODO show date
         int createDate = model.getFeed().getDate();
+
+        // TODO
+        List<UserProtos.PBUser> toUsers = model.getFeed().getToUsersList();
+
+
 
         mBarrageWidget.setModel(model);
 

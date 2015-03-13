@@ -13,8 +13,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:id="@+id/friend_detail_imageview"
+            <com.orange.barrage.android.user.ui.view.UserAvatarView
+                android:id="@+id/friend_detail_avatar_view"
                 android:src="@drawable/person_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
                 android:id="@+id/friend_detail_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/friend_detail_imageview"
+                android:layout_below="@+id/friend_detail_avatar_view"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="34dp" />
             </RelativeLayout>

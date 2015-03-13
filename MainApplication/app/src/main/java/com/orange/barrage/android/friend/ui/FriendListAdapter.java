@@ -1,8 +1,6 @@
 package com.orange.barrage.android.friend.ui;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -63,22 +61,23 @@ public class FriendListAdapter extends BaseAdapter {
         }
 
         //每一项的位置，然后设置
-        UserProtos.PBUser friend = mFriendManager.getFriendList().get(position);
+        final UserProtos.PBUser friend = mFriendManager.getFriendList().get(position);
         view.setFriend(friend);
 
-        Bundle bundle=new Bundle();
-        bundle.putString("location",friend.getLocation());
-        bundle.putString("signature",friend.getSignature());
-        bundle.putString("nick",friend.getNick());
-        final Intent intent=new Intent();
-        intent.putExtra("image",friend.getAvatar());
-        intent.putExtras(bundle);
+//        Bundle bundle=new Bundle();
+//        bundle.putString("location",friend.getLocation());
+//        bundle.putString("signature",friend.getSignature());
+//        bundle.putString("nick",friend.getNick());
+//        final Intent intent=new Intent();
+//        intent.putExtra("image",friend.getAvatar());
+//        intent.putExtras(bundle);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                intent.setClass(mContext, FriendDetailActivity.class);
-                mContext.startActivity(intent);
+                FriendDetailActivity.show(friend, mContext);
+//
+//                intent.setClass(mContext, FriendDetailActivity.class);
+//                mContext.startActivity(intent);
             }
         });
         return view;

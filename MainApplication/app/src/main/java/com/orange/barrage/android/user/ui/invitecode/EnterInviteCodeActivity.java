@@ -52,7 +52,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
             ToastUtil.makeTextShort(R.string.codeisnull , this);
             return ;
         }
-        progresShow("");
+        showProgress("");
         mInviteCodeManager.setCurrentInviteCode(code);
 
         mUserMission.verifyInviteCode(code, new UserMissionCallback() {
@@ -63,7 +63,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
                     // success, goto register
                     ActivityIntent.startIntent(EnterInviteCodeActivity.this, InviteCodePassActivity.class);
                 }
-                progresClose();
+                dismissProgress();
             }
         });
 
