@@ -27,19 +27,18 @@ public class RequestAddFriendActivity extends BarrageCommonActivity {
             @Override
             public void onClick(View v) {
                 ActivityIntent.startIntent(RequestAddFriendActivity.this,SearchUserActivity.class);
-                //startActivity(new Intent(RequestAddFriendActivity.this,SearchUserActivity.class));
             }
         });
     }
 
-    @Override
-    public void onClickRight(View v) {
-        super.onClickRight(v);
-
-    }
-
-    @Override
-    public void onClickFinish(View v) {
-        super.onClickFinish(v);
-    }
+//    @Override
+//    public void onClickRight(View v) {
+//        super.onClickRight(v);
+//
+//    }
+//
+//    @Override
+//    public void onClickFinish(View v) {
+//        super.onClickFinish(v);
+//    }
 }

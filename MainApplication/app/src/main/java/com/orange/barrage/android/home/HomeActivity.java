@@ -60,6 +60,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Inject
     UserManager mUserManager;
 
+    // TODO check this!!! Important!!!!
     public static String PHOTOPATH = SystemTools.getSDCardPath()+"/bbl/";
     public static String PHOTONAME = "you.png";
 
