@@ -152,7 +152,7 @@ public class SearchUserActivity extends BarrageCommonActivity {
                 else
                 {
                     mAdapter.notifyDataSetChanged();
-                    Toast.makeText(SearchUserActivity.this,"错误的输入,请重新输入搜索条件哦",Toast.LENGTH_LONG).show();
+                    Toast.makeText(SearchUserActivity.this,"错误的输入,请重新输入搜索条件哦",Toast.LENGTH_SHORT).show();
                     mAdapter.setFriendList(null);
                     mSearchEditText.setText("");
                     mSearchResultListView.setBackgroundColor(Color.TRANSPARENT);

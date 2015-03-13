@@ -25,6 +25,7 @@
                 android:text="Bill"
                 android:textColor="@android:color/background_dark"
                 android:textSize="20sp"
+                android:id="@+id/friend_detail_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/friend_detail_imageview"
@@ -40,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/friend_detail_signature"
+
                 android:layout_marginLeft="20dp"
                 android:text="签名"
                 android:textColor="@android:color/black"
@@ -49,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/friend_detail_other"
+                android:id="@+id/friend_detail_signature"
                 android:textSize="18sp"
                 android:text="什么也没有"
                 android:layout_alignParentRight="true"
@@ -71,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/friend_detail_location"
+
                 android:layout_marginLeft="20dp"
                 android:text="位置"
                 android:textColor="@android:color/black"
@@ -80,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/friend_detail_other2"
+                android:id="@+id/friend_detail_location"
                 android:textSize="18sp"
                 android:text="未设置"
                 android:layout_alignParentRight="true"
