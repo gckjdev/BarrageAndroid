@@ -114,6 +114,6 @@ public class BarrageCommonActivity extends RoboActivity  {
     }
 
     public void onClickFinish(View v){
-        mTopBarView.doBack(v);
+        finish();
     }
 }

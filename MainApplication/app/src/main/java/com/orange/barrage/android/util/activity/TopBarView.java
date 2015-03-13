@@ -19,8 +19,13 @@ public class TopBarView {
 
     final Activity mActivity;
 
+    View.OnClickListener mRightClickListener;
+    View.OnClickListener mLeftClickListener;
+
+
     public TopBarView(Activity activity){
         this.mActivity = activity;
+        initLeftButton();
     }
 
     public RelativeLayout getTopBar(){
@@ -87,6 +92,26 @@ public class TopBarView {
         }
     }
 
+    private void initLeftButton(){
+        if (!hasTopBar()){
+            return;
+        }
+
+        ImageButton button = (ImageButton)mActivity.findViewById(R.id.top_back_button);
+        if (button != null){
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mLeftClickListener == null){
+                        doBack(v);
+                    }
+                    else{
+                        mLeftClickListener.onClick(v);
+                    }
+                }
+            });
+        }
+    }
 
     public void setRightButton(int resId){
 
@@ -98,22 +123,29 @@ public class TopBarView {
             return;
         }
 
+        View rightButtonView = null;
         ImageButton image = ((ImageButton)(mActivity.findViewById(R.id.top_right_button)));
         Bitmap bitmap = BitmapFactory.decodeResource(mActivity.getResources(), resId);
         if(bitmap != null) {
             image.setImageBitmap(bitmap);
-            image.setVisibility(View.VISIBLE);
+
+            rightButtonView = image;
         }else {
             TextView tv = (TextView)mActivity.findViewById(R.id.top_right_text);
             tv.setText(getString(resId));
-            tv.setVisibility(View.VISIBLE);
-            tv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClickRight(v);
-                }
-            });
+
+            rightButtonView = tv;
         }
+
+        rightButtonView.setVisibility(View.VISIBLE);
+        rightButtonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mRightClickListener != null){
+                    mRightClickListener.onClick(v);
+                }
+            }
+        });
 
     }
 
@@ -130,5 +162,13 @@ public class TopBarView {
         }
 
         mActivity.finish();
+    }
+
+    public void setOnClickLeftListener(View.OnClickListener onClickListener){
+        mLeftClickListener = onClickListener;
+    }
+
+    public void setOnClickRightListener(View.OnClickListener onClickListener){
+        mRightClickListener = onClickListener;
     }
 }

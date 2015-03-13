@@ -68,8 +68,17 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.drawable.x_more_and_more);
-
         initView();
+        initTopBar();
+    }
+
+    private void initTopBar(){
+        mTopBarView.setOnClickRightListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickRight(v);
+            }
+        });
     }
 
     private void initView() {

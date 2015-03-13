@@ -23,7 +23,7 @@ public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
     protected BarrageAndroid mBarrageAndroid;
 
     /* 导航栏 */
-    TopBarView mTopBarView;
+    protected TopBarView mTopBarView;
 
     /**
      *
