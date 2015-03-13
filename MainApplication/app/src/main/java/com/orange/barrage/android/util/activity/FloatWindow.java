@@ -5,9 +5,10 @@ import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.PopupWindow;
-import android.view.ViewGroup.LayoutParams;
+
 import com.orange.barrage.android.R;
 
 
@@ -57,8 +58,6 @@ public class FloatWindow  {
         mChildView = mWindow.getDecorView();
         mWindow.setLayout(LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 
-
-
     }
 
 
@@ -95,6 +94,7 @@ public class FloatWindow  {
            return;
        }
         initMppWindow();
+
         mPpWindow.showAsDropDown(parentView);
 
     }

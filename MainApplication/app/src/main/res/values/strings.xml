@@ -58,7 +58,7 @@
 
     <string name="title_activity_request_add_friend">RequestAddFriendActivity</string>
     <string name="title_activity_search_user">SearchUserActivity</string>
-    <string name="title_activity_friend_detail">FriendDetailActivity</string>
+    <string name="title_activity_friend_detail">详细资料</string>
 
 
 </resources>

@@ -41,7 +41,7 @@
         android:layout_marginTop="15dp"
         android:divider="@color/b_list_view_divider"
         android:dividerHeight="@dimen/b_list_view_divider_height"
-        android:background="@android:color/white"
+
         android:id="@+id/search_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

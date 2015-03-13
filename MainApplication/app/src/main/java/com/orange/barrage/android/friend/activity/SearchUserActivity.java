@@ -1,6 +1,7 @@
 package com.orange.barrage.android.friend.activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -54,12 +55,12 @@ public class SearchUserActivity extends BarrageCommonActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 //刚开始的时候设置ListView不可见
-               // mSearchResultListView.setVisibility(View.INVISIBLE);
+                // mSearchResultListView.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-              //  mSearchResultListView.setVisibility(View.VISIBLE);
+                //  mSearchResultListView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -106,15 +107,11 @@ public class SearchUserActivity extends BarrageCommonActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 //如果动作是搜索的话
-                if (actionId== EditorInfo.IME_ACTION_SEARCH)
-                {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     //首先判断输入框是否是空，如果为空，则提示用户，并且软键盘不会消失，如果不为空才执行搜索
-                    if (TextUtils.isEmpty(mSearchEditText.getText().toString()))
-                    {
-                        Toast.makeText(SearchUserActivity.this,"搜索框不能为空",Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
+                    if (TextUtils.isEmpty(mSearchEditText.getText().toString())) {
+                        Toast.makeText(SearchUserActivity.this, "搜索框不能为空", Toast.LENGTH_LONG).show();
+                    } else {
                         //先隐藏软键盘
                         ((InputMethodManager) mSearchEditText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
                                 .hideSoftInputFromWindow(
@@ -124,7 +121,12 @@ public class SearchUserActivity extends BarrageCommonActivity {
                         mSearchResultListView.setVisibility(View.VISIBLE);
 //                        //这里的监听是判断文本框输入是否为空，如果为空，则隐藏ListView
 //                        setSearchTextChanged();
-                        doSearch(mSearchEditText.getText().toString());
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                doSearch(mSearchEditText.getText().toString());
+                            }
+                        }).start();
                     }
                     return true;
                 }
@@ -134,14 +136,28 @@ public class SearchUserActivity extends BarrageCommonActivity {
 
     }
 
-    public void doSearch(String searchKeyword){
+    public void doSearch(String searchKeyword) {
 
         mUserMission.searchUser(searchKeyword, mOffset, SEARCH_USER_RESULT_LIMIT, new SearchUserCallback() {
             @Override
             public void handleMessage(int errorCode, List<UserProtos.PBUser> pbUserList) {
                 // update data and reload UI
-                mAdapter.setFriendList(pbUserList);
-                mAdapter.notifyDataSetChanged();
+
+                if (pbUserList.size()>0)
+                {
+                    mAdapter.setFriendList(pbUserList);
+                    mSearchResultListView.setBackgroundColor(Color.WHITE);
+                    mAdapter.notifyDataSetChanged();
+                }
+                else
+                {
+                    mAdapter.notifyDataSetChanged();
+                    Toast.makeText(SearchUserActivity.this,"错误的输入,请重新输入搜索条件哦",Toast.LENGTH_LONG).show();
+                    mAdapter.setFriendList(null);
+                    mSearchEditText.setText("");
+                    mSearchResultListView.setBackgroundColor(Color.TRANSPARENT);
+                    mAdapter.notifyDataSetChanged();
+                }
             }
         });
     }

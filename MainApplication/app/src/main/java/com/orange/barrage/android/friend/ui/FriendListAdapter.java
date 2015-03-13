@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
+import com.orange.barrage.android.friend.activity.FriendDetailActivity;
 import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.protocol.message.UserProtos;
 
@@ -67,7 +67,7 @@ public class FriendListAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, RequestAddFriendActivity.class));
+                mContext.startActivity(new Intent(mContext, FriendDetailActivity.class));
             }
         });
         return view;
