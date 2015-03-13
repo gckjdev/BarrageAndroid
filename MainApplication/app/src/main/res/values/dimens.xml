@@ -30,8 +30,8 @@
     <!--登录界面-->
     <dimen name="y_activity_login_1_height">40dip</dimen>
     <dimen name="y_activity_login_2_height">17dip</dimen>
-
-
+    <!--导航栏右边按钮marginRight的间距-->
+    <dimen name="b_navigationbar_margin_right">18dip</dimen>
 
     <!--注册界面 -->
     <dimen name="y_zhuche_1_height">30dip</dimen>

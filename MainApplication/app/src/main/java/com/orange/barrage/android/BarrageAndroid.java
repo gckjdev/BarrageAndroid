@@ -24,13 +24,13 @@ public class BarrageAndroid extends Application {
         super.onCreate();
 
         ContextManager.init(this);
-        //定义了一个全局的异常处理
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable ex) {
-                Ln.e(ex, "uncaughtException");
-            }
-        });
+//        //定义了一个全局的异常处理
+//        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+//            @Override
+//            public void uncaughtException(Thread thread, Throwable ex) {
+//                Ln.e(ex, "uncaughtException");
+//            }
+//        });
     }
 
     //加入一个Activity

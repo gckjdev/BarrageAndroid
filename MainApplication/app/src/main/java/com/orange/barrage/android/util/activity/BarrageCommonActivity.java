@@ -4,6 +4,8 @@ package com.orange.barrage.android.util.activity;
 
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 
 import android.os.Bundle;
@@ -113,17 +115,25 @@ public class BarrageCommonActivity extends RoboActivity  {
         if(resid <= 0)
             return ;
 
-        try {
-            ImageButton image = ((ImageButton)(findViewById(R.id.top_right_button)));
-            image.setImageResource(resid);
+        ImageButton image = ((ImageButton)(findViewById(R.id.top_right_button)));
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources() , resid);
+        if(bitmap != null) {
+            image.setImageBitmap(bitmap);
             image.setVisibility(View.VISIBLE);
-        }catch (NotFoundException e){
-            TextView tv = (TextView)findViewById(R.id.top_right_text);
+        }else {
+            TextView tv = (TextView) findViewById(R.id.top_right_text);
             tv.setText(getString(resid));
             tv.setVisibility(View.VISIBLE);
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickRight(v);
+                }
+            });
         }
-
     }
+
+
 
     public String getIntentString(String key){
         return getIntent().getStringExtra(key);

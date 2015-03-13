@@ -5,6 +5,7 @@
     >
 
     <LinearLayout
+        android:layout_marginRight="@dimen/b_navigationbar_margin_right"
         android:id="@+id/popLinearLayout"
         android:background="@color/black"
         android:orientation="vertical"
@@ -35,9 +36,6 @@
         android:drawableLeft="@drawable/y_add_label" />
     </LinearLayout>
 
-    <TextView
-        android:background="@color/b_color_alpha"
-        android:layout_width="10dip"
-        android:layout_height="match_parent" />
+
 
 </LinearLayout>

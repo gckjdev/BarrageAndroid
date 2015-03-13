@@ -42,7 +42,8 @@ public class CommentsView extends LinearLayout {
     private TextView mMainTextView;
 
     public CommentsView(Context context){
-        this(context, null);
+        super(context);
+        initView();
     }
 
     public CommentsView(Context context, AttributeSet attrs) {
@@ -59,11 +60,11 @@ public class CommentsView extends LinearLayout {
         mTextView = (TextView)findViewById(R.id.commentsTextView);
         mUserAvatarView = (UserAvatarView)findViewById(R.id.head);
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT);
-        mUserAvatarView.setLayoutParams(params);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources() , R.drawable.y_morentouxiang);
+//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT);
+//        mUserAvatarView.setLayoutParams(params);
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources() , R.drawable.y_morentouxiang);
 
-        mUserAvatarView.setImageBitmap(ImageDealTools.getRoundedCornerBitmap(bitmap));
+//        mUserAvatarView.setImageBitmap(ImageDealTools.getRoundedCornerBitmap(bitmap));
 
     }
 

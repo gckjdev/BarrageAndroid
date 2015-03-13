@@ -67,7 +67,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.string.select_a_friend);
+        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.drawable.x_more_and_more);
 
         initView();
     }
@@ -93,12 +93,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if(mPopWindowItemView == null) return;
-                if(tabId.equals(TAB_1_TAG)){
-                    mPopWindowItemView.setVisibility(View.GONE);
-                }else if(tabId.equals(TAB_3_TAG)){
-                    mPopWindowItemView.setVisibility(View.VISIBLE);
-                }
+                mTag = tabId;
             }
         });
 
@@ -296,7 +291,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         boolean is = false;
        if(mFloatWindow == null){
            is = true;
-           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , 320 , ViewGroup.LayoutParams.WRAP_CONTENT);
+           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , ViewGroup.LayoutParams.WRAP_CONTENT , ViewGroup.LayoutParams.WRAP_CONTENT);
        }
 
        mFloatWindow.show(v);
@@ -320,6 +315,12 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
             v4.setOnClickListener(this);
 
             mPopWindowItemView = v2;
+        }
+        if(mPopWindowItemView == null) return;
+        if(mTag.equals(TAB_1_TAG)){
+            mPopWindowItemView.setVisibility(View.GONE);
+        }else if(mTag.equals(TAB_3_TAG)){
+            mPopWindowItemView.setVisibility(View.VISIBLE);
         }
 
     }
