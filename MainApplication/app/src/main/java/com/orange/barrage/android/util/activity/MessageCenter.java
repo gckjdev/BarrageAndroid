@@ -15,7 +15,6 @@ import roboguice.inject.ContextSingleton;
 public class MessageCenter {
 
     public static void postInfoMessage(String messageText){
-
         Toast.makeText(ContextManager.getContext(), messageText, Toast.LENGTH_SHORT).show();
     }
 

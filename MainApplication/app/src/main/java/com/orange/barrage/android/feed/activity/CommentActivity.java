@@ -42,7 +42,7 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState , R.layout.activity_comments ,R.string.b_comment , R.string.b_send);
-        setNavigationBackgroundChangeOtherType();
+        mTopBarView.setNavigationBackgroundChangeOtherType();
         initView();
 
     }

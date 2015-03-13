@@ -107,7 +107,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
 
         pwd = UserManager.encryptPassword(pwd);
 
-        progresShow("");
+        showProgress("");
 
         if(isPhone) {
         //    mUserInfoManager.setPhoneString(id);
@@ -122,7 +122,7 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
     private  UserMissionCallback mUserMissionClassback = new UserMissionCallback() {
         @Override
         public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
-            progresClose();
+            dismissProgress();
             dealLoginResult(errorCode);
         }
     };

@@ -117,7 +117,7 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
             return;
         }
 
-        progresShow("");
+        showProgress("");
 
         String inviteCode = mInviteCodeManager.getCurrentInviteCode();
 

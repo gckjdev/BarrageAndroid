@@ -27,8 +27,8 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.File.FileTools;
 import com.orange.barrage.android.util.System.SystemTools;
 import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.BarrageCommonFragmentActivity;
 import com.orange.barrage.android.util.activity.FloatWindow;
-import com.orange.barrage.android.util.activity.FramgActivity;
 import com.orange.barrage.android.util.activity.RequestCodes;
 
 import java.io.BufferedOutputStream;
@@ -39,7 +39,7 @@ import javax.inject.Inject;
 import de.greenrobot.event.EventBus;
 import roboguice.util.Ln;
 
-public class HomeActivity extends FramgActivity implements View.OnClickListener {
+public class HomeActivity extends BarrageCommonFragmentActivity implements View.OnClickListener {
 
     //这里才是主页面，就是那三个tab页面
     private static final String TAB_1_TAG = "tab_1";

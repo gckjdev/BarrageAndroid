@@ -2,7 +2,6 @@ package com.orange.barrage.android.util.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -11,20 +10,20 @@ import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.R;
 
 import roboguice.activity.RoboFragmentActivity;
-import roboguice.inject.InjectView;
 
 /**
  * Created by youjiannuo on 2015/3/9.
  */
-public class FramgActivity extends RoboFragmentActivity {
+public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
 
     /*进度条*/
-    private ProgressDialogshow mProgressDialog;
+    private BarrageProgressDialog mProgressDialog;
 
     /*Application*/
     protected BarrageAndroid mBarrageAndroid;
 
-
+    /* 导航栏 */
+    TopBarView mTopBarView;
 
     /**
      *
@@ -49,50 +48,20 @@ public class FramgActivity extends RoboFragmentActivity {
         mBarrageAndroid = (BarrageAndroid)getApplication();
 
         setContentView(layoutresid);
-        setTitleText(titleString);
-        setRightButton(rightid);
-        closeLeftButton();
-    }
 
-    /**
-     * 设置标题
-     * @param resid
-     */
-    public void setTitleText(int resid){
-        setTitleText(getString(resid));
-    }
-    /**
-     * 设置标题
-     * @param s
-     */
-    public void setTitleText(String s){
-        TextView mTitle = ((TextView)findViewById(R.id.top_title));
-        if(mTitle != null)
-            mTitle.setText(s);
-    }
+        // init dialog
+        mProgressDialog = new BarrageProgressDialog(this);
 
-    //关闭导航栏左边的按钮
-    public void closeLeftButton(){
-        ImageButton button = (ImageButton) findViewById(R.id.top_back_button);
-        if(button != null) button.setVisibility(View.GONE);
+        // init top bar
+        mTopBarView = new TopBarView(this);
+        mTopBarView.setTitleText(titleString);
+        mTopBarView.setRightButton(rightid);
+        mTopBarView.hideLeftButton();
+
+
     }
 
 
-    public void setRightButton(int resid){
-        if(resid <= 0)
-            return ;
-
-        try {
-            ImageButton image = ((ImageButton)(findViewById(R.id.top_right_button)));
-            image.setImageResource(resid);
-            image.setVisibility(View.VISIBLE);
-        }catch (NotFoundException e){
-            TextView tv = (TextView)findViewById(R.id.top_right_text);
-            tv.setText(getString(resid));
-            tv.setVisibility(View.VISIBLE);
-        }
-
-    }
 
     public String getIntentString(String key){
         return getIntent().getStringExtra(key);
@@ -108,27 +77,23 @@ public class FramgActivity extends RoboFragmentActivity {
      * 打开等待进度条
      * @param text
      */
-    protected  void progresShow(String text){
-        if(mProgressDialog == null){
-            mProgressDialog = new ProgressDialogshow(this , "", text);
-        }
-        mProgressDialog.show();
+    protected  void showProgress(String text){
+        mProgressDialog.show(text);
     }
 
     /**
      * 关闭等待进度条
      */
-    protected  void progresClose(){
-        if(mProgressDialog != null)
-            mProgressDialog.close();
+    protected  void dismissProgress(){
+        mProgressDialog.close();
     }
-
 
     /**
      * 点击按钮
      * @param v
      */
-    public void onClickRight(View v){  }
+    public void onClickRight(View v){
+    }
 
     public void onClickFinish(View v){
         finish();
