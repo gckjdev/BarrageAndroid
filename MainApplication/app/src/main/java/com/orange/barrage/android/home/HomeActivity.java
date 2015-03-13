@@ -296,7 +296,7 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         boolean is = false;
        if(mFloatWindow == null){
            is = true;
-           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , 320 , ViewGroup.LayoutParams.WRAP_CONTENT);
+           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this ,286, ViewGroup.LayoutParams.WRAP_CONTENT);
        }
 
        mFloatWindow.show(v);
@@ -331,6 +331,8 @@ public class HomeActivity extends FramgActivity implements View.OnClickListener 
         if(position == 1){
             //添加好友
             ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
+            if (mFloatWindow!=null)
+                mFloatWindow.close();
         }else if(position == 2){
             //添加标签
 
