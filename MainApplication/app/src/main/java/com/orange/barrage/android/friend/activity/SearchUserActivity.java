@@ -1,25 +1,26 @@
 package com.orange.barrage.android.friend.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
-import com.orange.barrage.android.friend.ui.FriendListAdapter;
 import com.orange.barrage.android.user.mission.SearchUserCallback;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.protocol.message.UserProtos;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -53,12 +54,12 @@ public class SearchUserActivity extends BarrageCommonActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 //刚开始的时候设置ListView不可见
-                mSearchResultListView.setVisibility(View.INVISIBLE);
+               // mSearchResultListView.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mSearchResultListView.setVisibility(View.VISIBLE);
+              //  mSearchResultListView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -67,14 +68,17 @@ public class SearchUserActivity extends BarrageCommonActivity {
                  * 因为我们要做的就是，在文本框改变的同时，我们的listview的数据也进行相应的变动，并且如一的显示在界面上。
                  * 所以这里我们就需要加上数据的修改的动作了。
                  */
-                if (s.length() == 0) {
-                    mSearchResultListView.setVisibility(View.INVISIBLE);
-                } else {
-                    mSearchResultListView.setVisibility(View.VISIBLE);
-                }
-                handler.post(eChanged);
+                //如果编辑框为空，则列表消失
+//                if (s.length() == 0) {
+//                   mSearchResultListView.setVisibility(View.INVISIBLE);
+//                } else {
+//                   // mSearchResultListView.setVisibility(View.VISIBLE);
+//                }
+//
+//                handler.post(eChanged);
+//
+//                doSearch(mSearchEditText.getText().toString());
 
-                doSearch(mSearchEditText.getText().toString());
             }
         });
     }
@@ -96,21 +100,41 @@ public class SearchUserActivity extends BarrageCommonActivity {
 
         //刚开始的时候ListView是隐藏起来的
         mSearchResultListView.setVisibility(View.INVISIBLE);
-        setSearchTextChanged();
         initAdapter();
+        //添加，imeOptions的监听
+        mSearchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                //如果动作是搜索的话
+                if (actionId== EditorInfo.IME_ACTION_SEARCH)
+                {
+                    //首先判断输入框是否是空，如果为空，则提示用户，并且软键盘不会消失，如果不为空才执行搜索
+                    if (TextUtils.isEmpty(mSearchEditText.getText().toString()))
+                    {
+                        Toast.makeText(SearchUserActivity.this,"搜索框不能为空",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        //先隐藏软键盘
+                        ((InputMethodManager) mSearchEditText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
+                                .hideSoftInputFromWindow(
+                                        SearchUserActivity.this.getCurrentFocus().getWindowToken(),
+                                        InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        mSearchResultListView.setVisibility(View.VISIBLE);
+//                        //这里的监听是判断文本框输入是否为空，如果为空，则隐藏ListView
+//                        setSearchTextChanged();
+                        doSearch(mSearchEditText.getText().toString());
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     public void doSearch(String searchKeyword){
-
-        // just for test
-//        mFriendMission.syncFriend(new GetFriendListCallback() {
-//            @Override
-//            public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
-//                // update data
-//                mAdapter.setFriendList(friendList.getFriendsList());
-//                mAdapter.notifyDataSetChanged();
-//            }
-//        });
 
         mUserMission.searchUser(searchKeyword, mOffset, SEARCH_USER_RESULT_LIMIT, new SearchUserCallback() {
             @Override

@@ -25,7 +25,7 @@ public final class UserProtos {
 
     /**
      * <code>ADD_BY_SEARCH = 1;</code>
-     */
+              */
     public static final int ADD_BY_SEARCH_VALUE = 1;
     /**
      * <code>ADD_BY_SCAN_QRCODE = 2;</code>

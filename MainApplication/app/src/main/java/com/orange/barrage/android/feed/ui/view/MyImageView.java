@@ -13,9 +13,5 @@ public class MyImageView extends ImageView {
 
         setMaxHeight(getWidth());
 
-
     }
-
-
-
 }
