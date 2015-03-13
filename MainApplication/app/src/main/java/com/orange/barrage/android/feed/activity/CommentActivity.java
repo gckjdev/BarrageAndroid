@@ -14,6 +14,7 @@ import com.orange.barrage.android.ui.topic.model.Comment;
 import com.orange.barrage.android.user.ui.view.CommentsView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 
 import roboguice.inject.InjectView;
@@ -53,7 +54,14 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
 
         //设置成可编辑
         mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
+        mCommentsEdit = addViewCommentToMoveView(230,130);
 
+        //设置成可编辑
+        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
+        mCommentsEdit = addViewCommentToMoveView(330,130);
+
+        //设置成可编辑
+        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
         for(int i = 0 ; i < colors.length ; i ++){
             mLayout.addView(CreateImageView(colors[i]));
         }
@@ -148,7 +156,10 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
     }
 
 
+    @Override
+    public void onClickRight(View v) {
 
+       //发生评价
 
-
+    }
 }
