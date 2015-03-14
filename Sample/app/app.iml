@@ -50,6 +50,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
@@ -82,42 +83,47 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="circularimageview-1.1" level="project" />
-    <orderEntry type="library" exported="" name="roboguice-3.0.1" level="project" />
-    <orderEntry type="library" exported="" name="library-3.2.0" level="project" />
-    <orderEntry type="library" exported="" name="android-crop-0.9.10" level="project" />
-    <orderEntry type="library" exported="" name="analytics-5.4.2" level="project" />
-    <orderEntry type="library" exported="" name="qiniu-android-sdk-7.0.1" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-21.0.2" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Mingdao-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-WhatsApp-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Instapaper-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-KakaoStory-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Flickr-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Renren-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-VKontakte-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-KakaoTalk-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="mframework" level="project" />
-    <orderEntry type="library" exported="" name="retrofit-1.8.0" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Pocket-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Core-2.5.8" level="project" />
-    <orderEntry type="library" exported="" name="protobuf-java-2.6.0" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Twitter-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-QZone-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Favorite-2.5.8" level="project" />
-    <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-21.0.2" level="project" />
-    <orderEntry type="library" exported="" name="velocity-1.7" level="project" />
-    <orderEntry type="library" exported="" name="Shutterbug-1.0.0" level="project" />
-    <orderEntry type="library" exported="" name="image-chooser-library-1.4.3" level="project" />
-    <orderEntry type="library" exported="" name="phrase-1.0.3" level="project" />
-    <orderEntry type="library" exported="" name="eventbus-2.4.0" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-TencentWeibo-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Foursquare-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Yixin-Core-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-SohuSuishenkan-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Facebook-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Bluetooth-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-QQ-2.5.8" level="project" />
-    <orderEntry type="library" exported="" name="commons-collections-3.2.1" level="project" />
-    <orderEntry type="library" exported="" name="library-3.0.0" level="project" />
-    <orderEntry type="library" exported="" name="android-async-http-1.4.6" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-YouDao-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Linkedin-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Dropbox-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-ShortMessage-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Moments-2.5.8" level="project" />
-    <orderEntry type="library" exported="" name="roboblender-3.0.1" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-21.0.2" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Instagram-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Core-2.5.8" level="project" />
-    <orderEntry type="library" exported="" name="commons-lang-2.4" level="project" />
-    <orderEntry type="library" exported="" name="rebound-0.3.7" level="project" />
-    <orderEntry type="library" exported="" name="picasso-2.4.0" level="project" />
-    <orderEntry type="library" exported="" name="gson-2.3" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Email-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-KaiXin-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Line-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Douban-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-GooglePlus-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Yixin-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-FacebookMessenger-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Evernote-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Yixin-Moments-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Pinterest-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Email-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Tumblr-2.5.8" level="project" />
   </component>
 </module>
 
