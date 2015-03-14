@@ -61,7 +61,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
         PictureTopicModel model = initData();
         if(model == null) return;
-        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
+//        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
         //设置成可编辑
         mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
 
