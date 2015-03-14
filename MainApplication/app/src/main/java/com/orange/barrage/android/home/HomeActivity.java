@@ -59,6 +59,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     UserManager mUserManager;
 
     public static String PHOTOPATH = SystemUtil.getSDCardPath()+"/bbl/";
+
     public static String PHOTONAME = "you.png";
 
     private ShowPublishFeedView mShowPublisFeedView;

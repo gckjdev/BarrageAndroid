@@ -14,6 +14,7 @@ import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.ShowFriendIconView;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.misc.DateUtil;
@@ -88,6 +89,11 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
         //set icon
         setIcon(model);
+
+        // TODO
+        List<UserProtos.PBUser> toUsers = model.getFeed().getToUsersList();
+
+
 
         mBarrageWidget.setModel(model);
 

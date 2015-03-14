@@ -54,6 +54,7 @@ public class FriendListItemView extends LinearLayout{
         String nick = pbFriend.getNick();
         String signature = pbFriend.getSignature();
 
+
         friend_nick.setText(nick);
         friend_signature.setText(signature);
 
