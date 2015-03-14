@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 
+import com.soundcloud.android.crop.Crop;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
@@ -108,17 +110,27 @@ public class PhotoAndCamera {
         intent.putExtra("return-data", true);
         mActivity.startActivityForResult(intent, requestCode);
     }
+
+
     public void startPhotoZoom(Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, IMAGE_UNSPECIFIED);
         intent.putExtra("crop", "true");
-
 
         // outputX outputY 是裁剪图片宽高
         intent.putExtra("outputX", 150);
         intent.putExtra("outputY", 150);
         intent.putExtra("return-data", true);
         mActivity.startActivityForResult(intent, PHOTORESOULT);
+
+//        File picture = new File(Environment.getExternalStorageDirectory()
+//                +"/temp.jpg");
+//
+//        File picture = new File(Environment.getExternalStorageDirectory()
+//                +"/temp.jpg");
+//
+//
+//        new Crop(inputUri).output(outputUri).asSquare().start(mActivity);
     }
 
 

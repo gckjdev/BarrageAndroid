@@ -111,6 +111,7 @@
             android:launchMode="singleTask"
             android:label="@string/title_activity_friend_detail"
             />
+
         <!--Share SDK 微信分享回调 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -118,6 +119,9 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
+
+        <!--图片裁剪Activity，来自 https://github.com/jdamcd/android-crop -->
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
     </application>
 
