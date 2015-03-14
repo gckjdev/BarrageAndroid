@@ -58,7 +58,6 @@ public class UserAvatarView extends ImageView {
 
         // set user data
         this.user = user;
-
         // load avatar image
         setAvartUrl(user.getAvatar());
 
@@ -70,7 +69,7 @@ public class UserAvatarView extends ImageView {
         int width = 100;
         int height = 100;
         int borderWidth = 8;
-
+        if(url == null || url.length() == 0) return;
         Picasso.with(mContext)
                 .load(url)
                 .resize(300,300)
@@ -78,6 +77,11 @@ public class UserAvatarView extends ImageView {
                 .placeholder(R.drawable.tab_home)       // TODO change to right default
                 .error(R.drawable.tab_friend)           // TODO change to right default
                 .into(this , null);
+
+
+        //set visible
+        setVisibility(View.VISIBLE);
+
     }
 
 //    @Deprecated

@@ -79,5 +79,6 @@ public class ShowPublishFeedView implements View.OnClickListener {
         }else if(v == mPhotoButton){
             mPhotoAndCamera.choosePhoto();
         }
+        closePublishFeedView();
     }
 }

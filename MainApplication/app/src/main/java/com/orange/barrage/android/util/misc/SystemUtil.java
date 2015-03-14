@@ -1,6 +1,7 @@
 package com.orange.barrage.android.util.misc;
 
 import android.content.Context;
+import android.os.Environment;
 import android.telephony.TelephonyManager;
 
 public class SystemUtil {
@@ -23,4 +24,23 @@ public class SystemUtil {
             return true;
         }
 	}
+
+    /**
+     * 检查SDCard是否存在
+     * @return
+     */
+    public static boolean checkSDCardAvailable(){
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
+
+
+    /**
+     * 获取SDCard的地址
+     * @return
+     */
+    public static String getSDCardPath(){
+        return  Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+
+
 }

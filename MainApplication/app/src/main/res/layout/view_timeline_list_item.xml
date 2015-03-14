@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:textSize="15dp"
             android:paddingLeft="15dip"
+            android:visibility="gone"
             android:background="@color/white"
             android:alpha="0.8"
             android:layout_height="35dip" />

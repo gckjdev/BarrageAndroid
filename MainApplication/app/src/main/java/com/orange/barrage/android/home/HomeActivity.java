@@ -22,14 +22,14 @@ import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
+import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
-import com.orange.barrage.android.util.File.FileTools;
-import com.orange.barrage.android.util.System.SystemTools;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonFragmentActivity;
-import com.orange.barrage.android.util.activity.FloatWindow;
 import com.orange.barrage.android.util.activity.RequestCodes;
+import com.orange.barrage.android.util.misc.FileUtil;
+import com.orange.barrage.android.util.misc.SystemUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -48,10 +48,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     private FragmentTabHost mTabHost;
 
-    private FloatWindow mFloatWindow;
-
-    private View mPopWindowItemView;
-    private View mPopWindowItemLine;
+    private HomePopupWindow mHomePopupWindow ;
 
     private String mTag = TAB_1_TAG;
 
@@ -61,7 +58,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Inject
     UserManager mUserManager;
 
-    public static String PHOTOPATH = SystemTools.getSDCardPath()+"/bbl/";
+    public static String PHOTOPATH = SystemUtil.getSDCardPath()+"/bbl/";
     public static String PHOTONAME = "you.png";
 
     private ShowPublishFeedView mShowPublisFeedView;
@@ -104,10 +101,17 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
             @Override
             public void onTabChanged(String tabId) {
                 mTag = tabId;
+               changeTitleText();
             }
         });
+    }
 
-
+    private void changeTitleText(){
+        int stringId = R.string.y_shouyue;
+        if(mTag.equals(TAB_3_TAG)){
+            stringId = R.string.y_haiyou;
+        }
+        mTopBarView.setTitleText(stringId);
     }
 
     public void onCLickCamer(View v){
@@ -206,7 +210,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         @Override
         public void onSuccess(Bitmap bitmap) {
             if(bitmap != null) {
-                FileTools.savePhotoToSDCard(bitmap , PHOTOPATH , PHOTONAME);
+                FileUtil.savePhotoToSDCard(bitmap, PHOTOPATH, PHOTONAME);
                 ActivityIntent.startIntent(HomeActivity.this, FeedPublishedActivity.class);
             }
         }
@@ -298,44 +302,17 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     @Override
     public void onClickRight(View v) {
-        boolean is = false;
-       if(mFloatWindow == null){
-           is = true;
-           mFloatWindow = new FloatWindow(R.layout.view_homepage_pop_view , this , ViewGroup.LayoutParams.WRAP_CONTENT , ViewGroup.LayoutParams.WRAP_CONTENT);
 
-       }
+        if(mHomePopupWindow == null)
+            mHomePopupWindow = new HomePopupWindow(this);
+        mHomePopupWindow.show(v , this);
 
-       mFloatWindow.show(v);
-
-        LinearLayout childs = (LinearLayout)(mFloatWindow.getContextView().findViewById(R.id.popLinearLayout));
-        if(is && childs != null){
-
-            View v1 = childs.getChildAt(0);
-            View v2 = childs.getChildAt(2);
-            View v3 = childs.getChildAt(4);
-            View v4 = childs.getChildAt(6);
-
-
-            v1.setTag(1);
-            v3.setTag(3);
-            v2.setTag(2);
-            v4.setTag(4);
-
-            v1.setOnClickListener(this);
-            v2.setOnClickListener(this);
-            v3.setOnClickListener(this);
-            v4.setOnClickListener(this);
-            mPopWindowItemLine = childs.getChildAt(1);
-            mPopWindowItemView = v2;
-        }
-        if(mPopWindowItemView == null || mPopWindowItemLine == null) return;
         if(mTag.equals(TAB_1_TAG)){
-            mPopWindowItemView.setVisibility(View.GONE);
-            mPopWindowItemLine.setVisibility(View.GONE);
+            mHomePopupWindow.ItemClose();
         }else if(mTag.equals(TAB_3_TAG)){
-            mPopWindowItemView.setVisibility(View.VISIBLE);
-            mPopWindowItemLine.setVisibility(View.VISIBLE);
+            mHomePopupWindow.ItemShow();
         }
+
     }
 
 
@@ -345,8 +322,8 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         if(position == 1){
             //添加好友
             ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
-            if (mFloatWindow!=null)
-                mFloatWindow.close();
+            if (mHomePopupWindow!=null)
+                mHomePopupWindow.close();
         }else if(position == 2){
             //添加标签
 

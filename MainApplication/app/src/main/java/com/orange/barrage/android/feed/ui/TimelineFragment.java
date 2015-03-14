@@ -73,6 +73,7 @@ public class TimelineFragment extends RoboFragment {
         });
 
         mAdapter.setFragment(this);
+
         mListView.setAdapter(mAdapter);
 
         loadTimeline();
