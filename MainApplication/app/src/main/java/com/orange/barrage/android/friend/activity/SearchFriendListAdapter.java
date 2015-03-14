@@ -1,7 +1,6 @@
 package com.orange.barrage.android.friend.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -58,7 +57,7 @@ public class SearchFriendListAdapter extends FriendListAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         FriendListItemView view = null;
         if (convertView == null){
             view = new FriendListItemView(mContext);
@@ -67,8 +66,14 @@ public class SearchFriendListAdapter extends FriendListAdapter {
             view = (FriendListItemView)convertView;
         }
 
-        UserProtos.PBUser friend = getFriend(position);
+        final UserProtos.PBUser friend = getFriend(position);
         view.setFriend(friend);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FriendDetailActivity.show(friend, mContext);
+            }
+        });
         return view;
     }
 }

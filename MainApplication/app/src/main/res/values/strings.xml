@@ -63,5 +63,6 @@
     <string name="search_friend_find">没有找到</string>
     <string name="search_friend_result">相关结果</string>
     <string name="search_friend_hint">弹幕号/手机号/QQ号</string>
+    <string name="search_friend_inputnull">搜索的关键字不能为空</string>
 
 </resources>

@@ -16,11 +16,11 @@
             <com.orange.barrage.android.user.ui.view.UserAvatarView
                 android:id="@+id/friend_detail_avatar_view"
                 android:src="@drawable/person_detail"
-                android:layout_width="95dp"
-                android:layout_height="95dp"
-                android:layout_alignParentTop="true"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="63dp" />
+                />
             <TextView
                 android:text="Bill"
                 android:textColor="@android:color/background_dark"
@@ -30,7 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/friend_detail_avatar_view"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp" />
+                android:layout_centerVertical="true"
+                android:layout_marginTop="9dp"
+                />
             </RelativeLayout>
     </LinearLayout>
     <LinearLayout

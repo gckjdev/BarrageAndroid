@@ -77,8 +77,11 @@
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend"></activity>
         <activity
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:name=".friend.activity.SearchUserActivity"
-            android:label="@string/title_activity_search_user"></activity>
+            android:label="@string/title_activity_search_user">
+
+            </activity>
 
         <activity android:name=".feed.activity.CommentActivity">
 
