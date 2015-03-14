@@ -66,8 +66,8 @@ public class UserAvatarView extends ImageView {
     public void setAvartUrl(String url){
 
         // TODO get height and width from layout configuration
-        int width = 100;
-        int height = 100;
+//        int width = 100;
+//        int height = 100;
         int borderWidth = 8;
         if(url == null || url.length() == 0) return;
         Picasso.with(mContext)

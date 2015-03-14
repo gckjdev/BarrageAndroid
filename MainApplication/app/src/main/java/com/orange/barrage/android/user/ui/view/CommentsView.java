@@ -68,14 +68,22 @@ public class CommentsView extends LinearLayout {
 
     }
 
+    public void setType(int type){
+        setType(type , false);
+    }
+
 
     /**
      * 设置弹幕的类型
      */
-    public void setType(int type){
+    public void setType(int type ,boolean isFocusable){
         TAG = type;
         if(type == COMMENTS_EDITTEXT) mEditText.setVisibility(View.VISIBLE);
-        else mTextView.setVisibility(View.VISIBLE);
+        else {
+
+            mTextView.setFocusable(isFocusable());
+            mTextView.setVisibility(View.VISIBLE);
+        }
     }
 
 

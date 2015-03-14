@@ -80,7 +80,7 @@
             android:name=".friend.activity.SearchUserActivity"
             android:label="@string/title_activity_search_user"></activity>
 
-        <activity android:name=".feed.activity.CommentActivity">
+        <activity android:name=".feed.activity.FeedCommentActivity">
 
         </activity>
 

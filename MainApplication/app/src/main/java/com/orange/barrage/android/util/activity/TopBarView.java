@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -112,6 +113,10 @@ public class TopBarView {
             });
         }
     }
+
+
+
+
 
     public void setRightButton(int resId){
 

@@ -10,9 +10,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.view.View.OnTouchListener;
+
+import com.orange.barrage.android.R;
+import com.squareup.picasso.Picasso;
 
 public class MoveViewParentRelativity extends RelativeLayout implements OnTouchListener  {
 
@@ -253,6 +257,12 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
             }
         }
         return true;
+    }
+
+    public void setImageUrl(String url){
+        ImageView veiw = (ImageView) findViewById(R.id.CommentImageView);
+        if(veiw == null) return;
+        Picasso.with(getContext()).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(veiw);
     }
 
 }

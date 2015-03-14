@@ -76,6 +76,7 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
 
     private void deleteIcon(){
         //删除头像
+
     }
 
 
@@ -83,6 +84,8 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     private void onClickIcon(){
 
     }
+
+
 
 
 
@@ -95,30 +98,30 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
 
 
 
-    public class FriendIconInfo {
-
-        private String mIconUrl;
-
-        private Uri mIncoUri;
-
-        private String mName;
-
-        public String getName(){return mName;}
-        public Uri getIconUri(){return mIncoUri;}
-        public String getIconUrl(){return mIconUrl;}
-
-        public void setName(String name){
-            mName = name;
-        }
-
-        public void setmIconUrl(String url){
-            mIconUrl = url;
-        }
-
-        public void setmInconUri(Uri uri){
-            mIncoUri = uri;
-        }
-    }
+//    public class FriendIconInfo {
+//
+//        private String mIconUrl;
+//
+//        private Uri mIncoUri;
+//
+//        private String mName;
+//
+//        public String getName(){return mName;}
+//        public Uri getIconUri(){return mIncoUri;}
+//        public String getIconUrl(){return mIconUrl;}
+//
+//        public void setName(String name){
+//            mName = name;
+//        }
+//
+//        public void setmIconUrl(String url){
+//            mIconUrl = url;
+//        }
+//
+//        public void setmInconUri(Uri uri){
+//            mIncoUri = uri;
+//        }
+//    }
 
 
 }

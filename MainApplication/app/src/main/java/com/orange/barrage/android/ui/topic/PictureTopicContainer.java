@@ -1,5 +1,6 @@
 package com.orange.barrage.android.ui.topic;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.LinearLayout;
 
@@ -16,6 +17,7 @@ public class PictureTopicContainer extends LinearLayout{
     private PictureTopicTopWidget mTopWidget;
     private PictureTopicMainWidget mMainWidget;
     private PictureTopicBottomWidget mBottomWidget;
+    private Activity mActivity;
 
     public PictureTopicContainer(Context context){
         super(context);
@@ -48,9 +50,10 @@ public class PictureTopicContainer extends LinearLayout{
         return mBottomWidget;
     }
 
-    public void setModel(PictureTopicModel model) {
+    public void setModel(PictureTopicModel model , Activity activity) {
+        this.mActivity = activity;
         mModel = model;
-        mMainWidget.setModel(mModel);
+        mMainWidget.setModel(mModel , activity);
     }
 
     public PictureTopicModel getModel() {
