@@ -24,7 +24,7 @@
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="昵称/邮箱/手机号/微博"
+            android:hint="@string/search_friend_hint"
             android:textColor="#ff333333"
             android:textSize="16.0dip"
             android:imeOptions="actionSearch"

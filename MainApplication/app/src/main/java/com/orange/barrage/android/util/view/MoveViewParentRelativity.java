@@ -3,6 +3,8 @@ package com.orange.barrage.android.util.view;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -119,7 +121,16 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 		if(mMoveInfo == null) return super.onTouchEvent(event);
 
         if(event.getAction() == MotionEvent.ACTION_MOVE){
-            startMove(event.getX() - mMoveInfo.childX , event.getY() - mMoveInfo.childY);
+            final int x = (int)event.getX();
+            final int y = (int)event.getY();
+            new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    startMove(x- mMoveInfo.childX , y - mMoveInfo.childY);
+//                    startMove(event.getX() - mMoveInfo.childX , event.getY() - mMoveInfo.childY);
+                }
+            }.sendEmptyMessage(0);
 		}else if(event.getAction() == MotionEvent.ACTION_UP ||event.getAction() == MotionEvent.ACTION_CANCEL){
                 mMoveInfo.clear();
 		}
@@ -127,27 +138,30 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
         return super.onTouchEvent(event);
 	}
 
-	
-	class Asy extends AsyncTask<Float, Void, RelativeLayout.LayoutParams>{
 
-		@Override
-		protected RelativeLayout.LayoutParams doInBackground(Float... params) {
-			// TODO Auto-generated method stub
-			return getMoveLayoutPrams(params[0], params[1]);
-		}
 
-		@Override
-		protected void onPostExecute(RelativeLayout.LayoutParams result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-
-		}
-	}
+//
+//	class Asy extends AsyncTask<Float, Void, RelativeLayout.LayoutParams>{
+//
+//		@Override
+//		protected RelativeLayout.LayoutParams doInBackground(Float... params) {
+//			// TODO Auto-generated method stub
+//			return getMoveLayoutPrams(params[0], params[1]);
+//		}
+//
+//		@Override
+//		protected void onPostExecute(RelativeLayout.LayoutParams result) {
+//			// TODO Auto-generated method stub
+//			super.onPostExecute(result);
+//
+//		}
+//	}
 
     private void startMove(float l ,float t){
         RelativeLayout.LayoutParams result = getMoveLayoutPrams(l , t);
         if(result == null || mMoveInfo.v == null) return;
-        mMoveInfo.v.setLayoutParams(result);
+//        mMoveInfo.v.setLayoutParams(result);
+        mMoveInfo.v.layout((int )l , (int)t  , (int)l + 50 , (int)t + 50);
     }
 
 
@@ -191,15 +205,19 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 
 
         public int getLeft(float x){
-            int l = (int)((x + v.getWidth() < MoveViewParentRelativity.this.getWidth()) ?
-                    x : MoveViewParentRelativity.this.getWidth() - v.getWidth());
-
-
-           return l ;
+           return getbestParams((int)x , v .getWidth() , MoveViewParentRelativity.this.getWidth());
         }
 
         public int getTop(float y){
-            return (int)(y + v.getHeight() < MoveViewParentRelativity.this.getHeight() ? y : MoveViewParentRelativity.this.getHeight() - v.getHeight());
+//            int t =  (int)(y + v.getHeight() < MoveViewParentRelativity.this.getHeight() ? y : MoveViewParentRelativity.this.getHeight() - v.getHeight());
+//
+//
+//return t;
+            return getbestParams((int)y , v .getHeight() , MoveViewParentRelativity.this.getHeight());
+        }
+
+        private int getbestParams(int xy , int child ,  int parent){
+            return ((xy +child) < parent)? (xy < 0 ? 0 : xy) : parent - child;
         }
 
 		public boolean isMove(){
@@ -236,8 +254,5 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
         }
         return true;
     }
-
-
-
 
 }

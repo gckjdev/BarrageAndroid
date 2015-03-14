@@ -10,19 +10,18 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
-public class RequestAddFriendActivity extends BarrageCommonActivity {
-    private RelativeLayout mRelativeLayout;
-    private TextView mTextView;
+import roboguice.inject.InjectView;
 
+public class RequestAddFriendActivity extends BarrageCommonActivity {
+    @InjectView(R.id.add_friend_layout)
+    private RelativeLayout mRelativeLayout;
+    @InjectView(R.id.activity_request_add_friend)
+    private TextView mTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //调用父类的super.onCreate()方法
         super.onCreate(savedInstanceState,R.layout.activity_request_add_friend,"添加好友",-1);
-        //setContentView(R.layout.activity_request_add_friend);
-        mRelativeLayout=(RelativeLayout)findViewById(R.id.add_friend_layout);
-        mTextView=(TextView)findViewById(R.id.activity_request_add_friend);
         mTextView.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG );
-
         mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,15 +4,30 @@
     android:background="@color/black">
 
 
+    <RelativeLayout
+        android:background="@drawable/x_bottom_caidan_bgrepaint"
+        android:layout_width="match_parent"
+
+        android:layout_height="@dimen/y_mainview_menu_height">
 
 
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            style="@style/match_content">
+            <TextView
+                android:layout_weight="1"
+                style="@style/match_content"
+                android:background="@color/b_color_alpha"/>
+            <ImageButton
+                android:onClick="onCLickCamer"
+                style="@style/match_content"
+                android:layout_weight="1"
+                android:scaleType="center"
+                android:background="@color/b_color_alpha"
+                android:src="@drawable/x_fabiao"/>
+            <TextView
+                android:layout_weight="1"
+                style="@style/match_content"
+                android:background="@color/b_color_alpha"/>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

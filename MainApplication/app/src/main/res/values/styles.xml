@@ -47,8 +47,8 @@
         <item name = "android:layout_width">28dip</item>
         <item name="android:layout_marginRight">13dip</item>
         <item name="android:onClick">onClick</item>
-        <!--<item name="android:visibility">gone</item>
-    --></style>
+        <item name="android:visibility">gone</item>
+    </style>
     <style name="b_edieText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/y_zhuche_2_height</item>
@@ -125,7 +125,7 @@
 
 
     <style name="b_homepage_top_right_button">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">44dip</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/b_color_alpha</item>
         <item name="android:layout_marginRight">@dimen/b_navigationbar_margin_right</item>
@@ -135,5 +135,12 @@
         <item name="android:visibility">gone</item>
     </style>
 
+    <!--所有限制TextView的统一标准，只显示一行，最大显示8个字符,可以获得焦点,可以设置跑马灯-->
+    <style name="t_textview_limit">
+        <item name="android:singleLine">true</item>
+        <item name="android:maxEms">8</item>
+        <item name="android:focusable">true</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
 
 </resources>

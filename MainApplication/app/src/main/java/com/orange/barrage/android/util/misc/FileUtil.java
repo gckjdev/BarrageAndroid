@@ -18,6 +18,7 @@ import java.io.OutputStream;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import roboguice.util.Ln;
@@ -309,4 +310,65 @@ public static boolean checkFileIsExits(String filePath)
 	}
 		return result;
 	}
+
+
+
+    /**
+     * Save image to the SD card
+     * @param photoBitmap
+     * @param photoName
+     * @param path
+     */
+    public static void savePhotoToSDCard(Bitmap photoBitmap,String path,String photoName){
+        if (SystemUtil.checkSDCardAvailable()) {
+            File dir = new File(path);
+            if (!dir.exists()){
+                dir.mkdirs();
+            }
+
+            File photoFile = new File(path , photoName + ".png");
+            FileOutputStream fileOutputStream = null;
+            try {
+                fileOutputStream = new FileOutputStream(photoFile);
+                if (photoBitmap != null) {
+                    if (photoBitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream)) {
+                        fileOutputStream.flush();
+//						fileOutputStream.close();
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                photoFile.delete();
+                e.printStackTrace();
+            } catch (IOException e) {
+                photoFile.delete();
+                e.printStackTrace();
+            } finally{
+                try {
+                    if(fileOutputStream != null)
+                        fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
+
+    /**
+     * Get images from SD card by path and the name of image
+     * @param photoName
+     * @return
+     */
+    public static Bitmap getPhotoFromSDCard(String path,String photoName){
+        Bitmap photoBitmap = BitmapFactory.decodeFile(path + "/" + photoName + ".png");
+        if (photoBitmap == null) {
+            return null;
+        }else {
+            return photoBitmap;
+        }
+    }
+
+
 }

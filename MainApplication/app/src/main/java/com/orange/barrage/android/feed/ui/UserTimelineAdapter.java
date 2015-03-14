@@ -1,6 +1,7 @@
 package com.orange.barrage.android.feed.ui;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -23,6 +24,8 @@ public class UserTimelineAdapter extends BaseAdapter{
     private Context mContext;
     private Fragment mFragment;
 
+
+
     @Inject
     private FeedManager mFeedManager;
 
@@ -32,8 +35,11 @@ public class UserTimelineAdapter extends BaseAdapter{
         this.mContext = context;
     }
 
+
+
     public void setFragment(Fragment fragment){
         this.mFragment = fragment;
+
     }
 
 //    public UserTimelineAdapter(Context context, TimelineFragment fragment) {
@@ -78,7 +84,7 @@ public class UserTimelineAdapter extends BaseAdapter{
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
         PictureTopicModel model = new PictureTopicModel();
         model.setFeed(feed);
-        ((TimelineItemView)convertView).setModel(model);
+        ((TimelineItemView)convertView).setModel(model , mFragment.getActivity());
 //
 //        TextView userNickTextView = (TextView)convertView.findViewById(R.id.timeline_item_user_nick);
 //        userNickTextView.setText(feed.getCreateUser().getNick());
