@@ -10,10 +10,13 @@ import android.view.View;
 
 import roboguice.activity.RoboActivity;
 
+import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
 import com.orange.barrage.android.user.mission.UserMission;
 
 import javax.inject.Inject;
+
+import roboguice.activity.RoboActivity;
 
 /**
  * Created by youjiannuo on 2015/3/3.

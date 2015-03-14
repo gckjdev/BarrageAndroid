@@ -135,5 +135,12 @@
         <item name="android:visibility">gone</item>
     </style>
 
+    <!--所有限制TextView的统一标准，只显示一行，最大显示8个字符,可以获得焦点,可以设置跑马灯-->
+    <style name="t_textview_limit">
+        <item name="android:singleLine">true</item>
+        <item name="android:maxEms">8</item>
+        <item name="android:focusable">true</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
 
 </resources>

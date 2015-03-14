@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-FacebookMessenger-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fc87ebb6fe3d0c05a0b0d02c4035fa0aeb8e26ee">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-FacebookMessenger-2.5.8-a177272755bafad90aa6d8d6ffe96bff302f252b.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Pocket-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="00c689e401ff0ce895405a9d9f337b76f32811d2">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Pocket-2.5.8-cba819cf0d491035eb4b4e2deaad13ca82234db2.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-SohuSuishenkan-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb81e4389325b410e81716c7835e7f38e0ac2850">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-SohuSuishenkan-2.5.8-904d0fc20aa724f968e61addbdf8da6cd5f63f9e.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Yixin-Moments-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="31999edc357ba1b368f19b4098c99a9115ac8f06">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Yixin-Moments-2.5.8-0d0604e5a4269ce34146891b31e46ebe6804f962.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Tumblr-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8c132a9c678dfdd3afa03497e015c64a89b342b0">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Tumblr-2.5.8-51be557a0c3330095e18954d7e1ddeca6b6c36f2.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Pinterest-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7d1fbfa419b2d0b2d836437d67ffc250b9c2ecee">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Pinterest-2.5.8-e98c7d998db8deb2e8346882856e22b6e13363dc.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-GooglePlus-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb2de8ab7a1590d34bd7fb0916ac5d6a81a84cc1">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-GooglePlus-2.5.8-0bdcfad960434945db46006c565a63157d8bee2e.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-VKontakte-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="474a6d26e088db9e49f14ad2e30d6c6425c6c792">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-VKontakte-2.5.8-9e1825e88b783452a81a54110100339547e8a025.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-ShortMessage-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="83d6cae15983ea683211e70d191328bb92a25515">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-ShortMessage-2.5.8-d2d6b0833ccbd05671cec8e46427d1da1ed42db5.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Evernote-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="305108272cf22a5639d8b8a6d8df930c97ee8671">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Evernote-2.5.8-660571585dee81a1e10e3c5dfdd4aa85e69ae5d0.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Mingdao-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="11805b4fc211d8921dc2e936a2609b98e4d486be">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Mingdao-2.5.8-379f75d4e3f64e2451f1703dcb924cad57cb52cc.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Foursquare-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="50bfd0efc63fe58858fb065245d7ba15eca8fec0">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Foursquare-2.5.8-e8bc8de8aa825d39d9b4c947a9d2b1319b85a302.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Wechat-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ca96a092095683ea13d7bfbbdb720342a0b050b0">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Wechat-2.5.8-1a4db9a142ad2048c1ffe8b56ac806f4d263bab3.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-SinaWeibo-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="554f929d47197355c2ea672064cd080a7cd128e5">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-SinaWeibo-2.5.8-9aada0ca47b5e6d09558676eb9248b7b92695ef6.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-KaiXin-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b05d38eed4833293dcae446e88efcad67be75aac">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-KaiXin-2.5.8-5e0def9f6f361a5bcf050b60b6092d5a755ec53d.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-TencentWeibo-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85b04c76a46fc0ac74457b4c04c5aeab9ee4efdf">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-TencentWeibo-2.5.8-dfa505d42cede28e54482023ad128cac0c9f9d02.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Instagram-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f12a9a8e0738f2da8855be8127e4143dd8a0bb8d">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Instagram-2.5.8-08f8dea8a9f664bee1b0de0da00d7033424818bf.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Wechat-Favorite-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b8822e298639b1fd1fba6b92397cb36d92f4c711">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Wechat-Favorite-2.5.8-0a20f886f820a81a76a11e325f4a7fcfb5211d99.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Yixin-Core-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a69b44065512ab510ce14be36e55649cb4f70ecd">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Yixin-Core-2.5.8-1daf63d77a853d633597a9e1226c21af90085b70.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Dropbox-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ea1f9571fec16f1db3b5243466790b3b0934103f">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Dropbox-2.5.8-ee65d5d3b5f4c01a205d2b2a38f850ee70f4baae.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Wechat-Core-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d5652d73d70e40370df2fba540f0bafe09549f3f">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Wechat-Core-2.5.8-3f08795497bc1db656804d2b1a0b583fdf2b4c01.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Core-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85f5874b452e076908cb403c1dde38d5f6e1c423">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Core-2.5.8-9765794d16c73910d061bb2b0b1461bb6d2da5a2.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-WhatsApp-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="845ea70f5db6a50ef916809ec0b4ade51f80dfc4">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-WhatsApp-2.5.8-4ed0acc04a32967be69642e233d781610ad0721f.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-QZone-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="edd407115587108a8fbf7f15923253f48a50a9bf">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-QZone-2.5.8-23e2b9c01b78b4b6aee0dd48e59d223da3671e10.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-QQ-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ede2b291f6309cb3ebf817cab2924c5516fbf97a">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-QQ-2.5.8-afa0c52778cab192214869050bcf753de1a4f552.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-KakaoStory-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f9b91dfa50ff623b30770754665ad793346ebde0">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-KakaoStory-2.5.8-d7cae8c9fcab4bc1ac0e557f45f0d6e8e77903a9.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Linkedin-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="107e56b4d6cea87ecd5bf0e81688ab4268c3f054">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Linkedin-2.5.8-b888b3d9655446d74b0dff61a8a0546a712c9d0a.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/mframework.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="25509058b34a5ee08dbf66e57078e3083735d200">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/mframework-aee8a993fda00a2a0ef3c77fb18b7eee7042003b.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-YouDao-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="652104e4dfb78dfb197ca012ac5d4fcbc2341d51">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-YouDao-2.5.8-17ebfb72b0e02ac6beb4764084a19bb709916d67.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Renren-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c90a2fc6ed521da279339994c41440205547f6c9">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Renren-2.5.8-4d006ce502109bb10cf5b34eb1a7170a67ee83a6.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Line-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="43d6cfe7e6e585b8ea87b002bfd35907773ca0f1">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Line-2.5.8-e805c2687167e7bef8e29987f14a5fca9e3400c4.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Email-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b697fc964bb3b3075eaeac7cc7e5e5d366935cbf">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Email-2.5.8-fa632ca886adb6d174702a39c0ff8bccb5ff3c99.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Instapaper-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="49287dad85167e2258f229172d510e5d526b4c85">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Instapaper-2.5.8-2f2a6f1ab087375fa70b59323721673afc4be9bd.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Wechat-Moments-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="390e374944794ce82712100dd1eba072e3ceabaa">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Wechat-Moments-2.5.8-f88d19f919bc3b51765290c5d7e5381da480eb64.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Twitter-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8becbf493fd07a2a0e82162bc2d7a1147d4b57e4">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Twitter-2.5.8-c48d7e1acb12fcd17a4da2962caa0e362ee71398.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Bluetooth-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8461f7dc85fba93916ccfe03e575b122607d6493">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Bluetooth-2.5.8-2e80f79badb1ebdd637ab70fd95f3b5fc9f8fdbe.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-KakaoTalk-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1244b70bed2128a17f9a44e263256f18a6c8e1c1">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-KakaoTalk-2.5.8-a599649f71d8a33522aee7cc40a828a9c966de94.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Douban-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="61d5b9ff0403fbe6c6460ac30b29fec53409312f">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Douban-2.5.8-6e7bba80de84b2d9a34f44b4585bf1438b70b88e.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Facebook-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0819a09a9aec54a2f03081832b699c73a4947b13">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Facebook-2.5.8-53fe1539fc2759b43c78e1fa97cb318fde2c1ffb.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Yixin-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5dec4f68d66d116d7975e58e43c451bd47d68376">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Yixin-2.5.8-0ec5a3cc84471e8e0389b4804bfdc884258cba6f.jar" />
+    </item>
+    <item
+        jar="/Users/pipi/gitdata/BarrageAndroid/Sample/app/libs/ShareSDK-Flickr-2.5.8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="89ae9a801dbcb97e29e31175709b1857b0730cd9">
+        <dex dex="/Users/pipi/gitdata/BarrageAndroid/Sample/app/build/intermediates/pre-dexed/debug/ShareSDK-Flickr-2.5.8-a8fbffdeccfe889ca36c55a1520b2ed7838c4943.jar" />
+    </item>
+
+</items>

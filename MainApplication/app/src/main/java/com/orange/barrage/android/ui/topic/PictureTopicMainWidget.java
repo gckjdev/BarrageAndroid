@@ -194,7 +194,7 @@ public class PictureTopicMainWidget extends FrameLayout {
         public  final   Creator<Info> creator = new Creator<Info>() {
             @Override
             public Info createFromParcel(Parcel source) {
-                Info info = new Info();
+//                Info info = new Info();
 
                 return null;
             }

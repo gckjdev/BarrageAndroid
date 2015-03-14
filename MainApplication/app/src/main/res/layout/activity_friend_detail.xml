@@ -16,8 +16,8 @@
             <com.orange.barrage.android.user.ui.view.UserAvatarView
                 android:id="@+id/friend_detail_avatar_view"
                 android:src="@drawable/person_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="63dp" />
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/friend_detail_avatar_view"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="34dp" />
+                android:layout_marginTop="15dp" />
             </RelativeLayout>
     </LinearLayout>
     <LinearLayout
@@ -53,6 +53,7 @@
                 android:id="@+id/friend_detail_signature"
                 android:textSize="18sp"
                 android:text="什么也没有"
+                style="@style/t_textview_limit"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
@@ -87,6 +88,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
+                style="@style/t_textview_limit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
@@ -102,14 +104,11 @@
             android:layout_height="match_parent">
             <Button
                 android:layout_marginTop="20dp"
-                android:layout_width="280dp"
+                style="@style/b_button_color_red"
                 android:id="@+id/friend_detail_sharephoto"
                 android:text="分享照片"
-                android:textSize="20sp"
-                android:textColor="#ffffff"
                 android:layout_centerHorizontal="true"
-                android:background="@android:color/holo_red_light"
-                android:layout_height="50dp" />
+               />
             </RelativeLayout>
 
     </LinearLayout>

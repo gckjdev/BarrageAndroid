@@ -1,24 +1,20 @@
 package com.orange.barrage.android.friend.activity;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.mission.SearchUserCallback;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.KeyboardUtil;
 import com.orange.protocol.message.UserProtos;
 
@@ -53,7 +49,7 @@ public class SearchUserActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState, R.layout.activity_search_user, "搜索", -1);
+        super.onCreate(savedInstanceState, R.layout.activity_search_user, "搜索",R.string.y_tijiao);
 
         initAdapter();
         initTopBar();
@@ -96,7 +92,8 @@ public class SearchUserActivity extends BarrageCommonActivity {
         //首先判断输入框是否是空，如果为空，则提示用户，并且软键盘不会消失，如果不为空才执行搜索
         if (TextUtils.isEmpty(mSearchEditText.getText().toString())) {
             // TODO
-            Toast.makeText(SearchUserActivity.this, "搜索框不能为空", Toast.LENGTH_LONG).show();
+            MessageCenter.postInfoMessage(getResources().getString(R.string.search_friend_find)+getResources().getString(R.string.search_friend_result));
+            KeyboardUtil.hideKeyboard(mSearchEditText,this);
         } else {
             KeyboardUtil.hideKeyboard(mSearchEditText, this);
             doSearch(mSearchEditText.getText().toString());
@@ -116,7 +113,7 @@ public class SearchUserActivity extends BarrageCommonActivity {
 
                     if (pbUserList.size() == 0) {
                         // TODO use MessageCenter
-                        Toast.makeText(SearchUserActivity.this, "错误的输入,请重新输入搜索条件哦", Toast.LENGTH_LONG).show();
+                        MessageCenter.postInfoMessage(getResources().getString(R.string.search_friend_find)+" "+mSearchEditText.getText().toString()+" "+getResources().getString(R.string.search_friend_result));
                     }
                 }
             }
