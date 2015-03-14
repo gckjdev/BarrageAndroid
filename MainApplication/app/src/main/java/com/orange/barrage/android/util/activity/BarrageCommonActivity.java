@@ -1,28 +1,16 @@
 package com.orange.barrage.android.util.activity;
 
 
-import com.orange.barrage.android.BarrageAndroid;
-
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import roboguice.activity.RoboActivity;
-
-import com.litl.leveldb.NotFoundException;
-
-import com.orange.barrage.android.R;
+import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
 import com.orange.barrage.android.user.mission.UserMission;
 
 import javax.inject.Inject;
+
+import roboguice.activity.RoboActivity;
 
 /**
  * Created by youjiannuo on 2015/3/3.

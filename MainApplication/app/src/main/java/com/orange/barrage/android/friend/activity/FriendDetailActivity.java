@@ -23,19 +23,19 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     private static final String BUNDLE_KEY_USER = "BUNDLE_KEY_USER";
 
     @InjectView(R.id.friend_detail_avatar_view)
-    private UserAvatarView friend_detail_imageView;
+    private UserAvatarView userAvatarImageView;
 
     @InjectView(R.id.friend_detail_nick)
     private TextView nickTextView;
 
     @InjectView(R.id.friend_detail_signature)
-    private TextView friend_detail_signature;
+    private TextView signatureTextView;
 
     @InjectView(R.id.friend_detail_location)
-    private TextView friend_detail_location;
+    private TextView locationTextView;
 
     @InjectView(R.id.friend_detail_sharephoto)
-    private Button friend_detail_sharephoto;
+    private Button shareButton;
 
     UserProtos.PBUser mUser;
 
@@ -62,22 +62,22 @@ public class FriendDetailActivity extends BarrageCommonActivity {
             return;
         }
 
-        friend_detail_sharephoto.setOnClickListener(new View.OnClickListener() {
+        shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(FriendDetailActivity.this,"点击了分享",Toast.LENGTH_SHORT).show();
+                // Toast.makeText(FriendDetailActivity.this,"点击了分享",Toast.LENGTH_SHORT).show();
             }
         });
 
         nickTextView.setText(mUser.getNick());
 
-        friend_detail_location.setText(mUser.getLocation());
+        locationTextView.setText(mUser.getLocation());
 
         if (!StringUtil.isEmpty(mUser.getSignature())) {
-            friend_detail_signature.setText(mUser.getSignature());
+            signatureTextView.setText(mUser.getSignature());
         }
 
-        friend_detail_imageView.loadUser(mUser);
+        userAvatarImageView.loadUser(mUser);
 
     }
 
