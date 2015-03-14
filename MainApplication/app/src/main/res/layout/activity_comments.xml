@@ -9,6 +9,9 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            style="@style/match_content"
+            android:id="@+id/CommentImageView"/>
         <com.orange.barrage.android.feed.ui.view.TableView
             android:id="@+id/tableview"
             android:visibility="gone"

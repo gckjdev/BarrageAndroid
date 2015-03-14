@@ -18,25 +18,31 @@ import com.orange.barrage.android.R;
 public class FloatWindow  {
 
     private int mLayoutid;
-    private Context mContext;
-    private PopupWindow mPpWindow;
+    private int mGravity;
     private int mHeight;
     private int mWidth;
-    private View mChildView;
 
+    private Context mContext;
+    private PopupWindow mPpWindow;
+    private View mChildView;
     private Window mWindow;
     private Dialog mDialog;
 
 
-    public FloatWindow(int layoutid , Context context){
-        this(layoutid , context , LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT);
+    public FloatWindow(int layoutId , Context context){
+        this(layoutId , context , LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT);
+    }
+
+    public FloatWindow(int layoutId ,Context context , int width , int height , int gravity ){
+        this(layoutId, context , width , height);
+        this.mGravity = gravity;
     }
 
 
-    public  FloatWindow(int layoutid , Context context , int width , int height){
+    public  FloatWindow(int layoutId , Context context , int width , int height){
 
         this.mContext = context;
-        this.mLayoutid = layoutid;
+        this.mLayoutid = layoutId;
         this.mHeight =height;
         this.mWidth = width;
 

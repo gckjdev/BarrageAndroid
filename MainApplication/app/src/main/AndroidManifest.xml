@@ -83,7 +83,7 @@
 
             </activity>
 
-        <activity android:name=".feed.activity.CommentActivity">
+        <activity android:name=".feed.activity.FeedCommentActivity">
 
         </activity>
 

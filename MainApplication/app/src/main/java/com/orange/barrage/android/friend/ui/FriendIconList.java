@@ -38,23 +38,35 @@ public class FriendIconList extends LinearLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.view_friends_icon_list , this);
     }
 
-
-    public void setUsers(List<UserProtos.PBUser> users , Activity activity){
+    public void setUsers(List<UserProtos.PBUser>users , Activity activity , int type){
         if(mAdapter == null)
             mAdapter = new FriendIconListAdapter(getContext() ,users , activity);
         if(mGridView == null)
             mGridView = (GridView) findViewById(R.id.friend_icon_gridview);
 
         mGridView.setAdapter(mAdapter);
+        mAdapter.setICONType(type);
     }
+
+
+    public void setUsers(List<UserProtos.PBUser> users , Activity activity){
+       setUsers(users , activity , ORDINARY_ICON);
+    }
+
+    public void setIconType(int type){
+        if(mAdapter == null) return ;
+        mAdapter.setICONType(type);
+        mAdapter.notifyDataSetChanged();
+    }
+
 
     /**
      * 设置可以头像的类型,是否可以添加或者删除头像
      */
     public void setDeleteType(){
-        if(mAdapter == null) return;
-        mAdapter.setICONType(ADD_AND_DELETE_ICON);
-        mAdapter.notifyDataSetChanged();
+
+        setIconType(ADD_AND_DELETE_ICON);
+
     }
 
 

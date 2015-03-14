@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">ShareSDK</string>
+    <string name="app_upload">Share App (With File)</string>
+    <string name="app_upload_extinfo">Share App (With Script)</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="bluetooth">Bluetooth</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="buy_failed">Buy Failed</string>
+    <string name="buy_success">Buy Success</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="cancel">Cancel</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="customer_douban">Search for users</string>
+    <string name="customer_facebook">Get notification list</string>
+    <string name="customer_kaixin">People You May Know</string>
+    <string name="customer_nemb">Get Recommended Topics</string>
+    <string name="customer_qzone">Publish to QZone</string>
+    <string name="customer_renren">Upload photos to the user\'s photo albums</string>
+    <string name="customer_sina">Get weibo home list</string>
+    <string name="customer_sohu">Get friends</string>
+    <string name="customer_suishenkan">Get the Sohu Kan bookmark list</string>
+    <string name="customer_tencent">Get followers</string>
+    <string name="customer_tumblr">Get Post list of Tumblr users</string>
+    <string name="customer_twitter">Get home list</string>
+    <string name="customer_youdao">Get notebook list</string>
+    <string name="demo_get_access_token">Get AccessToken</string>
+    <string name="demo_get_my_info">Get Authorized User Info</string>
+    <string name="demo_get_other_info">Get other user info</string>
+    <string name="demo_share_all">Share all (Silent Share)</string>
+    <string name="demo_share_all_gui">Share all (Popup Edit Page)</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="douban">Douban</string>
+    <string name="dropbox">Dropbox</string>
+    <string name="email">Email</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="emoji_upload">Share Emoticon (Local Image)</string>
+    <string name="emoji_upload_bm">Share Emoticon (Bitmap Object)</string>
+    <string name="emoji_upload_url">Share Emoticon (Internet Image)</string>
+    <string name="evenote_title">ShareSDK is a magical SDK</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="evernote">Evernote</string>
+    <string name="facebook">Facebook</string>
+    <string name="facebookmessenger">Facebook Messenger</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="file_upload">Share File</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="finish">Finish</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="flickr">Flickr</string>
+    <string name="foursquare">FourSquare</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="get_other_info_format">Get %s other user info</string>
+    <string name="get_sina_friends_list">Get Sina Weibo followers</string>
+    <string name="get_tencent_friends_list">Get Tencent Weibo followers</string>
+    <string name="get_token_format">Get %s AccessToken</string>
+    <string name="get_user_info_format">Get %s Authorized user info</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="google_plus_client_inavailable">Google+ client not exists or the version is too low</string>
+    <string name="googleplus">Google+</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="image_upload">Share Image (Local)</string>
+    <string name="image_upload_bitmap">Share Image (Bitmap Object)</string>
+    <string name="image_upload_url">Share Image (Internet Image)</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="instagram">Instagram</string>
+    <string name="instagram_client_inavailable">Instagram client not exists or the version is too low</string>
+    <string name="instapager_email_or_password_incorrect">Email or Password incorrect</string>
+    <string name="instapaper">Instapaper</string>
+    <string name="instapaper_email">Email</string>
+    <string name="instapaper_login">Sign In</string>
+    <string name="instapaper_logining">Sign In…</string>
+    <string name="instapaper_pwd">Password</string>
+    <string name="kaixin">Kaixin</string>
+    <string name="kakaostory">KakaoStory</string>
+    <string name="kakaostory_client_inavailable">KakaoStory client not exists or the version is too low</string>
+    <string name="kakaotalk">KakaoTalk</string>
+    <string name="kakaotalk_client_inavailable">KakaoTalk client not exists or the version is too low</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="laiwang">Laiwang</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="line">Line</string>
+    <string name="line_client_inavailable">Line client not exists or the version is too low</string>
+    <string name="linkedin">Linked in</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="list_friends">Friends on %s</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="mingdao">Mingdao</string>
+    <string name="mingdao_share_content">Share webpage</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="more">More</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="multi_share">Photo Sharing</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="music_upload">Share Music</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="neteasemicroblog">Netease Microblog</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="not_yet_authorized">Not Authorized</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="pinterest">Pinterest</string>
+    <string name="pinterest_client_inavailable">Pinterest client not exists or the version is too low</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="plz_choose_wechat">Please select Wechat client to complete the operation</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="pocket">Pocket</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="pull_to_refresh">Pull down to refresh</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="qq">QQ</string>
+    <string name="qq_client_inavailable">Mobile QQ client not exists or the version is too low</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="qq_share_from_qqlogin">QQ/QZone login to post Weibo</string>
+    <string name="qq_share_from_tlogin">Tencent Weibo login to post Weibo</string>
+    <string name="qq_share_way">Please Select Share way</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="qzone">QZone</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="qzone_add_blog_sample"><h1>QQ Connect</h1></string>
+    <string name="qzone_customer_share_style">custom QZone share style</string>
+    <string name="receive_rewards">Congratulations, you get %s gold!</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="refreshing">Refreshing…</string>
+    <string name="release_to_refresh">Release to refresh</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="renren">Renren</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="select_a_friend">Please select a friend</string>
+    <string name="select_one_plat_at_least">Please select a target platform</string>
+    <string name="shake2share">Shake your phone!</string>
+    <string name="share">Share</string>
+    <string name="share_canceled">Operation canceled</string>
+    <string name="share_completed">Operation succeeded</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="share_content">ShareSDK for Android not only integration social platforms, like Facebook, Twitter, Google+. But also Our strong professional backend support can easy to know the Users,Information Flow,Backflow, Backflow rate, Share Rate,etc. See more detail on website http://mob.com @ShareSDK</string>
+    <string name="share_content_short">ShareSDK for Android not only integration social platforms, like Facebook, Twitter, Google+. But also Our strong professional backend support can easy to know the Users,Information Flow,Backflow, Backflow rate, Share Rate,etc. See more detail on website http://mob.com @ShareSDK</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="share_failed">Operation failed</string>
+    <string name="share_to">Share to </string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="share_to_favorite">Wechat Favorite</string>
+    <string name="share_to_format">Share to %s</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="share_to_mingdao">Share To Mingdao</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="share_to_moment">Wechat Moments</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="share_to_qq">Share To QQ</string>
+    <string name="share_to_qzone">Share To QZone</string>
+    <string name="share_to_qzone_default">Shared from %s</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="share_to_wechat">Wechat Friends</string>
+    <string name="share_to_yixin">Yixin Friends</string>
+    <string name="share_to_yixin_favorite">Yixin Favorite</string>
+    <string name="share_to_yixin_moment">Yixin Moments</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/oks_strings.xml -->
+    <eat-comment/>
+    <string name="sharing">Sharing operation is working in the background…</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="shortmessage">Short Message</string>
+    <string name="sinaweibo">Sina Weibo</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="sm_item_about">Demo  Ver. %s</string>
+    <string name="sm_item_auth">Authorize</string>
+    <string name="sm_item_custom_fields">Custom share fields</string>
+    <string name="sm_item_customer">Custom API</string>
+    <string name="sm_item_demo">API</string>
+    <string name="sm_item_fl_tc">Follow Tencent Weibo</string>
+    <string name="sm_item_fl_weibo">Follow Sina Weibo</string>
+    <string name="sm_item_share_view">Shake to share</string>
+    <string name="sm_item_visit_website">Visit the official site</string>
+    <string name="sm_item_wechat">Wechat</string>
+    <string name="sm_item_yixin">Yixin</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="sohumicroblog">Sohu Microblog</string>
+    <string name="sohusuishenkan">Sohu Suishenkan</string>
+    <string name="tencentweibo">Tencent Weibo</string>
+    <string name="tumblr">Tumblr</string>
+    <string name="twitter">Twitter</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="update">Share Text</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="use_login_button">use login button instead</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="video_upload">Share Video</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="vkontakte">VK</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="webpage_upload">Share Web (Local Image)</string>
+    <string name="webpage_upload_bitmap">Share Web (Bitmap Ojbect)</string>
+    <string name="webpage_upload_url">Share Web (Internet Image)</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="website">http://www.mob.com</string>
+    <string name="wechat">Wechat</string>
+    <string name="wechat_client_inavailable">Wechat client not exists or the version is too low</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="wechat_client_is_not_installed_correctly">Wechat client is not installed, or the version is too old</string>
+    <string name="wechat_client_not_support_following_operation">Wechat client does not support third-party applications to follow</string>
+    <string name="wechat_demo_title">Wechat share demo title</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="wechatfavorite">Wechat Favorite</string>
+    <string name="wechatmoments">Wechat Moments</string>
+    <string name="weibo_oauth_regiseter">Authorization</string>
+    <string name="weibo_upload_content">分享图片</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="whatsapp_client_inavailable">WhatsApp client not exists or the version is too low</string>
+    <string name="yixin">Yixin</string>
+    <string name="yixin_client_inavailable">Yixin client not exists or the version is too low</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string name="yixin_demo_title">Yixin share demo title</string>
+    <!-- From: file:/Users/pipi/gitdata/BarrageAndroid/Sample/app/src/main/res/values-en/ssdk_strings.xml -->
+    <eat-comment/>
+    <string name="yixinmoments">Yixin Moments</string>
+    <string name="youdao">Youdao</string>
+</resources>

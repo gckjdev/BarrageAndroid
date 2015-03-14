@@ -3,6 +3,7 @@ package com.orange.barrage.android.feed.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -65,9 +66,12 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mTimeTextView = (TextView)mView.findViewById(R.id.timeline_item_date);
         mDropDownImageButton = (ImageButton) mView.findViewById(R.id.dropDownButton);
         mMainRelativeLayout = (RelativeLayout) mView.findViewById(R.id.iconMainRelativrLayout);
+
+
         mDropDownImageButton.setOnClickListener(this);
         mPlayerButton.setOnClickListener(this);
         mShareButton.setOnClickListener(this);
+
     }
 
 
@@ -95,7 +99,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
 
 
-        mBarrageWidget.setModel(model);
+        mBarrageWidget.setModel(model , activity);
 
     }
 
@@ -160,4 +164,5 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         else if (mPlayerButton == v) onClickPlayer(v);
         else if (mDropDownImageButton == v) onClickDraoDown(v);
     }
+
 }

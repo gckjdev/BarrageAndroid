@@ -1,8 +1,14 @@
 package com.orange.barrage.android.util.activity;
 
 
+import com.orange.barrage.android.BarrageAndroid;
+
+
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+
+import roboguice.activity.RoboActivity;
 
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
@@ -25,6 +31,9 @@ public class BarrageCommonActivity extends RoboActivity  {
 
     /* 导航栏 */
     protected TopBarView mTopBarView;
+
+    /*获取intent携带的值*/
+    private IntentUtil mIntentUtil;
 
     @Inject
     protected UserMission mUserMission;
@@ -69,13 +78,25 @@ public class BarrageCommonActivity extends RoboActivity  {
         mProgressDialog = new BarrageProgressDialog(this);
     }
 
+    protected IntentUtil getIntentUtil(){
+        return mIntentUtil == null ? new IntentUtil(this) : mIntentUtil;
+    }
+
 
     public String getIntentString(String key){
-        return getIntent().getStringExtra(key);
+        return getIntentUtil().getIntentString(key);
+    }
+
+    public Parcelable getIntentParcelable(String key){
+        return getIntentUtil().getIntentParcelable(key);
     }
 
     public int getIntentInt(String key ,int defaultValue){
-        return getIntent().getIntExtra(key , defaultValue);
+        return  getIntentUtil().getIntentInt(key , defaultValue);
+    }
+
+    public byte[] getIntentByteArrays(String key ){
+        return getIntentUtil().getIntentByteArrays(key);
     }
 
     /**

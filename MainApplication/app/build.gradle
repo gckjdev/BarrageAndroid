@@ -55,4 +55,6 @@ dependencies {
     compile 'com.soundcloud.android:android-crop:0.9.10@aar'
 
     compile 'com.pkmmte.view:circularimageview:1.1'
+    compile 'com.kbeanie:image-chooser-library:1.4.3@aar'
+    compile 'com.nhaarman.supertooltips:library:3.0.+'
 }

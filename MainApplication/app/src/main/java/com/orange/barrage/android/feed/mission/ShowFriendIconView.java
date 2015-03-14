@@ -2,7 +2,9 @@ package com.orange.barrage.android.feed.mission;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.ui.FriendIconItem;
@@ -28,8 +30,13 @@ public class ShowFriendIconView {
     }
 
     private void initView(){
-        mFloatWindow = mFloatWindow == null ? (new FloatWindow(R.layout.view_popupwindow_friend_list , mActivity)) :mFloatWindow;
+        mFloatWindow = mFloatWindow == null ?
+                (new FloatWindow(R.layout.view_popupwindow_friend_list , mActivity , ViewGroup.LayoutParams.MATCH_PARENT , ViewGroup.LayoutParams.WRAP_CONTENT , Gravity.CENTER|Gravity.TOP))
+                :mFloatWindow;
     }
+
+
+
 
 
     public void show(View parent , List<UserProtos.PBUser> users){
@@ -40,7 +47,6 @@ public class ShowFriendIconView {
         mFrinedInconList = (FriendIconList) v .findViewById(R.id.friendIconFrinedInconlist);
 
         mFrinedInconList.setUsers(users , mActivity);
-        mFrinedInconList.setDeleteType();
 
     }
 

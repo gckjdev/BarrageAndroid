@@ -4,25 +4,31 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.ui.view.CircleColorView;
 import com.orange.barrage.android.feed.ui.view.TableView;
+import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.Comment;
+import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.user.ui.view.CommentsView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
+import com.orange.protocol.message.BarrageProtos;
+import com.squareup.picasso.Picasso;
 
 import roboguice.inject.InjectView;
 
 /**
  * Created by youjiannuo on 2015/3/9.
  */
-public class CommentActivity extends BarrageCommonActivity implements View.OnClickListener {
+public class FeedCommentActivity extends BarrageCommonActivity implements View.OnClickListener {
 
     @InjectView(R.id.color_ring)
     LinearLayout mLayout;
@@ -32,6 +38,8 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
 
     @InjectView(R.id.tableview)
     TableView mTableView;
+
+    private PictureTopicMainWidget.Info mInfo;
 
 
     private int colors[] = {Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY,Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY};
@@ -50,26 +58,43 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
 
 
     private void initView(){
-        mCommentsEdit = addViewCommentToMoveView(130,130);
 
+        PictureTopicModel model = initData();
+        if(model == null) return;
+        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
         //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
-        mCommentsEdit = addViewCommentToMoveView(230,130);
+        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
 
-        //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
-        mCommentsEdit = addViewCommentToMoveView(330,130);
+        mCoomentRelative.setImageUrl(model.getImageUrl());
+
 
         //设置成可编辑
         mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
         for(int i = 0 ; i < colors.length ; i ++){
-
             mLayout.addView(CreateImageView(colors[i]));
         }
 
         mLayout.getChildAt(0).setBackgroundResource((R.drawable.y_comments_select));
 
     }
+
+
+    private PictureTopicModel initData(){
+
+        mInfo = (PictureTopicMainWidget.Info) getIntentParcelable(PictureTopicMainWidget.mKey);
+
+        BarrageProtos.PBFeed newFeed = null;
+        try {
+            newFeed = BarrageProtos.PBFeed.parseFrom(mInfo.b);
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+        if(newFeed == null) return null;
+        PictureTopicModel modle = new PictureTopicModel();
+        modle.setFeed(newFeed);
+        return modle;
+    }
+
 
 
     private View CreateImageView(int color){
@@ -118,7 +143,6 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
         }
 
     }
-
 
 
 

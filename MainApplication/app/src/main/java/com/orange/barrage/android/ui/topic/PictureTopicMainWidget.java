@@ -1,9 +1,13 @@
 package com.orange.barrage.android.ui.topic;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -11,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.activity.FeedCommentActivity;
 import com.orange.barrage.android.feed.activity.FeedReplyActivity;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -32,9 +38,12 @@ public class PictureTopicMainWidget extends FrameLayout {
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews;
     private BarragePlayer mBarragePlayer;
-
+    private PictureTopicModel mModel;
     private Context mContext;
     private PictureTopicMode mMode;
+    private Activity mActivity;
+
+    public  static String mKey = "1";
 
     private PictureTopicContainer mContainer;
     public PictureTopicMainWidget(Context context,AttributeSet set, PictureTopicContainer container) {
@@ -57,21 +66,21 @@ public class PictureTopicMainWidget extends FrameLayout {
         mBarragePlayer = new BarragePlayerSpringImpl();
         mMode = PictureTopicMode.LIST;
 
-        mImage.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-
-                switch (mMode) {
-                    case LIST: {
-                        Intent intent = new Intent(mContext, FeedReplyActivity.class);
-                        intent.putExtra("model", mContainer.getModel());
-                        mContext.startActivity(intent);
-                        break;
-                    }
-                    case COMMENT:
-                        break;
-                }
-            }
-        });
+//        mImage.setOnClickListener(new OnClickListener() {
+//            public void onClick(View v) {
+//
+//                switch (mMode) {
+//                    case LIST: {
+//                        Intent intent = new Intent(mContext, FeedReplyActivity.class);
+//                        intent.putExtra("model", mContainer.getModel());
+//                        mContext.startActivity(intent);
+//                        break;
+//                    }
+//                    case COMMENT:
+//                        break;
+//                }
+//            }
+//        });
     }
 
     @Inject
@@ -144,9 +153,69 @@ public class PictureTopicMainWidget extends FrameLayout {
         mBarragePlayer.moveTo(progress);
     }
 
-    public void setModel(PictureTopicModel model) {
+    public void setModel(PictureTopicModel model , Activity activity) {
+        mActivity = activity;
+        mModel = model;
         setSubtitle(model.getSubtitleText());
         setImangeURL(model.getImageUrl());
         setBarrageActions(model.getFeedActionLis());
     }
+
+
+    private void startActivity(int x , int y){
+
+        Info info  = new Info(x , y , mModel.getFeed().toByteArray());
+            ActivityIntent.startIntent(mActivity , FeedCommentActivity.class ,mKey , info);
+    }
+
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if(event.getAction() == MotionEvent.ACTION_DOWN){
+            startActivity((int)event.getX() , (int)event.getY());
+        }
+
+        return true;
+    }
+
+    public class Info implements Parcelable{
+
+        public int XY[] = new int[2];
+        public byte[] b ;
+
+        public Info(int x , int y , byte[] b){
+            XY[0] = x;
+            XY[1] = y;
+            this.b = b;
+        }
+
+        public  final   Creator<Info> creator = new Creator<Info>() {
+            @Override
+            public Info createFromParcel(Parcel source) {
+//                Info info = new Info();
+
+                return null;
+            }
+
+            @Override
+            public Info[] newArray(int size) {
+                return new Info[0];
+            }
+        };
+
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeByteArray(b);
+            dest.writeIntArray(XY);
+        }
+    }
+
 }
