@@ -47,8 +47,8 @@
         <item name = "android:layout_width">28dip</item>
         <item name="android:layout_marginRight">13dip</item>
         <item name="android:onClick">onClick</item>
-        <!--<item name="android:visibility">gone</item>
-    --></style>
+        <item name="android:visibility">gone</item>
+    </style>
     <style name="b_edieText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/y_zhuche_2_height</item>
@@ -125,7 +125,7 @@
 
 
     <style name="b_homepage_top_right_button">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">44dip</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/b_color_alpha</item>
         <item name="android:layout_marginRight">@dimen/b_navigationbar_margin_right</item>

@@ -63,8 +63,12 @@ public class CommentActivity extends BarrageCommonActivity implements View.OnCli
         //设置成可编辑
         mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
         for(int i = 0 ; i < colors.length ; i ++){
+
             mLayout.addView(CreateImageView(colors[i]));
         }
+
+        mLayout.getChildAt(0).setBackgroundResource((R.drawable.y_comments_select));
+
     }
 
 

@@ -106,6 +106,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".feed.activity.FeedPublishedOtherPlatform"></activity>
+        
         <activity
             android:name=".friend.activity.FriendDetailActivity"
             android:launchMode="singleTask"

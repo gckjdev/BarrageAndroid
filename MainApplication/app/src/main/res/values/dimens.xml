@@ -40,6 +40,8 @@
     <dimen name="y_zhuche_4_height">38dip</dimen>
     <dimen name="y_zhuche_5_height">34dip</dimen>
 
+    <!--头像大小-->
+    <dimen name="b_icon_size_44">44dip</dimen>
     <!--主界面菜单的高度-->
     <dimen name="y_mainview_menu_height">64dip</dimen>
 

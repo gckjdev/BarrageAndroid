@@ -5,8 +5,8 @@ import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
-import com.orange.barrage.android.util.File.FileTools;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.misc.FileUtil;
 
 import roboguice.inject.InjectView;
 
@@ -30,7 +30,7 @@ public class FeedPublishedActivity extends BarrageCommonActivity {
 
     private void initView(){
 
-        mImage.setImageBitmap(FileTools.getPhotoFromSDCard(HomeActivity.PHOTOPATH , HomeActivity.PHOTONAME));
+        mImage.setImageBitmap(FileUtil.getPhotoFromSDCard(HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME));
 
     }
 
