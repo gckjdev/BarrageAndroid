@@ -30,4 +30,14 @@ public class ScreenUtil {
         Display display = manager.getDefaultDisplay();
         return display;
     }
+
+    public static int dpToPx(float dp) {
+        final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
+
+    public static int pxToDp(float px) {
+        final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
+        return (int) (px / scale + 0.5f);
+    }
 }

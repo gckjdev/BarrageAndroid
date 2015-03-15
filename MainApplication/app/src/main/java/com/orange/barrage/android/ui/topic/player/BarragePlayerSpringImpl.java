@@ -27,7 +27,7 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
     private final BarrageSpringChain mSpringChain;
     private Handler mHandler;
 
-    //FIXME: change it later
+    //FIXME: change it later, 800px
     private int mParentHeight = 900;
 
     public BarragePlayerSpringImpl(){
@@ -84,6 +84,10 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
         for(View view:mViews){
             view.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setParentHeight(int parentHeight) {
+        mParentHeight = parentHeight;
     }
 
     @Override

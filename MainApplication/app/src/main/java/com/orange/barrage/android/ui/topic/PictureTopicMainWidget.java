@@ -144,6 +144,9 @@ public class PictureTopicMainWidget extends FrameLayout {
         float scaleY = actualHeight/expectHeight;
 
         Ln.d("scaleX: %.2f , scaleY: %.2f", scaleX, scaleY);
+        mInnerWidget.setPivotX(0);
+        mInnerWidget.setPivotY(0);
+
         mInnerWidget.setScaleX(scaleX);
         mInnerWidget.setScaleY(scaleY);
 

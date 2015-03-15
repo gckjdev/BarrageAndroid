@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.applidium.shutterbug.FetchableImageView;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
@@ -36,7 +37,8 @@ public class  FeedActionWidget extends LinearLayout {
         setOrientation(HORIZONTAL);
 
         mAvatarView = new ImageView(context);
-        LayoutParams avatarParams = new LayoutParams(60, 60);
+        int iconSize = (int)getResources().getDimension(R.dimen.b_icon_size_44);
+        LayoutParams avatarParams = new LayoutParams(iconSize, iconSize);
         addView(mAvatarView, avatarParams);
 
         if(editable){
