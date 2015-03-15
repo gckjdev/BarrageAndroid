@@ -1,5 +1,6 @@
 package com.orange.barrage.android.util.persistent;
 
+import android.os.Environment;
 import android.util.Log;
 
 import com.google.protobuf.AbstractMessageLite;
@@ -34,7 +35,7 @@ public class LevelDBDAO {
 
     public LevelDBDAO(String dbName){
         // TODO database shall not use cached dir?
-        File dbFile = new File(ContextManager.getContext().getCacheDir(), dbName);
+        File dbFile = new File(Environment.getExternalStorageDirectory(), dbName);
         mLevelDB = new DB(dbFile);
         mLevelDB.open();
     }

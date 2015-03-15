@@ -174,7 +174,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         return true;
     }
 
-    public class Info implements Parcelable {
+    public static class Info implements Parcelable {
 
         public int XY[] = new int[2];
         public byte[] b ;
@@ -185,12 +185,17 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
             this.b = b;
         }
 
-        public  final   Creator<Info> creator = new Creator<Info>() {
+        public static final Creator<Info> CREATOR = new Creator<Info>() {
             @Override
             public Info createFromParcel(Parcel source) {
-//                Info info = new Info();
+                byte[] bs = source.createByteArray();
+                source.readByteArray(bs);
 
-                return null;
+                int[] XYs = source.createIntArray();
+                source.readIntArray(XYs);
+                PictureTopicMainInnerWidget.Info info = new PictureTopicMainInnerWidget.Info(XYs[0],XYs[1],bs);
+                return info;
+//                return null;
             }
 
             @Override
