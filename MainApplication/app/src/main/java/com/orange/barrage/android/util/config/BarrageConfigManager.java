@@ -30,8 +30,8 @@ public class BarrageConfigManager {
     }
 
     // Add Configuration Items Below, Don't add Above!!!
-
     // TODO change dynamically while get updated
+    //TODO "http://192.168.199.222:8100/"
     public static String TRAFFIC_SERVER_URL = getString("TRAFFIC_SERVER_URL", "http://112.74.107.152:8100/?");
 
 

@@ -68,4 +68,10 @@
     <!-- 标准 List View 中字体 -->
     <dimen name="b_list_view_font_medium">13sp</dimen>
 
+    <dimen name="y_font_34hao">17dp</dimen>
+
+    <!--Barrage Widget Size-->
+    <dimen name="y_barrage_main_inner_widget_width">800dp</dimen>
+    <dimen name="y_barrage_main_inner_widget_height">860dp</dimen>
+
 </resources>

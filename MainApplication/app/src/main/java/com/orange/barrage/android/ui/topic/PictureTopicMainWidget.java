@@ -20,6 +20,7 @@ import com.orange.barrage.android.feed.activity.FeedReplyActivity;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
 import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -29,58 +30,22 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import roboguice.util.Ln;
+
 /**
  * Created by Rollin on 2014/11/30.
  */
 public class PictureTopicMainWidget extends FrameLayout {
 
-    private ImageView mImage;
-    private TextView mSubtitleView;
-    private List<FeedActionWidget> mFeedActionViews;
-    private BarragePlayer mBarragePlayer;
-    private PictureTopicModel mModel;
-    private Context mContext;
-    private PictureTopicMode mMode;
-    private Activity mActivity;
+    private PictureTopicMainInnerWidget mInnerWidget;
 
-    public  static String mKey = "1";
-
-    private PictureTopicContainer mContainer;
-    public PictureTopicMainWidget(Context context,AttributeSet set, PictureTopicContainer container) {
-        this(context, set);
-        mContainer = container;
-    }
+    private int mWidgetWidth;
+    private int mWidgetHeight;
 
     public PictureTopicMainWidget(Context context, AttributeSet set) {
         super(context, set);
-        this.mContext = context;
-        mSubtitleView = new TextView(context);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        this.addView(mSubtitleView, params);
-
-        LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        mImage = new ImageView(context);
-        this.addView(mImage, imageParams);
-
-        //FIXME: can be change to a factory
-        mBarragePlayer = new BarragePlayerSpringImpl();
-        mMode = PictureTopicMode.LIST;
-
-//        mImage.setOnClickListener(new OnClickListener() {
-//            public void onClick(View v) {
-//
-//                switch (mMode) {
-//                    case LIST: {
-//                        Intent intent = new Intent(mContext, FeedReplyActivity.class);
-//                        intent.putExtra("model", mContainer.getModel());
-//                        mContext.startActivity(intent);
-//                        break;
-//                    }
-//                    case COMMENT:
-//                        break;
-//                }
-//            }
-//        });
+        mInnerWidget = new PictureTopicMainInnerWidget(context);
+        addView(mInnerWidget);
     }
 
     @Inject
@@ -89,133 +54,98 @@ public class PictureTopicMainWidget extends FrameLayout {
     }
 
     public void setMode(PictureTopicMode mode) {
-        mMode = mode;
+        mInnerWidget.setMode(mode);
     }
 
     public void setImangeURL(String url) {
-        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage);
+        mInnerWidget.setImangeURL(url);
     }
 
     public void setSubtitle(String title) {
-        mSubtitleView.setText(title);
+        mInnerWidget.setSubtitle(title);
     }
 
     public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
-        if (mFeedActionViews != null) {
-            for (View view : mFeedActionViews) {
-                removeView(view);
-            }
-        }
-        mFeedActionViews = Lists.newArrayList();
-        for (BarrageProtos.PBFeedAction action : feedActionList) {
-            FeedActionWidget actionWidget = new FeedActionWidget(mContext);
-            actionWidget.setFeedAction(action);
-            mFeedActionViews.add(actionWidget);
-
-            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-            //FIXME: use top later instead of margin
-            params.leftMargin = (int) action.getPosX();
-            params.topMargin = (int) action.getPosY();
-            //actionWidget.setTop((int)action.getPosX());
-            //actionWidget.setLeft((int)action.getPosY());
-            addView(actionWidget, params);
-        }
-
-        mBarragePlayer.setBarrageViews(mFeedActionViews);
+        mInnerWidget.setBarrageActions(feedActionList);
     }
 
     public void hideAllBarrageActions() {
-        mBarragePlayer.hideAllBarrage();
+        mInnerWidget.hideAllBarrageActions();
     }
 
     public void showAllBarrageActions() {
-        mBarragePlayer.showAllBarrage();
+        mInnerWidget.showAllBarrageActions();
     }
 
     public void play() {
-        mBarragePlayer.play();
+        mInnerWidget.play();
     }
 
     public void pause() {
-        mBarragePlayer.pause();
+        mInnerWidget.pause();
     }
 
     public void resume() {
-        mBarragePlayer.resume();
+        mInnerWidget.resume();
     }
 
     public void stop() {
-        mBarragePlayer.stop();
+        mInnerWidget.stop();
     }
 
     public void moveTo(float progress) {
-        mBarragePlayer.moveTo(progress);
+        mInnerWidget.moveTo(progress);
     }
 
     public void setModel(PictureTopicModel model , Activity activity) {
-        mActivity = activity;
-        mModel = model;
-        setSubtitle(model.getSubtitleText());
-        setImangeURL(model.getImageUrl());
-        setBarrageActions(model.getFeedActionLis());
+        mInnerWidget.setModel(model, activity);
     }
 
 
-    private void startActivity(int x , int y){
-
-        Info info  = new Info(x , y , mModel.getFeed().toByteArray());
-            ActivityIntent.startIntent(mActivity , FeedCommentActivity.class ,mKey , info);
-    }
-
-
+//    private void startActivity(int x , int y){
+//        mInnerWidget.startActivity(x,y);
+//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-        if(event.getAction() == MotionEvent.ACTION_DOWN){
-            startActivity((int)event.getX() , (int)event.getY());
-        }
-
-        return true;
+        return mInnerWidget.onTouchEvent(event);
     }
 
-    public class Info implements Parcelable{
-
-        public int XY[] = new int[2];
-        public byte[] b ;
-
-        public Info(int x , int y , byte[] b){
-            XY[0] = x;
-            XY[1] = y;
-            this.b = b;
-        }
-
-        public  final   Creator<Info> creator = new Creator<Info>() {
-            @Override
-            public Info createFromParcel(Parcel source) {
-//                Info info = new Info();
-
-                return null;
-            }
-
-            @Override
-            public Info[] newArray(int size) {
-                return new Info[0];
-            }
-        };
-
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeByteArray(b);
-            dest.writeIntArray(XY);
-        }
+    public void setInnerScale(float scale) {
+        mInnerWidget.setScaleX(scale);
+        mInnerWidget.setScaleX(scale);
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(measureWidth(widthMeasureSpec), measureHeight(heightMeasureSpec));
+    }
+
+    private int measureWidth(int widthMeasureSpec){
+        return mWidgetWidth;
+    }
+
+    private int measureHeight(int heightMeasureSpec){
+        return mWidgetHeight;
+    }
+
+    public void setSize(int width, int height){
+        mWidgetWidth = width;
+        mWidgetHeight = height;
+
+        float expectWidth = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
+        float actualWidth = width;
+
+        float expectHeight = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_height);
+        float actualHeight = height;
+
+        float scaleX = actualWidth/expectWidth;
+        float scaleY = actualHeight/expectHeight;
+
+        Ln.d("scaleX: %.2f , scaleY: %.2f", scaleX, scaleY);
+        mInnerWidget.setScaleX(scaleX);
+        mInnerWidget.setScaleY(scaleY);
+
+    }
 }

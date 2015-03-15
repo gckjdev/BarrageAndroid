@@ -66,17 +66,6 @@ public class UserTimelineAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-//        if(convertView == null){
-//            convertView = new PictureTopicContainer(this.mContext);
-//        }
-//
-//        PictureTopicContainer container = (PictureTopicContainer) convertView;
-//        BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
-//
-//        PictureTopicModel model = new PictureTopicModel();
-//        model.setFeed(feed);
-//        container.setModel(model);
         if (convertView == null){
             convertView = new TimelineItemView(mContext);
         }
@@ -85,36 +74,6 @@ public class UserTimelineAdapter extends BaseAdapter{
         PictureTopicModel model = new PictureTopicModel();
         model.setFeed(feed);
         ((TimelineItemView)convertView).setModel(model , mFragment.getActivity());
-//
-//        TextView userNickTextView = (TextView)convertView.findViewById(R.id.timeline_item_user_nick);
-//        userNickTextView.setText(feed.getCreateUser().getNick());
-//
-//        TextView dateTextView = (TextView)convertView.findViewById(R.id.timeline_item_date);
-//        dateTextView.setText(DateUtil.dateFormatToString(feed.getDate(), mContext));
-//
-//        ImageView barrageView = (ImageView) convertView.findViewById(R.id.timeline_item_barage_image);
-//        barrageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // goto reply view
-//                Ln.d("click image view, go to reply");
-//
-//                ReplyFeedFragment replyFeedFragment = new ReplyFeedFragment();
-//
-//                FragmentTransaction transaction = mFragment.getChildFragmentManager().beginTransaction();
-//                transaction.replace(R.id.timeline_fragment, replyFeedFragment);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//                mFragment.getChildFragmentManager().executePendingTransactions();
-//
-//            }
-//        });
-//
-//        Picasso.with(mContext)
-//                .load(feed.getImage())
-//                .placeholder(R.drawable.tab_home)           // default
-//                .error(R.drawable.tab_friend)               // error loading
-//                .into(barrageView);
 
         return convertView;
     }
