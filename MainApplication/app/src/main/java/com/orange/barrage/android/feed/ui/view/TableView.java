@@ -19,7 +19,7 @@ public class TableView extends View{
      */
 	private int mCol = 10;
 	
-	private int mColor = Color.BLUE;
+	private int mColor = 0xFF2ffff3;
 	
 	
 	public TableView(Context context, AttributeSet attrs) {
@@ -47,8 +47,7 @@ public class TableView extends View{
 		paint.setStrokeWidth((float)0.5);
 		paint.setAntiAlias(true);
 		int X = getWidth() / mCol;
-		int line = getHeight() / X;		
-		paint.setColor(Color.BLACK);
+		int line = getHeight() / X;
 		float []pts = new float[4 * (mCol - 1)];
 		for(int i = 0 ;i < mCol - 1  ; i ++){
 			pts[i * 4 ] = X * (i + 1);

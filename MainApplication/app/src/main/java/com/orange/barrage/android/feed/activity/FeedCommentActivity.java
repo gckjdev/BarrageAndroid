@@ -35,7 +35,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     TableView mTableView;
 
 
-    private int mSelectColor = 0X383838;
+    private int mSelectColor = 0XFF383838;
     private int mColors[] = {0XFF383838 , Color.WHITE , 0XFF9E6BEA , 0XFF9EC138 , 0XFF6DA0F0 , 0XFFD28038 , 0xFFD2644D };
     private int mR = 14;
 

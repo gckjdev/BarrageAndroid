@@ -10,7 +10,7 @@ import android.widget.ImageView;
 public class CircleColorView  extends ImageView{
 
 	private int mColor = Color.BLACK;
-	private int mRadius = 14;
+	private int mRadius = 28;
 	
 	public CircleColorView(Context context, AttributeSet attrs) {
 		super(context, attrs);
