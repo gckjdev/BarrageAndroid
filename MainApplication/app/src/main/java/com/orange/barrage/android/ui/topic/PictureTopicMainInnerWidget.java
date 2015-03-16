@@ -107,16 +107,9 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
             mFeedActionViews.add(actionWidget);
 
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-            //FIXME: use top later instead of margin
-//            params.leftMargin = (int) (action.getPosX() * getScaleX());
-//            params.topMargin = (int) (action.getPosY() * getScaleY()) ;
-
             params.leftMargin = (int) action.getPosX();
             params.topMargin = (int) action.getPosY();
 
-            //actionWidget.setTop((int)action.getPosX());
-            //actionWidget.setLeft((int)action.getPosY());
             addView(actionWidget, params);
         }
 
@@ -161,9 +154,6 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
 
     private void startActivity(int x , int y){
-
-//        Info info  = new Info(x , y , mModel.getFeed().toByteArray());
-
         Intent intent = new Intent(mActivity , FeedCommentActivity.class);
         intent.putExtra(KEYSBYTE , mModel.getFeed().toByteArray());
         intent.putExtra(KEYSSCREENXY , new int[]{x, y});
@@ -171,14 +161,8 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         ActivityIntent.startIntent( mActivity, intent);
     }
 
-
-
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-
-
         if(event.getAction() == MotionEvent.ACTION_DOWN){
             mModle.clear();
         }else
@@ -193,49 +177,6 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
         return true;
     }
-
-//    public static class Info implements Parcelable {
-//
-//        public int XY[] = new int[2];
-//        public byte[] b ;
-//
-//        public Info(int x , int y , byte[] b){
-//            XY[0] = x;
-//            XY[1] = y;
-//            this.b = b;
-//        }
-//
-//        public static final Creator<Info> CREATOR = new Creator<Info>() {
-//            @Override
-//            public Info createFromParcel(Parcel source) {
-//                byte[] bs = source.createByteArray();
-//                source.readByteArray(bs);
-//
-//                int[] XYs = source.createIntArray();
-//                source.readIntArray(XYs);
-//                PictureTopicMainInnerWidget.Info info = new PictureTopicMainInnerWidget.Info(XYs[0],XYs[1],bs);
-//                return info;
-////                return null;
-//            }
-//
-//            @Override
-//            public Info[] newArray(int size) {
-//                return new Info[0];
-//            }
-//        };
-//
-//
-//        @Override
-//        public int describeContents() {
-//            return 0;
-//        }
-//
-//        @Override
-//        public void writeToParcel(Parcel dest, int flags) {
-//            dest.writeByteArray(b);
-//            dest.writeIntArray(XY);
-//        }
-//    }
 
     class Modle{
         public boolean is = false;
