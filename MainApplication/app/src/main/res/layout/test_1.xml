@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <com.orange.barrage.android.util.view.RelativeLayoutwhitTriangleIcon
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id = "@+id/rr"
+        android:background="@color/b_color_alpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="\n\n\n\ndsads"
+            android:gravity="center"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content" />
+  </com.orange.barrage.android.util.view.RelativeLayoutwhitTriangleIcon>
+
