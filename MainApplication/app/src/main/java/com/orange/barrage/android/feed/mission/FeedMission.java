@@ -177,13 +177,13 @@ public class FeedMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
                         String actionId = response.getReplyFeedResponse().getAction().getActionId();
-                        Ln.d("FeedMission", "reply feed successfully, actionId =" + actionId);
+                        Ln.d("reply feed successfully, actionId =" + actionId);
                         callback.handleSuccess(actionId, null);
                     }
 
                     @Override
                     public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
-                        Ln.d("FeedMission", "reply feed failure, errorCode=" + errorCode);
+                        Ln.d("reply feed failure, errorCode=" + errorCode);
                         callback.handleFailure(errorCode);
                     }
                 });
