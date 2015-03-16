@@ -49,20 +49,17 @@
     <string name="b_share_main">分享</string>
     <string name="b_comment">评论</string>
     <string name="b_send">发送</string>
-
-    
     <string name="b_add_friends">添加好友</string>
     <string name="b_own_info">个人资料</string>
     <string name="b_feedback">意见反馈</string>
     <string name="b_add_lable">添加标签</string>
-
     <string name="title_activity_request_add_friend">RequestAddFriendActivity</string>
     <string name="title_activity_search_user">SearchUserActivity</string>
     <string name="title_activity_friend_detail">详细资料</string>
-
     <string name="search_friend_find">没有找到</string>
     <string name="search_friend_result">相关结果</string>
     <string name="search_friend_hint">弹幕号/手机号/QQ号</string>
     <string name="search_friend_inputnull">搜索的关键字不能为空</string>
+    <string name="title_activity_user_home">UserHomeActivity</string>
 
 </resources>
