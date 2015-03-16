@@ -57,6 +57,18 @@ public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
         mTopBarView.setTitleText(titleString);
         mTopBarView.setRightButton(rightid);
         mTopBarView.hideLeftButton();
+        mTopBarView.setOnClickRightListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickRight(v);
+            }
+        });
+        mTopBarView.setOnClickLeftListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickLeft(v);
+            }
+        });
 
 
     }
@@ -89,10 +101,17 @@ public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
     }
 
     /**
-     * 点击按钮
+     * 点击导航栏右边按钮可继承本方法
      * @param v
      */
     public void onClickRight(View v){
+    }
+
+    /**
+     * 点击导航栏左边按钮可继承本方法
+     * @param v
+     */
+    public void onClickLeft(View v){
     }
 
     public void onClickFinish(View v){
