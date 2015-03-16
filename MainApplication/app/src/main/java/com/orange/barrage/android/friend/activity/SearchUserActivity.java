@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.barrage.android.user.mission.SearchUserCallback;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
@@ -38,6 +39,9 @@ public class SearchUserActivity extends BarrageCommonActivity {
 
     @Inject
     SearchFriendListAdapter mAdapter;
+
+    @Inject
+    FriendManager mFriendManager;
 
     Handler handler = new Handler();
 
@@ -92,8 +96,8 @@ public class SearchUserActivity extends BarrageCommonActivity {
         //首先判断输入框是否是空，如果为空，则提示用户，并且软键盘不会消失，如果不为空才执行搜索
         if (TextUtils.isEmpty(mSearchEditText.getText().toString())) {
             // TODO
-            MessageCenter.postInfoMessage(getResources().getString(R.string.search_friend_find)+getResources().getString(R.string.search_friend_result));
-            KeyboardUtil.hideKeyboard(mSearchEditText,this);
+            MessageCenter.postInfoMessage(getResources().getString(R.string.search_friend_inputnull));
+            //KeyboardUtil.hideKeyboard(mSearchEditText,this);
         } else {
             KeyboardUtil.hideKeyboard(mSearchEditText, this);
             doSearch(mSearchEditText.getText().toString());
@@ -120,8 +124,8 @@ public class SearchUserActivity extends BarrageCommonActivity {
         });
     }
 
-    public void updateSearchResultListView(List<UserProtos.PBUser> pbUserList){
 
+    public void updateSearchResultListView(List<UserProtos.PBUser> pbUserList){
         mAdapter.setFriendList(pbUserList);
 
         if (pbUserList == null || pbUserList.size() == 0){

@@ -9,7 +9,7 @@
 
     <RelativeLayout
         style="@style/match_content"
-        android:layout_height="200dip">
+        android:layout_height="wrap_content">
         <!--<ImageView-->
             <!--android:id="@+id/timeline_item_barage_image"-->
             <!--android:src="@drawable/text"-->
@@ -17,9 +17,8 @@
 
         <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
             android:id="@+id/timeline_item_barage_view"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/play_button"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             />
         <TextView
             android:text="@string/y_todaycut_pleaseseeme"

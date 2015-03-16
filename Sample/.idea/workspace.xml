@@ -82,8 +82,8 @@
       <file leaf-file-name="WXEntryActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/sharesdk/demo/wxapi/WXEntryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8322148" vertical-offset="63" max-vertical-offset="690">
-              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.5302013" vertical-offset="63" max-vertical-offset="690">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1274,8 +1274,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/sharesdk/demo/wxapi/WXEntryActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8322148" vertical-offset="63" max-vertical-offset="690">
-          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.5302013" vertical-offset="63" max-vertical-offset="690">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>

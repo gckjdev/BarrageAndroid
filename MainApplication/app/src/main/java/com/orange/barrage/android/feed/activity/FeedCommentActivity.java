@@ -12,6 +12,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.ui.view.CircleColorView;
 import com.orange.barrage.android.feed.ui.view.TableView;
+import com.orange.barrage.android.ui.topic.PictureTopicMainInnerWidget;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.Comment;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
@@ -39,7 +40,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @InjectView(R.id.tableview)
     TableView mTableView;
 
-    private PictureTopicMainWidget.Info mInfo;
+    private PictureTopicMainInnerWidget.Info mInfo;
 
 
     private int colors[] = {Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY,Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY};
@@ -59,6 +60,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     private void initView(){
 
+
 //        PictureTopicModel model = initData();
 //        if(model == null) return;
 //        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
@@ -66,6 +68,16 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 //        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
 //
 //        mCoomentRelative.setImageUrl(model.getImageUrl());
+
+        PictureTopicModel model = initData();
+        if(model == null) {
+            return;
+        }
+        //FIXME: need to init mCommentsEdit first
+        //mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
+        //设置成可编辑
+        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
+
 
         mCommentsEdit = addViewCommentToMoveView(100 , 100);
 
@@ -83,7 +95,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     private PictureTopicModel initData(){
 
-        mInfo = (PictureTopicMainWidget.Info) getIntentParcelable(PictureTopicMainWidget.mKey);
+        mInfo = (PictureTopicMainInnerWidget.Info) getIntentParcelable(PictureTopicMainInnerWidget.mKey);
 
         BarrageProtos.PBFeed newFeed = null;
         try {

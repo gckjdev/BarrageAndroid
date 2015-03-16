@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,6 +21,7 @@ import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.misc.DateUtil;
+import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.List;
@@ -63,6 +65,18 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mPlayerButton = (ImageButton)mView.findViewById(R.id.playerButton);
 
         mBarrageWidget = (PictureTopicMainWidget)mView.findViewById(R.id.timeline_item_barage_view);
+        //calculate the height
+        float expectWidth = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
+        float actualWidth = ScreenUtil.getWidthPixels();
+
+        float expectHeight = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_height);
+        float factor = actualWidth/expectWidth;
+        float actualHeight = expectHeight * factor;
+
+//        mBarrageWidget.setSize(400, 400);
+
+        mBarrageWidget.setSize((int)actualWidth, (int)actualHeight);
+
         mLayoutIcon  = (LinearLayout)mView.findViewById(R.id.iconlayout);
         mTimeTextView = (TextView)mView.findViewById(R.id.timeline_item_date);
         mDropDownImageButton = (ImageButton) mView.findViewById(R.id.dropDownButton);
