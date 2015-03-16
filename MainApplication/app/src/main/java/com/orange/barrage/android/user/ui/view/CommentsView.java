@@ -121,18 +121,5 @@ public class CommentsView extends LinearLayout {
         tv.setTextColor(color);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
 
-        if(event.getAction() == MotionEvent.ACTION_MOVE) {
-            float x = event.getX();
-            float y = event.getY();
-
-            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
-            params.topMargin = (int) y;
-            params.leftMargin = (int) x;
-            setLayoutParams(params);
-        }
-        return super.onTouchEvent(event);
-    }
 }

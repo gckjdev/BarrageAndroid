@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.widget.Filter;
+import android.widget.SimpleAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -81,13 +83,15 @@ public class PhotoAndCamera {
                 photo.compress(Bitmap.CompressFormat.JPEG, 75, stream);// (0 -
                 // 100)压缩文件
                 isSuccess = true;
+
+
 //                return photo;
             }
         }
 
         if (l != null) {
             if (isSuccess) l.onSuccess(photo);
-            else l.onErro();
+            else if(requestCode != PHOTOHRAPH || requestCode != PHOTORESOULT) l.onErro();
         }
 
 //        return null;

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.ShowFriendIconView;
+import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 
@@ -124,7 +125,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mToUsers = model.getFeed().getToUsersList();
         if(mToUsers == null) return;
 
-        if(mToUsers.size() <= 5 ) mDropDownImageButton.setVisibility(GONE);
+//        if(mToUsers.size() <= 5 ) mDropDownImageButton.setVisibility(GONE);
 
         setIconVisible();
         int n = mToUsers.size() > mLayoutIcon.getChildCount() ? mLayoutIcon.getChildCount() : mToUsers.size();
@@ -168,7 +169,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
             if (mShowFriendIconView == null)
                 mShowFriendIconView = new ShowFriendIconView(mActivity);
 
-            mShowFriendIconView.show(mMainRelativeLayout, mToUsers);
+            mShowFriendIconView.show(v, mToUsers);
         }
     }
 

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/black"
+<com.orange.barrage.android.util.view.MoveViewParentRelativity xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/mm"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-    <view
-        android:background="#0000"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/y_shouyue"
-        class="com.orange.barrage.android.user.ui.view.UserAvatarView"
-        android:id="@+id/view" />
-</LinearLayout>
+        android:text="N"
+        android:id="@+id/button"
+        android:layout_marginBottom="30dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+
+</com.orange.barrage.android.util.view.MoveViewParentRelativity>

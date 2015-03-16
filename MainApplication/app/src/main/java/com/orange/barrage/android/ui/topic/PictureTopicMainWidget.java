@@ -122,6 +122,60 @@ public class PictureTopicMainWidget extends FrameLayout {
         setMeasuredDimension(measureWidth(widthMeasureSpec), measureHeight(heightMeasureSpec));
     }
 
+
+//    public static class Info implements Parcelable {
+//
+//        public int XY[] = new int[2];
+//        public byte[] b;
+//        static private long bLenght;
+//
+//        public void setXY(int XY[]) {
+//            this.XY = XY;
+//        }
+//
+//        public int[] getXY() {
+//            return XY;
+//        }
+//
+//        public void setB(byte b[]) {
+//            this.b = b;
+//        }
+//
+//        public byte[] getB() {
+//            return b;
+//        }
+//
+//        public Info(int x, int y, byte[] b) {
+//            XY[0] = x;
+//            XY[1] = y;
+//            this.b = b;
+//            bLenght = b.length;
+//        }
+//
+//        public Info(int xy[], byte[] b) {
+//            this.XY = xy;
+//            this.b = b;
+//        }
+//
+//        public static final Creator<Info> CREATOR = new Creator<Info>() {
+//            @Override
+//            public Info createFromParcel(Parcel source) {
+//                int XY[] = new int[2];
+//                byte b[] = new byte[(int) bLenght];
+//                XY[0] = source.readInt();
+//                XY[1] = source.readInt();
+//                source.readByteArray(b);
+//                Info info = new Info(XY, b);
+//
+//                return info;
+//            }
+//
+//            @Override
+//            public Info[] newArray(int size) {
+//                return new Info[size];
+//            }
+//        };
+//    }
     private int measureWidth(int widthMeasureSpec){
         return mWidgetWidth;
     }
