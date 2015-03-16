@@ -18,7 +18,6 @@ import com.orange.barrage.android.R;
 public class FloatWindow  {
 
     private int mLayoutid;
-    private int mGravity;
     private int mHeight;
     private int mWidth;
 
@@ -35,7 +34,7 @@ public class FloatWindow  {
 
     public FloatWindow(int layoutId ,Context context , int width , int height , int gravity ){
         this(layoutId, context , width , height);
-        this.mGravity = gravity;
+
     }
 
 

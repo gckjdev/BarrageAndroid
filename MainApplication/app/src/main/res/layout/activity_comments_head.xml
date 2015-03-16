@@ -5,11 +5,14 @@
 
 
     <EditText
+        android:layout_marginLeft="50dip"
         android:id="@+id/commentseditText"
         style="@style/comments"
         android:text="21323"/>
     <TextView
         android:id="@+id/commentsTextView"
+        android:visibility="visible"
+
         style="@style/comments"
         android:gravity="center_vertical"/>
     <com.orange.barrage.android.user.ui.view.UserAvatarView

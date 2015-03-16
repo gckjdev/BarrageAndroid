@@ -3,6 +3,7 @@ package com.orange.barrage.android.home;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.nhaarman.supertooltips.ToolTip;
+import com.nhaarman.supertooltips.ToolTipRelativeLayout;
+import com.nhaarman.supertooltips.ToolTipView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.ActionImageCaptureEvent;
 import com.orange.barrage.android.event.ActionPickEvent;
@@ -42,9 +46,9 @@ import roboguice.util.Ln;
 public class HomeActivity extends BarrageCommonFragmentActivity implements View.OnClickListener {
 
     //这里才是主页面，就是那三个tab页面
-    private static final String TAB_1_TAG = "tab_1";
-    private static final String TAB_2_TAG = "tab_2";
-    private static final String TAB_3_TAG = "tab_3";
+    public static final String TAB_1_TAG = "tab_1";
+    public static final String TAB_2_TAG = "tab_2";
+    public static final String TAB_3_TAG = "tab_3";
 
     private FragmentTabHost mTabHost;
 
@@ -105,6 +109,19 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
                changeTitleText();
             }
         });
+
+//        ToolTipRelativeLayout toolTipRelativeLayout = (ToolTipRelativeLayout) findViewById(R.id.activity_main_tooltipRelativeLayout);
+//
+//        ToolTip toolTip = new ToolTip()
+//                .withText("A beautiful View")
+//                .withColor(Color.RED)
+//                .withShadow()
+//                .withAnimationType(ToolTip.AnimationType.FROM_TOP);
+//
+//        toolTipRelativeLayout.showToolTipForView(toolTip, mTopBarView.getTopBar());
+
+//        myToolTipView.setOnToolTipViewClickedListener(HomeActivity.this);
+
     }
 
     private void changeTitleText(){
@@ -116,10 +133,8 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     }
 
     public void onCLickCamer(View v){
-
         initPublisFeedView();
         mShowPublisFeedView.showPublishFeedView();
-
     }
 
 
@@ -302,17 +317,28 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
 
     @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+//        if(mHomePopupWindow != null) mHomePopupWindow.setBackground();
+
+    }
+
+    @Override
     public void onClickRight(View v) {
+//        ToolTipRelativeLayout toolTipRelativeLayout = (ToolTipRelativeLayout) findViewById(R.id.activity_main_tooltipRelativeLayout);
+//
+//        ToolTip toolTip = new ToolTip()
+//                .withText("A beauti\n\n\n\n\nful View")
+//                .withColor(Color.RED)
+//                .withShadow()
+//                .withAnimationType(ToolTip.AnimationType.FROM_TOP);
+//
+//        toolTipRelativeLayout.showToolTipForView(toolTip, v);
 
         if(mHomePopupWindow == null)
             mHomePopupWindow = new HomePopupWindow(this);
-        mHomePopupWindow.show(v , this);
-
-        if(mTag.equals(TAB_1_TAG)){
-            mHomePopupWindow.ItemClose();
-        }else if(mTag.equals(TAB_3_TAG)){
-            mHomePopupWindow.ItemShow();
-        }
+        mHomePopupWindow.show(v , this , mTag);
 
     }
 

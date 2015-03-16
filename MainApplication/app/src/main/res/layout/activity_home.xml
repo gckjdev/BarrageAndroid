@@ -1,9 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/activity_view_top"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_main">
+
 
     <FrameLayout
         android:id="@+id/realtabcontent"
@@ -53,9 +58,12 @@
             style="@style/match_content"
             android:background="@color/b_color_alpha"/>
     </LinearLayout>
+
+
+    </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/activity_view_top"/>
+
+
 </RelativeLayout>
-<!--<TextView
-    android:layout_width="match_parent"
-    android:layout_height="4dip" />
--->
-</LinearLayout>

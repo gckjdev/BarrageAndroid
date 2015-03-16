@@ -27,7 +27,7 @@
     
     <ImageButton
         android:id = "@+id/dropDownButton"
-        style="@style/wrap_content"
+        style="@style/wrap_match"
         android:src="@drawable/y_zhuche_xiala"
         android:background="#0000"
         android:layout_centerInParent="true"

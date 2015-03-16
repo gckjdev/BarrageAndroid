@@ -59,17 +59,19 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     private void initView(){
 
-        PictureTopicModel model = initData();
-        if(model == null) return;
-        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
+//        PictureTopicModel model = initData();
+//        if(model == null) return;
+//        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
+//        //设置成可编辑
+//        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
+//
+//        mCoomentRelative.setImageUrl(model.getImageUrl());
+
+        mCommentsEdit = addViewCommentToMoveView(100 , 100);
+
+
         //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
-
-        mCoomentRelative.setImageUrl(model.getImageUrl());
-
-
-        //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
+        mCommentsEdit.setType(CommentsView.COMMENETS_TEXTVIEW);
         for(int i = 0 ; i < colors.length ; i ++){
             mLayout.addView(CreateImageView(colors[i]));
         }

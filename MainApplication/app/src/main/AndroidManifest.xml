@@ -70,7 +70,7 @@
         <activity
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
-        <activity android:name=".user.ui.view.Text" />
+
         <activity android:name=".feed.activity.FeedPublishedActivity"></activity>
 
         <activity
@@ -89,6 +89,10 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".user.ui.view.Text">
+
         </activity>
 
         <!--Share SDK Activities -->

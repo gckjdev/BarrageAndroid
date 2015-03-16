@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -14,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.ToastUtil;
 import com.squareup.picasso.Picasso;
 
 public class MoveViewParentRelativity extends RelativeLayout implements OnTouchListener  {
@@ -87,11 +90,22 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
     }
 
 
+
+
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		// TODO Auto-generated method stub
-		if(mMoveInfo.v == null)
-			return super.onInterceptTouchEvent(ev);
+
+//
+        if(ev.getAction() == MotionEvent.ACTION_UP ){
+            mMoveInfo.clear();
+        }
+
+        ToastUtil.makeTextShort("22"+i++,getContext());
+		if(mMoveInfo.v == null) {
+            ToastUtil.makeTextShort("我是空的",getContext());
+            return super.onInterceptTouchEvent(ev);
+        }
 		else return true;
 	}
 
@@ -136,30 +150,22 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
                 }
             }.sendEmptyMessage(0);
 		}else if(event.getAction() == MotionEvent.ACTION_UP ||event.getAction() == MotionEvent.ACTION_CANCEL){
-                mMoveInfo.clear();
+
+            mMoveInfo.clear();
 		}
 
         return super.onTouchEvent(event);
 	}
 
 
+    private void clearMoveView(MotionEvent me){
+        if(me == null) return;
 
-//
-//	class Asy extends AsyncTask<Float, Void, RelativeLayout.LayoutParams>{
-//
-//		@Override
-//		protected RelativeLayout.LayoutParams doInBackground(Float... params) {
-//			// TODO Auto-generated method stub
-//			return getMoveLayoutPrams(params[0], params[1]);
-//		}
-//
-//		@Override
-//		protected void onPostExecute(RelativeLayout.LayoutParams result) {
-//			// TODO Auto-generated method stub
-//			super.onPostExecute(result);
-//
-//		}
-//	}
+
+
+    }
+
+
 
     private void startMove(float l ,float t){
         RelativeLayout.LayoutParams result = getMoveLayoutPrams(l , t);
@@ -182,6 +188,7 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
     class StayViewInfo{
         public  View v;
 
+        public int action;
 
         private boolean isMove;
 
@@ -242,10 +249,13 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 			// TODO Auto-generated constructor stub
 		}
 	}
-	
+
+    private int i = 0;
 	@Override
      public boolean onTouch(View v, MotionEvent event) {
         // TODO Auto-generated method stub
+
+
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
 
             StayViewInfo stayViewInfo = (StayViewInfo)v.getTag();
