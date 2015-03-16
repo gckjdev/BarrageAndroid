@@ -99,6 +99,11 @@ public class BarrageCommonActivity extends RoboActivity  {
         return getIntentUtil().getIntentByteArrays(key);
     }
 
+    public int[] getIntentIntArrays(String key){
+        return  getIntentUtil().getIntentIntArray(key);
+    }
+
+
     /**
      * 打开等待进度条
      * @param text

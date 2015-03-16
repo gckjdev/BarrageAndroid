@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dip" />
     <EditText
-        android:text="15625987607"
         android:layout_marginTop="@dimen/y_zhuche_1_height"
         style="@style/b_edieText"
         android:inputType="number"
@@ -32,7 +31,6 @@
         android:inputType="textPassword"
         style="@style/b_edieText"
         android:gravity="center"
-        android:text="111111"
         android:hint="@string/y_inputpwd"
         android:id="@+id/pwd" />
     <TextView

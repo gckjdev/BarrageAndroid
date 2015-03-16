@@ -44,7 +44,8 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     private PictureTopicMode mMode;
     private Activity mActivity;
 
-    public  static String mKey = "1";
+    public final  static String KEYSBYTE = "1";
+    public final static String KEYSSCREENXY = "2";
 
     public PictureTopicMainInnerWidget(Context context,AttributeSet set, PictureTopicContainer container) {
         this(context, set);
@@ -158,8 +159,13 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
     private void startActivity(int x , int y){
 
-        Info info  = new Info(x , y , mModel.getFeed().toByteArray());
-        ActivityIntent.startIntent(mActivity, FeedCommentActivity.class, mKey, info);
+//        Info info  = new Info(x , y , mModel.getFeed().toByteArray());
+
+        Intent intent = new Intent(mActivity , FeedCommentActivity.class);
+        intent.putExtra(KEYSBYTE , mModel.getFeed().toByteArray());
+        intent.putExtra(KEYSSCREENXY , new int[]{x, y});
+
+        ActivityIntent.startIntent( mActivity, intent);
     }
 
 
@@ -174,47 +180,47 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         return true;
     }
 
-    public static class Info implements Parcelable {
-
-        public int XY[] = new int[2];
-        public byte[] b ;
-
-        public Info(int x , int y , byte[] b){
-            XY[0] = x;
-            XY[1] = y;
-            this.b = b;
-        }
-
-        public static final Creator<Info> CREATOR = new Creator<Info>() {
-            @Override
-            public Info createFromParcel(Parcel source) {
-                byte[] bs = source.createByteArray();
-                source.readByteArray(bs);
-
-                int[] XYs = source.createIntArray();
-                source.readIntArray(XYs);
-                PictureTopicMainInnerWidget.Info info = new PictureTopicMainInnerWidget.Info(XYs[0],XYs[1],bs);
-                return info;
-//                return null;
-            }
-
-            @Override
-            public Info[] newArray(int size) {
-                return new Info[0];
-            }
-        };
-
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeByteArray(b);
-            dest.writeIntArray(XY);
-        }
-    }
+//    public static class Info implements Parcelable {
+//
+//        public int XY[] = new int[2];
+//        public byte[] b ;
+//
+//        public Info(int x , int y , byte[] b){
+//            XY[0] = x;
+//            XY[1] = y;
+//            this.b = b;
+//        }
+//
+//        public static final Creator<Info> CREATOR = new Creator<Info>() {
+//            @Override
+//            public Info createFromParcel(Parcel source) {
+//                byte[] bs = source.createByteArray();
+//                source.readByteArray(bs);
+//
+//                int[] XYs = source.createIntArray();
+//                source.readIntArray(XYs);
+//                PictureTopicMainInnerWidget.Info info = new PictureTopicMainInnerWidget.Info(XYs[0],XYs[1],bs);
+//                return info;
+////                return null;
+//            }
+//
+//            @Override
+//            public Info[] newArray(int size) {
+//                return new Info[0];
+//            }
+//        };
+//
+//
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            dest.writeByteArray(b);
+//            dest.writeIntArray(XY);
+//        }
+//    }
 
 }

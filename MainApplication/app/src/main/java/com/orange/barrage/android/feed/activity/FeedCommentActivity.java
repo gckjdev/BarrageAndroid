@@ -40,7 +40,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @InjectView(R.id.tableview)
     TableView mTableView;
 
-    private PictureTopicMainInnerWidget.Info mInfo;
 
 
     private int colors[] = {Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY,Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY};
@@ -74,16 +73,11 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
             return;
         }
         //FIXME: need to init mCommentsEdit first
-        //mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
+        int xy[] = getIntentIntArrays(PictureTopicMainInnerWidget.KEYSSCREENXY);
+
+        mCommentsEdit = addViewCommentToMoveView(xy[0] , xy[1]);
         //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
-
-
-        mCommentsEdit = addViewCommentToMoveView(100 , 100);
-
-
-        //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENETS_TEXTVIEW);
+        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
         for(int i = 0 ; i < colors.length ; i ++){
             mLayout.addView(CreateImageView(colors[i]));
         }
@@ -95,11 +89,10 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     private PictureTopicModel initData(){
 
-        mInfo = (PictureTopicMainInnerWidget.Info) getIntentParcelable(PictureTopicMainInnerWidget.mKey);
 
         BarrageProtos.PBFeed newFeed = null;
         try {
-            newFeed = BarrageProtos.PBFeed.parseFrom(mInfo.b);
+            newFeed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(PictureTopicMainInnerWidget.KEYSBYTE));
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
         }

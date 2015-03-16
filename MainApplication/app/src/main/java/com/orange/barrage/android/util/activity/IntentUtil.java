@@ -34,4 +34,9 @@ public class IntentUtil {
     }
 
 
+    public int [] getIntentIntArray(String key ){
+        return mActivity.getIntent().getIntArrayExtra(key);
+    }
+
+
 }

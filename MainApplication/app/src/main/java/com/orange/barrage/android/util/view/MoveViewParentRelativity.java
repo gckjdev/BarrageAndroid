@@ -100,10 +100,7 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
         if(ev.getAction() == MotionEvent.ACTION_UP ){
             mMoveInfo.clear();
         }
-
-        ToastUtil.makeTextShort("22"+i++,getContext());
 		if(mMoveInfo.v == null) {
-            ToastUtil.makeTextShort("我是空的",getContext());
             return super.onInterceptTouchEvent(ev);
         }
 		else return true;
