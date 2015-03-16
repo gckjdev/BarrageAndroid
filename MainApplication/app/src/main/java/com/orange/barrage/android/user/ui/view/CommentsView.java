@@ -3,21 +3,14 @@ package com.orange.barrage.android.user.ui.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import android.graphics.BitmapFactory;
-
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-
-import com.orange.barrage.android.util.imagecdn.ImageDealTools;
 
 
 /**
@@ -53,6 +46,8 @@ public class CommentsView extends LinearLayout {
 
 
     private void initView(){
+
+//        LayoutWhileTriangleIcon
 
         mView = LayoutInflater.from(getContext()).inflate(R.layout.activity_comments_head , this);
 
@@ -115,10 +110,9 @@ public class CommentsView extends LinearLayout {
             mUserAvatarView.setImageBitmap(bitmap);
     }
 
-    public void setTextColor(int color){
-        if(color < 0 ) return ;
+    public void setTextColor(long color ){
         TextView tv = getTextView();
-        tv.setTextColor(color);
+        tv.setTextColor((int) color);
     }
 
 

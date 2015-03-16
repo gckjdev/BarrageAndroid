@@ -1,29 +1,15 @@
 package com.orange.barrage.android.util.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.media.Image;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import com.orange.barrage.android.util.misc.FileUtil;
-import com.orange.barrage.android.util.misc.ImageUtil;
-import com.orange.barrage.android.util.misc.SystemUtil;
 
 /**
  * Created by Administrator on 2015/3/14.
  */
-public class RelativeLayoutwhitTriangleIcon extends RelativeLayout implements LayoutWhileTriangleIcon.LayoutWhileTriangleIconInterface {
+public class RelativeLayoutwhitTriangleIcon extends RelativeLayout implements LayoutDrawIconBackground.LayoutWhileTriangleIconInterface {
 
 
 
@@ -32,7 +18,7 @@ public class RelativeLayoutwhitTriangleIcon extends RelativeLayout implements La
 //
 //    private static final int GRIVITY_BOTTOM = 1;
 
-    private LayoutWhileTriangleIcon.Params mPparams;
+    private LayoutDrawIconBackground.Params mPparams;
 
     public RelativeLayoutwhitTriangleIcon(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,7 +27,7 @@ public class RelativeLayoutwhitTriangleIcon extends RelativeLayout implements La
 
 
     @Override
-    public void setParams(LayoutWhileTriangleIcon.Params params){
+    public void setParams(LayoutDrawIconBackground.Params params){
         if(params == null) return;
         setPadding(params.padding + params.marginLeft, params.padding + params.marginTop, params.padding + params.marginRight, params.padding + params.marginBottopm);
         invalidate();
@@ -49,7 +35,7 @@ public class RelativeLayoutwhitTriangleIcon extends RelativeLayout implements La
 
 
     @Override
-    public void setView( View v ,  LayoutWhileTriangleIcon.Params params){
+    public void setView( View v ,  LayoutDrawIconBackground.Params params){
         mLayoutWhileTiangIcon.setParcent(v);
         setParams(params);
         getViewTreeObserver().addOnGlobalLayoutListener(mOnGlobalLayoutListener);

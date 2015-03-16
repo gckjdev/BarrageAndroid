@@ -20,6 +20,7 @@ import com.orange.barrage.android.feed.activity.FeedReplyActivity;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
 import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.view.ViewConstants;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
@@ -46,6 +47,8 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
     public final  static String KEYSBYTE = "1";
     public final static String KEYSSCREENXY = "2";
+
+    private Modle mModle = new Modle();
 
     public PictureTopicMainInnerWidget(Context context,AttributeSet set, PictureTopicContainer container) {
         this(context, set);
@@ -170,11 +173,22 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
 
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
+
+
         if(event.getAction() == MotionEvent.ACTION_DOWN){
-            startActivity((int)event.getX() , (int)event.getY());
+            mModle.clear();
+        }else
+        if(event.getAction() == MotionEvent.ACTION_MOVE){
+            mModle.is = true;
+        }else if( event.getAction() == MotionEvent.ACTION_UP){
+            if(!mModle.is){
+                startActivity((int)event.getX() , (int)event.getY());
+                mModle.clear();
+            }
         }
 
         return true;
@@ -222,5 +236,14 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 //            dest.writeIntArray(XY);
 //        }
 //    }
+
+    class Modle{
+        public boolean is = false;
+
+        public void clear(){
+            is = false;
+        }
+
+    }
 
 }
