@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 
-import com.soundcloud.android.crop.Crop;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
@@ -22,27 +20,26 @@ public class PhotoAndCamera {
     private static final int PHOTOHRAPH = 1;// 拍照
     private static final int PHOTOZOOM = 2; // 缩放
     private static final int PHOTORESOULT = 3;// 结果
-    private  static final int NONE = 0;
+    private static final int NONE = 0;
     private static final String IMAGE_UNSPECIFIED = "image/*";
 
     private Activity mActivity;
 
 
-
-    public PhotoAndCamera(Activity context){
+    public PhotoAndCamera(Activity context) {
         this.mActivity = context;
 
     }
 
 
-    public void takePicture(){
+    public void takePicture() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(
-            Environment.getExternalStorageDirectory(), "temp.jpg")));
+                Environment.getExternalStorageDirectory(), "temp.jpg")));
         mActivity.startActivityForResult(intent, PHOTOHRAPH);
     }
 
-    public void choosePhoto(){
+    public void choosePhoto() {
 
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -53,9 +50,9 @@ public class PhotoAndCamera {
 
 
     /*
-	 * 将这些方法放在Activity下面的onActivityResult里
+     * 将这些方法放在Activity下面的onActivityResult里
 	 */
-    public void  getPicture(int requestCode, int resultCode, Intent data ,onGetPhotoCallback l){
+    public void getPicture(int requestCode, int resultCode, Intent data, onGetPhotoCallback l) {
 
         boolean isSuccess = false;
         Bitmap photo = null;
@@ -67,7 +64,7 @@ public class PhotoAndCamera {
         if (requestCode == PHOTOHRAPH) {
             // 设置文件保存路径这里放在跟目录下
             File picture = new File(Environment.getExternalStorageDirectory()
-                    +"/temp.jpg");
+                    + "/temp.jpg");
             startPhotoZoom(Uri.fromFile(picture));
         }
 
@@ -79,7 +76,7 @@ public class PhotoAndCamera {
         if (data != null && requestCode == PHOTORESOULT) {
             Bundle extras = data.getExtras();
             if (extras != null) {
-                 photo = extras.getParcelable("data");
+                photo = extras.getParcelable("data");
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 photo.compress(Bitmap.CompressFormat.JPEG, 75, stream);// (0 -
                 // 100)压缩文件
@@ -88,7 +85,7 @@ public class PhotoAndCamera {
             }
         }
 
-        if(l != null){
+        if (l != null) {
             if (isSuccess) l.onSuccess(photo);
             else l.onErro();
         }
@@ -97,7 +94,7 @@ public class PhotoAndCamera {
     }
 
     //截取图片
-    public void cropImage(Uri uri, int outputX, int outputY, int requestCode){
+    public void cropImage(Uri uri, int outputX, int outputY, int requestCode) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
@@ -134,8 +131,7 @@ public class PhotoAndCamera {
     }
 
 
-
-    public interface onGetPhotoCallback{
+    public interface onGetPhotoCallback {
 
         public void onSuccess(Bitmap bitmap);
 
@@ -143,7 +139,6 @@ public class PhotoAndCamera {
 
 
     }
-
 
 
 }

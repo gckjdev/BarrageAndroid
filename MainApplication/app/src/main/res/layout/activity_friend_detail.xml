@@ -108,6 +108,7 @@
             <Button
                 android:layout_marginTop="20dp"
                 style="@style/b_button_color_red"
+                android:onClick="onClickCamera"
                 android:id="@+id/friend_detail_sharephoto"
                 android:text="分享照片"
                 android:layout_centerHorizontal="true"
