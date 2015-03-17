@@ -112,6 +112,7 @@ public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
      * @param v
      */
     public void onClickLeft(View v){
+        finish();
     }
 
     public void onClickFinish(View v){

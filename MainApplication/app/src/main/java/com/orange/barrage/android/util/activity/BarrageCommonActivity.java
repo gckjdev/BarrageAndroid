@@ -144,6 +144,7 @@ public class BarrageCommonActivity extends RoboActivity  {
      * @param v
      */
     public void onClickLeft(View v){
+        finish();
     }
 
 
