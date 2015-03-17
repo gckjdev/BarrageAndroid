@@ -21,11 +21,15 @@
                 android:text="头像"
                 style="@style/user_homepage" />
 
-            <ImageView
+            <com.orange.barrage.android.user.ui.view.UserAvatarView
                 android:id="@+id/usermodifyView"
-                android:layout_marginRight="20dp"
                 android:src="@drawable/image_default"
-                style="@style/user_homepage_imageview" />
+                android:layout_width="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -66,6 +70,7 @@
         android:layout_height="@dimen/u_background">
 
         <RelativeLayout
+            android:id="@+id/NickLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -93,6 +98,7 @@
         android:layout_height="@dimen/u_background">
 
         <RelativeLayout
+            android:id="@+id/Signaturelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

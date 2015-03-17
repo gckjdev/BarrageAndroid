@@ -1,22 +1,26 @@
 package com.orange.barrage.android.misc.activity;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.user.ui.user_home.UserModifyUserForresult;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
+import roboguice.inject.InjectView;
+
 public class EditTextActivity extends BarrageCommonActivity {
 
+    @InjectView(R.id.clearedittext)
+    private EditText mClearEdittext;
+
+    @InjectView(R.id.nickdescription)
+    private TextView mNickdescription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_text);
+        super.onCreate(savedInstanceState,R.layout.activity_edit_text,"",R.string.y_tijiao);
     }
 
     public static void start(Activity fromActivity,
@@ -28,6 +32,5 @@ public class EditTextActivity extends BarrageCommonActivity {
         //
 
         ActivityIntent.startIntent(fromActivity, EditTextActivity.class);
-    }
-
+}
 }

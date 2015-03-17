@@ -1,25 +1,12 @@
 package com.orange.barrage.android.user.ui.view;
 
-import android.app.ActionBar;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 
 import com.orange.barrage.android.R;
-
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
-
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
 
@@ -69,6 +56,9 @@ public class UserAvatarView extends ImageView {
 //        int height = 100;
         int borderWidth = 8;
         if(url == null || url.length() == 0) return;
+
+        //MessageCenter.postErrorMessage("ni hao wo bei diao yong");
+
         Picasso.with(mContext)
                 .load(url)
                 .resize(300,300)
