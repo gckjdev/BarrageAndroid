@@ -15,11 +15,14 @@ import com.orange.barrage.android.feed.ui.view.TableView;
 import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.ui.topic.PictureTopicMainInnerWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.User;
+import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.CommentsView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.protocol.message.BarrageProtos;
+import com.orange.protocol.message.UserProtos;
 
 import java.util.List;
 
@@ -48,6 +51,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @Inject
     FeedMission mFeedMission;
 
+    @Inject
+    UserManager mUserManager;
 
     private int mSelectColor = Color.WHITE;
     private int mColors[] = { Color.WHITE,0XFF383838  , 0XFF9E6BEA , 0XFF9EC138 , 0XFF6DA0F0 , 0XFFD28038 , 0xFFD2644D };
@@ -100,7 +105,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mComentRelative.setImageUrl(model.getImageUrl());
 
         //设置头像
-        mCommentsEdit.setIconUrl(model.getFeed().getImage());
+        UserProtos.PBUser user = mUserManager.getUser();
+        mCommentsEdit.setIconUrl(user.getAvatar());
     }
 
 
