@@ -84,7 +84,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mDropDownImageButton = (ImageButton) mView.findViewById(R.id.dropDownButton);
         mMainRelativeLayout = (RelativeLayout) mView.findViewById(R.id.iconMainRelativrLayout);
 
-
+//        ActivityIntent
         mDropDownImageButton.setOnClickListener(this);
         mPlayerButton.setOnClickListener(this);
         mShareButton.setOnClickListener(this);
@@ -113,7 +113,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
         // TODO
         List<UserProtos.PBUser> toUsers = model.getFeed().getToUsersList();
-
 
 
         mBarrageWidget.setModel(model);

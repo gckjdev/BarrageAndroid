@@ -49,8 +49,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     FeedMission mFeedMission;
 
 
-    private int mSelectColor = 0XFF383838;
-    private int mColors[] = {0XFF383838 , Color.WHITE , 0XFF9E6BEA , 0XFF9EC138 , 0XFF6DA0F0 , 0XFFD28038 , 0xFFD2644D };
+    private int mSelectColor = Color.WHITE;
+    private int mColors[] = { Color.WHITE,0XFF383838  , 0XFF9E6BEA , 0XFF9EC138 , 0XFF6DA0F0 , 0XFFD28038 , 0xFFD2644D };
     private int mR = 14;
 
     private CommentsView mCommentsEdit;
@@ -69,7 +69,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
                 onClickRight(v);
             }
         });
-
+        //鱿鱼+2，冬菇鸡，纸包鸡,茶树菇，
         initView();
     }
 

@@ -41,7 +41,7 @@ public class ActivityIntent {
 
     public static void startIntent(Activity activity , Intent intent){
         activity.startActivity(intent);
-        ActivityCompat.startActivity(activity, intent,null);
+//        ActivityCompat.startActivity(activity, intent,null);
     }
 
     private static Intent getIntent(Activity activity , Class<?> c ){
