@@ -125,6 +125,7 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity
             android:name=".user.ui.user_home.UserHomeActivity"
+
             android:label="@string/title_activity_user_home" >
         </activity>
         <activity
