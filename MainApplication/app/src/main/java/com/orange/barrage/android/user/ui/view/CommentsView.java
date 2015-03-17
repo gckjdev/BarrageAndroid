@@ -53,21 +53,15 @@ public class CommentsView extends LinearLayout {
     private int mColorbg = Color.BLACK;
     private float mAlphabg = 0.4f;
 
-    @Inject
-    UserManager mUserManager;
-
-    @Inject
     public CommentsView(Context context){
         super(context);
         initView();
     }
 
-    @Inject
     public CommentsView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
-
 
     private void initView(){
 
@@ -78,8 +72,6 @@ public class CommentsView extends LinearLayout {
         mEditText = (EditText)findViewById(R.id.commentseditText);
         mTextView = (TextView)findViewById(R.id.commentsTextView);
         mUserAvatarView = (UserAvatarView)findViewById(R.id.head);
-
-//        mUserAvatarView.loadUser(mUserManager.getUser());
 
 //        LayoutDrawIconBackground layoutDrawIconBackground = new LayoutDrawIconBackground();
 
@@ -148,10 +140,9 @@ public class CommentsView extends LinearLayout {
 
     public void setIconUrl(String url){
 
-        if(mUserAvatarView != null)
+        if (mUserAvatarView != null) {
             mUserAvatarView.setAvartUrl(url);
-
-
+        }
     }
 
     public void setIconBitmap(Bitmap bitmap){

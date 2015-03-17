@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import roboguice.inject.ContextSingleton;
+import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/5.
@@ -20,6 +21,15 @@ public class UserManager extends CommonManager {
 
     @Inject
     DefaultDBDAO defaultDBDAO;
+
+    @Inject
+    private UserManager(){
+    }
+
+    private static UserManager mUserManager = new UserManager();
+    public static UserManager getInstance(){
+        return mUserManager;
+    }
 
     public String getUserId(){
         UserProtos.PBUser user = getUser();
