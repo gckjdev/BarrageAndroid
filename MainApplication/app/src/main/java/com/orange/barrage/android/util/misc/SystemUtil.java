@@ -5,6 +5,8 @@ import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
+import com.orange.barrage.android.util.ContextManager;
+
 public class SystemUtil {
     private static String deviceId = null;
 
@@ -51,6 +53,16 @@ public class SystemUtil {
         wh[0] = dm.widthPixels;
         wh[1] = dm.heightPixels;
         return wh;
+    }
+
+    public static int dipTOpx( float dpValue) {
+        final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static int pxTodip( float pxValue) {
+        final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
     }
 
 

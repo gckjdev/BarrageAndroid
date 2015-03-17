@@ -2,23 +2,20 @@ package com.orange.barrage.android.util.view;
 
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.view.View.OnTouchListener;
-import android.widget.Toast;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.activity.ToastUtil;
 import com.squareup.picasso.Picasso;
 
 public class MoveViewParentRelativity extends RelativeLayout implements OnTouchListener  {
@@ -57,11 +54,22 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
      * @param params
      * @param isMove 是否可以被移动
      */
-    public void addView(View v , int l ,int t ,LayoutParams params , boolean isMove){
+    public void addView(final View v , final int l ,final int t ,final LayoutParams params , boolean isMove){
         if(params == null) return;
-        params.leftMargin = l;
-        params.topMargin = t;
         addView(v, params , isMove);
+
+        v.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                MoveInfo moveInfo = new MoveInfo();
+                moveInfo.v = v;
+                params.leftMargin = moveInfo.getLeft(l);
+                params.topMargin = moveInfo.getTop(t);
+                v.setLayoutParams(params);
+                v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+
     }
 
 
@@ -99,7 +107,6 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 //
         if(ev.getAction() == MotionEvent.ACTION_UP ){
             mMoveInfo.clear();
-
         }
 		if(mMoveInfo.v == null) {
             return super.onInterceptTouchEvent(ev);
@@ -144,7 +151,6 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
                 public void handleMessage(Message msg) {
                     super.handleMessage(msg);
                     startMove(x- mMoveInfo.childX , y - mMoveInfo.childY);
-//                    startMove(event.getX() - mMoveInfo.childX , event.getY() - mMoveInfo.childY);
                 }
             }.sendEmptyMessage(0);
 		}else if(event.getAction() == MotionEvent.ACTION_UP ||event.getAction() == MotionEvent.ACTION_CANCEL){
@@ -187,18 +193,28 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
             return isMove;
         }
     }
-	
+
+    public int getMoveingViewX(){
+        if(mMoveInfo == null) return 0;
+        return mMoveInfo.MovewL;
+
+    }
+
+    public int getMoveingViewY(){
+        if(mMoveInfo == null) return 0;
+        return  mMoveInfo.MovewT;
+    }
+
+
+
 	class MoveInfo{
 		
 		public View v;
 
         public int MovewL;
         public int MovewT;
-
-
         public float childX = 0;
         public float childY = 0;
-
 
         public int getLeft(float x){
            MovewL = getbestParams((int)x , v .getWidth() , MoveViewParentRelativity.this.getWidth());

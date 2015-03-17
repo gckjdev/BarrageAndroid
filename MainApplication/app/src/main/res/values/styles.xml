@@ -83,11 +83,12 @@
     <style name="comments" >
         <item name="android:layout_height">@dimen/b_comments_icon</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:paddingLeft">51dip</item>
-
         <item name="android:visibility">gone</item>
-        <item name = "android:alpha">0.6</item>
-        <item name="android:paddingRight">30dip</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">20.5dip</item>
+        <item name="android:paddingLeft">30.5dip</item>
+        <item name="android:paddingRight">15dip</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="b_color_ring">
@@ -97,13 +98,20 @@
     </style>
 
     <style name="b_comments_bottom_menu_main" parent="match_content">
-
+        <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_weight">1</item>
 
     </style>
 
+    <style name="b_comments_bottom_menu_main_linear" parent="wrap_content">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="b_comments_botton_menu_main_Text" parent="wrap_content">
+        <item name="android:textColor">@drawable/x_bottom_font</item>
+    </style>
     <style name="b_comments_bottom_menu_button" parent="wrap_content">
-        <item name="android:layout_gravity">center</item>
         <item name="android:background">@color/b_color_alpha</item>
     </style>
 

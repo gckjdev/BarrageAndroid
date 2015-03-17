@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
@@ -16,10 +15,8 @@ import com.orange.barrage.android.feed.ui.view.TableView;
 import com.orange.barrage.android.ui.topic.PictureTopicMainInnerWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.user.ui.view.CommentsView;
-import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.protocol.message.BarrageProtos;
 
@@ -39,7 +36,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     LinearLayout mLayout;
 
     @InjectView(R.id.commentFrame)
-    MoveViewParentRelativity mCoomentRelative;
+    MoveViewParentRelativity mComentRelative;
 
     @InjectView(R.id.tableview)
     TableView mTableView;
@@ -57,6 +54,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     private CommentsView mCommentsEdit;
     private CircleColorView mCircleColorView;
+    private BottonButtonModel mButtonMdoel = new BottonButtonModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +85,21 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         int xy[] = getIntentIntArrays(PictureTopicMainInnerWidget.KEYSSCREENXY);
 
         mCommentsEdit = addViewCommentToMoveView(xy[0] , xy[1]);
-
         //设置成可编辑
         mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
         for(int i = 0 ; i < mColors.length ; i ++){
             mLayout.addView(CreateImageView(mColors[i]));
         }
 
+        View linear = findViewById(R.id.linearLayout1);
+        //下面按钮获取图标
+        linear.setSelected(true);
+        findViewById(R.id.imageButton1).setTag(linear);
 
+        mComentRelative.setImageUrl(model.getImageUrl());
+
+        //设置头像
+        mCommentsEdit.setIconUrl(model.getFeed().getImage());
     }
 
 
@@ -139,9 +144,9 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     //将回复的View加入到移动的View上面去
     private CommentsView addViewCommentToMoveView(int l , int t){
-        if(mCoomentRelative == null) return null;
+        if(mComentRelative == null) return null;
         CommentsView comment = new CommentsView(this);
-        mCoomentRelative.addView(comment , l , t);
+        mComentRelative.addView(comment, l, t);
 
         return comment;
     }
@@ -192,15 +197,37 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
 
     public void onClickText(View v){
+        setSelectView(v , R.id.linearLayout1);
         MessageCenter.postInfoMessage("该功能正在开发");
     }
 
-    public void onClickGraffiti(View v ){
+    public void onClickGraffiti(View v){
+        setSelectView(v , R.id.linearLayout2);
         MessageCenter.postInfoMessage("该功能正在开发");
     }
 
     public void onClickLabel(View v ){
+        setSelectView(v , R.id.linearLayout3);
         MessageCenter.postInfoMessage("该功能正在开发");
+    }
+
+
+    private void setSelectView(View v  , int resId ){
+
+        if (mButtonMdoel.v != null) {
+            mButtonMdoel.v.setSelected(false);
+        }
+        if(v.getTag() == null){
+            v.setTag(findViewById(resId));
+        }
+        View parcent = (View) v.getTag();
+        parcent.setSelected(true);
+        mButtonMdoel.v = parcent;
+    }
+
+
+    class BottonButtonModel{
+        View v;
     }
 
 
@@ -212,7 +239,12 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         }
         ((CircleColorView)v).setImageResource(R.drawable.y_comments_select);
         mCircleColorView = ((CircleColorView)v);
-        changeTextColor(v.getTag() != null ? (int)v.getTag(): Color.BLACK);
+        int color = v.getTag() != null ? (int)v.getTag(): Color.BLACK;
+        changeTextColor(color);
+
+        mActionBuilder.setColor(color);
+
+
     }
 
 
@@ -232,6 +264,9 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mActionBuilder.setPosX(x);
         mActionBuilder.setPosY(y);
         mActionBuilder.setText(replyText);
+
+        mActionBuilder.setPosX(mComentRelative.getMoveingViewX());
+        mActionBuilder.setPosY(mComentRelative.getMoveingViewY());
 
         BarrageProtos.PBFeedAction action = mActionBuilder.build();
 

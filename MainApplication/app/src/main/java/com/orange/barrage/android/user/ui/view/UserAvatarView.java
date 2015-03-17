@@ -17,14 +17,13 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.imagecdn.ImageDealTools;
+
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
+
 import com.orange.protocol.message.UserProtos;
-import com.pkmmte.view.CircularImageView;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.util.zip.Inflater;
+
 
 /**
  * Created by pipi on 15/3/5.

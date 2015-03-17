@@ -1,6 +1,7 @@
 package com.orange.barrage.android.util.view;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,13 +9,20 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
 
+import com.kbeanie.imagechooser.api.config.Config;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.SystemUtil;
+
+import roboguice.util.Ln;
 
 /**
  * Created by Administrator on 2015/3/14.
@@ -28,7 +36,7 @@ public  class LayoutDrawIconBackground {
     private View mParcent;
     private Params mParams;
 
-
+    private EditText mEditText;
 
     public void setWhitTriangleRadioRoundFrectBg(final View Parcent , final View child){
 
@@ -37,7 +45,7 @@ public  class LayoutDrawIconBackground {
             @Override
             public void onGlobalLayout() {
                 mParams = mParams != null ? mParams : new Params();
-                child.setPadding(mParams.padding + mParams.marginLeft, mParams.padding + mParams.marginTop +mParams.mTopHeight, mParams.padding + mParams.marginRight, mParams.padding + mParams.marginBottopm);
+                child.setPadding(mParams.padding + mParams.marginLeft, mParams.padding + mParams.marginTop + mParams.mTopHeight, mParams.padding + mParams.marginRight, mParams.padding + mParams.marginBottopm);
                 child.setBackground(ImageUtil.getBitmapChangeDrawable(getWhitTriangleRadioRoundFrectBgBitmap(getParams(), Parcent, child)));
                 Parcent.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
@@ -98,8 +106,6 @@ public  class LayoutDrawIconBackground {
 
 
     private  void DrawTopAndBottom(Canvas canvas , int rectfStartY , int rectfEndY , int grivity , Paint p , Params params , View child , View parcent){
-
-
         p.setColor(params.bgColor);
         p.setAntiAlias(true);// 设置画笔的锯齿效果
         RectF oval3 = new RectF(0 + params.marginLeft, rectfStartY, child.getWidth() - params.marginRight, rectfEndY);// 设置个新的长方形
@@ -171,11 +177,22 @@ public  class LayoutDrawIconBackground {
 
         public int bgColor = Color.WHITE;
 
+        public float alpha = 1.0f;
+
         public int mTriangleHeight = 30;
 
         public int mTopHeight = 20;
 
         public int padding = 10;
+
+
+        public int getColor(){
+            int alphas = (int)(255 * alpha);
+            return Color.argb(alphas , Color.red(bgColor) , Color.green(bgColor) , Color.blue(bgColor));
+
+        }
+
+
     }
 
     public interface LayoutWhileTriangleIconInterface {
@@ -195,6 +212,105 @@ public  class LayoutDrawIconBackground {
 
 
 
+    public void setSemicircleRectangleBg(View v , Params params ){
+        setSemicircleRectangleBg(v ,params, true);
+    }
+
+    public void setSemicircleRectangleBg(final View v ,  final Params params, final boolean isMove){
+
+        v.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                Bitmap bitmap = drawSemicircleRectang(v, params.getColor());
+                v.setBackground(ImageUtil.getBitmapChangeDrawable(bitmap));
+                if(isMove) {
+                    v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }else{
+                    if(v instanceof EditText){
+                        mEditText = ((EditText)v);
+                        mEditText.addTextChangedListener(mTextWatcher);
+                    }
+
+                }
+            }
+        });
+
+    }
+
+
+    private TextWatcher mTextWatcher =  new TextWatcher() {
+
+        private  int width = -1;
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            if(width == - 1){
+                width = (int) (mEditText.getWidth() - mEditText.getPaint().measureText(s.toString()));
+            }
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            Paint p = mEditText.getPaint();
+            float f = p.measureText(s.toString());
+//                                int width = (int) (f + SystemUtil.dipTOpx(39));
+            int width = (int) (f + this.width);
+            ViewGroup.LayoutParams params = mEditText.getLayoutParams();
+            params.width = width;
+            mEditText.setLayoutParams(params);
+        }
+    };
+
+
+
+
+
+    private Bitmap drawSemicircleRectang(View v , int color){
+        if(v.getWidth() == 0 || v.getHeight() == 0) return null;
+
+        Bitmap bitmap = Bitmap.createBitmap(v.getWidth() , v.getHeight() , Bitmap.Config.ARGB_8888);
+
+
+        Paint paint = getPaint(color , Paint.Style.FILL);
+        Canvas canvas = getCanvas(bitmap);
+
+        Rect mainRect = new Rect(0 , 0 , v.getWidth() , v.getHeight());
+
+        Rect rect = new Rect(0 , 0 , v.getWidth() - v.getHeight() /2 , v.getHeight());
+
+        //绘画矩形
+        canvas.drawRect(rect , paint);
+
+        RectF rectF = new RectF(v.getWidth() - v.getHeight() , 0 , v.getWidth() , v.getHeight());
+
+        canvas.drawArc(rectF , 270 , 180 , true , paint);
+
+        canvas.drawBitmap(bitmap , mainRect , mainRect , paint);
+
+        return bitmap;
+    }
+
+    private Paint getPaint(int color , Paint.Style flag){
+
+        Paint paint = new Paint();
+        paint.setStyle(flag);
+        paint.setColor(color);
+        paint.setAntiAlias(true);
+
+        return paint;
+    }
+
+
+    private Canvas getCanvas(Bitmap bitmap ){
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawARGB(0 , 0, 0 ,0 );
+        return canvas;
+    }
 
 
 

@@ -21,28 +21,20 @@ public class HomePageActivity extends BarrageCommonActivity {
     @Inject
     UserManager mUserManager;
 
-    final Handler mHandler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
 
-            new Handler(){
-                @Override
-                public void handleMessage(Message msg) {
-                    super.handleMessage(msg);
-                    startActivity();
-                }
-            }.sendEmptyMessage(0);
-
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        mHandler.sendEmptyMessage(0);
+
+        new Handler().postAtTime(new Runnable() {
+            @Override
+            public void run() {
+                startActivity();
+            }
+        } , 500);
+
     }
 
     private void startActivity(){

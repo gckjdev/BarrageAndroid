@@ -97,27 +97,51 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="55dip">
-        <FrameLayout
+        <RelativeLayout
+            android:id="@+id/linearLayout1"
             style="@style/b_comments_bottom_menu_main">
+        <LinearLayout
+            style="@style/b_comments_bottom_menu_main_linear">
             <ImageButton
+                android:id = "@+id/imageButton1"
                 android:onClick="onClickText"
                 android:src="@drawable/x_text"
                  style="@style/b_comments_bottom_menu_button"/>
-        </FrameLayout>
-        <FrameLayout
+            <TextView
+                style="@style/b_comments_botton_menu_main_Text"
+                android:textColor="@color/b_color_red"
+                android:text="@string/b_word"
+                />
+        </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/linearLayout2"
             style="@style/b_comments_bottom_menu_main">
+            <LinearLayout
+                style="@style/b_comments_bottom_menu_main_linear">
             <ImageButton
                 android:onClick="onClickGraffiti"
                 android:src="@drawable/x_graffiti"
                 style="@style/b_comments_bottom_menu_button"/>
-        </FrameLayout>
-        <FrameLayout
+            <TextView
+                style="@style/b_comments_botton_menu_main_Text"
+                android:text="@string/b_graffiti"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/linearLayout3"
             style="@style/b_comments_bottom_menu_main">
+            <LinearLayout
+                style="@style/b_comments_bottom_menu_main_linear">
             <ImageButton
                 android:onClick="onClickLabel"
                 android:src="@drawable/x_label"
                 style="@style/b_comments_bottom_menu_button"/>
-        </FrameLayout>
+            <TextView
+                style="@style/b_comments_botton_menu_main_Text"
+                android:text="@string/b_graffiti"/>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
     </LinearLayout>
 
