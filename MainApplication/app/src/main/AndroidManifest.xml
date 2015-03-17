@@ -65,14 +65,9 @@
         <activity
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
-
-
-        <activity android:name=".feed.activity.FeedPublishedActivity"></activity>
-
-
+        <activity android:name=".feed.activity.FeedPublishedActivity" />
         <activity android:name=".user.ui.view.Text" />
         <activity android:name=".feed.activity.FeedPublishedActivity" />
-
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend" />
@@ -86,16 +81,15 @@
         <activity android:name=".user.ui.login.HomePageActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".user.ui.view.Text">
-
+        <activity android:name=".user.ui.view.Text" >
         </activity>
 
-        <!--Share SDK Activities -->
+        <!-- Share SDK Activities -->
+
 
         <!-- Share SDK Activities -->
         <activity
@@ -132,6 +126,15 @@
         <activity
             android:name=".user.ui.user_home.UserHomeActivity"
             android:label="@string/title_activity_user_home" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeModifyActivity"
+            android:label="@string/title_activity_user_home_modify" >
+        </activity>
+        <activity
+            android:windowSoftInputMode="stateVisible"
+            android:name=".user.ui.user_home.UserModifyUserForresult"
+            android:label="@string/title_activity_user_modify_user_forresult" >
         </activity>
     </application>
 

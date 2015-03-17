@@ -12,6 +12,7 @@ import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.feed.ui.view.CircleColorView;
 import com.orange.barrage.android.feed.ui.view.TableView;
+import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.ui.topic.PictureTopicMainInnerWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.user.ui.view.CommentsView;
@@ -82,7 +83,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         }
 
         //FIXME: need to init mCommentsEdit first
-        int xy[] = getIntentIntArrays(PictureTopicMainInnerWidget.KEYSSCREENXY);
+        int xy[] = getIntentIntArrays(HomeActivity.KEYSSCREENXY);
 
         mCommentsEdit = addViewCommentToMoveView(xy[0] , xy[1]);
         //设置成可编辑
@@ -106,7 +107,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     private PictureTopicModel initData(){
 
         try {
-            mFeed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(PictureTopicMainInnerWidget.KEYSBYTE));
+            mFeed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(HomeActivity.KEYSBYTE));
         } catch (InvalidProtocolBufferException e) {
             Ln.e(e, "init feed comment data, parse data exception=" + e.toString());
         }

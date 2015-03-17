@@ -2,6 +2,7 @@ package com.orange.barrage.android.friend.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +10,11 @@ import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.mission.PhotoAndCamera;
+import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.UserProtos;
 
@@ -21,6 +25,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
 
     private static final String BUNDLE_KEY_USER = "BUNDLE_KEY_USER";
+    private ShowPublishFeedView mShowPublishFeedView;
 
     @InjectView(R.id.friend_detail_avatar_view)
     private UserAvatarView userAvatarImageView;
@@ -62,12 +67,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
             return;
         }
 
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Toast.makeText(FriendDetailActivity.this,"点击了分享",Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         nickTextView.setText(mUser.getNick());
 
@@ -103,5 +103,38 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         intent.setClass(context, FriendDetailActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+
+    public void onClickCamera(View v){
+        initPublishFeefView();
+        MessageCenter.postErrorMessage("niha");
+        mShowPublishFeedView.showPublishFeedView();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mShowPublishFeedView.getPhotoAndCamera().getPicture(requestCode,resultCode , data , mOnGetPhotoCallbak);
+
+    }
+
+    private PhotoAndCamera.onGetPhotoCallback mOnGetPhotoCallbak = new PhotoAndCamera.onGetPhotoCallback() {
+        @Override
+        public void onSuccess(Bitmap bitmap) {
+
+        }
+
+        @Override
+        public void onErro() {
+            MessageCenter.postInfoMessage("获取相片失败");
+        }
+    };
+
+
+    private void initPublishFeefView(){
+        mShowPublishFeedView = mShowPublishFeedView
+                == null ? new ShowPublishFeedView(this) : mShowPublishFeedView;
     }
 }

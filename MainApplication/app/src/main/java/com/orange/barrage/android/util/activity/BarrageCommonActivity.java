@@ -73,6 +73,18 @@ public class BarrageCommonActivity extends RoboActivity  {
         mTopBarView = new TopBarView(this);
         mTopBarView.setTitleText(titleString);
         mTopBarView.setRightButton(rightid);
+        mTopBarView.setOnClickRightListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickRight(v);
+            }
+        });
+        mTopBarView.setOnClickLeftListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickLeft(v);
+            }
+        });
 
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
@@ -121,11 +133,19 @@ public class BarrageCommonActivity extends RoboActivity  {
 
 
     /**
-     * 点击按钮
+     * 点击导航栏右边按钮可继承本方法
      * @param v
      */
     public void onClickRight(View v){
     }
+
+    /**
+     * 点击导航栏左边按钮可继承本方法
+     * @param v
+     */
+    public void onClickLeft(View v){
+    }
+
 
     public void onClickFinish(View v){
         finish();
