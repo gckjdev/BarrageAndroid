@@ -1,0 +1,192 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeModifyActivity">
+
+    <include layout="@layout/activity_view_top" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="头像"
+                style="@style/user_homepage" />
+
+            <ImageView
+                android:id="@+id/usermodifyView"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/image_default"
+                style="@style/user_homepage_imageview" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="背景"
+                style="@style/user_homepage" />
+
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:src="@drawable/image_default"
+                style="@style/user_homepage_imageview" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/usermodifyNicker"
+        android:orientation="vertical"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="昵称"
+                style="@style/user_homepage" />
+
+            <TextView
+                android:id="@+id/usermodifyNick"
+                android:text="MANMAN"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/usermodifySig"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="签名"
+                style="@style/user_homepage" />
+
+            <TextView
+                android:id="@+id/usermodifySignature"
+                android:text="快来捏我吧"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="性别"
+                style="@style/user_homepage" />
+
+            <TextView
+                android:id="@+id/usermodifySexual"
+                android:text="女"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="位置"
+                style="@style/user_homepage" />
+
+            <TextView
+                android:id="@+id/usermodifyLocation"
+                android:text="广东广州"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:id="@+id/usermodifyPass"
+        android:orientation="vertical"
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="密码"
+                style="@style/user_homepage" />
+
+            <ImageView
+                android:id="@+id/usermodifyPassword"
+                style="@style/user_homepage_imageview"
+                android:layout_marginRight="20dp"
+                 />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

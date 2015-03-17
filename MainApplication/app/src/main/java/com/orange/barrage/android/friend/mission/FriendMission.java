@@ -64,7 +64,7 @@ public class FriendMission extends CommonMission {
                             callback.handleMessage(0, friendList);
                         } else {
                             callback.handleMessage(ErrorProtos.PBError.ERROR_RESPONSE_SERVICE_DATA_NULL_VALUE, null);
-                        }
+                    }
 
                     }
 
