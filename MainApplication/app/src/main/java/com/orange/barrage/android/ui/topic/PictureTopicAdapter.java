@@ -11,6 +11,7 @@ import com.orange.barrage.android.util.ContextManager;
 /**
  * Created by Rollin on 2015/1/1.
  */
+@Deprecated
 public class PictureTopicAdapter extends BaseAdapter{
 
     private PictureTopicData mData;

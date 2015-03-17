@@ -9,6 +9,7 @@ import android.widget.TextView;
 /**
  * Created by Rollin on 2014/11/30.
  */
+@Deprecated
 public class PictureTopicBottomWidget extends LinearLayout{
 
     private PictureTopicContainer mContainer;

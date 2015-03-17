@@ -72,8 +72,8 @@ public class PictureTopicMainWidget extends ScalableFrameLayout<PictureTopicMain
         mInnerView.moveTo(progress);
     }
 
-    public void setModel(PictureTopicModel model , Activity activity) {
-        mInnerView.setModel(model, activity);
+    public void setModel(PictureTopicModel model) {
+        mInnerView.setModel(model);
     }
 
     @Override

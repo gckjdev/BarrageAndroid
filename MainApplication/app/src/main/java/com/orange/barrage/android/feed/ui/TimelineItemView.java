@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.ShowFriendIconView;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
@@ -26,6 +27,7 @@ import com.orange.protocol.message.UserProtos;
 
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import roboguice.util.Ln;
 
 /**
@@ -114,7 +116,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
 
 
-        mBarrageWidget.setModel(model , activity);
+        mBarrageWidget.setModel(model);
 
     }
 
@@ -144,7 +146,8 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      * @param v
      */
     public void onClickShare(View v){
-        ActivityIntent.startIntent(mActivity , FeedPublishedOtherPlatform.class );
+        EventBus.getDefault().post(new StartActivityFeedPublishedOtherPlatformEvent());
+//        ActivityIntent.startIntent(mActivity , FeedPublishedOtherPlatform.class );/**/
     }
 
     /**

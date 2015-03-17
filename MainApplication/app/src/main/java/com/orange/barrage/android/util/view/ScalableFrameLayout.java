@@ -20,8 +20,8 @@ public abstract class ScalableFrameLayout<T extends FrameLayout> extends FrameLa
 
     protected T mInnerView;
 
-    private int mWidgetWidth;
-    private int mWidgetHeight;
+    private int mActualWidth;
+    private int mActualHeight;
 
     public ScalableFrameLayout(Context context) {
         this(context, null);
@@ -52,8 +52,8 @@ public abstract class ScalableFrameLayout<T extends FrameLayout> extends FrameLa
      * Set actual width and height for layout
      **/
     public void setSize(int width, int height){
-        mWidgetWidth = width;
-        mWidgetHeight = height;
+        mActualWidth = width;
+        mActualHeight = height;
 
         float expectWidth = getExpectedWidth();
         float actualWidth = width;
@@ -83,11 +83,11 @@ public abstract class ScalableFrameLayout<T extends FrameLayout> extends FrameLa
     }
 
     private int measureWidth(int widthMeasureSpec){
-        return mWidgetWidth;
+        return mActualWidth;
     }
 
     private int measureHeight(int heightMeasureSpec){
-        return mWidgetHeight;
+        return mActualHeight;
     }
 
 }

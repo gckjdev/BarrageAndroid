@@ -1,40 +1,40 @@
 package com.orange.barrage.android.user.ui.user_home;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.ActivityIntent;
+import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
-public class UserHomeActivity extends ActionBarActivity {
+import roboguice.inject.InjectView;
+
+public class UserHomeActivity extends BarrageCommonActivity {
+    @InjectView(R.id.user_home_imageview)
+    private RelativeLayout mUserHomeView;
+
+    @InjectView(R.id.user_home_myfriend)
+    private LinearLayout mUserHomeMyfriend;
+
+    @InjectView(R.id.user_home_invitemyfriend)
+    private LinearLayout mUserHomeInviteMyfriend;
+
+    @InjectView(R.id.user_home_mytag)
+    private LinearLayout mUsrHomeMyTag;
+
+    @InjectView(R.id.user_home_setting)
+    private LinearLayout mUserHomeSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_home);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_user_home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        super.onCreate(savedInstanceState,R.layout.activity_user_home,"我的主页",-1);
+        mUserHomeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityIntent.startIntent(UserHomeActivity.this,UserHomeModifyActivity.class);
+            }
+        });
     }
 }

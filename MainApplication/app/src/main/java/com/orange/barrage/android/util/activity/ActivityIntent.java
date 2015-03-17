@@ -3,13 +3,14 @@ package com.orange.barrage.android.util.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.v4.app.ActivityCompat;
 
 /**
  * Created by youjiannuo on 2015/3/4.
  */
 public class ActivityIntent {
 
-    public static void sstartIntent(Activity activity , Class<?> c , String key , Byte[] b){
+    public static void startIntent(Activity activity, Class<?> c, String key, Byte[] b){
         Intent intent = getIntent(activity , c );
         intent.putExtra(key , b);
         startIntent(activity , intent);
@@ -40,6 +41,7 @@ public class ActivityIntent {
 
     public static void startIntent(Activity activity , Intent intent){
         activity.startActivity(intent);
+        ActivityCompat.startActivity(activity, intent,null);
     }
 
     private static Intent getIntent(Activity activity , Class<?> c ){

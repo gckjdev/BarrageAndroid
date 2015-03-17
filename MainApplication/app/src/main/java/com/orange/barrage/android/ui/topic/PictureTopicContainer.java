@@ -13,6 +13,7 @@ import com.orange.barrage.android.util.view.ViewConstants;
 /**
  * Created by Rollin on 2014/11/30.
  */
+@Deprecated
 public class PictureTopicContainer extends LinearLayout{
 
     private PictureTopicModel mModel;
@@ -55,7 +56,7 @@ public class PictureTopicContainer extends LinearLayout{
     public void setModel(PictureTopicModel model , Activity activity) {
         this.mActivity = activity;
         mModel = model;
-        mMainWidget.setModel(mModel , activity);
+        mMainWidget.setModel(mModel);
     }
 
     public PictureTopicModel getModel() {

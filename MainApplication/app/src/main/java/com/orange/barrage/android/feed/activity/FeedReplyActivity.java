@@ -67,7 +67,7 @@ public class FeedReplyActivity extends RoboFragmentActivity {
         mFeedActionWidget.setY(200);
 
         PictureTopicModel model = (PictureTopicModel) getIntent().getSerializableExtra("model");
-        mMainWidget.setModel(model ,this);
+        mMainWidget.setModel(model);
         mMainWidget.hideAllBarrageActions();
         mMainWidget.setMode(PictureTopicMode.COMMENT);
 

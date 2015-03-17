@@ -1,10 +1,6 @@
 package com.orange.barrage.android.ui.topic;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -15,13 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.activity.FeedCommentActivity;
-import com.orange.barrage.android.feed.activity.FeedReplyActivity;
+import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
-import com.orange.barrage.android.util.activity.ActivityIntent;
-import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.view.ViewConstants;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -30,6 +22,8 @@ import org.roboguice.shaded.goole.common.collect.Lists;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Rollin on 2014/11/30.
@@ -43,11 +37,8 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     private PictureTopicModel mModel;
     private Context mContext;
     private PictureTopicMode mMode;
-    private Activity mActivity;
 
-    public final  static String KEYSBYTE = "1";
-    public final static String KEYSSCREENXY = "2";
-
+    //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
     private Modle mModle = new Modle();
 
     public PictureTopicMainInnerWidget(Context context,AttributeSet set, PictureTopicContainer container) {
@@ -144,8 +135,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         mBarragePlayer.moveTo(progress);
     }
 
-    public void setModel(PictureTopicModel model , Activity activity) {
-        mActivity = activity;
+    public void setModel(PictureTopicModel model) {
         mModel = model;
         setSubtitle(model.getSubtitleText());
         setImangeURL(model.getImageUrl());
@@ -153,12 +143,11 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     }
 
 
-    private void startActivity(int x , int y){
-        Intent intent = new Intent(mActivity , FeedCommentActivity.class);
-        intent.putExtra(KEYSBYTE , mModel.getFeed().toByteArray());
-        intent.putExtra(KEYSSCREENXY , new int[]{x, y});
-
-        ActivityIntent.startIntent( mActivity, intent);
+    private void startActivityFeedCommentEvent(int x, int y){
+        StartActivityFeedCommentEvent event = new StartActivityFeedCommentEvent();
+        event.setByteArray( mModel.getFeed().toByteArray());
+        event.setPos(new int[]{x, y});
+        EventBus.getDefault().post(event);
     }
 
     @Override
@@ -170,7 +159,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
             mModle.is = true;
         }else if( event.getAction() == MotionEvent.ACTION_UP){
             if(!mModle.is){
-                startActivity((int)event.getX() , (int)event.getY());
+                startActivityFeedCommentEvent((int) event.getX(), (int) event.getY());
                 mModle.clear();
             }
         }
