@@ -4,16 +4,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.misc.ImageUtil;
-import com.orange.barrage.android.util.view.LayoutWhileTriangleIcon;
-import com.orange.barrage.android.util.view.RelativeLayoutwhitTriangleIcon;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.barrage.android.util.activity.FloatWindow;
 
 /**
@@ -54,10 +50,10 @@ public class HomePopupWindow {
 
 
         if (is && childs != null) {
-            LayoutWhileTriangleIcon.Params params = new LayoutWhileTriangleIcon.Params();
+            LayoutDrawIconBackground.Params params = new LayoutDrawIconBackground.Params();
             params.bgColor = Color.BLACK;
             params.marginRight = 10;
-            LayoutWhileTriangleIcon layoutWhileTriangleIcon = new LayoutWhileTriangleIcon();
+            LayoutDrawIconBackground layoutWhileTriangleIcon = new LayoutDrawIconBackground();
             layoutWhileTriangleIcon.setParams(params).setWhitTriangleRadioRoundFrectBg(parent, mRelativeLayout);
 //            relativeLayoutwhitTriangleIcon.setView(parent);
             View v1 = childs.getChildAt(0);

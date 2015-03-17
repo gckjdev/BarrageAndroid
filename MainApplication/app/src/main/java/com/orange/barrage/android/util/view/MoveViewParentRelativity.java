@@ -99,11 +99,9 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 //
         if(ev.getAction() == MotionEvent.ACTION_UP ){
             mMoveInfo.clear();
-        }
 
-        ToastUtil.makeTextShort("22"+i++,getContext());
+        }
 		if(mMoveInfo.v == null) {
-            ToastUtil.makeTextShort("我是空的",getContext());
             return super.onInterceptTouchEvent(ev);
         }
 		else return true;
@@ -158,32 +156,16 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 	}
 
 
-    private void clearMoveView(MotionEvent me){
-        if(me == null) return;
-
-
-
-    }
 
 
 
     private void startMove(float l ,float t){
-        RelativeLayout.LayoutParams result = getMoveLayoutPrams(l , t);
-        if(result == null || mMoveInfo.v == null) return;
-//        mMoveInfo.v.setLayoutParams(result);
-        mMoveInfo.v.layout((int )l , (int)t  , (int)l + 50 , (int)t + 50);
+        if( mMoveInfo.v == null && !mMoveInfo.isMove()) return;
+        int X = mMoveInfo.getLeft(l);
+        int Y = mMoveInfo.getTop(t);
+        mMoveInfo.v.layout(X , Y  , X + mMoveInfo.v.getWidth() , Y + mMoveInfo.v.getHeight());
     }
 
-
-	private RelativeLayout.LayoutParams getMoveLayoutPrams(float l ,float t){
-		if(mMoveInfo == null || !mMoveInfo.isMove()) return null;
-		
-		RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mMoveInfo.v.getLayoutParams();
-		params.leftMargin = mMoveInfo.getLeft(l);
-		params.topMargin = mMoveInfo.getTop(t);
-		
-		return params;
-	}
 
     class StayViewInfo{
         public  View v;
@@ -210,21 +192,22 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 		
 		public View v;
 
+        public int MovewL;
+        public int MovewT;
+
 
         public float childX = 0;
         public float childY = 0;
 
 
         public int getLeft(float x){
-           return getbestParams((int)x , v .getWidth() , MoveViewParentRelativity.this.getWidth());
+           MovewL = getbestParams((int)x , v .getWidth() , MoveViewParentRelativity.this.getWidth());
+           return MovewL;
         }
 
         public int getTop(float y){
-//            int t =  (int)(y + v.getHeight() < MoveViewParentRelativity.this.getHeight() ? y : MoveViewParentRelativity.this.getHeight() - v.getHeight());
-//
-//
-//return t;
-            return getbestParams((int)y , v .getHeight() , MoveViewParentRelativity.this.getHeight());
+            MovewT = getbestParams((int)y , v .getHeight() , MoveViewParentRelativity.this.getHeight());
+            return MovewT;
         }
 
         private int getbestParams(int xy , int child ,  int parent){
@@ -236,6 +219,12 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 		}
 
         public void clear(){
+            if(v != null) {
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) v.getLayoutParams();
+                params.leftMargin = MovewL;
+                params.topMargin = MovewT;
+                v.setLayoutParams(params);
+            }
             childX = 0;
             childY = 0;
             v = null;

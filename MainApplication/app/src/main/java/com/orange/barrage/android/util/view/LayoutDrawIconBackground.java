@@ -8,12 +8,10 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
 import com.orange.barrage.android.util.ContextManager;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.SystemUtil;
@@ -21,7 +19,7 @@ import com.orange.barrage.android.util.misc.SystemUtil;
 /**
  * Created by Administrator on 2015/3/14.
  */
-public  class LayoutWhileTriangleIcon  {
+public  class LayoutDrawIconBackground {
 
     private static final int GRIVITY_TOP = 0;
 
@@ -59,7 +57,7 @@ public  class LayoutWhileTriangleIcon  {
         return mParcent;
     }
 
-    public LayoutWhileTriangleIcon setParams(Params params){
+    public LayoutDrawIconBackground setParams(Params params){
         mParams = params;
         return this;
     }
@@ -184,7 +182,7 @@ public  class LayoutWhileTriangleIcon  {
 
         public Params mParams = new Params();
 
-        public LayoutWhileTriangleIcon mLayoutWhileTiangIcon = new LayoutWhileTriangleIcon();
+        public LayoutDrawIconBackground mLayoutWhileTiangIcon = new LayoutDrawIconBackground();
 
         public void setParams(Params params);
 
@@ -193,6 +191,11 @@ public  class LayoutWhileTriangleIcon  {
         public void setView(View parcent);
 
     }
+
+
+
+
+
 
 
 

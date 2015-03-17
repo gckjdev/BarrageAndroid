@@ -16,7 +16,11 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.ActionImageCaptureEvent;
 import com.orange.barrage.android.event.ActionPickEvent;
+import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
+import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
+import com.orange.barrage.android.feed.activity.FeedCommentActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
+import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
@@ -208,6 +212,22 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     public void onEvent(ActionImageCaptureEvent event){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         ActivityCompat.startActivityForResult(this, intent, RequestCodes.FEED_CREATE_TAKEN_PICTURE, null);
+    }
+
+    public final  static String KEYSBYTE = "1";
+    public final static String KEYSSCREENXY = "2";
+
+    public void onEvent(StartActivityFeedCommentEvent event) {
+        Intent intent = new Intent(this, FeedCommentActivity.class);
+        intent.putExtra(KEYSBYTE , event.getByteArray());
+        intent.putExtra(KEYSSCREENXY , event.getPos());
+        ActivityIntent.startIntent(this, intent );
+
+        //ActivityIntent.startIntent(this, intent);
+    }
+
+    public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event){
+        ActivityIntent.startIntent(this, FeedPublishedOtherPlatform.class );
     }
 
     @Override

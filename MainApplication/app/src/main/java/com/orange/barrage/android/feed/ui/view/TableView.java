@@ -19,7 +19,7 @@ public class TableView extends View{
      */
 	private int mCol = 10;
 	
-	private int mColor = Color.BLACK;
+	private int mColor = Color.BLUE;
 	
 	
 	public TableView(Context context, AttributeSet attrs) {

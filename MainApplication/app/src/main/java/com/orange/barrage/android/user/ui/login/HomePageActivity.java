@@ -25,7 +25,16 @@ public class HomePageActivity extends BarrageCommonActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            startActivity();
+
+            new Handler(){
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    startActivity();
+                }
+            }.sendEmptyMessage(0);
+
+
         }
     };
 

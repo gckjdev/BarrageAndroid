@@ -1,16 +1,14 @@
 package com.orange.barrage.android.feed.mission;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.friend.ui.FriendIconItem;
 import com.orange.barrage.android.friend.ui.FriendIconList;
 import com.orange.barrage.android.util.activity.FloatWindow;
-import com.orange.barrage.android.util.view.LayoutWhileTriangleIcon;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.List;
@@ -47,12 +45,12 @@ public class ShowFriendIconView {
         View v  = mFloatWindow.getContextView();
         mFrinedInconList = (FriendIconList) v .findViewById(R.id.friendIconFrinedInconlist);
 
-        LayoutWhileTriangleIcon.Params params = new LayoutWhileTriangleIcon.Params();
+        LayoutDrawIconBackground.Params params = new LayoutDrawIconBackground.Params();
 
         params.marginLeft  = 20;
         params.marginRight = 20;
 
-        new LayoutWhileTriangleIcon().setParams(params).setWhitTriangleRadioRoundFrectBg(parent , mFrinedInconList);
+        new LayoutDrawIconBackground().setParams(params).setWhitTriangleRadioRoundFrectBg(parent, mFrinedInconList);
 
         mFrinedInconList.setUsers(users , mActivity);
 

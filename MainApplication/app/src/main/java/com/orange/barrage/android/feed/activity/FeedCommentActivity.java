@@ -4,27 +4,32 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.mission.FeedMission;
+import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.feed.ui.view.CircleColorView;
 import com.orange.barrage.android.feed.ui.view.TableView;
+import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.ui.topic.PictureTopicMainInnerWidget;
-import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
-import com.orange.barrage.android.ui.topic.model.Comment;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.user.ui.view.CommentsView;
+import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.ToastUtil;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.protocol.message.BarrageProtos;
-import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
+import roboguice.util.Ln;
 
 /**
  * Created by youjiannuo on 2015/3/9.
@@ -40,10 +45,15 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @InjectView(R.id.tableview)
     TableView mTableView;
 
-    private PictureTopicMainInnerWidget.Info mInfo;
+    BarrageProtos.PBFeed mFeed;
+    BarrageProtos.PBFeedAction.Builder mActionBuilder;
+
+    @Inject
+    FeedMission mFeedMission;
 
 
-    private int colors[] = {Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY,Color.BLUE , Color.BLACK,Color.MAGENTA , Color.YELLOW , Color.DKGRAY};
+    private int mSelectColor = 0X383838;
+    private int mColors[] = {0XFF383838 , Color.WHITE , 0XFF9E6BEA , 0XFF9EC138 , 0XFF6DA0F0 , 0XFFD28038 , 0xFFD2644D };
     private int mR = 14;
 
     private CommentsView mCommentsEdit;
@@ -52,61 +62,62 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState , R.layout.activity_comments ,R.string.b_comment , R.string.b_send);
-        mTopBarView.setNavigationBackgroundChangeOtherType();
-        initView();
 
+        // init top bar
+        mTopBarView.setNavigationBackgroundChangeOtherType();
+        mTopBarView.setOnClickRightListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickRight(v);
+            }
+        });
+
+        initView();
     }
 
 
     private void initView(){
 
 
-//        PictureTopicModel model = initData();
-//        if(model == null) return;
-//        mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
-//        //设置成可编辑
-//        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
-//
-//        mCoomentRelative.setImageUrl(model.getImageUrl());
-
         PictureTopicModel model = initData();
         if(model == null) {
             return;
         }
+
         //FIXME: need to init mCommentsEdit first
-        //mCommentsEdit = addViewCommentToMoveView(mInfo.x,mInfo.y);
-        //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT , true);
+        int xy[] = getIntentIntArrays(HomeActivity.KEYSSCREENXY);
 
-
-        mCommentsEdit = addViewCommentToMoveView(100 , 100);
-
+        mCommentsEdit = addViewCommentToMoveView(xy[0] , xy[1]);
 
         //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENETS_TEXTVIEW);
-        for(int i = 0 ; i < colors.length ; i ++){
-            mLayout.addView(CreateImageView(colors[i]));
+        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
+        for(int i = 0 ; i < mColors.length ; i ++){
+            mLayout.addView(CreateImageView(mColors[i]));
         }
 
-        mLayout.getChildAt(0).setBackgroundResource((R.drawable.y_comments_select));
 
     }
 
 
     private PictureTopicModel initData(){
 
-        mInfo = (PictureTopicMainInnerWidget.Info) getIntentParcelable(PictureTopicMainInnerWidget.mKey);
-
-        BarrageProtos.PBFeed newFeed = null;
         try {
-            newFeed = BarrageProtos.PBFeed.parseFrom(mInfo.b);
+            mFeed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(HomeActivity.KEYSBYTE));
         } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
+            Ln.e(e, "init feed comment data, parse data exception=" + e.toString());
         }
-        if(newFeed == null) return null;
-        PictureTopicModel modle = new PictureTopicModel();
-        modle.setFeed(newFeed);
-        return modle;
+
+        if (mFeed == null)
+            return null;
+
+        PictureTopicModel model = new PictureTopicModel();
+        model.setFeed(mFeed);
+
+        // init aciton builder
+        mActionBuilder = BarrageProtos.PBFeedAction.newBuilder();
+        mActionBuilder.setFeedId(mFeed.getFeedId());
+
+        return model;
     }
 
 
@@ -114,6 +125,12 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     private View CreateImageView(int color){
         View v = LayoutInflater.from(this).inflate(R.layout.commite_color_view, null);
         CircleColorView ccv = (CircleColorView)v.findViewById(R.id.imageView1);
+
+        if(mSelectColor == color){
+            ccv.setImageResource(R.drawable.y_comments_select);
+            mCircleColorView = ccv;
+        }
+
         ccv.setColor(color);
         ccv.setTag(color);
         ccv.setOnClickListener(this);
@@ -135,7 +152,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
 
     /**
-     * 文本颜色被改变
+     * 改变文本颜色
      * @param color
      */
     private void changeTextColor(int color){
@@ -191,17 +208,44 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @Override
     public void onClick(View v) {
 
-        if(mCircleColorView != null) mCircleColorView.setImageBitmap(null);
+        if(mCircleColorView != null){
+            mCircleColorView.setImageBitmap(null);
+        }
         ((CircleColorView)v).setImageResource(R.drawable.y_comments_select);
         mCircleColorView = ((CircleColorView)v);
-        changeTextColor(v.getTag() != null ? (int) v.getTag() : -1);
+        changeTextColor(v.getTag() != null ? (int)v.getTag(): Color.BLACK);
     }
 
 
     @Override
     public void onClickRight(View v) {
+        sendReply(mCommentsEdit.getText());
+    }
 
-       //发生评价
+    public void sendReply(String replyText){
 
+        String feedId = mFeed.getFeedId();
+        String text = replyText;
+        float x = 20;
+        float y = 20;
+
+        // set action builder info
+        mActionBuilder.setPosX(x);
+        mActionBuilder.setPosY(y);
+        mActionBuilder.setText(replyText);
+
+        BarrageProtos.PBFeedAction action = mActionBuilder.build();
+
+        mFeedMission.replyFeed(action, new FeedMissionCallbackInterface() {
+            @Override
+            public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
+                finish();
+            }
+
+            @Override
+            public void handleFailure(int errorCode) {
+                // TODO failure
+            }
+        });
     }
 }

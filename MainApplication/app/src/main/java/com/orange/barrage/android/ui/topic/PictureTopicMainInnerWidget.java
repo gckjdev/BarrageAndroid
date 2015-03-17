@@ -1,10 +1,6 @@
 package com.orange.barrage.android.ui.topic;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -15,12 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.activity.FeedCommentActivity;
-import com.orange.barrage.android.feed.activity.FeedReplyActivity;
+import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
-import com.orange.barrage.android.util.activity.ActivityIntent;
-import com.orange.barrage.android.util.view.ViewConstants;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -29,6 +22,8 @@ import org.roboguice.shaded.goole.common.collect.Lists;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Rollin on 2014/11/30.
@@ -42,9 +37,9 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     private PictureTopicModel mModel;
     private Context mContext;
     private PictureTopicMode mMode;
-    private Activity mActivity;
 
-    public  static String mKey = "1";
+    //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
+    private Modle mModle = new Modle();
 
     public PictureTopicMainInnerWidget(Context context,AttributeSet set, PictureTopicContainer container) {
         this(context, set);
@@ -103,16 +98,9 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
             mFeedActionViews.add(actionWidget);
 
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-            //FIXME: use top later instead of margin
-//            params.leftMargin = (int) (action.getPosX() * getScaleX());
-//            params.topMargin = (int) (action.getPosY() * getScaleY()) ;
-
             params.leftMargin = (int) action.getPosX();
             params.topMargin = (int) action.getPosY();
 
-            //actionWidget.setTop((int)action.getPosX());
-            //actionWidget.setLeft((int)action.getPosY());
             addView(actionWidget, params);
         }
 
@@ -147,8 +135,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         mBarragePlayer.moveTo(progress);
     }
 
-    public void setModel(PictureTopicModel model , Activity activity) {
-        mActivity = activity;
+    public void setModel(PictureTopicModel model) {
         mModel = model;
         setSubtitle(model.getSubtitleText());
         setImangeURL(model.getImageUrl());
@@ -156,65 +143,37 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     }
 
 
-    private void startActivity(int x , int y){
-
-        Info info  = new Info(x , y , mModel.getFeed().toByteArray());
-        ActivityIntent.startIntent(mActivity, FeedCommentActivity.class, mKey, info);
+    private void startActivityFeedCommentEvent(int x, int y){
+        StartActivityFeedCommentEvent event = new StartActivityFeedCommentEvent();
+        event.setByteArray( mModel.getFeed().toByteArray());
+        event.setPos(new int[]{x, y});
+        EventBus.getDefault().post(event);
     }
-
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         if(event.getAction() == MotionEvent.ACTION_DOWN){
-            startActivity((int)event.getX() , (int)event.getY());
+            mModle.clear();
+        }else
+        if(event.getAction() == MotionEvent.ACTION_MOVE){
+            mModle.is = true;
+        }else if( event.getAction() == MotionEvent.ACTION_UP){
+            if(!mModle.is){
+                startActivityFeedCommentEvent((int) event.getX(), (int) event.getY());
+                mModle.clear();
+            }
         }
 
         return true;
     }
 
-    public static class Info implements Parcelable {
+    class Modle{
+        public boolean is = false;
 
-        public int XY[] = new int[2];
-        public byte[] b ;
-
-        public Info(int x , int y , byte[] b){
-            XY[0] = x;
-            XY[1] = y;
-            this.b = b;
+        public void clear(){
+            is = false;
         }
 
-        public static final Creator<Info> CREATOR = new Creator<Info>() {
-            @Override
-            public Info createFromParcel(Parcel source) {
-                byte[] bs = source.createByteArray();
-                source.readByteArray(bs);
-
-                int[] XYs = source.createIntArray();
-                source.readIntArray(XYs);
-                PictureTopicMainInnerWidget.Info info = new PictureTopicMainInnerWidget.Info(XYs[0],XYs[1],bs);
-                return info;
-//                return null;
-            }
-
-            @Override
-            public Info[] newArray(int size) {
-                return new Info[0];
-            }
-        };
-
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeByteArray(b);
-            dest.writeIntArray(XY);
-        }
     }
 
 }
