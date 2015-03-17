@@ -72,7 +72,7 @@
 
     <!--Barrage Widget Size-->
     <dimen name="y_barrage_main_inner_widget_width">800px</dimen>
-    <dimen name="y_barrage_main_inner_widget_height">800px</dimen>
+    <dimen name="y_barrage_main_inner_widget_height">860px</dimen>
 
     <!--用户资料中的每项item的高度 -->
     <dimen name="u_background">52dp</dimen>
