@@ -61,13 +61,11 @@
     <string name="search_friend_hint">弹幕号/手机号/QQ号</string>
     <string name="search_friend_inputnull">搜索的关键字不能为空</string>
     <string name="title_activity_user_home">UserHomeActivity</string>
-
     <string name="b_graffiti">涂鸦</string>
     <string name="b_word">文字</string>
     <string name="b_stickers">贴纸</string>
-
     <string name="title_activity_user_home_modify">UserHomeModifyActivity</string>
     <string name="title_activity_user_modify_user_forresult">UserModifyUserForresult</string>
-
+    <string name="title_activity_edit_text">EditTextActivity</string>
 
 </resources>

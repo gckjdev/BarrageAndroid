@@ -132,9 +132,13 @@
             android:label="@string/title_activity_user_home_modify" >
         </activity>
         <activity
-            android:windowSoftInputMode="stateVisible"
             android:name=".user.ui.user_home.UserModifyUserForresult"
-            android:label="@string/title_activity_user_modify_user_forresult" >
+            android:label="@string/title_activity_user_modify_user_forresult"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name=".misc.activity.EditTextActivity"
+            android:label="@string/title_activity_edit_text" >
         </activity>
     </application>
 
