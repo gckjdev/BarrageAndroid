@@ -3,22 +3,16 @@ package com.orange.barrage.android.home;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.nhaarman.supertooltips.ToolTip;
-import com.nhaarman.supertooltips.ToolTipRelativeLayout;
-import com.nhaarman.supertooltips.ToolTipView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.ActionImageCaptureEvent;
 import com.orange.barrage.android.event.ActionPickEvent;
@@ -29,6 +23,7 @@ import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
 import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.user.ui.user_home.UserHomeActivity;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonFragmentActivity;
 import com.orange.barrage.android.util.activity.RequestCodes;
@@ -356,7 +351,9 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
         }else if(position == 3){
             //个人资料
-
+            ActivityIntent.startIntent(this, UserHomeActivity.class);
+            if (mHomePopupWindow!=null)
+                mHomePopupWindow.close();
         }else if(position == 4){
             //意见反馈
 

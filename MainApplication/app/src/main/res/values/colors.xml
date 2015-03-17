@@ -43,4 +43,7 @@
 
     <color name="b_list_view_divider">#e7e7e7</color>
 
+    <!--用户资料中的背景颜色-->
+    <color name="user_background">#ffffff</color>
+
 </resources>

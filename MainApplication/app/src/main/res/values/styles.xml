@@ -142,5 +142,42 @@
         <item name="android:focusable">true</item>
         <item name="android:ellipsize">marquee</item>
     </style>
+    <!--我的主页中，用户名的一些属性 -->
+    <style name="user_homenick">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <!-- 我的主页中，左边各个文本选项字体的大小，颜色 ,填充等-->
+    <style name="user_homepage">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!-- 我的主页中，右边的文本的字体的一些属性 -->
+    <style name="user_homepage_right">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">7dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#848484</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
 
+    <!-- 我的主页中，右边箭头的一些属性-->
+    <style name="user_homepage_imageview">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@drawable/user_home_more</item>
+        <item name="android:layout_marginRight">9dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
 </resources>
