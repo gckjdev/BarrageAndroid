@@ -72,6 +72,6 @@
 
     <!--Barrage Widget Size-->
     <dimen name="y_barrage_main_inner_widget_width">800px</dimen>
-    <dimen name="y_barrage_main_inner_widget_height">860px</dimen>
+    <dimen name="y_barrage_main_inner_widget_height">800px</dimen>
 
 </resources>
