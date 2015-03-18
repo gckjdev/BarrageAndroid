@@ -39,7 +39,6 @@ public class EditTextActivity extends BarrageCommonActivity{
     private static String BUNDLE_KEY_INIT_VALUE = "BUNDLE_KEY_INIT_VALUE";
     private static String BUNDLE_KEY_PLACE_HOLDER = "BUNDLE_KEY_PLACE_HOLDER";
     private static String BUNDLE_KEY_TIPS = "BUNDLE_KEY_TIPS";
-    private static String BUNDLE_KEY_CALLBACK = "BUNDLE_KEY_CALLBACK";
 
     private String mTitle;
     private String mInitValue;
@@ -61,7 +60,6 @@ public class EditTextActivity extends BarrageCommonActivity{
         mPlaceHolder = bundle.getString(BUNDLE_KEY_PLACE_HOLDER);
         mTitle = bundle.getString(BUNDLE_KEY_TITLE);
         mInitValue = bundle.getString(BUNDLE_KEY_INIT_VALUE);
-        mCallback = (EditTextActivityCallback) bundle.getSerializable(BUNDLE_KEY_CALLBACK);
 
         mTopBarView.setTitleText(mTitle);
 
