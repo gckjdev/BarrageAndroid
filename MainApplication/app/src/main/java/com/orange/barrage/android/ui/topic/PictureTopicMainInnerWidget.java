@@ -56,13 +56,14 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         mImage = new ImageView(context);
         mImage.setScaleType(ImageView.ScaleType.FIT_XY);
         this.addView(mImage, imageParams);
-
-        //TODO: can be change to a factory
-        mBarragePlayer = new BarragePlayerSpringImpl();
         mMode = PictureTopicMode.LIST;
 
         float width = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
         float height = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_height);
+
+        BarragePlayerSpringImpl barragePlayerSpring = new BarragePlayerSpringImpl();
+        barragePlayerSpring.setParentHeight((int)height);
+        mBarragePlayer = barragePlayerSpring;
 
         LayoutParams widgetLayoutParams = new LayoutParams((int)width, (int)height);
         setLayoutParams(widgetLayoutParams);

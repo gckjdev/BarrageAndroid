@@ -146,7 +146,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      */
     public void onClickShare(View v){
         EventBus.getDefault().post(new StartActivityFeedPublishedOtherPlatformEvent());
-//        ActivityIntent.startIntent(mActivity , FeedPublishedOtherPlatform.class );/**/
     }
 
     /**
@@ -154,9 +153,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      *
      */
     public void onClickPlayer(View v){
-
         mBarrageWidget.play();
-
     }
 
 

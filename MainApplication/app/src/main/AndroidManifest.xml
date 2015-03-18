@@ -67,7 +67,6 @@
             android:label="LoginEditeTextActivtiy" />
         <activity android:name=".feed.activity.FeedPublishedActivity" />
         <activity android:name=".user.ui.view.Text" />
-        <activity android:name=".feed.activity.FeedPublishedActivity" />
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend" />
@@ -84,8 +83,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".user.ui.view.Text" >
         </activity>
 
         <!-- Share SDK Activities -->
@@ -115,7 +112,7 @@
 
         <!-- Share SDK 微信分享回调 -->
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.orange.sharesdk.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
