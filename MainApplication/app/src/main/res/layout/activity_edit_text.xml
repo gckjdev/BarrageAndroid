@@ -33,5 +33,6 @@
         android:text="好名字能让你的朋友更快记住你"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
 </LinearLayout>
 

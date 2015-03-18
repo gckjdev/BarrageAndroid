@@ -137,6 +137,7 @@
             android:windowSoftInputMode="stateVisible" >
         </activity>
         <activity
+            android:windowSoftInputMode="stateVisible"
             android:name=".misc.activity.EditTextActivity"
             android:label="@string/title_activity_edit_text" >
         </activity>

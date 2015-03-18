@@ -11,7 +11,7 @@ import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
 import roboguice.inject.InjectView;
 
-public class EditTextActivity extends BarrageCommonActivity {
+public class EditTextActivity extends BarrageCommonActivity{
 
     @InjectView(R.id.clearedittext)
     private EditText mClearEdittext;
@@ -29,7 +29,6 @@ public class EditTextActivity extends BarrageCommonActivity {
                              String tips,
                              EditTextActivityCallback callback){
 
-        //
 
         ActivityIntent.startIntent(fromActivity, EditTextActivity.class);
 }
