@@ -4,6 +4,7 @@ package com.orange.barrage.android.util.activity;
 import com.orange.barrage.android.BarrageAndroid;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -13,6 +14,7 @@ import roboguice.activity.RoboActivity;
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
 import com.orange.barrage.android.user.mission.UserMission;
+import com.orange.barrage.android.util.ContextManager;
 
 import javax.inject.Inject;
 
@@ -88,6 +90,18 @@ public class BarrageCommonActivity extends RoboActivity  {
 
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ContextManager.init(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContextManager.init(this);
     }
 
     protected IntentUtil getIntentUtil(){
