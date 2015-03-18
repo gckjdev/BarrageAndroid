@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.misc.activity.EditTextActivity;
+import com.orange.barrage.android.misc.activity.EditTextActivityCallback;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
@@ -17,6 +18,7 @@ import com.orange.protocol.message.UserProtos;
 import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
+import roboguice.util.Ln;
 
 public class UserHomeModifyActivity extends BarrageCommonActivity {
     @InjectView(R.id.NickLayout)
@@ -57,27 +59,36 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         userAvatarImageView.loadUser(user);
         mUsermodifyNick.setText(user.getNick());
         mUsermodifySignature.setText(user.getSignature());
-        if (TextUtils.isEmpty(user.getLocation()))
-        {
+
+        if (TextUtils.isEmpty(user.getLocation())){
             mUsermodifyLocation.setText("什么也没有");
         }
-       else
-        {
+        else{
             mUsermodifyLocation.setText(user.getLocation());
         }
-        if (user.hasGender())
-        {
+
+        if (user.getGender()){
             mUsermodifySexual.setText("男");
         }
-        else
-        {
+        else{
             mUsermodifySexual.setText("女");
         }
+
         //修改昵称
         mNickLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditTextActivity.start(UserHomeModifyActivity.this,"个人昵称","请重新输入新的昵称","好名字能让你的朋友尽快记住你",null);
+                EditTextActivity.start(UserHomeModifyActivity.this,
+                        "昵称设置",
+                        "请输入昵称",
+                        "好名字能让你的朋友尽快记住你",
+                        mUserManager.getUser().getNick(),
+                        new EditTextActivityCallback() {
+                            @Override
+                            public void submitEditText(String updateTextNick) {
+                                Ln.d("set nick name callback "+updateTextNick);
+                            }
+                        });
             }
         });
 
@@ -85,7 +96,17 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         mSignaturelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditTextActivity.start(UserHomeModifyActivity.this,"个人签名","请重新输入新的签名","好的签名能让你的朋友尽快记住你",null);
+                EditTextActivity.start(UserHomeModifyActivity.this,
+                        "签名设置",
+                        "请输入个性签名",
+                        null,
+                        mUserManager.getUser().getSignature(),
+                        new EditTextActivityCallback() {
+                            @Override
+                            public void submitEditText(String updateTextNick) {
+                                Ln.d("set signature callback "+updateTextNick);
+                            }
+                        });
             }
         });
         // TODO set data here
