@@ -58,7 +58,7 @@ public class UserMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
 
-                        Ln.d(UserMission.class.getName(), "regiseterUser success");
+                        Ln.d("regiseterUser success");
 
                         UserProtos.PBUser user = response.getRegisterUserResponse().getUser();
                         if (user != null) {
@@ -123,7 +123,7 @@ public class UserMission {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
 
-                        Ln.d(UserMission.class.getName(), "loginUser success");
+                        Ln.d("loginUser success");
 
                         UserProtos.PBUser user = response.getLoginUserResponse().getUser();
                         if (user != null) {
@@ -182,7 +182,7 @@ public class UserMission {
                 new BarrageNetworkCallback() {
                     @Override
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
-                        Ln.d(UserMission.class.getName(), "verifyInviteCode success");
+                        Ln.d("verifyInviteCode success");
                         callback.handleMessage(0, null);
                     }
 
@@ -212,7 +212,7 @@ public class UserMission {
                     public void handleSuccess(MessageProtos.PBDataResponse response) {
 
                         List<UserProtos.PBUser> userList = response.getSearchUserResponse().getUsersList();
-                        Ln.d(UserMission.class.getName(), "searchUser success, keyword="+keyword+", offset="+offset+", limit="+limit);
+                        Ln.d("searchUser success, keyword="+keyword+", offset="+offset+", limit="+limit);
                         callback.handleMessage(0, userList);
                     }
 
@@ -223,6 +223,57 @@ public class UserMission {
                     }
                 });
 
+    }
+
+    public void updateUser(final UserProtos.PBUser user, final UserMissionCallback callback){
+
+        if (user == null){
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE, null);
+            return;
+        }
+
+        MessageProtos.PBUpdateUserInfoRequest.Builder builder = MessageProtos.PBUpdateUserInfoRequest.newBuilder();
+        builder.setUser(user);
+
+        MessageProtos.PBDataRequest.Builder dataRequestBuilder = MessageProtos.PBDataRequest.newBuilder();
+        dataRequestBuilder.setUpdateUserInfoRequest(builder);
+
+        mBarrageNetworkClient.dataRequest(MessageProtos.PBMessageType.MESSAGE_UPDATE_USER_INFO_VALUE,
+                dataRequestBuilder,
+                true,
+                new BarrageNetworkCallback() {
+                    @Override
+                    public void handleSuccess(MessageProtos.PBDataResponse response) {
+
+                        UserProtos.PBUser retUser = response.getUpdateUserInfoResponse().getUser();
+                        if (retUser != null){
+                            mUserManager.storeUser(retUser);
+                        }
+                        Ln.d("updateUser success, return user="+retUser.toString());
+                        callback.handleMessage(0, retUser);
+                    }
+
+                    @Override
+                    public void handleFailure(MessageProtos.PBDataResponse response, int errorCode) {
+                        Ln.w("updateUser failure");
+                        callback.handleMessage(errorCode, null);
+                    }
+                });
+
+    }
+
+    public void updateUserNick(final String nick, final UserMissionCallback callback){
+
+        if (nick == null){
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE, null);
+            return;
+        }
+
+        UserProtos.PBUser.Builder userBuilder = UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        userBuilder.setNick(nick);
+
+        updateUser(userBuilder.build(), callback);
     }
 
 }
