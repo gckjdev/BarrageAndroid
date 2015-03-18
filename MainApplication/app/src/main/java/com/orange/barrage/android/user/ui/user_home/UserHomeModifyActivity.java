@@ -20,29 +20,29 @@ import javax.inject.Inject;
 import roboguice.inject.InjectView;
 
 public class UserHomeModifyActivity extends BarrageCommonActivity {
-    @InjectView(R.id.NickLayout)
+    @InjectView(R.id.nick_layout)
     private RelativeLayout mNickLayout;
 
-    @InjectView(R.id.Signaturelayout)
-    private RelativeLayout mSignaturelayout;
+    @InjectView(R.id.signature_layout)
+    private RelativeLayout mSignatureLayout;
 
-    @InjectView(R.id.user_modify_nick)
-    private LinearLayout mLayoutmodifyNicker;
+    @InjectView(R.id.user_nick_layout)
+    private LinearLayout mLayoutModifyNick;
 
-    @InjectView(R.id.usermodifyView)
+    @InjectView(R.id.user_avatarview)
     private UserAvatarView userAvatarImageView;
 
-    @InjectView(R.id.usermodifyNick)
-    private TextView mUsermodifyNick;
+    @InjectView(R.id.user_modify_nick)
+    private TextView mUserModifyNick;
 
-    @InjectView(R.id.usermodifySignature)
-    private TextView mUsermodifySignature;
+    @InjectView(R.id.user_modify_signature)
+    private TextView mUserModifySignature;
 
-    @InjectView(R.id.usermodifyLocation)
-    private TextView mUsermodifyLocation;
+    @InjectView(R.id.user_location)
+    private TextView mUserLocation;
 
-    @InjectView(R.id.usermodifySexual)
-    private TextView mUsermodifySexual;
+    @InjectView(R.id.user_modify_gender)
+    private TextView mUserModifyGender;
 
     @Inject
     UserManager mUserManager;
@@ -57,21 +57,21 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         UserProtos.PBUser user = mUserManager.getUser();
 
         userAvatarImageView.loadUser(user);
-        mUsermodifyNick.setText(user.getNick());
-        mUsermodifySignature.setText(user.getSignature());
+        mUserModifyNick.setText(user.getNick());
+        mUserModifySignature.setText(user.getSignature());
 
         if (TextUtils.isEmpty(user.getLocation())){
-            mUsermodifyLocation.setText("什么也没有");
+            mUserLocation.setText("什么也没有");
         }
         else{
-            mUsermodifyLocation.setText(user.getLocation());
+            mUserLocation.setText(user.getLocation());
         }
 
         if (user.getGender()){
-            mUsermodifySexual.setText("男");
+            mUserModifyGender.setText("男");
         }
         else{
-            mUsermodifySexual.setText("女");
+            mUserModifyGender.setText("女");
         }
 
         //修改昵称
@@ -86,7 +86,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         });
 
         //修改签名
-        mSignaturelayout.setOnClickListener(new View.OnClickListener() {
+        mSignatureLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UserSignatureEditTextActivity.start(UserHomeModifyActivity.this,

@@ -32,11 +32,11 @@
         android:layout_width="match_parent"
         android:layout_height="210dp">
         <RelativeLayout
-            android:id="@+id/user_home_imageview"
+            android:id="@+id/user_home_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.orange.barrage.android.user.ui.view.UserAvatarView
-                android:id="@+id/friend_home_avatar_view"
+                android:id="@+id/friend_home_avatarview"
                 android:src="@drawable/person_detail"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -50,7 +50,7 @@
                 android:id="@+id/friend_home_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/friend_home_avatar_view"
+                android:layout_below="@+id/friend_home_avatarview"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="11dp"
@@ -60,7 +60,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/user_home_myfriend"
+        android:id="@+id/user_home_myfriend_layout"
         android:orientation="vertical"
         android:background="@color/user_background"
         android:layout_width="match_parent"

@@ -18,10 +18,10 @@ import javax.inject.Inject;
 import roboguice.inject.InjectView;
 
 public class UserHomeActivity extends BarrageCommonActivity {
-    @InjectView(R.id.user_home_imageview)
+    @InjectView(R.id.user_home_layout)
     private RelativeLayout mUserHomeView;
 
-    @InjectView(R.id.user_home_myfriend)
+    @InjectView(R.id.user_home_myfriend_layout)
     private LinearLayout mUserHomeMyfriend;
 
     @InjectView(R.id.user_home_invitemyfriend)
@@ -33,7 +33,7 @@ public class UserHomeActivity extends BarrageCommonActivity {
     @InjectView(R.id.user_home_setting)
     private LinearLayout mUserHomeSetting;
 
-    @InjectView(R.id.friend_home_avatar_view)
+    @InjectView(R.id.friend_home_avatarview)
     private UserAvatarView userAvatarImageView;
 
     @InjectView(R.id.friend_home_nick)

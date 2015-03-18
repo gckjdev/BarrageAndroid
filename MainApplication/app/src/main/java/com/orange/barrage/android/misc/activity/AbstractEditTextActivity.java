@@ -19,10 +19,10 @@ import roboguice.util.Ln;
 public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
 
-    @InjectView(R.id.clearedittext)
+    @InjectView(R.id.input_edittext)
     private EditText mEditText;
 
-    @InjectView(R.id.nickdescription)
+    @InjectView(R.id.nick_or_signature_description)
     private TextView mNickdescription;
 
     private static String BUNDLE_KEY_INIT_VALUE = "BUNDLE_KEY_INIT_VALUE";

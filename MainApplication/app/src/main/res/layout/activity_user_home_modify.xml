@@ -22,7 +22,7 @@
                 style="@style/user_homepage" />
 
             <com.orange.barrage.android.user.ui.view.UserAvatarView
-                android:id="@+id/usermodifyView"
+                android:id="@+id/user_avatarview"
                 android:src="@drawable/image_default"
                 android:layout_width="40dp"
                 android:layout_marginRight="20dp"
@@ -63,14 +63,14 @@
         android:layout_height="1dp" />
 
     <LinearLayout
-        android:id="@+id/user_modify_nick"
+        android:id="@+id/user_nick_layout"
         android:orientation="vertical"
         android:background="@color/user_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/u_background">
 
         <RelativeLayout
-            android:id="@+id/NickLayout"
+            android:id="@+id/nick_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -78,7 +78,7 @@
                 style="@style/user_homepage" />
 
             <TextView
-                android:id="@+id/usermodifyNick"
+                android:id="@+id/user_modify_nick"
                 android:text="MANMAN"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
@@ -92,13 +92,13 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/usermodifySig"
+        android:id="@+id/user_signature"
         android:background="@color/user_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/u_background">
 
         <RelativeLayout
-            android:id="@+id/Signaturelayout"
+            android:id="@+id/signature_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -107,7 +107,7 @@
                 style="@style/user_homepage" />
 
             <TextView
-                android:id="@+id/usermodifySignature"
+                android:id="@+id/user_modify_signature"
                 android:text="快来捏我吧"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
@@ -134,7 +134,7 @@
                 style="@style/user_homepage" />
 
             <TextView
-                android:id="@+id/usermodifySexual"
+                android:id="@+id/user_modify_gender"
                 android:text="女"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
@@ -161,7 +161,7 @@
                 style="@style/user_homepage" />
 
             <TextView
-                android:id="@+id/usermodifyLocation"
+                android:id="@+id/user_location"
                 android:text="广东广州"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
@@ -173,7 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp" />
     <LinearLayout
-        android:id="@+id/usermodifyPass"
+        android:id="@+id/user_modify_password"
         android:orientation="vertical"
         android:background="@color/user_background"
         android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                 style="@style/user_homepage" />
 
             <ImageView
-                android:id="@+id/usermodifyPassword"
+                android:id="@+id/user_password_imageview"
                 style="@style/user_homepage_imageview"
                 android:layout_marginRight="20dp"
                  />
