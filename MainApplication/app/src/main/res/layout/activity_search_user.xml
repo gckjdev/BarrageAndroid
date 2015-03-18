@@ -8,7 +8,7 @@
     <include layout="@layout/activity_view_top" />
     <RelativeLayout
         android:id="@+id/add_friend_layout"
-        android:layout_marginTop="13dp"
+        style="@style/nick_signature_settings"
         android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="50dp">

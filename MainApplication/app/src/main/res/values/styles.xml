@@ -188,4 +188,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
+
+    <!--搜索，添加好友，以及昵称设置，签名设置中的EditText与顶部的距离 -->
+    <style name="nick_signature_settings">
+        <item name="android:layout_marginTop">25dp</item>
+    </style>
 </resources>

@@ -7,33 +7,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.user.model.UserManager;
-import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.protocol.message.UserProtos;
-
-import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
 import roboguice.util.Ln;
 
-public class EditTextActivity extends BarrageCommonActivity{
+public class EditTextActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.clearedittext)
     private EditText mClearEdittext;
 
     @InjectView(R.id.nickdescription)
     private TextView mNickdescription;
-<<<<<<< HEAD
-    //获取本地用户只需要两步,一步是取得用户管理，第二是getUser
-    @Inject
-    UserManager mUserManager;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_edit_text,"",R.string.y_tijiao);
-        UserProtos.PBUser user = mUserManager.getUser();
-        mClearEdittext.setText(user.getNick());
-=======
 
     private static String BUNDLE_KEY_TITLE = "BUNDLE_KEY_TITLE";
     private static String BUNDLE_KEY_INIT_VALUE = "BUNDLE_KEY_INIT_VALUE";
@@ -46,12 +31,13 @@ public class EditTextActivity extends BarrageCommonActivity{
     private String mTips;
     private EditTextActivityCallback mCallback;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_edit_text,"",R.string.y_tijiao);
+        super.onCreate(savedInstanceState, R.layout.activity_edit_text, "", R.string.y_tijiao);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle == null){
+        if (bundle == null) {
             Ln.w("EditTextActivity show but bundle data null");
             return;
         }
@@ -66,7 +52,7 @@ public class EditTextActivity extends BarrageCommonActivity{
         // TODO set view info
         mClearEdittext.setText(mInitValue);
         mClearEdittext.setHint(mPlaceHolder);
->>>>>>> d4dbfb4e11c814163317757e2a351274bf77ed3a
+        mNickdescription.setText(mTips);
     }
 
     public static void start(Activity fromActivity,
@@ -74,7 +60,7 @@ public class EditTextActivity extends BarrageCommonActivity{
                              String placeHolder,
                              String tips,
                              String currentValue,
-                             EditTextActivityCallback callback){
+                             EditTextActivityCallback callback) {
 
         Bundle bundle = new Bundle();
 
