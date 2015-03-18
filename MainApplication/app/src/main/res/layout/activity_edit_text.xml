@@ -6,10 +6,8 @@
     tools:context="com.orange.barrage.android.user.ui.user_home.UserModifyUserForresult">
 
     <include layout="@layout/activity_view_top" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"/>
     <LinearLayout
+        style="@style/nick_signature_settings"
         android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="40dp">

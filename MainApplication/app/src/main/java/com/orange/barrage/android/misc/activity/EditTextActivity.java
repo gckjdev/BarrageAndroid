@@ -7,13 +7,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
 import roboguice.inject.InjectView;
 import roboguice.util.Ln;
 
-public class EditTextActivity extends BarrageCommonActivity{
+public class EditTextActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.clearedittext)
     private EditText mClearEdittext;
@@ -32,12 +31,13 @@ public class EditTextActivity extends BarrageCommonActivity{
     private String mTips;
     private EditTextActivityCallback mCallback;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_edit_text,"",R.string.y_tijiao);
+        super.onCreate(savedInstanceState, R.layout.activity_edit_text, "", R.string.y_tijiao);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle == null){
+        if (bundle == null) {
             Ln.w("EditTextActivity show but bundle data null");
             return;
         }
@@ -52,6 +52,7 @@ public class EditTextActivity extends BarrageCommonActivity{
         // TODO set view info
         mClearEdittext.setText(mInitValue);
         mClearEdittext.setHint(mPlaceHolder);
+        mNickdescription.setText(mTips);
     }
 
     public static void start(Activity fromActivity,
@@ -59,7 +60,7 @@ public class EditTextActivity extends BarrageCommonActivity{
                              String placeHolder,
                              String tips,
                              String currentValue,
-                             EditTextActivityCallback callback){
+                             EditTextActivityCallback callback) {
 
         Bundle bundle = new Bundle();
 

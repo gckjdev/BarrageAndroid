@@ -99,7 +99,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                 EditTextActivity.start(UserHomeModifyActivity.this,
                         "签名设置",
                         "请输入个性签名",
-                        null,
+                        "好的签名能让你精神焕发",
                         mUserManager.getUser().getSignature(),
                         new EditTextActivityCallback() {
                             @Override
