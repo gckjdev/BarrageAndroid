@@ -27,7 +27,7 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
     private static String BUNDLE_KEY_INIT_VALUE = "BUNDLE_KEY_INIT_VALUE";
 
-    private String mInitValue;
+    protected String mInitValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +45,18 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
         mClearEdittext.setText(mInitValue);
         mClearEdittext.setHint(getPlaceHolder());
-
-        // TODO set tips
+        mNickdescription.setText(getTips());
 
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickSubmit();
+                onClickSubmit(mClearEdittext.getText().toString());
             }
         });
     }
 
     public static void start(Activity fromActivity,
-                             AbstractEditTextActivity toActivity,
+                             Class<? extends AbstractEditTextActivity> toActivity,
                              String initValue){
 
         Bundle bundle = new Bundle();
@@ -67,7 +66,7 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
         final Intent intent = new Intent();
         intent.putExtras(bundle);
 
-        intent.setClass(fromActivity.getApplicationContext(), toActivity.getClass());
+        intent.setClass(fromActivity.getApplicationContext(), toActivity);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         fromActivity.getApplicationContext().startActivity(intent);
 
@@ -76,6 +75,6 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
     public abstract String getTips();
     public abstract String getPlaceHolder();
     public abstract String getTopBarTitle();
-    public abstract String onClickSubmit();
+    public abstract String onClickSubmit(String newValue);
 
 }
