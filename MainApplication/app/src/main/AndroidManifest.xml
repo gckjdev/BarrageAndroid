@@ -129,14 +129,24 @@
             android:label="@string/title_activity_user_home_modify" >
         </activity>
         <activity
-            android:windowSoftInputMode="stateVisible"
             android:name=".user.ui.user_home.user_settings.UserNickEditTextActivity"
-            android:label="" >
+            android:label=""
+            android:windowSoftInputMode="stateVisible" >
         </activity>
         <activity
-            android:windowSoftInputMode="stateVisible"
             android:name=".user.ui.user_home.user_settings.UserSignatureEditTextActivity"
-            android:label="@string/title_activity_user_signature_edit_text" >
+            android:label="@string/title_activity_user_signature_edit_text"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeModifyPasswordActivity"
+            android:label="@string/title_activity_user_home_modify_password"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserSelectGenderActivity"
+            android:theme="@style/dialog"
+            android:label="@string/title_activity_user_select_gender" >
         </activity>
     </application>
 
