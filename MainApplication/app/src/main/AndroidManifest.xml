@@ -129,9 +129,12 @@
             android:label="@string/title_activity_user_home_modify" >
         </activity>
         <activity
-            android:windowSoftInputMode="stateVisible"
-            android:name=".misc.activity.EditTextActivity"
-            android:label="@string/title_activity_edit_text" >
+            android:name=".user.ui.user_home.user_settings.UserNickEditTextActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.user_settings.UserSignatureEditTextActivity"
+            android:label="@string/title_activity_user_signature_edit_text" >
         </activity>
     </application>
 

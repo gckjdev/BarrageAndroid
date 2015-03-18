@@ -69,5 +69,6 @@
     <string name="title_activity_user_modify_user_forresult">UserModifyUserForresult</string>
     <string name="title_activity_edit_text">EditTextActivity</string>
     <string name="title_activity_user_modify_signature">UserModifySignature</string>
+    <string name="title_activity_user_signature_edit_text">UserSignatureEditTextActivity</string>
 
 </resources>

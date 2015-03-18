@@ -8,9 +8,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.misc.activity.EditTextActivity;
-import com.orange.barrage.android.misc.activity.EditTextActivityCallback;
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureEditTextActivity;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.protocol.message.UserProtos;
@@ -18,7 +18,6 @@ import com.orange.protocol.message.UserProtos;
 import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
-import roboguice.util.Ln;
 
 public class UserHomeModifyActivity extends BarrageCommonActivity {
     @InjectView(R.id.NickLayout)
@@ -78,17 +77,10 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         mNickLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditTextActivity.start(UserHomeModifyActivity.this,
-                        "昵称设置",
-                        "请输入昵称",
-                        "好名字能让你的朋友尽快记住你",
-                        mUserManager.getUser().getNick(),
-                        new EditTextActivityCallback() {
-                            @Override
-                            public void submitEditText(String updateTextNick) {
-                                Ln.d("set nick name callback "+updateTextNick);
-                            }
-                        });
+
+                UserNickEditTextActivity.start(UserHomeModifyActivity.this,
+                        UserNickEditTextActivity.class,
+                        mUserManager.getUser().getNick());
             }
         });
 
@@ -96,17 +88,9 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         mSignaturelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditTextActivity.start(UserHomeModifyActivity.this,
-                        "签名设置",
-                        "请输入个性签名",
-                        "好的签名能让你精神焕发",
-                        mUserManager.getUser().getSignature(),
-                        new EditTextActivityCallback() {
-                            @Override
-                            public void submitEditText(String updateTextNick) {
-                                Ln.d("set signature callback "+updateTextNick);
-                            }
-                        });
+                UserSignatureEditTextActivity.start(UserHomeModifyActivity.this,
+                        UserSignatureEditTextActivity.class,
+                        mUserManager.getUser().getSignature());
             }
         });
         // TODO set data here
