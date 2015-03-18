@@ -20,7 +20,7 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
 
     @InjectView(R.id.clearedittext)
-    private EditText mClearEdittext;
+    private EditText mEditText;
 
     @InjectView(R.id.nickdescription)
     private TextView mNickdescription;
@@ -43,14 +43,14 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
         mTopBarView.setTitleText(getTopBarTitle());
 
-        mClearEdittext.setText(mInitValue);
-        mClearEdittext.setHint(getPlaceHolder());
+        mEditText.setText(mInitValue);
+        mEditText.setHint(getPlaceHolder());
         mNickdescription.setText(getTips());
 
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickSubmit(mClearEdittext.getText().toString());
+                onClickSubmit(mEditText.getText().toString());
             }
         });
     }

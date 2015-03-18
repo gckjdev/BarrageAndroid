@@ -63,7 +63,7 @@
         android:layout_height="1dp" />
 
     <LinearLayout
-        android:id="@+id/usermodifyNicker"
+        android:id="@+id/user_modify_nick"
         android:orientation="vertical"
         android:background="@color/user_background"
         android:layout_width="match_parent"

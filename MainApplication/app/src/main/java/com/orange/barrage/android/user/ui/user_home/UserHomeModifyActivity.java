@@ -26,7 +26,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
     @InjectView(R.id.Signaturelayout)
     private RelativeLayout mSignaturelayout;
 
-    @InjectView(R.id.usermodifyNicker)
+    @InjectView(R.id.user_modify_nick)
     private LinearLayout mLayoutmodifyNicker;
 
     @InjectView(R.id.usermodifyView)
@@ -43,6 +43,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.usermodifySexual)
     private TextView mUsermodifySexual;
+
     @Inject
     UserManager mUserManager;
 

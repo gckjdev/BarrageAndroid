@@ -49,10 +49,13 @@
         <item name="android:onClick">onClick</item>
         <item name="android:visibility">gone</item>
     </style>
-    <style name="b_edieText">
+
+    <!--通用的文本编辑框风格-->
+    <style name="b_common_edit_text_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/y_zhuche_2_height</item>
-        <item name="android:ems">10</item>
+        <item name="android:ems">60</item>
+        <item name="android:textColor">@color/b_font_black</item>
         <item name="android:background">@color/white</item>
     </style>
 

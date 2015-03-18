@@ -38,6 +38,7 @@ public class UserHomeActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.friend_home_nick)
     private TextView mFriendHomeview;
+
     @Inject
     UserManager mUserManager;
 
