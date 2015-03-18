@@ -25,7 +25,6 @@ public class EditTextActivity extends BarrageCommonActivity{
     private static String BUNDLE_KEY_INIT_VALUE = "BUNDLE_KEY_INIT_VALUE";
     private static String BUNDLE_KEY_PLACE_HOLDER = "BUNDLE_KEY_PLACE_HOLDER";
     private static String BUNDLE_KEY_TIPS = "BUNDLE_KEY_TIPS";
-    private static String BUNDLE_KEY_CALLBACK = "BUNDLE_KEY_CALLBACK";
 
     private String mTitle;
     private String mInitValue;
