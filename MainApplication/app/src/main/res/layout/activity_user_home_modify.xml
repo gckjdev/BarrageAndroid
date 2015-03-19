@@ -16,9 +16,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeModifyActivity">
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -44,9 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -69,8 +66,7 @@
 
             <LinearLayout
                 android:id="@+id/user_nick_layout"
-                style="@style/user_info_linearlayout_common"
-                >
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:id="@+id/nick_layout"
@@ -96,8 +92,7 @@
 
             <LinearLayout
                 style="@style/user_info_linearlayout_common"
-                android:id="@+id/user_signature"
-                >
+                android:id="@+id/user_signature">
 
                 <RelativeLayout
                     android:id="@+id/signature_layout"
@@ -123,8 +118,7 @@
 
             <LinearLayout
                 android:id="@+id/user_select_gender"
-                style="@style/user_info_linearlayout_common"
-                >
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -147,9 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -174,8 +166,7 @@
 
             <LinearLayout
                 android:id="@+id/user_modify_password"
-                style="@style/user_info_linearlayout_common"
-                >
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -196,9 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -221,9 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -246,9 +233,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -271,9 +256,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -296,9 +279,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout
-                style="@style/user_info_linearlayout_common"
-                >
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
