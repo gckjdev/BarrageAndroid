@@ -39,7 +39,6 @@ public class UserNickEditTextActivity extends AbstractEditTextActivity {
                 }
             }
         });
-
         return null;
     }
 }

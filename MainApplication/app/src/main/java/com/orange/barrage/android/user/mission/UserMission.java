@@ -1,7 +1,5 @@
 package com.orange.barrage.android.user.mission;
 
-import android.util.Log;
-
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.network.BarrageNetworkCallback;
@@ -15,7 +13,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import roboguice.inject.ContextSingleton;
 import roboguice.util.Ln;
 
 /**
@@ -272,8 +269,46 @@ public class UserMission {
         UserProtos.PBUser.Builder userBuilder = UserProtos.PBUser.newBuilder();
         userBuilder.setUserId(mUserManager.getUserId());
         userBuilder.setNick(nick);
-
         updateUser(userBuilder.build(), callback);
     }
 
+    public void updateUserSignature(final String signature,final UserMissionCallback callback)
+    {
+        if (signature==null)
+        {
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE,null);
+            return ;
+        }
+        UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        userBuilder.setSignature(signature);
+        updateUser(userBuilder.build(),callback);
+    }
+
+    public void updateUserEmail(final String email,final UserMissionCallback callback)
+    {
+        if (email==null)
+        {
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE,null);
+            return ;
+        }
+        UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        userBuilder.setEmail(email);
+        updateUser(userBuilder.build(),callback);
+    }
+
+    //update the user password
+    public void updateUserPassword(final String password,final UserMissionCallback callback)
+    {
+        if (password==null)
+        {
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE,null);
+            return ;
+        }
+        UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        userBuilder.setPassword(password);
+        updateUser(userBuilder.build(),callback);
+    }
 }

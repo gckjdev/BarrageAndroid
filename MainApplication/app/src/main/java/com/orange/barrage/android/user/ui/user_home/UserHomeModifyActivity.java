@@ -12,11 +12,14 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserEmailEditTextActivity;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserHomeModifyPasswordActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureEditTextActivity;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -54,22 +57,49 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
     @InjectView(R.id.user_select_gender)
     private LinearLayout mUserSelectGender;
 
+    @InjectView(R.id.user_setting_email)
+    private LinearLayout mUserSettingEmail;
+
+    @InjectView(R.id.user_modify_email)
+    private TextView mUserModifyEmail;
+
+    @InjectView(R.id.user_setting_QQ)
+    private LinearLayout mUserSettingQQ;
+
+    @InjectView(R.id.user_modify_qqnumber)
+    private TextView mUserModify_QQnumber;
     @Inject
     UserManager mUserManager;
 
+    @InjectView(R.id.user_setting_weixin)
+    private LinearLayout mUserSettingWeixin;
+
+    @InjectView(R.id.user_modify_weixin)
+    private TextView mUserModiSettingWeixin;
     public boolean panduan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState,R.layout.activity_user_home_modify,"个人资料",-1);
 
+        //测试密码
 
-        //用户只有get方法和has方法，没有set方法
-       final  UserProtos.PBUser user = mUserManager.getUser();
+      /*  UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        MessageCenter.postInfoMessage(userBuilder.getPassword().toString() + "恭喜啦");
+      */  //用户只有get方法和has方法，没有set方法,如何为用户设置性别呢，似乎没有set方法
+        final  UserProtos.PBUser user = mUserManager.getUser();
         panduan=user.getGender();
+
+        //mUserModiSettingWeixin.setText(user.);
+        //获取电话号码
+        mUserModify_QQnumber.setText(user.getQqOpenId());
+        //获取密码成功
+        MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
+
         mUserAvatarImageView.loadUser(user);
         mUserModifyNick.setText(user.getNick());
         mUserModifySignature.setText(user.getSignature());
-
+        mUserModifyEmail.setText(user.getEmail());
         if (TextUtils.isEmpty(user.getLocation())){
             mUserLocation.setText("什么也没有");
         }
@@ -92,6 +122,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                 UserNickEditTextActivity.start(UserHomeModifyActivity.this,
                         UserNickEditTextActivity.class,
                         mUserManager.getUser().getNick());
+
             }
         });
 
@@ -117,7 +148,6 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
             @Override
             public void onClick(View v) {
                 View view=getLayoutInflater().inflate(R.layout.activity_user_select_gender,null);
-               // ActivityIntent.startIntent(UserHomeModifyActivity.this,UserSelectGenderActivity.class);
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserHomeModifyActivity.this);
                 builder.setView(view);
                 final Dialog dialog = builder.create();
@@ -150,7 +180,6 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                         mSelectFemaleView.setImageDrawable(null);
                         mUserModifyGender.setText("男");
                         panduan=true;
-
                     }
                 });
 
@@ -167,8 +196,20 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
             }
         });
 
-
+        //修改邮箱
+        mUserSettingEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserSignatureEditTextActivity.start(UserHomeModifyActivity.this,
+                        UserEmailEditTextActivity.class,
+                        mUserManager.getUser().getEmail());
+            }
+        });
         // TODO set data here
+
+        //设置QQ:
+
+        //关联微信号:
     }
 
 }
