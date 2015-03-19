@@ -1,5 +1,9 @@
 package com.orange.barrage.android.util.misc;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -9,17 +13,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-
-
-
-
-
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import roboguice.util.Ln;
 
@@ -32,7 +25,7 @@ public class FileUtil {
 	public static String getSDCardCachePath(Context context,String appName){
 		return FileUtil.getSDPath()+"/"+appName+"/cache/";
 	}
-	
+
 	
 	public static void saveFileAsString(Context context, String filename, String content) {
 		saveFileAsByte(context, filename, content.getBytes());

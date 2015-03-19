@@ -1,192 +1,302 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeModifyActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <include layout="@layout/activity_view_top" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/user_background"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeModifyActivity">
 
-            <TextView
-                android:text="头像"
-                style="@style/user_homepage" />
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
-            <ImageView
-                android:id="@+id/usermodifyView"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/image_default"
-                style="@style/user_homepage_imageview" />
-        </RelativeLayout>
-    </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+                    <TextView
+                        android:text="头像"
+                        style="@style/user_homepage" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/user_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+                    <com.orange.barrage.android.user.ui.view.UserAvatarView
+                        android:id="@+id/user_avatarview"
+                        android:src="@drawable/image_default"
+                        android:layout_width="40dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+            </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
-            <TextView
-                android:text="背景"
-                style="@style/user_homepage" />
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
-            <ImageView
-                android:layout_marginRight="20dp"
-                android:src="@drawable/image_default"
-                style="@style/user_homepage_imageview" />
-        </RelativeLayout>
-    </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+                    <TextView
+                        android:text="背景"
+                        style="@style/user_homepage" />
 
-    <LinearLayout
-        android:id="@+id/usermodifyNicker"
-        android:orientation="vertical"
-        android:background="@color/user_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+                    <ImageView
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/image_default"
+                        style="@style/user_homepage_imageview" />
+                </RelativeLayout>
+            </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:text="昵称"
-                style="@style/user_homepage" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
-            <TextView
-                android:id="@+id/usermodifyNick"
-                android:text="MANMAN"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentRight="true"
-                style="@style/user_homepage_right" />
-        </RelativeLayout>
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/user_nick_layout"
+                style="@style/user_info_linearlayout_common">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+                <RelativeLayout
+                    android:id="@+id/nick_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/usermodifySig"
-        android:background="@color/user_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+                    <TextView
+                        android:text="昵称"
+                        style="@style/user_homepage" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/user_modify_nick"
+                        android:text="MANMAN"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
 
-            <TextView
-                android:text="签名"
-                style="@style/user_homepage" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
-            <TextView
-                android:id="@+id/usermodifySignature"
-                android:text="快来捏我吧"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentRight="true"
-                style="@style/user_homepage_right" />
-        </RelativeLayout>
-    </LinearLayout>
+            <LinearLayout
+                style="@style/user_info_linearlayout_common"
+                android:id="@+id/user_signature">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+                <RelativeLayout
+                    android:id="@+id/signature_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/user_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+                    <TextView
+                        android:text="签名"
+                        style="@style/user_homepage" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/user_modify_signature"
+                        android:text="快来捏我吧"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
 
-            <TextView
-                android:text="性别"
-                style="@style/user_homepage" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
-            <TextView
-                android:id="@+id/usermodifySexual"
-                android:text="女"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentRight="true"
-                style="@style/user_homepage_right" />
-        </RelativeLayout>
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/user_select_gender"
+                style="@style/user_info_linearlayout_common">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/user_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+                    <TextView
+                        android:text="性别"
+                        style="@style/user_homepage" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/user_modify_gender"
+                        android:text="女"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
 
-            <TextView
-                android:text="位置"
-                style="@style/user_homepage" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
-            <TextView
-                android:id="@+id/usermodifyLocation"
-                android:text="广东广州"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentRight="true"
-                style="@style/user_homepage_right" />
-        </RelativeLayout>
-    </LinearLayout>
+            <LinearLayout style="@style/user_info_linearlayout_common">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-    <LinearLayout
-        android:id="@+id/usermodifyPass"
-        android:orientation="vertical"
-        android:background="@color/user_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/u_background">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:text="位置"
+                        style="@style/user_homepage" />
 
-            <TextView
-                android:text="密码"
-                style="@style/user_homepage" />
+                    <TextView
+                        android:id="@+id/user_location"
+                        android:text="广东广州"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/usermodifyPassword"
-                style="@style/user_homepage_imageview"
-                android:layout_marginRight="20dp"
-                 />
-        </RelativeLayout>
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
 
+            <LinearLayout
+                android:id="@+id/user_modify_password"
+                style="@style/user_info_linearlayout_common">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="密码"
+                        style="@style/user_homepage" />
+
+                    <ImageView
+                        android:id="@+id/user_password_imageview"
+                        style="@style/user_homepage_imageview"
+                        android:layout_marginRight="20dp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout style="@style/user_info_linearlayout_common">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="关联QQ号"
+                        style="@style/user_homepage" />
+
+                    <TextView
+                        android:id="@+id/user_modify_qqnumber"
+                        android:text="1057314442"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/user_info_linearlayout_common">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="关联微信号"
+                        style="@style/user_homepage" />
+
+                    <TextView
+                        android:id="@+id/user_modify_weixin"
+                        android:text="小可爱"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/user_info_linearlayout_common">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="关联新浪微博"
+                        style="@style/user_homepage" />
+
+                    <TextView
+                        android:id="@+id/user_modify_xinglang_weibo"
+                        android:text="小可爱"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/user_info_linearlayout_common">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="关联手机号"
+                        style="@style/user_homepage" />
+
+                    <TextView
+                        android:id="@+id/user_modify_phone_number"
+                        android:text="小可爱"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout style="@style/user_info_linearlayout_common">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="关联邮箱"
+                        style="@style/user_homepage" />
+
+                    <TextView
+                        android:id="@+id/user_modify_email"
+                        android:text="小可爱"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        style="@style/user_homepage_right" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -17,6 +17,8 @@ import com.orange.barrage.android.ui.topic.FeedActionWidget;
 
 import java.util.List;
 
+import roboguice.util.Ln;
+
 /**
  * Created by Rollin on 2015/1/17.
  */
@@ -24,16 +26,18 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
 
     private final static int MAIN_SPRING_CONFIG_INDEX = 3;
     private List<FeedActionWidget> mViews;
-    private final BarrageSpringChain mSpringChain;
-    private Handler mHandler;
+    private BarrageSpringChain mSpringChain;
 
-    //FIXME: change it later, 800px
-    private int mParentHeight = 900;
+    private int mParentHeight = 860;
+
+    private final int mDelayBetweenSpring = 800;
 
     public BarragePlayerSpringImpl(){
+    }
+
+    private void reset() {
         mSpringChain = BarrageSpringChain.create();
-        mSpringChain.setDelayBetweenSpring(1000);
-        mHandler = new Handler();
+        mSpringChain.setDelayBetweenSpring(mDelayBetweenSpring);
     }
 
     @Override
@@ -43,7 +47,6 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
 
     @Override
     public void playFrom(int index) {
-        //mSpringChain.setCurrentValue(index);
         moveTo(index);
         int mainIndex = MAIN_SPRING_CONFIG_INDEX;
         for(int i=0;i<mainIndex && i<mSpringChain.getAllSprings().size();i++){
@@ -93,23 +96,22 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
     @Override
     public void setBarrageViews(List<FeedActionWidget> views) {
         mViews  = views;
-        // Add a spring to the SpringChain to do an entry animation.
+        reset();
 
+        // Add a spring to the SpringChain to do an entry animation.
         for(int i=0;i<mViews.size();i++){
             final View currentView = mViews.get(i);
             mSpringChain.addSpring(new SimpleSpringListener() {
                 @Override
                 public void onSpringUpdate(Spring spring) {
-                    //FIXME: use top later instead of margin
-                    FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)currentView.getLayoutParams();
-                    float initY = mParentHeight - layoutParams.topMargin;
+                    int topMargin = currentView.getTop();
+                    float initY = mParentHeight - topMargin;
                     float translationY = (float)SpringUtil.mapValueFromRangeToRange(spring.getCurrentValue(), 0, 1, initY, 0);
+                    Ln.v("initY: %.2f, translationY: %.2f", initY, translationY);
                     currentView.setTranslationY(translationY);
                 }
             });
-
-            mSpringChain.setCurrentValue(0);
         }
-
+        mSpringChain.setCurrentValue(0);
     }
 }

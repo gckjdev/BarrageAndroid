@@ -15,7 +15,6 @@ import roboguice.inject.InjectView;
  */
 public class FeedPublishedActivity extends BarrageCommonActivity {
 
-
     @InjectView(R.id.imageview)
     ImageView mImage;
 

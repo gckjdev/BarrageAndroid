@@ -23,6 +23,7 @@ import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
+import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
 import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
@@ -306,19 +307,23 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         if(position == 1){
             //添加好友
             ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
-            if (mHomePopupWindow!=null)
-                mHomePopupWindow.close();
+
         }else if(position == 2){
             //添加标签
-
+            ActivityIntent.startIntent(this , FriendTabDetailInfoAndCreateAndAlterActivity.class ,
+                    FriendTabDetailInfoAndCreateAndAlterActivity.TABSTATEKEY,
+                    FriendTabDetailInfoAndCreateAndAlterActivity.CREATE_STATE);
         }else if(position == 3){
             //个人资料
             ActivityIntent.startIntent(this, UserHomeActivity.class);
-            if (mHomePopupWindow!=null)
-                mHomePopupWindow.close();
+
         }else if(position == 4){
             //意见反馈
 
         }
+
+        if (mHomePopupWindow!=null)
+            mHomePopupWindow.close();
+
     }
 }

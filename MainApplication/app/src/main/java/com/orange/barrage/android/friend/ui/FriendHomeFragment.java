@@ -5,8 +5,6 @@ import android.app.Fragment;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
 import com.orange.barrage.android.friend.mission.FriendMission;
+import com.orange.barrage.android.friend.mission.TagMission;
 import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
-import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.friend.mission.callback.GetTagListCallback;
+import com.orange.barrage.android.friend.model.TagManager;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.view.MyViewPagerTools;
 import com.orange.protocol.message.UserProtos;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,7 +38,7 @@ import roboguice.inject.InjectView;
  * Use the {@link FriendHomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FriendHomeFragment extends RoboFragment{
+public class FriendHomeFragment extends RoboFragment implements FriendTagView.OnClickTabIconItemListener {
 
     @InjectView(R.id.friend_list_view)
     ListView mListView;
@@ -48,12 +52,18 @@ public class FriendHomeFragment extends RoboFragment{
     @Inject
     FriendMission mFriendMission;
 
+    @Inject
+    TagMission mTagMission;
+
+    @Inject
+    TagManager mTagManager;
+
     @InjectView(R.id.ViewPager)
     ViewPager mViewPager;
 
     private MyViewPagerTools mViewPagerTools = new MyViewPagerTools();
 
-    private FriendTabView mFriendTabView = null;
+    private FriendTagView mFriendTabView = null;
 
 
 
@@ -117,25 +127,38 @@ public class FriendHomeFragment extends RoboFragment{
         mFriendTabView = null;
         mViewPager.removeAllViews();
 
-        initTab();
+//        initTab();
 
-
+        syncMyTag();
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadLocalTagList();
+    }
 
 
     private void initTab(){
 
-        FriendTabView.Params params = new FriendTabView.Params();
+//        FriendTagView.Params params = new FriendTagView.Params();
+//
+//        params.bgColor = getResources().getColor(R.color.b_color_home_page_tab_bg);
+//        params.borderColor = Color.RED;
+//
+//
+//        params.title = "shad";
+//        initPager(params);
+//        params.title = "shad";
+//        initPager(params);
+//        params.title = "shad";
+//        initPager(params);
 
-        params.bgColor = getResources().getColor(R.color.b_color_home_page_tab_bg);
-        params.borderColor = Color.RED;
-
-        for(int i = 0 ; i < 20 ; i ++){
-            params.title = "shaduhasssssss"+i;
-            initPager(params);
-        }
+//        for(int i = 0 ; i < 20 ; i ++){
+//            params.title = "shaduhasssssss"+i;
+//            initPager(params);
+//        }
 
 //        new Handler(){
 //            @Override
@@ -145,24 +168,58 @@ public class FriendHomeFragment extends RoboFragment{
 //            }
 //        }.sendEmptyMessage(0);
 
+        loadLocalTagList();
+
     }
 
-    private void initPager(FriendTabView.Params params){
+    private void loadLocalTagList() {
+
+        UserProtos.PBUserTagList tagList = mTagManager.allTags();
+
+        List<UserProtos.PBUserTag> list = tagList.getTagsList();
+
+        for(UserProtos.PBUserTag userTag : list){
+
+            FriendTagView.Params params = new FriendTagView.Params();
+            params.bgColor = userTag.getColor();
+            params.title = userTag.getName();
+            initPager(params , userTag.getTid());
+        }
+
+
+    }
+
+    private void syncMyTag() {
+
+        mTagMission.getAllTags(new GetTagListCallback() {
+            @Override
+            public void handleMessage(int errorCode, UserProtos.PBUserTagList tagList) {
+                if (errorCode == 0){
+                    // reload tag view
+                    loadLocalTagList();
+                }
+            }
+        });
+
+    }
+
+    private void initPager(FriendTagView.Params params , String id){
         getmFriendTabView();
 
-        if(!mFriendTabView.addView(params , "")){
+        if(!mFriendTabView.addView(params , id)){
             mFriendTabView = null;
-            initPager(params);
+            initPager(params , id);
         }
     }
 
-    private FriendTabView getmFriendTabView(){
+    private FriendTagView getmFriendTabView(){
         if(mFriendTabView != null) return mFriendTabView;
 
-        mFriendTabView = new FriendTabView(getActivity());
+        mFriendTabView = new FriendTagView(getActivity());
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         mFriendTabView.setLayoutParams(params);
         mViewPagerTools.addView(mFriendTabView);
+        mFriendTabView.setOnclickTabItemListener(this);
 
         return mFriendTabView;
     }
@@ -221,6 +278,14 @@ public class FriendHomeFragment extends RoboFragment{
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClickItem(String tagId, View v) {
+        //点击标签跳转
+
+        ActivityIntent.startIntent(getActivity() , FriendTabDetailInfoAndCreateAndAlterActivity.class , FriendTabDetailInfoAndCreateAndAlterActivity.TABKEY, tagId);
+
     }
 
     /**

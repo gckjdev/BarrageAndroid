@@ -21,7 +21,7 @@ import roboguice.util.Ln;
 /**
  * Created by Administrator on 2015/3/17.
  */
-public class FriendTabView extends LinearLayout implements View.OnClickListener  {
+public class FriendTagView extends LinearLayout implements View.OnClickListener  {
 
 
     public ChildLayoutInfo mLayoutInfo;
@@ -30,15 +30,15 @@ public class FriendTabView extends LinearLayout implements View.OnClickListener 
 
     private TextView mModleTextView;
 
-    private onClickTabIconItemListener mOnClickTabIconItemListener;
+    private OnClickTabIconItemListener mOnClickTabIconItemListener;
 
 
-    public FriendTabView(Context context) {
+    public FriendTagView(Context context) {
         super(context);
         initView();
     }
 
-    public FriendTabView(Context context, AttributeSet attrs) {
+    public FriendTagView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
@@ -119,7 +119,7 @@ public class FriendTabView extends LinearLayout implements View.OnClickListener 
         return true;
     }
 
-    public void setOnclickItemListener(onClickTabIconItemListener l){
+    public void setOnclickTabItemListener(OnClickTabIconItemListener l){
         mOnClickTabIconItemListener = l;
     }
 
@@ -175,9 +175,9 @@ public class FriendTabView extends LinearLayout implements View.OnClickListener 
         public void startView(){
             initView();
 
-            FriendTabView.this.addView(mLayout , getLayoutParams());
+            FriendTagView.this.addView(mLayout , getLayoutParams());
 
-            mWidth = SystemUtil.getPhoneScreenWH(getContext())[0];
+            mWidth = (int) (SystemUtil.getPhoneScreenWH(getContext())[0] - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP , 18 ,  getResources().getDisplayMetrics()) * 2);
 
         }
 
@@ -215,7 +215,7 @@ public class FriendTabView extends LinearLayout implements View.OnClickListener 
 
     }
 
-    public interface onClickTabIconItemListener{
+    public interface OnClickTabIconItemListener {
 
         public void onClickItem(String tagId , View v);
 

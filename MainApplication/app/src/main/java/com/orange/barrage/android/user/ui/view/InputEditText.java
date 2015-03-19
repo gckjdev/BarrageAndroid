@@ -16,7 +16,7 @@ import com.orange.barrage.android.util.activity.MessageCenter;
  * Created by xiaoshu on 2015/3/16.
  */
 //一般自定义View中都需要实现View的那三个构造函数
-public class ClearEditText extends EditText implements View.OnFocusChangeListener, TextWatcher {
+public class InputEditText extends EditText implements View.OnFocusChangeListener, TextWatcher {
     /**
      * 删除按钮的引用
      */
@@ -26,16 +26,16 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
      */
     private boolean hasFoucs;
 
-    public ClearEditText(Context context) {
+    public InputEditText(Context context) {
         this(context, null);
     }
 
-    public ClearEditText(Context context, AttributeSet attrs) {
+    public InputEditText(Context context, AttributeSet attrs) {
 
         this(context, attrs, android.R.attr.editTextStyle);
     }
 
-    public ClearEditText(Context context, AttributeSet attrs, int defStyle) {
+    public InputEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -105,8 +105,8 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
         if (hasFoucs) {
             setClearIconVisible(s.length() > 0);
         }
-        if (s.length() >= 15) {
-            MessageCenter.postInfoMessage("个人昵称不能大于15个字符");
+        if (s.length() >= 60) {
+            MessageCenter.postInfoMessage("个人昵称不能大于60个字符");
         }
     }
 

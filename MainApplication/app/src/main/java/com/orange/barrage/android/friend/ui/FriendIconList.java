@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.orange.barrage.android.R;
 import com.orange.protocol.message.UserProtos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +44,8 @@ public class FriendIconList extends LinearLayout {
     }
 
     public void setUsers(List<UserProtos.PBUser>users , Activity activity , int type){
+        if(users == null)
+            users = new ArrayList<>();
         if(mAdapter == null)
             mAdapter = new FriendIconListAdapter(getContext() ,users , activity , type);
         if(mGridView == null)

@@ -28,9 +28,6 @@ import roboguice.util.Ln;
  */
 public class LevelDBDAO {
 
-    private static final String TAG = LevelDBDAO.class.getName();
-    private String mDBName;
-
     private DB mLevelDB;
 
     public LevelDBDAO(String dbName){
@@ -38,6 +35,7 @@ public class LevelDBDAO {
         File dbFile = new File(Environment.getExternalStorageDirectory(), dbName);
         mLevelDB = new DB(dbFile);
         mLevelDB.open();
+        Ln.d("open level db "+dbFile.getAbsolutePath());
     }
 
     public void destroy(){
@@ -125,7 +123,7 @@ public class LevelDBDAO {
     }
 
     public List<byte[]> list(){
-        List list = new ArrayList();
+        List<byte[]> list = new ArrayList<byte[]>();
         Iterator iterator = mLevelDB.iterator();
         for(iterator.seekToFirst();iterator.isValid();iterator.next()){
             list.add(iterator.getValue());

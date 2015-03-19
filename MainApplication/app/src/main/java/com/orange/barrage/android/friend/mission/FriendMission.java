@@ -1,5 +1,6 @@
 package com.orange.barrage.android.friend.mission;
 
+import com.google.inject.Singleton;
 import com.orange.barrage.android.friend.mission.callback.FriendMissionDefaultCallback;
 import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
 import com.orange.barrage.android.friend.model.FriendManager;
@@ -18,6 +19,8 @@ import roboguice.util.Ln;
 /**
  * Created by pipi on 15/3/5.
  */
+
+@Singleton
 public class FriendMission extends CommonMission {
 
     @Inject

@@ -16,6 +16,7 @@
         android:textSize="@dimen/b_list_view_font_medium"
         android:textColor="#333333"
         style="@style/wrap_content"
+        android:gravity="center"
         android:layout_marginTop="10dip"
         android:layout_below="@+id/iconUserAvatarView"
         android:layout_alignParentLeft="true"

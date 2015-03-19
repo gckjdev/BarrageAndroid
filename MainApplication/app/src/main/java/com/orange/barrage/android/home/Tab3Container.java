@@ -3,7 +3,6 @@ package com.orange.barrage.android.home;
 /**
  * Created by pipi on 15/1/6.
  */
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,8 @@ import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.ui.FriendHomeFragment;
-import com.orange.barrage.android.friend.ui.FriendTabView;
 
 import roboguice.util.Ln;
-
-import static com.orange.barrage.android.friend.ui.FriendTabView.*;
 
 public class Tab3Container extends HomeContainerFragment {
 

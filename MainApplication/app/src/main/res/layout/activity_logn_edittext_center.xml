@@ -12,7 +12,7 @@
         android:layout_height="1dip" />
     <EditText
         android:layout_marginTop="@dimen/y_zhuche_1_height"
-        style="@style/b_edieText"
+        style="@style/b_common_edit_text_style"
         android:inputType="number"
         android:gravity="center"
         android:hint="@string/y_inputphone"
@@ -29,7 +29,7 @@
 
     <EditText
         android:inputType="textPassword"
-        style="@style/b_edieText"
+        style="@style/b_common_edit_text_style"
         android:gravity="center"
         android:hint="@string/y_inputpwd"
         android:id="@+id/pwd" />

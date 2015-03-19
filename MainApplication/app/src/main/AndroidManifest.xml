@@ -66,7 +66,11 @@
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
         <activity android:name=".feed.activity.FeedPublishedActivity" />
+
         <activity android:name=".feed.activity.FeedPublishedActivity" />
+
+        <activity android:name=".user.ui.view.Text" />
+
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend" />
@@ -83,9 +87,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".user.ui.view.Text" >
-
         </activity>
 
         <!-- Share SDK Activities -->
@@ -115,7 +116,7 @@
 
         <!-- Share SDK 微信分享回调 -->
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.orange.sharesdk.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -132,10 +133,29 @@
             android:label="@string/title_activity_user_home_modify" >
         </activity>
         <activity
-            android:windowSoftInputMode="stateVisible"
-            android:name=".user.ui.user_home.UserModifyUserForresult"
-            android:label="@string/title_activity_user_modify_user_forresult" >
+            android:name=".user.ui.user_home.user_settings.UserNickEditTextActivity"
+            android:label=""
+            android:windowSoftInputMode="stateVisible" >
         </activity>
+        <activity
+            android:name=".user.ui.user_home.user_settings.UserSignatureEditTextActivity"
+            android:label="@string/title_activity_user_signature_edit_text"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeModifyPasswordActivity"
+            android:label="@string/title_activity_user_home_modify_password"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserSelectGenderActivity"
+            android:theme="@style/dialog"
+            android:label="@string/title_activity_user_select_gender" >
+        </activity>
+
+        <activity android:name=".friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity"/>
+
+
     </application>
 
 </manifest>
