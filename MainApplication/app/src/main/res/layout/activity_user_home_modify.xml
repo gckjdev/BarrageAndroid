@@ -187,7 +187,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-            <LinearLayout style="@style/user_info_linearlayout_common">
+            <LinearLayout
+                android:id="@+id/user_setting_QQ"
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -210,7 +212,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout style="@style/user_info_linearlayout_common">
+            <LinearLayout
+                android:id="@+id/user_setting_weixin"
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -233,7 +237,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout style="@style/user_info_linearlayout_common">
+            <LinearLayout style="@style/user_info_linearlayout_common"
+                android:id="@+id/user_sinaweibo_layout"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -256,7 +262,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout style="@style/user_info_linearlayout_common">
+            <LinearLayout
+                android:id="@+id/user_phonenumber_layout"
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -279,7 +287,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout style="@style/user_info_linearlayout_common">
+            <LinearLayout
+                android:id="@+id/user_setting_email"
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

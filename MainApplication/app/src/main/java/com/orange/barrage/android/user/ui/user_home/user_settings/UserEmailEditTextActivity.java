@@ -7,34 +7,32 @@ import com.orange.protocol.message.UserProtos;
 
 import roboguice.util.Ln;
 
-/**
- * Created by pipi on 15/3/18.
- */
-public class UserNickEditTextActivity extends AbstractEditTextActivity {
+public class UserEmailEditTextActivity extends AbstractEditTextActivity {
+
 
     @Override
     public String getTips() {
-        return "好名字能让你的朋友尽快记住你";
+        return "好的邮箱能让你的朋友能尽快联系到你";
     }
 
     @Override
     public String getPlaceHolder() {
-        return "请输入昵称";
+        return "请输入邮箱";
     }
 
     @Override
     public String getTopBarTitle() {
-        return "昵称设置";
+        return "邮箱设置";
     }
 
     @Override
     public String onClickSubmit(String newValue) {
-        Ln.d("set nick name callback " + newValue);
-        mUserMission.updateUserNick(newValue, new UserMissionCallback() {
+        Ln.d("set email name callback " + newValue);
+        mUserMission.updateUserEmail(newValue, new UserMissionCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
                 if (errorCode == 0){
-                    MessageCenter.postSuccessMessage("昵称已更新");
+                    MessageCenter.postSuccessMessage("邮箱已更新");
                     finish();
                 }
             }

@@ -3,6 +3,8 @@ package com.orange.barrage.android.misc.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Selection;
+import android.text.Spannable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,6 +47,12 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
         mEditText.setText(mInitValue);
         mEditText.setHint(getPlaceHolder());
+        CharSequence text=mEditText.getText();
+        if (text instanceof Spannable)
+        {
+            Spannable spannable=(Spannable)text;
+            Selection.setSelection(spannable, text.length());
+        }
         mNickdescription.setText(getTips());
 
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {

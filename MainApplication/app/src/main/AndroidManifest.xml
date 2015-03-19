@@ -45,6 +45,7 @@
         <activity
             android:name=".user.ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
+
         </activity>
         <activity
             android:name=".user.ui.login.EmailLoginActivity"
@@ -143,14 +144,14 @@
             android:windowSoftInputMode="stateVisible" >
         </activity>
         <activity
-            android:name=".user.ui.user_home.UserHomeModifyPasswordActivity"
+            android:name=".user.ui.user_home.user_settings.UserHomeModifyPasswordActivity"
             android:label="@string/title_activity_user_home_modify_password"
             android:windowSoftInputMode="stateVisible" >
         </activity>
+
         <activity
-            android:name=".user.ui.user_home.UserSelectGenderActivity"
-            android:theme="@style/dialog"
-            android:label="@string/title_activity_user_select_gender" >
+            android:name=".user.ui.user_home.user_settings.UserEmailEditTextActivity"
+            android:label="@string/title_activity_user_email_edit_text" >
         </activity>
 
         <activity android:name=".friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity"/>

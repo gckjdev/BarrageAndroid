@@ -26,7 +26,7 @@ public class FileUtil {
 		return FileUtil.getSDPath()+"/"+appName+"/cache/";
 	}
 
-	
+
 	public static void saveFileAsString(Context context, String filename, String content) {
 		saveFileAsByte(context, filename, content.getBytes());
 	}
