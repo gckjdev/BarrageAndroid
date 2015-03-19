@@ -1,7 +1,6 @@
 package com.orange.barrage.android.friend.ui;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,11 +53,13 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
         setType(type);
 
         if(mIconImageView != null) mIconImageView.loadUser(user);
-
-
-
+        if(mNameTextView != null) mNameTextView.setText(user.getNick());
     }
 
+    public void loadResourceImage(int resourceId , int type){
+        setType(type);
+        if(mIconImageView != null) mIconImageView.setImageResource(resourceId);
+    }
 
     /**
      * 设置头像列表的类型
@@ -66,10 +67,24 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     private void setType(int type){
         if(mdeleteIconImageView == null) return;
 
-        if(type == FriendIconList.ADD_AND_DELETE_ICON){
-            mdeleteIconImageView.setVisibility(View.VISIBLE);
-            mdeleteIconImageView.setOnClickListener(this);
+        if(type == FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE){
+           setHiddenDeleteButton();
+        }else if(type == FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE){
+            setShowDeleteButton();
+        }else if(type == FriendIconList.ICON_ORDINARY){
+            setHiddenDeleteButton();
         }
+    }
+
+    public void setShowDeleteButton(){
+        mdeleteIconImageView.setVisibility(View.VISIBLE);
+        mdeleteIconImageView.setOnClickListener(this);
+    }
+
+
+    public void setHiddenDeleteButton(){
+        if(mdeleteIconImageView == null) mdeleteIconImageView = (ImageButton) findViewById(R.id.icon_delete_button);
+        mdeleteIconImageView.setVisibility(View.GONE);
 
     }
 

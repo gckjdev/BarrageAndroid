@@ -48,6 +48,7 @@ public class ImageUtil
 
 
     public static Drawable getBitmapChangeDrawable(Bitmap bm){
+        if(bm == null) return null;
         return new BitmapDrawable(ContextManager.getContext().getResources(), bm);
     }
 

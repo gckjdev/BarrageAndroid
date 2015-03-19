@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.model.UserManager;
 
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 
 import java.util.HashMap;

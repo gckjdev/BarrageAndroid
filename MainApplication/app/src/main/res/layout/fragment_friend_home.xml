@@ -6,6 +6,10 @@
     android:background="@android:color/white"
     tools:context="com.orange.barrage.android.friend.ui.FriendHomeFragment">
 
+
+    <include layout="@layout/view_homepage_tab"/>
+
+
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:divider="@color/b_list_view_divider"

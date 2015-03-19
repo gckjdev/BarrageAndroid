@@ -48,6 +48,8 @@ public class UserAvatarView extends ImageView {
         mContext = context;
     }
 
+
+
     public void loadUser(UserProtos.PBUser user){
 
 //        setBorderWidth(10);
@@ -61,6 +63,7 @@ public class UserAvatarView extends ImageView {
         setAvartUrl(user.getAvatar());
 
     }
+
 
     public void setAvartUrl(String url){
 

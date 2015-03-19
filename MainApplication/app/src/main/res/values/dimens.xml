@@ -27,6 +27,8 @@
     <dimen name="y_activity_invite_code_2_width">280dip</dimen>
     <dimen name="y_activity_invite_code_3_width">120dip</dimen>
     <dimen name="y_activity_invite_code_4_width">135dip</dimen>
+
+
     <!--登录界面-->
     <dimen name="y_activity_login_1_height">40dip</dimen>
     <dimen name="y_activity_login_2_height">17dip</dimen>
@@ -39,6 +41,8 @@
     <dimen name="y_zhuche_3_height">16dip</dimen>
     <dimen name="y_zhuche_4_height">38dip</dimen>
     <dimen name="y_zhuche_5_height">34dip</dimen>
+
+    <dimen name="b_frined_marginright">14dip</dimen>
 
     <!--头像大小-->
     <dimen name="b_icon_size_44">44dip</dimen>

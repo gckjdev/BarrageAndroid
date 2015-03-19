@@ -2,16 +2,23 @@ package com.orange.barrage.android.friend.ui;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.mission.FriendMission;
 import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
+import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.view.MyViewPagerTools;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -32,11 +39,25 @@ public class FriendHomeFragment extends RoboFragment{
     @InjectView(R.id.friend_list_view)
     ListView mListView;
 
+    @InjectView(R.id.tab_icon)
+    LinearLayout mPonitLayout;
+
     @Inject
     FriendListAdapter mAdapter;
 
     @Inject
     FriendMission mFriendMission;
+
+    @InjectView(R.id.ViewPager)
+    ViewPager mViewPager;
+
+    private MyViewPagerTools mViewPagerTools = new MyViewPagerTools();
+
+    private FriendTabView mFriendTabView = null;
+
+
+
+    private View v;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,15 +103,70 @@ public class FriendHomeFragment extends RoboFragment{
 
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
         mListView.setAdapter(mAdapter);
 
         loadFriendList();
+        mViewPagerTools = new MyViewPagerTools(getActivity() , mViewPager , mPonitLayout);
+        mViewPagerTools.setInitTabpointIcon();
+        mFriendTabView = null;
+        mViewPager.removeAllViews();
+
+        initTab();
+
+
 
     }
+
+
+
+    private void initTab(){
+
+        FriendTabView.Params params = new FriendTabView.Params();
+
+        params.bgColor = getResources().getColor(R.color.b_color_home_page_tab_bg);
+        params.borderColor = Color.RED;
+
+        for(int i = 0 ; i < 20 ; i ++){
+            params.title = "shaduhasssssss"+i;
+            initPager(params);
+        }
+
+//        new Handler(){
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//                mViewPager.setVisibility(View.VISIBLE);
+//            }
+//        }.sendEmptyMessage(0);
+
+    }
+
+    private void initPager(FriendTabView.Params params){
+        getmFriendTabView();
+
+        if(!mFriendTabView.addView(params , "")){
+            mFriendTabView = null;
+            initPager(params);
+        }
+    }
+
+    private FriendTabView getmFriendTabView(){
+        if(mFriendTabView != null) return mFriendTabView;
+
+        mFriendTabView = new FriendTabView(getActivity());
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        mFriendTabView.setLayoutParams(params);
+        mViewPagerTools.addView(mFriendTabView);
+
+        return mFriendTabView;
+    }
+
 
     private void loadFriendList() {
         mFriendMission.syncFriend(new GetFriendListCallback() {
@@ -109,7 +185,9 @@ public class FriendHomeFragment extends RoboFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend_home, container, false);
+        v = inflater.inflate(R.layout.fragment_friend_home, container, false);
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -128,6 +206,15 @@ public class FriendHomeFragment extends RoboFragment{
 //            throw new ClassCastException(activity.toString()
 //                    + " must implement OnFragmentInteractionListener");
 //        }
+    }
+
+
+
+    public void setTab(){
+
+
+
+
     }
 
     @Override

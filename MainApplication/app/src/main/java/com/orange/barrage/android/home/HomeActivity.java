@@ -101,6 +101,8 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
                 R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
 
 
+
+
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -109,17 +111,6 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
             }
         });
 
-//        ToolTipRelativeLayout toolTipRelativeLayout = (ToolTipRelativeLayout) findViewById(R.id.activity_main_tooltipRelativeLayout);
-//
-//        ToolTip toolTip = new ToolTip()
-//                .withText("A beautiful View")
-//                .withColor(Color.RED)
-//                .withShadow()
-//                .withAnimationType(ToolTip.AnimationType.FROM_TOP);
-//
-//        toolTipRelativeLayout.showToolTipForView(toolTip, mTopBarView.getTopBar());
-
-//        myToolTipView.setOnToolTipViewClickedListener(HomeActivity.this);
 
     }
 
@@ -217,6 +208,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     public final  static String KEYSBYTE = "1";
     public final static String KEYSSCREENXY = "2";
 
+
     public void onEvent(StartActivityFeedCommentEvent event) {
         Intent intent = new Intent(this, FeedCommentActivity.class);
         intent.putExtra(KEYSBYTE , event.getByteArray());
@@ -254,58 +246,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
 
 
-//    public void a(){
-//
-//
-//        Bitmap photo =null;
-//        String picturePath = null;
-//        if( requestCode == RequestCodes.FEED_CREATE_PICK_IMAGE) {
-//            Uri imageUri = data.getData();
-//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-//
-//            Cursor cursor = getContentResolver().query(imageUri,
-//                    filePathColumn, null, null, null);
-//            cursor.moveToFirst();
-//
-//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//            picturePath = cursor.getString(columnIndex);
-//            cursor.close();
-//
-//            if(picturePath.endsWith("jpg") || picturePath.endsWith("png")){
-//                try {
-//                    //FIXME to big for intent, exceeds 1MB
-//                    //photo =
-//                    BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-//                }catch (FileNotFoundException e){
-//                    Ln.e(e, "error while loading picture");
-//                }
-//            }
-//        } else if (requestCode == RequestCodes.FEED_CREATE_TAKEN_PICTURE) {
-//            Bundle bundle = data.getExtras();
-//            if (bundle != null) {
-//                photo = (Bitmap) bundle.get("data");
-//                picturePath = getCacheDir() + "/temp.jpg";
-//                if(photo!=null){
-//                    saveImage(photo, picturePath);
-//                }
-//            }
-//        }else  if(requestCode==RequestCodes.FEED_CREATE_REQUEST_CODE){
-//            if(resultCode==Activity.RESULT_FIRST_USER){
-//                if(data != null) {
-//                    ToastUtil.showToastMessage(this,"Create Feed Successfully", Toast.LENGTH_SHORT);
-//                }
-//            }
-//        }
-//
-//        //convert to path
-//        if(photo != null || picturePath !=null){
-//            Intent intent = new Intent(ContextManager.getContext(), FeedCreateActivity.class);
-//            //intent.putExtra("photo", photo);
-//            intent.putExtra("path", picturePath);
-//            startActivityForResult(intent, RequestCodes.FEED_CREATE_REQUEST_CODE);
-//        }
-//
-//    }
+
 
 
     public static void saveImage(Bitmap photo, String spath) {
@@ -360,6 +301,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     @Override
     public void onClick(View v) {
+        if(v.getTag() == null)return;
         int position = (int)v.getTag();
         if(position == 1){
             //添加好友

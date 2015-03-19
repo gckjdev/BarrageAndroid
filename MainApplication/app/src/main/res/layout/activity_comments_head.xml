@@ -7,8 +7,6 @@
     <EditText
         android:id="@+id/commentseditText"
         style="@style/comments"
-        android:visibility="visible"
-        android:text="shdsdsd"
         android:background="@color/b_color_red"/>
     <TextView
         android:id="@+id/commentsTextView"

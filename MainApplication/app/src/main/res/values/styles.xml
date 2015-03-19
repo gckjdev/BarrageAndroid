@@ -81,7 +81,7 @@
 
     
     <style name="comments" >
-        <item name="android:layout_height">@dimen/b_comments_icon</item>
+        <item name="android:layout_height">40.5dip</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:visibility">gone</item>
         <item name="android:textSize">14sp</item>
@@ -89,6 +89,7 @@
         <item name="android:paddingLeft">30.5dip</item>
         <item name="android:paddingRight">15dip</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="b_color_ring">
