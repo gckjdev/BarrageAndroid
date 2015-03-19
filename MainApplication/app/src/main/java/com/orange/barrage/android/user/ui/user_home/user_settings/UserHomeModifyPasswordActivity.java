@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
@@ -30,6 +31,8 @@ public class UserHomeModifyPasswordActivity extends BarrageCommonActivity {
     @InjectView(R.id.submit_password)
     private Button mSubmitPassword;
 
+    @InjectView(R.id.old_password_layout)
+    private LinearLayout mOldPasswordLayout;
     @Inject
     UserManager mUserManager;
 
@@ -41,7 +44,7 @@ public class UserHomeModifyPasswordActivity extends BarrageCommonActivity {
         //假如有密码的情况下
         if (isHasPassword)
         {
-            mInputOldPassword.setVisibility(View.VISIBLE);
+            mOldPasswordLayout.setVisibility(View.VISIBLE);
             mSubmitPassword.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -49,7 +52,7 @@ public class UserHomeModifyPasswordActivity extends BarrageCommonActivity {
                         MessageCenter.postErrorMessage("旧密码不能为空");
                         return ;
                     }
-                    if (!mInputOldPassword.getText().toString().equals(user.getPassword()))
+                    if (!(UserManager.encryptPassword(mInputOldPassword.getText().toString())).equals(user.getPassword()))
                     {
                         MessageCenter.postErrorMessage("输入的密码不是原来的旧密码，请输入正确的旧密码");
                         return ;
@@ -67,8 +70,8 @@ public class UserHomeModifyPasswordActivity extends BarrageCommonActivity {
                     }
                     else
                     {
-                        UserManager.encryptPassword(mInputNewPassword.getText().toString());
-                        mUserMission.updateUserPassword(mInputNewPassword.getText().toString(),new UserMissionCallback() {
+                        String password=UserManager.encryptPassword(mInputNewPassword.getText().toString());
+                        mUserMission.updateUserPassword(password,new UserMissionCallback() {
                             @Override
                             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
                                 if (errorCode == 0){
@@ -84,7 +87,7 @@ public class UserHomeModifyPasswordActivity extends BarrageCommonActivity {
         //假如无密码的情况下
         else
         {
-            mInputOldPassword.setVisibility(View.INVISIBLE);
+            mOldPasswordLayout.setVisibility(View.GONE);
             mSubmitPassword.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -101,8 +104,8 @@ public class UserHomeModifyPasswordActivity extends BarrageCommonActivity {
                     }
                     else
                     {
-                        UserManager.encryptPassword(mInputNewPassword.getText().toString());
-                        mUserMission.updateUserPassword(mInputNewPassword.getText().toString(),new UserMissionCallback() {
+                        String password=UserManager.encryptPassword(mInputNewPassword.getText().toString());
+                        mUserMission.updateUserPassword(password,new UserMissionCallback() {
                             @Override
                             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
                                 if (errorCode == 0){

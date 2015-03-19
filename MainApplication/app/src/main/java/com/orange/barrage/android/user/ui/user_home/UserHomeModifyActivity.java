@@ -104,7 +104,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         //mUserModiSettingWeixin.setText(user.);
         //获取QQ号码
         mUserModify_QQnumber.setText(user.getQqOpenId());
-        //获取密码成功
+        //获取密码成功,这个是加密的字符串
         MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
 
         mUserAvatarImageView.loadUser(user);
