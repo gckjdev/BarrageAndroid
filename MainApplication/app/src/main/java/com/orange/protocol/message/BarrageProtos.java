@@ -496,6 +496,121 @@ public final class BarrageProtos {
     // @@protoc_insertion_point(enum_scope:barrage.PBColorMode)
   }
 
+  /**
+   * Protobuf enum {@code barrage.PBMyFeedType}
+   */
+  public enum PBMyFeedType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TYPE_NEW_FEED = 1;</code>
+     *
+     * <pre>
+     * 分享给我的新图片消息
+     * </pre>
+     */
+    TYPE_NEW_FEED(0, 1),
+    /**
+     * <code>TYPE_COMMENT_MY_FEED = 2;</code>
+     *
+     * <pre>
+     * 评论我发表的图片的
+     * </pre>
+     */
+    TYPE_COMMENT_MY_FEED(1, 2),
+    /**
+     * <code>TYPE_MY_COMMENT = 3;</code>
+     *
+     * <pre>
+     * 我参与过评论的
+     * </pre>
+     */
+    TYPE_MY_COMMENT(2, 3),
+    ;
+
+    /**
+     * <code>TYPE_NEW_FEED = 1;</code>
+     *
+     * <pre>
+     * 分享给我的新图片消息
+     * </pre>
+     */
+    public static final int TYPE_NEW_FEED_VALUE = 1;
+    /**
+     * <code>TYPE_COMMENT_MY_FEED = 2;</code>
+     *
+     * <pre>
+     * 评论我发表的图片的
+     * </pre>
+     */
+    public static final int TYPE_COMMENT_MY_FEED_VALUE = 2;
+    /**
+     * <code>TYPE_MY_COMMENT = 3;</code>
+     *
+     * <pre>
+     * 我参与过评论的
+     * </pre>
+     */
+    public static final int TYPE_MY_COMMENT_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBMyFeedType valueOf(int value) {
+      switch (value) {
+        case 1: return TYPE_NEW_FEED;
+        case 2: return TYPE_COMMENT_MY_FEED;
+        case 3: return TYPE_MY_COMMENT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBMyFeedType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBMyFeedType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBMyFeedType>() {
+            public PBMyFeedType findValueByNumber(int number) {
+              return PBMyFeedType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.BarrageProtos.getDescriptor().getEnumTypes().get(4);
+    }
+
+    private static final PBMyFeedType[] VALUES = values();
+
+    public static PBMyFeedType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBMyFeedType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBMyFeedType)
+  }
+
   public interface PBFeedOrBuilder extends
       // @@protoc_insertion_point(interface_extends:barrage.PBFeed)
       com.google.protobuf.MessageOrBuilder {
@@ -6774,6 +6889,2252 @@ public final class BarrageProtos {
     // @@protoc_insertion_point(class_scope:barrage.PBFeedAction)
   }
 
+  public interface PBMyNewFeedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBMyNewFeed)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string feedId = 1;</code>
+     *
+     * <pre>
+     * 消息的feedId
+     * </pre>
+     */
+    boolean hasFeedId();
+    /**
+     * <code>required string feedId = 1;</code>
+     *
+     * <pre>
+     * 消息的feedId
+     * </pre>
+     */
+    java.lang.String getFeedId();
+    /**
+     * <code>required string feedId = 1;</code>
+     *
+     * <pre>
+     * 消息的feedId
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getFeedIdBytes();
+
+    /**
+     * <code>optional string actionId = 2;</code>
+     *
+     * <pre>
+     * 评论的ID
+     * </pre>
+     */
+    boolean hasActionId();
+    /**
+     * <code>optional string actionId = 2;</code>
+     *
+     * <pre>
+     * 评论的ID
+     * </pre>
+     */
+    java.lang.String getActionId();
+    /**
+     * <code>optional string actionId = 2;</code>
+     *
+     * <pre>
+     * 评论的ID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getActionIdBytes();
+
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     * 消息类型，参考PBMyFeedType
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     * 消息类型，参考PBMyFeedType
+     * </pre>
+     */
+    int getType();
+
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     * 消息中新消息的总数
+     * </pre>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     * 消息中新消息的总数
+     * </pre>
+     */
+    int getCount();
+
+    /**
+     * <code>optional int32 modifyDate = 5;</code>
+     *
+     * <pre>
+     * 更新日期
+     * </pre>
+     */
+    boolean hasModifyDate();
+    /**
+     * <code>optional int32 modifyDate = 5;</code>
+     *
+     * <pre>
+     * 更新日期
+     * </pre>
+     */
+    int getModifyDate();
+
+    /**
+     * <code>optional bool isRead = 6;</code>
+     *
+     * <pre>
+     * 用户是否已读
+     * </pre>
+     */
+    boolean hasIsRead();
+    /**
+     * <code>optional bool isRead = 6;</code>
+     *
+     * <pre>
+     * 用户是否已读
+     * </pre>
+     */
+    boolean getIsRead();
+
+    /**
+     * <code>optional .barrage.PBFeed feed = 10;</code>
+     *
+     * <pre>
+     * 消息的Feed信息
+     * </pre>
+     */
+    boolean hasFeed();
+    /**
+     * <code>optional .barrage.PBFeed feed = 10;</code>
+     *
+     * <pre>
+     * 消息的Feed信息
+     * </pre>
+     */
+    com.orange.protocol.message.BarrageProtos.PBFeed getFeed();
+    /**
+     * <code>optional .barrage.PBFeed feed = 10;</code>
+     *
+     * <pre>
+     * 消息的Feed信息
+     * </pre>
+     */
+    com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder getFeedOrBuilder();
+  }
+  /**
+   * Protobuf type {@code barrage.PBMyNewFeed}
+   *
+   * <pre>
+   * 我的新消息
+   * </pre>
+   */
+  public static final class PBMyNewFeed extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBMyNewFeed)
+      PBMyNewFeedOrBuilder {
+    // Use PBMyNewFeed.newBuilder() to construct.
+    private PBMyNewFeed(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBMyNewFeed(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBMyNewFeed defaultInstance;
+    public static PBMyNewFeed getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBMyNewFeed getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBMyNewFeed(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              feedId_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              actionId_ = bs;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              type_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              count_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              modifyDate_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              isRead_ = input.readBool();
+              break;
+            }
+            case 82: {
+              com.orange.protocol.message.BarrageProtos.PBFeed.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = feed_.toBuilder();
+              }
+              feed_ = input.readMessage(com.orange.protocol.message.BarrageProtos.PBFeed.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(feed_);
+                feed_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeed_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeed_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.BarrageProtos.PBMyNewFeed.class, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBMyNewFeed> PARSER =
+        new com.google.protobuf.AbstractParser<PBMyNewFeed>() {
+      public PBMyNewFeed parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBMyNewFeed(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBMyNewFeed> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int FEEDID_FIELD_NUMBER = 1;
+    private java.lang.Object feedId_;
+    /**
+     * <code>required string feedId = 1;</code>
+     *
+     * <pre>
+     * 消息的feedId
+     * </pre>
+     */
+    public boolean hasFeedId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string feedId = 1;</code>
+     *
+     * <pre>
+     * 消息的feedId
+     * </pre>
+     */
+    public java.lang.String getFeedId() {
+      java.lang.Object ref = feedId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          feedId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string feedId = 1;</code>
+     *
+     * <pre>
+     * 消息的feedId
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getFeedIdBytes() {
+      java.lang.Object ref = feedId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        feedId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ACTIONID_FIELD_NUMBER = 2;
+    private java.lang.Object actionId_;
+    /**
+     * <code>optional string actionId = 2;</code>
+     *
+     * <pre>
+     * 评论的ID
+     * </pre>
+     */
+    public boolean hasActionId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string actionId = 2;</code>
+     *
+     * <pre>
+     * 评论的ID
+     * </pre>
+     */
+    public java.lang.String getActionId() {
+      java.lang.Object ref = actionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          actionId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string actionId = 2;</code>
+     *
+     * <pre>
+     * 评论的ID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getActionIdBytes() {
+      java.lang.Object ref = actionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        actionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private int type_;
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     * 消息类型，参考PBMyFeedType
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     * 消息类型，参考PBMyFeedType
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    public static final int COUNT_FIELD_NUMBER = 4;
+    private int count_;
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     * 消息中新消息的总数
+     * </pre>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     * 消息中新消息的总数
+     * </pre>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    public static final int MODIFYDATE_FIELD_NUMBER = 5;
+    private int modifyDate_;
+    /**
+     * <code>optional int32 modifyDate = 5;</code>
+     *
+     * <pre>
+     * 更新日期
+     * </pre>
+     */
+    public boolean hasModifyDate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 modifyDate = 5;</code>
+     *
+     * <pre>
+     * 更新日期
+     * </pre>
+     */
+    public int getModifyDate() {
+      return modifyDate_;
+    }
+
+    public static final int ISREAD_FIELD_NUMBER = 6;
+    private boolean isRead_;
+    /**
+     * <code>optional bool isRead = 6;</code>
+     *
+     * <pre>
+     * 用户是否已读
+     * </pre>
+     */
+    public boolean hasIsRead() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional bool isRead = 6;</code>
+     *
+     * <pre>
+     * 用户是否已读
+     * </pre>
+     */
+    public boolean getIsRead() {
+      return isRead_;
+    }
+
+    public static final int FEED_FIELD_NUMBER = 10;
+    private com.orange.protocol.message.BarrageProtos.PBFeed feed_;
+    /**
+     * <code>optional .barrage.PBFeed feed = 10;</code>
+     *
+     * <pre>
+     * 消息的Feed信息
+     * </pre>
+     */
+    public boolean hasFeed() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .barrage.PBFeed feed = 10;</code>
+     *
+     * <pre>
+     * 消息的Feed信息
+     * </pre>
+     */
+    public com.orange.protocol.message.BarrageProtos.PBFeed getFeed() {
+      return feed_;
+    }
+    /**
+     * <code>optional .barrage.PBFeed feed = 10;</code>
+     *
+     * <pre>
+     * 消息的Feed信息
+     * </pre>
+     */
+    public com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder getFeedOrBuilder() {
+      return feed_;
+    }
+
+    private void initFields() {
+      feedId_ = "";
+      actionId_ = "";
+      type_ = 0;
+      count_ = 0;
+      modifyDate_ = 0;
+      isRead_ = false;
+      feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasFeedId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasFeed()) {
+        if (!getFeed().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getFeedIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getActionIdBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, type_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, count_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, modifyDate_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBool(6, isRead_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(10, feed_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getFeedIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getActionIdBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, type_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, count_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, modifyDate_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, isRead_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, feed_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeed parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.BarrageProtos.PBMyNewFeed prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBMyNewFeed}
+     *
+     * <pre>
+     * 我的新消息
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBMyNewFeed)
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeed_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeed_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.BarrageProtos.PBMyNewFeed.class, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.BarrageProtos.PBMyNewFeed.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getFeedFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        feedId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        actionId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        modifyDate_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        isRead_ = false;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (feedBuilder_ == null) {
+          feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
+        } else {
+          feedBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeed_descriptor;
+      }
+
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed getDefaultInstanceForType() {
+        return com.orange.protocol.message.BarrageProtos.PBMyNewFeed.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed build() {
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeed result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed buildPartial() {
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeed result = new com.orange.protocol.message.BarrageProtos.PBMyNewFeed(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.feedId_ = feedId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.actionId_ = actionId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.count_ = count_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.modifyDate_ = modifyDate_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.isRead_ = isRead_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (feedBuilder_ == null) {
+          result.feed_ = feed_;
+        } else {
+          result.feed_ = feedBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.BarrageProtos.PBMyNewFeed) {
+          return mergeFrom((com.orange.protocol.message.BarrageProtos.PBMyNewFeed)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.BarrageProtos.PBMyNewFeed other) {
+        if (other == com.orange.protocol.message.BarrageProtos.PBMyNewFeed.getDefaultInstance()) return this;
+        if (other.hasFeedId()) {
+          bitField0_ |= 0x00000001;
+          feedId_ = other.feedId_;
+          onChanged();
+        }
+        if (other.hasActionId()) {
+          bitField0_ |= 0x00000002;
+          actionId_ = other.actionId_;
+          onChanged();
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        if (other.hasModifyDate()) {
+          setModifyDate(other.getModifyDate());
+        }
+        if (other.hasIsRead()) {
+          setIsRead(other.getIsRead());
+        }
+        if (other.hasFeed()) {
+          mergeFeed(other.getFeed());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasFeedId()) {
+          
+          return false;
+        }
+        if (hasFeed()) {
+          if (!getFeed().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeed parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.BarrageProtos.PBMyNewFeed) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object feedId_ = "";
+      /**
+       * <code>required string feedId = 1;</code>
+       *
+       * <pre>
+       * 消息的feedId
+       * </pre>
+       */
+      public boolean hasFeedId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string feedId = 1;</code>
+       *
+       * <pre>
+       * 消息的feedId
+       * </pre>
+       */
+      public java.lang.String getFeedId() {
+        java.lang.Object ref = feedId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            feedId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string feedId = 1;</code>
+       *
+       * <pre>
+       * 消息的feedId
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getFeedIdBytes() {
+        java.lang.Object ref = feedId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          feedId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string feedId = 1;</code>
+       *
+       * <pre>
+       * 消息的feedId
+       * </pre>
+       */
+      public Builder setFeedId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        feedId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string feedId = 1;</code>
+       *
+       * <pre>
+       * 消息的feedId
+       * </pre>
+       */
+      public Builder clearFeedId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        feedId_ = getDefaultInstance().getFeedId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string feedId = 1;</code>
+       *
+       * <pre>
+       * 消息的feedId
+       * </pre>
+       */
+      public Builder setFeedIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        feedId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object actionId_ = "";
+      /**
+       * <code>optional string actionId = 2;</code>
+       *
+       * <pre>
+       * 评论的ID
+       * </pre>
+       */
+      public boolean hasActionId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string actionId = 2;</code>
+       *
+       * <pre>
+       * 评论的ID
+       * </pre>
+       */
+      public java.lang.String getActionId() {
+        java.lang.Object ref = actionId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            actionId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string actionId = 2;</code>
+       *
+       * <pre>
+       * 评论的ID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getActionIdBytes() {
+        java.lang.Object ref = actionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          actionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string actionId = 2;</code>
+       *
+       * <pre>
+       * 评论的ID
+       * </pre>
+       */
+      public Builder setActionId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        actionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string actionId = 2;</code>
+       *
+       * <pre>
+       * 评论的ID
+       * </pre>
+       */
+      public Builder clearActionId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        actionId_ = getDefaultInstance().getActionId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string actionId = 2;</code>
+       *
+       * <pre>
+       * 评论的ID
+       * </pre>
+       */
+      public Builder setActionIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        actionId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       * 消息类型，参考PBMyFeedType
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       * 消息类型，参考PBMyFeedType
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       * 消息类型，参考PBMyFeedType
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000004;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       * 消息类型，参考PBMyFeedType
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int count_ ;
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       * 消息中新消息的总数
+       * </pre>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       * 消息中新消息的总数
+       * </pre>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       * 消息中新消息的总数
+       * </pre>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000008;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       * 消息中新消息的总数
+       * </pre>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int modifyDate_ ;
+      /**
+       * <code>optional int32 modifyDate = 5;</code>
+       *
+       * <pre>
+       * 更新日期
+       * </pre>
+       */
+      public boolean hasModifyDate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 modifyDate = 5;</code>
+       *
+       * <pre>
+       * 更新日期
+       * </pre>
+       */
+      public int getModifyDate() {
+        return modifyDate_;
+      }
+      /**
+       * <code>optional int32 modifyDate = 5;</code>
+       *
+       * <pre>
+       * 更新日期
+       * </pre>
+       */
+      public Builder setModifyDate(int value) {
+        bitField0_ |= 0x00000010;
+        modifyDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 modifyDate = 5;</code>
+       *
+       * <pre>
+       * 更新日期
+       * </pre>
+       */
+      public Builder clearModifyDate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        modifyDate_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean isRead_ ;
+      /**
+       * <code>optional bool isRead = 6;</code>
+       *
+       * <pre>
+       * 用户是否已读
+       * </pre>
+       */
+      public boolean hasIsRead() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional bool isRead = 6;</code>
+       *
+       * <pre>
+       * 用户是否已读
+       * </pre>
+       */
+      public boolean getIsRead() {
+        return isRead_;
+      }
+      /**
+       * <code>optional bool isRead = 6;</code>
+       *
+       * <pre>
+       * 用户是否已读
+       * </pre>
+       */
+      public Builder setIsRead(boolean value) {
+        bitField0_ |= 0x00000020;
+        isRead_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isRead = 6;</code>
+       *
+       * <pre>
+       * 用户是否已读
+       * </pre>
+       */
+      public Builder clearIsRead() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        isRead_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.orange.protocol.message.BarrageProtos.PBFeed feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.BarrageProtos.PBFeed, com.orange.protocol.message.BarrageProtos.PBFeed.Builder, com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder> feedBuilder_;
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public boolean hasFeed() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBFeed getFeed() {
+        if (feedBuilder_ == null) {
+          return feed_;
+        } else {
+          return feedBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public Builder setFeed(com.orange.protocol.message.BarrageProtos.PBFeed value) {
+        if (feedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          feed_ = value;
+          onChanged();
+        } else {
+          feedBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public Builder setFeed(
+          com.orange.protocol.message.BarrageProtos.PBFeed.Builder builderForValue) {
+        if (feedBuilder_ == null) {
+          feed_ = builderForValue.build();
+          onChanged();
+        } else {
+          feedBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public Builder mergeFeed(com.orange.protocol.message.BarrageProtos.PBFeed value) {
+        if (feedBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+              feed_ != com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance()) {
+            feed_ =
+              com.orange.protocol.message.BarrageProtos.PBFeed.newBuilder(feed_).mergeFrom(value).buildPartial();
+          } else {
+            feed_ = value;
+          }
+          onChanged();
+        } else {
+          feedBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public Builder clearFeed() {
+        if (feedBuilder_ == null) {
+          feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
+          onChanged();
+        } else {
+          feedBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBFeed.Builder getFeedBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getFeedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder getFeedOrBuilder() {
+        if (feedBuilder_ != null) {
+          return feedBuilder_.getMessageOrBuilder();
+        } else {
+          return feed_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBFeed feed = 10;</code>
+       *
+       * <pre>
+       * 消息的Feed信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.BarrageProtos.PBFeed, com.orange.protocol.message.BarrageProtos.PBFeed.Builder, com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder> 
+          getFeedFieldBuilder() {
+        if (feedBuilder_ == null) {
+          feedBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.BarrageProtos.PBFeed, com.orange.protocol.message.BarrageProtos.PBFeed.Builder, com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder>(
+                  getFeed(),
+                  getParentForChildren(),
+                  isClean());
+          feed_ = null;
+        }
+        return feedBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBMyNewFeed)
+    }
+
+    static {
+      defaultInstance = new PBMyNewFeed(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBMyNewFeed)
+  }
+
+  public interface PBMyNewFeedListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:barrage.PBMyNewFeedList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    java.util.List<com.orange.protocol.message.BarrageProtos.PBMyNewFeed> 
+        getMyFeedsList();
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    com.orange.protocol.message.BarrageProtos.PBMyNewFeed getMyFeeds(int index);
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    int getMyFeedsCount();
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    java.util.List<? extends com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder> 
+        getMyFeedsOrBuilderList();
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder getMyFeedsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code barrage.PBMyNewFeedList}
+   */
+  public static final class PBMyNewFeedList extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:barrage.PBMyNewFeedList)
+      PBMyNewFeedListOrBuilder {
+    // Use PBMyNewFeedList.newBuilder() to construct.
+    private PBMyNewFeedList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PBMyNewFeedList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PBMyNewFeedList defaultInstance;
+    public static PBMyNewFeedList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PBMyNewFeedList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PBMyNewFeedList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                myFeeds_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBMyNewFeed>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              myFeeds_.add(input.readMessage(com.orange.protocol.message.BarrageProtos.PBMyNewFeed.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          myFeeds_ = java.util.Collections.unmodifiableList(myFeeds_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeedList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeedList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.class, com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PBMyNewFeedList> PARSER =
+        new com.google.protobuf.AbstractParser<PBMyNewFeedList>() {
+      public PBMyNewFeedList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PBMyNewFeedList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PBMyNewFeedList> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int MYFEEDS_FIELD_NUMBER = 1;
+    private java.util.List<com.orange.protocol.message.BarrageProtos.PBMyNewFeed> myFeeds_;
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    public java.util.List<com.orange.protocol.message.BarrageProtos.PBMyNewFeed> getMyFeedsList() {
+      return myFeeds_;
+    }
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    public java.util.List<? extends com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder> 
+        getMyFeedsOrBuilderList() {
+      return myFeeds_;
+    }
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    public int getMyFeedsCount() {
+      return myFeeds_.size();
+    }
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    public com.orange.protocol.message.BarrageProtos.PBMyNewFeed getMyFeeds(int index) {
+      return myFeeds_.get(index);
+    }
+    /**
+     * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+     *
+     * <pre>
+     * 新消息列表
+     * </pre>
+     */
+    public com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder getMyFeedsOrBuilder(
+        int index) {
+      return myFeeds_.get(index);
+    }
+
+    private void initFields() {
+      myFeeds_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getMyFeedsCount(); i++) {
+        if (!getMyFeeds(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < myFeeds_.size(); i++) {
+        output.writeMessage(1, myFeeds_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < myFeeds_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, myFeeds_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.orange.protocol.message.BarrageProtos.PBMyNewFeedList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code barrage.PBMyNewFeedList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:barrage.PBMyNewFeedList)
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeedListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeedList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeedList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.class, com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.Builder.class);
+      }
+
+      // Construct using com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMyFeedsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (myFeedsBuilder_ == null) {
+          myFeeds_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          myFeedsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.orange.protocol.message.BarrageProtos.internal_static_barrage_PBMyNewFeedList_descriptor;
+      }
+
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeedList getDefaultInstanceForType() {
+        return com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.getDefaultInstance();
+      }
+
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeedList build() {
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeedList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeedList buildPartial() {
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeedList result = new com.orange.protocol.message.BarrageProtos.PBMyNewFeedList(this);
+        int from_bitField0_ = bitField0_;
+        if (myFeedsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            myFeeds_ = java.util.Collections.unmodifiableList(myFeeds_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.myFeeds_ = myFeeds_;
+        } else {
+          result.myFeeds_ = myFeedsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.orange.protocol.message.BarrageProtos.PBMyNewFeedList) {
+          return mergeFrom((com.orange.protocol.message.BarrageProtos.PBMyNewFeedList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.orange.protocol.message.BarrageProtos.PBMyNewFeedList other) {
+        if (other == com.orange.protocol.message.BarrageProtos.PBMyNewFeedList.getDefaultInstance()) return this;
+        if (myFeedsBuilder_ == null) {
+          if (!other.myFeeds_.isEmpty()) {
+            if (myFeeds_.isEmpty()) {
+              myFeeds_ = other.myFeeds_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMyFeedsIsMutable();
+              myFeeds_.addAll(other.myFeeds_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.myFeeds_.isEmpty()) {
+            if (myFeedsBuilder_.isEmpty()) {
+              myFeedsBuilder_.dispose();
+              myFeedsBuilder_ = null;
+              myFeeds_ = other.myFeeds_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              myFeedsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMyFeedsFieldBuilder() : null;
+            } else {
+              myFeedsBuilder_.addAllMessages(other.myFeeds_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getMyFeedsCount(); i++) {
+          if (!getMyFeeds(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.orange.protocol.message.BarrageProtos.PBMyNewFeedList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.orange.protocol.message.BarrageProtos.PBMyNewFeedList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.orange.protocol.message.BarrageProtos.PBMyNewFeed> myFeeds_ =
+        java.util.Collections.emptyList();
+      private void ensureMyFeedsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          myFeeds_ = new java.util.ArrayList<com.orange.protocol.message.BarrageProtos.PBMyNewFeed>(myFeeds_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.BarrageProtos.PBMyNewFeed, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder, com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder> myFeedsBuilder_;
+
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.BarrageProtos.PBMyNewFeed> getMyFeedsList() {
+        if (myFeedsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(myFeeds_);
+        } else {
+          return myFeedsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public int getMyFeedsCount() {
+        if (myFeedsBuilder_ == null) {
+          return myFeeds_.size();
+        } else {
+          return myFeedsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed getMyFeeds(int index) {
+        if (myFeedsBuilder_ == null) {
+          return myFeeds_.get(index);
+        } else {
+          return myFeedsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder setMyFeeds(
+          int index, com.orange.protocol.message.BarrageProtos.PBMyNewFeed value) {
+        if (myFeedsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMyFeedsIsMutable();
+          myFeeds_.set(index, value);
+          onChanged();
+        } else {
+          myFeedsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder setMyFeeds(
+          int index, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder builderForValue) {
+        if (myFeedsBuilder_ == null) {
+          ensureMyFeedsIsMutable();
+          myFeeds_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          myFeedsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder addMyFeeds(com.orange.protocol.message.BarrageProtos.PBMyNewFeed value) {
+        if (myFeedsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMyFeedsIsMutable();
+          myFeeds_.add(value);
+          onChanged();
+        } else {
+          myFeedsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder addMyFeeds(
+          int index, com.orange.protocol.message.BarrageProtos.PBMyNewFeed value) {
+        if (myFeedsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMyFeedsIsMutable();
+          myFeeds_.add(index, value);
+          onChanged();
+        } else {
+          myFeedsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder addMyFeeds(
+          com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder builderForValue) {
+        if (myFeedsBuilder_ == null) {
+          ensureMyFeedsIsMutable();
+          myFeeds_.add(builderForValue.build());
+          onChanged();
+        } else {
+          myFeedsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder addMyFeeds(
+          int index, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder builderForValue) {
+        if (myFeedsBuilder_ == null) {
+          ensureMyFeedsIsMutable();
+          myFeeds_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          myFeedsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder addAllMyFeeds(
+          java.lang.Iterable<? extends com.orange.protocol.message.BarrageProtos.PBMyNewFeed> values) {
+        if (myFeedsBuilder_ == null) {
+          ensureMyFeedsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, myFeeds_);
+          onChanged();
+        } else {
+          myFeedsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder clearMyFeeds() {
+        if (myFeedsBuilder_ == null) {
+          myFeeds_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          myFeedsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public Builder removeMyFeeds(int index) {
+        if (myFeedsBuilder_ == null) {
+          ensureMyFeedsIsMutable();
+          myFeeds_.remove(index);
+          onChanged();
+        } else {
+          myFeedsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder getMyFeedsBuilder(
+          int index) {
+        return getMyFeedsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder getMyFeedsOrBuilder(
+          int index) {
+        if (myFeedsBuilder_ == null) {
+          return myFeeds_.get(index);  } else {
+          return myFeedsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public java.util.List<? extends com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder> 
+           getMyFeedsOrBuilderList() {
+        if (myFeedsBuilder_ != null) {
+          return myFeedsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(myFeeds_);
+        }
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder addMyFeedsBuilder() {
+        return getMyFeedsFieldBuilder().addBuilder(
+            com.orange.protocol.message.BarrageProtos.PBMyNewFeed.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder addMyFeedsBuilder(
+          int index) {
+        return getMyFeedsFieldBuilder().addBuilder(
+            index, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .barrage.PBMyNewFeed myFeeds = 1;</code>
+       *
+       * <pre>
+       * 新消息列表
+       * </pre>
+       */
+      public java.util.List<com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder> 
+           getMyFeedsBuilderList() {
+        return getMyFeedsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.orange.protocol.message.BarrageProtos.PBMyNewFeed, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder, com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder> 
+          getMyFeedsFieldBuilder() {
+        if (myFeedsBuilder_ == null) {
+          myFeedsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.orange.protocol.message.BarrageProtos.PBMyNewFeed, com.orange.protocol.message.BarrageProtos.PBMyNewFeed.Builder, com.orange.protocol.message.BarrageProtos.PBMyNewFeedOrBuilder>(
+                  myFeeds_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          myFeeds_ = null;
+        }
+        return myFeedsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:barrage.PBMyNewFeedList)
+    }
+
+    static {
+      defaultInstance = new PBMyNewFeedList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:barrage.PBMyNewFeedList)
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_barrage_PBFeed_descriptor;
   private static
@@ -6784,6 +9145,16 @@ public final class BarrageProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_barrage_PBFeedAction_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBMyNewFeed_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBMyNewFeed_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_barrage_PBMyNewFeedList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_barrage_PBMyNewFeedList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6811,17 +9182,24 @@ public final class BarrageProtos {
       "tar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 " +
       "\001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\r\n\005color\030\r \001(\005\022\r\n" +
       "\005angel\030\022 \001(\005\022\023\n\005hasBg\030\023 \001(\010:\004true\022\014\n\004dat" +
-      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005*v\n\016PBBarrageStyl" +
-      "e\022\r\n\tPOP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_",
-      "LINEAR\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OU" +
-      "T\020\004\022\022\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrageMode" +
-      "\022\017\n\013FOR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBar" +
-      "rageSpeed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n" +
-      "\004HIGH\020\002\022\007\n\003LOW\020\003\022\014\n\010VERY_LOW\020\004*_\n\013PBColo" +
-      "rMode\022\027\n\023WHITE_TEXT_BLACK_BG\020\000\022\027\n\023BLACK_" +
-      "TEXT_WHITE_BG\020\001\022\036\n\032CUSTOM_TEXT_TRANSPARE" +
-      "NT_BG\020\002B,\n\033com.orange.protocol.messageB\r" +
-      "BarrageProtos"
+      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005\"\217\001\n\013PBMyNewFeed\022" +
+      "\016\n\006feedId\030\001 \002(\t\022\020\n\010actionId\030\002 \001(\t\022\014\n\004typ",
+      "e\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\022\n\nmodifyDate\030\005 \001" +
+      "(\005\022\016\n\006isRead\030\006 \001(\010\022\035\n\004feed\030\n \001(\0132\017.barra" +
+      "ge.PBFeed\"8\n\017PBMyNewFeedList\022%\n\007myFeeds\030" +
+      "\001 \003(\0132\024.barrage.PBMyNewFeed*v\n\016PBBarrage" +
+      "Style\022\r\n\tPOP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\n" +
+      "POP_LINEAR\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EAS" +
+      "E_OUT\020\004\022\022\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrage" +
+      "Mode\022\017\n\013FOR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016P" +
+      "BBarrageSpeed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020" +
+      "\001\022\010\n\004HIGH\020\002\022\007\n\003LOW\020\003\022\014\n\010VERY_LOW\020\004*_\n\013PB",
+      "ColorMode\022\027\n\023WHITE_TEXT_BLACK_BG\020\000\022\027\n\023BL" +
+      "ACK_TEXT_WHITE_BG\020\001\022\036\n\032CUSTOM_TEXT_TRANS" +
+      "PARENT_BG\020\002*P\n\014PBMyFeedType\022\021\n\rTYPE_NEW_" +
+      "FEED\020\001\022\030\n\024TYPE_COMMENT_MY_FEED\020\002\022\023\n\017TYPE" +
+      "_MY_COMMENT\020\003B,\n\033com.orange.protocol.mes" +
+      "sageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6849,6 +9227,18 @@ public final class BarrageProtos {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBFeedAction_descriptor,
         new java.lang.String[] { "ActionId", "Type", "FeedId", "User", "Text", "Avatar", "ShowAvatar", "PosX", "PosY", "ColorMode", "Color", "Angel", "HasBg", "Date", "BStyle", });
+    internal_static_barrage_PBMyNewFeed_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_barrage_PBMyNewFeed_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBMyNewFeed_descriptor,
+        new java.lang.String[] { "FeedId", "ActionId", "Type", "Count", "ModifyDate", "IsRead", "Feed", });
+    internal_static_barrage_PBMyNewFeedList_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_barrage_PBMyNewFeedList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_barrage_PBMyNewFeedList_descriptor,
+        new java.lang.String[] { "MyFeeds", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
     com.orange.protocol.message.UserProtos.getDescriptor();
   }
