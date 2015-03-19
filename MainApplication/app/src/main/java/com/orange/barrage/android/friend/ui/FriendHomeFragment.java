@@ -175,8 +175,14 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
     private void loadLocalTagList() {
 
         UserProtos.PBUserTagList tagList = mTagManager.allTags();
+        if (tagList == null){
+            return;
+        }
 
         List<UserProtos.PBUserTag> list = tagList.getTagsList();
+        if (list == null || list.size() == 0){
+            return;
+        }
 
         for(UserProtos.PBUserTag userTag : list){
 

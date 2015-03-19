@@ -32,7 +32,7 @@ public class LevelDBDAO {
 
     public LevelDBDAO(String dbName){
         // TODO database shall not use cached dir?
-        File dbFile = new File(Environment.getExternalStorageDirectory(), dbName);
+        File dbFile = new File(ContextManager.getContext().getFilesDir(), dbName);
         mLevelDB = new DB(dbFile);
         mLevelDB.open();
         Ln.d("open level db "+dbFile.getAbsolutePath());
