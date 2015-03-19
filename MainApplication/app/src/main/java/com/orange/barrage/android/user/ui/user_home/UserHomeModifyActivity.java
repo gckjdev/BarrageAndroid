@@ -19,7 +19,6 @@ import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureE
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -76,6 +75,17 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.user_modify_weixin)
     private TextView mUserModiSettingWeixin;
+
+    @InjectView(R.id.user_sinaweibo_layout)
+    private LinearLayout mUserSinaWeiboLayout;
+
+    @InjectView(R.id.user_modify_xinglang_weibo)
+    private TextView mUserModifyXinglangWeibo;
+
+    @InjectView(R.id.user_phonenumber_layout)
+    private LinearLayout mUserPhonenumberLayout;
+
+
     public boolean panduan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +101,10 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         panduan=user.getGender();
 
         //mUserModiSettingWeixin.setText(user.);
-        //获取电话号码
+        //获取QQ号码
         mUserModify_QQnumber.setText(user.getQqOpenId());
         //获取密码成功
-        MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
+        //MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
 
         mUserAvatarImageView.loadUser(user);
         mUserModifyNick.setText(user.getNick());
