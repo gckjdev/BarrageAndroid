@@ -34,7 +34,10 @@ public class Tab3Container extends HomeContainerFragment {
 
     private void initView() {
         // TODO set fragment here
-        replaceFragment(new FriendHomeFragment(), false);
+        FriendHomeFragment f = new FriendHomeFragment();
+        replaceFragment(f, false);
+//        f.setTab();
+
     }
 
 }

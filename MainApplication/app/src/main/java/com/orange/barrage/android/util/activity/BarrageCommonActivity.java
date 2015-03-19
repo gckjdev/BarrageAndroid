@@ -13,6 +13,7 @@ import roboguice.activity.RoboActivity;
 
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
+import com.orange.barrage.android.friend.mission.TagMission;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.util.ContextManager;
 
@@ -43,6 +44,8 @@ public class BarrageCommonActivity extends RoboActivity  {
     @Inject
     protected FriendMission mFriendMission;
 
+    @Inject
+    protected TagMission mTagMission;
 
     /**
      *

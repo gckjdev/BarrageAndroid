@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import roboguice.inject.ContextSingleton;
 
@@ -19,7 +20,7 @@ import roboguice.inject.ContextSingleton;
  *
  */
 
-@ContextSingleton
+@Singleton
 public class ShareUserDBDAO {
 
     final ConcurrentHashMap<String, LevelDBDAO> dbMap = new ConcurrentHashMap<>();

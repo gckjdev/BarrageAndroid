@@ -1,40 +1,58 @@
 package com.orange.barrage.android.user.ui.view;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.ViewGroup;
+import android.util.TypedValue;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.activity.FloatWindow;
-import com.orange.barrage.android.util.view.MoveViewParentRelativity;
-import com.orange.barrage.android.util.view.RelativeLayoutwhitTriangleIcon;
 
 /**
  * Created by youjiannuo on 2015/3/6.
  */
-public class Text extends Activity{
+
+import java.util.List;
+
+import android.content.Intent;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+public class Text extends Activity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_head_portrait);
+        setContentView(R.layout.test);
+        initView();
+    }
 
-        MoveViewParentRelativity moveViewParentRelativity = (MoveViewParentRelativity) findViewById(R.id.mm);
-
-        ImageView mUserAvatraView = new ImageView(this);
-
-        mUserAvatraView.setImageResource(R.drawable.ic_launcher);
-
-        moveViewParentRelativity.addView(mUserAvatraView , 100 , 100 , 50 , 50);
-
-
-//        mm.setAvartUrl("http://edu.online.sh.cn/education/gb/content/attachement/jpg/site1/20130712/4487fc9b69f01349f5d444.jpg");
+    private void initView() {
+//        ImageView imageView = getImageView();
+//
+//        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ll);
+//
+//        linearLayout.addView(getImageView());
 
     }
 
 
 
 
+    private ImageView getImageView(){
+        ImageView imageView = new ImageView(this);
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 7, imageView.getResources().getDisplayMetrics());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20 , 20);
+        params.leftMargin = 100;
+
+        Drawable drawable = getResources().getDrawable(R.drawable.x_homepage_3_tab_bg_circle_red);
+        imageView.setImageDrawable(drawable);
+        imageView.setLayoutParams(params);
+        return imageView;
+    }
+
 }
+

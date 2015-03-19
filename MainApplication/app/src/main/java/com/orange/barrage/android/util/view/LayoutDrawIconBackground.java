@@ -1,7 +1,6 @@
 package com.orange.barrage.android.util.view;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,8 +15,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 
-import com.kbeanie.imagechooser.api.config.Config;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.SystemUtil;
@@ -177,6 +176,8 @@ public  class LayoutDrawIconBackground {
 
         public int bgColor = Color.WHITE;
 
+        public int borderColor = Integer.MAX_VALUE;
+
         public float alpha = 1.0f;
 
         public int mTriangleHeight = 30;
@@ -190,6 +191,10 @@ public  class LayoutDrawIconBackground {
             int alphas = (int)(255 * alpha);
             return Color.argb(alphas , Color.red(bgColor) , Color.green(bgColor) , Color.blue(bgColor));
 
+        }
+
+        public int getBorderColor(){
+            return borderColor == Integer.MAX_VALUE ? bgColor : borderColor;
         }
 
 
@@ -267,6 +272,44 @@ public  class LayoutDrawIconBackground {
     };
 
 
+    public void setTwoSemicircleRectang(final View v , final Params params){
+
+        v.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                Drawable drawable = ImageUtil.getBitmapChangeDrawable(drawTwoSemicircleRectang(v, params));
+                if(drawable != null)
+                    v.setBackground(drawable);
+                v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+            }
+        });
+
+    }
+
+
+    /**
+     * 绘制两边都是半圆的矩形
+     * @param v
+     * @param params
+     * @return
+     */
+    public Bitmap drawTwoSemicircleRectang(View v, Params params){
+
+        if(v.getHeight() <= 0 || v.getWidth() <= 0) return null;
+        Rect mainRect = new Rect(0 , 0 , v.getWidth() , v.getHeight());
+        Bitmap bitmap = Bitmap.createBitmap(v.getWidth() , v.getHeight() , Bitmap.Config.ARGB_8888);
+        Canvas canvas = getCanvas(bitmap);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        DrawTwosemicirclerectangle(canvas , params , v , paint);
+
+        canvas.drawBitmap(bitmap , mainRect , mainRect , paint);
+
+        return bitmap;
+
+    }
 
 
 
@@ -286,13 +329,48 @@ public  class LayoutDrawIconBackground {
         //绘画矩形
         canvas.drawRect(rect , paint);
 
-        RectF rectF = new RectF(v.getWidth() - v.getHeight() , 0 , v.getWidth() , v.getHeight());
+        RectF rectF = new RectF((float) (v.getWidth() - v.getHeight() + 1), 0 , v.getWidth() , v.getHeight());
 
         canvas.drawArc(rectF , 270 , 180 , true , paint);
 
         canvas.drawBitmap(bitmap , mainRect , mainRect , paint);
 
         return bitmap;
+    }
+
+
+
+
+    public  void DrawTwosemicirclerectangle(Canvas canvas , Params params , View v , Paint p) {
+        if (v == null || v.getWidth() == 0 || v.getHeight() == 0) return;
+        if (params == null) params = new Params();
+
+
+        p.setStyle(Paint.Style.FILL);
+        if (params.borderColor != Integer.MAX_VALUE) {
+            p.setColor(params.borderColor);
+            drawTwosemicirclerectangleRun(canvas, p, 0, 0, v.getWidth(), v.getHeight(), v.getHeight() / 2);
+        }
+
+        if(params.bgColor != Integer.MAX_VALUE) {
+            p.setColor(params.bgColor);
+            drawTwosemicirclerectangleRun(canvas, p, 2, 2, v.getWidth() - 2, v.getHeight() - 2, v.getHeight() / 2 - 1);
+        }
+
+    }
+
+
+    private void drawTwosemicirclerectangleRun(Canvas canvas , Paint paint , int startX , int startY , int stopX , int stopY , float raudio){
+
+        //绘制矩形
+        Rect rect = new Rect(((int)(raudio +startX)) - 1  , startY , ((int)(stopX - raudio)) , stopY);
+        canvas.drawRect(rect, paint);
+
+        RectF rectF = new RectF(stopX - raudio * 2  , startY , stopX , stopY);
+        //绘制连个半圆
+        canvas.drawArc(rectF , 270 , 180 , true , paint);
+        rectF = new RectF(startX , startY , raudio * 2  , raudio * 2 );
+        canvas.drawArc(rectF , 90 , 180 , true , paint);
     }
 
     private Paint getPaint(int color , Paint.Style flag){

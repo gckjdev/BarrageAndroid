@@ -8,11 +8,10 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
-import com.google.inject.Inject;
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.protocol.message.UserProtos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +20,15 @@ import java.util.List;
 public class FriendIconList extends LinearLayout {
 
     //普通头像
-    public static final int ORDINARY_ICON = 0;
-    //可以删除的头像
-    public static final int ADD_AND_DELETE_ICON = 1;
+    public static final int ICON_ORDINARY = 0;
+    //显示删除和添加的按钮
+    public static final int ICON_ADD_AND_DELETE_BUTTON = 1;
+    //隐藏添加删除和添加头像按钮
+    public static final int ICON_HIDDEN_ADD_AND_DELETE_BUTTON = 4;
+    //头像右上方有删除按钮
+    public static final int ICON_SHOW_RIGHT_TOP_DELETE = 2;
+    //隐藏右上方按钮图标
+    public static final int ICON_HIDDEN_RIGHT_TOP_DELETE = 3;
 
 
     FriendIconListAdapter mAdapter;
@@ -39,23 +44,23 @@ public class FriendIconList extends LinearLayout {
     }
 
     public void setUsers(List<UserProtos.PBUser>users , Activity activity , int type){
+        if(users == null)
+            users = new ArrayList<>();
         if(mAdapter == null)
-            mAdapter = new FriendIconListAdapter(getContext() ,users , activity);
+            mAdapter = new FriendIconListAdapter(getContext() ,users , activity , type);
         if(mGridView == null)
             mGridView = (GridView) findViewById(R.id.friend_icon_gridview);
-
         mGridView.setAdapter(mAdapter);
-        mAdapter.setICONType(type);
     }
 
 
     public void setUsers(List<UserProtos.PBUser> users , Activity activity){
-       setUsers(users , activity , ORDINARY_ICON);
+       setUsers(users , activity , ICON_ORDINARY);
     }
 
     public void setIconType(int type){
         if(mAdapter == null) return ;
-        mAdapter.setICONType(type);
+        mAdapter.setIconType(type);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -64,9 +69,7 @@ public class FriendIconList extends LinearLayout {
      * 设置可以头像的类型,是否可以添加或者删除头像
      */
     public void setDeleteType(){
-
-        setIconType(ADD_AND_DELETE_ICON);
-
+        setIconType(ICON_ADD_AND_DELETE_BUTTON);
     }
 
 
@@ -78,7 +81,14 @@ public class FriendIconList extends LinearLayout {
 
 
     public interface OnClickItemListener{
-        public void onClickItem(int postion , View view , Object data);
+
+        public static final int ICON_ORDINARY = 0;
+
+        public static final int ICON_DELETE = 1;
+
+        public  static final int INCO_ADD = 2;
+
+        public void onClickItem(int postion , View view , Object data , int iconType);
     }
 
 

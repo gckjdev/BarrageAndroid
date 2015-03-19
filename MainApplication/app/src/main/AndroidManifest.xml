@@ -67,7 +67,11 @@
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
         <activity android:name=".feed.activity.FeedPublishedActivity" />
+
+        <activity android:name=".feed.activity.FeedPublishedActivity" />
+
         <activity android:name=".user.ui.view.Text" />
+
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend" />
@@ -149,6 +153,10 @@
             android:name=".user.ui.user_home.user_settings.UserEmailEditTextActivity"
             android:label="@string/title_activity_user_email_edit_text" >
         </activity>
+
+        <activity android:name=".friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity"/>
+
+
     </application>
 
 </manifest>

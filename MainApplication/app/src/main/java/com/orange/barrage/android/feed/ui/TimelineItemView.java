@@ -75,7 +75,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         float factor = actualWidth/expectWidth;
         float actualHeight = expectHeight * factor;
 
-//        mBarrageWidget.setSize(400, 400);
 
         mBarrageWidget.setSize((int)actualWidth, (int)actualHeight);
 
@@ -84,7 +83,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mDropDownImageButton = (ImageButton) mView.findViewById(R.id.dropDownButton);
         mMainRelativeLayout = (RelativeLayout) mView.findViewById(R.id.iconMainRelativrLayout);
 
-//        ActivityIntent
         mDropDownImageButton.setOnClickListener(this);
         mPlayerButton.setOnClickListener(this);
         mShareButton.setOnClickListener(this);
@@ -113,7 +111,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
         // TODO
         List<UserProtos.PBUser> toUsers = model.getFeed().getToUsersList();
-
 
         mBarrageWidget.setModel(model);
 
@@ -163,13 +160,20 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      */
     public void onClickDraoDown(View v){
 
-        if(v.getTag() == null || v.getTag().equals("C")) {
+//        int resource = R.drawable.y_zhuche_xiala;
+//
+//        if(v.getTag() == null || v.getTag().equals("C")) {
+//            resource = R.drawable.y_zhuce_shouhui;
+//            v.setTag("O");
+//        }else{
+//            v.setTag("C");
+//        }
+//        ((ImageButton)v).setImageResource(resource);
 
-            if (mShowFriendIconView == null)
-                mShowFriendIconView = new ShowFriendIconView(mActivity);
+        if (mShowFriendIconView == null)
+            mShowFriendIconView = new ShowFriendIconView(mActivity);
+        mShowFriendIconView.show(v, mToUsers);
 
-            mShowFriendIconView.show(v, mToUsers);
-        }
     }
 
     @Override

@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.orange.barrage.android.feed.model.FeedManager;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  * Created by Administrator on 2015/3/13.
@@ -22,29 +20,37 @@ public class FriendIconListAdapter extends BaseAdapter {
     private Context mContext;
     private List<UserProtos.PBUser> mUsers;
     private Activity mActivity;
-    private int mType = FriendIconList.ORDINARY_ICON;
+    private int mType = FriendIconList.ICON_ORDINARY;
     private FriendIconList.OnClickItemListener mOnClickItemListener;
 
-    public FriendIconListAdapter(Context context ,List<UserProtos.PBUser> users , Activity activity){
+    public FriendIconListAdapter(Context context ,List<UserProtos.PBUser> users , Activity activity , int type){
         mContext = context;
         mActivity = activity;
         mUsers = users;
+        setIconType(type);
     }
 
-    public void setICONType(int type){
+    public void setIconType(int type){
         this.mType = type;
     }
 
 
-
     @Override
     public int getCount() {
-        return mUsers.size();
+        if(mType == FriendIconList.ICON_ADD_AND_DELETE_BUTTON
+                || mType == FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE
+                || mType == FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE){
+            return mUsers.size() + 2;
+        }else {
+            return mUsers.size();
+        }
     }
 
     @Override
     public Object getItem(int position) {
-        return mUsers.get(position);
+        if(position < mUsers.size())
+            return mUsers.get(position);
+        else return null;
     }
 
     @Override
@@ -61,24 +67,34 @@ public class FriendIconListAdapter extends BaseAdapter {
             frinedsIconItem = new FriendIconItem(mContext);
         }else frinedsIconItem = (FriendIconItem)convertView;
 
-        frinedsIconItem.loadUser((UserProtos.PBUser)getItem(position) , mType);
 
+        UserProtos.PBUser user = (UserProtos.PBUser)getItem(position);
+
+        if(user == null){
+            int resource = mUsers.size() == position ? R.drawable.x_freinds_list_add : R.drawable.x_friends_list_remove;
+            frinedsIconItem.loadResourceImage(resource , mType);
+            frinedsIconItem.setHiddenDeleteButton();
+        }else {
+            frinedsIconItem.loadUser( user, mType);
+        }
         frinedsIconItem.setOnClickListener(new View.OnClickListener() {
 
             private int index = position;
 
             @Override
             public void onClick(View v) {
+                int type = FriendIconList.OnClickItemListener.ICON_ORDINARY;
+                if(getItem(index) == null){
+                    type =  mUsers.size() == index ? FriendIconList.OnClickItemListener.INCO_ADD : FriendIconList.OnClickItemListener.ICON_DELETE;
+                }
                 if(mOnClickItemListener != null)
-                    mOnClickItemListener.onClickItem(index , v , getItem(index));
+                    mOnClickItemListener.onClickItem(index , v , getItem(index) , type);
             }
         });
-
 
         return frinedsIconItem;
 
     }
-
 
     public void setOnClickItemListener(FriendIconList.OnClickItemListener l){
         mOnClickItemListener = l;

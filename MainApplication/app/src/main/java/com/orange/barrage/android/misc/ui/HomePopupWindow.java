@@ -55,7 +55,7 @@ public class HomePopupWindow {
             params.marginRight = 10;
             LayoutDrawIconBackground layoutWhileTriangleIcon = new LayoutDrawIconBackground();
             layoutWhileTriangleIcon.setParams(params).setWhitTriangleRadioRoundFrectBg(parent, mRelativeLayout);
-//            relativeLayoutwhitTriangleIcon.setView(parent);
+
             View v1 = childs.getChildAt(0);
             View v2 = childs.getChildAt(2);
             View v3 = childs.getChildAt(4);
