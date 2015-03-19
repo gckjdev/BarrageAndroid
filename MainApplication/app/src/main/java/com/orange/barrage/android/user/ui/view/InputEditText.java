@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.activity.MessageCenter;
 
 /**
  * Created by xiaoshu on 2015/3/16.
@@ -104,9 +103,6 @@ public class InputEditText extends EditText implements View.OnFocusChangeListene
                               int after) {
         if (hasFoucs) {
             setClearIconVisible(s.length() > 0);
-        }
-        if (s.length() >= 60) {
-            MessageCenter.postInfoMessage("个人昵称不能大于60个字符");
         }
     }
 

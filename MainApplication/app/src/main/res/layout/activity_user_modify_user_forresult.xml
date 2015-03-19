@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:hint=" 请重新输入新的昵称"
             android:background="@null"
-            android:id="@+id/input_edittext"
+            android:id="@+id/edittext"
             android:maxLength="15"
             android:drawableRight="@drawable/delete_gray"
             android:layout_marginLeft="25dp"

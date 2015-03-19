@@ -193,8 +193,9 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
-    <!--搜索，添加好友，以及昵称设置，签名设置中的EditText与顶部的距离 -->
-    <style name="nick_signature_settings">
+    <!--搜索，添加好友，以及昵称设置，签名设置中的EditText与顶部的距离以及EditText的高度 -->
+    <style name="nick_signature_common_settings">
+        <item name="android:layout_height">@dimen/u_background</item>
         <item name="android:layout_marginTop">25dp</item>
     </style>
 
@@ -210,6 +211,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center</item>
         <item name="android:inputType">textPassword</item>
+        <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_height">@dimen/u_background</item>
         <item name="android:background">@null</item>
         <item name="android:layout_gravity">center_vertical</item>

@@ -1,9 +1,7 @@
 package com.orange.barrage.android.user.ui.login;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;

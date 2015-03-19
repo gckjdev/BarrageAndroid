@@ -7,16 +7,17 @@
 
     <include layout="@layout/activity_view_top" />
     <LinearLayout
-        style="@style/nick_signature_settings"
+        style="@style/nick_signature_common_settings"
         android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        >
         <com.orange.barrage.android.user.ui.view.InputEditText
             android:hint=" 请重新输入新的昵称"
-            android:id="@+id/input_edittext"
+            android:id="@+id/edittext"
             android:gravity="center"
             android:layout_gravity="center_vertical"
             style="@style/b_common_edit_text_style"
+            android:layout_marginRight="20dp"
             android:drawableRight="@drawable/delete_gray"
         />
     </LinearLayout>
@@ -24,7 +25,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:textSize="15sp"
-        android:id="@+id/nick_or_signature_description"
+        android:id="@+id/textView_tips"
         android:textColor="@color/b_font_black"
         android:text="好名字能让你的朋友更快记住你"
         android:layout_width="wrap_content"

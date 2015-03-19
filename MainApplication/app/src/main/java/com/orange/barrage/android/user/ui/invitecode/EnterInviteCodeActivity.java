@@ -93,6 +93,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+        //后退键中Activity出栈
         if(keyCode == KeyEvent.KEYCODE_BACK){
             mBarrageAndroid.pushActivity();
         }
