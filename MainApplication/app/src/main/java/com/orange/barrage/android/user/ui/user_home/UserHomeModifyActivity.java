@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserEmailEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserHomeModifyPasswordActivity;
@@ -19,7 +20,6 @@ import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureE
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -105,7 +105,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         //获取QQ号码
         mUserModify_QQnumber.setText(user.getQqOpenId());
         //获取密码成功,这个是加密的字符串
-        MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
+        //MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
 
         mUserAvatarImageView.loadUser(user);
         mUserModifyNick.setText(user.getNick());
@@ -191,6 +191,15 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                         mSelectFemaleView.setImageDrawable(null);
                         mUserModifyGender.setText("男");
                         panduan=true;
+                        mUserMission.updateUserGender(panduan,new UserMissionCallback() {
+                            @Override
+                            public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+                                if (errorCode == 0){
+                                    //MessageCenter.postSuccessMessage("性别已经更新");
+                                    //finish();
+                                }
+                            }
+                        });
                     }
                 });
 
@@ -202,6 +211,16 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                         mSelectMaleView.setImageDrawable(null);
                         mUserModifyGender.setText("女");
                         panduan=false;
+                        mUserMission.updateUserGender(panduan,new UserMissionCallback() {
+                            @Override
+                            public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
+                                if (errorCode == 0){
+                                    //MessageCenter.postSuccessMessage("性别已经更新");
+                                    //不需要结束页面
+                                    // finish();
+                                }
+                            }
+                        });
                     }
                 });
             }

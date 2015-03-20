@@ -285,6 +285,7 @@ public class UserMission {
         updateUser(userBuilder.build(),callback);
     }
 
+    //update the email
     public void updateUserEmail(final String email,final UserMissionCallback callback)
     {
         if (email==null)
@@ -309,6 +310,20 @@ public class UserMission {
         UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
         userBuilder.setUserId(mUserManager.getUserId());
         userBuilder.setPassword(password);
+        updateUser(userBuilder.build(),callback);
+    }
+
+    //update the Gender
+    public void updateUserGender(final Boolean gender,final UserMissionCallback callback)
+    {
+        if (gender==null)
+        {
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE,null);
+            return ;
+        }
+        UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        userBuilder.setGender(gender);
         updateUser(userBuilder.build(),callback);
     }
 }
