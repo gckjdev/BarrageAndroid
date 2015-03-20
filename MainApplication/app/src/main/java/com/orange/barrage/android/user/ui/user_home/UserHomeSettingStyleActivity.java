@@ -68,6 +68,7 @@ public class UserHomeSettingStyleActivity extends BarrageCommonActivity {
         super.onCreate(savedInstanceState,R.layout.activity_user_home_setting_style,"请选择风格",R.string.user_setting_save);
         final  UserProtos.PBUser user = mUserManager.getUser();
         //user.getSpeed()取得速度
+
         mSettingStyleMoca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

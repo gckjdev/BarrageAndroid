@@ -8,9 +8,6 @@ import com.orange.protocol.message.UserProtos;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import roboguice.inject.ContextSingleton;
-import roboguice.util.Ln;
-
 /**
  * Created by pipi on 15/1/5.
  */
@@ -64,7 +61,6 @@ public class UserManager extends CommonManager {
         if (pbUser == null){
             return;
         }
-
         defaultDBDAO.put(KEY_USER_DATA, pbUser);
     }
 

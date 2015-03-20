@@ -179,6 +179,8 @@
         <item name="android:layout_marginRight">7dp</item>
         <item name="android:textSize">13sp</item>
         <item name="android:maxEms">20</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">20</item>
         <item name="android:textColor">#848484</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -226,12 +228,5 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
-    <!--<ImageView
-        android:id="@+id/style_select_moca"
-        android:src="@drawable/selectgender"
-        android:layout_marginRight="15dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />-->
+
 </resources>
