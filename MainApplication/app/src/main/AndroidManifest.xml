@@ -90,6 +90,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".friend.activity.FriendListSelectActivity"/>
+
+
         <!-- Share SDK Activities -->
 
 

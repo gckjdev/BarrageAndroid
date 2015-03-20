@@ -2,6 +2,7 @@ package com.orange.barrage.android.friend.ui;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import com.orange.barrage.android.friend.mission.TagMission;
 import com.orange.barrage.android.friend.mission.callback.GetFriendListCallback;
 import com.orange.barrage.android.friend.mission.callback.GetTagListCallback;
 import com.orange.barrage.android.friend.model.TagManager;
+import com.orange.barrage.android.home.HomeActivity;
+import com.orange.barrage.android.home.Tab3Container;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.view.MyViewPagerTools;
 import com.orange.protocol.message.UserProtos;
@@ -38,7 +41,8 @@ import roboguice.inject.InjectView;
  * Use the {@link FriendHomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FriendHomeFragment extends RoboFragment implements FriendTagView.OnClickTabIconItemListener {
+public class FriendHomeFragment extends RoboFragment implements FriendTagView.OnClickTabIconItemListener
+                                                                ,Tab3Container.OnFragmentCommunicationListener{
 
     @InjectView(R.id.friend_list_view)
     ListView mListView;
@@ -65,6 +69,10 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
 
     private FriendTagView mFriendTabView = null;
 
+    //是否要刷新tag界面
+//    private boolean isRefreshTagView = false;
+
+    private SelectParam mSelectParam = new SelectParam();
 
 
     private View v;
@@ -122,23 +130,50 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
         mListView.setAdapter(mAdapter);
 
         loadFriendList();
-        mViewPagerTools = new MyViewPagerTools(getActivity() , mViewPager , mPonitLayout);
-        mViewPagerTools.setInitTabpointIcon();
-        mFriendTabView = null;
-        mViewPager.removeAllViews();
-
-//        initTab();
-
+        clear();
         syncMyTag();
 
+        ((HomeActivity)getActivity()).setOnFramgeListener(this);
+
     }
+
+
+    private void clear(){
+        mFriendTabView = null;
+        mViewPager.removeAllViews();
+        mViewPagerTools = new MyViewPagerTools(getActivity() , mViewPager , mPonitLayout);
+    }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if(isRefreshTagView){
+//            UserProtos.PBUserTagList tagList = mTagManager.allTags();
+//            List<UserProtos.PBUserTag> list = tagList.getTagsList();
+//            if(list.size() != 0){
+//                addUserTagToTag(list.get(list.size() - 1));
+//            }
+//            isRefreshTagView = false;
+//        }
+//
+//    }
+
 
     @Override
-    public void onResume() {
-        super.onResume();
-        loadLocalTagList();
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mSelectParam != null && mSelectParam.friendTagView != null) {
+            if (resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_ALTER) {
+                //标签被修改了，需要刷新,获取添加
+                loadLocalTagList();
+            }
+            else if (resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_DELETE) {
+                //有标签被删除了
+                loadLocalTagList();
+            }
+            mSelectParam.clear();
+        }
     }
-
 
     private void initTab(){
 
@@ -179,22 +214,28 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
         List<UserProtos.PBUserTag> list = tagList.getTagsList();
 
         for(UserProtos.PBUserTag userTag : list){
-
-            FriendTagView.Params params = new FriendTagView.Params();
-            params.bgColor = userTag.getColor();
-            params.title = userTag.getName();
-            initPager(params , userTag.getTid());
+           addUserTagToTag(userTag);
         }
 
 
     }
+
+
+    private void addUserTagToTag(UserProtos.PBUserTag userTag){
+        FriendTagView.Params params = new FriendTagView.Params();
+//            params.bgColor = userTag.getColor();
+        params.bgColor = 0XFF7bc567;
+        params.title = userTag.getName();
+        initPager(params , userTag.getTid());
+    }
+
 
     private void syncMyTag() {
 
         mTagMission.getAllTags(new GetTagListCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTagList tagList) {
-                if (errorCode == 0){
+                if (errorCode == 0) {
                     // reload tag view
                     loadLocalTagList();
                 }
@@ -281,12 +322,24 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
     }
 
     @Override
-    public void onClickItem(String tagId, View v) {
+    public void onClickItem(String tagId, View v , FriendTagView friendTagView) {
         //点击标签跳转
-
-        ActivityIntent.startIntent(getActivity() , FriendTabDetailInfoAndCreateAndAlterActivity.class , FriendTabDetailInfoAndCreateAndAlterActivity.TABKEY, tagId);
+        mSelectParam.friendTagView = friendTagView;
+        mSelectParam.tagId = tagId;
+        ActivityIntent.startForResult(getActivity() , FriendTabDetailInfoAndCreateAndAlterActivity.class , FriendTabDetailInfoAndCreateAndAlterActivity.TABKEY, tagId , 0x11);
 
     }
+
+    @Override
+    public void onListener(Object obj) {
+        //Activity 传到过来的值需要刷新
+        UserProtos.PBUserTagList tagList = mTagManager.allTags();
+        List<UserProtos.PBUserTag> list = tagList.getTagsList();
+        if (list.size() != 0) {
+            addUserTagToTag(list.get(list.size() - 1));
+        }
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -302,5 +355,21 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
+
+    class SelectParam{
+        //当前被选中的FriendTagView
+        public FriendTagView friendTagView;
+        //被点击的标签
+        public String tagId;
+
+        public void clear(){
+            friendTagView = null;
+            tagId = "";
+        }
+
+    }
+
+
+
 
 }

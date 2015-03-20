@@ -32,6 +32,7 @@ public class FriendIconListAdapter extends BaseAdapter {
 
     public void setIconType(int type){
         this.mType = type;
+        notifyDataSetChanged();
     }
 
 
@@ -87,14 +88,27 @@ public class FriendIconListAdapter extends BaseAdapter {
                 if(getItem(index) == null){
                     type =  mUsers.size() == index ? FriendIconList.OnClickItemListener.INCO_ADD : FriendIconList.OnClickItemListener.ICON_DELETE;
                 }
-                if(mOnClickItemListener != null)
-                    mOnClickItemListener.onClickItem(index , v , getItem(index) , type);
+                dealListener(type , index , v);
             }
         });
 
         return frinedsIconItem;
 
     }
+
+    private void dealListener(int type , int index , View v){
+        if (mOnClickItemListener == null) return;
+        if (type == FriendIconList.OnClickItemListener.ICON_DELETE) {
+            setIconType(FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE);
+        } else if (type == FriendIconList.OnClickItemListener.INCO_ADD) {
+            setIconType(FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE);
+        }
+        mOnClickItemListener.onClickItem(index, v, getItem(index), type);
+    }
+
+
+
+
 
     public void setOnClickItemListener(FriendIconList.OnClickItemListener l){
         mOnClickItemListener = l;

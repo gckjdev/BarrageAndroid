@@ -25,6 +25,7 @@ import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
+import com.orange.barrage.android.friend.ui.FriendHomeFragment;
 import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
@@ -67,6 +68,8 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     public static String PHOTONAME = "you.png";
 
     private ShowPublishFeedView mShowPublisFeedView;
+
+    private Tab3Container.OnFragmentCommunicationListener mOnFragmentCommunicationListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,6 +185,9 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     }
 
 
+    public void setOnFramgeListener(Tab3Container.OnFragmentCommunicationListener l ){
+        mOnFragmentCommunicationListener = l;
+    }
 
 
 
@@ -226,7 +232,11 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-       mShowPublisFeedView.getPhotoAndCamera().getPicture(requestCode,resultCode,data, l);
+        if(resultCode == 0X12){
+            mOnFragmentCommunicationListener.onListener(null);
+        }else
+            if(mShowPublisFeedView != null)
+                mShowPublisFeedView.getPhotoAndCamera().getPicture(requestCode,resultCode,data, l);
 
     }
 
@@ -307,12 +317,12 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         if(position == 1){
             //添加好友
             ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
-
         }else if(position == 2){
             //添加标签
-            ActivityIntent.startIntent(this , FriendTabDetailInfoAndCreateAndAlterActivity.class ,
+            ActivityIntent.startForResult(this , FriendTabDetailInfoAndCreateAndAlterActivity.class ,
                     FriendTabDetailInfoAndCreateAndAlterActivity.TABSTATEKEY,
-                    FriendTabDetailInfoAndCreateAndAlterActivity.CREATE_STATE);
+                    FriendTabDetailInfoAndCreateAndAlterActivity.CREATE_STATE , 0X11);
+
         }else if(position == 3){
             //个人资料
             ActivityIntent.startIntent(this, UserHomeActivity.class);
@@ -326,4 +336,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
             mHomePopupWindow.close();
 
     }
+
+
+
 }

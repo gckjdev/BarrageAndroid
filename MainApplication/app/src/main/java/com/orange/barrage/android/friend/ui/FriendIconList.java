@@ -61,7 +61,6 @@ public class FriendIconList extends LinearLayout {
     public void setIconType(int type){
         if(mAdapter == null) return ;
         mAdapter.setIconType(type);
-        mAdapter.notifyDataSetChanged();
     }
 
 

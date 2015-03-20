@@ -68,6 +68,12 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
         initAdapter();
     }
 
+
+    public View getChildlastView(){
+        if(mViewList.size() == 0) return null;
+        return mViewList.get(mViewList.size() - 1);
+    }
+
     public View getChildPageView(int postion){
         if(postion < mViewList.size()) return mViewList.get(postion);
         return null;
@@ -97,6 +103,11 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
             mTab_Icon.addView(getImageView());
 
 
+    }
+
+    public void clearView(){
+        if(mViewPage != null) mViewPage.removeAllViews();
+        if(mTab_Icon != null) mTab_Icon.removeAllViews();
     }
 
 

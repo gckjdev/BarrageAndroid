@@ -82,7 +82,7 @@
     <string name="b_editexttab">编辑标签</string>
     <string name="b_OK">确定</string>
     <string name="b_create_tab_hinit">请输入标签名字，例如死党</string>
-
+    <string name="b_friend_select_friend">选择好友</string>
     <string name="title_activity_user_email_edit_text">UserEmailEditTextActivity</string>
-
+    <string name="b_complete">完成</string>
 </resources>

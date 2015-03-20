@@ -1,6 +1,7 @@
 package com.orange.barrage.android.friend.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,11 +9,13 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.mission.callback.AddTagCallback;
+import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.barrage.android.friend.model.TagManager;
+import com.orange.barrage.android.friend.ui.FriendIconItem;
 import com.orange.barrage.android.friend.ui.FriendIconList;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.UserProtos;
 
 import javax.inject.Inject;
@@ -22,7 +25,7 @@ import roboguice.inject.InjectView;
 /**
  * Created by Administrator on 2015/3/19.
  */
-public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonActivity {
+public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonActivity implements FriendIconList.OnClickItemListener {
 
     public static final String TABKEY = "1";
     public static final String TABSTATEKEY = "2";
@@ -30,6 +33,15 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     public static final String SEE_STATE = "2";
     public static final String EDIT_STATE = "1";
     public static final String CREATE_STATE = "3";
+
+    public static final int TAG_IS_ALTER = 0x12;
+
+    public static final int TAG_NO_ALTER = 0x11;
+
+    public static final int TAG_IS_DELETE = 0x13;
+    //标签是否被修改了
+    private int mAlterState = TAG_NO_ALTER;
+
 
     private String mTab_id;
     private String mState = SEE_STATE;
@@ -48,6 +60,10 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @InjectView(R.id.tabNameTextView)
     TextView mTabTextView;
 
+
+    @Inject
+    FriendManager mFriendManager;
+
     @Override
     protected  void onCreate(Bundle saveBundle){
         super.onCreate(saveBundle, R.layout.activity_tab_detailed_info , R.string.b_tab_detail_info, R.string.b_editext);
@@ -59,7 +75,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     private void initView(){
 
 
-        mFriendIconList.setUsers(null , this);
+        mFriendIconList.setUsers(mFriendManager.getFriendList() , this);
 
         mTab_id = getIntentString(TABKEY);
         String tab = getIntentString(TABSTATEKEY);
@@ -90,6 +106,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     private void setFriendListAlter(){
         if(mFriendIconList != null && mState.equals(CREATE_STATE) || mState.equals(EDIT_STATE)){
             mFriendIconList.setDeleteType();
+            mFriendIconList.setOnClickItemListener(this);
         }
     }
 
@@ -107,7 +124,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     private void closeEidText(){
         mTagEditText.setVisibility(View.GONE);
         mTabTextView.setVisibility(View.VISIBLE);
-
     }
 
 
@@ -132,6 +148,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     //确定修改标签
     private void toOKAlterTab(){
 
+
+
+
     }
 
     //确定创建一个标签
@@ -147,13 +166,16 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
                 if (errorCode == 0){
                     MessageCenter.postSuccessMessage("标签["+name+"]已创建");
-                    finish();
+                    setTagIsAlter();
+                    setResult(mAlterState);
                 }
             }
         });
-
     }
 
+    private void setTagIsAlter(){
+        mAlterState = TAG_IS_ALTER;
+    }
 
     @Override
     public void onClickRight(View v) {
@@ -171,11 +193,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Override
     public void onClickLeft(View v) {
 
-
-
         if(mState == SEE_STATE || mState == CREATE_STATE){
 
-            if(!mIsBakc){
+            if(  mTagEditText.getText().toString().length() != 0 ||!mIsBakc){
                 //不可以退出
             }else
                 super.onClickLeft(v);
@@ -192,4 +212,24 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mTopBarView.setTitleText(titleId);
         mTopBarView.setRightButton(rightId);
     }
+
+    @Override
+    public void onClickItem(int postion, View view, Object data, int iconType) {
+        if(iconType == FriendIconList.OnClickItemListener.INCO_ADD){
+            //添加头像
+            ActivityIntent.startForResult(this , FriendListSelectActivity.class , 0x11);
+        }else if(iconType == FriendIconList.OnClickItemListener.ICON_ORDINARY){
+            //点击对应的头像
+
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    }
+
+
+
 }

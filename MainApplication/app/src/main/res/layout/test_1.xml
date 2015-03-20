@@ -9,6 +9,7 @@
             android:text="\n\n\n\ndsads"
             android:gravity="center"
             android:layout_width="100dip"
+            android:background="#7bc567"
             android:layout_height="wrap_content" />
   </com.orange.barrage.android.util.view.RelativeLayoutwhitTriangleIcon>
 

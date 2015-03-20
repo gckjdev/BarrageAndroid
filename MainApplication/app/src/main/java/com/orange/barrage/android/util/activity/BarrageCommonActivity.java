@@ -17,9 +17,12 @@ import com.orange.barrage.android.friend.mission.TagMission;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.util.ContextManager;
 
+import net.sourceforge.pinyin4j.PinyinHelper;
+
 import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
+import roboguice.util.Ln;
 
 /**
  * Created by youjiannuo on 2015/3/3.
@@ -93,7 +96,11 @@ public class BarrageCommonActivity extends RoboActivity  {
 
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
+
+
     }
+
+
 
     @Override
     protected void onStart() {

@@ -16,6 +16,9 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.misc.SystemUtil;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import roboguice.util.Ln;
 
 /**
@@ -32,6 +35,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 
     private OnClickTabIconItemListener mOnClickTabIconItemListener;
 
+    private List<FriendParams> mParamsLists = new ArrayList<>();
 
     public FriendTagView(Context context) {
         super(context);
@@ -68,12 +72,19 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     }
 
 
-    public boolean addView(final Params params , String tabId){
+    public boolean addView(final Params params , String tagId){
 
         initLayoutInfo();
         initModleTextView(params);
+        boolean is = AddTextViewToLinear(mModleTextView, params ,  tagId);
+        if(is){
+            FriendParams friendParams = new FriendParams();
+            friendParams.params = params;
+            friendParams.tagId = tagId;
+            mParamsLists.add(friendParams);
+        }
 
-        return AddTextViewToLinear(mModleTextView, params ,  tabId);
+        return is;
 
     }
 
@@ -128,8 +139,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     public void onClick(View v) {
 
         if(mOnClickTabIconItemListener != null)
-            mOnClickTabIconItemListener.onClickItem(v.getTag() != null ? v.toString() : "" ,v);
-
+            mOnClickTabIconItemListener.onClickItem(v.getTag() != null ? v.toString() : "" ,v , this);
     }
 
     class ChildLayoutInfo{
@@ -207,20 +217,64 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     }
 
 
+
+//    public void removeView(String tagId){
+//        FriendParams params = findParams(tagId);
+//        mParamsLists.remove(params);
+//        setRefresh();
+//    }
+//
+//    private FriendParams findParams(String tagId){
+//        for(FriendParams param : mParamsLists){
+//            if(param.tagId.equals(tagId)){
+//               return param;
+//            }
+//        }
+//    }
+//
+//    public void AlterTag(String tagId , FriendParams paramNew){
+//        FriendParams paramOld = findParams(tagId);
+//
+//        paramOld.params = paramNew.params;
+//
+//    }
+
+
+
+    //刷新
+    public void setRefresh(){
+        //移除所以控件
+        removeAllViews();
+        for(FriendParams param : mParamsLists){
+            addView(param.params , param.tagId);
+        }
+
+    }
+
+
+
     public static class Params extends LayoutDrawIconBackground.Params {
 
+//        private int color[] = {0X7bc567,0Xecbc25,0Xc792e0,0X6bb5e5,0Xed6e74,0X7997f2,0Xf68a54};
+
         public String title;
-        public int textColor = Color.BLACK;
+        public int textColor = Color.WHITE;
         public int textSize = 13;
 
     }
 
     public interface OnClickTabIconItemListener {
 
-        public void onClickItem(String tagId , View v);
+        public void onClickItem(String tagId , View v , FriendTagView friendTagView);
 
     }
 
+    class FriendParams{
+
+        Params params;
+        String tagId ;
+
+    }
 
 
 
