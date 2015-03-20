@@ -161,6 +161,14 @@
             android:name=".user.ui.user_home.UserHomeSettingAboutActivity"
             android:label="@string/title_activity_user_home_setting_about" >
         </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeSettingStyleActivity"
+            android:label="@string/title_activity_user_home_setting_style" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeSettingSpeedActivity"
+            android:label="@string/title_activity_user_home_setting_speed" >
+        </activity>
     </application>
 
 </manifest>
