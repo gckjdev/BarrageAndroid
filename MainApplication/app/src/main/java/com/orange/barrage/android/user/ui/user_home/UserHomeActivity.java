@@ -45,6 +45,7 @@ public class UserHomeActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState,R.layout.activity_user_home,"我的主页",-1);
+        //个人资料设置界面
         mUserHomeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,5 +55,13 @@ public class UserHomeActivity extends BarrageCommonActivity {
         UserProtos.PBUser user = mUserManager.getUser();
         userAvatarImageView.loadUser(user);
         mFriendHomeview.setText(user.getNick());
+
+        //设置界面
+        mUserHomeSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityIntent.startIntent(UserHomeActivity.this,UserHomeSettingActivity.class);
+            }
+        });
     }
 }

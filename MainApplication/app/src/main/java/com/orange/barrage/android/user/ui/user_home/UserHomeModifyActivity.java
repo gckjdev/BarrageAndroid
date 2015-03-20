@@ -15,8 +15,9 @@ import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserEmailEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserHomeModifyPasswordActivity;
-import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserPhoneNumberEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureEditTextActivity;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
@@ -86,7 +87,8 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
     @InjectView(R.id.user_phonenumber_layout)
     private LinearLayout mUserPhonenumberLayout;
 
-
+    @InjectView(R.id.user_modify_phone_number)
+    private TextView mUserModifyPhoneNumber;
     public boolean panduan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,14 +101,15 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         MessageCenter.postInfoMessage(userBuilder.getPassword().toString() + "恭喜啦");
       */  //用户只有get方法和has方法，没有set方法,如何为用户设置性别呢，似乎没有set方法
         final  UserProtos.PBUser user = mUserManager.getUser();
+        //取得性别
         panduan=user.getGender();
 
-        //mUserModiSettingWeixin.setText(user.);
+        //mUserModiSettingWeixin.setText();
         //获取QQ号码
-        mUserModify_QQnumber.setText(user.getQqOpenId());
+        mUserModify_QQnumber.setText(user.getQqOpenId()+"这个是QQ号码");
         //获取密码成功,这个是加密的字符串
         //MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
-
+        mUserModifyPhoneNumber.setText(user.getMobile());
         mUserAvatarImageView.loadUser(user);
         mUserModifyNick.setText(user.getNick());
         mUserModifySignature.setText(user.getSignature());
@@ -240,6 +243,16 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         //设置QQ:
 
         //关联微信号:
+
+        //设置手机号码
+        mUserPhonenumberLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserPhoneNumberEditTextActivity.start(UserHomeModifyActivity.this,
+                        UserPhoneNumberEditTextActivity.class,
+                        mUserManager.getUser().getMobile());
+            }
+        });
     }
 
 }

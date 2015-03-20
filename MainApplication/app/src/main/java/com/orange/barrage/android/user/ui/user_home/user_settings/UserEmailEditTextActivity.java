@@ -17,7 +17,7 @@ public class UserEmailEditTextActivity extends AbstractEditTextActivity {
 
     @Override
     public String getPlaceHolder() {
-        return "请输入邮箱";
+        return "请输入abc@126.com类似格式的邮箱";
     }
 
     @Override

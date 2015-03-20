@@ -45,7 +45,6 @@
         <activity
             android:name=".user.ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
-
         </activity>
         <activity
             android:name=".user.ui.login.EmailLoginActivity"
@@ -67,11 +66,8 @@
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
         <activity android:name=".feed.activity.FeedPublishedActivity" />
-
         <activity android:name=".feed.activity.FeedPublishedActivity" />
-
         <activity android:name=".user.ui.view.Text" />
-
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"
             android:label="@string/title_activity_request_add_friend" />
@@ -148,15 +144,23 @@
             android:label="@string/title_activity_user_home_modify_password"
             android:windowSoftInputMode="stateVisible" >
         </activity>
-
         <activity
             android:name=".user.ui.user_home.user_settings.UserEmailEditTextActivity"
             android:label="@string/title_activity_user_email_edit_text" >
         </activity>
-
-        <activity android:name=".friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity"/>
-
-
+        <activity android:name=".friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity" />
+        <activity
+            android:name=".user.ui.user_home.user_settings.UserPhoneNumberEditTextActivity"
+            android:label="@string/title_activity_user_phone_number_edit_text" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeSettingActivity"
+            android:label="@string/title_activity_user_home_setting" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.UserHomeSettingAboutActivity"
+            android:label="@string/title_activity_user_home_setting_about" >
+        </activity>
     </application>
 
 </manifest>
