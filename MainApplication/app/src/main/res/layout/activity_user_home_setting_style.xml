@@ -1,0 +1,134 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeSettingStyleActivity">
+    <include layout="@layout/activity_view_top" />
+    <LinearLayout
+        android:id="@+id/setting_style_mocalayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="摩擦"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/style_select_moca"
+                android:src="@drawable/selectgender"
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+        </View>
+    <LinearLayout
+        android:id="@+id/setting_style_tanhenglayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="弹簧"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/style_select_tanhuang"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+    <LinearLayout
+        android:id="@+id/setting_style_yunsulayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="匀速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/style_select_yunsu"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+    <LinearLayout
+        android:id="@+id/setting_style_jiasulayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="加速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/style_select_jiasu"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+    <LinearLayout
+        android:id="@+id/setting_style_jiansulayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="减速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/style_select_jiansu"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+    <LinearLayout
+        android:id="@+id/setting_style_jiasujiansulayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="先加速再减速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/style_select_jiasujiansu"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

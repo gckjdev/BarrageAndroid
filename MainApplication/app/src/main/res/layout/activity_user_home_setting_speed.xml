@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeSettingSpeedActivity">
+    <include layout="@layout/activity_view_top" />
+    <LinearLayout
+        android:id="@+id/setting_speed_normallayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="正常"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/speed_select_normal"
+                android:src="@drawable/selectgender"
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/setting_speed_superhightlayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="超高速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/speed_select_superhight"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/setting_speed_hightlayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="高速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/speed_select_hight"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/setting_speed_lowerlayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="低速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/speed_select_lower"
+
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/setting_speed_superlowerlayout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="超低速"
+                style="@style/user_homepage" />
+            <ImageView
+                android:id="@+id/speed_select_superlower"
+                style="@style/user_setting_style" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
