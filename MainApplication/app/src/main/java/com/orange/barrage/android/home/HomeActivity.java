@@ -24,6 +24,7 @@ import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
+import com.orange.barrage.android.friend.activity.OptionFeedBackActivity;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
 import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
@@ -319,7 +320,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
         }else if(position == 4){
             //意见反馈
-
+            ActivityIntent.startIntent(this, OptionFeedBackActivity.class);
         }
 
         if (mHomePopupWindow!=null)
