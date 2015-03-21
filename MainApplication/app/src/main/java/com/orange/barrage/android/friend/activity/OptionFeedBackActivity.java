@@ -1,6 +1,7 @@
 package com.orange.barrage.android.friend.activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -22,6 +23,7 @@ public class OptionFeedBackActivity extends BarrageCommonActivity {
         super.onCreate(savedInstanceState, R.layout.activity_option_feed_back, "意见反馈", R.string.option_feedback);
         initTopBar();
 
+
     }
     private void initTopBar() {
 
@@ -32,8 +34,19 @@ public class OptionFeedBackActivity extends BarrageCommonActivity {
             @Override
             public void onClick(View v) {
                 //提交的事件响应
-                MessageCenter.postInfoMessage("已经提交啦");
+                //MessageCenter.postInfoMessage("已经提交啦");
+                Checktext();
+                //finish();
             }
         });
+    }
+
+    private void Checktext()
+    {
+        if (TextUtils.isEmpty(mFeedbackEdittext.getText().toString()))
+        {
+            MessageCenter.postErrorMessage("反馈信息不能为空");
+            return;
+        }
     }
 }
