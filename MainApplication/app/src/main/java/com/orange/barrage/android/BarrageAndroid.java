@@ -8,8 +8,6 @@ import com.orange.barrage.android.util.ContextManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import roboguice.util.Ln;
-
 /**
  * Created by Rollin on 2015/1/10.
  */
@@ -37,7 +35,6 @@ public class BarrageAndroid extends Application {
     //加入一个Activity
     public void addActivity(Activity activity){
         if(mList == null) mList = new ArrayList<Activity>();
-
         mList.add(activity);
     }
 
