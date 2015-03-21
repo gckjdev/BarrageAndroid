@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/3/13.
  */
-public class FriendIconListAdapter extends BaseAdapter {
+public class FriendIconListAdapter extends BaseAdapter  {
 
     private Context mContext;
     private List<UserProtos.PBUser> mUsers;
@@ -32,6 +31,7 @@ public class FriendIconListAdapter extends BaseAdapter {
 
     public void setIconType(int type){
         this.mType = type;
+        notifyDataSetChanged();
     }
 
 
@@ -65,15 +65,18 @@ public class FriendIconListAdapter extends BaseAdapter {
 
         if(convertView == null){
             frinedsIconItem = new FriendIconItem(mContext);
+
         }else frinedsIconItem = (FriendIconItem)convertView;
 
 
         UserProtos.PBUser user = (UserProtos.PBUser)getItem(position);
+        frinedsIconItem.setUser(mUsers , this , mOnClickItemListener);
+
 
         if(user == null){
             int resource = mUsers.size() == position ? R.drawable.x_freinds_list_add : R.drawable.x_friends_list_remove;
             frinedsIconItem.loadResourceImage(resource , mType);
-            frinedsIconItem.setHiddenDeleteButton();
+            frinedsIconItem.setHiddenTopDeleteButton();
         }else {
             frinedsIconItem.loadUser( user, mType);
         }
@@ -83,18 +86,31 @@ public class FriendIconListAdapter extends BaseAdapter {
 
             @Override
             public void onClick(View v) {
-                int type = FriendIconList.OnClickItemListener.ICON_ORDINARY;
+                int type = FriendIconList.OnClickItemListener.ICON_ORDINARY_BUTTON;
                 if(getItem(index) == null){
-                    type =  mUsers.size() == index ? FriendIconList.OnClickItemListener.INCO_ADD : FriendIconList.OnClickItemListener.ICON_DELETE;
+                    type =  mUsers.size() == index ? FriendIconList.OnClickItemListener.INCO_ADD_BUTTON : FriendIconList.OnClickItemListener.ICON_DELETE_BUTTON;
                 }
-                if(mOnClickItemListener != null)
-                    mOnClickItemListener.onClickItem(index , v , getItem(index) , type);
+                dealListener(type , index , v);
             }
         });
 
         return frinedsIconItem;
 
     }
+
+    private void dealListener(int type , int index , View v){
+        if (mOnClickItemListener == null) return;
+        if (type == FriendIconList.OnClickItemListener.ICON_DELETE_BUTTON) {
+            setIconType(FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE);
+        } else if (type == FriendIconList.OnClickItemListener.INCO_ADD_BUTTON) {
+            setIconType(FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE);
+        }
+        mOnClickItemListener.onClickItem(index, v, getItem(index), type);
+    }
+
+
+
+
 
     public void setOnClickItemListener(FriendIconList.OnClickItemListener l){
         mOnClickItemListener = l;

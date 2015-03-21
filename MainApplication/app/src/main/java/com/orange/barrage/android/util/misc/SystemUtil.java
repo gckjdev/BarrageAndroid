@@ -4,8 +4,13 @@ import android.content.Context;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.orange.barrage.android.util.ContextManager;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SystemUtil {
     private static String deviceId = null;
@@ -63,6 +68,37 @@ public class SystemUtil {
     public static int pxTodip( float pxValue) {
         final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+
+    public static void showInputMethodManager(final View v) {
+        v.setFocusable(true);
+        v.setFocusableInTouchMode(true);
+        v.requestFocus();
+
+        Timer timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+
+                    public void run() {
+                        InputMethodManager inputManager =
+                                (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputManager.showSoftInput(v, 0);
+                    }
+                },
+                200);
+    }
+
+
+    /**
+     * 关闭输入软键盘
+     *
+     * @param v
+     */
+    public static void closeInputMethodManager(View v) {
+        InputMethodManager inputManager =
+                (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 
 

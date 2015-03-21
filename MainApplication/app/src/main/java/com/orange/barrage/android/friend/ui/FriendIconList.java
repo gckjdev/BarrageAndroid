@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/3/13.
  */
-public class FriendIconList extends LinearLayout {
+public class FriendIconList extends GridView {
 
     //普通头像
     public static final int ICON_ORDINARY = 0;
@@ -32,25 +32,38 @@ public class FriendIconList extends LinearLayout {
 
 
     FriendIconListAdapter mAdapter;
-    private GridView mGridView;
+//    private GridView mGridView;
 
     public FriendIconList(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView();
+//        initView();
     }
 
+//    private void initView(){
+//        View v = LayoutInflater.from(getContext()).inflate(R.layout.view_friends_icon_list , null);
+//
+//        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT , LayoutParams.MATCH_PARENT);
+//
+//        addView(v , params);
+//
+//    }
+
     private void initView(){
-        LayoutInflater.from(getContext()).inflate(R.layout.view_friends_icon_list , this);
+
+
+
     }
 
     public void setUsers(List<UserProtos.PBUser>users , Activity activity , int type){
-        if(users == null)
-            users = new ArrayList<>();
+        List<UserProtos.PBUser> userList = null;
+
+        if(users != null)
+            userList = new ArrayList<>(users);
         if(mAdapter == null)
-            mAdapter = new FriendIconListAdapter(getContext() ,users , activity , type);
-        if(mGridView == null)
-            mGridView = (GridView) findViewById(R.id.friend_icon_gridview);
-        mGridView.setAdapter(mAdapter);
+            mAdapter = new FriendIconListAdapter(getContext() ,userList , activity , type);
+//        if(mGridView == null)
+//            mGridView = (GridView) findViewById(R.id.friend_icon_gridview);
+        setAdapter(mAdapter);
     }
 
 
@@ -61,7 +74,6 @@ public class FriendIconList extends LinearLayout {
     public void setIconType(int type){
         if(mAdapter == null) return ;
         mAdapter.setIconType(type);
-        mAdapter.notifyDataSetChanged();
     }
 
 
@@ -81,12 +93,14 @@ public class FriendIconList extends LinearLayout {
 
 
     public interface OnClickItemListener{
-
-        public static final int ICON_ORDINARY = 0;
-
-        public static final int ICON_DELETE = 1;
-
-        public  static final int INCO_ADD = 2;
+        //点击了头像，触发的事件
+        public static final int ICON_ORDINARY_BUTTON = 0;
+        //点击了删除的按钮
+        public static final int ICON_DELETE_BUTTON = 1;
+        //点击了添加头像的按钮
+        public  static final int INCO_ADD_BUTTON = 2;
+        //点击了头像头部的删除按钮
+        public static final int ICON_TOP_DELETE_BUTTON = 3;
 
         public void onClickItem(int postion , View view , Object data , int iconType);
     }

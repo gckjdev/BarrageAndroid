@@ -26,7 +26,6 @@ public abstract class AbstractEditTextActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.textView_tips)
     private TextView mTextviewTips;
-
     private static String BUNDLE_KEY_INIT_VALUE = "BUNDLE_KEY_INIT_VALUE";
 
     protected String mInitValue;

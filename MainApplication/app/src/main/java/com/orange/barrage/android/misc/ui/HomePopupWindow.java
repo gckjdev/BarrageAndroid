@@ -12,6 +12,9 @@ import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.barrage.android.util.activity.FloatWindow;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by pipi on 15/3/13.
  */
@@ -23,6 +26,10 @@ public class HomePopupWindow {
     private View mPopWindowItemView;
     private RelativeLayout mRelativeLayout;
     private View mParent;
+    private LayoutDrawIconBackground layoutWhileTriangleIcon = new LayoutDrawIconBackground();
+    private LayoutDrawIconBackground.Params params = new LayoutDrawIconBackground.Params();
+
+    private String mTag = "";
 
     public HomePopupWindow( Context context){
         this.mContext = context;
@@ -48,14 +55,19 @@ public class HomePopupWindow {
 
 
 
+          if(!mTag.equals(tag)) {
+              mTag = tag;
+              mRelativeLayout.setBackground(null);
+              layoutWhileTriangleIcon.setParams(params).setWhitTriangleRadioRoundFrectListenerBg(parent, mRelativeLayout);
+          }
+
+
 
         if (is && childs != null) {
-            LayoutDrawIconBackground.Params params = new LayoutDrawIconBackground.Params();
             params.bgColor = Color.BLACK;
             params.marginRight = 10;
-            LayoutDrawIconBackground layoutWhileTriangleIcon = new LayoutDrawIconBackground();
-            layoutWhileTriangleIcon.setParams(params).setWhitTriangleRadioRoundFrectBg(parent, mRelativeLayout);
-
+            layoutWhileTriangleIcon.setParams(params).setWhitTriangleRadioRoundFrectListenerBg(parent, mRelativeLayout);
+            mTag = tag;
             View v1 = childs.getChildAt(0);
             View v2 = childs.getChildAt(2);
             View v3 = childs.getChildAt(4);
@@ -81,7 +93,11 @@ public class HomePopupWindow {
            ItemShow();
         }
 
+
     }
+
+
+
 
     private boolean ItemViewisNull(){
         return mPopWindowItemLine == null || mPopWindowItemView == null;

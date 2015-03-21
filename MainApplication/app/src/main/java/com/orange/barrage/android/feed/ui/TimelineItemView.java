@@ -170,8 +170,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 //        }
 //        ((ImageButton)v).setImageResource(resource);
 
-        if (mShowFriendIconView == null)
-            mShowFriendIconView = new ShowFriendIconView(mActivity);
+        mShowFriendIconView = new ShowFriendIconView(mActivity);
         mShowFriendIconView.show(v, mToUsers);
 
     }

@@ -48,7 +48,21 @@ public class ActivityIntent {
         return new Intent(activity , c);
     }
 
+    public static void startForResult(Activity activity , Class<?> c , int requestCode){
+        startForResult(activity , c , "" , "" , requestCode);
+    }
 
+
+    public static void startForResult(Activity activity , Class<?> c , String key , String value , int requestCode){
+        Intent intent = getIntent(activity , c);
+        if(key != null && key.trim().length() != 0)
+            intent.putExtra(key , value);
+        startIntentForResult(activity , intent , requestCode);
+    }
+
+    public static void startIntentForResult(Activity activity , Intent intent , int requestCode){
+        activity.startActivityForResult(intent , requestCode);
+    }
 
 
 }

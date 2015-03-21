@@ -7,11 +7,10 @@
     <include layout="@layout/activity_view_top" />
 
     <LinearLayout
-        android:id="@+id/user_nick_layout"
+        android:id="@+id/setting_style_layout"
         style="@style/user_info_linearlayout_common">
 
         <RelativeLayout
-            android:id="@+id/setting_style_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -35,7 +34,6 @@
         style="@style/user_info_linearlayout_common">
 
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

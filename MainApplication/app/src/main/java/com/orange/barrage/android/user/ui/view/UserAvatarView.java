@@ -10,6 +10,7 @@ import com.orange.barrage.android.util.misc.image.RoundedTransformation;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
 
+import roboguice.util.Ln;
 
 
 /**
@@ -61,7 +62,7 @@ public class UserAvatarView extends ImageView {
         if(url == null || url.length() == 0) return;
 
         //MessageCenter.postErrorMessage("ni hao wo bei diao yong");
-
+        Ln.e("头像加载照片"+url);//加载照片
         Picasso.with(mContext)
                 .load(url)
                 .resize(300,300)
