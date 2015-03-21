@@ -1,7 +1,9 @@
 package com.orange.barrage.android.user.mission;
 
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.DateUtil;
+import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.barrage.android.util.network.BarrageNetworkCallback;
 import com.orange.barrage.android.util.network.BarrageNetworkClient;
 import com.orange.protocol.message.ErrorProtos;
@@ -285,6 +287,7 @@ public class UserMission {
         updateUser(userBuilder.build(),callback);
     }
 
+    //update the email
     public void updateUserEmail(final String email,final UserMissionCallback callback)
     {
         if (email==null)
@@ -294,8 +297,17 @@ public class UserMission {
         }
         UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
         userBuilder.setUserId(mUserManager.getUserId());
-        userBuilder.setEmail(email);
-        updateUser(userBuilder.build(),callback);
+        //验证邮箱
+        if (StringUtil.isEmail(email))
+        {
+            userBuilder.setEmail(email);
+            updateUser(userBuilder.build(),callback);
+        }
+        else
+        {
+            MessageCenter.postErrorMessage("邮箱格式不正确，请重新输入");
+            return ;
+        }
     }
 
     //update the user password
@@ -310,5 +322,41 @@ public class UserMission {
         userBuilder.setUserId(mUserManager.getUserId());
         userBuilder.setPassword(password);
         updateUser(userBuilder.build(),callback);
+    }
+
+    //update the Gender
+    public void updateUserGender(final Boolean gender,final UserMissionCallback callback)
+    {
+        if (gender==null)
+        {
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE,null);
+            return ;
+        }
+        UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        userBuilder.setGender(gender);
+        updateUser(userBuilder.build(),callback);
+    }
+
+    //update the phoneNumber
+    public void updateUserPhoneNumber(final String phonenumber,final UserMissionCallback callback)
+    {
+        if (phonenumber==null)
+        {
+            callback.handleMessage(ErrorProtos.PBError.ERROR_INCORRECT_INPUT_DATA_VALUE,null);
+            return ;
+        }
+        UserProtos.PBUser.Builder userBuilder=UserProtos.PBUser.newBuilder();
+        userBuilder.setUserId(mUserManager.getUserId());
+        if (StringUtil.isPhoneNumberValid(phonenumber))
+        {
+            userBuilder.setMobile(phonenumber);
+            updateUser(userBuilder.build(), callback);
+        }
+        else
+        {
+            MessageCenter.postErrorMessage("手机号码格式不正确，请重新输入11位正确的号码");
+            return ;
+        }
     }
 }

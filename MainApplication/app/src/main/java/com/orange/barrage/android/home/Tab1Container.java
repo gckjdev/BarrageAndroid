@@ -38,8 +38,6 @@ public class Tab1Container extends HomeContainerFragment {
     private void initView() {
         replaceFragment(new TimelineFragment(), false);
 
-
-
     }
 
 }

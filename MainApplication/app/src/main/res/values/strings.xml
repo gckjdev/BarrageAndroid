@@ -75,14 +75,22 @@
     <string name="title_activity_user_signature_edit_text">UserSignatureEditTextActivity</string>
     <string name="title_activity_user_home_modify_password">UserHomeModifyPasswordActivity</string>
     <string name="title_activity_user_select_gender">UserSelectGenderActivity</string>
-
     <string name="b_editext">编辑</string>
     <string name="b_create_tab">创建标签</string>
     <string name="b_tab_detail_info">标签详情</string>
     <string name="b_editexttab">编辑标签</string>
     <string name="b_OK">确定</string>
+    <string name="user_setting_save">存储</string>
     <string name="b_create_tab_hinit">请输入标签名字，例如死党</string>
+
     <string name="b_friend_select_friend">选择好友</string>
-    <string name="title_activity_user_email_edit_text">UserEmailEditTextActivity</string>
     <string name="b_complete">完成</string>
+    <string name="b_tag_is_not_null">标签不可以空,请输入标签</string>
+    <string name="title_activity_user_email_edit_text">UserEmailEditTextActivity</string>
+    <string name="title_activity_user_phone_number_edit_text">UserPhoneNumberEditTextActivity</string>
+    <string name="title_activity_user_home_setting">UserHomeSettingActivity</string>
+    <string name="title_activity_user_home_setting_about">UserHomeSettingAboutActivity</string>
+    <string name="title_activity_user_home_setting_style">UserHomeSettingStyleActivity</string>
+    <string name="title_activity_user_home_setting_speed">UserHomeSettingSpeedActivity</string>
+
 </resources>

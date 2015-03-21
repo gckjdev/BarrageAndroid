@@ -32,8 +32,7 @@ public class EnterInviteCodeActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_invite_code);
+        super.onCreate(savedInstanceState ,R.layout.activity_enter_invite_code  , "填写邀请码" , -  1 );
         mBarrageAndroid.addActivity(this);
         mCodeEditText.setText(mInviteCodeManager.getCurrentInviteCode());
     }

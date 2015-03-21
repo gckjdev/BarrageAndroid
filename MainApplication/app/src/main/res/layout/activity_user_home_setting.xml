@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeSettingActivity">
+    <include layout="@layout/activity_view_top" />
+
+    <LinearLayout
+        android:id="@+id/setting_style_layout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="风格"
+                style="@style/user_homepage" />
+
+            <TextView
+                android:id="@+id/setting_style_textview"
+                android:text="摩擦"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/setting_speed_layout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="速度"
+                style="@style/user_homepage" />
+
+            <TextView
+                android:id="@+id/setting_speed_textview"
+                android:text="正常"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+    <LinearLayout
+        android:id="@+id/setting_about_layout"
+        style="@style/user_info_linearlayout_common">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="关于"
+                style="@style/user_homepage" />
+
+            <!--<TextView
+                android:id="@+id/setting_speed_textview"
+                android:text="正常"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                style="@style/user_homepage_right" />-->
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

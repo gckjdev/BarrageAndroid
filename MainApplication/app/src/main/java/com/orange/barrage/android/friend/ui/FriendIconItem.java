@@ -4,13 +4,19 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.friend.mission.TagMission;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.protocol.message.UserProtos;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * Created by Administrator on 2015/3/13.
@@ -20,7 +26,12 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     private UserAvatarView mIconImageView;
     private ImageButton mdeleteIconImageView;
     private TextView mNameTextView;
+    private List<UserProtos.PBUser> mPbUsers;
+    private UserProtos.PBUser mPbUser;
+    private BaseAdapter mAdapter;
+    private FriendIconList.OnClickItemListener mOnClickItemListener;
 
+    @Inject
 
     public FriendIconItem(Context context) {
         super(context);
@@ -51,7 +62,7 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     public void loadUser(UserProtos.PBUser user  , int type){
 
         setType(type);
-
+        mPbUser = user;
         if(mIconImageView != null) mIconImageView.loadUser(user);
         if(mNameTextView != null) mNameTextView.setText(user.getNick());
     }
@@ -68,11 +79,11 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
         if(mdeleteIconImageView == null) return;
 
         if(type == FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE){
-           setHiddenDeleteButton();
+           setHiddenTopDeleteButton();
         }else if(type == FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE){
             setShowDeleteButton();
         }else if(type == FriendIconList.ICON_ORDINARY){
-            setHiddenDeleteButton();
+            setHiddenTopDeleteButton();
         }
     }
 
@@ -82,16 +93,25 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     }
 
 
-    public void setHiddenDeleteButton(){
+    public void setHiddenTopDeleteButton(){
         if(mdeleteIconImageView == null) mdeleteIconImageView = (ImageButton) findViewById(R.id.icon_delete_button);
         mdeleteIconImageView.setVisibility(View.GONE);
-
+        //设置TextView为空
+        mNameTextView.setText("");
     }
 
 
-    private void deleteIcon(){
-        //删除头像
+    //删除头像
+    private void deleteIcon(View v){
 
+
+        mOnClickItemListener.onClickItem(-1 , v, mPbUser , FriendIconList.OnClickItemListener.ICON_TOP_DELETE_BUTTON);
+
+        //删除头像
+        if(mAdapter != null && mPbUsers != null){
+            mPbUsers.remove(mPbUser);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
 
@@ -106,10 +126,15 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if(v == mdeleteIconImageView) deleteIcon();
+        if(v == mdeleteIconImageView) deleteIcon(v);
         else if(v == mIconImageView) onClickIcon();
     }
 
+    public void setUser(List<UserProtos.PBUser> pbUsers , BaseAdapter adapter ,FriendIconList.OnClickItemListener l){
+        mPbUsers = pbUsers;
+        mAdapter = adapter;
+        mOnClickItemListener = l;
+    }
 
 
 

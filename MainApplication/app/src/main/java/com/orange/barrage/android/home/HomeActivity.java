@@ -234,10 +234,11 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
         if(resultCode == 0X12){
             mOnFragmentCommunicationListener.onListener(null);
-        }else
-            if(mShowPublisFeedView != null)
-                mShowPublisFeedView.getPhotoAndCamera().getPicture(requestCode,resultCode,data, l);
-
+        }else if(mShowPublisFeedView != null) {
+            PhotoAndCamera photoAndCamera =  mShowPublisFeedView.getPhotoAndCamera();
+            if(photoAndCamera != null)
+                photoAndCamera.getPicture(requestCode, resultCode, data, l);
+        }
     }
 
     private PhotoAndCamera.onGetPhotoCallback l = new PhotoAndCamera.onGetPhotoCallback() {

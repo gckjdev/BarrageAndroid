@@ -11,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.MessageCenter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import roboguice.util.Ln;
 
 
 /**
@@ -79,6 +82,9 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
         return null;
     }
 
+    public int getChildCount(){
+        return mViewList.size();
+    }
 
     public void addViews(View[] views){
         if(views == null)  return ;
@@ -102,6 +108,7 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
         for(int i = 0 ;  i < count ; i ++)
             mTab_Icon.addView(getImageView());
 
+       setTabIconLocation(mPosition);
 
     }
 
@@ -121,7 +128,7 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
 
     private void setTabPointBg(int postion , int drawId){
 
-        if(postion < mTab_Icon.getChildCount() && postion >= 0){
+        if(postion < mViewList.size() && postion >= 0){
 
             mTab_Icon.getChildAt(postion).setBackgroundResource(drawId);
 
@@ -152,6 +159,7 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        Ln.e("state多少的是多少:"+position);
         if(isInit){
             isInit = false;
             setTabIconLocation(position);

@@ -36,7 +36,7 @@ public class FriendListSelectActivity extends BarrageCommonActivity {
     protected void onCreate(Bundle saveBundle){
         super.onCreate(saveBundle , R.layout.activity_friend_list_select_ , R.string.b_friend_select_friend , R.string.b_complete);
 
-        mFriendListInfoListView.setUserInfo();
+        mFriendListInfoListView.setUserInfo(mFriendManager.getFriendList());
 
 
 

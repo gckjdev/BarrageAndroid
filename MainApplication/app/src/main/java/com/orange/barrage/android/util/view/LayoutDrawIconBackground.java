@@ -37,19 +37,26 @@ public  class LayoutDrawIconBackground {
 
     private EditText mEditText;
 
-    public void setWhitTriangleRadioRoundFrectBg(final View Parcent , final View child){
+    public void setWhitTriangleRadioRoundFrectListenerBg(final View Parcent, final View child){
 
 
         child.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                mParams = mParams != null ? mParams : new Params();
-                child.setPadding(mParams.padding + mParams.marginLeft, mParams.padding + mParams.marginTop + mParams.mTopHeight, mParams.padding + mParams.marginRight, mParams.padding + mParams.marginBottopm);
-                child.setBackground(ImageUtil.getBitmapChangeDrawable(getWhitTriangleRadioRoundFrectBgBitmap(getParams(), Parcent, child)));
                 Parcent.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                setWhitTrianleRadioRoundFrectBg(Parcent ,child);
+
             }
         });
     }
+
+
+    public void setWhitTrianleRadioRoundFrectBg(View parcent , View child){
+        mParams = mParams != null ? mParams : new Params();
+        child.setPadding(mParams.padding + mParams.marginLeft, mParams.padding + mParams.marginTop + mParams.mTopHeight, mParams.padding + mParams.marginRight, mParams.padding + mParams.marginBottopm);
+        child.setBackground(ImageUtil.getBitmapChangeDrawable(getWhitTriangleRadioRoundFrectBgBitmap(getParams(), parcent, child)));
+    }
+
 
 
 

@@ -1,16 +1,13 @@
 package com.orange.barrage.android.feed.mission;
 
 import android.app.Activity;
-import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.ui.FriendIconList;
-import com.orange.barrage.android.friend.ui.FriendIconListAdapter;
 import com.orange.barrage.android.util.activity.FloatWindow;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.UserProtos;
 
@@ -28,13 +25,13 @@ public class ShowFriendIconView {
 
     public ShowFriendIconView(Activity activity){
         mActivity = activity;
-        initView();
+
     }
 
     private boolean initView(){
         boolean is = false;
         mFloatWindow = (is = mFloatWindow == null) ?
-                (new FloatWindow(R.layout.view_popupwindow_friend_list , mActivity , ViewGroup.LayoutParams.MATCH_PARENT , ViewGroup.LayoutParams.WRAP_CONTENT , Gravity.CENTER|Gravity.TOP))
+                (new FloatWindow(R.layout.view_popupwindow_friend_list , mActivity , ViewGroup.LayoutParams.MATCH_PARENT , ViewGroup.LayoutParams.WRAP_CONTENT , Gravity.TOP))
                 :mFloatWindow;
 
         return is;
@@ -45,16 +42,16 @@ public class ShowFriendIconView {
 
         boolean is = initView();
         mFloatWindow.show(parent);
-        if(is) return;
+        if(!is) return;
         View v  = mFloatWindow.getContextView();
         mFrinedInconList = (FriendIconList) v .findViewById(R.id.friendIconFrinedInconlist);
 
         LayoutDrawIconBackground.Params params = new LayoutDrawIconBackground.Params();
 
-        params.marginLeft  = 20;
-        params.marginRight = 20;
+        params.marginLeft  = 10;
+        params.marginRight = 10;
 
-        new LayoutDrawIconBackground().setParams(params).setWhitTriangleRadioRoundFrectBg(parent, mFrinedInconList);
+        new LayoutDrawIconBackground().setParams(params).setWhitTriangleRadioRoundFrectListenerBg(parent, mFrinedInconList);
 
         mFrinedInconList.setUsers(users , mActivity);
         mFrinedInconList.setIconType(FriendIconList.ICON_ORDINARY);
@@ -64,7 +61,7 @@ public class ShowFriendIconView {
     private FriendIconList.OnClickItemListener mOnClickItemListener = new FriendIconList.OnClickItemListener() {
         @Override
         public void onClickItem(int postion, View view, Object data, int iconType) {
-            if(iconType == ICON_DELETE){
+            if(iconType == ICON_DELETE_BUTTON){
 
             }
 

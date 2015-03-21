@@ -5,34 +5,30 @@ import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
-import roboguice.util.Ln;
-
-public class UserEmailEditTextActivity extends AbstractEditTextActivity {
-
+public class UserPhoneNumberEditTextActivity extends AbstractEditTextActivity {
 
     @Override
     public String getTips() {
-        return "好的邮箱能让你的朋友能尽快联系到你";
+        return "请输入11位正确的手机号码";
     }
 
     @Override
     public String getPlaceHolder() {
-        return "请输入abc@126.com类似格式的邮箱";
+        return "请输入手机号码";
     }
 
     @Override
     public String getTopBarTitle() {
-        return "邮箱设置";
+        return "手机号码设置";
     }
 
     @Override
     public String onClickSubmit(String newValue) {
-        Ln.d("set email name callback " + newValue);
-        mUserMission.updateUserEmail(newValue, new UserMissionCallback() {
+        mUserMission.updateUserPhoneNumber(newValue,new UserMissionCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
                 if (errorCode == 0){
-                    MessageCenter.postSuccessMessage("邮箱已更新");
+                    MessageCenter.postSuccessMessage("手机号码已经更新");
                     finish();
                 }
             }

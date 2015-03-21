@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_view_top" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.orange.barrage.android.user.ui.user_home.UserHomeSettingAboutActivity">
+
+        <ImageView
+            android:src="@drawable/logo_launch_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:layout_above="@+id/current_version"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/current_version"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="检查更新"
+            android:id="@+id/checkupdate"
+            android:layout_width="150dp"
+            style="@style/b_button_color_red"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/current_version"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="123@126.com"
+            android:id="@+id/help"
+            android:layout_width="150dp"
+            style="@style/b_button_color_red"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/checkupdate"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</LinearLayout>

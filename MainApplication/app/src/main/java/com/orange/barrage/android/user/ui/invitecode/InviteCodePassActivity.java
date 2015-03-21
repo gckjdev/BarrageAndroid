@@ -148,6 +148,8 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
         } else {
             ToastUtil.makeTextShort(R.string.y_reginfail, InviteCodePassActivity.this);
         }
+
+        dismissProgress();
     }
 
     public void onClickQQ(View v){

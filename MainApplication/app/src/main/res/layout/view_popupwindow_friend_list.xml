@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    style="@style/match_content">
+    android:orientation="vertical"
+    style="@style/wrap_content">
     <com.orange.barrage.android.friend.ui.FriendIconList
+        android:numColumns="5"
         android:id="@+id/friendIconFrinedInconlist"
         style="@style/match_content"/>
-
 </LinearLayout>
