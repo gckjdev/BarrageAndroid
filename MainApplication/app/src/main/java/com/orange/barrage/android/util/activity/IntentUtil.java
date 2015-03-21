@@ -11,7 +11,7 @@ public class IntentUtil {
     private Activity mActivity;
 
     public IntentUtil(Activity activity){
-        mActivity = activity;
+            mActivity = activity;
     }
 
     public byte[] getIntentByteArrays(String key){

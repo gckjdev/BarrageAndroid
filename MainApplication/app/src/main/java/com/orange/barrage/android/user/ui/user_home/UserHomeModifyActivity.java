@@ -41,7 +41,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
     private UserAvatarView mUserAvatarImageView;
 
     @InjectView(R.id.user_modify_nick)
-    private TextView mUserModifyNick;
+    private  TextView mUserModifyNick;
 
     @InjectView(R.id.user_modify_signature)
     private TextView mUserModifySignature;

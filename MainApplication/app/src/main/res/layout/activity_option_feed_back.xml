@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.orange.barrage.android.friend.activity.OptionFeedBackActivity">
+    <include layout="@layout/activity_view_top"/>
+    <RelativeLayout
+        android:id="@+id/edittext_layout"
+        android:background="#f8f8f8"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+        <EditText
+            android:id="@+id/feedback_edittext"
+            android:hint="@string/option_feedback_hint"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:textColorHint="#848484"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="160dp" />
+        </RelativeLayout>
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="1dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        </RelativeLayout>-->
+   <!--<View-->
+       <!---->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_height="1dp"/>-->
+    <RelativeLayout
+       android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="#f8f8f8"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="60dp">
+
+        <TextView
+            android:background="#FFDFDFDF"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:text="联系方式:"
+            android:textSize="17sp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2" />
+        <EditText
+            android:background="@null"
+            android:hint="@string/option_feedback_edithint"
+            android:textColorHint="#848484"
+            android:id="@+id/option_contact"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp"
+            android:inputType="numberDecimal"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:background="#f8f8f8"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="60dp">
+        <TextView
+            android:background="#FFDFDFDF"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:text="小贴士:"
+            android:textColor="#848484"
+            android:id="@+id/edithint"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:text="@string/option_feedback_error"
+            android:layout_width="match_parent"
+            android:textColor="#848484"
+            android:textSize="14.5sp"
+            android:layout_below="@+id/edithint"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3" />
+        </RelativeLayout>
+
+</LinearLayout>
