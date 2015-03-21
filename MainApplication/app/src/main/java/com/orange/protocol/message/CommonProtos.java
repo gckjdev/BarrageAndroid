@@ -8,6 +8,88 @@ public final class CommonProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code barrage.PBDeviceType}
+   */
+  public enum PBDeviceType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>DEVICE_IPHONE = 1;</code>
+     */
+    DEVICE_IPHONE(0, 1),
+    /**
+     * <code>DEVICE_ANDROID = 2;</code>
+     */
+    DEVICE_ANDROID(1, 2),
+    ;
+
+    /**
+     * <code>DEVICE_IPHONE = 1;</code>
+     */
+    public static final int DEVICE_IPHONE_VALUE = 1;
+    /**
+     * <code>DEVICE_ANDROID = 2;</code>
+     */
+    public static final int DEVICE_ANDROID_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static PBDeviceType valueOf(int value) {
+      switch (value) {
+        case 1: return DEVICE_IPHONE;
+        case 2: return DEVICE_ANDROID;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PBDeviceType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PBDeviceType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PBDeviceType>() {
+            public PBDeviceType findValueByNumber(int number) {
+              return PBDeviceType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.orange.protocol.message.CommonProtos.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final PBDeviceType[] VALUES = values();
+
+    public static PBDeviceType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PBDeviceType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:barrage.PBDeviceType)
+  }
+
   public interface PBDeviceOrBuilder extends
       // @@protoc_insertion_point(interface_extends:barrage.PBDevice)
       com.google.protobuf.MessageOrBuilder {
@@ -1295,8 +1377,9 @@ public final class CommonProtos {
       "\n\014Common.proto\022\007barrage\"p\n\010PBDevice\022\014\n\004t" +
       "ype\030\001 \002(\005\022\r\n\005model\030\002 \001(\t\022\n\n\002os\030\003 \001(\t\022\020\n\010" +
       "deviceId\030\004 \001(\t\022\023\n\013deviceToken\030\005 \001(\t\022\024\n\014i" +
-      "sJailBroken\030\006 \001(\tB+\n\033com.orange.protocol" +
-      ".messageB\014CommonProtos"
+      "sJailBroken\030\006 \001(\t*5\n\014PBDeviceType\022\021\n\rDEV" +
+      "ICE_IPHONE\020\001\022\022\n\016DEVICE_ANDROID\020\002B+\n\033com." +
+      "orange.protocol.messageB\014CommonProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

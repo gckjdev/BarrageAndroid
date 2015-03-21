@@ -93,6 +93,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mCommentsEdit = addViewCommentToMoveView(xy[0] , xy[1]);
         //设置成可编辑
         mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
+
         for(int i = 0 ; i < mColors.length ; i ++){
             mLayout.addView(CreateImageView(mColors[i]));
         }
@@ -140,6 +141,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         if(mSelectColor == color){
             ccv.setImageResource(R.drawable.y_comments_select);
             mCircleColorView = ccv;
+
         }
 
         ccv.setColor(color);
