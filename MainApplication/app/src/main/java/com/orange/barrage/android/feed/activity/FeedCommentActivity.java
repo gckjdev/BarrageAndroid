@@ -15,7 +15,7 @@ import com.orange.barrage.android.feed.ui.view.BarrageGridView;
 import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.ui.topic.FeedActionWidget;
 import com.orange.barrage.android.ui.topic.FeedMainWidget;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
@@ -75,7 +75,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
 
     private void initView() {
-        PictureTopicModel model = initData();
+        FeedModel model = initData();
         if (model == null) {
             return;
         }
@@ -104,7 +104,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mCommentsEdit.setUser(user);
     }
 
-    private PictureTopicModel initData() {
+    private FeedModel initData() {
         try {
             mFeed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(HomeActivity.KEYSBYTE));
         } catch (InvalidProtocolBufferException e) {
@@ -115,7 +115,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
             return null;
         }
 
-        PictureTopicModel model = new PictureTopicModel();
+        FeedModel model = new FeedModel();
         model.setFeed(mFeed);
 
         //FIXME: Rollin init the action later, init it when publish

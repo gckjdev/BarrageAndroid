@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.view.ScalableFrameLayout;
 import com.orange.protocol.message.BarrageProtos;
 
@@ -71,11 +71,11 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
         mInnerView.moveTo(progress);
     }
 
-    public void setModel(PictureTopicModel model) {
+    public void setModel(FeedModel model) {
         mInnerView.setModel(model);
     }
 
-    public PictureTopicModel getModel(){
+    public FeedModel getModel(){
         return mInnerView.getModel();
     }
 

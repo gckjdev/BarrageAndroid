@@ -1,7 +1,6 @@
 package com.orange.barrage.android.feed.ui;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -9,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.orange.barrage.android.feed.model.FeedManager;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
@@ -71,7 +70,7 @@ public class UserTimelineAdapter extends BaseAdapter{
         }
 
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
-        PictureTopicModel model = new PictureTopicModel();
+        FeedModel model = new FeedModel();
         model.setFeed(feed);
         ((TimelineItemView)convertView).setModel(model);
 

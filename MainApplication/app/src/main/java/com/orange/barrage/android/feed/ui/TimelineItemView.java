@@ -13,7 +13,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.mission.ShowFriendIconView;
 import com.orange.barrage.android.ui.topic.FeedMainWidget;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.ContextManager;
@@ -34,7 +34,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     private LinearLayout mLayoutIcon;
     private TextView mTimeTextView ;
     private ImageButton mPlayerButton;
-    private FeedMainWidget mBarrageWidget;
+    private FeedMainWidget mFeedMainWidget;
     private ImageButton mDropDownImageButton;
     private ShowFriendIconView mShowFriendIconView;
     private List<UserProtos.PBUser> mToUsers;
@@ -52,8 +52,8 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mShareButton = (ImageButton)mView.findViewById(R.id.shareButton);
         mPlayerButton = (ImageButton)mView.findViewById(R.id.playerButton);
 
-        mBarrageWidget = (FeedMainWidget)mView.findViewById(R.id.timeline_item_barage_view);
-        mBarrageWidget.initActualWidth(ScreenUtil.getWidthPixels());
+        mFeedMainWidget = (FeedMainWidget)mView.findViewById(R.id.feed_main_widget);
+        mFeedMainWidget.initActualWidth(ScreenUtil.getWidthPixels());
 
         mLayoutIcon  = (LinearLayout)mView.findViewById(R.id.iconlayout);
         mTimeTextView = (TextView)mView.findViewById(R.id.timeline_item_date);
@@ -65,7 +65,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mShareButton.setOnClickListener(this);
     }
 
-    public void setModel(PictureTopicModel model) {
+    public void setModel(FeedModel model) {
         if(model == null) {
             return;
         }
@@ -78,13 +78,13 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
         //set user list
         List<UserProtos.PBUser> toUsers = model.getFeed().getToUsersList();
-        mBarrageWidget.setModel(model);
+        mFeedMainWidget.setModel(model);
     }
 
 
 
 
-    private void setIcon(PictureTopicModel model){
+    private void setIcon(FeedModel model){
         mToUsers = model.getFeed().getToUsersList();
         if(mToUsers == null) {
             return;
@@ -108,7 +108,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      */
     public void onClickPublish(View v){
         StartActivityFeedPublishedOtherPlatformEvent event = new StartActivityFeedPublishedOtherPlatformEvent();
-        PictureTopicModel model = mBarrageWidget.getModel();
+        FeedModel model = mFeedMainWidget.getModel();
         event.setByteArray( model.getFeed().toByteArray());
         EventBus.getDefault().post(event);
     }
@@ -118,7 +118,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      *
      */
     public void onClickPlayer(View v){
-        mBarrageWidget.play();
+        mFeedMainWidget.play();
     }
 
 

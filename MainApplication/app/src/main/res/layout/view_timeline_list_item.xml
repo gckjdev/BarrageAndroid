@@ -10,13 +10,9 @@
     <RelativeLayout
         style="@style/match_content"
         android:layout_height="wrap_content">
-        <!--<ImageView-->
-            <!--android:id="@+id/timeline_item_barage_image"-->
-            <!--android:src="@drawable/text"-->
-            <!--style="@style/match_content"/>-->
 
         <com.orange.barrage.android.ui.topic.FeedMainWidget
-            android:id="@+id/timeline_item_barage_view"
+            android:id="@+id/feed_main_widget"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             />
@@ -72,6 +68,4 @@
         android:background="@drawable/x_firstview_bg"
         android:layout_width="match_parent"
         android:layout_height="10dip" />
-
-
 </LinearLayout>

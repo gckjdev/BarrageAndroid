@@ -7,7 +7,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.FeedWidgetMode;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.protocol.message.BarrageProtos;
@@ -28,7 +28,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
         super.onCreate(savedInstanceState , R.layout.activity_feed_publish_other_platform, R.string.b_share_main , -1 );
         initView();
 
-        PictureTopicModel model = initData();
+        FeedModel model = initData();
         mFeedMainWidget.setMode(FeedWidgetMode.SHARE);
         mFeedMainWidget.setModel(model);
 
@@ -43,7 +43,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
     }
 
     //FIXME: Rollin, duplicate codes in CommentActivity
-    private PictureTopicModel initData() {
+    private FeedModel initData() {
         BarrageProtos.PBFeed feed = null;
         try {
             feed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(HomeActivity.KEYSBYTE));
@@ -55,7 +55,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
             return null;
         }
 
-        PictureTopicModel model = new PictureTopicModel();
+        FeedModel model = new FeedModel();
         model.setFeed(feed);
         return model;
     }

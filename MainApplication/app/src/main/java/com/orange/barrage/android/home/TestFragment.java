@@ -17,7 +17,6 @@ import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.feed.ui.FeedPhotoSourceSelectionLayout;
 import com.orange.barrage.android.ui.topic.FeedMainWidget;
-import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
@@ -202,25 +201,5 @@ public class TestFragment extends RoboFragment {
     private int mCommentLocationThreshold = 800;
 
     private void initMainWidget(){
-        String imageURL = PictureTopicDummyDataGen.getImange();
-        mMainWidget.setImageURL(imageURL);
-        mMainWidget.setSubtitle("Subtitle Text");
-
-        List<BarrageProtos.PBFeedAction> feedActionList = Lists.newArrayList();
-
-        Random random = new Random();
-        mCurrentCommentSize = 5 + random.nextInt(10);//[5, 15]
-
-        for(int i=0;i<mCurrentCommentSize;i++){
-            String text = PictureTopicDummyDataGen.getFeedActionText();
-            float x = mCommentLocationThreshold * random.nextFloat();
-            float y =  mCommentLocationThreshold * random.nextFloat();
-
-            String avatar = PictureTopicDummyDataGen.getAvatar();
-            BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
-
-            feedActionList.add(action);
-        }
-        mMainWidget.setBarrageActions(feedActionList);
     }
 }

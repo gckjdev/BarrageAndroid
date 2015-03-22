@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.feed.ui.view.BarrageGridView;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.protocol.message.BarrageProtos;
@@ -37,33 +37,26 @@ public class FeedMainInnerWidget extends FrameLayout {
     private TextView mSubtitleView;
     private List<FeedActionWidget> mFeedActionViews = new ArrayList<>();
     private BarragePlayer mBarragePlayer;
-    private PictureTopicModel mModel;
+    private FeedModel mModel;
     private Context mContext;
     private FeedWidgetMode mMode;
 
     private BarrageGridView mGridView;
-
-    public MoveViewParentRelativity getMoveView() {
-        return mMoveView;
-    }
-
-    public BarrageGridView getGridView() {
-        return mGridView;
-    }
 
     private MoveViewParentRelativity mMoveView;
 
     //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
     private Modle mModle = new Modle();
 
-    public FeedMainInnerWidget(Context context, AttributeSet set, PictureTopicContainer container) {
-        this(context, set);
-    }
-
     public FeedMainInnerWidget(Context context, AttributeSet set) {
         super(context, set);
 
         initViews(context);
+    }
+
+    @Inject
+    public FeedMainInnerWidget(Context context) {
+        this(context, null);
     }
 
     protected void initViews(Context context) {
@@ -100,9 +93,12 @@ public class FeedMainInnerWidget extends FrameLayout {
         mBarragePlayer = barragePlayerSpring;
     }
 
-    @Inject
-    public FeedMainInnerWidget(Context context) {
-        this(context, null);
+    public MoveViewParentRelativity getMoveView() {
+        return mMoveView;
+    }
+
+    public BarrageGridView getGridView() {
+        return mGridView;
     }
 
     public void setMode(FeedWidgetMode mode) {
@@ -225,14 +221,14 @@ public class FeedMainInnerWidget extends FrameLayout {
         mBarragePlayer.moveToEnd();
     }
 
-    public void setModel(PictureTopicModel model) {
+    public void setModel(FeedModel model) {
         mModel = model;
         setSubtitle(model.getSubtitleText());
         setImageURL(model.getImageUrl());
         setBarrageActions(model.getFeedActionLis());
     }
 
-    public PictureTopicModel getModel() {
+    public FeedModel getModel() {
         return mModel;
     }
 
