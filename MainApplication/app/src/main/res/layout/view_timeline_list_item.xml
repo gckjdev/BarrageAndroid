@@ -15,7 +15,7 @@
             <!--android:src="@drawable/text"-->
             <!--style="@style/match_content"/>-->
 
-        <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+        <com.orange.barrage.android.ui.topic.FeedMainWidget
             android:id="@+id/timeline_item_barage_view"
             android:layout_width="match_parent"
             android:layout_height="300dp"

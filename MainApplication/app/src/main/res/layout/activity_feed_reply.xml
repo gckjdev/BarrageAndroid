@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+        <com.orange.barrage.android.ui.topic.FeedMainWidget
             android:id="@+id/picture_topic_main_widget"
             android:layout_width="match_parent"
             android:layout_height="300dp"

@@ -30,7 +30,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by Rollin on 2014/11/30.
  */
-public class PictureTopicMainInnerWidget extends FrameLayout {
+public class FeedMainInnerWidget extends FrameLayout {
 
     private ImageView mImage;
     private TextView mSubtitleView;
@@ -38,7 +38,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     private BarragePlayer mBarragePlayer;
     private PictureTopicModel mModel;
     private Context mContext;
-    private PictureTopicMode mMode;
+    private FeedWidgetMode mMode;
 
     private BarrageGridView mGridView;
 
@@ -55,11 +55,11 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
     private Modle mModle = new Modle();
 
-    public PictureTopicMainInnerWidget(Context context,AttributeSet set, PictureTopicContainer container) {
+    public FeedMainInnerWidget(Context context, AttributeSet set, PictureTopicContainer container) {
         this(context, set);
     }
 
-    public PictureTopicMainInnerWidget(Context context, AttributeSet set) {
+    public FeedMainInnerWidget(Context context, AttributeSet set) {
         super(context, set);
 
         initViews(context);
@@ -94,7 +94,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         setLayoutParams(widgetLayoutParams);
 
 
-        mMode = PictureTopicMode.LIST;
+        mMode = FeedWidgetMode.LIST;
         //
         BarragePlayerSpringImpl barragePlayerSpring = new BarragePlayerSpringImpl();
         barragePlayerSpring.setParentHeight((int)height);
@@ -102,11 +102,11 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     }
 
     @Inject
-    public PictureTopicMainInnerWidget(Context context) {
+    public FeedMainInnerWidget(Context context) {
         this(context, null);
     }
 
-    public void setMode(PictureTopicMode mode) {
+    public void setMode(FeedWidgetMode mode) {
         mMode = mode;
     }
 
@@ -127,6 +127,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         mFeedActionViews = Lists.newArrayList();
         for (BarrageProtos.PBFeedAction action : feedActionList) {
             FeedActionWidget actionWidget = new FeedActionWidget(mContext);
+            actionWidget.setType(FeedActionWidget.COMMENETS_TEXTVIEW);
             actionWidget.setFeedAction(action);
             mFeedActionViews.add(actionWidget);
 
@@ -166,6 +167,10 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
     public void moveTo(float progress) {
         mBarragePlayer.moveTo(progress);
+    }
+
+    public void moveToEnd(){
+        mBarragePlayer.moveToEnd();
     }
 
     public void setModel(PictureTopicModel model) {

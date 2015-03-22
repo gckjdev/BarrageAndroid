@@ -32,9 +32,7 @@
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
-        <activity
-            android:name=".feed.activity.FeedReplyActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".feed.activity.FeedCreateActivity"
             android:screenOrientation="portrait" />

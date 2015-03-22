@@ -16,7 +16,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.feed.ui.FeedPhotoSourceSelectionLayout;
-import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
+import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
@@ -78,7 +78,7 @@ public class TestFragment extends RoboFragment {
     Button mMoveToButton;
 
     @InjectView(R.id.picture_topic_main_widget)
-    PictureTopicMainWidget mMainWidget;
+    FeedMainWidget mMainWidget;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

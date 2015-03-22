@@ -34,7 +34,7 @@ public class PictureTopicBottomWidget extends LinearLayout{
         this.addView(button);
     }
 
-    private PictureTopicMainWidget getMainWidget() {
+    private FeedMainWidget getMainWidget() {
         return mContainer.getMainWidget();
     }
 }

@@ -3,9 +3,7 @@ package com.orange.barrage.android.feed.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -13,15 +11,12 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
-import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
 import com.orange.barrage.android.feed.mission.ShowFriendIconView;
-import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
-import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
+import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.ContextManager;
-import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.protocol.message.UserProtos;
@@ -29,7 +24,6 @@ import com.orange.protocol.message.UserProtos;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
-import roboguice.util.Ln;
 
 /**
  * Created by pipi on 15/1/7.
@@ -40,7 +34,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     private LinearLayout mLayoutIcon;
     private TextView mTimeTextView ;
     private ImageButton mPlayerButton;
-    private PictureTopicMainWidget mBarrageWidget;
+    private FeedMainWidget mBarrageWidget;
     private ImageButton mDropDownImageButton;
     private ShowFriendIconView mShowFriendIconView;
     private List<UserProtos.PBUser> mToUsers;
@@ -58,7 +52,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mShareButton = (ImageButton)mView.findViewById(R.id.shareButton);
         mPlayerButton = (ImageButton)mView.findViewById(R.id.playerButton);
 
-        mBarrageWidget = (PictureTopicMainWidget)mView.findViewById(R.id.timeline_item_barage_view);
+        mBarrageWidget = (FeedMainWidget)mView.findViewById(R.id.timeline_item_barage_view);
         //calculate the height
 //        float expectWidth = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
 //        float actualWidth = ScreenUtil.getWidthPixels();

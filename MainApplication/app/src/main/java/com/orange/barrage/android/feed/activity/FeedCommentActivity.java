@@ -13,10 +13,10 @@ import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.feed.ui.view.CircleColorView;
 import com.orange.barrage.android.feed.ui.view.BarrageGridView;
 import com.orange.barrage.android.home.HomeActivity;
-import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
+import com.orange.barrage.android.ui.topic.FeedActionWidget;
+import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.user.model.UserManager;
-import com.orange.barrage.android.user.ui.view.CommentsView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.ScreenUtil;
@@ -40,13 +40,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     LinearLayout mLayout;
 
     @InjectView(R.id.barrage_view)
-    PictureTopicMainWidget mBarrageView;
-
-//    @InjectView(R.id.commentFrame)
-//    MoveViewParentRelativity mComentRelative;
-//
-//    @InjectView(R.id.tableview)
-//    BarrageGridView mTableView;
+    FeedMainWidget mBarrageView;
 
     BarrageProtos.PBFeed mFeed;
     BarrageProtos.PBFeedAction.Builder mActionBuilder;
@@ -60,7 +54,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     private int mSelectColor = Color.WHITE;
     private int mColors[] = {Color.WHITE, 0XFF383838, 0XFF9E6BEA, 0XFF9EC138, 0XFF6DA0F0, 0XFFD28038, 0xFFD2644D};
 
-    private CommentsView mCommentsEdit;
+    private FeedActionWidget mCommentsEdit;
     private CircleColorView mCircleColorView;
     private BottonButtonModel mButtonMdoel = new BottonButtonModel();
 
@@ -91,7 +85,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
         mCommentsEdit = addViewCommentToMoveView(xy[0], xy[1]);
         //设置成可编辑
-        mCommentsEdit.setType(CommentsView.COMMENTS_EDITTEXT);
+        mCommentsEdit.setType(FeedActionWidget.COMMENTS_EDITTEXT);
 
         for (int i = 0; i < mColors.length; i++) {
             mLayout.addView(CreateImageView(mColors[i]));
@@ -107,9 +101,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
         //设置头像
         UserProtos.PBUser user = mUserManager.getUser();
-        mCommentsEdit.setIconUrl(user.getAvatar());
+        mCommentsEdit.setUser(user);
     }
-
 
     private PictureTopicModel initData() {
 
@@ -148,16 +141,13 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         return v;
     }
 
-
     //将回复的View加入到移动的View上面去
-    private CommentsView addViewCommentToMoveView(int l, int t) {
+    private FeedActionWidget addViewCommentToMoveView(int l, int t) {
         if (mBarrageView.getInnerView().getMoveView() == null) {
             return null;
         }
-        CommentsView comment = new CommentsView(this);
-
+        FeedActionWidget comment = new FeedActionWidget(this);
         getMoveView().addView(comment, l, t);
-
         return comment;
     }
 
@@ -177,7 +167,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         }
     }
 
-
     //是否移除背景颜色
     public void onClickRemoveBg(View v) {
         if (v.getTag() == null || v.getTag().equals("Y")) {
@@ -190,11 +179,26 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     }
 
+    public void onFeedActionWidgetShow(View v){
+        if (v.getTag() == null || v.getTag().equals("HideBarrage")) {
+            v.setTag("ShowBarrage");
+            //move to end
+            mBarrageView.getInnerView().moveToEnd();
+            mBarrageView.getInnerView().showAllBarrageActions();
+        } else {
+            //添加背景颜色
+            v.setTag("HideBarrage");
+            mBarrageView.getInnerView().hideAllBarrageActions();
+        }
+    }
 
     //添加网格
-    public void onClickTable(View v) {
+    public void onGridViewShow(View v) {
         BarrageGridView gridView = mBarrageView.getInnerView().getGridView();
-        if (gridView == null) return;
+        if (gridView == null) {
+            return;
+        }
+
         if (v.getTag() == null || v.getTag().equals("o")) {
             gridView.setVisibility(View.VISIBLE);
             v.setTag("y");
@@ -204,7 +208,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         }
 
     }
-
 
     public void onClickText(View v) {
         setSelectView(v, R.id.linearLayout1);
@@ -221,7 +224,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         MessageCenter.postInfoMessage("该功能正在开发");
     }
 
-
     private void setSelectView(View v, int resId) {
 
         if (mButtonMdoel.v != null) {
@@ -235,11 +237,9 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mButtonMdoel.v = parcent;
     }
 
-
     class BottonButtonModel {
         View v;
     }
-
 
     @Override
     public void onClick(View v) {
@@ -253,10 +253,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         changeTextColor(color);
 
         mActionBuilder.setColor(color);
-
-
     }
-
 
     @Override
     public void onClickRight(View v) {
@@ -266,25 +263,21 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     public void sendReply(String replyText) {
         String feedId = mFeed.getFeedId();
         String text = replyText;
-//        float x = 20;
-//        float y = 20;
-
-        // set action builder info
-        //mActionBuilder.setPosX(x);
-        //mActionBuilder.setPosY(y);
         mActionBuilder.setText(replyText);
 
         MoveViewParentRelativity mComentRelative = mBarrageView.getInnerView().getMoveView();
+
+        Ln.d("publish comment on pos (%d, %d)", mComentRelative.getMoveingViewX(), mComentRelative.getMoveingViewY());
         mActionBuilder.setPosX(mComentRelative.getMoveingViewX());
         mActionBuilder.setPosY(mComentRelative.getMoveingViewY());
 
-        BarrageProtos.PBFeedAction action = mActionBuilder.build();
-
+        final BarrageProtos.PBFeedAction action = mActionBuilder.build();
 
         mFeedMission.replyFeed(action, new FeedMissionCallbackInterface() {
             @Override
             public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
                 //FIXME: need to add the Feed to current widget...
+                //add action
                 finish();
             }
 

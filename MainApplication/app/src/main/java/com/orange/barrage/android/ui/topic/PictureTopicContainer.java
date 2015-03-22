@@ -15,7 +15,7 @@ public class PictureTopicContainer extends LinearLayout{
 
     private PictureTopicModel mModel;
     private PictureTopicTopWidget mTopWidget;
-    private PictureTopicMainWidget mMainWidget;
+    private FeedMainWidget mMainWidget;
     private PictureTopicBottomWidget mBottomWidget;
     private Activity mActivity;
 
@@ -38,7 +38,7 @@ public class PictureTopicContainer extends LinearLayout{
         this.addView(mBottomWidget);
     }
 
-    public PictureTopicMainWidget getMainWidget() {
+    public FeedMainWidget getMainWidget() {
         return mMainWidget;
     }
 

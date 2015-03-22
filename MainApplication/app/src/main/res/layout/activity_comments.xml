@@ -1,156 +1,157 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     style="@style/match_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical">
 
     <include layout="@layout/activity_view_top"/>
 
-    <!--
-    <com.orange.barrage.android.util.view.MoveViewParentRelativity
-        android:id="@+id/commentFrame"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            style="@style/match_content"
-            android:id="@+id/CommentImageView"/>
-        <com.orange.barrage.android.feed.ui.view.BarrageGridView
-            android:id="@+id/tableview"
-            android:visibility="gone"
-            style="@style/match_content" />
-    </com.orange.barrage.android.util.view.MoveViewParentRelativity>
-    -->
-    <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+    <com.orange.barrage.android.ui.topic.FeedMainWidget
         android:id="@+id/barrage_view"
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_weight="1"
         />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="154dip"
         android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="154dip">
+        android:orientation="vertical">
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dip"
-        android:orientation="horizontal"
-        android:background="#121212">
-
-        <FrameLayout
-            android:layout_weight="1"
-            style="@style/match_content">
-            <ImageButton
-                android:src="@drawable/x_comment_preview"
-                android:background="@color/b_color_alpha"
-                android:layout_marginLeft="69dip"
-                android:onClick="onClickRemoveBg"
-                android:layout_gravity="center_vertical"
-                style="@style/wrap_content"/>
-        </FrameLayout>
-        <FrameLayout
-            android:layout_weight="1"
-            style="@style/match_content">
-            <ImageButton
-                android:onClick="onClickTable"
-                android:src="@drawable/x_comment_table"
-                android:background="@color/b_color_alpha"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="69dip"
-                style="@style/wrap_content"/>
-        </FrameLayout>
-    </LinearLayout>
-
-        <LinearLayout
-        android:background="#e7e7e7"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="55dip">
-
-        <ImageButton
-            android:scaleType="center"
-            android:src="@drawable/y_commit_not_select"
-            android:layout_marginLeft="30dip"
-            android:background="@drawable/x_comment_select_bg"
-            android:layout_gravity="center"
-            android:layout_height="29dip"
-            android:layout_width="50dip" />
-
-        <HorizontalScrollView
-            android:layout_marginLeft="10dip"
             android:layout_width="match_parent"
-            android:scrollbars="none"
-            android:layout_height="match_parent"
-            android:id="@+id/horizontalScrollView" >
+            android:layout_height="44dip"
+            android:background="#121212"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/color_ring"
-                android:gravity="center"
+            <FrameLayout
                 style="@style/match_content"
-                android:orientation="horizontal">
+                android:layout_weight="1">
+                <ImageButton
+                    style="@style/wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="69dip"
+                    android:background="@color/b_color_alpha"
+                    android:onClick="onFeedActionWidgetShow"
+                    android:src="@drawable/x_comment_preview"/>
+            </FrameLayout>
 
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-
-    </LinearLayout>
-        <TextView
-        android:textColor="#cfcfcf"
-        android:layout_width="match_parent"
-        android:layout_height="1dip" />
-        <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="55dip">
-        <RelativeLayout
-            android:id="@+id/linearLayout1"
-            style="@style/b_comments_bottom_menu_main">
-        <LinearLayout
-            style="@style/b_comments_bottom_menu_main_linear">
-            <ImageButton
-                android:id = "@+id/imageButton1"
-                android:onClick="onClickText"
-                android:src="@drawable/x_text"
-                 style="@style/b_comments_bottom_menu_button"/>
-            <TextView
-                style="@style/b_comments_botton_menu_main_Text"
-                android:textColor="@color/b_color_red"
-                android:text="@string/b_word"
-                />
+            <FrameLayout
+                style="@style/match_content"
+                android:layout_weight="1">
+                <ImageButton
+                    style="@style/wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="69dip"
+                    android:background="@color/b_color_alpha"
+                    android:onClick="onGridViewShow"
+                    android:src="@drawable/x_comment_table"/>
+            </FrameLayout>
         </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/linearLayout2"
-            style="@style/b_comments_bottom_menu_main">
-            <LinearLayout
-                style="@style/b_comments_bottom_menu_main_linear">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dip"
+            android:background="#e7e7e7"
+            android:orientation="horizontal">
+
             <ImageButton
-                android:onClick="onClickGraffiti"
-                android:src="@drawable/x_graffiti"
-                style="@style/b_comments_bottom_menu_button"/>
-            <TextView
-                style="@style/b_comments_botton_menu_main_Text"
-                android:text="@string/b_graffiti"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/linearLayout3"
-            style="@style/b_comments_bottom_menu_main">
-            <LinearLayout
-                style="@style/b_comments_bottom_menu_main_linear">
-            <ImageButton
-                android:onClick="onClickLabel"
-                android:src="@drawable/x_label"
-                style="@style/b_comments_bottom_menu_button"/>
-            <TextView
-                style="@style/b_comments_botton_menu_main_Text"
-                android:text="@string/b_graffiti"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_width="50dip"
+                android:layout_height="29dip"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dip"
+                android:background="@drawable/x_comment_select_bg"
+                android:scaleType="center"
+                android:src="@drawable/y_commit_not_select"/>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dip"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/color_ring"
+                    style="@style/match_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:textColor="#cfcfcf"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dip"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/linearLayout1"
+                style="@style/b_comments_bottom_menu_main">
+
+                <LinearLayout
+                    style="@style/b_comments_bottom_menu_main_linear">
+
+                    <ImageButton
+                        android:id="@+id/imageButton1"
+                        style="@style/b_comments_bottom_menu_button"
+                        android:onClick="onClickText"
+                        android:src="@drawable/x_text"/>
+
+                    <TextView
+                        style="@style/b_comments_botton_menu_main_Text"
+                        android:text="@string/b_word"
+                        android:textColor="@color/b_color_red"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearLayout2"
+                style="@style/b_comments_bottom_menu_main">
+
+                <LinearLayout
+                    style="@style/b_comments_bottom_menu_main_linear">
+
+                    <ImageButton
+                        style="@style/b_comments_bottom_menu_button"
+                        android:onClick="onClickGraffiti"
+                        android:src="@drawable/x_graffiti"/>
+
+                    <TextView
+                        style="@style/b_comments_botton_menu_main_Text"
+                        android:text="@string/b_graffiti"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearLayout3"
+                style="@style/b_comments_bottom_menu_main">
+
+                <LinearLayout
+                    style="@style/b_comments_bottom_menu_main_linear">
+
+                    <ImageButton
+                        style="@style/b_comments_bottom_menu_button"
+                        android:onClick="onClickLabel"
+                        android:src="@drawable/x_label"/>
+
+                    <TextView
+                        style="@style/b_comments_botton_menu_main_Text"
+                        android:text="@string/b_graffiti"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

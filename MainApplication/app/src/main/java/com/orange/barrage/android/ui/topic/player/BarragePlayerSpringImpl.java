@@ -69,6 +69,16 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
     }
 
     @Override
+    public void moveToEnd(){
+        mSpringChain.moveToEnd();
+    }
+
+    @Override
+    public int getCurrentSize(){
+        return mViews.size();
+    }
+
+    @Override
     public void hideAllBarrage() {
         for(View view:mViews){
             view.setVisibility(View.INVISIBLE);

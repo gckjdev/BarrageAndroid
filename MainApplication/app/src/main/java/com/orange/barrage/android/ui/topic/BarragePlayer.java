@@ -19,9 +19,13 @@ public interface BarragePlayer {
 
     void moveTo(float progress);
 
+    void moveToEnd();
+
     void hideAllBarrage();
 
     void showAllBarrage();
+
+    int getCurrentSize();
 
     void setBarrageViews(List<FeedActionWidget> views);
 }

@@ -2,11 +2,9 @@ package com.orange.barrage.android.util.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.misc.ScreenUtil;
 
 import roboguice.util.Ln;
 
@@ -17,7 +15,7 @@ import roboguice.util.Ln;
  *
  * Created by Rollin on 2015/3/16.
  *
- * @see com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+ * @see com.orange.barrage.android.ui.topic.FeedMainWidget
  */
 public abstract class ScalableFrameLayout<T extends FrameLayout> extends FrameLayout {
 

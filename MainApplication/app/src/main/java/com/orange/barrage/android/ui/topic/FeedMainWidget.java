@@ -16,18 +16,18 @@ import javax.inject.Inject;
 /**
  * Created by Rollin on 2014/11/30.
  */
-public class PictureTopicMainWidget extends ScalableFrameLayout<PictureTopicMainInnerWidget> {
+public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
 
-    public PictureTopicMainWidget(Context context, AttributeSet set) {
+    public FeedMainWidget(Context context, AttributeSet set) {
         super(context, set);
     }
 
     @Inject
-    public PictureTopicMainWidget(Context context) {
+    public FeedMainWidget(Context context) {
         super(context);
     }
 
-    public void setMode(PictureTopicMode mode) {
+    public void setMode(FeedWidgetMode mode) {
         mInnerView.setMode(mode);
     }
 
@@ -76,8 +76,8 @@ public class PictureTopicMainWidget extends ScalableFrameLayout<PictureTopicMain
     }
 
     @Override
-    protected PictureTopicMainInnerWidget createInnerView(Context context) {
-        return new PictureTopicMainInnerWidget(context);
+    protected FeedMainInnerWidget createInnerView(Context context) {
+        return new FeedMainInnerWidget(context);
     }
 
     @Override
