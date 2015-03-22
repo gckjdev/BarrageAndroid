@@ -4,6 +4,7 @@
 
     <include layout="@layout/activity_view_top"/>
 
+    <!--
     <com.orange.barrage.android.util.view.MoveViewParentRelativity
         android:id="@+id/commentFrame"
         android:layout_weight="1"
@@ -12,12 +13,19 @@
         <ImageView
             style="@style/match_content"
             android:id="@+id/CommentImageView"/>
-        <com.orange.barrage.android.feed.ui.view.TableView
+        <com.orange.barrage.android.feed.ui.view.BarrageGridView
             android:id="@+id/tableview"
             android:visibility="gone"
             style="@style/match_content" />
-
     </com.orange.barrage.android.util.view.MoveViewParentRelativity>
+    -->
+    <com.orange.barrage.android.ui.topic.PictureTopicMainWidget
+        android:id="@+id/barrage_view"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        />
+
     <LinearLayout
         android:layout_gravity="bottom"
         android:orientation="vertical"

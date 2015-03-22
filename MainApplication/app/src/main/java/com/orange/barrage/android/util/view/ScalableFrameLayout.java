@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.misc.ScreenUtil;
+
 import roboguice.util.Ln;
 
 /**
@@ -48,6 +51,16 @@ public abstract class ScalableFrameLayout<T extends FrameLayout> extends FrameLa
      **/
     protected abstract float getExpectedWidth();
 
+    public void initActualWidth(float actualWidth ){
+        float expectWidth = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
+        //float actualWidth = ScreenUtil.getWidthPixels();
+
+        float expectHeight = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_height);
+        float factor = actualWidth/expectWidth;
+        float actualHeight = expectHeight * factor;
+
+        setSize((int)actualWidth, (int)actualHeight);
+    }
     /**
      * Set actual width and height for layout
      **/
@@ -72,7 +85,7 @@ public abstract class ScalableFrameLayout<T extends FrameLayout> extends FrameLa
         getInnerView().setScaleY(scaleY);
     }
 
-     protected View getInnerView(){
+     public T getInnerView(){
          return mInnerView;
      }
 

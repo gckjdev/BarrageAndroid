@@ -73,7 +73,7 @@ public class UserTimelineAdapter extends BaseAdapter{
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
         PictureTopicModel model = new PictureTopicModel();
         model.setFeed(feed);
-        ((TimelineItemView)convertView).setModel(model , mFragment.getActivity());
+        ((TimelineItemView)convertView).setModel(model);
 
         return convertView;
     }

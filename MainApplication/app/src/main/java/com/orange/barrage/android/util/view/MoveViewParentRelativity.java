@@ -21,12 +21,14 @@ import com.squareup.picasso.Picasso;
 public class MoveViewParentRelativity extends RelativeLayout implements OnTouchListener  {
 
 	private MoveInfo mMoveInfo;
-	
+
+    public MoveViewParentRelativity(Context context) {
+        this(context, null);
+    }
+
 	public MoveViewParentRelativity(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
 		mMoveInfo = new MoveInfo();
-		
 	}
 
     public void addView(View v , LayoutParams params){
@@ -274,10 +276,10 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
         return true;
     }
 
-    public void setImageUrl(String url){
-        ImageView veiw = (ImageView) findViewById(R.id.CommentImageView);
-        if(veiw == null) return;
-        Picasso.with(getContext()).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(veiw);
-    }
+//    public void setImageUrl(String url){
+//        ImageView veiw = (ImageView) findViewById(R.id.CommentImageView);
+//        if(veiw == null) return;
+//        Picasso.with(getContext()).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(veiw);
+//    }
 
 }

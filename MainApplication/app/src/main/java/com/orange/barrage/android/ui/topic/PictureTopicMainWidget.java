@@ -1,6 +1,5 @@
 package com.orange.barrage.android.ui.topic;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -32,8 +31,8 @@ public class PictureTopicMainWidget extends ScalableFrameLayout<PictureTopicMain
         mInnerView.setMode(mode);
     }
 
-    public void setImangeURL(String url) {
-        mInnerView.setImangeURL(url);
+    public void setImageURL(String url) {
+        mInnerView.setImageURL(url);
     }
 
     public void setSubtitle(String title) {

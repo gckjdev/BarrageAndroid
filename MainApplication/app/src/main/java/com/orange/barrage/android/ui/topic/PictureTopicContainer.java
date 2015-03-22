@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.LinearLayout;
 
-import com.orange.barrage.android.ui.topic.model.PictureTopicItem;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
-import com.orange.barrage.android.util.misc.ScreenUtil;
-import com.orange.barrage.android.util.view.ViewConstants;
 
 
 /**

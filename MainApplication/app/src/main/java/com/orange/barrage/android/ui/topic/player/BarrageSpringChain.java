@@ -12,7 +12,6 @@ package com.orange.barrage.android.ui.topic.player;
 import android.os.Handler;
 
 import com.facebook.rebound.Spring;
-import com.facebook.rebound.SpringChain;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringConfigRegistry;
 import com.facebook.rebound.SpringListener;

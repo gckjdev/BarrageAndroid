@@ -1,7 +1,5 @@
 package com.orange.barrage.android.ui.topic;
 
-import android.view.View;
-
 import java.util.List;
 
 /**

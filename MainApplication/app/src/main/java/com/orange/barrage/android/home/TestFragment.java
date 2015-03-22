@@ -1,8 +1,5 @@
 package com.orange.barrage.android.home;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orange.barrage.android.R;
@@ -29,7 +25,6 @@ import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.misc.PopupWindowUtil;
 import com.orange.barrage.android.util.misc.ToastUtil;
-import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
 
@@ -43,8 +38,6 @@ import javax.inject.Inject;
 
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
-
-import static com.orange.barrage.android.util.misc.PopupWindowUtil.*;
 
 /**
  * Created by pipi on 15/1/6.
@@ -210,7 +203,7 @@ public class TestFragment extends RoboFragment {
 
     private void initMainWidget(){
         String imageURL = PictureTopicDummyDataGen.getImange();
-        mMainWidget.setImangeURL(imageURL);
+        mMainWidget.setImageURL(imageURL);
         mMainWidget.setSubtitle("Subtitle Text");
 
         List<BarrageProtos.PBFeedAction> feedActionList = Lists.newArrayList();

@@ -1,17 +1,13 @@
 package com.orange.barrage.android.ui.topic;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.applidium.shutterbug.FetchableImageView;
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;

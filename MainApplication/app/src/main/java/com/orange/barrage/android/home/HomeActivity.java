@@ -26,7 +26,6 @@ import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
 import com.orange.barrage.android.friend.activity.OptionFeedBackActivity;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
-import com.orange.barrage.android.friend.ui.FriendHomeFragment;
 import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
@@ -222,8 +221,6 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         intent.putExtra(KEYSBYTE , event.getByteArray());
         intent.putExtra(KEYSSCREENXY , event.getPos());
         ActivityIntent.startIntent(this, intent );
-
-        //ActivityIntent.startIntent(this, intent);
     }
 
     public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event){

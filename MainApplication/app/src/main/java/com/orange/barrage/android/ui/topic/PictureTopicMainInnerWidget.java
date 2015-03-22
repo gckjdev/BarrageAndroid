@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
+import com.orange.barrage.android.feed.ui.view.BarrageGridView;
 import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
+import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
 
@@ -38,6 +40,18 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     private Context mContext;
     private PictureTopicMode mMode;
 
+    private BarrageGridView mGridView;
+
+    public MoveViewParentRelativity getMoveView() {
+        return mMoveView;
+    }
+
+    public BarrageGridView getGridView() {
+        return mGridView;
+    }
+
+    private MoveViewParentRelativity mMoveView;
+
     //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
     private Modle mModle = new Modle();
 
@@ -47,26 +61,44 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
 
     public PictureTopicMainInnerWidget(Context context, AttributeSet set) {
         super(context, set);
+
+        initViews(context);
+    }
+
+    protected void initViews(Context context) {
         this.mContext = context;
         mSubtitleView = new TextView(context);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         this.addView(mSubtitleView, params);
 
-        LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        LayoutParams matchParentParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
+//        LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mImage = new ImageView(context);
         mImage.setScaleType(ImageView.ScaleType.FIT_XY);
-        this.addView(mImage, imageParams);
-        mMode = PictureTopicMode.LIST;
+        this.addView(mImage, matchParentParams);
 
         float width = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
         float height = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_height);
 
-        BarragePlayerSpringImpl barragePlayerSpring = new BarragePlayerSpringImpl();
-        barragePlayerSpring.setParentHeight((int)height);
-        mBarragePlayer = barragePlayerSpring;
+        //grid view
+        mGridView = new BarrageGridView(mContext);
+        mGridView.setVisibility(View.GONE);
+        this.addView(mGridView, matchParentParams);
+
+        //move view
+        mMoveView = new MoveViewParentRelativity(mContext);
+        this.addView(mMoveView, matchParentParams);
 
         LayoutParams widgetLayoutParams = new LayoutParams((int)width, (int)height);
         setLayoutParams(widgetLayoutParams);
+
+
+        mMode = PictureTopicMode.LIST;
+        //
+        BarragePlayerSpringImpl barragePlayerSpring = new BarragePlayerSpringImpl();
+        barragePlayerSpring.setParentHeight((int)height);
+        mBarragePlayer = barragePlayerSpring;
     }
 
     @Inject
@@ -78,7 +110,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         mMode = mode;
     }
 
-    public void setImangeURL(String url) {
+    public void setImageURL(String url) {
         Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage);
     }
 
@@ -139,7 +171,7 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
     public void setModel(PictureTopicModel model) {
         mModel = model;
         setSubtitle(model.getSubtitleText());
-        setImangeURL(model.getImageUrl());
+        setImageURL(model.getImageUrl());
         setBarrageActions(model.getFeedActionLis());
     }
 
@@ -151,12 +183,12 @@ public class PictureTopicMainInnerWidget extends FrameLayout {
         EventBus.getDefault().post(event);
     }
 
+    //FIXME: why not use click action here.
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN){
             mModle.clear();
-        }else
-        if(event.getAction() == MotionEvent.ACTION_MOVE){
+        }else if(event.getAction() == MotionEvent.ACTION_MOVE){
             mModle.is = true;
         }else if( event.getAction() == MotionEvent.ACTION_UP){
             if(!mModle.is){
