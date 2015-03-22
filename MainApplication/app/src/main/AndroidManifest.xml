@@ -109,7 +109,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".feed.activity.FeedPublishedOtherPlatform" />
+        <activity android:name=".feed.activity.FeedPublishedOtherPlatformActivity" />
         <activity
             android:name=".friend.activity.FriendDetailActivity"
             android:label="@string/title_activity_friend_detail"

@@ -6,19 +6,15 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
-import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
-import com.squareup.picasso.Picasso;
 
 /**
  * Action widget for feed
@@ -52,7 +48,7 @@ public class FeedActionWidget extends LinearLayout {
     }
 
     private void initView(){
-        mView = LayoutInflater.from(getContext()).inflate(R.layout.activity_comments_head , this);
+        mView = LayoutInflater.from(getContext()).inflate(R.layout.view_feed_action_widget, this);
 
         mEditText = (EditText)findViewById(R.id.commentseditText);
         mTextView = (TextView)findViewById(R.id.commentsTextView);
@@ -121,6 +117,10 @@ public class FeedActionWidget extends LinearLayout {
 
     public void setUser(UserProtos.PBUser user){
         mUserAvatarView.loadUser(user);
+    }
+
+    public BarrageProtos.PBFeedAction getFeedAction() {
+        return mFeedAction;
     }
 
     public void setFeedAction(BarrageProtos.PBFeedAction feedAction){

@@ -53,15 +53,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mPlayerButton = (ImageButton)mView.findViewById(R.id.playerButton);
 
         mBarrageWidget = (FeedMainWidget)mView.findViewById(R.id.timeline_item_barage_view);
-        //calculate the height
-//        float expectWidth = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_width);
-//        float actualWidth = ScreenUtil.getWidthPixels();
-//
-//        float expectHeight = getResources().getDimension(R.dimen.y_barrage_main_inner_widget_height);
-//        float factor = actualWidth/expectWidth;
-//        float actualHeight = expectHeight * factor;
         mBarrageWidget.initActualWidth(ScreenUtil.getWidthPixels());
-//        mBarrageWidget.setSize((int)actualWidth, (int)actualHeight);
 
         mLayoutIcon  = (LinearLayout)mView.findViewById(R.id.iconlayout);
         mTimeTextView = (TextView)mView.findViewById(R.id.timeline_item_date);
@@ -71,7 +63,6 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mDropDownImageButton.setOnClickListener(this);
         mPlayerButton.setOnClickListener(this);
         mShareButton.setOnClickListener(this);
-
     }
 
     public void setModel(PictureTopicModel model) {
@@ -115,8 +106,11 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
      * 分享东西
      * @param v
      */
-    public void onClickShare(View v){
-        EventBus.getDefault().post(new StartActivityFeedPublishedOtherPlatformEvent());
+    public void onClickPublish(View v){
+        StartActivityFeedPublishedOtherPlatformEvent event = new StartActivityFeedPublishedOtherPlatformEvent();
+        PictureTopicModel model = mBarrageWidget.getModel();
+        event.setByteArray( model.getFeed().toByteArray());
+        EventBus.getDefault().post(event);
     }
 
     /**
@@ -139,7 +133,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(mShareButton == v)  onClickShare(v);
+        if(mShareButton == v)  onClickPublish(v);
         else if (mPlayerButton == v) onClickPlayer(v);
         else if (mDropDownImageButton == v) onClickDraoDown(v);
     }

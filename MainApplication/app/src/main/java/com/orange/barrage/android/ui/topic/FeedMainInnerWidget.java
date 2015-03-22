@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 
 import org.roboguice.shaded.goole.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,7 +35,7 @@ public class FeedMainInnerWidget extends FrameLayout {
 
     private ImageView mImage;
     private TextView mSubtitleView;
-    private List<FeedActionWidget> mFeedActionViews;
+    private List<FeedActionWidget> mFeedActionViews = new ArrayList<>();
     private BarragePlayer mBarragePlayer;
     private PictureTopicModel mModel;
     private Context mContext;
@@ -72,8 +73,6 @@ public class FeedMainInnerWidget extends FrameLayout {
         this.addView(mSubtitleView, params);
 
         LayoutParams matchParentParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-
-//        LayoutParams imageParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mImage = new ImageView(context);
         mImage.setScaleType(ImageView.ScaleType.FIT_XY);
         this.addView(mImage, matchParentParams);
@@ -90,14 +89,14 @@ public class FeedMainInnerWidget extends FrameLayout {
         mMoveView = new MoveViewParentRelativity(mContext);
         this.addView(mMoveView, matchParentParams);
 
-        LayoutParams widgetLayoutParams = new LayoutParams((int)width, (int)height);
+        LayoutParams widgetLayoutParams = new LayoutParams((int) width, (int) height);
         setLayoutParams(widgetLayoutParams);
 
 
         mMode = FeedWidgetMode.LIST;
         //
         BarragePlayerSpringImpl barragePlayerSpring = new BarragePlayerSpringImpl();
-        barragePlayerSpring.setParentHeight((int)height);
+        barragePlayerSpring.setParentHeight((int) height);
         mBarragePlayer = barragePlayerSpring;
     }
 
@@ -107,6 +106,48 @@ public class FeedMainInnerWidget extends FrameLayout {
     }
 
     public void setMode(FeedWidgetMode mode) {
+
+        if (mFeedActionViews != null) {
+            for (FeedActionWidget actionWidget : mFeedActionViews) {
+                //from
+                switch (mMode) {
+                    case COMMENT:
+                    case LIST:
+                        switch (mode) {
+                            case SHARE:
+                                //list to share
+                                removeView(actionWidget);
+                                BarrageProtos.PBFeedAction action = actionWidget.getFeedAction();
+
+                                int left = (int) action.getPosX();
+                                int top = (int) action.getPosY();
+                                mMoveView.addView(actionWidget, left, top);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+
+                    case SHARE:
+                        switch (mode) {
+                            case COMMENT:
+                            case LIST:
+                                //share to list
+                                mMoveView.removeView(actionWidget);
+                                BarrageProtos.PBFeedAction action = actionWidget.getFeedAction();
+
+                                LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                                params.leftMargin = (int) action.getPosX();
+                                params.topMargin = (int) action.getPosY();
+                                addView(actionWidget, params);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
         mMode = mode;
     }
 
@@ -131,11 +172,22 @@ public class FeedMainInnerWidget extends FrameLayout {
             actionWidget.setFeedAction(action);
             mFeedActionViews.add(actionWidget);
 
-            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.leftMargin = (int) action.getPosX();
-            params.topMargin = (int) action.getPosY();
-
-            addView(actionWidget, params);
+            switch (mMode) {
+                case COMMENT:
+                case LIST: {
+                    LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    params.leftMargin = (int) action.getPosX();
+                    params.topMargin = (int) action.getPosY();
+                    addView(actionWidget, params);
+                    break;
+                }
+                case SHARE: {
+                    int left = (int) action.getPosX();
+                    int top = (int) action.getPosY();
+                    mMoveView.addView(actionWidget, left, top);
+                    break;
+                }
+            }
         }
 
         mBarragePlayer.setBarrageViews(mFeedActionViews);
@@ -169,7 +221,7 @@ public class FeedMainInnerWidget extends FrameLayout {
         mBarragePlayer.moveTo(progress);
     }
 
-    public void moveToEnd(){
+    public void moveToEnd() {
         mBarragePlayer.moveToEnd();
     }
 
@@ -180,10 +232,13 @@ public class FeedMainInnerWidget extends FrameLayout {
         setBarrageActions(model.getFeedActionLis());
     }
 
+    public PictureTopicModel getModel() {
+        return mModel;
+    }
 
-    private void startActivityFeedCommentEvent(int x, int y){
+    private void startActivityFeedCommentEvent(int x, int y) {
         StartActivityFeedCommentEvent event = new StartActivityFeedCommentEvent();
-        event.setByteArray( mModel.getFeed().toByteArray());
+        event.setByteArray(mModel.getFeed().toByteArray());
         event.setPos(new int[]{x, y});
         EventBus.getDefault().post(event);
     }
@@ -191,12 +246,12 @@ public class FeedMainInnerWidget extends FrameLayout {
     //FIXME: why not use click action here.
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN){
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             mModle.clear();
-        }else if(event.getAction() == MotionEvent.ACTION_MOVE){
+        } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             mModle.is = true;
-        }else if( event.getAction() == MotionEvent.ACTION_UP){
-            if(!mModle.is){
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (!mModle.is) {
                 startActivityFeedCommentEvent((int) event.getX(), (int) event.getY());
                 mModle.clear();
             }
@@ -205,10 +260,10 @@ public class FeedMainInnerWidget extends FrameLayout {
         return true;
     }
 
-    class Modle{
+    class Modle {
         public boolean is = false;
 
-        public void clear(){
+        public void clear() {
             is = false;
         }
 

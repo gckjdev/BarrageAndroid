@@ -1,0 +1,62 @@
+package com.orange.barrage.android.feed.activity;
+
+import android.os.Bundle;
+
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.orange.barrage.android.R;
+import com.orange.barrage.android.home.HomeActivity;
+import com.orange.barrage.android.ui.topic.FeedMainWidget;
+import com.orange.barrage.android.ui.topic.FeedWidgetMode;
+import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.misc.ScreenUtil;
+import com.orange.protocol.message.BarrageProtos;
+
+import roboguice.inject.InjectView;
+import roboguice.util.Ln;
+
+/**
+ * Created by Administrator on 2015/3/13.
+ */
+public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
+
+    @InjectView(R.id.feed_main_widget)
+    FeedMainWidget mFeedMainWidget;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState , R.layout.activity_feed_publish_other_platform, R.string.b_share_main , -1 );
+        initView();
+
+        PictureTopicModel model = initData();
+        mFeedMainWidget.setMode(FeedWidgetMode.SHARE);
+        mFeedMainWidget.setModel(model);
+
+        mFeedMainWidget.getInnerView().moveToEnd();
+        mFeedMainWidget.getInnerView().showAllBarrageActions();
+    }
+
+    private void initView(){
+        mTopBarView.setNavigationBackgroundChangeOtherType();
+
+        mFeedMainWidget.initActualWidth(ScreenUtil.getWidthPixels());
+    }
+
+    //FIXME: Rollin, duplicate codes in CommentActivity
+    private PictureTopicModel initData() {
+        BarrageProtos.PBFeed feed = null;
+        try {
+            feed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(HomeActivity.KEYSBYTE));
+        } catch (InvalidProtocolBufferException e) {
+            Ln.e(e, "init feed comment data, parse data exception=" + e.toString());
+        }
+
+        if (feed == null) {
+            return null;
+        }
+
+        PictureTopicModel model = new PictureTopicModel();
+        model.setFeed(feed);
+        return model;
+    }
+}

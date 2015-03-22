@@ -51,12 +51,12 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
     /**
      *
      * @param v
-     * @param l
-     * @param t
+     * @param left
+     * @param top
      * @param params
      * @param isMove 是否可以被移动
      */
-    public void addView(final View v , final int l ,final int t ,final LayoutParams params , boolean isMove){
+    public void addView(final View v , final int left ,final int top ,final LayoutParams params , boolean isMove){
         if(params == null) return;
         addView(v, params , isMove);
 
@@ -65,8 +65,8 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
             public void onGlobalLayout() {
                 MoveInfo moveInfo = new MoveInfo();
                 moveInfo.v = v;
-                params.leftMargin = moveInfo.getLeft(l);
-                params.topMargin = moveInfo.getTop(t);
+                params.leftMargin = moveInfo.getLeft(left);
+                params.topMargin = moveInfo.getTop(top);
                 v.setLayoutParams(params);
                 v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }

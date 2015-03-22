@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    style="@style/match_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/activity_view_top"/>
+
+    <com.orange.barrage.android.ui.topic.FeedMainWidget
+        android:id="@+id/feed_main_widget"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>

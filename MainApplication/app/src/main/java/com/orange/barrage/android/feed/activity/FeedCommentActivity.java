@@ -39,8 +39,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @InjectView(R.id.color_ring)
     LinearLayout mLayout;
 
-    @InjectView(R.id.barrage_view)
-    FeedMainWidget mBarrageView;
+    @InjectView(R.id.feed_main_widget)
+    FeedMainWidget mFeedMainWidget;
 
     BarrageProtos.PBFeed mFeed;
     BarrageProtos.PBFeedAction.Builder mActionBuilder;
@@ -60,7 +60,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.activity_comments, R.string.b_comment, R.string.b_send);
+        super.onCreate(savedInstanceState, R.layout.activity_feed_comment, R.string.b_comment, R.string.b_send);
 
         // init top bar
         mTopBarView.setNavigationBackgroundChangeOtherType();
@@ -96,8 +96,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         linear.setSelected(true);
         findViewById(R.id.imageButton1).setTag(linear);
 
-        mBarrageView.initActualWidth(ScreenUtil.getWidthPixels());
-        mBarrageView.setModel(model);
+        mFeedMainWidget.initActualWidth(ScreenUtil.getWidthPixels());
+        mFeedMainWidget.setModel(model);
 
         //设置头像
         UserProtos.PBUser user = mUserManager.getUser();
@@ -105,20 +105,21 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     }
 
     private PictureTopicModel initData() {
-
         try {
             mFeed = BarrageProtos.PBFeed.parseFrom(getIntentByteArrays(HomeActivity.KEYSBYTE));
         } catch (InvalidProtocolBufferException e) {
             Ln.e(e, "init feed comment data, parse data exception=" + e.toString());
         }
 
-        if (mFeed == null)
+        if (mFeed == null) {
             return null;
+        }
 
         PictureTopicModel model = new PictureTopicModel();
         model.setFeed(mFeed);
 
-        // init aciton builder
+        //FIXME: Rollin init the action later, init it when publish
+        // init action builder
         mActionBuilder = BarrageProtos.PBFeedAction.newBuilder();
         mActionBuilder.setFeedId(mFeed.getFeedId());
 
@@ -142,17 +143,17 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     }
 
     //将回复的View加入到移动的View上面去
-    private FeedActionWidget addViewCommentToMoveView(int l, int t) {
-        if (mBarrageView.getInnerView().getMoveView() == null) {
+    private FeedActionWidget addViewCommentToMoveView(int left, int top) {
+        if (mFeedMainWidget.getInnerView().getMoveView() == null) {
             return null;
         }
         FeedActionWidget comment = new FeedActionWidget(this);
-        getMoveView().addView(comment, l, t);
+        getMoveView().addView(comment, left, top);
         return comment;
     }
 
     private MoveViewParentRelativity getMoveView() {
-        return mBarrageView.getInnerView().getMoveView();
+        return mFeedMainWidget.getInnerView().getMoveView();
     }
 
     /**
@@ -167,34 +168,22 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         }
     }
 
-    //是否移除背景颜色
-    public void onClickRemoveBg(View v) {
-        if (v.getTag() == null || v.getTag().equals("Y")) {
-            //移除背景颜色
-            v.setTag("N");
-        } else {
-            //添加背景颜色
-            v.setTag("Y");
-        }
-
-    }
-
+    //Show barrages
     public void onFeedActionWidgetShow(View v){
         if (v.getTag() == null || v.getTag().equals("HideBarrage")) {
             v.setTag("ShowBarrage");
             //move to end
-            mBarrageView.getInnerView().moveToEnd();
-            mBarrageView.getInnerView().showAllBarrageActions();
+            mFeedMainWidget.getInnerView().moveToEnd();
+            mFeedMainWidget.getInnerView().showAllBarrageActions();
         } else {
-            //添加背景颜色
             v.setTag("HideBarrage");
-            mBarrageView.getInnerView().hideAllBarrageActions();
+            mFeedMainWidget.getInnerView().hideAllBarrageActions();
         }
     }
 
     //添加网格
     public void onGridViewShow(View v) {
-        BarrageGridView gridView = mBarrageView.getInnerView().getGridView();
+        BarrageGridView gridView = mFeedMainWidget.getInnerView().getGridView();
         if (gridView == null) {
             return;
         }
@@ -265,7 +254,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         String text = replyText;
         mActionBuilder.setText(replyText);
 
-        MoveViewParentRelativity mComentRelative = mBarrageView.getInnerView().getMoveView();
+        MoveViewParentRelativity mComentRelative = mFeedMainWidget.getInnerView().getMoveView();
 
         Ln.d("publish comment on pos (%d, %d)", mComentRelative.getMoveingViewX(), mComentRelative.getMoveingViewY());
         mActionBuilder.setPosX(mComentRelative.getMoveingViewX());

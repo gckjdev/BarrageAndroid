@@ -75,6 +75,10 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
         mInnerView.setModel(model);
     }
 
+    public PictureTopicModel getModel(){
+        return mInnerView.getModel();
+    }
+
     @Override
     protected FeedMainInnerWidget createInnerView(Context context) {
         return new FeedMainInnerWidget(context);
