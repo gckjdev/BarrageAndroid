@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Rollin on 2015/1/25.
  */
-public class PictureTopicModel implements Serializable{
+public class FeedModel implements Serializable{
 
     private String mImageUrl;
     private String mSubtitleText;

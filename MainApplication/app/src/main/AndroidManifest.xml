@@ -32,9 +32,7 @@
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
-        <activity
-            android:name=".feed.activity.FeedReplyActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".feed.activity.FeedCreateActivity"
             android:screenOrientation="portrait" />
@@ -68,7 +66,6 @@
         <activity
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
-        <activity android:name=".feed.activity.FeedPublishedActivity" />
         <activity android:name=".feed.activity.FeedPublishedActivity" />
         <activity android:name=".user.ui.view.Text" />
         <activity
@@ -111,7 +108,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".feed.activity.FeedPublishedOtherPlatform" />
+        <activity android:name=".feed.activity.FeedPublishedOtherPlatformActivity" />
         <activity
             android:name=".friend.activity.FriendDetailActivity"
             android:label="@string/title_activity_friend_detail"

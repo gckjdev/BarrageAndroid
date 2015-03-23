@@ -12,19 +12,23 @@ import android.view.View;
  * 绘制表格
  * @author youjiannuo
  */
-public class TableView extends View{
+public class BarrageGridView extends View{
 
     /**
      * 列数
      */
 	private int mCol = 10;
-	
+
+    //FIXME: Rollin, move color to a common play
 	private int mColor = 0xFF2ffff3;
 	
-	
-	public TableView(Context context, AttributeSet attrs) {
+	public BarrageGridView(Context context)
+    {
+        super(context);
+    }
+
+	public BarrageGridView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void setCol(int col){
@@ -42,6 +46,7 @@ public class TableView extends View{
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
+        //FIXME: onDraw trigger the new Paint every time,need to fix
 		Paint paint = new Paint();
 		paint.setColor(mColor);
 		paint.setStrokeWidth((float)0.5);
