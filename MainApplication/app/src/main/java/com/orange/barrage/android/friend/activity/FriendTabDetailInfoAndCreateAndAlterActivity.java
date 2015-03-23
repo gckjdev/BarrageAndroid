@@ -12,6 +12,7 @@ import com.orange.barrage.android.friend.mission.callback.AddTagCallback;
 import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.barrage.android.friend.model.TagManager;
 import com.orange.barrage.android.friend.ui.FriendIconList;
+import com.orange.barrage.android.ui.topic.model.User;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
@@ -27,6 +28,7 @@ import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
 import roboguice.util.Ln;
+import roboguice.util.LnImpl;
 
 /**
  * Created by Administrator on 2015/3/19.
@@ -75,7 +77,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Inject
     FriendManager mFriendManager;
 
-    private Params mParams = null;
+    private Params mParams = new Params();
 
     private RemindboxAlertDialog mRemindboxAlterDialog;
 
@@ -90,8 +92,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     private void initView(){
 
-        mParams = new Params();
-        mFriendIconList.setUsers(mFriendManager.getFriendList() , this);
 
         mTab_id = getIntentString(TABKEY);
         String tab = getIntentString(TABSTATEKEY);
@@ -104,7 +104,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             showTagNametext(R.string.b_create_tab_hinit, "");
         }else {
             closeEidText();
-            Ln.e("tagID:" + mTab_id);
             mPBUserTag = mTagManager.getTagById(mTab_id);
             if (mPBUserTag != null) {
                showTagNametext(-1, mPBUserTag.getName());
@@ -135,9 +134,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     private void showEdiText(){
         mTagEditText.setVisibility(View.VISIBLE);
         mTagTextView.setVisibility(View.GONE);
-        mTagEditText.setSelection(mTagEditText.getText().length());
 
-        SystemUtil.showInputMethodManager(mTagEditText);
+//        SystemUtil.showInputMethodManager(mTagEditText);
+//        mTagEditText.setSelection(mTagEditText.getText().length());
 
     }
 
@@ -163,8 +162,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     //跳转到编辑框界面
     private void toEditText(){
+
         mHaveDeletePBUser = new ArrayList<>();
         mParams = new Params();
+        mParams.startText = mTagEditText.getText().toString();
+
         showEdiText();
         if(mPBUserTag != null) {
             showTagNametext(R.string.b_tag_is_not_null, mPBUserTag.getName());
@@ -224,8 +226,15 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     //是否可以修改tag，通过网络
     //返回true ,标签标签已经被修改了
-    private boolean isAlterTag(){
-        return  mTagEditText.getText().toString().trim().length() != 0 || mParams.isAtler;
+    private boolean isAlterTag() {
+
+        String text = mTagEditText.getText().toString().trim();
+
+        if (!text.equals(mParams.startText.trim())) {
+            return true;
+        }
+
+        return mParams.isAtler;
     }
 
 
@@ -312,7 +321,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     class Params{
         public boolean isAtler = false;
-
+        public String startText = "";
     }
 
 }

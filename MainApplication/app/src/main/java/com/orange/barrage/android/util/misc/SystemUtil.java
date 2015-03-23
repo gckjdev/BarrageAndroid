@@ -84,6 +84,10 @@ public class SystemUtil {
                         InputMethodManager inputManager =
                                 (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                         inputManager.showSoftInput(v, 0);
+
+
+
+
                     }
                 },
                 200);

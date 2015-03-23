@@ -139,7 +139,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     public void onClick(View v) {
 
         if(mOnClickTabIconItemListener != null)
-            mOnClickTabIconItemListener.onClickItem(v.getTag() != null ? v.toString() : "" ,v , this);
+            mOnClickTabIconItemListener.onClickItem(v.getTag() != null ? v.getTag().toString() : "" ,v , this);
     }
 
     class ChildLayoutInfo{
