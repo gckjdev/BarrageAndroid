@@ -1,12 +1,11 @@
 package com.orange.barrage.android.ui.topic;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.ui.topic.model.PictureTopicModel;
+import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.view.ScalableFrameLayout;
 import com.orange.protocol.message.BarrageProtos;
 
@@ -17,23 +16,23 @@ import javax.inject.Inject;
 /**
  * Created by Rollin on 2014/11/30.
  */
-public class PictureTopicMainWidget extends ScalableFrameLayout<PictureTopicMainInnerWidget> {
+public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
 
-    public PictureTopicMainWidget(Context context, AttributeSet set) {
+    public FeedMainWidget(Context context, AttributeSet set) {
         super(context, set);
     }
 
     @Inject
-    public PictureTopicMainWidget(Context context) {
+    public FeedMainWidget(Context context) {
         super(context);
     }
 
-    public void setMode(PictureTopicMode mode) {
+    public void setMode(FeedWidgetMode mode) {
         mInnerView.setMode(mode);
     }
 
-    public void setImangeURL(String url) {
-        mInnerView.setImangeURL(url);
+    public void setImageURL(String url) {
+        mInnerView.setImageURL(url);
     }
 
     public void setSubtitle(String title) {
@@ -72,13 +71,17 @@ public class PictureTopicMainWidget extends ScalableFrameLayout<PictureTopicMain
         mInnerView.moveTo(progress);
     }
 
-    public void setModel(PictureTopicModel model) {
+    public void setModel(FeedModel model) {
         mInnerView.setModel(model);
     }
 
+    public FeedModel getModel(){
+        return mInnerView.getModel();
+    }
+
     @Override
-    protected PictureTopicMainInnerWidget createInnerView(Context context) {
-        return new PictureTopicMainInnerWidget(context);
+    protected FeedMainInnerWidget createInnerView(Context context) {
+        return new FeedMainInnerWidget(context);
     }
 
     @Override

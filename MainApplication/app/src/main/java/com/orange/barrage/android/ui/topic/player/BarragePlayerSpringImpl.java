@@ -1,16 +1,9 @@
 package com.orange.barrage.android.ui.topic.player;
 
-import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
-import com.facebook.rebound.SpringChain;
-import com.facebook.rebound.SpringConfig;
-import com.facebook.rebound.SpringListener;
-import com.facebook.rebound.SpringSystem;
 import com.facebook.rebound.SpringUtil;
 import com.orange.barrage.android.ui.topic.BarragePlayer;
 import com.orange.barrage.android.ui.topic.FeedActionWidget;
@@ -73,6 +66,16 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
     @Override
     public void moveTo(float progress) {
         mSpringChain.moveTo(progress);
+    }
+
+    @Override
+    public void moveToEnd(){
+        mSpringChain.moveToEnd();
+    }
+
+    @Override
+    public int getCurrentSize(){
+        return mViews.size();
     }
 
     @Override

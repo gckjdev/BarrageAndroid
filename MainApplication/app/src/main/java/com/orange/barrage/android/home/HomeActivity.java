@@ -20,13 +20,12 @@ import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
-import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatform;
+import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
 import com.orange.barrage.android.friend.activity.OptionFeedBackActivity;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
-import com.orange.barrage.android.friend.ui.FriendHomeFragment;
 import com.orange.barrage.android.misc.ui.HomePopupWindow;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.model.UserManager;
@@ -216,18 +215,17 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     public final  static String KEYSBYTE = "1";
     public final static String KEYSSCREENXY = "2";
 
-
     public void onEvent(StartActivityFeedCommentEvent event) {
         Intent intent = new Intent(this, FeedCommentActivity.class);
         intent.putExtra(KEYSBYTE , event.getByteArray());
         intent.putExtra(KEYSSCREENXY , event.getPos());
         ActivityIntent.startIntent(this, intent );
-
-        //ActivityIntent.startIntent(this, intent);
     }
 
     public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event){
-        ActivityIntent.startIntent(this, FeedPublishedOtherPlatform.class );
+        Intent intent = new Intent(this, FeedPublishedOtherPlatformActivity.class);
+        intent.putExtra(KEYSBYTE , event.getByteArray());
+        ActivityIntent.startIntent(this, intent);
     }
 
     @Override

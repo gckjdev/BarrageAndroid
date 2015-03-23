@@ -1,7 +1,5 @@
 package com.orange.barrage.android.ui.topic;
 
-import android.view.View;
-
 import java.util.List;
 
 /**
@@ -21,9 +19,13 @@ public interface BarragePlayer {
 
     void moveTo(float progress);
 
+    void moveToEnd();
+
     void hideAllBarrage();
 
     void showAllBarrage();
+
+    int getCurrentSize();
 
     void setBarrageViews(List<FeedActionWidget> views);
 }

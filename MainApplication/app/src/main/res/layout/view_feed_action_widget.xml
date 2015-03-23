@@ -2,8 +2,6 @@
     style = "@style/wrap_content"
     android:background="@color/b_color_alpha">
 
-
-
     <EditText
         android:id="@+id/commentseditText"
         style="@style/comments"
@@ -11,7 +9,9 @@
     <TextView
         android:id="@+id/commentsTextView"
         style="@style/comments"
-        android:gravity="center_vertical"/>
+        android:background="@color/b_color_red"
+        />
+    <!-- android:gravity="center_vertical" -->
     <com.orange.barrage.android.user.ui.view.UserAvatarView
         android:id="@+id/head"
         android:src="@drawable/x_comments_bg"

@@ -21,12 +21,14 @@ import com.squareup.picasso.Picasso;
 public class MoveViewParentRelativity extends RelativeLayout implements OnTouchListener  {
 
 	private MoveInfo mMoveInfo;
-	
+
+    public MoveViewParentRelativity(Context context) {
+        this(context, null);
+    }
+
 	public MoveViewParentRelativity(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
 		mMoveInfo = new MoveInfo();
-		
 	}
 
     public void addView(View v , LayoutParams params){
@@ -49,12 +51,12 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
     /**
      *
      * @param v
-     * @param l
-     * @param t
+     * @param left
+     * @param top
      * @param params
      * @param isMove 是否可以被移动
      */
-    public void addView(final View v , final int l ,final int t ,final LayoutParams params , boolean isMove){
+    public void addView(final View v , final int left ,final int top ,final LayoutParams params , boolean isMove){
         if(params == null) return;
         addView(v, params , isMove);
 
@@ -63,8 +65,8 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
             public void onGlobalLayout() {
                 MoveInfo moveInfo = new MoveInfo();
                 moveInfo.v = v;
-                params.leftMargin = moveInfo.getLeft(l);
-                params.topMargin = moveInfo.getTop(t);
+                params.leftMargin = moveInfo.getLeft(left);
+                params.topMargin = moveInfo.getTop(top);
                 v.setLayoutParams(params);
                 v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
@@ -274,10 +276,10 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
         return true;
     }
 
-    public void setImageUrl(String url){
-        ImageView veiw = (ImageView) findViewById(R.id.CommentImageView);
-        if(veiw == null) return;
-        Picasso.with(getContext()).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(veiw);
-    }
+//    public void setImageUrl(String url){
+//        ImageView veiw = (ImageView) findViewById(R.id.CommentImageView);
+//        if(veiw == null) return;
+//        Picasso.with(getContext()).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(veiw);
+//    }
 
 }

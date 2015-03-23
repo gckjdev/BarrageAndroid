@@ -12,7 +12,6 @@ package com.orange.barrage.android.ui.topic.player;
 import android.os.Handler;
 
 import com.facebook.rebound.Spring;
-import com.facebook.rebound.SpringChain;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringConfigRegistry;
 import com.facebook.rebound.SpringListener;
@@ -161,6 +160,15 @@ public class BarrageSpringChain implements SpringListener {
             mHandler.removeCallbacks(runnable);
         }
         mRunnings.clear();
+    }
+
+    public void moveToEnd(){
+        stop();
+        List<Spring> springs = mSprings;
+        //set all to 0
+        for(int i=0;i<springs.size();i++){
+            springs.get(i).setCurrentValue(1, true);
+        }
     }
 
     public void moveTo(float progress){

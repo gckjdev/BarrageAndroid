@@ -1,8 +1,5 @@
 package com.orange.barrage.android.home;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,15 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
 import com.orange.barrage.android.feed.ui.FeedPhotoSourceSelectionLayout;
-import com.orange.barrage.android.ui.topic.PictureTopicMainWidget;
-import com.orange.barrage.android.ui.topic.data.dummy.PictureTopicDummyDataGen;
+import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
@@ -29,7 +24,6 @@ import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.misc.PopupWindowUtil;
 import com.orange.barrage.android.util.misc.ToastUtil;
-import com.orange.barrage.android.util.persistent.LevelDBTestDAO;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
 
@@ -43,8 +37,6 @@ import javax.inject.Inject;
 
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
-
-import static com.orange.barrage.android.util.misc.PopupWindowUtil.*;
 
 /**
  * Created by pipi on 15/1/6.
@@ -85,7 +77,7 @@ public class TestFragment extends RoboFragment {
     Button mMoveToButton;
 
     @InjectView(R.id.picture_topic_main_widget)
-    PictureTopicMainWidget mMainWidget;
+    FeedMainWidget mMainWidget;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -209,25 +201,5 @@ public class TestFragment extends RoboFragment {
     private int mCommentLocationThreshold = 800;
 
     private void initMainWidget(){
-        String imageURL = PictureTopicDummyDataGen.getImange();
-        mMainWidget.setImangeURL(imageURL);
-        mMainWidget.setSubtitle("Subtitle Text");
-
-        List<BarrageProtos.PBFeedAction> feedActionList = Lists.newArrayList();
-
-        Random random = new Random();
-        mCurrentCommentSize = 5 + random.nextInt(10);//[5, 15]
-
-        for(int i=0;i<mCurrentCommentSize;i++){
-            String text = PictureTopicDummyDataGen.getFeedActionText();
-            float x = mCommentLocationThreshold * random.nextFloat();
-            float y =  mCommentLocationThreshold * random.nextFloat();
-
-            String avatar = PictureTopicDummyDataGen.getAvatar();
-            BarrageProtos.PBFeedAction action = BarrageProtos.PBFeedAction.newBuilder().setAvatar(avatar).setText(text).setPosX(x).setPosY(y).build();
-
-            feedActionList.add(action);
-        }
-        mMainWidget.setBarrageActions(feedActionList);
     }
 }
