@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -42,20 +43,23 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     @InjectView(R.id.friend_detail_sharephoto)
     private Button shareButton;
 
+    @InjectView(R.id.friend_detail_userbackground)
+    private LinearLayout mFriendDetailUserBackground;
+
     UserProtos.PBUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_friend_detail, "详细资料", -1);
 
-        Bundle bundle=getIntent().getExtras();
-        if (bundle == null){
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
             Ln.w("FriendDetailActivity show but bundle data null");
             return;
         }
 
         byte[] userBytes = bundle.getByteArray(BUNDLE_KEY_USER);
-        if (userBytes == null){
+        if (userBytes == null) {
             Ln.w("FriendDetailActivity show but bundle user bytes null");
             return;
         }
@@ -63,10 +67,9 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         try {
             mUser = UserProtos.PBUser.parseFrom(userBytes);
         } catch (InvalidProtocolBufferException e) {
-            Ln.e(e, "FriendDetailActivity parse user byte data, catch exception="+e.toString());
+            Ln.e(e, "FriendDetailActivity parse user byte data, catch exception=" + e.toString());
             return;
         }
-
 
 
         nickTextView.setText(mUser.getNick());
@@ -81,15 +84,15 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     }
 
-    public static void show(UserProtos.PBUser user, Context context){
+    public static void show(UserProtos.PBUser user, Context context) {
 
-        if (user == null){
+        if (user == null) {
             Ln.w("show friend detail but user is null");
             return;
         }
 
         byte[] userBytes = user.toByteArray();
-        if (userBytes == null){
+        if (userBytes == null) {
             Ln.w("show friend detail but userBytes is null");
             return;
         }
@@ -97,7 +100,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         Bundle bundle = new Bundle();
         bundle.putByteArray(BUNDLE_KEY_USER, userBytes);
 
-        final Intent intent=new Intent();
+        final Intent intent = new Intent();
         intent.putExtras(bundle);
 
         intent.setClass(context, FriendDetailActivity.class);
@@ -106,7 +109,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     }
 
 
-    public void onClickCamera(View v){
+    public void onClickCamera(View v) {
         initPublishFeefView();
         MessageCenter.postErrorMessage("niha");
         mShowPublishFeedView.showPublishFeedView();
@@ -116,7 +119,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        mShowPublishFeedView.getPhotoAndCamera().getPicture(requestCode,resultCode , data , mOnGetPhotoCallbak);
+        mShowPublishFeedView.getPhotoAndCamera().getPicture(requestCode, resultCode, data, mOnGetPhotoCallbak);
 
     }
 
@@ -133,7 +136,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     };
 
 
-    private void initPublishFeefView(){
+    private void initPublishFeefView() {
         mShowPublishFeedView = mShowPublishFeedView
                 == null ? new ShowPublishFeedView(this) : mShowPublishFeedView;
     }
