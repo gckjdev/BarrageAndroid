@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Gallery;
 import android.widget.Toast;
 
 public class ToastUtil {
@@ -22,7 +21,7 @@ public class ToastUtil {
        showToastMessage(context, msg, Toast.LENGTH_SHORT);  
     }  
 	  
-	 
+
 	  
    public  static void showToastMessage(final Context context, final String msg,  final int len) {  
        handler.post(new Runnable() {  

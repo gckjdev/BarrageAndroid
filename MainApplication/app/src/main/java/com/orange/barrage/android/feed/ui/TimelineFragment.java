@@ -1,6 +1,5 @@
 package com.orange.barrage.android.feed.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,20 +10,15 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
-import com.orange.barrage.android.feed.activity.FeedCommentActivity;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
-import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import de.greenrobot.event.EventBus;
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
 import roboguice.util.Ln;
@@ -96,14 +90,6 @@ public class TimelineFragment extends RoboFragment {
         }.sendEmptyMessage(0);
 
     }
-
-//    public void onEvent(StartActivityFeedCommentEvent event) {
-//        Intent intent = new Intent(getActivity() , FeedCommentActivity.class);
-//        intent.putExtra(KEYSBYTE , event.getByteArray());
-//        intent.putExtra(KEYSSCREENXY , event.getPos());
-//
-//        ActivityIntent.startIntent(getActivity(), intent);
-//    }
 
     private void loadTimeline() {
 

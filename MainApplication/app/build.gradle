@@ -57,5 +57,7 @@ dependencies {
     compile 'com.pkmmte.view:circularimageview:1.1'
     compile 'com.kbeanie:image-chooser-library:1.4.3@aar'
     compile 'com.nhaarman.supertooltips:library:3.0.+'
+
     compile files('libs/pinyin4j-2.5.0.jar')
+
 }
