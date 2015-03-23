@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="54dp">
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:id="@+id/oversendnumber_layout"
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+        <TextView
+            android:text="111222"
+            android:id="@+id/oversendtext"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:layout_marginLeft="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="黄小冰"
+            android:id="@+id/oversendname"
+            android:textSize="15sp"
+            android:textColor="#848484"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/oversendtext"
+            android:layout_toLeftOf="@+id/oversendimageview"
+            android:layout_toStartOf="@+id/oversendimageview" />
+        <ImageView
+            android:id="@+id/oversendimageview"
+            android:src="@drawable/user_home_more"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:background="#dfdfdf"
+            android:layout_height="1dp"/>
+        </RelativeLayout>
+</LinearLayout>
