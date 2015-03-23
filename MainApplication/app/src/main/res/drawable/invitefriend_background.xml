@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="false" android:state_selected="false"
-        android:state_pressed="false" android:drawable="@drawable/invitefriend"/>
-    <item android:state_focused="true" android:state_selected="true"
-        android:state_pressed="true" android:drawable="@drawable/invitefriend_press"/>
+    <!-- 正常的时候图片-->
+    <item android:state_pressed="false" android:drawable="@drawable/invitefriend" />
+    <!--按下的时候图片效果-->
+    <item android:state_pressed="true" android:drawable="@drawable/invitefriend_press" />
+
 </selector>

@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
 
 import roboguice.inject.InjectView;
 
@@ -32,11 +31,11 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
         super.onCreate(savedInstanceState, com.orange.barrage.android.R.layout.activity_invite_my_friend, "邀请好友", R.string.b_complete);
         layoutInflater = LayoutInflater.from(this);
         //测试动态加载
-        for(int i=0;i<100;i++)
+        for(int i=0;i<20;i++)
         {
             availView();
         }
-        for(int i=0;i<40;i++)
+        for(int i=0;i<20;i++)
         {
             sendView();
         }
@@ -53,11 +52,11 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
         TextView avaail_invitenumber=(TextView)addViewLayout.findViewById(R.id.avail_invitenumber);
         avaail_invitenumber.setText("1234");
         ImageView imageView=(ImageView)addViewLayout.findViewById(R.id.avail_inviteimageview);
-        imageView.setImageResource(R.drawable.invitefriend);
+        //imageView.setImageResource(R.drawable.invitefriend);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MessageCenter.postInfoMessage("点击成功");
+               // MessageCenter.postInfoMessage("点击成功");
             }
         });
         //承载上面的布局文件的布局

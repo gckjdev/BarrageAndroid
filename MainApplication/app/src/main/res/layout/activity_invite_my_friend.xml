@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="300dp">
+        android:layout_height="280dp">
 
         <LinearLayout
             android:layout_marginLeft="36dp"
@@ -19,7 +19,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_marginRight="36dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="16dp"
             android:layout_height="200dp">
 
@@ -67,6 +67,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+
             android:layout_height="25dp">
             <ImageView
                 android:id="@+id/oversendview"
@@ -85,7 +86,9 @@
             </RelativeLayout>
     </LinearLayout>
     <LinearLayout
+        android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
+
         android:layout_height="162dp">
         <ScrollView
             android:scrollbars="vertical"
