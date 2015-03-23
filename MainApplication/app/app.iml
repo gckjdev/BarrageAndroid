@@ -117,8 +117,8 @@
     <orderEntry type="library" exported="" name="rebound-0.3.7" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Wechat-2.5.8" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Email-2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Wechat-2.5.8" level="project" />
   </component>
 </module>
 
