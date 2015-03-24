@@ -53,10 +53,15 @@ public class ActivityIntent {
     }
 
 
+    public static void startForResult(Activity activity , Class<?>c , String key , String values[] ,  int requestCode){
+        Intent intent = getIntent(activity , c);
+        addIntentData(intent , key , values);
+        startIntentForResult(activity , intent , requestCode);
+    }
+
     public static void startForResult(Activity activity , Class<?> c , String key , String value , int requestCode){
         Intent intent = getIntent(activity , c);
-        if(key != null && key.trim().length() != 0)
-            intent.putExtra(key , value);
+        addIntentData(intent , key , value);
         startIntentForResult(activity , intent , requestCode);
     }
 
@@ -64,5 +69,13 @@ public class ActivityIntent {
         activity.startActivityForResult(intent , requestCode);
     }
 
+    private static void addIntentData(Intent intent , String key ,  String value){
+        if(key != null && key.trim().length() != 0)
+            intent.putExtra(key , value);
+    }
+    private static void addIntentData(Intent intent ,String key,  String values[]){
+        if(key != null && key.trim().length() != 0)
+            intent.putExtra(key , values);
+    }
 
 }

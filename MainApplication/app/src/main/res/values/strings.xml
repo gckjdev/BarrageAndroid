@@ -83,7 +83,8 @@
     <string name="user_setting_save">存储</string>
     <string name="b_create_tab_hinit">请输入标签名字，例如死党</string>
 
-
+    <string name="b_delete_tag">删除标签</string>
+    <string name="b_share_photo">分享照片</string>
     <string name="b_friend_select_friend">选择好友</string>
     <string name="b_complete">完成</string>
     <string name="b_tag_is_not_null">标签不可以空,请输入标签</string>

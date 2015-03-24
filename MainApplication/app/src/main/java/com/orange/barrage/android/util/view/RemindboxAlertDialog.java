@@ -34,44 +34,44 @@ public class RemindboxAlertDialog {
     /**
      * 提醒卡组件
      */
-    private AlertDialog alertDialog = null;
+    private AlertDialog mAlertDialog = null;
 
     /**
      * 提醒框
      */
-    private Context context = null;
+    private Context mContext = null;
 
     /**
      * 每一个按钮的值
      */
-    private String button[] = new String[]{"按钮1"};
+    private String mButton[] = new String[]{"按钮1","按钮2","按钮3"};
 
     /**
      * 按钮的标题
      */
-    private String title = "标题";
+    private String mTitle = "标题";
 
     /**
      * 显示的内容
      */
-    private String Message = "消息";
+    private String mMessage = "消息";
 
     /**
      * 图标
      */
-    private int Icon = -1;
+    private int mIcon = -1;
 
     /**
      * 创建一个接口
      */
-    private OnClickListener onClickListener = null;
+    private OnClickListener mOnClickListener = null;
 
     /**
      * 构造函数，调用该构造函数
      * @param context
      */
     public RemindboxAlertDialog(Context context){
-        this.context = context;
+        this.mContext = context;
     }
 
     /**
@@ -101,19 +101,20 @@ public class RemindboxAlertDialog {
     }
 
     private void set(String button[] , String title,String Message,OnClickListener onClickListener){
-        this.button = button;
-        this.title = title;
-        this.onClickListener = onClickListener;
+        this.mButton = button;
+        this.mTitle = title;
+        this.mOnClickListener = onClickListener;
+        this.mMessage = Message;
     }
 
     /**
      * 显示对话框
      */
-    public void showButton(){
+    public void show(){
         Installbutton();
-        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-        alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.show();
+        mAlertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        mAlertDialog.setCanceledOnTouchOutside(false);
+        mAlertDialog.show();
     }
     /**
      * 显示对话框
@@ -122,9 +123,9 @@ public class RemindboxAlertDialog {
      * @param Message  消息
      * @param icon  图片
      */
-    public void showButton(String button[] , String title,String Message,int icon , OnClickListener onClickListener){
+    public void show(String button[], String title, String Message, int icon, OnClickListener onClickListener){
         set( button, title, Message, onClickListener);
-        showButton();
+        show();
     }
 
     /**
@@ -132,8 +133,8 @@ public class RemindboxAlertDialog {
      * @param message 消息
      */
     public void show(String message){
-        this.Message = message;
-        showButton();
+        this.mMessage = message;
+        show();
     }
 
 
@@ -141,24 +142,24 @@ public class RemindboxAlertDialog {
      * 初始化alert
      */
     private void Installbutton(){
-        if(alertDialog == null)
+        if(mAlertDialog == null)
             //设置
-            alertDialog = new AlertDialog.Builder(context).create();
-        if(Icon == -1) Icon = R.drawable.alert_dark_frame;
-        alertDialog.setIcon(Icon);
-        alertDialog.setTitle(title);
-        alertDialog.setMessage(Message);
-        if(button == null || onClickListener == null) return;
+            mAlertDialog = new AlertDialog.Builder(mContext).create();
+        if(mIcon == -1) mIcon = R.drawable.alert_dark_frame;
+        mAlertDialog.setIcon(mIcon);
+        mAlertDialog.setTitle(mTitle);
+        mAlertDialog.setMessage(mMessage);
+        if(mButton == null || mOnClickListener == null) return;
         //设置按钮
-        if(button.length == 1){
-            setLeftButton(button[0]);
-        }else if(button.length == 2){
-            setLeftButton(button[0]);
-            setRightButton(button[1]);
-        }else if(button.length == 3){
-            setLeftButton(button[0]);
-            setRightButton(button[2]);
-            setCenterButton(button[1]);
+        if(mButton.length == 1){
+            setLeftButton(mButton[0]);
+        }else if(mButton.length == 2){
+            setLeftButton(mButton[0]);
+            setRightButton(mButton[1]);
+        }else if(mButton.length == 3){
+            setLeftButton(mButton[0]);
+            setRightButton(mButton[2]);
+            setCenterButton(mButton[1]);
         }
     }
 
@@ -167,12 +168,12 @@ public class RemindboxAlertDialog {
      * @param message  左边按钮的信息
      */
     private void setLeftButton(String message){
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, message,new DialogInterface.OnClickListener() {
+        mAlertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, message, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                onClickListener.onClick(LEFTBUTTON);
+                mOnClickListener.onClick(LEFTBUTTON);
             }
         });
     }
@@ -182,12 +183,12 @@ public class RemindboxAlertDialog {
      * @param message  中间按钮的信息
      */
     private void setCenterButton(String message){
-        alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, message,new DialogInterface.OnClickListener() {
+        mAlertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, message, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                onClickListener.onClick(CENTERBUTTON);
+                mOnClickListener.onClick(CENTERBUTTON);
             }
         });
     }
@@ -197,12 +198,12 @@ public class RemindboxAlertDialog {
      * @param message  右边按钮的信息
      */
     private void setRightButton(String message){
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, message,new DialogInterface.OnClickListener() {
+        mAlertDialog.setButton(DialogInterface.BUTTON_POSITIVE, message, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                onClickListener.onClick(RIGHTBUTTON);
+                mOnClickListener.onClick(RIGHTBUTTON);
             }
         });
     }
@@ -211,8 +212,8 @@ public class RemindboxAlertDialog {
      * 关闭
      */
     public void close(){
-        if(alertDialog == null) return;
-        alertDialog.cancel();
+        if(mAlertDialog == null) return;
+        mAlertDialog.cancel();
     }
 
 

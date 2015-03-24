@@ -1,6 +1,7 @@
 package com.orange.barrage.android.friend.ui;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     private UserProtos.PBUser mPbUser;
     private BaseAdapter mAdapter;
     private FriendIconList.OnClickItemListener mOnClickItemListener;
+    private int mPostion = 0;
 
     @Inject
 
@@ -57,6 +59,18 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
 
     }
 
+    public void clear() {
+
+        post(new Runnable() {
+            @Override
+            public void run() {
+                mIconImageView.setImageBitmap(null);
+                mdeleteIconImageView.setVisibility(GONE);
+                mNameTextView.setText("");
+            }
+        });
+
+    }
 
 
     public void loadUser(UserProtos.PBUser user  , int type){
@@ -105,7 +119,7 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
     private void deleteIcon(View v){
 
 
-        mOnClickItemListener.onClickItem(-1 , v, mPbUser , FriendIconList.OnClickItemListener.ICON_TOP_DELETE_BUTTON);
+        mOnClickItemListener.onClickItem(mPostion , v, mPbUser , FriendIconList.OnClickItemListener.ICON_TOP_DELETE_BUTTON);
 
         //删除头像
         if(mAdapter != null && mPbUsers != null){
@@ -130,10 +144,11 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
         else if(v == mIconImageView) onClickIcon();
     }
 
-    public void setUser(List<UserProtos.PBUser> pbUsers , BaseAdapter adapter ,FriendIconList.OnClickItemListener l){
+    public void setUser(List<UserProtos.PBUser> pbUsers , BaseAdapter adapter ,FriendIconList.OnClickItemListener l , int postion){
         mPbUsers = pbUsers;
         mAdapter = adapter;
         mOnClickItemListener = l;
+        this.mPostion = postion;
     }
 
 

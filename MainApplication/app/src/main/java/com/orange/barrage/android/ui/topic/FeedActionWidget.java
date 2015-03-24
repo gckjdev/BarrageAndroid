@@ -83,7 +83,7 @@ public class FeedActionWidget extends LinearLayout {
         if(type == COMMENTS_EDITTEXT) {
             mEditText.setVisibility(View.VISIBLE);
         } else {
-            mTextView.setFocusable(isFocusable());
+            mTextView.setFocusable(isFocusable);
             mTextView.setVisibility(View.VISIBLE);
         }
     }

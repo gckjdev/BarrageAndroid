@@ -3,6 +3,7 @@ package com.orange.barrage.android.friend.ui;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -36,6 +37,9 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     private OnClickTabIconItemListener mOnClickTabIconItemListener;
 
     private List<FriendParams> mParamsLists = new ArrayList<>();
+
+
+    private int b_friend_marginLeft = 14;
 
     public FriendTagView(Context context) {
         super(context);
@@ -72,7 +76,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     }
 
 
-    public boolean addView(final Params params , String tagId){
+    public boolean addView(final Params params , String tagId ){
 
         initLayoutInfo();
         initModleTextView(params);
@@ -99,16 +103,18 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
         textView.setTextSize(param.textSize);
         textView.setGravity(Gravity.CENTER);
         textView.setLines(1);
+//        textView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
         textView.setVisibility(View.INVISIBLE);
-        textView.setPaddingRelative((int)(mTextViewHeight / 2) , 0 , (int)(mTextViewHeight / 2) , 0);
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, (int) mTextViewHeight);
+        Paint paint = textView.getPaint();
+//        textView.setPadding((int)(mTextViewHeight / 2) , 0 , (int)(mTextViewHeight / 2) , 0);
+        LayoutParams params = new LayoutParams((int) (mTextViewHeight+ paint.measureText(textView.getText().toString())), (int) mTextViewHeight);
 
-        params.rightMargin = getResources().getDimensionPixelSize(R.dimen.b_frined_marginright);
+        params.rightMargin = (int) getDp(b_friend_marginLeft);
         viewGroup.addView(textView, params);
         return textView;
     }
 
-    private boolean AddTextViewToLinear(TextView textView , Params params , String tabId){
+    private boolean AddTextViewToLinear(TextView textView , Params params , String tabId ){
         Paint paint = textView.getPaint();
         int width = (int) (mTextViewHeight +paint.measureText(textView.getText().toString()) );
         removeView(textView);
@@ -119,7 +125,6 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 
 
         TextView tv = initTextView(params , linearLayout);
-        Ln.e(params.title);
         //绘制背影图片
         new LayoutDrawIconBackground().setTwoSemicircleRectang(tv , params);
         tv.setVisibility(View.VISIBLE);
@@ -148,6 +153,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
         private LinearLayout mLayout;
         private int postion = -1;
 
+        //获取添加的布局
         public LinearLayout getLinearLayout(int width){
 //            if(postion >= layout.length)  return layout[layout.length - 1];
 
@@ -163,9 +169,9 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
             int n = linearLayout.getChildCount();
             if( n == 0) return false;
 
-            int width = getResources().getDimensionPixelSize(R.dimen.b_frined_marginright);
+            int width = (int) getDp(b_friend_marginLeft);
 
-            width = width * n;
+            width = width * (n);
 
             for (int i = 0 ; i < n ; i ++){
                 TextView textView = (TextView)linearLayout.getChildAt(i);
@@ -217,39 +223,10 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     }
 
 
-
-//    public void removeView(String tagId){
-//        FriendParams params = findParams(tagId);
-//        mParamsLists.remove(params);
-//        setRefresh();
-//    }
-//
-//    private FriendParams findParams(String tagId){
-//        for(FriendParams param : mParamsLists){
-//            if(param.tagId.equals(tagId)){
-//               return param;
-//            }
-//        }
-//    }
-//
-//    public void AlterTag(String tagId , FriendParams paramNew){
-//        FriendParams paramOld = findParams(tagId);
-//
-//        paramOld.params = paramNew.params;
-//
-//    }
-
-
-
-    //刷新
-    public void setRefresh(){
-        //移除所以控件
-        removeAllViews();
-        for(FriendParams param : mParamsLists){
-            addView(param.params , param.tagId);
-        }
-
+    private float getDp(int dp){
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP , dp , getResources().getDisplayMetrics());
     }
+
 
 
 
@@ -258,6 +235,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 //        private int color[] = {0X7bc567,0Xecbc25,0Xc792e0,0X6bb5e5,0Xed6e74,0X7997f2,0Xf68a54};
 
         public String title;
+
         public int textColor = Color.WHITE;
         public int textSize = 13;
 
