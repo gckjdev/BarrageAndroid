@@ -26,4 +26,8 @@ public class MessageCenter {
         Toast.makeText(ContextManager.getContext(), messageText, Toast.LENGTH_SHORT).show();
     }
 
+    public static void postTestMessage(String messageText){
+        Toast.makeText(ContextManager.getContext(), messageText, Toast.LENGTH_SHORT).show();
+    }
+
 }

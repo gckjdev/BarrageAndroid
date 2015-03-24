@@ -33,23 +33,28 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
     private Context mContext;
     private boolean isInit = true;
 
+    //是否需要从新一点界面
+    private boolean isRemovew = false;
+
+    //是否需要滚蛋的状态
+    private boolean mSmoothScroll = false;
 
 
-    public MyViewPagerTools(Activity activity , int layoutId , int  pointId){
-        this( activity,(ViewPager) activity.findViewById(layoutId) ,  (ViewGroup)activity.findViewById(layoutId));
+    public MyViewPagerTools(Activity activity, int layoutId, int pointId) {
+        this(activity, (ViewPager) activity.findViewById(layoutId), (ViewGroup) activity.findViewById(layoutId));
     }
 
-    public  MyViewPagerTools( Context context , ViewPager viewPage , ViewGroup pointIcon){
-        setParams(context , viewPage , pointIcon);
+    public MyViewPagerTools(Context context, ViewPager viewPage, ViewGroup pointIcon) {
+        setParams(context, viewPage, pointIcon);
 
     }
 
-    public MyViewPagerTools(){
+    public MyViewPagerTools() {
 
     }
 
 
-    public void setParams(Context context , ViewPager viewPage , ViewGroup pointIcon){
+    public void setParams(Context context, ViewPager viewPage, ViewGroup pointIcon) {
         this.mViewPage = viewPage;
         this.mTab_Icon = pointIcon;
         this.mContext = context;
@@ -57,13 +62,13 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
     }
 
 
-    public void setInitTabpointIcon(){
+    public void setInitTabpointIcon() {
         isInit = true;
     }
 
-    public void addView(View v){
+    public void addView(View v) {
 
-        if(v == null) return;
+        if (v == null) return;
 
         mViewList.add(v);
         addTabIcon(1);
@@ -72,95 +77,148 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
     }
 
 
-    public View getChildlastView(){
-        if(mViewList.size() == 0) return null;
+    public View getChildlastView() {
+        if (mViewList.size() == 0) return null;
         return mViewList.get(mViewList.size() - 1);
     }
 
-    public View getChildPageView(int postion){
-        if(postion < mViewList.size()) return mViewList.get(postion);
+    public View getChildPageView(int postion) {
+        if (postion < mViewList.size()) return mViewList.get(postion);
         return null;
     }
 
-    public int getChildCount(){
+    public int getChildCount() {
         return mViewList.size();
     }
 
-    public void addViews(View[] views){
-        if(views == null)  return ;
+
+    public  int getViewPostion(){
+        return mPosition;
+    }
+
+    public void addViews(View[] views) {
+        if (views == null) return;
 
 
-       for(View v : views){
-           mViewList.add(v);
-       }
+        for (View v : views) {
+            mViewList.add(v);
+        }
         addTabIcon(views.length);
-       initAdapter();
+        initAdapter();
     }
 
 
-    private void addTabIcon(int count){
+    private void addTabIcon(int count) {
 
-        if(mViewList.size() <= 1) return;
-        if(mViewList.size() == 2){
+        if (mViewList.size() <= 1) return;
+        if (mViewList.size() == 2) {
             count = 2;
         }
 
-        for(int i = 0 ;  i < count ; i ++)
+        for (int i = 0; i < count; i++)
             mTab_Icon.addView(getImageView());
 
-       setTabIconLocation(mPosition);
+        setTabIconLocation(mPosition);
 
     }
 
-    public void clearView(){
-        if(mViewPage != null) mViewPage.removeAllViews();
-        if(mTab_Icon != null) mTab_Icon.removeAllViews();
+    public void clearView() {
+        if (mViewPage != null) mViewPage.removeAllViews();
+        if (mTab_Icon != null) mTab_Icon.removeAllViews();
+        if (mViewList != null) mViewList.clear();
     }
 
 
-    private void setTabIconLocation(int postion){
+    private void setTabIconLocation(int postion) {
 
-       setTabPointBg(postion - 1,R.drawable.x_homepage_3_tab_bg_circle_white);
-       setTabPointBg(postion + 1,R.drawable.x_homepage_3_tab_bg_circle_white);
-       setTabPointBg(postion , R.drawable.x_homepage_3_tab_bg_circle_red);
+        setTabPointBg(postion - 1, R.drawable.x_homepage_3_tab_bg_circle_white);
+        setTabPointBg(postion + 1, R.drawable.x_homepage_3_tab_bg_circle_white);
+        setTabPointBg(postion, R.drawable.x_homepage_3_tab_bg_circle_red);
 
     }
 
-    private void setTabPointBg(int postion , int drawId){
+    private void setTabPointBg(int postion, int drawId) {
 
-        if(postion < mViewList.size() && postion >= 0){
+        if (postion < mTab_Icon.getChildCount() && postion >= 0 && mTab_Icon.getChildCount() >= 1) {
 
             mTab_Icon.getChildAt(postion).setBackgroundResource(drawId);
 
         }
 
+        if(mTab_Icon.getChildCount() == 1){
+            mTab_Icon.setVisibility(View.GONE);
+        }
+
 
     }
 
 
 
-    private ImageView getImageView(){
+    public void setCurrentFirstItem() {
+        if (mViewList == null && mViewList.size() > 0) return;
+
+        setCurrentItem(0);
+    }
+
+    public void setCurrentLastItem() {
+        if (mViewList == null) return;
+
+        setCurrentItem(mViewList.size() - 1);
+    }
+
+    public void setCurrentItem(int position) {
+        mPosition = position;
+
+        mViewPage.setCurrentItem(position , mSmoothScroll);
+        for(int i = 0 ; i < mTab_Icon.getChildCount() ; i ++){
+            mTab_Icon.getChildAt(i).setBackgroundResource(R.drawable.x_homepage_3_tab_bg_circle_white);
+        }
+
+        setTabIconLocation(position);
+    }
+
+
+    public void setCurrentFirstItem(boolean smoothScroll) {
+        if (mViewList == null && mViewList.size() > 0) return;
+
+        setCurrentItem(0, smoothScroll);
+    }
+
+    public void setCurrentLastItem(boolean smoothScroll) {
+        if (mViewList == null) return;
+
+        setCurrentItem(mViewList.size() - 1, smoothScroll);
+    }
+
+    public void setCurrentItem(int position, boolean smoothScroll) {
+        if (mViewPage == null) return;
+        mSmoothScroll = smoothScroll;
+        setCurrentItem(position);
+    }
+
+
+    private ImageView getImageView() {
         ImageView imageView = new ImageView(mContext);
-        int width = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP , 7 , imageView.getResources().getDisplayMetrics());
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width , width);
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 7, imageView.getResources().getDisplayMetrics());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, width);
         params.leftMargin = width;
         imageView.setLayoutParams(params);
         imageView.setBackgroundResource(R.drawable.x_homepage_3_tab_bg_circle_white);
         return imageView;
     }
 
-    private void initAdapter(){
-        if(mAdapter == null){
+    private void initAdapter() {
+        if (mAdapter == null) {
             mAdapter = new Adapter();
             mViewPage.setAdapter(mAdapter);
-        }else
+        } else
             mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Ln.e("state多少的是多少:"+position);
-        if(isInit){
+        Ln.e("state多少的是多少:" + position);
+        if (isInit) {
             isInit = false;
             setTabIconLocation(position);
         }
@@ -168,6 +226,7 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
 
     @Override
     public void onPageSelected(int position) {
+
         mPosition = position;
         setTabIconLocation(position);
     }
@@ -182,7 +241,7 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
         @Override
         public boolean isViewFromObject(View arg0, Object arg1) {
 
-             return arg0 == arg1;
+            return arg0 == arg1;
         }
 
         @Override
@@ -193,8 +252,9 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
 
         @Override
         public void destroyItem(ViewGroup container, int position,
-                                    Object object) {
-            container.removeView(mViewList.get(position));
+                                Object object) {
+            if (position < mViewList.size())
+                container.removeView(mViewList.get(position));
 
         }
 
@@ -204,18 +264,18 @@ public class MyViewPagerTools implements ViewPager.OnPageChangeListener {
             return super.getItemPosition(object);
         }
 
-            @Override
-            public CharSequence getPageTitle(int position) {
+        @Override
+        public CharSequence getPageTitle(int position) {
 
-                return "";
-            }
+            return "";
+        }
 
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                container.addView(mViewList.get(position));
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            container.addView(mViewList.get(position));
 
-                return mViewList.get(position);
-            }
+            return mViewList.get(position);
+        }
 
     }
 

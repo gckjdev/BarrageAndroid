@@ -32,6 +32,7 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.user_home.UserHomeActivity;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonFragmentActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.activity.RequestCodes;
 import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.misc.SystemUtil;
@@ -231,12 +232,15 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(resultCode == 0X12){
-            mOnFragmentCommunicationListener.onListener(null);
+        if(resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_ALTER ||
+                resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_DELETE||
+                resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_CREATE){
+            mOnFragmentCommunicationListener.onListener(null,resultCode );
         }else if(mShowPublisFeedView != null) {
             PhotoAndCamera photoAndCamera =  mShowPublisFeedView.getPhotoAndCamera();
             if(photoAndCamera != null)
                 photoAndCamera.getPicture(requestCode, resultCode, data, l);
+
         }
     }
 

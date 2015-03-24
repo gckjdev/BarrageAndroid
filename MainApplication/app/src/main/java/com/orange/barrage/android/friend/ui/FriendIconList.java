@@ -55,26 +55,49 @@ public class FriendIconList extends GridView {
     }
 
     public void setUsers(List<UserProtos.PBUser>users , Activity activity , int type){
-        List<UserProtos.PBUser> userList = null;
 
-        if(users != null)
-            userList = new ArrayList<>(users);
         if(mAdapter == null)
-            mAdapter = new FriendIconListAdapter(getContext() ,userList , activity , type);
+            mAdapter = new FriendIconListAdapter(getContext() ,getListPBUser(users) , activity , type);
 //        if(mGridView == null)
 //            mGridView = (GridView) findViewById(R.id.friend_icon_gridview);
         setAdapter(mAdapter);
     }
 
 
+
+
+
     public void setUsers(List<UserProtos.PBUser> users , Activity activity){
-       setUsers(users , activity , ICON_ORDINARY);
+        setUsers(users , activity , ICON_ORDINARY);
     }
+
+    public void addUsers(List<UserProtos.PBUser> users){
+        if(mAdapter == null) new Throwable("Adapter == null");
+        mAdapter.addUser(users);
+    }
+
+
+    public void setReFresh(List<UserProtos.PBUser>users , Activity activity , int type){
+        mAdapter.setUser(getListPBUser(users) ,type);
+    }
+
+    private List<UserProtos.PBUser> getListPBUser(List<UserProtos.PBUser>users){
+        List<UserProtos.PBUser> userList = null;
+
+        if(users == null) users = new ArrayList<>();
+
+        if(users != null)
+            userList = new ArrayList<>(users);
+
+        return userList;
+    }
+
 
     public void setIconType(int type){
         if(mAdapter == null) return ;
         mAdapter.setIconType(type);
     }
+
 
 
     /**

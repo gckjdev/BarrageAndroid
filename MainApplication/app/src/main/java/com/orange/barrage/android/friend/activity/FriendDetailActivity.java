@@ -111,7 +111,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     public void onClickCamera(View v) {
         initPublishFeefView();
-        MessageCenter.postErrorMessage("niha");
         mShowPublishFeedView.showPublishFeedView();
     }
 

@@ -1,11 +1,16 @@
 package com.orange.barrage.android.user.ui.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
@@ -59,7 +64,14 @@ public class UserAvatarView extends ImageView {
 //        int width = 100;
 //        int height = 100;
         int borderWidth = 8;
-        if(url == null || url.length() == 0) return;
+        if(url == null || url.trim().length() == 0) {
+            setImageResource(R.drawable.y_morentouxiang);
+
+            Bitmap bitmap = ImageUtil.getRoundBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.y_morentouxiang));
+
+            setImageBitmap(bitmap);
+            return;
+        }
 
         //MessageCenter.postErrorMessage("ni hao wo bei diao yong");
         Ln.e("头像加载照片"+url);//加载照片
@@ -67,8 +79,8 @@ public class UserAvatarView extends ImageView {
                 .load(url)
                 .resize(300,300)
                 .transform(new RoundedTransformation(borderWidth))
-                .placeholder(R.drawable.tab_home)       // TODO change to right default
-                .error(R.drawable.tab_friend)           // TODO change to right default
+                .placeholder(R.drawable.y_morentouxiang)       // TODO change to right default
+                .error(R.drawable.y_morentouxiang)           // TODO change to right default
                 .into(this , null);
 
 
@@ -76,6 +88,9 @@ public class UserAvatarView extends ImageView {
         setVisibility(View.VISIBLE);
 
     }
+
+
+
 
 //    @Deprecated
 //    Callback mCallback = new Callback() {

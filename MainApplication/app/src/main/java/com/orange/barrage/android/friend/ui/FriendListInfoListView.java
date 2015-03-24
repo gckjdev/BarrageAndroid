@@ -86,9 +86,9 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
 
 
     public void setUserInfo(List<UserProtos.PBUser> PBUsers) {
-
+        if(PBUsers == null) return;
         for(UserProtos.PBUser PBUser : PBUsers)
-        addData(PBUser);
+            addData(PBUser);
 
         setAdapter();
     }
