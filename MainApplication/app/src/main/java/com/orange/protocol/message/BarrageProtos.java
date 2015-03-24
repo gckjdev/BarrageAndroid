@@ -497,18 +497,18 @@ public final class BarrageProtos {
   }
 
   /**
-   * Protobuf enum {@code barrage.PBMyFeedType}
+   * Protobuf enum {@code barrage.PBMyNewFeedType}
    */
-  public enum PBMyFeedType
+  public enum PBMyNewFeedType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>TYPE_NEW_FEED = 1;</code>
+     * <code>TYPE_NEW_FEED_TO_ME = 1;</code>
      *
      * <pre>
      * 分享给我的新图片消息
      * </pre>
      */
-    TYPE_NEW_FEED(0, 1),
+    TYPE_NEW_FEED_TO_ME(0, 1),
     /**
      * <code>TYPE_COMMENT_MY_FEED = 2;</code>
      *
@@ -518,23 +518,23 @@ public final class BarrageProtos {
      */
     TYPE_COMMENT_MY_FEED(1, 2),
     /**
-     * <code>TYPE_MY_COMMENT = 3;</code>
+     * <code>TYPE_MY_INVOLVED_COMMENT = 3;</code>
      *
      * <pre>
      * 我参与过评论的
      * </pre>
      */
-    TYPE_MY_COMMENT(2, 3),
+    TYPE_MY_INVOLVED_COMMENT(2, 3),
     ;
 
     /**
-     * <code>TYPE_NEW_FEED = 1;</code>
+     * <code>TYPE_NEW_FEED_TO_ME = 1;</code>
      *
      * <pre>
      * 分享给我的新图片消息
      * </pre>
      */
-    public static final int TYPE_NEW_FEED_VALUE = 1;
+    public static final int TYPE_NEW_FEED_TO_ME_VALUE = 1;
     /**
      * <code>TYPE_COMMENT_MY_FEED = 2;</code>
      *
@@ -544,35 +544,35 @@ public final class BarrageProtos {
      */
     public static final int TYPE_COMMENT_MY_FEED_VALUE = 2;
     /**
-     * <code>TYPE_MY_COMMENT = 3;</code>
+     * <code>TYPE_MY_INVOLVED_COMMENT = 3;</code>
      *
      * <pre>
      * 我参与过评论的
      * </pre>
      */
-    public static final int TYPE_MY_COMMENT_VALUE = 3;
+    public static final int TYPE_MY_INVOLVED_COMMENT_VALUE = 3;
 
 
     public final int getNumber() { return value; }
 
-    public static PBMyFeedType valueOf(int value) {
+    public static PBMyNewFeedType valueOf(int value) {
       switch (value) {
-        case 1: return TYPE_NEW_FEED;
+        case 1: return TYPE_NEW_FEED_TO_ME;
         case 2: return TYPE_COMMENT_MY_FEED;
-        case 3: return TYPE_MY_COMMENT;
+        case 3: return TYPE_MY_INVOLVED_COMMENT;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<PBMyFeedType>
+    public static com.google.protobuf.Internal.EnumLiteMap<PBMyNewFeedType>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<PBMyFeedType>
+    private static com.google.protobuf.Internal.EnumLiteMap<PBMyNewFeedType>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<PBMyFeedType>() {
-            public PBMyFeedType findValueByNumber(int number) {
-              return PBMyFeedType.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<PBMyNewFeedType>() {
+            public PBMyNewFeedType findValueByNumber(int number) {
+              return PBMyNewFeedType.valueOf(number);
             }
           };
 
@@ -589,9 +589,9 @@ public final class BarrageProtos {
       return com.orange.protocol.message.BarrageProtos.getDescriptor().getEnumTypes().get(4);
     }
 
-    private static final PBMyFeedType[] VALUES = values();
+    private static final PBMyNewFeedType[] VALUES = values();
 
-    public static PBMyFeedType valueOf(
+    public static PBMyNewFeedType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -603,12 +603,12 @@ public final class BarrageProtos {
     private final int index;
     private final int value;
 
-    private PBMyFeedType(int index, int value) {
+    private PBMyNewFeedType(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:barrage.PBMyFeedType)
+    // @@protoc_insertion_point(enum_scope:barrage.PBMyNewFeedType)
   }
 
   public interface PBFeedOrBuilder extends
@@ -7014,6 +7014,32 @@ public final class BarrageProtos {
     boolean getIsRead();
 
     /**
+     * <code>optional string userId = 7;</code>
+     *
+     * <pre>
+     * 触发该消息的用户ID
+     * </pre>
+     */
+    boolean hasUserId();
+    /**
+     * <code>optional string userId = 7;</code>
+     *
+     * <pre>
+     * 触发该消息的用户ID
+     * </pre>
+     */
+    java.lang.String getUserId();
+    /**
+     * <code>optional string userId = 7;</code>
+     *
+     * <pre>
+     * 触发该消息的用户ID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
+
+    /**
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
@@ -7152,9 +7178,15 @@ public final class BarrageProtos {
               isRead_ = input.readBool();
               break;
             }
+            case 58: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000040;
+              userId_ = bs;
+              break;
+            }
             case 82: {
               com.orange.protocol.message.BarrageProtos.PBFeed.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
                 subBuilder = feed_.toBuilder();
               }
               feed_ = input.readMessage(com.orange.protocol.message.BarrageProtos.PBFeed.PARSER, extensionRegistry);
@@ -7162,12 +7194,12 @@ public final class BarrageProtos {
                 subBuilder.mergeFrom(feed_);
                 feed_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               break;
             }
             case 90: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               image_ = bs;
               break;
             }
@@ -7411,6 +7443,60 @@ public final class BarrageProtos {
       return isRead_;
     }
 
+    public static final int USERID_FIELD_NUMBER = 7;
+    private java.lang.Object userId_;
+    /**
+     * <code>optional string userId = 7;</code>
+     *
+     * <pre>
+     * 触发该消息的用户ID
+     * </pre>
+     */
+    public boolean hasUserId() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string userId = 7;</code>
+     *
+     * <pre>
+     * 触发该消息的用户ID
+     * </pre>
+     */
+    public java.lang.String getUserId() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          userId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string userId = 7;</code>
+     *
+     * <pre>
+     * 触发该消息的用户ID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int FEED_FIELD_NUMBER = 10;
     private com.orange.protocol.message.BarrageProtos.PBFeed feed_;
     /**
@@ -7421,7 +7507,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasFeed() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .barrage.PBFeed feed = 10;</code>
@@ -7454,7 +7540,7 @@ public final class BarrageProtos {
      * </pre>
      */
     public boolean hasImage() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional string image = 11;</code>
@@ -7505,6 +7591,7 @@ public final class BarrageProtos {
       count_ = 0;
       modifyDate_ = 0;
       isRead_ = false;
+      userId_ = "";
       feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
       image_ = "";
     }
@@ -7550,9 +7637,12 @@ public final class BarrageProtos {
         output.writeBool(6, isRead_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(10, feed_);
+        output.writeBytes(7, getUserIdBytes());
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(10, feed_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(11, getImageBytes());
       }
       getUnknownFields().writeTo(output);
@@ -7590,9 +7680,13 @@ public final class BarrageProtos {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, feed_);
+          .computeBytesSize(7, getUserIdBytes());
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, feed_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(11, getImageBytes());
       }
@@ -7730,14 +7824,16 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000010);
         isRead_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
+        userId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (feedBuilder_ == null) {
           feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
         } else {
           feedBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
-        image_ = "";
         bitField0_ = (bitField0_ & ~0x00000080);
+        image_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -7793,13 +7889,17 @@ public final class BarrageProtos {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
+        result.userId_ = userId_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         if (feedBuilder_ == null) {
           result.feed_ = feed_;
         } else {
           result.feed_ = feedBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
         }
         result.image_ = image_;
         result.bitField0_ = to_bitField0_;
@@ -7840,11 +7940,16 @@ public final class BarrageProtos {
         if (other.hasIsRead()) {
           setIsRead(other.getIsRead());
         }
+        if (other.hasUserId()) {
+          bitField0_ |= 0x00000040;
+          userId_ = other.userId_;
+          onChanged();
+        }
         if (other.hasFeed()) {
           mergeFeed(other.getFeed());
         }
         if (other.hasImage()) {
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000100;
           image_ = other.image_;
           onChanged();
         }
@@ -8277,6 +8382,106 @@ public final class BarrageProtos {
         return this;
       }
 
+      private java.lang.Object userId_ = "";
+      /**
+       * <code>optional string userId = 7;</code>
+       *
+       * <pre>
+       * 触发该消息的用户ID
+       * </pre>
+       */
+      public boolean hasUserId() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       *
+       * <pre>
+       * 触发该消息的用户ID
+       * </pre>
+       */
+      public java.lang.String getUserId() {
+        java.lang.Object ref = userId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            userId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       *
+       * <pre>
+       * 触发该消息的用户ID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        java.lang.Object ref = userId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       *
+       * <pre>
+       * 触发该消息的用户ID
+       * </pre>
+       */
+      public Builder setUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       *
+       * <pre>
+       * 触发该消息的用户ID
+       * </pre>
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        userId_ = getDefaultInstance().getUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       *
+       * <pre>
+       * 触发该消息的用户ID
+       * </pre>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.orange.protocol.message.BarrageProtos.PBFeed feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.orange.protocol.message.BarrageProtos.PBFeed, com.orange.protocol.message.BarrageProtos.PBFeed.Builder, com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder> feedBuilder_;
@@ -8288,7 +8493,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasFeed() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .barrage.PBFeed feed = 10;</code>
@@ -8321,7 +8526,7 @@ public final class BarrageProtos {
         } else {
           feedBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
@@ -8339,7 +8544,7 @@ public final class BarrageProtos {
         } else {
           feedBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
@@ -8351,7 +8556,7 @@ public final class BarrageProtos {
        */
       public Builder mergeFeed(com.orange.protocol.message.BarrageProtos.PBFeed value) {
         if (feedBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
               feed_ != com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance()) {
             feed_ =
               com.orange.protocol.message.BarrageProtos.PBFeed.newBuilder(feed_).mergeFrom(value).buildPartial();
@@ -8362,7 +8567,7 @@ public final class BarrageProtos {
         } else {
           feedBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
@@ -8379,7 +8584,7 @@ public final class BarrageProtos {
         } else {
           feedBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
       /**
@@ -8390,7 +8595,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public com.orange.protocol.message.BarrageProtos.PBFeed.Builder getFeedBuilder() {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         onChanged();
         return getFeedFieldBuilder().getBuilder();
       }
@@ -8438,7 +8643,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public boolean hasImage() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional string image = 11;</code>
@@ -8493,7 +8698,7 @@ public final class BarrageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000100;
         image_ = value;
         onChanged();
         return this;
@@ -8506,7 +8711,7 @@ public final class BarrageProtos {
        * </pre>
        */
       public Builder clearImage() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         image_ = getDefaultInstance().getImage();
         onChanged();
         return this;
@@ -8523,7 +8728,7 @@ public final class BarrageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000100;
         image_ = value;
         onChanged();
         return this;
@@ -9387,24 +9592,25 @@ public final class BarrageProtos {
       "tar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 " +
       "\001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\r\n\005color\030\r \001(\005\022\r\n" +
       "\005angel\030\022 \001(\005\022\023\n\005hasBg\030\023 \001(\010:\004true\022\014\n\004dat" +
-      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005\"\236\001\n\013PBMyNewFeed\022" +
+      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005\"\256\001\n\013PBMyNewFeed\022" +
       "\016\n\006feedId\030\001 \002(\t\022\020\n\010actionId\030\002 \001(\t\022\014\n\004typ",
       "e\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\022\n\nmodifyDate\030\005 \001" +
-      "(\005\022\016\n\006isRead\030\006 \001(\010\022\035\n\004feed\030\n \001(\0132\017.barra" +
-      "ge.PBFeed\022\r\n\005image\030\013 \001(\t\"8\n\017PBMyNewFeedL" +
-      "ist\022%\n\007myFeeds\030\001 \003(\0132\024.barrage.PBMyNewFe" +
-      "ed*v\n\016PBBarrageStyle\022\r\n\tPOP_DECAY\020\000\022\016\n\nP" +
-      "OP_SPRING\020\001\022\016\n\nPOP_LINEAR\020\002\022\017\n\013POP_EASE_" +
-      "IN\020\003\022\020\n\014POP_EASE_OUT\020\004\022\022\n\016POP_EASE_INOUT" +
-      "\020\005*.\n\rPBBarrageMode\022\017\n\013FOR_COMMENT\020\000\022\014\n\010" +
-      "FOR_CHAT\020\001*M\n\016PBBarrageSpeed\022\n\n\006NORMAL\020\000" +
-      "\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH\020\002\022\007\n\003LOW\020\003\022\014\n\010V",
-      "ERY_LOW\020\004*_\n\013PBColorMode\022\027\n\023WHITE_TEXT_B" +
-      "LACK_BG\020\000\022\027\n\023BLACK_TEXT_WHITE_BG\020\001\022\036\n\032CU" +
-      "STOM_TEXT_TRANSPARENT_BG\020\002*P\n\014PBMyFeedTy" +
-      "pe\022\021\n\rTYPE_NEW_FEED\020\001\022\030\n\024TYPE_COMMENT_MY" +
-      "_FEED\020\002\022\023\n\017TYPE_MY_COMMENT\020\003B,\n\033com.oran" +
-      "ge.protocol.messageB\rBarrageProtos"
+      "(\005\022\016\n\006isRead\030\006 \001(\010\022\016\n\006userId\030\007 \001(\t\022\035\n\004fe" +
+      "ed\030\n \001(\0132\017.barrage.PBFeed\022\r\n\005image\030\013 \001(\t" +
+      "\"8\n\017PBMyNewFeedList\022%\n\007myFeeds\030\001 \003(\0132\024.b" +
+      "arrage.PBMyNewFeed*v\n\016PBBarrageStyle\022\r\n\t" +
+      "POP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_LINEA" +
+      "R\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OUT\020\004\022\022" +
+      "\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017\n\013F" +
+      "OR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarrageS" +
+      "peed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH",
+      "\020\002\022\007\n\003LOW\020\003\022\014\n\010VERY_LOW\020\004*_\n\013PBColorMode" +
+      "\022\027\n\023WHITE_TEXT_BLACK_BG\020\000\022\027\n\023BLACK_TEXT_" +
+      "WHITE_BG\020\001\022\036\n\032CUSTOM_TEXT_TRANSPARENT_BG" +
+      "\020\002*b\n\017PBMyNewFeedType\022\027\n\023TYPE_NEW_FEED_T" +
+      "O_ME\020\001\022\030\n\024TYPE_COMMENT_MY_FEED\020\002\022\034\n\030TYPE" +
+      "_MY_INVOLVED_COMMENT\020\003B,\n\033com.orange.pro" +
+      "tocol.messageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9437,7 +9643,7 @@ public final class BarrageProtos {
     internal_static_barrage_PBMyNewFeed_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBMyNewFeed_descriptor,
-        new java.lang.String[] { "FeedId", "ActionId", "Type", "Count", "ModifyDate", "IsRead", "Feed", "Image", });
+        new java.lang.String[] { "FeedId", "ActionId", "Type", "Count", "ModifyDate", "IsRead", "UserId", "Feed", "Image", });
     internal_static_barrage_PBMyNewFeedList_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_barrage_PBMyNewFeedList_fieldAccessorTable = new

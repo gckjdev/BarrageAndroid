@@ -63,5 +63,12 @@ public class UserHomeActivity extends BarrageCommonActivity {
                 ActivityIntent.startIntent(UserHomeActivity.this,UserHomeSettingActivity.class);
             }
         });
+        //邀请好友
+        mUserHomeInviteMyfriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityIntent.startIntent(UserHomeActivity.this,InviteMyFriendActivity.class);
+            }
+        });
     }
 }

@@ -122,6 +122,10 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         // init action builder
         mActionBuilder = BarrageProtos.PBFeedAction.newBuilder();
         mActionBuilder.setFeedId(mFeed.getFeedId());
+        mActionBuilder.setUser(mUserManager.getUser());
+        mActionBuilder.setActionId("");
+        mActionBuilder.setText("");
+        mActionBuilder.setAvatar(mUserManager.getUser().getAvatar());
 
         return model;
     }

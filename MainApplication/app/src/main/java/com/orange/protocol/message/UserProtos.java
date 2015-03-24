@@ -19410,32 +19410,6 @@ public final class UserProtos {
      */
     com.orange.protocol.message.UserProtos.PBUserGroupOrBuilder getGroupsOrBuilder(
         int index);
-
-    /**
-     * <code>required string ownerId = 2;</code>
-     *
-     * <pre>
-     * 该数据的拥有者，便于以后多用户
-     * </pre>
-     */
-    boolean hasOwnerId();
-    /**
-     * <code>required string ownerId = 2;</code>
-     *
-     * <pre>
-     * 该数据的拥有者，便于以后多用户
-     * </pre>
-     */
-    java.lang.String getOwnerId();
-    /**
-     * <code>required string ownerId = 2;</code>
-     *
-     * <pre>
-     * 该数据的拥有者，便于以后多用户
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getOwnerIdBytes();
   }
   /**
    * Protobuf type {@code barrage.PBUserGroupList}
@@ -19497,12 +19471,6 @@ public final class UserProtos {
               groups_.add(input.readMessage(com.orange.protocol.message.UserProtos.PBUserGroup.PARSER, extensionRegistry));
               break;
             }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              ownerId_ = bs;
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -19545,7 +19513,6 @@ public final class UserProtos {
       return PARSER;
     }
 
-    private int bitField0_;
     public static final int GROUPS_FIELD_NUMBER = 1;
     private java.util.List<com.orange.protocol.message.UserProtos.PBUserGroup> groups_;
     /**
@@ -19601,63 +19568,8 @@ public final class UserProtos {
       return groups_.get(index);
     }
 
-    public static final int OWNERID_FIELD_NUMBER = 2;
-    private java.lang.Object ownerId_;
-    /**
-     * <code>required string ownerId = 2;</code>
-     *
-     * <pre>
-     * 该数据的拥有者，便于以后多用户
-     * </pre>
-     */
-    public boolean hasOwnerId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string ownerId = 2;</code>
-     *
-     * <pre>
-     * 该数据的拥有者，便于以后多用户
-     * </pre>
-     */
-    public java.lang.String getOwnerId() {
-      java.lang.Object ref = ownerId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          ownerId_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string ownerId = 2;</code>
-     *
-     * <pre>
-     * 该数据的拥有者，便于以后多用户
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getOwnerIdBytes() {
-      java.lang.Object ref = ownerId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ownerId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private void initFields() {
       groups_ = java.util.Collections.emptyList();
-      ownerId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -19665,10 +19577,6 @@ public final class UserProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasOwnerId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       for (int i = 0; i < getGroupsCount(); i++) {
         if (!getGroups(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -19685,9 +19593,6 @@ public final class UserProtos {
       for (int i = 0; i < groups_.size(); i++) {
         output.writeMessage(1, groups_.get(i));
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(2, getOwnerIdBytes());
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -19700,10 +19605,6 @@ public final class UserProtos {
       for (int i = 0; i < groups_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, groups_.get(i));
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getOwnerIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19829,8 +19730,6 @@ public final class UserProtos {
         } else {
           groupsBuilder_.clear();
         }
-        ownerId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -19858,7 +19757,6 @@ public final class UserProtos {
       public com.orange.protocol.message.UserProtos.PBUserGroupList buildPartial() {
         com.orange.protocol.message.UserProtos.PBUserGroupList result = new com.orange.protocol.message.UserProtos.PBUserGroupList(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (groupsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             groups_ = java.util.Collections.unmodifiableList(groups_);
@@ -19868,11 +19766,6 @@ public final class UserProtos {
         } else {
           result.groups_ = groupsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.ownerId_ = ownerId_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -19914,20 +19807,11 @@ public final class UserProtos {
             }
           }
         }
-        if (other.hasOwnerId()) {
-          bitField0_ |= 0x00000002;
-          ownerId_ = other.ownerId_;
-          onChanged();
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasOwnerId()) {
-          
-          return false;
-        }
         for (int i = 0; i < getGroupsCount(); i++) {
           if (!getGroups(i).isInitialized()) {
             
@@ -20268,106 +20152,6 @@ public final class UserProtos {
         return groupsBuilder_;
       }
 
-      private java.lang.Object ownerId_ = "";
-      /**
-       * <code>required string ownerId = 2;</code>
-       *
-       * <pre>
-       * 该数据的拥有者，便于以后多用户
-       * </pre>
-       */
-      public boolean hasOwnerId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string ownerId = 2;</code>
-       *
-       * <pre>
-       * 该数据的拥有者，便于以后多用户
-       * </pre>
-       */
-      public java.lang.String getOwnerId() {
-        java.lang.Object ref = ownerId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            ownerId_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string ownerId = 2;</code>
-       *
-       * <pre>
-       * 该数据的拥有者，便于以后多用户
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getOwnerIdBytes() {
-        java.lang.Object ref = ownerId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          ownerId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string ownerId = 2;</code>
-       *
-       * <pre>
-       * 该数据的拥有者，便于以后多用户
-       * </pre>
-       */
-      public Builder setOwnerId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        ownerId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string ownerId = 2;</code>
-       *
-       * <pre>
-       * 该数据的拥有者，便于以后多用户
-       * </pre>
-       */
-      public Builder clearOwnerId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        ownerId_ = getDefaultInstance().getOwnerId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string ownerId = 2;</code>
-       *
-       * <pre>
-       * 该数据的拥有者，便于以后多用户
-       * </pre>
-       */
-      public Builder setOwnerIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        ownerId_ = value;
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:barrage.PBUserGroupList)
     }
 
@@ -20479,29 +20263,28 @@ public final class UserProtos {
       "\022\036\n\005users\030\n \003(\0132\017.barrage.PBUser\022\017\n\007grou" +
       "pId\030\013 \002(\t\022\021\n\toccurence\030\001 \001(\005\022\021\n\trejectio" +
       "n\030\002 \001(\005\022\031\n\021lastOccurenceDate\030\003 \001(\005\022\031\n\021la" +
-      "stRejectionDate\030\004 \001(\005\"H\n\017PBUserGroupList" +
-      "\022$\n\006groups\030\001 \003(\0132\024.barrage.PBUserGroup\022\017" +
-      "\n\007ownerId\030\002 \002(\t*@\n\023FriendAddSourceType\022\021" +
-      "\n\rADD_BY_SEARCH\020\001\022\026\n\022ADD_BY_SCAN_QRCODE\020",
-      "\002*N\n\023FriendAddConfigType\022\022\n\016REQUIRE_ACCE" +
-      "PT\020\000\022\016\n\nACCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020" +
-      "\007*f\n\026FriendRequestDirection\022\030\n\024REQ_DIREC" +
-      "TION_SENDER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020" +
-      "\001\022\026\n\022REQ_DIRECTION_NONE\020\002*c\n\023FriendAddSt" +
-      "atusType\022\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACC" +
-      "EPTED\020\001\022\020\n\014REQ_REJECTED\020\002\022\023\n\017REQ_STATUS_" +
-      "NONE\020\007*r\n\013PBLoginType\022\020\n\014LOGIN_XIAOJI\020d\022" +
-      "\017\n\013LOGIN_EMAIL\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LO" +
-      "GIN_QQ\020\006\022\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN",
-      "\020\027*i\n\016PBRegisterType\022\016\n\nREG_XIAOJI\020d\022\r\n\t" +
-      "REG_EMAIL\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022" +
-      "\014\n\010REG_SINA\020\001\022\016\n\nREG_WEIXIN\020\027*E\n\nPBTagCo" +
-      "lor\022\n\n\006SYSTEM\020\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022" +
-      "\007\n\003HOT\020\003\022\n\n\006RECENT\020\004*p\n\022PBInviteCodeStat" +
-      "us\022\025\n\021CODE_STATUS_READY\020\000\022\024\n\020CODE_STATUS" +
-      "_SENT\020\001\022\024\n\020CODE_STATUS_USED\020\002\022\027\n\023CODE_ST" +
-      "ATUS_INVALID\020\003B)\n\033com.orange.protocol.me" +
-      "ssageB\nUserProtos"
+      "stRejectionDate\030\004 \001(\005\"7\n\017PBUserGroupList" +
+      "\022$\n\006groups\030\001 \003(\0132\024.barrage.PBUserGroup*@" +
+      "\n\023FriendAddSourceType\022\021\n\rADD_BY_SEARCH\020\001" +
+      "\022\026\n\022ADD_BY_SCAN_QRCODE\020\002*N\n\023FriendAddCon",
+      "figType\022\022\n\016REQUIRE_ACCEPT\020\000\022\016\n\nACCEPT_AL" +
+      "L\020\001\022\023\n\017DISALLOW_ADD_ME\020\007*f\n\026FriendReques" +
+      "tDirection\022\030\n\024REQ_DIRECTION_SENDER\020\000\022\032\n\026" +
+      "REQ_DIRECTION_RECEIVER\020\001\022\026\n\022REQ_DIRECTIO" +
+      "N_NONE\020\002*c\n\023FriendAddStatusType\022\023\n\017REQ_W" +
+      "AIT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020\n\014REQ_RE" +
+      "JECTED\020\002\022\023\n\017REQ_STATUS_NONE\020\007*r\n\013PBLogin" +
+      "Type\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOGIN_EMAIL\020e\022" +
+      "\020\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ\020\006\022\016\n\nLOGIN" +
+      "_SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016PBRegisterT",
+      "ype\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EMAIL\020e\022\016\n\nRE" +
+      "G_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG_SINA\020\001\022\016\n\n" +
+      "REG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n\006SYSTEM\020\000\022\n" +
+      "\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT\020\003\022\n\n\006RECEN" +
+      "T\020\004*p\n\022PBInviteCodeStatus\022\025\n\021CODE_STATUS" +
+      "_READY\020\000\022\024\n\020CODE_STATUS_SENT\020\001\022\024\n\020CODE_S" +
+      "TATUS_USED\020\002\022\027\n\023CODE_STATUS_INVALID\020\003B)\n" +
+      "\033com.orange.protocol.messageB\nUserProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -20569,7 +20352,7 @@ public final class UserProtos {
     internal_static_barrage_PBUserGroupList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBUserGroupList_descriptor,
-        new java.lang.String[] { "Groups", "OwnerId", });
+        new java.lang.String[] { "Groups", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
   }
 

@@ -11,8 +11,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
-
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
@@ -32,7 +30,6 @@
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
-
         <activity
             android:name=".feed.activity.FeedCreateActivity"
             android:screenOrientation="portrait" />
@@ -85,9 +82,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".friend.activity.FriendListSelectActivity"/>
-
+        <activity android:name=".friend.activity.FriendListSelectActivity" />
 
         <!-- Share SDK Activities -->
 
@@ -174,8 +169,12 @@
         </activity>
         <activity
             android:name=".friend.activity.OptionFeedBackActivity"
-            android:windowSoftInputMode="stateVisible"
-            android:label="@string/title_activity_option_feed_back" >
+            android:label="@string/title_activity_option_feed_back"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.InviteMyFriendActivity"
+            android:label="@string/title_activity_invite_my_friend" >
         </activity>
     </application>
 
