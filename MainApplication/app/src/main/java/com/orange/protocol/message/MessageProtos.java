@@ -24090,6 +24090,32 @@ public final class MessageProtos {
   public interface PBGetMyNewFeedListRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:barrage.PBGetMyNewFeedListRequest)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .barrage.PBUser user = 1;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .barrage.PBUser user = 1;</code>
+     */
+    com.orange.protocol.message.UserProtos.PBUser getUser();
+    /**
+     * <code>optional .barrage.PBUser user = 1;</code>
+     */
+    com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder();
+
+    /**
+     * <code>optional .barrage.PBDevice device = 2;</code>
+     */
+    boolean hasDevice();
+    /**
+     * <code>optional .barrage.PBDevice device = 2;</code>
+     */
+    com.orange.protocol.message.CommonProtos.PBDevice getDevice();
+    /**
+     * <code>optional .barrage.PBDevice device = 2;</code>
+     */
+    com.orange.protocol.message.CommonProtos.PBDeviceOrBuilder getDeviceOrBuilder();
   }
   /**
    * Protobuf type {@code barrage.PBGetMyNewFeedListRequest}
@@ -24125,6 +24151,7 @@ public final class MessageProtos {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -24140,6 +24167,32 @@ public final class MessageProtos {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              com.orange.protocol.message.UserProtos.PBUser.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUser.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              com.orange.protocol.message.CommonProtos.PBDevice.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = device_.toBuilder();
+              }
+              device_ = input.readMessage(com.orange.protocol.message.CommonProtos.PBDevice.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(device_);
+                device_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
               break;
             }
           }
@@ -24181,7 +24234,52 @@ public final class MessageProtos {
       return PARSER;
     }
 
+    private int bitField0_;
+    public static final int USER_FIELD_NUMBER = 1;
+    private com.orange.protocol.message.UserProtos.PBUser user_;
+    /**
+     * <code>optional .barrage.PBUser user = 1;</code>
+     */
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .barrage.PBUser user = 1;</code>
+     */
+    public com.orange.protocol.message.UserProtos.PBUser getUser() {
+      return user_;
+    }
+    /**
+     * <code>optional .barrage.PBUser user = 1;</code>
+     */
+    public com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder() {
+      return user_;
+    }
+
+    public static final int DEVICE_FIELD_NUMBER = 2;
+    private com.orange.protocol.message.CommonProtos.PBDevice device_;
+    /**
+     * <code>optional .barrage.PBDevice device = 2;</code>
+     */
+    public boolean hasDevice() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .barrage.PBDevice device = 2;</code>
+     */
+    public com.orange.protocol.message.CommonProtos.PBDevice getDevice() {
+      return device_;
+    }
+    /**
+     * <code>optional .barrage.PBDevice device = 2;</code>
+     */
+    public com.orange.protocol.message.CommonProtos.PBDeviceOrBuilder getDeviceOrBuilder() {
+      return device_;
+    }
+
     private void initFields() {
+      user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
+      device_ = com.orange.protocol.message.CommonProtos.PBDevice.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -24189,6 +24287,18 @@ public final class MessageProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (hasUser()) {
+        if (!getUser().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasDevice()) {
+        if (!getDevice().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -24196,6 +24306,12 @@ public final class MessageProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, user_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, device_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -24205,6 +24321,14 @@ public final class MessageProtos {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, user_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, device_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -24314,6 +24438,8 @@ public final class MessageProtos {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUserFieldBuilder();
+          getDeviceFieldBuilder();
         }
       }
       private static Builder create() {
@@ -24322,6 +24448,18 @@ public final class MessageProtos {
 
       public Builder clear() {
         super.clear();
+        if (userBuilder_ == null) {
+          user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (deviceBuilder_ == null) {
+          device_ = com.orange.protocol.message.CommonProtos.PBDevice.getDefaultInstance();
+        } else {
+          deviceBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -24348,6 +24486,25 @@ public final class MessageProtos {
 
       public com.orange.protocol.message.MessageProtos.PBGetMyNewFeedListRequest buildPartial() {
         com.orange.protocol.message.MessageProtos.PBGetMyNewFeedListRequest result = new com.orange.protocol.message.MessageProtos.PBGetMyNewFeedListRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (deviceBuilder_ == null) {
+          result.device_ = device_;
+        } else {
+          result.device_ = deviceBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -24363,11 +24520,29 @@ public final class MessageProtos {
 
       public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBGetMyNewFeedListRequest other) {
         if (other == com.orange.protocol.message.MessageProtos.PBGetMyNewFeedListRequest.getDefaultInstance()) return this;
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
+        }
+        if (other.hasDevice()) {
+          mergeDevice(other.getDevice());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasDevice()) {
+          if (!getDevice().isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -24387,6 +24562,239 @@ public final class MessageProtos {
           }
         }
         return this;
+      }
+      private int bitField0_;
+
+      private com.orange.protocol.message.UserProtos.PBUser user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder> userBuilder_;
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public com.orange.protocol.message.UserProtos.PBUser getUser() {
+        if (userBuilder_ == null) {
+          return user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public Builder setUser(com.orange.protocol.message.UserProtos.PBUser value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public Builder setUser(
+          com.orange.protocol.message.UserProtos.PBUser.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public Builder mergeUser(com.orange.protocol.message.UserProtos.PBUser value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              user_ != com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance()) {
+            user_ =
+              com.orange.protocol.message.UserProtos.PBUser.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public com.orange.protocol.message.UserProtos.PBUser.Builder getUserBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      public com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBUser user = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder>(
+                  getUser(),
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
+      }
+
+      private com.orange.protocol.message.CommonProtos.PBDevice device_ = com.orange.protocol.message.CommonProtos.PBDevice.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.CommonProtos.PBDevice, com.orange.protocol.message.CommonProtos.PBDevice.Builder, com.orange.protocol.message.CommonProtos.PBDeviceOrBuilder> deviceBuilder_;
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public boolean hasDevice() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public com.orange.protocol.message.CommonProtos.PBDevice getDevice() {
+        if (deviceBuilder_ == null) {
+          return device_;
+        } else {
+          return deviceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public Builder setDevice(com.orange.protocol.message.CommonProtos.PBDevice value) {
+        if (deviceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          device_ = value;
+          onChanged();
+        } else {
+          deviceBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public Builder setDevice(
+          com.orange.protocol.message.CommonProtos.PBDevice.Builder builderForValue) {
+        if (deviceBuilder_ == null) {
+          device_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public Builder mergeDevice(com.orange.protocol.message.CommonProtos.PBDevice value) {
+        if (deviceBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              device_ != com.orange.protocol.message.CommonProtos.PBDevice.getDefaultInstance()) {
+            device_ =
+              com.orange.protocol.message.CommonProtos.PBDevice.newBuilder(device_).mergeFrom(value).buildPartial();
+          } else {
+            device_ = value;
+          }
+          onChanged();
+        } else {
+          deviceBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public Builder clearDevice() {
+        if (deviceBuilder_ == null) {
+          device_ = com.orange.protocol.message.CommonProtos.PBDevice.getDefaultInstance();
+          onChanged();
+        } else {
+          deviceBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public com.orange.protocol.message.CommonProtos.PBDevice.Builder getDeviceBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getDeviceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      public com.orange.protocol.message.CommonProtos.PBDeviceOrBuilder getDeviceOrBuilder() {
+        if (deviceBuilder_ != null) {
+          return deviceBuilder_.getMessageOrBuilder();
+        } else {
+          return device_;
+        }
+      }
+      /**
+       * <code>optional .barrage.PBDevice device = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.orange.protocol.message.CommonProtos.PBDevice, com.orange.protocol.message.CommonProtos.PBDevice.Builder, com.orange.protocol.message.CommonProtos.PBDeviceOrBuilder> 
+          getDeviceFieldBuilder() {
+        if (deviceBuilder_ == null) {
+          deviceBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.orange.protocol.message.CommonProtos.PBDevice, com.orange.protocol.message.CommonProtos.PBDevice.Builder, com.orange.protocol.message.CommonProtos.PBDeviceOrBuilder>(
+                  getDevice(),
+                  getParentForChildren(),
+                  isClean());
+          device_ = null;
+        }
+        return deviceBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:barrage.PBGetMyNewFeedListRequest)
@@ -29584,6 +29992,12 @@ public final class MessageProtos {
           return false;
         }
       }
+      if (hasGetMyNewFeedListRequest()) {
+        if (!getGetMyNewFeedListRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasCreateFeedRequest()) {
         if (!getCreateFeedRequest().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -30592,6 +31006,12 @@ public final class MessageProtos {
         }
         if (hasSendUserFeedbackRequest()) {
           if (!getSendUserFeedbackRequest().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasGetMyNewFeedListRequest()) {
+          if (!getGetMyNewFeedListRequest().isInitialized()) {
             
             return false;
           }
@@ -39737,125 +40157,127 @@ public final class MessageProtos {
       "Id\030\001 \002(\t\"5\n\024PBDeleteFeedResponse\022\035\n\004feed" +
       "\030\001 \001(\0132\017.barrage.PBFeed\":\n\025PBDeleteFrien" +
       "dRequest\022\016\n\006userId\030\001 \002(\t\022\021\n\taddStatus\030\002 " +
-      "\002(\005\"\030\n\026PBDeleteFriendResponse\"\033\n\031PBGetMy" +
-      "NewFeedListRequest\"M\n\032PBGetMyNewFeedList" +
-      "Response\022/\n\rmyNewFeedList\030\001 \001(\0132\030.barrag" +
-      "e.PBMyNewFeedList\"G\n\034PBGetUserTimelineFe" +
-      "edRequest\022\024\n\014offsetFeedId\030\001 \001(\t\022\021\n\005limit" +
-      "\030\002 \001(\005:\00220\"?\n\035PBGetUserTimelineFeedRespo",
-      "nse\022\036\n\005feeds\030\001 \003(\0132\017.barrage.PBFeed\"\222\001\n\031" +
-      "PBSendUserFeedbackRequest\022\017\n\007message\030\001 \001" +
-      "(\t\022\023\n\013contactInfo\030\002 \001(\t\022\035\n\004user\030\003 \001(\0132\017." +
-      "barrage.PBUser\022!\n\006device\030\004 \001(\0132\021.barrage" +
-      ".PBDevice\022\r\n\005reqId\030\005 \001(\t\"\034\n\032PBSendUserFe" +
-      "edbackResponse\"\210\r\n\rPBDataRequest\022\014\n\004type" +
-      "\030\001 \002(\005\022\021\n\trequestId\030\002 \001(\005\022\017\n\007version\030\003 \001" +
-      "(\005\022\016\n\006userId\030\004 \001(\t\022!\n\006device\030\036 \001(\0132\021.bar" +
-      "rage.PBDevice\022\023\n\013countryCode\030\037 \001(\t\022\024\n\014la" +
-      "nguageCode\030  \001(\t\022\022\n\nclientDate\030! \001(\005\0225\n\020",
-      "loginUserRequest\030( \001(\0132\033.barrage.PBLogin" +
-      "UserRequest\022;\n\023registerUserRequest\030) \001(\013" +
-      "2\036.barrage.PBRegisterUserRequest\0227\n\021sear" +
-      "chUserRequest\030* \001(\0132\034.barrage.PBSearchUs" +
-      "erRequest\022?\n\025updateUserInfoRequest\030+ \001(\013" +
-      "2 .barrage.PBUpdateUserInfoRequest\022=\n\024ad" +
-      "dUserFriendRequest\030, \001(\0132\037.barrage.PBAdd" +
-      "UserFriendRequest\022E\n\030getUserFriendListRe" +
-      "quest\030- \001(\0132#.barrage.PBGetUserFriendLis" +
-      "tRequest\022C\n\027verifyInviteCodeRequest\030. \001(",
-      "\0132\".barrage.PBVerifyInviteCodeRequest\022E\n" +
-      "\030processUserFriendRequest\030/ \001(\0132#.barrag" +
-      "e.PBProcessUserFriendRequest\022C\n\027getNewIn" +
-      "viteCodeRequest\0300 \001(\0132\".barrage.PBGetNew" +
-      "InviteCodeRequest\0227\n\021addUserTagRequest\0301" +
-      " \001(\0132\034.barrage.PBAddUserTagRequest\022=\n\024de" +
-      "leteUserTagRequest\0302 \001(\0132\037.barrage.PBDel" +
-      "eteUserTagRequest\022?\n\025getUserTagListReque" +
-      "st\0303 \001(\0132 .barrage.PBGetUserTagListReque" +
-      "st\022M\n\034getUserInviteCodeListRequest\0304 \001(\013",
-      "2\'.barrage.PBGetUserInviteCodeListReques" +
-      "t\022A\n\026applyInviteCodeRequest\0305 \001(\0132!.barr" +
-      "age.PBApplyInviteCodeRequest\022C\n\027updateIn" +
-      "viteCodeRequest\0306 \001(\0132\".barrage.PBUpdate" +
-      "InviteCodeRequest\022;\n\023deleteFriendRequest" +
-      "\0307 \001(\0132\036.barrage.PBDeleteFriendRequest\022C" +
-      "\n\027sendUserFeedbackRequest\0308 \001(\0132\".barrag" +
-      "e.PBSendUserFeedbackRequest\022C\n\027getMyNewF" +
-      "eedListRequest\0309 \001(\0132\".barrage.PBGetMyNe" +
-      "wFeedListRequest\0227\n\021createFeedRequest\030< ",
-      "\001(\0132\034.barrage.PBCreateFeedRequest\0225\n\020rep" +
-      "lyFeedRequest\030= \001(\0132\033.barrage.PBReplyFee" +
-      "dRequest\022I\n\032getUserTimelineFeedRequest\030>" +
-      " \001(\0132%.barrage.PBGetUserTimelineFeedRequ" +
-      "est\022C\n\027deleteFeedActionRequest\030? \001(\0132\".b" +
-      "arrage.PBDeleteFeedActionRequest\0227\n\021dele" +
-      "teFeedRequest\030@ \001(\0132\034.barrage.PBDeleteFe" +
-      "edRequest\"\366\014\n\016PBDataResponse\022\025\n\nresultCo" +
-      "de\030\001 \002(\005:\0010\022\021\n\trequestId\030\002 \001(\005\022\017\n\007versio" +
-      "n\030\003 \001(\005\022\022\n\ntotalCount\030\004 \001(\005\022\022\n\nstringDat",
-      "a\030\005 \001(\t\0227\n\021loginUserResponse\030( \001(\0132\034.bar" +
-      "rage.PBLoginUserResponse\022=\n\024registerUser" +
-      "Response\030) \001(\0132\037.barrage.PBRegisterUserR" +
-      "esponse\0229\n\022searchUserResponse\030* \001(\0132\035.ba" +
-      "rrage.PBSearchUserResponse\022A\n\026updateUser" +
-      "InfoResponse\030+ \001(\0132!.barrage.PBUpdateUse" +
-      "rInfoResponse\022?\n\025addUserFriendResponse\030," +
-      " \001(\0132 .barrage.PBAddUserFriendResponse\022G" +
-      "\n\031getUserFriendListResponse\030- \001(\0132$.barr" +
-      "age.PBGetUserFriendListResponse\022E\n\030verif",
-      "yInviteCodeResponse\030. \001(\0132#.barrage.PBVe" +
-      "rifyInviteCodeResponse\022G\n\031processUserFri" +
-      "endResponse\030/ \001(\0132$.barrage.PBProcessUse" +
-      "rFriendResponse\022E\n\030getNewInviteCodeRespo" +
-      "nse\0300 \001(\0132#.barrage.PBGetNewInviteCodeRe" +
-      "sponse\0229\n\022addUserTagResponse\0301 \001(\0132\035.bar" +
-      "rage.PBAddUserTagResponse\022?\n\025deleteUserT" +
-      "agResponse\0302 \001(\0132 .barrage.PBDeleteUserT" +
-      "agResponse\022A\n\026getUserTagListResponse\0303 \001" +
-      "(\0132!.barrage.PBGetUserTagListResponse\022O\n",
-      "\035getUserInviteCodeListResponse\0304 \001(\0132(.b" +
-      "arrage.PBGetUserInviteCodeListResponse\022C" +
-      "\n\027applyInviteCodeResponse\0305 \001(\0132\".barrag" +
-      "e.PBApplyInviteCodeResponse\022E\n\030updateInv" +
-      "iteCodeResponse\0306 \001(\0132#.barrage.PBUpdate" +
-      "InviteCodeResponse\022=\n\024deleteFriendRespon" +
-      "se\0307 \001(\0132\037.barrage.PBDeleteFriendRespons" +
-      "e\022E\n\030sendUserFeedbackResponse\0308 \001(\0132#.ba" +
-      "rrage.PBSendUserFeedbackResponse\022E\n\030getM" +
-      "yNewFeedListResponse\0309 \001(\0132#.barrage.PBG",
-      "etMyNewFeedListResponse\0229\n\022createFeedRes" +
-      "ponse\030< \001(\0132\035.barrage.PBCreateFeedRespon" +
-      "se\0227\n\021replyFeedResponse\030= \001(\0132\034.barrage." +
-      "PBReplyFeedResponse\022K\n\033getUserTimelineFe" +
-      "edResponse\030> \001(\0132&.barrage.PBGetUserTime" +
-      "lineFeedResponse\022E\n\030deleteFeedActionResp" +
-      "onse\030? \001(\0132#.barrage.PBDeleteFeedActionR" +
-      "esponse\0229\n\022deleteFeedResponse\030@ \001(\0132\035.ba" +
-      "rrage.PBDeleteFeedResponse*Q\n\031PBProcessF" +
-      "riendResultType\022\021\n\rACCEPT_FRIEND\020\000\022\021\n\rRE",
-      "JECT_FRIEND\020\001\022\016\n\nREPLY_MEMO\020\002*\345\005\n\rPBMess" +
-      "ageType\022\026\n\022MESSAGE_LOGIN_USER\020\001\022\031\n\025MESSA" +
-      "GE_REGISTER_USER\020\002\022\027\n\023MESSAGE_SEARCH_USE" +
-      "R\020\003\022\034\n\030MESSAGE_UPDATE_USER_INFO\020\004\022\033\n\027MES" +
-      "SAGE_ADD_USER_FRIEND\020\005\022 \n\034MESSAGE_GET_US" +
-      "ER_FRIEND_LIST\020\006\022\037\n\033MESSAGE_PROCESS_USER" +
-      "_FRIEND\020\007\022\036\n\032MESSAGE_VERIFY_INVITE_CODE\020" +
-      "\010\022\037\n\033MESSAGE_GET_NEW_INVITE_CODE\020\t\022\030\n\024ME" +
-      "SSAGE_ADD_USER_TAG\020\n\022\033\n\027MESSAGE_DELETE_U" +
-      "SER_TAG\020\013\022\035\n\031MESSAGE_GET_USER_TAG_LIST\020\014",
-      "\022%\n!MESSAGE_GET_USER_INVITE_CODE_LIST\020\r\022" +
-      "\035\n\031MESSAGE_APPLY_INVITE_CODE\020\016\022\036\n\032MESSAG" +
-      "E_UPDATE_INVITE_CODE\020\017\022\027\n\023MESSAGE_CREATE" +
-      "_FEED\020\036\022\026\n\022MESSAGE_REPLY_FEED\020\037\022\"\n\036MESSA" +
-      "GE_GET_USER_TIMELINE_FEED\020 \022\036\n\032MESSAGE_D" +
-      "ELETE_FEED_ACTION\020!\022\027\n\023MESSAGE_DELETE_FE" +
-      "ED\020\"\022\031\n\025MESSAGE_DELETE_FRIEND\020#\022\036\n\032MESSA" +
-      "GE_SEND_USER_FEEDBACK\020$\022 \n\034MESSAGE_GET_M" +
-      "Y_NEW_FEED_LIST\020%\022\"\n\036MESSAGE_GET_QINIU_U" +
-      "PLOAD_TOKEN\020d*[\n\027PBGetUserFriendListType",
-      "\022\024\n\020TYPE_FRIEND_LIST\020\000\022\034\n\030TYPE_REQUEST_F" +
-      "RIEND_LIST\020\001\022\014\n\010TYPE_ALL\020\nB,\n\033com.orange" +
-      ".protocol.messageB\rMessageProtos"
+      "\002(\005\"\030\n\026PBDeleteFriendResponse\"]\n\031PBGetMy" +
+      "NewFeedListRequest\022\035\n\004user\030\001 \001(\0132\017.barra" +
+      "ge.PBUser\022!\n\006device\030\002 \001(\0132\021.barrage.PBDe" +
+      "vice\"M\n\032PBGetMyNewFeedListResponse\022/\n\rmy" +
+      "NewFeedList\030\001 \001(\0132\030.barrage.PBMyNewFeedL" +
+      "ist\"G\n\034PBGetUserTimelineFeedRequest\022\024\n\014o",
+      "ffsetFeedId\030\001 \001(\t\022\021\n\005limit\030\002 \001(\005:\00220\"?\n\035" +
+      "PBGetUserTimelineFeedResponse\022\036\n\005feeds\030\001" +
+      " \003(\0132\017.barrage.PBFeed\"\222\001\n\031PBSendUserFeed" +
+      "backRequest\022\017\n\007message\030\001 \001(\t\022\023\n\013contactI" +
+      "nfo\030\002 \001(\t\022\035\n\004user\030\003 \001(\0132\017.barrage.PBUser" +
+      "\022!\n\006device\030\004 \001(\0132\021.barrage.PBDevice\022\r\n\005r" +
+      "eqId\030\005 \001(\t\"\034\n\032PBSendUserFeedbackResponse" +
+      "\"\210\r\n\rPBDataRequest\022\014\n\004type\030\001 \002(\005\022\021\n\trequ" +
+      "estId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\016\n\006userId\030\004" +
+      " \001(\t\022!\n\006device\030\036 \001(\0132\021.barrage.PBDevice\022",
+      "\023\n\013countryCode\030\037 \001(\t\022\024\n\014languageCode\030  \001" +
+      "(\t\022\022\n\nclientDate\030! \001(\005\0225\n\020loginUserReque" +
+      "st\030( \001(\0132\033.barrage.PBLoginUserRequest\022;\n" +
+      "\023registerUserRequest\030) \001(\0132\036.barrage.PBR" +
+      "egisterUserRequest\0227\n\021searchUserRequest\030" +
+      "* \001(\0132\034.barrage.PBSearchUserRequest\022?\n\025u" +
+      "pdateUserInfoRequest\030+ \001(\0132 .barrage.PBU" +
+      "pdateUserInfoRequest\022=\n\024addUserFriendReq" +
+      "uest\030, \001(\0132\037.barrage.PBAddUserFriendRequ" +
+      "est\022E\n\030getUserFriendListRequest\030- \001(\0132#.",
+      "barrage.PBGetUserFriendListRequest\022C\n\027ve" +
+      "rifyInviteCodeRequest\030. \001(\0132\".barrage.PB" +
+      "VerifyInviteCodeRequest\022E\n\030processUserFr" +
+      "iendRequest\030/ \001(\0132#.barrage.PBProcessUse" +
+      "rFriendRequest\022C\n\027getNewInviteCodeReques" +
+      "t\0300 \001(\0132\".barrage.PBGetNewInviteCodeRequ" +
+      "est\0227\n\021addUserTagRequest\0301 \001(\0132\034.barrage" +
+      ".PBAddUserTagRequest\022=\n\024deleteUserTagReq" +
+      "uest\0302 \001(\0132\037.barrage.PBDeleteUserTagRequ" +
+      "est\022?\n\025getUserTagListRequest\0303 \001(\0132 .bar",
+      "rage.PBGetUserTagListRequest\022M\n\034getUserI" +
+      "nviteCodeListRequest\0304 \001(\0132\'.barrage.PBG" +
+      "etUserInviteCodeListRequest\022A\n\026applyInvi" +
+      "teCodeRequest\0305 \001(\0132!.barrage.PBApplyInv" +
+      "iteCodeRequest\022C\n\027updateInviteCodeReques" +
+      "t\0306 \001(\0132\".barrage.PBUpdateInviteCodeRequ" +
+      "est\022;\n\023deleteFriendRequest\0307 \001(\0132\036.barra" +
+      "ge.PBDeleteFriendRequest\022C\n\027sendUserFeed" +
+      "backRequest\0308 \001(\0132\".barrage.PBSendUserFe" +
+      "edbackRequest\022C\n\027getMyNewFeedListRequest",
+      "\0309 \001(\0132\".barrage.PBGetMyNewFeedListReque" +
+      "st\0227\n\021createFeedRequest\030< \001(\0132\034.barrage." +
+      "PBCreateFeedRequest\0225\n\020replyFeedRequest\030" +
+      "= \001(\0132\033.barrage.PBReplyFeedRequest\022I\n\032ge" +
+      "tUserTimelineFeedRequest\030> \001(\0132%.barrage" +
+      ".PBGetUserTimelineFeedRequest\022C\n\027deleteF" +
+      "eedActionRequest\030? \001(\0132\".barrage.PBDelet" +
+      "eFeedActionRequest\0227\n\021deleteFeedRequest\030" +
+      "@ \001(\0132\034.barrage.PBDeleteFeedRequest\"\366\014\n\016" +
+      "PBDataResponse\022\025\n\nresultCode\030\001 \002(\005:\0010\022\021\n",
+      "\trequestId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\022\n\ntot" +
+      "alCount\030\004 \001(\005\022\022\n\nstringData\030\005 \001(\t\0227\n\021log" +
+      "inUserResponse\030( \001(\0132\034.barrage.PBLoginUs" +
+      "erResponse\022=\n\024registerUserResponse\030) \001(\013" +
+      "2\037.barrage.PBRegisterUserResponse\0229\n\022sea" +
+      "rchUserResponse\030* \001(\0132\035.barrage.PBSearch" +
+      "UserResponse\022A\n\026updateUserInfoResponse\030+" +
+      " \001(\0132!.barrage.PBUpdateUserInfoResponse\022" +
+      "?\n\025addUserFriendResponse\030, \001(\0132 .barrage" +
+      ".PBAddUserFriendResponse\022G\n\031getUserFrien",
+      "dListResponse\030- \001(\0132$.barrage.PBGetUserF" +
+      "riendListResponse\022E\n\030verifyInviteCodeRes" +
+      "ponse\030. \001(\0132#.barrage.PBVerifyInviteCode" +
+      "Response\022G\n\031processUserFriendResponse\030/ " +
+      "\001(\0132$.barrage.PBProcessUserFriendRespons" +
+      "e\022E\n\030getNewInviteCodeResponse\0300 \001(\0132#.ba" +
+      "rrage.PBGetNewInviteCodeResponse\0229\n\022addU" +
+      "serTagResponse\0301 \001(\0132\035.barrage.PBAddUser" +
+      "TagResponse\022?\n\025deleteUserTagResponse\0302 \001" +
+      "(\0132 .barrage.PBDeleteUserTagResponse\022A\n\026",
+      "getUserTagListResponse\0303 \001(\0132!.barrage.P" +
+      "BGetUserTagListResponse\022O\n\035getUserInvite" +
+      "CodeListResponse\0304 \001(\0132(.barrage.PBGetUs" +
+      "erInviteCodeListResponse\022C\n\027applyInviteC" +
+      "odeResponse\0305 \001(\0132\".barrage.PBApplyInvit" +
+      "eCodeResponse\022E\n\030updateInviteCodeRespons" +
+      "e\0306 \001(\0132#.barrage.PBUpdateInviteCodeResp" +
+      "onse\022=\n\024deleteFriendResponse\0307 \001(\0132\037.bar" +
+      "rage.PBDeleteFriendResponse\022E\n\030sendUserF" +
+      "eedbackResponse\0308 \001(\0132#.barrage.PBSendUs",
+      "erFeedbackResponse\022E\n\030getMyNewFeedListRe" +
+      "sponse\0309 \001(\0132#.barrage.PBGetMyNewFeedLis" +
+      "tResponse\0229\n\022createFeedResponse\030< \001(\0132\035." +
+      "barrage.PBCreateFeedResponse\0227\n\021replyFee" +
+      "dResponse\030= \001(\0132\034.barrage.PBReplyFeedRes" +
+      "ponse\022K\n\033getUserTimelineFeedResponse\030> \001" +
+      "(\0132&.barrage.PBGetUserTimelineFeedRespon" +
+      "se\022E\n\030deleteFeedActionResponse\030? \001(\0132#.b" +
+      "arrage.PBDeleteFeedActionResponse\0229\n\022del" +
+      "eteFeedResponse\030@ \001(\0132\035.barrage.PBDelete",
+      "FeedResponse*Q\n\031PBProcessFriendResultTyp" +
+      "e\022\021\n\rACCEPT_FRIEND\020\000\022\021\n\rREJECT_FRIEND\020\001\022" +
+      "\016\n\nREPLY_MEMO\020\002*\345\005\n\rPBMessageType\022\026\n\022MES" +
+      "SAGE_LOGIN_USER\020\001\022\031\n\025MESSAGE_REGISTER_US" +
+      "ER\020\002\022\027\n\023MESSAGE_SEARCH_USER\020\003\022\034\n\030MESSAGE" +
+      "_UPDATE_USER_INFO\020\004\022\033\n\027MESSAGE_ADD_USER_" +
+      "FRIEND\020\005\022 \n\034MESSAGE_GET_USER_FRIEND_LIST" +
+      "\020\006\022\037\n\033MESSAGE_PROCESS_USER_FRIEND\020\007\022\036\n\032M" +
+      "ESSAGE_VERIFY_INVITE_CODE\020\010\022\037\n\033MESSAGE_G" +
+      "ET_NEW_INVITE_CODE\020\t\022\030\n\024MESSAGE_ADD_USER",
+      "_TAG\020\n\022\033\n\027MESSAGE_DELETE_USER_TAG\020\013\022\035\n\031M" +
+      "ESSAGE_GET_USER_TAG_LIST\020\014\022%\n!MESSAGE_GE" +
+      "T_USER_INVITE_CODE_LIST\020\r\022\035\n\031MESSAGE_APP" +
+      "LY_INVITE_CODE\020\016\022\036\n\032MESSAGE_UPDATE_INVIT" +
+      "E_CODE\020\017\022\027\n\023MESSAGE_CREATE_FEED\020\036\022\026\n\022MES" +
+      "SAGE_REPLY_FEED\020\037\022\"\n\036MESSAGE_GET_USER_TI" +
+      "MELINE_FEED\020 \022\036\n\032MESSAGE_DELETE_FEED_ACT" +
+      "ION\020!\022\027\n\023MESSAGE_DELETE_FEED\020\"\022\031\n\025MESSAG" +
+      "E_DELETE_FRIEND\020#\022\036\n\032MESSAGE_SEND_USER_F" +
+      "EEDBACK\020$\022 \n\034MESSAGE_GET_MY_NEW_FEED_LIS",
+      "T\020%\022\"\n\036MESSAGE_GET_QINIU_UPLOAD_TOKEN\020d*" +
+      "[\n\027PBGetUserFriendListType\022\024\n\020TYPE_FRIEN" +
+      "D_LIST\020\000\022\034\n\030TYPE_REQUEST_FRIEND_LIST\020\001\022\014" +
+      "\n\010TYPE_ALL\020\nB,\n\033com.orange.protocol.mess" +
+      "ageB\rMessageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -40117,7 +40539,7 @@ public final class MessageProtos {
     internal_static_barrage_PBGetMyNewFeedListRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBGetMyNewFeedListRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "User", "Device", });
     internal_static_barrage_PBGetMyNewFeedListResponse_descriptor =
       getDescriptor().getMessageTypes().get(41);
     internal_static_barrage_PBGetMyNewFeedListResponse_fieldAccessorTable = new
