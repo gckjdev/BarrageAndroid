@@ -122,6 +122,10 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         // init action builder
         mActionBuilder = BarrageProtos.PBFeedAction.newBuilder();
         mActionBuilder.setFeedId(mFeed.getFeedId());
+        mActionBuilder.setUser(mUserManager.getUser());
+        mActionBuilder.setActionId("");
+        mActionBuilder.setText("");
+        mActionBuilder.setAvatar(mUserManager.getUser().getAvatar());
 
         return model;
     }
@@ -259,7 +263,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         Ln.d("publish comment on pos (%d, %d)", mComentRelative.getMoveingViewX(), mComentRelative.getMoveingViewY());
         mActionBuilder.setPosX(mComentRelative.getMoveingViewX());
         mActionBuilder.setPosY(mComentRelative.getMoveingViewY());
-        mActionBuilder.setUser(mUserManager.getUser());
 
         final BarrageProtos.PBFeedAction action = mActionBuilder.build();
 
