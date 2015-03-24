@@ -65,11 +65,7 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
     @Inject
     TagManager mTagManager;
 
-    @InjectView(R.id.ViewPager)
-    ViewPager mViewPager;
-
-    @InjectView(R.id.viewpaeLinear)
-    LinearLayout mMainTagLinear;
+    private FriendTagList mFriendTagList;
 
 
     private MyViewPagerTools mViewPagerTools = new MyViewPagerTools();
@@ -84,10 +80,7 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
 
     private View v;
 
-    //每一行标签的高度
-    private int mHeight_item = 42;
-    //标签有多少行
-    private int mItemCount = 3;
+
 
 
 
@@ -132,8 +125,6 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
 
@@ -141,11 +132,12 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mListView.setAdapter(mAdapter);
-        mViewPager.setVisibility(View.INVISIBLE);
 
+        mListView.setAdapter(mAdapter);
         loadFriendList();
-        clear();
+
+
+
         syncMyTag();
 
         ((HomeActivity)getActivity()).setOnFramgeListener(this);
@@ -153,130 +145,135 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
     }
 
 
-    private void clear(){
-        mFriendTabView = null;
-        mViewPagerTools.clearView();
-        mViewPagerTools = new MyViewPagerTools(getActivity() , mViewPager , mPonitLayout);
-    }
-
-
-
-
-
-    private void refreshTag(){
-        clear();
-        loadLocalTagList();
-    }
-
-
-    private void loadLocalTagList() {
-
-        UserProtos.PBUserTagList tagList = mTagManager.allTags();
-        if (tagList == null){
-            return;
-        }
-
-        List<UserProtos.PBUserTag> list = tagList.getTagsList();
-        if (list == null || list.size() == 0){
-            mMainTagLinear.setVisibility(View.GONE);
-            return;
-        }
-
-        mMainTagLinear.setVisibility(View.VISIBLE);
-        for(UserProtos.PBUserTag userTag : list){
-           addUserTagToTag(userTag);
-        }
-
-        new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                setViewPagerHeight();
-                mViewPager.setVisibility(View.VISIBLE);
-            }
-        }.sendEmptyMessage(0);
-
-    }
-
-
-    private void addUserTagToTag(UserProtos.PBUserTag userTag){
-        if(userTag == null) return;
-
-        initPager(getParams(userTag) , userTag.getTid());
-    }
-
-    /**
-     * 注意：标签如何来设置空心边框
-     * 这里面主要是把params.baColor的背景颜色设置和父类的View的背景颜色一样，
-     * 就会达到空心边框背景的效果
-     * @param userTag
-     * @return
-     */
-    private FriendTagView.Params getParams(UserProtos.PBUserTag userTag){
-        FriendTagView.Params params = new FriendTagView.Params();
-//            params.bgColor = userTag.getColor();
-        params.bgColor = 0XFF7bc567;
-        params.title = userTag.getName()+" ( "+userTag.getUsersList().size()+" )";
-
-        return params;
-    }
-
-
-
-
 
     private void syncMyTag() {
+
+        mFriendTagList = new FriendTagList(getActivity() , mTagManager , this );
+        mFriendTagList.setViewPagerInvisible();
+        mFriendTagList.clear();
 
         mTagMission.getAllTags(new GetTagListCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTagList tagList) {
                 if (errorCode == 0) {
                     // reload tag view
-                    loadLocalTagList();
+                    mFriendTagList.loadLocalTagList();
                 }
             }
         });
 
     }
 
-    private void initPager(FriendTagView.Params params , String id){
-        getmFriendTabView();
-
-        if(!mFriendTabView.addView(params , id)){
-            mFriendTabView = null;
-            initPager(params , id);
-        }
-    }
-
-    private FriendTagView getmFriendTabView(){
-        if(mFriendTabView != null) return mFriendTabView;
-
-        mFriendTabView = new FriendTagView(getActivity());
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        mFriendTabView.setLayoutParams(params);
-        mViewPagerTools.addView(mFriendTabView);
-
-        mFriendTabView.setOnclickTabItemListener(this);
-
-        return mFriendTabView;
-    }
 
 
-    private void setViewPagerHeight(){
+//    private void clear(){
+//        mFriendTabView = null;
+//        mViewPagerTools.clearView();
+//        mViewPagerTools = new MyViewPagerTools(getActivity() , mViewPager , mPonitLayout);
+//    }
 
-        ViewGroup.LayoutParams paramsViewPager = mViewPager.getLayoutParams();
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
 
-        if(mViewPagerTools.getChildCount() == 1) {
-            FriendTagView friendTagView = (FriendTagView) mViewPagerTools.getChildPageView(0);
-            paramsViewPager.height = (int)
-                            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mHeight_item, displayMetrics) * friendTagView.getChildCount();
 
-        }else if (mViewPager.getChildCount() > 1){
-            paramsViewPager.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mHeight_item * mItemCount , displayMetrics);
-        }
-        ((ViewGroup)mViewPager.getParent()).setLayoutParams(paramsViewPager);
-    }
+
+
+
+
+
+//    private void loadLocalTagList() {
+//
+//        UserProtos.PBUserTagList tagList = mTagManager.allTags();
+//        if (tagList == null){
+//            return;
+//        }
+//
+//        List<UserProtos.PBUserTag> list = tagList.getTagsList();
+//        if (list == null || list.size() == 0){
+//            mMainTagLinear.setVisibility(View.GONE);
+//            return;
+//        }
+//
+//        mMainTagLinear.setVisibility(View.VISIBLE);
+//        for(UserProtos.PBUserTag userTag : list){
+//           addUserTagToTag(userTag);
+//        }
+//
+//        new Handler(){
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//                setViewPagerHeight();
+//                mViewPager.setVisibility(View.VISIBLE);
+//            }
+//        }.sendEmptyMessage(0);
+//
+//    }
+
+
+//    private void addUserTagToTag(UserProtos.PBUserTag userTag){
+//        if(userTag == null) return;
+//
+//        initPager(getParams(userTag) , userTag.getTid());
+//    }
+
+//    /**
+//     * 注意：标签如何来设置空心边框
+//     * 这里面主要是把params.baColor的背景颜色设置和父类的View的背景颜色一样，
+//     * 就会达到空心边框背景的效果
+//     * @param userTag
+//     * @return
+//     */
+//    private FriendTagView.Params getParams(UserProtos.PBUserTag userTag){
+//        FriendTagView.Params params = new FriendTagView.Params();
+////            params.bgColor = userTag.getColor();
+//        params.bgColor = 0XFF7bc567;
+//        params.title = userTag.getName()+" ( "+userTag.getUsersList().size()+" )";
+//
+//        return params;
+//    }
+
+
+
+
+
+
+//    private void initPager(FriendTagView.Params params , String id){
+//        getFriendTabView();
+//
+//        if(!mFriendTabView.addView(params , id)){
+//            mFriendTabView = null;
+//            initPager(params , id);
+//        }
+//    }
+//
+//    private FriendTagView getFriendTabView(){
+//        if(mFriendTabView != null) return mFriendTabView;
+//
+//        mFriendTabView = new FriendTagView(getActivity());
+//        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//        mFriendTabView.setLayoutParams(params);
+//        mViewPagerTools.addView(mFriendTabView);
+//
+//        mFriendTabView.setOnclickTabItemListener(this);
+//
+//        return mFriendTabView;
+//    }
+//
+//
+//    private void setViewPagerHeight(){
+//
+//        ViewGroup.LayoutParams paramsViewPager = mViewPager.getLayoutParams();
+//        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+//
+//        if(mViewPagerTools.getChildCount() == 1) {
+//            FriendTagView friendTagView = (FriendTagView) mViewPagerTools.getChildPageView(0);
+//            paramsViewPager.height = (int)
+//                            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mHeight_item, displayMetrics) * friendTagView.getChildCount();
+//
+//        }else if (mViewPager.getChildCount() > 1){
+//            paramsViewPager.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mHeight_item * mItemCount , displayMetrics);
+//        }
+//        ((ViewGroup)mViewPager.getParent()).setLayoutParams(paramsViewPager);
+//    }
 
 
     private void loadFriendList() {
@@ -348,19 +345,9 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
     public void onListener(Object obj , int type) {
         //Activity 传到过来的值需要刷新
         if(type == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_CREATE) {
-            mMainTagLinear.setVisibility(View.VISIBLE);
-            UserProtos.PBUserTagList tagList = mTagManager.allTags();
-            List<UserProtos.PBUserTag> list = tagList.getTagsList();
-            if (list.size() != 0) {
-                addUserTagToTag(list.get(list.size() - 1));
-            }
-            if(mViewPagerTools != null)
-                mViewPagerTools.setCurrentLastItem();
-
+            mFriendTagList.addNewTag();
         }else{
-            int postion = mViewPagerTools.getViewPostion();
-            refreshTag();
-            mViewPagerTools.setCurrentItem(postion);
+            mFriendTagList.refreshTag();
         }
     }
 

@@ -229,4 +229,17 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <style name="b_share_other_platform" parent="match_content">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="b_share_other_paltform_image" parent="wrap_content">
+
+    </style>
+    <style name="b_share_other_paltform_text" parent="wrap_content">
+        <item name="android:layout_marginTop">11dip</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/b_font_black</item>
+    </style>
 </resources>

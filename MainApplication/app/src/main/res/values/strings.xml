@@ -88,12 +88,21 @@
     <string name="b_friend_select_friend">选择好友</string>
     <string name="b_complete">完成</string>
     <string name="b_tag_is_not_null">标签不可以空,请输入标签</string>
+    <string name="b_grid">网格</string>
+    <string name="b_share_to_who">分享给谁</string>
+
 
     <string name="option_feedback">发布</string>
     <string name="option_feedback_hint">请你在这里写下对BBJ的建议，我们会不断改进，谢谢支持!</string>
     <string name="option_feedback_error">如果不能正常使用BBJ,请重启BBJ或者手机试试!</string>
     <string name="option_feedback_edithint">手机或QQ(选填)</string>
 
+    <string name="b_share_move_barred_head">移动弹幕文字，满意后分享</string>
+    <string name="b_weixin_friend_circle">微信朋友圈</string>
+    <string name="b_weixin_friend">微信好友</string>
+    <string name="b_qq_zone">QQ空间</string>
+    <string name="b_xingliang">新浪微博</string>
+    <string name="b_next">下一步</string>
     <string name="title_activity_user_email_edit_text">UserEmailEditTextActivity</string>
     <string name="title_activity_user_phone_number_edit_text">UserPhoneNumberEditTextActivity</string>
     <string name="title_activity_user_home_setting">UserHomeSettingActivity</string>
