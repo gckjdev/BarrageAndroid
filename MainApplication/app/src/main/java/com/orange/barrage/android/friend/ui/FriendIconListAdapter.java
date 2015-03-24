@@ -7,9 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import roboguice.util.Ln;
 
 /**
  * Created by Administrator on 2015/3/13.
@@ -34,6 +38,23 @@ public class FriendIconListAdapter extends BaseAdapter  {
         notifyDataSetChanged();
     }
 
+    public void addUser(List<UserProtos.PBUser> pbUserList){
+        if(mUsers == null) mUsers = new ArrayList<>();
+        mUsers.addAll(pbUserList);
+        notifyDataSetChanged();
+    }
+
+    public void setUser(List<UserProtos.PBUser> pbUserList){
+        setUser(pbUserList , mType);
+    }
+
+
+    public void setUser(List<UserProtos.PBUser> pbUserList , int type){
+        if(mUsers == null) mUsers = new ArrayList<>();
+        mUsers.clear();
+        mType = type;
+        addUser(pbUserList);
+    }
 
     @Override
     public int getCount() {
@@ -65,20 +86,24 @@ public class FriendIconListAdapter extends BaseAdapter  {
 
         if(convertView == null){
             frinedsIconItem = new FriendIconItem(mContext);
-
-        }else frinedsIconItem = (FriendIconItem)convertView;
+        }else{
+            frinedsIconItem = (FriendIconItem)convertView;
+            //frinedsIconItem.clear();
+        }
 
 
         UserProtos.PBUser user = (UserProtos.PBUser)getItem(position);
-        frinedsIconItem.setUser(mUsers , this , mOnClickItemListener);
+        frinedsIconItem.setUser(mUsers , this , mOnClickItemListener , position);
 
 
-        if(user == null){
+        if(position >= mUsers.size()){
+            Ln.e("niha:"+position);
             int resource = mUsers.size() == position ? R.drawable.x_freinds_list_add : R.drawable.x_friends_list_remove;
             frinedsIconItem.loadResourceImage(resource , mType);
             frinedsIconItem.setHiddenTopDeleteButton();
         }else {
             frinedsIconItem.loadUser( user, mType);
+            Ln.e("n:"+position);
         }
         frinedsIconItem.setOnClickListener(new View.OnClickListener() {
 
@@ -101,15 +126,14 @@ public class FriendIconListAdapter extends BaseAdapter  {
     private void dealListener(int type , int index , View v){
         if (mOnClickItemListener == null) return;
         if (type == FriendIconList.OnClickItemListener.ICON_DELETE_BUTTON) {
-            setIconType(FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE);
+            if(mType == FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE) {
+                setIconType(FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE);
+            }else setIconType(FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE);
         } else if (type == FriendIconList.OnClickItemListener.INCO_ADD_BUTTON) {
             setIconType(FriendIconList.ICON_HIDDEN_RIGHT_TOP_DELETE);
         }
         mOnClickItemListener.onClickItem(index, v, getItem(index), type);
     }
-
-
-
 
 
     public void setOnClickItemListener(FriendIconList.OnClickItemListener l){

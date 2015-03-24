@@ -118,6 +118,9 @@ public class BarrageCommonActivity extends RoboActivity  {
         return mIntentUtil == null ? new IntentUtil(this) : mIntentUtil;
     }
 
+    public String[] getIntentArraysString(String key){
+        return getIntentUtil().getIntentArrayString(key);
+    }
 
     public String getIntentString(String key){
         return getIntentUtil().getIntentString(key);

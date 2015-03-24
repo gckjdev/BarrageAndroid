@@ -27,6 +27,9 @@ public class IntentUtil {
         return mActivity.getIntent().getStringExtra(key);
     }
 
+    public String[] getIntentArrayString(String key){
+        return mActivity.getIntent().getStringArrayExtra(key);
+    }
 
 
     public int getIntentInt(String key ,int defaultValue){

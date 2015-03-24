@@ -44,7 +44,7 @@ public class Tab3Container extends HomeContainerFragment {
 
     public interface OnFragmentCommunicationListener{
 
-        public void onListener(Object obj);
+        public void onListener(Object obj , int type);
 
     }
 

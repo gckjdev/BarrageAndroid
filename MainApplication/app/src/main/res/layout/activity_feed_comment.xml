@@ -1,16 +1,21 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match_content"
     android:orientation="vertical">
 
-    <include layout="@layout/activity_view_top"/>
+    <include layout="@layout/activity_view_top" />
 
-    <com.orange.barrage.android.ui.topic.FeedMainWidget
-        android:id="@+id/feed_main_widget"
+    <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_weight="1"
-        />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.orange.barrage.android.ui.topic.FeedMainWidget
+            android:id="@+id/feed_main_widget"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,25 +32,27 @@
             <FrameLayout
                 style="@style/match_content"
                 android:layout_weight="1">
+
                 <ImageButton
                     style="@style/wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="69dip"
                     android:background="@color/b_color_alpha"
                     android:onClick="onFeedActionWidgetShow"
-                    android:src="@drawable/x_comment_preview"/>
+                    android:src="@drawable/x_comment_preview" />
             </FrameLayout>
 
             <FrameLayout
                 style="@style/match_content"
                 android:layout_weight="1">
+
                 <ImageButton
                     style="@style/wrap_content"
                     android:layout_gravity="right|center_vertical"
                     android:layout_marginRight="69dip"
                     android:background="@color/b_color_alpha"
                     android:onClick="onGridViewShow"
-                    android:src="@drawable/x_comment_table"/>
+                    android:src="@drawable/x_comment_table" />
             </FrameLayout>
         </LinearLayout>
 
@@ -62,7 +69,7 @@
                 android:layout_marginLeft="30dip"
                 android:background="@drawable/x_comment_select_bg"
                 android:scaleType="center"
-                android:src="@drawable/y_commit_not_select"/>
+                android:src="@drawable/y_commit_not_select" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
@@ -88,7 +95,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dip"
-            android:textColor="#cfcfcf"/>
+            android:textColor="#cfcfcf" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,20 +106,18 @@
                 android:id="@+id/linearLayout1"
                 style="@style/b_comments_bottom_menu_main">
 
-                <LinearLayout
-                    style="@style/b_comments_bottom_menu_main_linear">
+                <LinearLayout style="@style/b_comments_bottom_menu_main_linear">
 
                     <ImageButton
                         android:id="@+id/imageButton1"
                         style="@style/b_comments_bottom_menu_button"
                         android:onClick="onClickText"
-                        android:src="@drawable/x_text"/>
+                        android:src="@drawable/x_text" />
 
                     <TextView
                         style="@style/b_comments_botton_menu_main_Text"
                         android:text="@string/b_word"
-                        android:textColor="@color/b_color_red"
-                        />
+                        android:textColor="@color/b_color_red" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -120,17 +125,16 @@
                 android:id="@+id/linearLayout2"
                 style="@style/b_comments_bottom_menu_main">
 
-                <LinearLayout
-                    style="@style/b_comments_bottom_menu_main_linear">
+                <LinearLayout style="@style/b_comments_bottom_menu_main_linear">
 
                     <ImageButton
                         style="@style/b_comments_bottom_menu_button"
                         android:onClick="onClickGraffiti"
-                        android:src="@drawable/x_graffiti"/>
+                        android:src="@drawable/x_graffiti" />
 
                     <TextView
                         style="@style/b_comments_botton_menu_main_Text"
-                        android:text="@string/b_graffiti"/>
+                        android:text="@string/b_graffiti" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -138,17 +142,16 @@
                 android:id="@+id/linearLayout3"
                 style="@style/b_comments_bottom_menu_main">
 
-                <LinearLayout
-                    style="@style/b_comments_bottom_menu_main_linear">
+                <LinearLayout style="@style/b_comments_bottom_menu_main_linear">
 
                     <ImageButton
                         style="@style/b_comments_bottom_menu_button"
                         android:onClick="onClickLabel"
-                        android:src="@drawable/x_label"/>
+                        android:src="@drawable/x_label" />
 
                     <TextView
                         style="@style/b_comments_botton_menu_main_Text"
-                        android:text="@string/b_graffiti"/>
+                        android:text="@string/b_graffiti" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
