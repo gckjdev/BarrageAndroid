@@ -6980,21 +6980,21 @@ public final class BarrageProtos {
     int getCount();
 
     /**
-     * <code>optional int32 modifyDate = 5;</code>
+     * <code>optional int32 mDate = 5;</code>
      *
      * <pre>
      * 更新日期
      * </pre>
      */
-    boolean hasModifyDate();
+    boolean hasMDate();
     /**
-     * <code>optional int32 modifyDate = 5;</code>
+     * <code>optional int32 mDate = 5;</code>
      *
      * <pre>
      * 更新日期
      * </pre>
      */
-    int getModifyDate();
+    int getMDate();
 
     /**
      * <code>optional bool isRead = 6;</code>
@@ -7170,7 +7170,7 @@ public final class BarrageProtos {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              modifyDate_ = input.readInt32();
+              mDate_ = input.readInt32();
               break;
             }
             case 48: {
@@ -7397,27 +7397,27 @@ public final class BarrageProtos {
       return count_;
     }
 
-    public static final int MODIFYDATE_FIELD_NUMBER = 5;
-    private int modifyDate_;
+    public static final int MDATE_FIELD_NUMBER = 5;
+    private int mDate_;
     /**
-     * <code>optional int32 modifyDate = 5;</code>
+     * <code>optional int32 mDate = 5;</code>
      *
      * <pre>
      * 更新日期
      * </pre>
      */
-    public boolean hasModifyDate() {
+    public boolean hasMDate() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int32 modifyDate = 5;</code>
+     * <code>optional int32 mDate = 5;</code>
      *
      * <pre>
      * 更新日期
      * </pre>
      */
-    public int getModifyDate() {
-      return modifyDate_;
+    public int getMDate() {
+      return mDate_;
     }
 
     public static final int ISREAD_FIELD_NUMBER = 6;
@@ -7589,7 +7589,7 @@ public final class BarrageProtos {
       actionId_ = "";
       type_ = 0;
       count_ = 0;
-      modifyDate_ = 0;
+      mDate_ = 0;
       isRead_ = false;
       userId_ = "";
       feed_ = com.orange.protocol.message.BarrageProtos.PBFeed.getDefaultInstance();
@@ -7631,7 +7631,7 @@ public final class BarrageProtos {
         output.writeInt32(4, count_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, modifyDate_);
+        output.writeInt32(5, mDate_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBool(6, isRead_);
@@ -7672,7 +7672,7 @@ public final class BarrageProtos {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, modifyDate_);
+          .computeInt32Size(5, mDate_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -7820,7 +7820,7 @@ public final class BarrageProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        modifyDate_ = 0;
+        mDate_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         isRead_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -7881,7 +7881,7 @@ public final class BarrageProtos {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.modifyDate_ = modifyDate_;
+        result.mDate_ = mDate_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
@@ -7934,8 +7934,8 @@ public final class BarrageProtos {
         if (other.hasCount()) {
           setCount(other.getCount());
         }
-        if (other.hasModifyDate()) {
-          setModifyDate(other.getModifyDate());
+        if (other.hasMDate()) {
+          setMDate(other.getMDate());
         }
         if (other.hasIsRead()) {
           setIsRead(other.getIsRead());
@@ -8286,50 +8286,50 @@ public final class BarrageProtos {
         return this;
       }
 
-      private int modifyDate_ ;
+      private int mDate_ ;
       /**
-       * <code>optional int32 modifyDate = 5;</code>
+       * <code>optional int32 mDate = 5;</code>
        *
        * <pre>
        * 更新日期
        * </pre>
        */
-      public boolean hasModifyDate() {
+      public boolean hasMDate() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int32 modifyDate = 5;</code>
+       * <code>optional int32 mDate = 5;</code>
        *
        * <pre>
        * 更新日期
        * </pre>
        */
-      public int getModifyDate() {
-        return modifyDate_;
+      public int getMDate() {
+        return mDate_;
       }
       /**
-       * <code>optional int32 modifyDate = 5;</code>
+       * <code>optional int32 mDate = 5;</code>
        *
        * <pre>
        * 更新日期
        * </pre>
        */
-      public Builder setModifyDate(int value) {
+      public Builder setMDate(int value) {
         bitField0_ |= 0x00000010;
-        modifyDate_ = value;
+        mDate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 modifyDate = 5;</code>
+       * <code>optional int32 mDate = 5;</code>
        *
        * <pre>
        * 更新日期
        * </pre>
        */
-      public Builder clearModifyDate() {
+      public Builder clearMDate() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        modifyDate_ = 0;
+        mDate_ = 0;
         onChanged();
         return this;
       }
@@ -9592,25 +9592,25 @@ public final class BarrageProtos {
       "tar\030\007 \001(\010:\004true\022\014\n\004posX\030\n \001(\002\022\014\n\004posY\030\013 " +
       "\001(\002\022\021\n\tcolorMode\030\014 \001(\005\022\r\n\005color\030\r \001(\005\022\r\n" +
       "\005angel\030\022 \001(\005\022\023\n\005hasBg\030\023 \001(\010:\004true\022\014\n\004dat" +
-      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005\"\256\001\n\013PBMyNewFeed\022" +
+      "e\030\024 \001(\005\022\016\n\006bStyle\030\036 \001(\005\"\251\001\n\013PBMyNewFeed\022" +
       "\016\n\006feedId\030\001 \002(\t\022\020\n\010actionId\030\002 \001(\t\022\014\n\004typ",
-      "e\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\022\n\nmodifyDate\030\005 \001" +
-      "(\005\022\016\n\006isRead\030\006 \001(\010\022\016\n\006userId\030\007 \001(\t\022\035\n\004fe" +
-      "ed\030\n \001(\0132\017.barrage.PBFeed\022\r\n\005image\030\013 \001(\t" +
-      "\"8\n\017PBMyNewFeedList\022%\n\007myFeeds\030\001 \003(\0132\024.b" +
-      "arrage.PBMyNewFeed*v\n\016PBBarrageStyle\022\r\n\t" +
-      "POP_DECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_LINEA" +
-      "R\020\002\022\017\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OUT\020\004\022\022" +
-      "\n\016POP_EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017\n\013F" +
-      "OR_COMMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarrageS" +
-      "peed\022\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH",
-      "\020\002\022\007\n\003LOW\020\003\022\014\n\010VERY_LOW\020\004*_\n\013PBColorMode" +
-      "\022\027\n\023WHITE_TEXT_BLACK_BG\020\000\022\027\n\023BLACK_TEXT_" +
-      "WHITE_BG\020\001\022\036\n\032CUSTOM_TEXT_TRANSPARENT_BG" +
-      "\020\002*b\n\017PBMyNewFeedType\022\027\n\023TYPE_NEW_FEED_T" +
-      "O_ME\020\001\022\030\n\024TYPE_COMMENT_MY_FEED\020\002\022\034\n\030TYPE" +
-      "_MY_INVOLVED_COMMENT\020\003B,\n\033com.orange.pro" +
-      "tocol.messageB\rBarrageProtos"
+      "e\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\r\n\005mDate\030\005 \001(\005\022\016\n" +
+      "\006isRead\030\006 \001(\010\022\016\n\006userId\030\007 \001(\t\022\035\n\004feed\030\n " +
+      "\001(\0132\017.barrage.PBFeed\022\r\n\005image\030\013 \001(\t\"8\n\017P" +
+      "BMyNewFeedList\022%\n\007myFeeds\030\001 \003(\0132\024.barrag" +
+      "e.PBMyNewFeed*v\n\016PBBarrageStyle\022\r\n\tPOP_D" +
+      "ECAY\020\000\022\016\n\nPOP_SPRING\020\001\022\016\n\nPOP_LINEAR\020\002\022\017" +
+      "\n\013POP_EASE_IN\020\003\022\020\n\014POP_EASE_OUT\020\004\022\022\n\016POP" +
+      "_EASE_INOUT\020\005*.\n\rPBBarrageMode\022\017\n\013FOR_CO" +
+      "MMENT\020\000\022\014\n\010FOR_CHAT\020\001*M\n\016PBBarrageSpeed\022" +
+      "\n\n\006NORMAL\020\000\022\016\n\nSUPER_HIGH\020\001\022\010\n\004HIGH\020\002\022\007\n",
+      "\003LOW\020\003\022\014\n\010VERY_LOW\020\004*_\n\013PBColorMode\022\027\n\023W" +
+      "HITE_TEXT_BLACK_BG\020\000\022\027\n\023BLACK_TEXT_WHITE" +
+      "_BG\020\001\022\036\n\032CUSTOM_TEXT_TRANSPARENT_BG\020\002*b\n" +
+      "\017PBMyNewFeedType\022\027\n\023TYPE_NEW_FEED_TO_ME\020" +
+      "\001\022\030\n\024TYPE_COMMENT_MY_FEED\020\002\022\034\n\030TYPE_MY_I" +
+      "NVOLVED_COMMENT\020\003B,\n\033com.orange.protocol" +
+      ".messageB\rBarrageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9643,7 +9643,7 @@ public final class BarrageProtos {
     internal_static_barrage_PBMyNewFeed_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBMyNewFeed_descriptor,
-        new java.lang.String[] { "FeedId", "ActionId", "Type", "Count", "ModifyDate", "IsRead", "UserId", "Feed", "Image", });
+        new java.lang.String[] { "FeedId", "ActionId", "Type", "Count", "MDate", "IsRead", "UserId", "Feed", "Image", });
     internal_static_barrage_PBMyNewFeedList_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_barrage_PBMyNewFeedList_fieldAccessorTable = new
