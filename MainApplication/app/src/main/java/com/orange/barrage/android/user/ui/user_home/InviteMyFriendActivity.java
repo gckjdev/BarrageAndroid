@@ -10,7 +10,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.user.ui.view.ActionSheetDialog;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
 
 import roboguice.inject.InjectView;
 
@@ -45,18 +47,46 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
     {
         //取得布局文件
         View view=layoutInflater.inflate(R.layout.activity_invite_my_friend_availitem,null);
-        //取得布局文件中的相对布局
+        //取得布局文件中的相对布局,就是控件的直接父类
         RelativeLayout addViewLayout = (RelativeLayout) view.findViewById(R.id.invite_availlayout);
-        addViewLayout.setPadding(0,0,0,3);
+        //addViewLayout.setPadding(0,0,0,3);
         //取得布局文件中的控件
         TextView avaail_invitenumber=(TextView)addViewLayout.findViewById(R.id.avail_invitenumber);
         avaail_invitenumber.setText("1234");
         ImageView imageView=(ImageView)addViewLayout.findViewById(R.id.avail_inviteimageview);
-        //imageView.setImageResource(R.drawable.invitefriend);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // MessageCenter.postInfoMessage("点击成功");
+                new ActionSheetDialog(InviteMyFriendActivity.this)
+                        .builder()
+                        .setTitle("邀请好友")
+                        .setCancelabe(true)
+                        .setCanceledOnTouchOutside(true)
+                        .addSheetItem("短信邀请", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+                                MessageCenter.postInfoMessage("测试菜单成功");
+                        }
+                        })
+                        .addSheetItem("分享到朋友圈", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+
+                            }
+                        })
+                        .addSheetItem("邀请微信好友", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+
+                            }
+                        })
+                        .addSheetItem("邀请QQ好友", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+
+                            }
+                        }).show();
+
             }
         });
         //承载上面的布局文件的布局
