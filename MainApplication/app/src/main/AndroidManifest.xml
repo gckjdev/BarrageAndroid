@@ -43,6 +43,7 @@
         <activity
             android:name=".user.ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
+
         </activity>
         <activity
             android:name=".user.ui.login.EmailLoginActivity"
