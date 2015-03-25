@@ -59,9 +59,11 @@
 
 
     <!--圆角的半径-->
-    <dimen name="b_corners_radius">10dip</dimen>
+    <dimen name="b_corners_radius">10px</dimen>
     <!---弹幕的直径-->
-    <dimen name="b_comments_icon">41dip</dimen>
+    <dimen name="b_comments_icon">41px</dimen>
+    <!---弹幕的字体大小-->
+    <dimen name="b_comments_font_size">11sp</dimen>
 
     <!-- 标准 List View 分割线的间隔高度 -->
     <dimen name="b_list_view_divider_height">1dp</dimen>

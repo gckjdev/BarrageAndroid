@@ -156,11 +156,20 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     }
 
+    private void initPhoto() {
+        mShowPublisFeedView = mShowPublisFeedView == null ? new ShowPublishFeedView(this, new PhotoAndCamera.onGetPhotoCallback() {
+            @Override
+            public void onSuccess(Bitmap bitmap) {
+                FileUtil.savePhotoToSDCard(bitmap, HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME);
+                ActivityIntent.startIntent(FriendTabDetailInfoAndCreateAndAlterActivity.this, FeedPublishedWhatchImageActivity.class);
+                finish();
+            }
 
+            @Override
+            public void onError(String reason) {
 
-
-    private void initPhoto(){
-        mShowPublisFeedView = mShowPublisFeedView == null ? new ShowPublishFeedView(this) : mShowPublisFeedView;
+            }
+        }) : mShowPublisFeedView;
     }
 
 
@@ -207,12 +216,12 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
 
-    private void setButtonText(int stringResoureId){
+    private void setButtonText(int stringResoureId) {
 
-        if(stringResoureId == R.string.b_share_photo){
+        if (stringResoureId == R.string.b_share_photo) {
             mShareOrDeleteButton.setText(stringResoureId);
             mShareOrDeleteButton.setTag("share");
-        }else if(stringResoureId == R.string.b_delete_tag){
+        } else if (stringResoureId == R.string.b_delete_tag) {
             mShareOrDeleteButton.setText(stringResoureId);
             mShareOrDeleteButton.setTag("delete");
         }
@@ -434,7 +443,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         } else if (mState == SEE_STATE) {
             //查看
             initPhoto();
-           mShowPublisFeedView.showPublishFeedView();
+            mShowPublisFeedView.showPublishFeedView();
         }
 
 
@@ -447,9 +456,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mTagMission.deleteTag(mFriendIconList.getPBUserTag(), new AddTagCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
-                if(errorCode != 0){
+                if (errorCode != 0) {
                     MessageCenter.postErrorMessage("删除失败，请重试");
-                }else{
+                } else {
                     setResult(FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_DELETE);
                     finish();
                 }
@@ -498,23 +507,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mParams.isAtler = mFriendIconList.startForResult(resultCode , data);
 
 
-        if(mShowPublisFeedView != null) {
+        if (mShowPublisFeedView != null) {
             PhotoAndCamera photoAndCamera = mShowPublisFeedView.getPhotoAndCamera();
 
             if (photoAndCamera != null) {
-                photoAndCamera.getPicture(requestCode, resultCode, data, new PhotoAndCamera.onGetPhotoCallback() {
-                    @Override
-                    public void onSuccess(Bitmap bitmap) {
-                        FileUtil.savePhotoToSDCard(bitmap, HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME);
-                        ActivityIntent.startIntent(FriendTabDetailInfoAndCreateAndAlterActivity.this, FeedPublishedWhatchImageActivity.class);
-                        finish();
-                    }
-
-                    @Override
-                    public void onErro() {
-
-                    }
-                });
+                photoAndCamera.getPicture(requestCode, resultCode, data);
             }
         }
     }

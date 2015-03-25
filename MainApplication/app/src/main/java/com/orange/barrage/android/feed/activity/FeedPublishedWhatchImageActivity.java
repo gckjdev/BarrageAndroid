@@ -19,19 +19,14 @@ public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
     @InjectView(R.id.imageview)
     ImageView mImage;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState , R.layout.activity_published_whatch, R.string.b_share_main , R.string.b_next );
         initView();
     }
 
-
-
     private void initView(){
-
         mImage.setImageBitmap(FileUtil.getPhotoFromSDCard(HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME));
-
     }
 
     @Override
