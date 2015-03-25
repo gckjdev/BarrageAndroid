@@ -64,7 +64,7 @@
         <activity
             android:name=".user.ui.login.LoginEditeTextActivtiy"
             android:label="LoginEditeTextActivtiy" />
-        <activity android:name=".feed.activity.FeedPublishedActivity" />
+        <activity android:name=".feed.activity.FeedPublishedWhatchImageActivity" />
         <activity android:name=".user.ui.view.Text" />
         <activity
             android:name=".friend.activity.RequestAddFriendActivity"

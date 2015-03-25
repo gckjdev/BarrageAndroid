@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
+import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.friend.mission.TagMission;
@@ -37,10 +37,12 @@ import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
 
+import static com.orange.barrage.android.friend.ui.FriendIconList.*;
+
 /**
  * Created by Administrator on 2015/3/19.
  */
-public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonActivity implements FriendIconList.OnClickItemListener {
+public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonActivity implements OnClickItemListener {
 
     public static final String TABKEY = "1";
     public static final String TABSTATEKEY = "2";
@@ -68,10 +70,10 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     private String mState = SEE_STATE;
 
     private List<UserProtos.PBUserTag> mHaveDeletePBUser = new ArrayList<>();
-    private UserProtos.PBUserTag mPBUserTag;
-    private UserProtos.PBUserTag mNewPBUserTag;
-    private UserProtos.PBUserTag.Builder mBuilder;
-    private UserProtos.PBUserTag.Builder mOldBuilder;
+//    private UserProtos.PBUserTag mPBUserTag;
+//    private UserProtos.PBUserTag mNewPBUserTag;
+//    private UserProtos.PBUserTag.Builder mBuilder;
+//    private UserProtos.PBUserTag.Builder mOldBuilder;
 
 
     private ShowPublishFeedView mShowPublisFeedView;
@@ -79,7 +81,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Inject
     TagManager mTagManager;
 
-    @InjectView(R.id.frinedIconlist)
+    @InjectView(R.id.friendIconList)
     FriendIconList mFriendIconList;
 
     @InjectView(R.id.tabNameEidtext)
@@ -88,8 +90,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @InjectView(R.id.tabNameTextView)
     TextView mTagTextView;
 
-    @InjectView(R.id.chengyuan)
-    TextView mPeopleNum;
+
 
     @InjectView(R.id.shareOrDeletebutton)
     Button mShareOrDeleteButton;
@@ -124,27 +125,34 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             setFriendListAlter();
             showEdiText();
             showTagNametext(R.string.b_create_tab_hinit, "");
-            setPeopleNum(0);
+            mFriendIconList.setMenbertext(0);
             if (mShareOrDeleteButton != null) {
                 mShareOrDeleteButton.setVisibility(View.GONE);
             }
         } else {
             closeEidText();
-            mPBUserTag = mTagManager.getTagById(mTabId);
-            if (mPBUserTag != null) {
-                showTagNametext(-1, mPBUserTag.getName());
-                mFriendIconList.setUsers(mPBUserTag.getUsersList(), this);
-                setPeopleNum(mPBUserTag.getUsersList().size());
-            } else setPeopleNum(0);
+//            mPBUserTag = mTagManager.getTagById(mTabId);
+//            if (mPBUserTag != null) {
+//                showTagNametext(-1, mPBUserTag.getName());
+//                mFriendIconList.setUsers(mPBUserTag.getUsersList(), this);
+//                mFriendIconList.setMenbertext(mPBUserTag.getUsersList().size());
+//            } else mFriendIconList.setMenbertext(0);
 
         }
 
-        if (mPBUserTag != null)
-            mBuilder = UserProtos.PBUserTag.newBuilder(mPBUserTag);
-        else {
-            mBuilder = UserProtos.PBUserTag.newBuilder();
-            mBuilder.setTid("sasd");
+        UserProtos.PBUserTag userTag = mFriendIconList.initData(mTagManager , mTabId , this);
+
+        if(userTag != null){
+            showTagNametext(-1, userTag.getName());
         }
+
+
+//        if (mPBUserTag != null)
+//            mBuilder = UserProtos.PBUserTag.newBuilder(mPBUserTag);
+//        else {
+//            mBuilder = UserProtos.PBUserTag.newBuilder();
+//            mBuilder.setTid("sasd");
+//        }
 
     }
 
@@ -155,10 +163,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mShowPublisFeedView = mShowPublisFeedView == null ? new ShowPublishFeedView(this) : mShowPublisFeedView;
     }
 
-    private void setPeopleNum(int num) {
-        if (mPeopleNum != null)
-            mPeopleNum.setText("成员(" + num + ")");
-    }
+
 
 
     private void setFriendListAlter() {
@@ -188,12 +193,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
 
-    private void addUserToTag() {
-        if (mNewPBUserTag != null)
-            mBuilder.addAllUsers(mNewPBUserTag.getUsersList());
-        mNewPBUserTag = null;
-        setPeopleNum(mBuilder.getUsersList().size());
-    }
+
 
     private void closeEidText() {
         mTagEditText.setVisibility(View.GONE);
@@ -240,25 +240,28 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         closeEidText();
         setButtonText(R.string.b_share_photo);
         //刷新好友列表
-        mFriendIconList.setReFresh(mOldBuilder.getUsersList() , this , FriendIconList.ICON_ORDINARY);
-        mBuilder.clear();
-        mBuilder = UserProtos.PBUserTag.newBuilder(mOldBuilder.build());
-        mOldBuilder.clear();
+        mFriendIconList.refresh();
+
+//        mFriendIconList.setReFresh(mOldBuilder.getUsersList() , this , FriendIconList.ICON_ORDINARY);
+//        mBuilder.clear();
+//        mBuilder = UserProtos.PBUserTag.newBuilder(mOldBuilder.build());
+//        mOldBuilder.clear();
     }
 
     //跳转到编辑框界面
     private void toEditText() {
         //保持过去的数据
-        mOldBuilder = UserProtos.PBUserTag.newBuilder(mBuilder.build());
+        mFriendIconList.saveOldBuilder();
+
         setButtonText(R.string.b_delete_tag);
         mParams.isAtler = false;
         mHaveDeletePBUser = new ArrayList<>();
         mParams = new Params();
         mParams.startText = mTagEditText.getText().toString();
-        mFriendIconList.setIconType(FriendIconList.ICON_ADD_AND_DELETE_BUTTON);
+        mFriendIconList.setIconType(ICON_ADD_AND_DELETE_BUTTON);
         showEdiText();
-        if (mPBUserTag != null) {
-            showTagNametext(R.string.b_tag_is_not_null, mPBUserTag.getName());
+        if (mFriendIconList.getBuilder() != null) {
+            showTagNametext(R.string.b_tag_is_not_null, mFriendIconList.getBuilder().getName());
         }
         setTitleRight(R.string.b_editexttab, R.string.b_OK);
         mState = EDIT_STATE;
@@ -273,6 +276,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             return null;
         } else if (name.length() > 20) {
             MessageCenter.postErrorMessage("标签最多20个字");
+            return null;
+        }
+
+        if(mFriendIconList.getBuilder().getUsersList().size() == 0){
+            MessageCenter.postErrorMessage("请选择你的好友");
             return null;
         }
 
@@ -291,17 +299,17 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             return;
         }
 
-        List<UserProtos.PBUser> list = mBuilder.build().getUsersList();
+        List<UserProtos.PBUser> list = mFriendIconList.getBuilder().build().getUsersList();
         List<String> idList = new ArrayList<>();
 
         for (UserProtos.PBUser pbUser : list) {
             idList.add(pbUser.getUserId());
         }
 
-        mBuilder.setName(name);
+        mFriendIconList.getBuilder().setName(name);
 
         showProgress("正在修改");
-        mTagMission.updateUserTag(mBuilder.build(), idList, new AddTagCallback() {
+        mTagMission.updateUserTag(mFriendIconList.getBuildPBUser(), idList, new AddTagCallback() {
 
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
@@ -325,11 +333,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         final String tagId = StringUtil.createUUID();
         if (isTagNameIsEmtry() == null) return;
 
-        mBuilder.setTid(tagId);
-        mBuilder.setName(name);
+        mFriendIconList.getBuilder().setTid(tagId);
+        mFriendIconList.getBuilder().setName(name);
         showProgress("正在创建标签");
 
-        mTagMission.addTag(mBuilder.build(), new AddTagCallback() {
+        mTagMission.addTag(mFriendIconList.getBuildPBUser(), new AddTagCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
                 if (errorCode == 0) {
@@ -364,20 +372,12 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             return true;
         }
 
-        if (mNewPBUserTag != null && mNewPBUserTag.getUsersList().size() != 0) return true;
+        mParams.isAtler = mFriendIconList.isAlterIcon();
 
         return mParams.isAtler;
     }
 
-    private void startToChooseFriend() {
 
-        UserProtos.PBUserTag b1 = mBuilder.build();
-
-        Intent intent = new Intent(this, FriendListSelectActivity.class);
-        intent.putExtra(TABKEY, new String[]{mTabId, mTagEditText.getText().toString().trim()});
-        intent.putExtra("b1", b1.toByteArray());
-        startActivityForResult(intent, 0x11);
-    }
 
 
     @Override
@@ -396,17 +396,10 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Override
     public void onClickItem(int postion, View view, Object data, int iconType) {
 
-        if (iconType == FriendIconList.OnClickItemListener.INCO_ADD_BUTTON) {
-            startToChooseFriend();
-        } else if (iconType == FriendIconList.OnClickItemListener.ICON_ORDINARY_BUTTON) {
-            //点击对应的头像
-
-        } else if (iconType == FriendIconList.OnClickItemListener.ICON_TOP_DELETE_BUTTON) {
+       if (iconType == OnClickItemListener.ICON_TOP_DELETE_BUTTON) {
             //点击头像做删除的按钮
             mParams.isAtler = true;
-            mBuilder.removeUsers(postion);
-            setPeopleNum(mBuilder.getUsersList().size());
-        }
+       }
 
     }
 
@@ -451,7 +444,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
         showProgress("正在删除，请稍等...");
         //删除标签
-        mTagMission.deleteTag(mPBUserTag, new AddTagCallback() {
+        mTagMission.deleteTag(mFriendIconList.getPBUserTag(), new AddTagCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
                 if(errorCode != 0){
@@ -501,18 +494,8 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == TAG_IS_ALTER) {
-            byte[] b = data.getByteArrayExtra(TABKEY);
-            try {
-                mNewPBUserTag = UserProtos.PBUserTag.parseFrom(b);
-            } catch (InvalidProtocolBufferException e) {
-                e.printStackTrace();
-            }
 
-            mFriendIconList.addUsers(mNewPBUserTag.getUsersList());
-            addUserToTag();
-            mParams.isAtler = true;
-        }
+        mParams.isAtler = mFriendIconList.startForResult(resultCode , data);
 
 
         if(mShowPublisFeedView != null) {
@@ -523,7 +506,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
                     @Override
                     public void onSuccess(Bitmap bitmap) {
                         FileUtil.savePhotoToSDCard(bitmap, HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME);
-                        ActivityIntent.startIntent(FriendTabDetailInfoAndCreateAndAlterActivity.this, FeedPublishedActivity.class);
+                        ActivityIntent.startIntent(FriendTabDetailInfoAndCreateAndAlterActivity.this, FeedPublishedWhatchImageActivity.class);
                         finish();
                     }
 

@@ -1,6 +1,7 @@
 package com.orange.barrage.android.feed.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
@@ -25,7 +26,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState , R.layout.activity_feed_publish_other_platform, R.string.b_share_main , -1 );
+        super.onCreate(savedInstanceState , R.layout.activity_feed_publish_other_platform, R.string.b_share_main ,R.string.b_grid );
         initView();
 
         FeedModel model = initData();
@@ -37,7 +38,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
     }
 
     private void initView(){
-        mTopBarView.setNavigationBackgroundChangeOtherType();
+//        mTopBarView.setNavigationBackgroundChangeOtherType();
 
         mFeedMainWidget.initActualWidth(ScreenUtil.getWidthPixels());
     }
@@ -59,4 +60,24 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
         model.setFeed(feed);
         return model;
     }
+
+
+
+    //分享到微信朋友圈
+    public void onClickweixinFriend(View v){
+
+    }
+    //分享到微信好友
+    public void onClickweixin(View v){
+
+    }
+    //分享到新浪
+    public void onClickXiangLiang(View v){
+
+    }
+    //分享到QQ空间
+    public void onClickQQZone(View v){
+
+    }
+
 }

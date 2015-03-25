@@ -229,6 +229,20 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+
+    <style name="b_share_other_platform" parent="match_content">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="b_share_other_paltform_image" parent="wrap_content">
+
+    </style>
+    <style name="b_share_other_paltform_text" parent="wrap_content">
+        <item name="android:layout_marginTop">11dip</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/b_font_black</item>
+
     <!-- 自定义仿IOS的ActionSheet底部Dialog的样式 ，有模糊效果 -->
     <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
 
@@ -249,9 +263,10 @@
         <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
     </style>
 
-    <!-- ActionSheet进出动画 -->
+    <!-- 对话框ActionSheet进出动画 -->
     <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
         <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>
         <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
+
     </style>
 </resources>

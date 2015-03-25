@@ -24,30 +24,14 @@
             android:gravity="center" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_marginTop="20dip"
-        android:paddingLeft="18dip"
+    <!--<include layout="@layout/view_friend_icon_and_textview"/>-->
+
+    <com.orange.barrage.android.friend.ui.FriendIconList
+        android:id="@+id/friendIconList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/chengyuan"
-            android:text="成员(0)"
-            android:textSize="@dimen/b_list_view_font_medium"
-            android:layout_marginTop="10dip"
-            style="@style/wrap_content" />
-
-        <com.orange.barrage.android.friend.ui.FriendIconList
-            android:id="@+id/frinedIconlist"
-            android:numColumns="5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </com.orange.barrage.android.friend.ui.FriendIconList>
-
-    </LinearLayout>
+    </com.orange.barrage.android.friend.ui.FriendIconList>
 
     <Button
         android:id="@+id/shareOrDeletebutton"

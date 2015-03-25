@@ -7,11 +7,86 @@
 
     <include layout="@layout/activity_view_top"/>
 
-    <com.orange.barrage.android.ui.topic.FeedMainWidget
-        android:id="@+id/feed_main_widget"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+    <LinearLayout
         android:layout_weight="1"
-        />
+        style="@style/match_content">
+
+        <com.orange.barrage.android.ui.topic.FeedMainWidget
+            android:id="@+id/feed_main_widget"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="160dip">
+
+        <TextView
+            android:layout_marginTop="22dip"
+
+            android:textSize="14sp"
+            android:textColor="@color/b_color_gray"
+            android:text="@string/b_share_move_barred_head"
+            style="@style/wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="29.5dip"
+            android:orientation="horizontal"
+            style="@style/match_wrap">
+
+            <LinearLayout
+                style="@style/b_share_other_platform">
+                <ImageButton
+                    android:onClick="onClickweixinFriend"
+                    android:src="@drawable/x_weixin_friend"
+                    android:background="@color/b_color_alpha"
+                    style="@style/wrap_content" />
+                <TextView
+                    android:text="@string/b_weixin_friend_circle"
+                    style="@style/b_share_other_paltform_text" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/b_share_other_platform">
+                <ImageButton
+                    android:onClick="onClickweixin"
+                    android:src="@drawable/x_weixin"
+                    android:background="@color/b_color_alpha"
+                    style="@style/wrap_content" />
+                <TextView
+                    android:text="@string/b_weixin_friend"
+                    style="@style/b_share_other_paltform_text" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/b_share_other_platform">
+                <ImageButton
+                    android:onClick="onClickXiangLiang"
+                    android:src="@drawable/x_xiangliang"
+                    android:background="@color/b_color_alpha"
+                    style="@style/wrap_content" />
+                <TextView
+                    android:text="@string/b_xingliang"
+                    style="@style/b_share_other_paltform_text" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/b_share_other_platform">
+                <ImageButton
+                    android:onClick="onClickQQZone"
+                    android:src="@drawable/x_qq_zone"
+                    android:background="@color/b_color_alpha"
+                    style="@style/wrap_content" />
+                <TextView
+                    android:text="@string/b_qq_zone"
+                    style="@style/b_share_other_paltform_text" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.orange.barrage.android.feed.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
@@ -13,7 +14,7 @@ import roboguice.inject.InjectView;
 /**
  * Created by youjiannuo on 2015/3/7.
  */
-public class FeedPublishedActivity extends BarrageCommonActivity {
+public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.imageview)
     ImageView mImage;
@@ -21,7 +22,7 @@ public class FeedPublishedActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState , R.layout.activity_published_edit , R.string.b_share_main , -1 );
+        super.onCreate(savedInstanceState , R.layout.activity_published_whatch, R.string.b_share_main , R.string.b_next );
         initView();
     }
 
@@ -33,5 +34,8 @@ public class FeedPublishedActivity extends BarrageCommonActivity {
 
     }
 
-
+    @Override
+    public void onClickRight(View v) {
+        super.onClickRight(v);
+    }
 }

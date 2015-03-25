@@ -33,13 +33,16 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     private ShowPublishFeedView mShowPublishFeedView;
 
     @InjectView(R.id.friend_detail_avatar_view)
-    private UserAvatarView userAvatarImageView;
+    private UserAvatarView mUserAvatarImageView;
 
     @InjectView(R.id.friend_detail_nick)
-    private TextView nickTextView;
+    private TextView mNickTextView;
 
     @InjectView(R.id.friend_detail_signature)
-    private TextView signatureTextView;
+    private TextView mSignatureTextView;
+
+    @InjectView(R.id.friend_detail_tag)
+    private TextView mFriendDetailTag;
 
     @InjectView(R.id.friend_detail_location)
     private TextView locationTextView;
@@ -81,15 +84,21 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         }
 
 
-        nickTextView.setText(mUser.getNick());
-
-        locationTextView.setText(mUser.getLocation());
-
-        if (!StringUtil.isEmpty(mUser.getSignature())) {
-            signatureTextView.setText(mUser.getSignature());
+        mNickTextView.setText(mUser.getNick());
+        if (mUser.hasLocation())
+        {
+            locationTextView.setText(mUser.getLocation());
+        }
+        else
+        {
+            locationTextView.setText("什么也没有");
         }
 
-        userAvatarImageView.loadUser(mUser);
+        if (!StringUtil.isEmpty(mUser.getSignature())) {
+            mSignatureTextView.setText(mUser.getSignature());
+        }
+
+        mUserAvatarImageView.loadUser(mUser);
         if (mUser.hasAvatarBg())
         {
             Picasso.with(FriendDetailActivity.this)
