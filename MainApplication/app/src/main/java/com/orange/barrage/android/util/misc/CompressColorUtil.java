@@ -1,8 +1,11 @@
-package com.orange.common.utils;
+package com.orange.barrage.android.util.misc;
 
 public class CompressColorUtil {
 
-	
+    public static long getUnsignedInt (int data){     //将int数据转换为0~4294967295 (0xFFFFFFFF即DWORD)。
+        return data & 0x0FFFFFFFFl;
+    }
+
 	// new compress, with 8 bits for alpha
 	public static long compressColor8WithRed(float red, float green, float blue, float alpha){
 		long ret = (long)(alpha * 255.0f) +
