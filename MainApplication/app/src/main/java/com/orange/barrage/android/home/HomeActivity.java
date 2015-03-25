@@ -19,7 +19,7 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
-import com.orange.barrage.android.feed.activity.FeedPublishedActivity;
+import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
@@ -32,7 +32,6 @@ import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.user_home.UserHomeActivity;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonFragmentActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.activity.RequestCodes;
 import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.misc.SystemUtil;
@@ -223,6 +222,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         ActivityIntent.startIntent(this, intent );
     }
 
+
     public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event){
         Intent intent = new Intent(this, FeedPublishedOtherPlatformActivity.class);
         intent.putExtra(KEYSBYTE , event.getByteArray());
@@ -249,7 +249,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         public void onSuccess(Bitmap bitmap) {
             if(bitmap != null) {
                 FileUtil.savePhotoToSDCard(bitmap, PHOTOPATH, PHOTONAME);
-                ActivityIntent.startIntent(HomeActivity.this, FeedPublishedActivity.class);
+                ActivityIntent.startIntent(HomeActivity.this, FeedPublishedWhatchImageActivity.class);
             }
         }
 
