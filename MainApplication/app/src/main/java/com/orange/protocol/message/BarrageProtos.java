@@ -7043,7 +7043,7 @@ public final class BarrageProtos {
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
-     * 消息的Feed信息
+     * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
      * </pre>
      */
     boolean hasFeed();
@@ -7051,7 +7051,7 @@ public final class BarrageProtos {
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
-     * 消息的Feed信息
+     * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
      * </pre>
      */
     com.orange.protocol.message.BarrageProtos.PBFeed getFeed();
@@ -7059,7 +7059,7 @@ public final class BarrageProtos {
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
-     * 消息的Feed信息
+     * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
      * </pre>
      */
     com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder getFeedOrBuilder();
@@ -7503,7 +7503,7 @@ public final class BarrageProtos {
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
-     * 消息的Feed信息
+     * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
      * </pre>
      */
     public boolean hasFeed() {
@@ -7513,7 +7513,7 @@ public final class BarrageProtos {
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
-     * 消息的Feed信息
+     * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
      * </pre>
      */
     public com.orange.protocol.message.BarrageProtos.PBFeed getFeed() {
@@ -7523,7 +7523,7 @@ public final class BarrageProtos {
      * <code>optional .barrage.PBFeed feed = 10;</code>
      *
      * <pre>
-     * 消息的Feed信息
+     * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
      * </pre>
      */
     public com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder getFeedOrBuilder() {
@@ -8489,7 +8489,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public boolean hasFeed() {
@@ -8499,7 +8499,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public com.orange.protocol.message.BarrageProtos.PBFeed getFeed() {
@@ -8513,7 +8513,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public Builder setFeed(com.orange.protocol.message.BarrageProtos.PBFeed value) {
@@ -8533,7 +8533,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public Builder setFeed(
@@ -8551,7 +8551,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public Builder mergeFeed(com.orange.protocol.message.BarrageProtos.PBFeed value) {
@@ -8574,7 +8574,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public Builder clearFeed() {
@@ -8591,7 +8591,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public com.orange.protocol.message.BarrageProtos.PBFeed.Builder getFeedBuilder() {
@@ -8603,7 +8603,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       public com.orange.protocol.message.BarrageProtos.PBFeedOrBuilder getFeedOrBuilder() {
@@ -8617,7 +8617,7 @@ public final class BarrageProtos {
        * <code>optional .barrage.PBFeed feed = 10;</code>
        *
        * <pre>
-       * 消息的Feed信息
+       * 消息的Feed信息，仅用于本地缓存，服务器正常情况下不返回
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
