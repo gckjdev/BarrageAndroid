@@ -238,15 +238,14 @@
     <style name="b_share_other_paltform_image" parent="wrap_content">
 
     </style>
-
     <style name="b_share_other_paltform_text" parent="wrap_content">
         <item name="android:layout_marginTop">11dip</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/b_font_black</item>
     </style>
-
     <!-- 自定义仿IOS的ActionSheet底部Dialog的样式 ，有模糊效果 -->
     <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
+
         <!-- 背景透明 -->
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>

@@ -1,10 +1,10 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.orange.barrage.android.friend.activity.FriendDetailActivity">
-
     <include layout="@layout/activity_view_top" />
 
     <RelativeLayout
@@ -74,6 +74,7 @@
         </LinearLayout>
     <View
         android:layout_width="match_parent"
+        android:background="#e7e7e7"
         android:layout_height="1dp"/>
     <LinearLayout
         android:background="@color/user_background"
@@ -107,6 +108,7 @@
 
     <View
         android:layout_width="match_parent"
+        android:background="#e7e7e7"
         android:layout_height="1dp"/>
     <LinearLayout
         android:background="@color/user_background"
@@ -137,6 +139,10 @@
         </RelativeLayout>
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="#e7e7e7"
+        android:layout_height="1dp"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -154,6 +160,5 @@
                 android:layout_centerHorizontal="true"
                />
             </RelativeLayout>
-
     </LinearLayout>
 </LinearLayout>

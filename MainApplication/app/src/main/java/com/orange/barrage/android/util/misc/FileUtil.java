@@ -355,13 +355,15 @@ public static boolean checkFileIsExits(String filePath)
      * @return
      */
     public static Bitmap getPhotoFromSDCard(String path,String photoName){
-        Bitmap photoBitmap = BitmapFactory.decodeFile(path + "/" + photoName + ".png");
+        return getPhoto(path + "/" + photoName + ".png");
+    }
+
+    public static Bitmap getPhoto(String filePath){
+        Bitmap photoBitmap = BitmapFactory.decodeFile(filePath);
         if (photoBitmap == null) {
             return null;
         }else {
             return photoBitmap;
         }
     }
-
-
 }

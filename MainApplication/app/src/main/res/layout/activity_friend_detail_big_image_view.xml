@@ -1,0 +1,24 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    tools:context="com.orange.barrage.android.friend.activity.FriendDetailBigImageViewActivity">
+
+    <ImageView
+        android:id="@+id/friend_detail_bigview_avatar_view"
+        android:src="@drawable/person_detail"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:scaleType="fitXY"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
+
+</LinearLayout>
+</RelativeLayout>

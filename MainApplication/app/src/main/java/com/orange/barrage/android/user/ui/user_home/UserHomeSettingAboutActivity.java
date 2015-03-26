@@ -44,7 +44,7 @@ public class UserHomeSettingAboutActivity extends BarrageCommonActivity {
         });
     }
 
-    //获取当前版本号码
+    //获取当前版本号
     private String getVersion()
     {
         PackageManager packageManager=this.getPackageManager();

@@ -111,5 +111,7 @@
     <string name="title_activity_user_home_setting_speed">UserHomeSettingSpeedActivity</string>
     <string name="title_activity_option_feed_back">OptionFeedBackActivity</string>
     <string name="title_activity_invite_my_friend">InviteMyFriendActivity</string>
+    <string name="title_activity_friend_detail_big_image_view">FriendDetailBigImageViewActivity
+    </string>
 
 </resources>

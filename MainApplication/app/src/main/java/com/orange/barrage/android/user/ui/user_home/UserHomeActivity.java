@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.model.UserManager;
+import com.orange.barrage.android.user.ui.view.ActionSheetDialog;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
@@ -52,6 +53,29 @@ public class UserHomeActivity extends BarrageCommonActivity {
         super.onCreate(savedInstanceState,R.layout.activity_user_home,"我的主页",-1);
         UserProtos.PBUser user = mUserManager.getUser();
         userAvatarImageView.loadUser(user);
+        userAvatarImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //MessageCenter.postInfoMessage("测试");
+                new ActionSheetDialog(UserHomeActivity.this)
+                        .builder()
+                        .setTitle("请选择")
+                        .setCancelabe(true)
+                        .setCanceledOnTouchOutside(true)
+                        .addSheetItem("从相册选择", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+                                //MessageCenter.postInfoMessage("测试菜单成功");
+                            }
+                        })
+                        .addSheetItem("拍照", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+
+                            }
+                        }).show();
+            }
+        });
         mFriendHomeview.setText(user.getNick());
         //MessageCenter.postInfoMessage("地址为:"+user.getAvatarBg().toString());
         //取用户头像的时候，必须要用toString()方法
