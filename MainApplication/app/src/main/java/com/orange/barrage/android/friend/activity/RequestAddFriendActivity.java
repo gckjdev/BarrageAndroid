@@ -29,15 +29,4 @@ public class RequestAddFriendActivity extends BarrageCommonActivity {
             }
         });
     }
-
-//    @Override
-//    public void onClickRight(View v) {
-//        super.onClickRight(v);
-//
-//    }
-//
-//    @Override
-//    public void onClickFinish(View v) {
-//        super.onClickFinish(v);
-//    }
 }

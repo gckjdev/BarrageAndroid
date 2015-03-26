@@ -18,10 +18,12 @@ import com.orange.barrage.android.user.ui.user_home.user_settings.UserHomeModify
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserPhoneNumberEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
+import com.orange.barrage.android.user.ui.view.ActionSheetDialog;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.protocol.message.UserProtos;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -89,6 +91,12 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.user_modify_phone_number)
     private TextView mUserModifyPhoneNumber;
+
+    @InjectView(R.id.userhomebackground)
+    private ImageView mUserhomeBackground;
+
+    @InjectView(R.id.userhome_modify_background)
+    private LinearLayout mUserHomeModifyBackground;
     public boolean panduan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +119,14 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         //MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
         mUserModifyPhoneNumber.setText(user.getMobile());
         mUserAvatarImageView.loadUser(user);
+        if (user.hasAvatarBg())
+        {
+            Picasso.with(UserHomeModifyActivity.this)
+                    .load(user.getAvatarBg().toString())
+                    .placeholder(R.drawable.tab_home)
+                    .error(R.drawable.tab_friend)
+                    .into(mUserhomeBackground);
+        }
         mUserModifyNick.setText(user.getNick());
         mUserModifySignature.setText(user.getSignature());
         mUserModifyEmail.setText(user.getEmail());
@@ -128,6 +144,29 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
             mUserModifyGender.setText("女");
         }
 
+        //修改背景
+        mUserHomeModifyBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ActionSheetDialog(UserHomeModifyActivity.this)
+                        .builder()
+                        .setTitle("请选择")
+                        .setCancelabe(true)
+                        .setCanceledOnTouchOutside(true)
+                        .addSheetItem("从相册选择", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+                                //MessageCenter.postInfoMessage("测试菜单成功");
+                            }
+                        })
+                        .addSheetItem("拍照", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+
+                            }
+                        }).show();
+            }
+        });
         //修改昵称
         mNickLayout.setOnClickListener(new View.OnClickListener() {
             @Override

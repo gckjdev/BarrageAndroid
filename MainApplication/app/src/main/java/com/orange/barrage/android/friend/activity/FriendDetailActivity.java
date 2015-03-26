@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.StringUtil;
@@ -28,6 +30,7 @@ import roboguice.util.Ln;
 
 public class FriendDetailActivity extends BarrageCommonActivity {
 
+    public static final String mUrlKey = "1";
 
     private static final String BUNDLE_KEY_USER = "BUNDLE_KEY_USER";
     private ShowPublishFeedView mShowPublishFeedView;
@@ -58,12 +61,13 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     UserProtos.PBUser mUser;
 
+
     @Inject
     UserManager mUserManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_friend_detail, "详细资料", -1);
-        UserProtos.PBUser user = mUserManager.getUser();
+        final UserProtos.PBUser user = mUserManager.getUser();
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             Ln.w("FriendDetailActivity show but bundle data null");
@@ -107,6 +111,19 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                     .error(R.drawable.tab_friend)
                     .into(mUserDetailBg);
         }
+
+        //点击头像显示
+        mUserAvatarImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(mUser.getAvatar()))
+                {
+                    MessageCenter.postInfoMessage("没有设置头像，不能查看大图片");
+                }
+                ActivityIntent.startIntent(FriendDetailActivity.this ,
+                        FriendDetailBigImageViewActivity.class , mUrlKey , mUser.getAvatar());
+            }
+        });
     }
 
     public static void show(UserProtos.PBUser user, Context context) {
@@ -131,6 +148,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         intent.setClass(context, FriendDetailActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+
     }
 
 

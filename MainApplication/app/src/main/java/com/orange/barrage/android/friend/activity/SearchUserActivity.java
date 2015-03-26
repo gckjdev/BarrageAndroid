@@ -2,17 +2,16 @@ package com.orange.barrage.android.friend.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.barrage.android.user.mission.SearchUserCallback;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
@@ -40,10 +39,6 @@ public class SearchUserActivity extends BarrageCommonActivity {
     @Inject
     SearchFriendListAdapter mAdapter;
 
-    @Inject
-    FriendManager mFriendManager;
-
-    Handler handler = new Handler();
 
     //设置ListView的Adapter
     private void initAdapter() {
@@ -52,7 +47,7 @@ public class SearchUserActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState, R.layout.activity_search_user, "搜索",R.string.y_tijiao);
 
         initAdapter();
