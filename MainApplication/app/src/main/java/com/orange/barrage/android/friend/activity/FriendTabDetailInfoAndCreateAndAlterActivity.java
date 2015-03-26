@@ -147,29 +147,23 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         }
 
 
-//        if (mPBUserTag != null)
-//            mBuilder = UserProtos.PBUserTag.newBuilder(mPBUserTag);
-//        else {
-//            mBuilder = UserProtos.PBUserTag.newBuilder();
-//            mBuilder.setTid("sasd");
-//        }
 
     }
 
     private void initPhoto() {
-//        mShowPublisFeedView = mShowPublisFeedView == null ? new ShowPublishFeedView(this, new PhotoAndCamera.onGetPhotoCallback() {
-//            @Override
-//            public void onSuccess(Bitmap bitmap) {
-//                FileUtil.savePhotoToSDCard(bitmap, HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME);
-//                ActivityIntent.startIntent(FriendTabDetailInfoAndCreateAndAlterActivity.this, FeedPublishedWhatchImageActivity.class);
-//                finish();
-//            }
-//
-//            @Override
-//            public void onError(String reason) {
-//
-//            }
-//        }) : mShowPublisFeedView;
+        mShowPublisFeedView = mShowPublisFeedView == null ? new ShowPublishFeedView(this, new PhotoAndCamera.onGetPhotoCallback() {
+            @Override
+            public void onSuccess(Bitmap bitmap) {
+                FileUtil.savePhotoToSDCard(bitmap, HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME);
+                ActivityIntent.startIntent(FriendTabDetailInfoAndCreateAndAlterActivity.this, FeedPublishedWhatchImageActivity.class);
+                finish();
+            }
+
+            @Override
+            public void onError(String reason) {
+
+            }
+        }) : mShowPublisFeedView;
     }
 
 
@@ -196,8 +190,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mTagEditText.setVisibility(View.VISIBLE);
         mTagTextView.setVisibility(View.GONE);
 
-//        SystemUtil.showInputMethodManager(mTagEditText);
-//        mTagEditText.setSelection(mTagEditText.getText().length());
 
     }
 
@@ -252,10 +244,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         //刷新好友列表
         mFriendIconList.refresh();
 
-//        mFriendIconList.setReFresh(mOldBuilder.getUsersList() , this , FriendIconList.ICON_ORDINARY);
-//        mBuilder.clear();
-//        mBuilder = UserProtos.PBUserTag.newBuilder(mOldBuilder.build());
-//        mOldBuilder.clear();
+
     }
 
     //跳转到编辑框界面
@@ -506,13 +495,13 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mParams.isAtler = mFriendIconList.startForResult(resultCode , data);
 
 
-//        if (mShowPublisFeedView != null) {
-//            PhotoAndCamera photoAndCamera = mShowPublisFeedView.getPhotoAndCamera();
-//
-//            if (photoAndCamera != null) {
-//                photoAndCamera.getPicture(requestCode, resultCode, data, l);
-//            }
-//        }
+        if (mShowPublisFeedView != null) {
+            PhotoAndCamera photoAndCamera = mShowPublisFeedView.getPhotoAndCamera();
+
+            if (photoAndCamera != null) {
+                photoAndCamera.getPicture(requestCode, resultCode, data);
+            }
+        }
     }
 
 
