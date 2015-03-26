@@ -113,5 +113,7 @@
     <string name="title_activity_invite_my_friend">InviteMyFriendActivity</string>
     <string name="title_activity_friend_detail_big_image_view">FriendDetailBigImageViewActivity
     </string>
+    <string name="title_activity_sms_message_invite_my_friend">SmsMessageInviteMyFriendActivity
+    </string>
 
 </resources>

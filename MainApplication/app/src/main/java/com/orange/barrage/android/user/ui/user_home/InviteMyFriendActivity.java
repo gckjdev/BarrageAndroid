@@ -11,12 +11,13 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.ui.view.ActionSheetDialog;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
 
 import roboguice.inject.InjectView;
 
 public class InviteMyFriendActivity extends BarrageCommonActivity {
+    private static final String AVAILINVITENUMBER="avail_number";
     @InjectView(R.id.oversend_layout)
     //存放加载可用邀请码布局的视图
     private LinearLayout mOversendLayout;
@@ -48,12 +49,12 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
         //取得布局文件
         View view=layoutInflater.inflate(R.layout.activity_invite_my_friend_availitem,null);
         //取得布局文件中的相对布局,就是控件的直接父类
-        RelativeLayout addViewLayout = (RelativeLayout) view.findViewById(R.id.invite_availlayout);
+        final RelativeLayout addViewLayout = (RelativeLayout) view.findViewById(R.id.invite_availlayout);
         //addViewLayout.setPadding(0,0,0,3);
         //取得布局文件中的控件
-        TextView avaail_invitenumber=(TextView)addViewLayout.findViewById(R.id.avail_invitenumber);
-        avaail_invitenumber.setText("1234");
-        ImageView imageView=(ImageView)addViewLayout.findViewById(R.id.avail_inviteimageview);
+        final TextView avail_number=(TextView)addViewLayout.findViewById(R.id.avail_invitenumber);
+        avail_number.setText("1234");
+        final ImageView imageView=(ImageView)addViewLayout.findViewById(R.id.avail_inviteimageview);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +66,10 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
                         .addSheetItem("短信邀请", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
                             @Override
                             public void onClick(int which) {
-                                MessageCenter.postInfoMessage("测试菜单成功");
+                                //MessageCenter.postInfoMessage("测试菜单成功");
+                                //把邀请码传过去,得到邀请码 avail_number.getText().toString();
+                                //Activity之间传递信息,如果两个Activtiy之间传递数据不需要返回的话，那么可以用这个方法
+                                ActivityIntent.startIntent(InviteMyFriendActivity.this,SmsMessageInviteMyFriendActivity.class,AVAILINVITENUMBER,avail_number.getText().toString());
                         }
                         })
                         .addSheetItem("分享到朋友圈", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
@@ -98,10 +102,10 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
         //取得布局文件
         View view=layoutInflater.inflate(R.layout.activity_invite_my_friend_oversend,null);
         //取得布局文件中的相对布局
-        RelativeLayout addViewLayout = (RelativeLayout) view.findViewById(R.id.oversendnumber_layout);
+        final  RelativeLayout addViewLayout = (RelativeLayout) view.findViewById(R.id.oversendnumber_layout);
         addViewLayout.setPadding(0,0,0,0);
         //取得布局文件中的控件
-        TextView oversendtext=(TextView)addViewLayout.findViewById(R.id.oversendtext);
+        final TextView oversendtext=(TextView)addViewLayout.findViewById(R.id.oversendtext);
         oversendtext.setText("1234");
         TextView oversendname=(TextView)addViewLayout.findViewById(R.id.oversendname);
         oversendname.setText("小文");
