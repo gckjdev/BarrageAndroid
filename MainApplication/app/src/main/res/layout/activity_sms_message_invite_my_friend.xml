@@ -5,12 +5,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
     <include layout="@layout/activity_view_top" />
-    <ListView
+    <com.orange.barrage.android.friend.ui.FriendListInfoNewListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
-    </ListView>
+    </com.orange.barrage.android.friend.ui.FriendListInfoNewListView>
 
 </LinearLayout>
