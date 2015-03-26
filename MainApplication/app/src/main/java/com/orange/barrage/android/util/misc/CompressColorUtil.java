@@ -2,6 +2,16 @@ package com.orange.barrage.android.util.misc;
 
 public class CompressColorUtil {
 
+    public static int toBarrageColor(int androidColor){
+        // TODO
+        return 0;
+    }
+
+    public static int toAndroidColor(int barrageColor){
+        // TODO
+        return 0;
+    }
+
     public static long getUnsignedInt (int data){     //将int数据转换为0~4294967295 (0xFFFFFFFF即DWORD)。
         return data & 0x0FFFFFFFFl;
     }
