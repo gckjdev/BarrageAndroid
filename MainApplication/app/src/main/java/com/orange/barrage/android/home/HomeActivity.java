@@ -132,10 +132,9 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     }
 
     public void onCLickCamer(View v){
-//        initPublisFeedView();
-//        mShowPublisFeedView.showPublishFeedView();
+        initPublisFeedView();
+        mShowPublisFeedView.showPublishFeedView();
 
-        ActivityIntent.startIntent(this , FeedPublishedImageActivity.class);
 
     }
 
