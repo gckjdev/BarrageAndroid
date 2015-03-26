@@ -10,6 +10,7 @@
     <include layout="@layout/view_homepage_tag" />
 
     <com.orange.barrage.android.friend.ui.FriendIconList
+        android:visibility="gone"
         android:id="@+id/friendIconList"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
