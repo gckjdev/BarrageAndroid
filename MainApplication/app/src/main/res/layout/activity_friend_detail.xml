@@ -1,10 +1,10 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.orange.barrage.android.friend.activity.FriendDetailActivity">
-
     <include layout="@layout/activity_view_top" />
 
     <RelativeLayout
@@ -74,6 +74,7 @@
         </LinearLayout>
     <View
         android:layout_width="match_parent"
+        android:background="#e7e7e7"
         android:layout_height="1dp"/>
     <LinearLayout
         android:background="@color/user_background"
@@ -105,6 +106,44 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:background="#e7e7e7"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:background="@color/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/u_background">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+
+                android:layout_marginLeft="20dp"
+                android:text="标签"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/friend_detail_tag"
+                android:textSize="18sp"
+                android:text="未设置"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                style="@style/t_textview_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="#e7e7e7"
+        android:layout_height="1dp"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -117,10 +156,9 @@
                 style="@style/b_button_color_red"
                 android:onClick="onClickCamera"
                 android:id="@+id/friend_detail_sharephoto"
-                android:text="分享照片"
+                android:text="添加为好友"
                 android:layout_centerHorizontal="true"
                />
             </RelativeLayout>
-
     </LinearLayout>
 </LinearLayout>

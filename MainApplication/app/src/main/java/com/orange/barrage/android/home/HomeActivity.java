@@ -9,9 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -21,7 +19,6 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
-import com.orange.barrage.android.feed.activity.FeedPublishedImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
@@ -56,17 +53,17 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     private FragmentTabHost mTabHost;
 
-    private HomePopupWindow mHomePopupWindow ;
+    private HomePopupWindow mHomePopupWindow;
 
     private String mTag = TAB_1_TAG;
 
     @Inject
-    UserMission    mUserMission;
+    UserMission mUserMission;
 
     @Inject
     UserManager mUserManager;
 
-    public static String PHOTOPATH = SystemUtil.getSDCardPath()+"/bbl/";
+    public static String PHOTOPATH = SystemUtil.getSDCardPath() + "/bbl/";
 
     public static String PHOTONAME = "you.png";
 
@@ -76,12 +73,12 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_home,R.string.y_shouyue,R.drawable.y_more_and_more);
+        super.onCreate(savedInstanceState, R.layout.activity_home, R.string.y_shouyue, R.drawable.y_more_and_more);
         initView();
         initTopBar();
     }
 
-    private void initTopBar(){
+    private void initTopBar() {
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,63 +89,54 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     private void initView() {
 
-      //  MobclickAgent.updateOnlineConfig(this);
+        //  MobclickAgent.updateOnlineConfig(this);
 
-
-
-        mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
+        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
         mTabHost.getTabWidget().setDividerDrawable(R.color.white);
 
 
-
-        mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_1_TAG),
-                R.drawable.x_shouye,"首页",R.drawable.tab_select),Tab1Container.class,null);
-        mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_2_TAG),
-                R.drawable.x_all_alph,"",R.drawable.tab_select),Tab2Container.class,null);
-        mTabHost.addTab(setIndicator(HomeActivity.this,mTabHost.newTabSpec(TAB_3_TAG),
-                R.drawable.x_haoyou,"好友",R.drawable.tab_select),Tab3Container.class,null);
-
-
+        mTabHost.addTab(setIndicator(HomeActivity.this, mTabHost.newTabSpec(TAB_1_TAG),
+                R.drawable.x_shouye, "首页", R.drawable.tab_select), Tab1Container.class, null);
+        mTabHost.addTab(setIndicator(HomeActivity.this, mTabHost.newTabSpec(TAB_2_TAG),
+                R.drawable.x_all_alph, "", R.drawable.tab_select), Tab2Container.class, null);
+        mTabHost.addTab(setIndicator(HomeActivity.this, mTabHost.newTabSpec(TAB_3_TAG),
+                R.drawable.x_haoyou, "好友", R.drawable.tab_select), Tab3Container.class, null);
 
 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
                 mTag = tabId;
-               changeTitleText();
+                changeTitleText();
             }
         });
 
 
     }
 
-    private void changeTitleText(){
+    private void changeTitleText() {
         int stringId = R.string.y_shouyue;
-        if(mTag.equals(TAB_3_TAG)){
+        if (mTag.equals(TAB_3_TAG)) {
             stringId = R.string.y_haiyou;
         }
         mTopBarView.setTitleText(stringId);
     }
 
-    public void onCLickCamer(View v){
+    public void onCLickCamer(View v) {
         initPublisFeedView();
         mShowPublisFeedView.showPublishFeedView();
-
-
     }
 
 
-
-
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
     }
@@ -159,12 +147,11 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         String currentTabTag = mTabHost.getCurrentTabTag();
 
         if (currentTabTag.equals(TAB_1_TAG)) {
-            isPopFragment = ((HomeContainerFragment)getSupportFragmentManager().findFragmentByTag(TAB_1_TAG)).popFragment();
+            isPopFragment = ((HomeContainerFragment) getSupportFragmentManager().findFragmentByTag(TAB_1_TAG)).popFragment();
         } else if (currentTabTag.equals(TAB_2_TAG)) {
-            isPopFragment = ((HomeContainerFragment)getSupportFragmentManager().findFragmentByTag(TAB_2_TAG)).popFragment();
-        }
-        else if (currentTabTag.equals(TAB_3_TAG)) {
-            isPopFragment = ((HomeContainerFragment)getSupportFragmentManager().findFragmentByTag(TAB_3_TAG)).popFragment();
+            isPopFragment = ((HomeContainerFragment) getSupportFragmentManager().findFragmentByTag(TAB_2_TAG)).popFragment();
+        } else if (currentTabTag.equals(TAB_3_TAG)) {
+            isPopFragment = ((HomeContainerFragment) getSupportFragmentManager().findFragmentByTag(TAB_3_TAG)).popFragment();
         }
 
         if (!isPopFragment) {
@@ -173,103 +160,94 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     }
 
     private TabHost.TabSpec setIndicator(Context ctx, TabHost.TabSpec spec,
-                                 int resid, String string, int genresIcon) {
+                                         int resid, String string, int genresIcon) {
         View v = null;
-        if(resid == R.drawable.x_fabiao) {
+        if (resid == R.drawable.x_fabiao) {
             v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item_center, null);
 
-        }
-        else{
+        } else {
             v = LayoutInflater.from(ctx).inflate(R.layout.view_tab_item, null);
-            TextView tv = (TextView)v.findViewById(R.id.txt_tabtxt);
+            TextView tv = (TextView) v.findViewById(R.id.txt_tabtxt);
             tv.setText(string);
         }
 
-        ImageView img = (ImageView)v.findViewById(R.id.img_tabtxt);
+        ImageView img = (ImageView) v.findViewById(R.id.img_tabtxt);
 
         img.setImageResource(resid);
         return spec.setIndicator(v);
     }
 
 
-    public void setOnFramgeListener(Tab3Container.OnFragmentCommunicationListener l ){
+    public void setOnFramgeListener(Tab3Container.OnFragmentCommunicationListener l) {
         mOnFragmentCommunicationListener = l;
     }
 
 
-
-
-    private void initPublisFeedView(){
-
+    private void initPublisFeedView() {
         mShowPublisFeedView =
-                mShowPublisFeedView == null ? new ShowPublishFeedView(this) : mShowPublisFeedView;
+                mShowPublisFeedView == null ? new ShowPublishFeedView(this, l) : mShowPublisFeedView;
 
     }
 
 
-    public void onEvent(ActionPickEvent event){
+    public void onEvent(ActionPickEvent event) {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(event.getType());
         ActivityCompat.startActivityForResult(this, intent, RequestCodes.FEED_CREATE_PICK_IMAGE, null);
 
     }
 
-    public void onEvent(ActionImageCaptureEvent event){
+    public void onEvent(ActionImageCaptureEvent event) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         ActivityCompat.startActivityForResult(this, intent, RequestCodes.FEED_CREATE_TAKEN_PICTURE, null);
     }
 
-    public final  static String KEYSBYTE = "1";
+    public final static String KEYSBYTE = "1";
     public final static String KEYSSCREENXY = "2";
 
     public void onEvent(StartActivityFeedCommentEvent event) {
         Intent intent = new Intent(this, FeedCommentActivity.class);
-        intent.putExtra(KEYSBYTE , event.getByteArray());
-        intent.putExtra(KEYSSCREENXY , event.getPos());
-        ActivityIntent.startIntent(this, intent );
+        intent.putExtra(KEYSBYTE, event.getByteArray());
+        intent.putExtra(KEYSSCREENXY, event.getPos());
+        ActivityIntent.startIntent(this, intent);
     }
 
 
     public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event){
         Intent intent = new Intent(this, FeedPublishedOtherPlatformActivity.class);
-        intent.putExtra(KEYSBYTE , event.getByteArray());
+        intent.putExtra(KEYSBYTE, event.getByteArray());
         ActivityIntent.startIntent(this, intent);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_ALTER ||
-                resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_DELETE||
-                resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_CREATE){
-            mOnFragmentCommunicationListener.onListener(null,resultCode );
-        }else if(mShowPublisFeedView != null) {
-            PhotoAndCamera photoAndCamera =  mShowPublisFeedView.getPhotoAndCamera();
-            if(photoAndCamera != null)
-                photoAndCamera.getPicture(requestCode, resultCode, data, l);
-
+        if (resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_ALTER ||
+                resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_DELETE ||
+                resultCode == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_CREATE) {
+            mOnFragmentCommunicationListener.onListener(null, resultCode);
+        } else if (mShowPublisFeedView != null) {
+            PhotoAndCamera photoAndCamera = mShowPublisFeedView.getPhotoAndCamera();
+            if (photoAndCamera != null) {
+                photoAndCamera.getPicture(requestCode, resultCode, data);
+            }
         }
     }
 
     private PhotoAndCamera.onGetPhotoCallback l = new PhotoAndCamera.onGetPhotoCallback() {
         @Override
         public void onSuccess(Bitmap bitmap) {
-            if(bitmap != null) {
+            if (bitmap != null) {
                 FileUtil.savePhotoToSDCard(bitmap, PHOTOPATH, PHOTONAME);
                 ActivityIntent.startIntent(HomeActivity.this, FeedPublishedWhatchImageActivity.class);
             }
         }
 
         @Override
-        public void onErro() {
+        public void onError(String reason) {
 
         }
     };
-
-
-
-
-
 
     public static void saveImage(Bitmap photo, String spath) {
         try {
@@ -283,70 +261,47 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         }
     }
 
-    public void onResume() {
-        super.onResume();
-        //MobclickAgent.onResume(this);
-    }
-
-    public void onPause() {
-        super.onPause();
-       // MobclickAgent.onPause(this);
-    }
-
-
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-
-
     }
 
     @Override
     public void onClickRight(View v) {
-//        ToolTipRelativeLayout toolTipRelativeLayout = (ToolTipRelativeLayout) findViewById(R.id.activity_main_tooltipRelativeLayout);
-//
-//        ToolTip toolTip = new ToolTip()
-//                .withText("A beauti\n\n\n\n\nful View")
-//                .withColor(Color.RED)
-//                .withShadow()
-//                .withAnimationType(ToolTip.AnimationType.FROM_TOP);
-//
-//        toolTipRelativeLayout.showToolTipForView(toolTip, v);
-
-        if(mHomePopupWindow == null)
+        if (mHomePopupWindow == null) {
             mHomePopupWindow = new HomePopupWindow(this);
-        mHomePopupWindow.show(v , this , mTag);
+        }
+        mHomePopupWindow.show(v, this, mTag);
 
     }
 
 
     @Override
     public void onClick(View v) {
-        if(v.getTag() == null)return;
-        int position = (int)v.getTag();
-        if(position == 1){
+        if (v.getTag() == null) return;
+        int position = (int) v.getTag();
+        if (position == 1) {
             //添加好友
-            ActivityIntent.startIntent(this , RequestAddFriendActivity.class);
-        }else if(position == 2){
+            ActivityIntent.startIntent(this, RequestAddFriendActivity.class);
+        } else if (position == 2) {
             //添加标签
-            ActivityIntent.startForResult(this , FriendTabDetailInfoAndCreateAndAlterActivity.class ,
+            ActivityIntent.startForResult(this, FriendTabDetailInfoAndCreateAndAlterActivity.class,
                     FriendTabDetailInfoAndCreateAndAlterActivity.TABSTATEKEY,
-                    FriendTabDetailInfoAndCreateAndAlterActivity.CREATE_STATE , 0X11);
+                    FriendTabDetailInfoAndCreateAndAlterActivity.CREATE_STATE, 0X11);
 
-        }else if(position == 3){
+        } else if (position == 3) {
             //个人资料
             ActivityIntent.startIntent(this, UserHomeActivity.class);
 
-        }else if(position == 4){
+        } else if (position == 4) {
             //意见反馈
             ActivityIntent.startIntent(this, OptionFeedBackActivity.class);
         }
 
-        if (mHomePopupWindow!=null)
+        if (mHomePopupWindow != null)
             mHomePopupWindow.close();
 
     }
-
 
 
 }

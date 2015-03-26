@@ -21,15 +21,12 @@ public class ShowPublishFeedView implements View.OnClickListener {
     private ImageButton mPhotoButton;
     private ImageButton mCameraButton;
     private PhotoAndCamera mPhotoAndCamera;
+    private PhotoAndCamera.onGetPhotoCallback mGetPhotoCallback;
 
-
-    public ShowPublishFeedView(Activity activity){
+    public ShowPublishFeedView(Activity activity,PhotoAndCamera.onGetPhotoCallback getPhotoCallback){
         this.mActivity = activity;
+        this.mGetPhotoCallback = getPhotoCallback;
     }
-
-
-
-
 
     public void showPublishFeedView(){
         initFloatWindow();
@@ -41,15 +38,12 @@ public class ShowPublishFeedView implements View.OnClickListener {
         mCameraButton = mCameraButton != null ? mCameraButton : (ImageButton)v.findViewById(R.id.camareButton);
         mPhotoButton.setOnClickListener(this);
         mCameraButton.setOnClickListener(this);
-
-
     }
 
     public void closePublishFeedView(){
         if(mWin == null) return;
         mWin.close();
     }
-
 
     private boolean initFloatWindow(){
 
@@ -70,14 +64,13 @@ public class ShowPublishFeedView implements View.OnClickListener {
         return mPhotoAndCamera;
     }
 
-
     @Override
     public void onClick(View v) {
         initPhoto();
         if(v == mCameraButton){
-            mPhotoAndCamera.takePicture();
+            mPhotoAndCamera.takePicture(mGetPhotoCallback);
         }else if(v == mPhotoButton){
-            mPhotoAndCamera.choosePhoto();
+            mPhotoAndCamera.choosePhoto(mGetPhotoCallback);
         }
         closePublishFeedView();
     }

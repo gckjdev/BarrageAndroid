@@ -43,7 +43,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <LinearLayout style="@style/user_info_linearlayout_common">
+            <LinearLayout
+                android:id="@+id/userhome_modify_background"
+                style="@style/user_info_linearlayout_common">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -54,7 +56,12 @@
                         style="@style/user_homepage" />
 
                     <ImageView
+                        android:id="@+id/userhomebackground"
                         android:layout_marginRight="20dp"
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/image_default"
                         style="@style/user_homepage_imageview" />
                 </RelativeLayout>

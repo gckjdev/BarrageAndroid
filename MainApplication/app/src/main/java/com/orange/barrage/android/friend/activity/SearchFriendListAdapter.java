@@ -74,6 +74,7 @@ public class SearchFriendListAdapter extends FriendListAdapter {
                 FriendDetailActivity.show(friend, mContext);
             }
         });
+
         return view;
     }
 }
