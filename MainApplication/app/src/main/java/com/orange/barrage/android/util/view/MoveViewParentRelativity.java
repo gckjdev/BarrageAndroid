@@ -7,16 +7,12 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.view.View.OnTouchListener;
-
-import com.orange.barrage.android.R;
-import com.squareup.picasso.Picasso;
 
 public class MoveViewParentRelativity extends RelativeLayout implements OnTouchListener  {
 
@@ -253,16 +249,12 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
 
 		public LayoutParams(int w, int h) {
 			super(w, h);
-			// TODO Auto-generated constructor stub
 		}
 	}
 
     private int i = 0;
 	@Override
      public boolean onTouch(View v, MotionEvent event) {
-        // TODO Auto-generated method stub
-
-
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
 
             StayViewInfo stayViewInfo = (StayViewInfo)v.getTag();
@@ -275,11 +267,4 @@ public class MoveViewParentRelativity extends RelativeLayout implements OnTouchL
         }
         return true;
     }
-
-//    public void setImageUrl(String url){
-//        ImageView veiw = (ImageView) findViewById(R.id.CommentImageView);
-//        if(veiw == null) return;
-//        Picasso.with(getContext()).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(veiw);
-//    }
-
 }

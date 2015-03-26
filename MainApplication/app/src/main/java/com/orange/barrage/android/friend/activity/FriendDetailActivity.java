@@ -161,7 +161,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        mShowPublishFeedView.getPhotoAndCamera().getPicture(requestCode, resultCode, data, mOnGetPhotoCallbak);
+        mShowPublishFeedView.getPhotoAndCamera().getPicture(requestCode, resultCode, data);
 
     }
 
@@ -172,7 +172,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         }
 
         @Override
-        public void onErro() {
+        public void onError(String reason) {
             MessageCenter.postInfoMessage("获取相片失败");
         }
     };
@@ -180,6 +180,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     private void initPublishFeefView() {
         mShowPublishFeedView = mShowPublishFeedView
-                == null ? new ShowPublishFeedView(this) : mShowPublishFeedView;
+                == null ? new ShowPublishFeedView(this, mOnGetPhotoCallbak) : mShowPublishFeedView;
     }
 }
