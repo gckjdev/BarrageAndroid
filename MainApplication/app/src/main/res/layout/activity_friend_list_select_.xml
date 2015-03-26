@@ -4,11 +4,11 @@
     android:layout_height="match_parent">
     <include layout="@layout/activity_view_top"/>
 
-    <com.orange.barrage.android.friend.ui.FriendListInfoListView
+    <com.orange.barrage.android.friend.ui.FriendListInfoNewListView
         android:id="@+id/friendListView"
         style="@style/match_content"
         android:layout_weight="1">
 
-    </com.orange.barrage.android.friend.ui.FriendListInfoListView>
+    </com.orange.barrage.android.friend.ui.FriendListInfoNewListView>
 
 </LinearLayout>

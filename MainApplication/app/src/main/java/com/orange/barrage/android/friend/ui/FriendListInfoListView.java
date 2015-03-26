@@ -32,6 +32,8 @@ import javax.inject.Inject;
 /**
  * Created by Administrator on 2015/3/20.
  */
+
+@Deprecated
 public class FriendListInfoListView extends ListView implements SimpleAdapter.ViewBinder, View.OnClickListener {
 
     public static final int FRIENDLIST_AND_SELECT = 1;
@@ -40,10 +42,11 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
 
     public static final String LETTE = "&&&||||";
 
-    private int mType;
-    @Inject
-    FriendManager mFriendManager;
+//    private int mType;
+//    @Inject
+//    FriendManager mFriendManager;
 
+    Vector<Integer> mVector = new Vector<>();
 
 
 
@@ -87,6 +90,9 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
 
     public void setUserInfo(List<UserProtos.PBUser> PBUsers) {
         if(PBUsers == null) return;
+
+
+
         for(UserProtos.PBUser PBUser : PBUsers)
             addData(PBUser);
 
@@ -99,7 +105,7 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
         map.put("1", PBUser);
         map.put("2", PBUser.getNick());
         map.put("3", "");
-        map.put("4", "");
+        map.put("4", R.drawable.x_comments_white);
         data.add(map);
     }
 
@@ -122,7 +128,6 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
         for (int i = 0; i < cs.length; i++) {
             if (cs[i] == ' ') continue;
 //            String s[] = PinyinHelper
-
 
             String S[] = PinyinHelper.toHanyuPinyinStringArray(cs[i]);
 
@@ -160,35 +165,6 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
     }
 
 
-//        if(textRepresentation.equals(LETTE)) {
-//
-//            //设置英文字母
-//            TextView textView = (TextView) view;
-//            textView.setVisibility(GONE);
-//            Ln.e("显示字母出现");
-//            if(mSortParam.isFirst){
-//               textView.setText(mSortParam.firstLetter[0] +"");
-//               textView.setVisibility(VISIBLE);
-//                Ln.e(mSortParam.firstLetter[0] +"");
-//            }
-//            return true;
-//        }
-//        if(view instanceof UserAvatarView && data != null){
-//            UserProtos.PBUser pbUser =(UserProtos.PBUser) mSortParam.obj;
-//            ((UserAvatarView)view).loadUser(pbUser);
-//            Ln.e("我显示了："+pbUser.getAvatar());
-//            if(view.getParent() instanceof  ViewGroup){
-//                ViewGroup viewGroup = (ViewGroup)view.getParent();
-//                viewGroup.setTag(pbUser);
-//                viewGroup.setOnClickListener(this);
-//            }
-//            return true;
-//        }else if(view instanceof  TextView){
-//            Ln.e("我被显示");
-//            view.setVisibility(VISIBLE);
-//        }
-//        return false;
-
 
     @Override
     public void onClick(View v) {
@@ -200,7 +176,7 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
         if (textView.getTag() == null || textView.getTag().equals("N")) {
             textView.setImageResource(R.drawable.x_friendlist_select);
             mVectorUserSelect.add((UserProtos.PBUser) v.getTag());
-            textView.setTag("Y");
+
         } else if (textView.getTag() != null && textView.getTag().equals("Y")) {
             textView.setImageResource(R.drawable.x_comments_white);
             mVectorUserSelect.remove(v.getTag());
@@ -262,6 +238,35 @@ public class FriendListInfoListView extends ListView implements SimpleAdapter.Vi
         return mVectorUserSelect;
     }
 
+
+//        if(textRepresentation.equals(LETTE)) {
+//
+//            //设置英文字母
+//            TextView textView = (TextView) view;
+//            textView.setVisibility(GONE);
+//            Ln.e("显示字母出现");
+//            if(mSortParam.isFirst){
+//               textView.setText(mSortParam.firstLetter[0] +"");
+//               textView.setVisibility(VISIBLE);
+//                Ln.e(mSortParam.firstLetter[0] +"");
+//            }
+//            return true;
+//        }
+//        if(view instanceof UserAvatarView && data != null){
+//            UserProtos.PBUser pbUser =(UserProtos.PBUser) mSortParam.obj;
+//            ((UserAvatarView)view).loadUser(pbUser);
+//            Ln.e("我显示了："+pbUser.getAvatar());
+//            if(view.getParent() instanceof  ViewGroup){
+//                ViewGroup viewGroup = (ViewGroup)view.getParent();
+//                viewGroup.setTag(pbUser);
+//                viewGroup.setOnClickListener(this);
+//            }
+//            return true;
+//        }else if(view instanceof  TextView){
+//            Ln.e("我被显示");
+//            view.setVisibility(VISIBLE);
+//        }
+//        return false;
 
 
 
