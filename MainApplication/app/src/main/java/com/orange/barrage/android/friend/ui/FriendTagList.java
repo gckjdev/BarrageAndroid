@@ -1,6 +1,7 @@
 package com.orange.barrage.android.friend.ui;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.model.TagManager;
+import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.view.MyViewPagerTools;
 import com.orange.protocol.message.UserProtos;
 
@@ -23,6 +25,14 @@ import java.util.List;
  * Created by Administrator on 2015/3/24.
  */
 public class FriendTagList {
+
+
+
+
+    protected static int mParenctBgColor = Color.WHITE;
+
+    private int mIsHollow = FriendTagView.Params.PARAMS_SOLID;
+
 
     ViewPager mViewPager;
     FriendTagView mFriendTabView;
@@ -49,6 +59,7 @@ public class FriendTagList {
         mTagManager = tagManager;
         mOnClickTabIconItemListener = l;
 
+        mParenctBgColor = activity.getResources().getColor(R.color.b_color_home_page_tab_bg);
 
         initView();
         mViewPagerTools = new MyViewPagerTools(activity , mViewPager , mPonitLayout);
@@ -65,9 +76,18 @@ public class FriendTagList {
         mPonitLayout = (LinearLayout) mActivity.findViewById(R.id.tab_icon);
     }
 
+    public void loadLocalTagList(){
+        loadLocalTagList(FriendTagView.Params.PARAMS_SOLID);
+    }
 
 
-    public void loadLocalTagList() {
+    /**
+     *
+     * @param isHollow 是否为空心
+     */
+    public void loadLocalTagList(int isHollow) {
+
+        mIsHollow = isHollow;
 
         UserProtos.PBUserTagList tagList = mTagManager.allTags();
         if (tagList == null){
@@ -95,7 +115,7 @@ public class FriendTagList {
         }.sendEmptyMessage(0);
 
     }
-    private void addUserTagToTag(UserProtos.PBUserTag userTag){
+    private void addUserTagToTag(UserProtos.PBUserTag userTag ){
         if(userTag == null) return;
 
         initPager(getParams(userTag), userTag.getTid());
@@ -127,7 +147,7 @@ public class FriendTagList {
 
     public void refreshTag(){
         clear();
-        loadLocalTagList();
+        loadLocalTagList(mIsHollow);
     }
 
 
@@ -141,10 +161,15 @@ public class FriendTagList {
      */
     private FriendTagView.Params getParams(UserProtos.PBUserTag userTag){
         FriendTagView.Params params = new FriendTagView.Params();
-//            params.bgColor = userTag.getColor();
-        params.bgColor = 0XFF7bc567;
-        params.title = userTag.getName()+" ( "+userTag.getUsersList().size()+" )";
 
+
+
+        params.state = mIsHollow;
+        params.color = 0XFF7bc567;
+        params.title = userTag.getName()+" ( "+userTag.getUsersList().size()+" )";
+        if(mIsHollow == FriendTagView.Params.PARAMS_HOLLOW){
+            params.textColor = params.color;
+        }
         return params;
     }
 
@@ -155,11 +180,6 @@ public class FriendTagList {
         mViewPagerTools.clearView();
         mViewPagerTools = new MyViewPagerTools(mActivity , mViewPager , mPonitLayout);
     }
-
-
-
-
-
 
     private void setViewPagerHeight(){
 
@@ -184,6 +204,7 @@ public class FriendTagList {
         UserProtos.PBUserTagList tagList = mTagManager.allTags();
         List<UserProtos.PBUserTag> list = tagList.getTagsList();
         if (list.size() != 0) {
+
             addUserTagToTag(list.get(list.size() - 1));
         }
         if(mViewPagerTools != null)

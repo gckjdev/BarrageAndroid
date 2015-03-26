@@ -14,10 +14,15 @@ import roboguice.activity.RoboActivity;
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
 import com.orange.barrage.android.friend.mission.TagMission;
+import com.orange.barrage.android.friend.model.TagManager;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.protocol.message.UserProtos;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -178,4 +183,33 @@ public class BarrageCommonActivity extends RoboActivity  {
     public void onClickFinish(View v){
         finish();
     }
+
+
+    /**
+     * 获取好友所属的标签
+     * @param pbUser
+     * @param tagManager
+     * @return
+     */
+    protected List<UserProtos.PBUserTag> getTag( UserProtos.PBUser pbUser , TagManager tagManager){
+        List<UserProtos.PBUserTag> pbUserTags = new ArrayList<>();
+        if(pbUser == null || tagManager == null) return pbUserTags;
+
+        UserProtos.PBUserTagList pbUserTagList = tagManager.allTags();
+
+        for(UserProtos.PBUserTag pbUserTag : pbUserTagList.getTagsList()){
+
+            List<UserProtos.PBUser> pbUserList = pbUserTag.getUsersList();
+
+            for(UserProtos.PBUser pb : pbUserList){
+                if(pb.getUserId().equals(pbUser.getUserId())){
+                    pbUserTags.add(pbUserTag);
+                    break;
+                }
+            }
+
+        }
+        return pbUserTags;
+    }
+
 }

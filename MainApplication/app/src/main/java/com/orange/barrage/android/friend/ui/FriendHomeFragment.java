@@ -166,6 +166,112 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
 
 
 
+
+    private void loadFriendList() {
+        mFriendMission.syncFriend(new GetFriendListCallback() {
+            @Override
+            public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
+
+                if (errorCode == 0) {
+                    mAdapter.notifyDataSetChanged();
+                }
+
+            }
+        });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_friend_home, container, false);
+
+        return v;
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+//        try {
+//            mListener = (OnFragmentInteractionListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+    }
+
+
+
+    public void setTab(){
+
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    @Override
+    public void onClickItem(String tagId, FriendTagItemView v , FriendTagView friendTagView) {
+//        //点击标签跳转
+//        mSelectParam.friendTagView = friendTagView;
+//        mSelectParam.tagId = tagId;
+
+        Ln.e("tagId:"+tagId);
+
+        ActivityIntent.startForResult(getActivity() , FriendTabDetailInfoAndCreateAndAlterActivity.class , FriendTabDetailInfoAndCreateAndAlterActivity.TABKEY, tagId , 0x11);
+
+    }
+
+    @Override
+    public void onListener(Object obj , int type) {
+        //Activity 传到过来的值需要刷新
+        if(type == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_CREATE) {
+            mFriendTagList.addNewTag();
+        }else{
+            mFriendTagList.refreshTag();
+        }
+    }
+
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        public void onFragmentInteraction(Uri uri);
+    }
+
+    class SelectParam{
+        //当前被选中的FriendTagView
+        public FriendTagView friendTagView;
+        //被点击的标签
+        public String tagId;
+
+        public void clear(){
+            friendTagView = null;
+            tagId = "";
+        }
+
+    }
+
+
 //    private void clear(){
 //        mFriendTabView = null;
 //        mViewPagerTools.clearView();
@@ -276,109 +382,7 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
 //    }
 
 
-    private void loadFriendList() {
-        mFriendMission.syncFriend(new GetFriendListCallback() {
-            @Override
-            public void handleMessage(int errorCode, UserProtos.PBUserFriendList friendList) {
 
-                if (errorCode == 0) {
-                    mAdapter.notifyDataSetChanged();
-                }
-
-            }
-        });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_friend_home, container, false);
-
-        return v;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-//        try {
-//            mListener = (OnFragmentInteractionListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-    }
-
-
-
-    public void setTab(){
-
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    @Override
-    public void onClickItem(String tagId, View v , FriendTagView friendTagView) {
-//        //点击标签跳转
-//        mSelectParam.friendTagView = friendTagView;
-//        mSelectParam.tagId = tagId;
-
-        Ln.e("tagId:"+tagId);
-
-        ActivityIntent.startForResult(getActivity() , FriendTabDetailInfoAndCreateAndAlterActivity.class , FriendTabDetailInfoAndCreateAndAlterActivity.TABKEY, tagId , 0x11);
-
-    }
-
-    @Override
-    public void onListener(Object obj , int type) {
-        //Activity 传到过来的值需要刷新
-        if(type == FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_CREATE) {
-            mFriendTagList.addNewTag();
-        }else{
-            mFriendTagList.refreshTag();
-        }
-    }
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
-
-    class SelectParam{
-        //当前被选中的FriendTagView
-        public FriendTagView friendTagView;
-        //被点击的标签
-        public String tagId;
-
-        public void clear(){
-            friendTagView = null;
-            tagId = "";
-        }
-
-    }
 
 
 

@@ -11,7 +11,9 @@ import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 import roboguice.util.Ln;
 
@@ -25,6 +27,8 @@ public class FriendIconListAdapter extends BaseAdapter  {
     private Activity mActivity;
     private int mType = FriendIconList.ICON_ORDINARY;
     private FriendIconList.OnClickItemListener mOnClickItemListener;
+
+    Vector<Vector<String>> mtagIds = new Vector<>();
 
     public FriendIconListAdapter(Context context ,List<UserProtos.PBUser> users , Activity activity , int type){
         mContext = context;
@@ -40,9 +44,44 @@ public class FriendIconListAdapter extends BaseAdapter  {
 
     public void addUser(List<UserProtos.PBUser> pbUserList){
         if(mUsers == null) mUsers = new ArrayList<>();
-        mUsers.addAll(pbUserList);
+        if(pbUserList == null) return;
+
+        List<UserProtos.PBUser> pbUsers = new ArrayList<>();
+
+        for(UserProtos.PBUser pbUser : pbUserList){
+            //不可以有重复的数据存在
+            if(findUser(pbUser) == null){
+                pbUsers.add(pbUser);
+            }
+        }
+
+        mUsers.addAll(pbUsers);
         notifyDataSetChanged();
     }
+
+    public void removewUsers(List<UserProtos.PBUser> pbUsers){
+        for(UserProtos.PBUser pbUser : pbUsers){
+            removeUser(pbUser);
+        }
+        notifyDataSetChanged();
+    }
+
+    private void removeUser(UserProtos.PBUser pbUser){
+
+        UserProtos.PBUser pb = findUser(pbUser);
+        if(pb == null) return;
+        mUsers.remove(pb);
+    }
+
+    public UserProtos.PBUser findUser(UserProtos.PBUser pbUser){
+        for(UserProtos.PBUser pb : mUsers){
+            if(pb.getUserId().equals(pbUser.getUserId())){
+                return pb;
+            }
+        }
+        return null;
+    }
+
 
     public void setUser(List<UserProtos.PBUser> pbUserList){
         setUser(pbUserList , mType);
@@ -54,6 +93,14 @@ public class FriendIconListAdapter extends BaseAdapter  {
         mUsers.clear();
         mType = type;
         addUser(pbUserList);
+    }
+
+    public List<UserProtos.PBUser> getUsers(){
+        return mUsers;
+    }
+
+    public int getChildCount(){
+        return mUsers == null ? 0 : mUsers.size();
     }
 
     @Override
@@ -97,13 +144,13 @@ public class FriendIconListAdapter extends BaseAdapter  {
 
 
         if(position >= mUsers.size()){
-            Ln.e("niha:"+position);
+
             int resource = mUsers.size() == position ? R.drawable.x_freinds_list_add : R.drawable.x_friends_list_remove;
             frinedsIconItem.loadResourceImage(resource , mType);
             frinedsIconItem.setHiddenTopDeleteButton();
         }else {
             frinedsIconItem.loadUser( user, mType);
-            Ln.e("n:"+position);
+
         }
         frinedsIconItem.setOnClickListener(new View.OnClickListener() {
 

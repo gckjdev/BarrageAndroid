@@ -147,12 +147,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         }
 
 
-//        if (mPBUserTag != null)
-//            mBuilder = UserProtos.PBUserTag.newBuilder(mPBUserTag);
-//        else {
-//            mBuilder = UserProtos.PBUserTag.newBuilder();
-//            mBuilder.setTid("sasd");
-//        }
 
     }
 
@@ -196,8 +190,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mTagEditText.setVisibility(View.VISIBLE);
         mTagTextView.setVisibility(View.GONE);
 
-//        SystemUtil.showInputMethodManager(mTagEditText);
-//        mTagEditText.setSelection(mTagEditText.getText().length());
 
     }
 
@@ -229,6 +221,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
 
+
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
 
@@ -251,10 +244,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         //刷新好友列表
         mFriendIconList.refresh();
 
-//        mFriendIconList.setReFresh(mOldBuilder.getUsersList() , this , FriendIconList.ICON_ORDINARY);
-//        mBuilder.clear();
-//        mBuilder = UserProtos.PBUserTag.newBuilder(mOldBuilder.build());
-//        mOldBuilder.clear();
+
     }
 
     //跳转到编辑框界面
@@ -269,8 +259,8 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         mParams.startText = mTagEditText.getText().toString();
         mFriendIconList.setIconType(ICON_ADD_AND_DELETE_BUTTON);
         showEdiText();
-        if (mFriendIconList.getBuilder() != null) {
-            showTagNametext(R.string.b_tag_is_not_null, mFriendIconList.getBuilder().getName());
+        if (mFriendIconList.getOldPBUserTag() != null) {
+            showTagNametext(R.string.b_tag_is_not_null, mFriendIconList.getOldPBUserTag().getName());
         }
         setTitleRight(R.string.b_editexttab, R.string.b_OK);
         mState = EDIT_STATE;
@@ -288,7 +278,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             return null;
         }
 
-        if(mFriendIconList.getBuilder().getUsersList().size() == 0){
+        if(mFriendIconList.getIconCount() == 0){
             MessageCenter.postErrorMessage("请选择你的好友");
             return null;
         }
@@ -308,17 +298,17 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             return;
         }
 
-        List<UserProtos.PBUser> list = mFriendIconList.getBuilder().build().getUsersList();
+        List<UserProtos.PBUser> list = mFriendIconList.getPBUser();
         List<String> idList = new ArrayList<>();
 
         for (UserProtos.PBUser pbUser : list) {
             idList.add(pbUser.getUserId());
         }
 
-        mFriendIconList.getBuilder().setName(name);
+
 
         showProgress("正在修改");
-        mTagMission.updateUserTag(mFriendIconList.getBuildPBUser(), idList, new AddTagCallback() {
+        mTagMission.updateUserTag(mFriendIconList.getBuilder(name), idList, new AddTagCallback() {
 
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
@@ -342,11 +332,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         final String tagId = StringUtil.createUUID();
         if (isTagNameIsEmtry() == null) return;
 
-        mFriendIconList.getBuilder().setTid(tagId);
-        mFriendIconList.getBuilder().setName(name);
         showProgress("正在创建标签");
 
-        mTagMission.addTag(mFriendIconList.getBuildPBUser(), new AddTagCallback() {
+        mTagMission.addTag(mFriendIconList.getBuilder(name , tagId), new AddTagCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
                 if (errorCode == 0) {

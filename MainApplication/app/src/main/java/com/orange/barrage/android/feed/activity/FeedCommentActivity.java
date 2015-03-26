@@ -51,8 +51,11 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @Inject
     UserManager mUserManager;
 
+
     private int mSelectColor = Color.WHITE;
-    private int mColors[] = {Color.WHITE, 0XFF383838, 0XFF9E6BEA, 0XFF9EC138, 0XFF6DA0F0, 0XFFD28038, 0xFFD2644D};
+    private int mColors[] = {Color.WHITE , 0xFFFF0000,0xFF339900,0xFFFFFF00,
+            0xFF0099FF,0xFF66CC33,0xFFFF3366,0xFF000066,0xFFFF9900,0xFF663399,
+            0xFF33CCCC,0xFF666600, 0XFF383838};
 
     private FeedActionWidget mCommentsEdit;
     private CircleColorView mCircleColorView;
@@ -61,7 +64,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_feed_comment, R.string.b_comment, R.string.b_send);
-
+       
         // init top bar
         mTopBarView.setNavigationBackgroundChangeOtherType();
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
@@ -71,6 +74,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
             }
         });
         initView();
+
+
     }
 
 

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.home.HomeActivity;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.misc.FileUtil;
 
@@ -31,6 +32,9 @@ public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
 
     @Override
     public void onClickRight(View v) {
-        super.onClickRight(v);
+        mBarrageAndroid.clearActivity();
+        mBarrageAndroid.addActivity(this);
+        ActivityIntent.startIntent(this , FeedPublishedImageActivity.class);
+
     }
 }

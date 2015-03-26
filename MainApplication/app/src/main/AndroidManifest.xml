@@ -85,7 +85,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".friend.activity.FriendListSelectActivity" />
-
+        
+        <activity android:name=".feed.activity.FeedPublishedImageActivity" />
         <!-- Share SDK Activities -->
 
 
