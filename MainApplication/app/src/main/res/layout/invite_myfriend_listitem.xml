@@ -34,7 +34,6 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="12dp"
             android:layout_centerVertical="true"
-            android:visibility="gone"
             android:id="@+id/imageview_check"
             android:src="@drawable/checkbox_checked"
             android:layout_width="wrap_content"
