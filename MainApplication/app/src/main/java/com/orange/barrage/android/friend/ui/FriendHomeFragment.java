@@ -134,9 +134,6 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
 
 
         mListView.setAdapter(mAdapter);
-        loadFriendList();
-
-
 
         syncMyTag();
 
@@ -158,6 +155,10 @@ public class FriendHomeFragment extends RoboFragment implements FriendTagView.On
                 if (errorCode == 0) {
                     // reload tag view
                     mFriendTagList.loadLocalTagList();
+
+
+                    //更新好有列表
+                    loadFriendList();
                 }
             }
         });
