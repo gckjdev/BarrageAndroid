@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 
+import com.orange.barrage.android.friend.ui.FriendTagView;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.FileUtil;
@@ -171,55 +172,7 @@ public  class LayoutDrawIconBackground {
 
 
 
-    public static class Params{
 
-        public int marginTop = 0;
-
-        public int marginBottopm = 0;
-
-        public int marginLeft = 0;
-
-        public int marginRight = 0;
-
-        public int bgColor = Color.WHITE;
-
-        public int borderColor = Integer.MAX_VALUE;
-
-        public float alpha = 1.0f;
-
-        public int mTriangleHeight = 30;
-
-        public int mTopHeight = 20;
-
-        public int padding = 10;
-
-
-        public int getColor(){
-            int alphas = (int)(255 * alpha);
-            return Color.argb(alphas , Color.red(bgColor) , Color.green(bgColor) , Color.blue(bgColor));
-
-        }
-
-        public int getBorderColor(){
-            return borderColor == Integer.MAX_VALUE ? bgColor : borderColor;
-        }
-
-
-    }
-
-    public interface LayoutWhileTriangleIconInterface {
-
-        public Params mParams = new Params();
-
-        public LayoutDrawIconBackground mLayoutWhileTiangIcon = new LayoutDrawIconBackground();
-
-        public void setParams(Params params);
-
-        public void setView(View parcent , Params params);
-
-        public void setView(View parcent);
-
-    }
 
 
 
@@ -279,15 +232,13 @@ public  class LayoutDrawIconBackground {
     };
 
 
-    public void setTwoSemicircleRectang(final View v , final Params params){
+    public void setTwoSemicircleRectangListener(final View v, final FriendTagView.Params params){
 
         v.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
 
-                Drawable drawable = ImageUtil.getBitmapChangeDrawable(drawTwoSemicircleRectang(v, params));
-                if(drawable != null)
-                    v.setBackground(drawable);
+                setTwoSemicircleRectang(v , params);
                 v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
             }
@@ -295,6 +246,11 @@ public  class LayoutDrawIconBackground {
 
     }
 
+    public void setTwoSemicircleRectang(View v , FriendTagView.Params params){
+        Drawable drawable = ImageUtil.getBitmapChangeDrawable(drawTwoSemicircleRectang(v, params));
+        if(drawable != null)
+            v.setBackground(drawable);
+    }
 
     /**
      * 绘制两边都是半圆的矩形
@@ -302,7 +258,7 @@ public  class LayoutDrawIconBackground {
      * @param params
      * @return
      */
-    public Bitmap drawTwoSemicircleRectang(View v, Params params){
+    public Bitmap drawTwoSemicircleRectang(View v, FriendTagView.Params params){
 
         if(v.getHeight() <= 0 || v.getWidth() <= 0) return null;
         Rect mainRect = new Rect(0 , 0 , v.getWidth() , v.getHeight());
@@ -348,19 +304,23 @@ public  class LayoutDrawIconBackground {
 
 
 
-    public  void DrawTwosemicirclerectangle(Canvas canvas , Params params , View v , Paint p) {
+    public  void DrawTwosemicirclerectangle(Canvas canvas , FriendTagView.Params params, View v , Paint p) {
         if (v == null || v.getWidth() == 0 || v.getHeight() == 0) return;
-        if (params == null) params = new Params();
+        if (params == null) params = new FriendTagView.Params();
 
 
         p.setStyle(Paint.Style.FILL);
-        if (params.borderColor != Integer.MAX_VALUE) {
-            p.setColor(params.borderColor);
+
+        //绘制边框
+        if (params.getBorderColor() != Integer.MAX_VALUE) {
+            p.setColor(params.getBorderColor());
             drawTwosemicirclerectangleRun(canvas, p, 0, 0, v.getWidth(), v.getHeight(), v.getHeight() / 2);
         }
 
-        if(params.bgColor != Integer.MAX_VALUE) {
-            p.setColor(params.bgColor);
+
+        //绘制背景
+        if(params.getBgColor() != Integer.MAX_VALUE) {
+            p.setColor(params.getBgColor() );
             drawTwosemicirclerectangleRun(canvas, p, 2, 2, v.getWidth() - 2, v.getHeight() - 2, v.getHeight() / 2 - 1);
         }
 
@@ -398,6 +358,77 @@ public  class LayoutDrawIconBackground {
     }
 
 
+
+    public static class Params{
+
+        private boolean is = false;
+
+        //是否有使用了
+        public boolean isHaveUse = false;
+
+        public int marginTop = 0;
+
+        public int marginBottopm = 0;
+
+        public int marginLeft = 0;
+
+        public int marginRight = 0;
+
+        public int bgColor = Integer.MAX_VALUE;
+
+        public int borderColor = Integer.MAX_VALUE;
+
+        public int color = Color.WHITE;
+
+        public float alpha = 1.0f;
+
+        public int mTriangleHeight = 30;
+
+        public int mTopHeight = 20;
+
+        public int padding = 10;
+
+
+        public int getColor(){
+            int alphas = (int)(255 * alpha);
+            return Color.argb(alphas , Color.red(bgColor) , Color.green(bgColor) , Color.blue(bgColor));
+
+        }
+
+//        public int getBgColor(){
+//            return bgColor;
+//        }
+//
+//        public int getBorderColor(){
+//            return borderColor == Integer.MAX_VALUE ? bgColor : borderColor;
+//        }
+
+        public void setHaveUse(){
+            if(!is){
+                isHaveUse = true;
+                is = true;
+            }
+        }
+
+        public boolean getHaveUse(){
+            return isHaveUse;
+        }
+
+    }
+
+    public interface LayoutWhileTriangleIconInterface {
+
+        public Params mParams = new Params();
+
+        public LayoutDrawIconBackground mLayoutWhileTiangIcon = new LayoutDrawIconBackground();
+
+        public void setParams(Params params);
+
+        public void setView(View parcent , Params params);
+
+        public void setView(View parcent);
+
+    }
 
 
 }

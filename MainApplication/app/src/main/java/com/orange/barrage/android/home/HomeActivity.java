@@ -9,7 +9,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
+import com.orange.barrage.android.feed.activity.FeedPublishedImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
@@ -91,6 +94,8 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
       //  MobclickAgent.updateOnlineConfig(this);
 
+
+
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
         mTabHost.getTabWidget().setDividerDrawable(R.color.white);
@@ -127,8 +132,11 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     }
 
     public void onCLickCamer(View v){
-        initPublisFeedView();
-        mShowPublisFeedView.showPublishFeedView();
+//        initPublisFeedView();
+//        mShowPublisFeedView.showPublishFeedView();
+
+        ActivityIntent.startIntent(this , FeedPublishedImageActivity.class);
+
     }
 
 
@@ -291,7 +299,6 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-//        if(mHomePopupWindow != null) mHomePopupWindow.setBackground();
 
     }
 

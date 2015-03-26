@@ -52,7 +52,7 @@
     <!--字体大小-->
     <dimen name="b_font_navigation_title">17dp</dimen>
 
-
+    <dimen name="b_friend_tag_item_hieght">30dip</dimen>
 
     <dimen name="y_head_portrait_raduio">41dip</dimen>
 

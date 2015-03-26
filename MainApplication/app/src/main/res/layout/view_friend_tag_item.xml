@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/wrap_content">
+    <TextView
+        android:id="@+id/nameTextView"
+        android:gravity="center"
+        android:lines="1"
+
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/b_friend_tag_item_hieght" />
+</LinearLayout>

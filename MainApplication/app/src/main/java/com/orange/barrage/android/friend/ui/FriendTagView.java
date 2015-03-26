@@ -32,7 +32,7 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 
     public float mTextViewHeight =  TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP , 30 , getResources().getDisplayMetrics());
 
-    private TextView mModleTextView;
+    private FriendTagItemView mModleTextView;
 
     private OnClickTabIconItemListener mOnClickTabIconItemListener;
 
@@ -71,12 +71,19 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
             mModleTextView.setText(params.title);
         }
 
-        mModleTextView = initTextView(params , this);
-
+        mModleTextView = FriendTagItemView.CreateFriendItemView(getContext() , params);
+        addView(mModleTextView);
     }
 
 
-    public boolean addView(final Params params , String tagId ){
+    public boolean addView(final Params params , String tagId ) {
+
+        if(params == null){
+            throw new NullPointerException("Params is not null");
+        }
+        if(params.getHaveUse()){
+            throw  new NullPointerException("params only use once");
+        }
 
         initLayoutInfo();
         initModleTextView(params);
@@ -92,46 +99,25 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 
     }
 
-//    private int i = 0;
-
-    private TextView initTextView(Params param , LinearLayout viewGroup){
 
 
-        TextView textView =new TextView(getContext());
-        textView.setText(param.title);
-        textView.setTextColor(param.textColor);
-        textView.setTextSize(param.textSize);
-        textView.setGravity(Gravity.CENTER);
-        textView.setLines(1);
-//        textView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-        textView.setVisibility(View.INVISIBLE);
-        Paint paint = textView.getPaint();
-//        textView.setPadding((int)(mTextViewHeight / 2) , 0 , (int)(mTextViewHeight / 2) , 0);
-        LayoutParams params = new LayoutParams((int) (mTextViewHeight+ paint.measureText(textView.getText().toString())), (int) mTextViewHeight);
+    private boolean AddTextViewToLinear(FriendTagItemView friendTagItemView , Params params , String tabId ){
 
-        params.rightMargin = (int) getDp(b_friend_marginLeft);
-        viewGroup.addView(textView, params);
-        return textView;
-    }
+        int width = (int) (mTextViewHeight +friendTagItemView.getTextViewTextwidth() );
+        removeView(friendTagItemView);
 
-    private boolean AddTextViewToLinear(TextView textView , Params params , String tabId ){
-        Paint paint = textView.getPaint();
-        int width = (int) (mTextViewHeight +paint.measureText(textView.getText().toString()) );
-        removeView(textView);
         LinearLayout linearLayout = mLayoutInfo.getLinearLayout(width);
         if(linearLayout == null) return false;
         if(linearLayout.getParent() == null)
             addView(linearLayout , mLayoutInfo.getLayoutParams());
 
+        FriendTagItemView ft = FriendTagItemView.CreateFriendItemView(getContext() , params);
 
-        TextView tv = initTextView(params , linearLayout);
-        //绘制背影图片
-        new LayoutDrawIconBackground().setTwoSemicircleRectang(tv , params);
-        tv.setVisibility(View.VISIBLE);
-
+        TextView tv = ft.getTextView();
         tv.setTag(tabId);
         tv.setOnClickListener(this);
-
+        linearLayout.addView(ft);
+        params.setHaveUse();
         return true;
     }
 
@@ -143,8 +129,13 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        if(mOnClickTabIconItemListener != null)
-            mOnClickTabIconItemListener.onClickItem(v.getTag() != null ? v.getTag().toString() : "" ,v , this);
+        if (mOnClickTabIconItemListener != null) {
+            FriendTagItemView friendTagItemView =
+                    v.getParent() == null ? null :
+                            v.getParent().getParent() == null ? null :
+                                    v.getParent().getParent() instanceof FriendTagItemView ? (FriendTagItemView) (v.getParent().getParent()) : null;
+            mOnClickTabIconItemListener.onClickItem(v.getTag() != null ? v.getTag().toString() : "", friendTagItemView, this);
+        }
     }
 
     class ChildLayoutInfo{
@@ -174,9 +165,10 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
             width = width * (n);
 
             for (int i = 0 ; i < n ; i ++){
-                TextView textView = (TextView)linearLayout.getChildAt(i);
-                Paint paint = textView.getPaint();
-                width += (paint.measureText(textView.getText().toString())+ mTextViewHeight);
+//                TextView textView = (TextView)linearLayout.getChildAt(i);
+//                Paint paint = textView.getPaint();
+//                width += (paint.measureText(textView.getText().toString())+ mTextViewHeight);
+                width += ((FriendTagItemView)linearLayout.getChildAt(i)).getTextViewTextwidth() +mTextViewHeight;
             }
             Ln.e("count:"+linearLayout.getChildCount());
             Ln.e("postion:"+postion);
@@ -234,16 +226,50 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 
 //        private int color[] = {0X7bc567,0Xecbc25,0Xc792e0,0X6bb5e5,0Xed6e74,0X7997f2,0Xf68a54};
 
+        public static final int PARAMS_HOLLOW = 1;
+
+        public static final  int PARAMS_SOLID = 2;
+
         public String title;
 
         public int textColor = Color.WHITE;
         public int textSize = 13;
 
+
+        public int state = -1;//目前是什么样的状态 空心或者实现
+
+
+        public int getBorderColor(){
+           return borderColor == Integer.MAX_VALUE ? color : borderColor;
+        }
+
+        public int getTextColor(){
+            if(state == PARAMS_HOLLOW){
+                //设置为空心
+                textColor = color;
+            }else{
+                textColor = Color.WHITE;
+            }
+            return textColor;
+        }
+
+        public int getBgColor() {
+
+            if(state == PARAMS_HOLLOW){
+                //设置为空心
+                bgColor = FriendTagList.mParenctBgColor;
+            }else{
+                //实心
+                bgColor = color;
+            }
+
+            return bgColor;
+        }
     }
 
     public interface OnClickTabIconItemListener {
 
-        public void onClickItem(String tagId , View v , FriendTagView friendTagView);
+        public void onClickItem(String tagId , FriendTagItemView friendTagItemView , FriendTagView friendTagView);
 
     }
 
