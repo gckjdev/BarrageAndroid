@@ -1,5 +1,7 @@
 package com.orange.barrage.android.friend.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +28,8 @@ public class FriendDetailBigImageViewActivity extends BarrageCommonActivity {
         {
             Picasso.with(FriendDetailBigImageViewActivity.this)
                     .load(url)
+                    .error(R.drawable.image_default)
+                    .placeholder(R.drawable.image_default)
                     .into(mUserAvatarBigView);
         }
         mUserAvatarBigView.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +41,21 @@ public class FriendDetailBigImageViewActivity extends BarrageCommonActivity {
         mUserAvatarBigView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                new AlertDialog.Builder(FriendDetailBigImageViewActivity.this)
+                        .setTitle("提示").setMessage("需要保存图片到相册吗")
+                        .setPositiveButton("确定",new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
 
-                return false;
+                            }
+                        }).setNegativeButton("取消",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+                return true;
             }
         });
         /*mUserAvatarBigView.setAvatUrl(url);*/

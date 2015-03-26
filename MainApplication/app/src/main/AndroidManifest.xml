@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.orange.barrage.android" >
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -71,7 +73,6 @@
         <activity
             android:name=".friend.activity.SearchUserActivity"
             android:label="@string/title_activity_search_user"
-
             android:windowSoftInputMode="stateVisible|adjustPan" >
         </activity>
         <activity android:name=".feed.activity.FeedCommentActivity" >
@@ -108,7 +109,6 @@
         <activity
             android:name=".friend.activity.FriendDetailActivity"
             android:label="@string/title_activity_friend_detail"
-
             android:launchMode="singleTask" />
 
         <!-- Share SDK 微信分享回调 -->
@@ -181,6 +181,10 @@
         <activity
             android:name=".friend.activity.FriendDetailBigImageViewActivity"
             android:label="@string/title_activity_friend_detail_big_image_view" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.SmsMessageInviteMyFriendActivity"
+            android:label="@string/title_activity_sms_message_invite_my_friend" >
         </activity>
     </application>
 
