@@ -29,16 +29,17 @@ public class FriendListInfoNewListView extends ListView {
 
     MyAdapter mMyAdapter;
 
-    List<Map<String , Object>> mData;
+    List<Map<String, Object>> mData;
 
     int mSelectPostion;
 
     String mFrom[] = null;
     int mTo[] = null;
 
-    public static final int SELECT_IS = R.drawable.x_friendlist_select;
+    public static int SELECT_IS = R.drawable.x_friendlist_select;
 
-    public static final int SELECT_NOT = R.drawable.x_comments_white;
+    public static int SELECT_NOT = R.drawable.x_comments_white;
+
 
     public FriendListInfoNewListView(Context context) {
         super(context);
@@ -57,35 +58,41 @@ public class FriendListInfoNewListView extends ListView {
     }
 
 
+    public void setSelectOrNotSelectImageResource(int select_is, int select_not) {
+        SELECT_IS = select_is;
+        SELECT_NOT = select_not;
+    }
+
+
     /**
-     *  @param data
+     * @param data
      * @param layoutId
      * @param from
      * @param to
      * @param objs
-     * @param selectpotion  显示选择的ImageView，实在一行布局的位置
+     * @param selectpotion 显示选择的ImageView，实在一行布局的位置
      */
-    public void setData(List<Map<String , Object>> data , int layoutId , String []from , int[] to , List objs , int selectpotion){
+    public void setData(List<Map<String, Object>> data, int layoutId, String[] from, int[] to, List objs, int selectpotion) {
         mData = data;
         mSelectPostion = selectpotion;
         mFrom = from;
         mTo = to;
         mObjs = objs;
 
-        mMyAdapter = new MyAdapter(getContext(),data,layoutId , from , to);
+        mMyAdapter = new MyAdapter(getContext(), data, layoutId, from, to);
         setAdapter(mMyAdapter);
     }
 
 
-    public Vector<Object> getSelectObject(){
+    public Vector<Object> getSelectObject() {
         return mSelectVector;
     }
 
-    public void setBindView(SimpleAdapter.ViewBinder viewBinder){
+    public void setBindView(SimpleAdapter.ViewBinder viewBinder) {
         mMyAdapter.setViewBinder(viewBinder);
     }
 
-    class MyAdapter extends SimpleAdapter{
+    class MyAdapter extends SimpleAdapter {
 
         /**
          * Constructor
@@ -108,8 +115,8 @@ public class FriendListInfoNewListView extends ListView {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            View v ;
-            if(convertView == null)
+            View v;
+            if (convertView == null)
                 v = super.getView(position, convertView, parent);
             else v = convertView;
 
@@ -119,25 +126,23 @@ public class FriendListInfoNewListView extends ListView {
 
                 @Override
                 public void onClick(View v) {
-                    Map<String , Object> maps = mData.get(location);
+                    Map<String, Object> maps = mData.get(location);
                     Object obj = maps.get(mFrom[mSelectPostion]);
-                    if(!(obj instanceof  Integer))
-                          throw new NumberFormatException("Invalid int: \"" + obj.toString() + "\"");
+                    if (!(obj instanceof Integer))
+                        throw new NumberFormatException("Invalid int: \"" + obj.toString() + "\"");
 
                     int resource = (int) obj;
-                    Ln.e("you:"+resource);
-                    Ln.e(""+(resource == SELECT_IS));
-                    if(resource == SELECT_IS){
+                    if (resource == SELECT_IS) {
                         //设置成为不选择
                         resource = SELECT_NOT;
                         mSelectVector.remove(mObjs.get(location));
-                    }else{
+                    } else {
                         //设置成为选择
                         resource = SELECT_IS;
                         mSelectVector.add(mObjs.get(location));
                     }
 
-                    maps.put(mFrom[mSelectPostion] , resource);
+                    maps.put(mFrom[mSelectPostion], resource);
                     ImageView imageView = (ImageView) v.findViewById(mTo[mSelectPostion]);
                     imageView.setImageResource(resource);
                 }
