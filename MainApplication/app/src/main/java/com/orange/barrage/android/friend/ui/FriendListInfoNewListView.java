@@ -36,7 +36,10 @@ public class FriendListInfoNewListView extends ListView {
     String mFrom[] = null;
     int mTo[] = null;
 
-    public static int SELECT_IS = R.drawable.x_friendlist_select;
+    //选择自后从来不可以被修改
+    public static int SELECT_NEVER = R.drawable.y_friendlist_select_never;
+
+    public static int SELECT_IS = R.drawable.y_friendlist_select;
 
     public static int SELECT_NOT = R.drawable.x_comments_white;
 
@@ -132,19 +135,24 @@ public class FriendListInfoNewListView extends ListView {
                         throw new NumberFormatException("Invalid int: \"" + obj.toString() + "\"");
 
                     int resource = (int) obj;
-                    if (resource == SELECT_IS) {
-                        //设置成为不选择
-                        resource = SELECT_NOT;
-                        mSelectVector.remove(mObjs.get(location));
-                    } else {
-                        //设置成为选择
-                        resource = SELECT_IS;
-                        mSelectVector.add(mObjs.get(location));
-                    }
 
-                    maps.put(mFrom[mSelectPostion], resource);
-                    ImageView imageView = (ImageView) v.findViewById(mTo[mSelectPostion]);
-                    imageView.setImageResource(resource);
+                    if(resource != SELECT_NEVER) {
+
+                        if (resource == SELECT_IS) {
+                            //设置成为不选择
+                            resource = SELECT_NOT;
+                            mSelectVector.remove(mObjs.get(location));
+
+                        } else {
+                            //设置成为选择
+                            resource = SELECT_IS;
+                            mSelectVector.add(mObjs.get(location));
+                        }
+
+                        maps.put(mFrom[mSelectPostion], resource);
+                        ImageView imageView = (ImageView) v.findViewById(mTo[mSelectPostion]);
+                        imageView.setImageResource(resource);
+                    }
                 }
             });
 

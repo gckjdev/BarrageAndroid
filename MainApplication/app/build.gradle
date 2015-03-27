@@ -34,6 +34,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+
+
     compile 'com.android.support:appcompat-v7:21.0.2'
     compile 'org.roboguice:roboguice:3.0.1'
     provided 'org.roboguice:roboblender:3.0.1'
@@ -59,5 +62,5 @@ dependencies {
     compile 'com.nhaarman.supertooltips:library:3.0.+'
 
     compile files('libs/pinyin4j-2.5.0.jar')
-
 }
+

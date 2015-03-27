@@ -70,10 +70,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     private String mState = SEE_STATE;
 
     private List<UserProtos.PBUserTag> mHaveDeletePBUser = new ArrayList<>();
-//    private UserProtos.PBUserTag mPBUserTag;
-//    private UserProtos.PBUserTag mNewPBUserTag;
-//    private UserProtos.PBUserTag.Builder mBuilder;
-//    private UserProtos.PBUserTag.Builder mOldBuilder;
 
 
     private ShowPublishFeedView mShowPublisFeedView;
@@ -215,21 +211,12 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-            onClickLeft(null);
-
-            return true;
-        }
-
-        return super.onKeyUp(keyCode, event);
-    }
 
     //返回到查看标签详细信息
     private void backSeeTabInfo() {
+
+        MessageCenter.postInfoMessage("退出编辑模式");
+
         setTitleRight(R.string.b_tab_detail_info, R.string.b_editext);
         mState = SEE_STATE;
         closeEidText();
@@ -237,11 +224,15 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         //刷新好友列表
         mFriendIconList.refresh();
 
-
     }
+
+
 
     //跳转到编辑框界面
     private void toEditText() {
+
+        MessageCenter.postInfoMessage("进入编辑模式");
+
         //保持过去的数据
         mFriendIconList.saveOldBuilder();
 
@@ -263,8 +254,8 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     private String isTagNameIsEmtry() {
         String name = mTagEditText.getText().toString().trim();
-        if (name.length() < 2) {
-            MessageCenter.postErrorMessage("标签最少2个字");
+        if (name.length() < 1) {
+            MessageCenter.postErrorMessage("标签最少1个字");
             return null;
         } else if (name.length() > 20) {
             MessageCenter.postErrorMessage("标签最多20个字");
@@ -398,9 +389,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             setResult(mAlterState);
             super.onClickLeft(v);
         } else if (mState == CREATE_STATE) {
-            showRemind("标签已经被创建了，是否退出？");
+            showRemind("标签已经被创建了，确定退出？");
         } else if (mState == EDIT_STATE) {
-            showRemind("标签已经被修改了，是否退出？");
+            showRemind("标签已经被修改了，确定退出？");
         }
 
     }
@@ -410,7 +401,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         if (mState == EDIT_STATE) {
             //编辑界面
             //打开照片
-            showRemindboxAlertDialog(new String[]{"是", "否"}, "提醒", "是否删除改标签", -1);
+            showRemindboxAlertDialog(new String[]{"是", "否"}, "提醒", "确定删除标签", -1);
         } else if (mState == SEE_STATE) {
             //查看
             initPhoto();
@@ -422,7 +413,9 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
     @Override
     public void onRemindItemClick(int position) {
-        deleteTag();
+        if (position == RemindboxAlertDialog.LEFTBUTTON) {
+            deleteTag();
+        }
     }
 
     private void deleteTag() {
@@ -436,6 +429,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
                     MessageCenter.postErrorMessage("删除失败，请重试");
                 } else {
                     setResult(FriendTabDetailInfoAndCreateAndAlterActivity.TAG_IS_DELETE);
+                    MessageCenter.postErrorMessage("删除成功");
                     finish();
                 }
 

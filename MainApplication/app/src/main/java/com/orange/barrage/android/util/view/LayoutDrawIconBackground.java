@@ -104,7 +104,7 @@ public  class LayoutDrawIconBackground {
 
         canvas.drawBitmap(bitmap , rectMain,rectMain,paint);
 
-        FileUtil.saveBitmapInFile(SystemUtil.getSDCardPath() , "i.png" , bitmap);
+//        FileUtil.saveBitmapInFile(SystemUtil.getSDCardPath() , "i.png" , bitmap);
 
         return bitmap;
 

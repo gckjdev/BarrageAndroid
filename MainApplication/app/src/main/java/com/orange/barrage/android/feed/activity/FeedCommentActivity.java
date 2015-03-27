@@ -259,7 +259,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     public void onClickLeft(View v) {
         if (mCommentsEdit.getText().toString().trim().length() == 0)
             super.onClickLeft(v);
-        else showRemindboxAlertDialog(new String[]{"是","否"},"提示","你意见编辑了，是否退出", -1);
+        else showRemindboxAlertDialog(new String[]{"是","否"},"提示","你已经编辑了，是否退出", -1);
     }
 
     @Override

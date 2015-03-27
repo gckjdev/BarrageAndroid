@@ -7,6 +7,7 @@ import com.orange.barrage.android.BarrageAndroid;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.KeyEvent;
 import android.view.View;
 
 import roboguice.activity.RoboActivity;
@@ -175,6 +176,16 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
     }
 
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            onClickLeft(null);
+            return true;
+        }
+
+        return super.onKeyUp(keyCode, event);
+    }
 
     /**
      * 开启提醒框

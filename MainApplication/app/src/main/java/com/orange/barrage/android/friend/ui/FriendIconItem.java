@@ -79,7 +79,10 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
         setType(type);
         mPbUser = user;
         if (mIconImageView != null) mIconImageView.loadUser(user);
-        if (mNameTextView != null) mNameTextView.setText(user.getNick());
+        if (mNameTextView != null){
+            mNameTextView.setVisibility(View.VISIBLE);
+            mNameTextView.setText(user.getNick());
+        }
     }
 
     public void loadResourceImage(int resourceId, int type) {
@@ -113,7 +116,7 @@ public class FriendIconItem extends LinearLayout implements View.OnClickListener
             mdeleteIconImageView = (ImageButton) findViewById(R.id.icon_delete_button);
         mdeleteIconImageView.setVisibility(View.GONE);
         //设置TextView为空
-        mNameTextView.setText("");
+        mNameTextView.setVisibility(View.GONE);
     }
 
 

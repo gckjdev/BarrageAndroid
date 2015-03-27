@@ -28,6 +28,7 @@ public class FriendIconListAdapter extends BaseAdapter  {
     private int mType = FriendIconList.ICON_ORDINARY;
     private FriendIconList.OnClickItemListener mOnClickItemListener;
 
+
     Vector<Vector<String>> mtagIds = new Vector<>();
 
     public FriendIconListAdapter(Context context ,List<UserProtos.PBUser> users , Activity activity , int type){
@@ -95,6 +96,8 @@ public class FriendIconListAdapter extends BaseAdapter  {
         addUser(pbUserList);
     }
 
+
+
     public List<UserProtos.PBUser> getUsers(){
         return mUsers;
     }
@@ -102,6 +105,9 @@ public class FriendIconListAdapter extends BaseAdapter  {
     public int getChildCount(){
         return mUsers == null ? 0 : mUsers.size();
     }
+
+
+
 
     @Override
     public int getCount() {
@@ -144,7 +150,6 @@ public class FriendIconListAdapter extends BaseAdapter  {
 
 
         if(position >= mUsers.size()){
-
             int resource = mUsers.size() == position ? R.drawable.x_freinds_list_add : R.drawable.x_friends_list_remove;
             frinedsIconItem.loadResourceImage(resource , mType);
             frinedsIconItem.setHiddenTopDeleteButton();
