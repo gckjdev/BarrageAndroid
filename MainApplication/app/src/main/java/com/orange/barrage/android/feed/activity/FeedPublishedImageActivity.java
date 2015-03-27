@@ -62,6 +62,8 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
     private RemindboxAlertDialog mRemindboxAlterDailog ;
 
+    private int statue = 0;
+
     @Override
     protected void onCreate(Bundle saveBundle) {
         super.onCreate(saveBundle, R.layout.activity_publishimage, R.string.b_share_to_who, R.string.b_OK);
@@ -119,6 +121,7 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Override
     public void onClickLeft(View v) {
 
+        statue = 0;
 
         //返回
         if(mFriendIconList.getIconCount() == 0)super.onClickLeft(v);
@@ -143,6 +146,13 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
         super.onClickRight(v);
 
         //发表
+        statue = 1;
+        if(mFriendIconList.getIconCount() == 0){
+            MessageCenter.postTestMessage("你还没有选择好友");
+            return;
+        }
+
+        mRemindboxAlterDailog.show(new String[]{"是","否"},"提示","是否发表",-1,mOnclick);
 
     }
 
@@ -150,7 +160,17 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
         @Override
         public void onClick(int position) {
-//            if(position == RemindboxAlertDialog.)
+            if(position == RemindboxAlertDialog.LEFTBUTTON){
+
+                if(statue == 0){
+                    //退出
+                    finish();
+                }else if(statue == 1) {
+                    //发表
+                    MessageCenter.postTestMessage("我发表");
+                }
+
+            }
         }
     };
 
