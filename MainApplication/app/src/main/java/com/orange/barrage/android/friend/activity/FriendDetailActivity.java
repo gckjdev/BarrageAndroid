@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -64,6 +63,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     @Inject
     UserManager mUserManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_friend_detail, "详细资料", -1);
@@ -89,12 +89,9 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
 
         mNickTextView.setText(mUser.getNick());
-        if (mUser.hasLocation())
-        {
+        if (mUser.hasLocation()) {
             locationTextView.setText(mUser.getLocation());
-        }
-        else
-        {
+        } else {
             locationTextView.setText("什么也没有");
         }
 
@@ -103,8 +100,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         }
 
         mUserAvatarImageView.loadUser(mUser);
-        if (mUser.hasAvatarBg())
-        {
+        if (mUser.hasAvatarBg()) {
             Picasso.with(FriendDetailActivity.this)
                     .load(mUser.getAvatarBg().toString())
                     .placeholder(R.drawable.tab_home)
@@ -116,12 +112,8 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         mUserAvatarImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(mUser.getAvatar()))
-                {
-                    MessageCenter.postInfoMessage("没有设置头像，不能查看大图片");
-                }
-                ActivityIntent.startIntent(FriendDetailActivity.this ,
-                        FriendDetailBigImageViewActivity.class , mUrlKey , mUser.getAvatar());
+                ActivityIntent.startIntent(FriendDetailActivity.this,
+                        FriendDetailBigImageViewActivity.class, mUrlKey, mUser.getAvatar());
             }
         });
     }
