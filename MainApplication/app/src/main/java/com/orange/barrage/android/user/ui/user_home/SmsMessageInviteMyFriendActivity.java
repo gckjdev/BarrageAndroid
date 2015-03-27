@@ -108,10 +108,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
         super.onCreate(savedInstanceState, R.layout.activity_sms_message_invite_my_friend, "短信邀请", R.string.b_send);
         initView();
         mValues = getIntentString(AVAILINVITENUMBER);
-
     }
-
-
     private void initView() {
         getSystemContacts();
         initListView();
@@ -172,7 +169,23 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
 
             for (int i = 0; i < list.size(); i++) {
                 UserInfo userInfo = (UserInfo) list.get(i);
-                SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
+                //如果短信内容过多，可以分条发送
+                if(mValues.length()>=70)
+                {
+                    List<String> ms= SmsManager.getDefault().divideMessage(mValues);
+                    for(String str:ms)
+                    {
+                        SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, str, null, null);
+                    }
+                }
+                else
+                {
+                    SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
+                }
+               /* Intent intent=new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("smsto:"+userInfo.getPhoneNum().toString()));
+                intent.putExtra("sms_body",mValues);
+                SmsMessageInviteMyFriendActivity.this.startActivity(intent);*/
             }
             MessageCenter.postInfoMessage("发送邀请短信成功");
             finish();
