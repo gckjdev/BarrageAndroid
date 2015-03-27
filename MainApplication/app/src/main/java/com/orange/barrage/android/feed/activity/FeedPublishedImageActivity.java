@@ -1,9 +1,7 @@
 package com.orange.barrage.android.feed.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,7 +16,6 @@ import com.orange.barrage.android.friend.ui.FriendTagView;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 import com.orange.protocol.message.UserProtos;
 
@@ -60,7 +57,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
     private Map<String, FriendTagItemView> maps = new HashMap<>();
 
-    private RemindboxAlertDialog mRemindboxAlterDailog ;
 
     private int statue = 0;
 
@@ -82,10 +78,10 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
         if (pbUser == null) {
             mFriendIconList.setUser(pbUser, this, FriendIconList.ICON_ADD_AND_DELETE_BUTTON);
-            setMenBerTextView(1);
+            setMenBerTextView();
         } else {
             mFriendIconList.setUsers(new ArrayList<UserProtos.PBUser>(), this, FriendIconList.ICON_ADD_AND_DELETE_BUTTON);
-            setMenBerTextView(0);
+            setMenBerTextView();
         }
         //注册监听
         mFriendIconList.setOnClickItemListener(this);
@@ -106,16 +102,14 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (mFriendIconList.startForResult(resultCode, data)) ;
     }
 
-    public void setMenBerTextView(int num) {
-        mNum += num;
-        mFriendIconList.setMenbertext("已经选择的成员", num);
+    public void setMenBerTextView() {
+        mFriendIconList.setMenbertext("已经选择的成员");
     }
 
     @Override
@@ -124,22 +118,13 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
         statue = 0;
 
         //返回
-        if(mFriendIconList.getIconCount() == 0)super.onClickLeft(v);
-        else{
-            mRemindboxAlterDailog.show(new String[]{"是","否"},"提示","是否退出",-1,mOnclick);
+        if (mFriendIconList.getIconCount() == 0) super.onClickLeft(v);
+        else {
+            showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "是否退出", -1);
+
         }
     }
 
-
-    private void intiRemind(){
-        if(mRemindboxAlterDailog == null){
-
-            mRemindboxAlterDailog = new RemindboxAlertDialog(this );
-
-        }
-
-
-    }
 
     @Override
     public void onClickRight(View v) {
@@ -147,32 +132,31 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
         //发表
         statue = 1;
-        if(mFriendIconList.getIconCount() == 0){
+        if (mFriendIconList.getIconCount() == 0) {
             MessageCenter.postTestMessage("你还没有选择好友");
             return;
         }
 
-        mRemindboxAlterDailog.show(new String[]{"是","否"},"提示","是否发表",-1,mOnclick);
 
+        showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "是否发表", -1);
     }
 
-    private RemindboxAlertDialog.OnClickListener  mOnclick = new RemindboxAlertDialog.OnClickListener(){
 
-        @Override
-        public void onClick(int position) {
-            if(position == RemindboxAlertDialog.LEFTBUTTON){
+    @Override
+    public void onRemindItemClick(int position) {
+        if (position == RemindboxAlertDialog.LEFTBUTTON) {
 
-                if(statue == 0){
-                    //退出
-                    finish();
-                }else if(statue == 1) {
-                    //发表
-                    MessageCenter.postTestMessage("我发表");
-                }
-
+            if (statue == 0) {
+                //退出
+                finish();
+            } else if (statue == 1) {
+                //发表
+                MessageCenter.postTestMessage("我发表");
             }
+
         }
-    };
+    }
+
 
     private void deleteTag(String tagId) {
 

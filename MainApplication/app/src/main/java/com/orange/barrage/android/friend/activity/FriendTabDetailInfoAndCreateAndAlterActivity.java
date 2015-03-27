@@ -91,7 +91,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     TextView mTagTextView;
 
 
-
     @InjectView(R.id.shareOrDeletebutton)
     Button mShareOrDeleteButton;
     @Inject
@@ -140,12 +139,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
         }
 
-        UserProtos.PBUserTag userTag = mFriendIconList.initData(mTagManager , mTabId , this);
+        UserProtos.PBUserTag userTag = mFriendIconList.initData(mTagManager, mTabId, this);
 
-        if(userTag != null){
+        if (userTag != null) {
             showTagNametext(-1, userTag.getName());
         }
-
 
 
     }
@@ -165,8 +163,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             }
         }) : mShowPublisFeedView;
     }
-
-
 
 
     private void setFriendListAlter() {
@@ -194,8 +190,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
 
-
-
     private void closeEidText() {
         mTagEditText.setVisibility(View.GONE);
         mTagTextView.setVisibility(View.VISIBLE);
@@ -219,7 +213,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         }
 
     }
-
 
 
     @Override
@@ -278,7 +271,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
             return null;
         }
 
-        if(mFriendIconList.getIconCount() == 0){
+        if (mFriendIconList.getIconCount() == 0) {
             MessageCenter.postErrorMessage("请选择你的好友");
             return null;
         }
@@ -304,7 +297,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         for (UserProtos.PBUser pbUser : list) {
             idList.add(pbUser.getUserId());
         }
-
 
 
         showProgress("正在修改");
@@ -334,7 +326,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
 
         showProgress("正在创建标签");
 
-        mTagMission.addTag(mFriendIconList.getBuilder(name , tagId), new AddTagCallback() {
+        mTagMission.addTag(mFriendIconList.getBuilder(name, tagId), new AddTagCallback() {
             @Override
             public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
                 if (errorCode == 0) {
@@ -375,8 +367,6 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
 
-
-
     @Override
     public void onClickRight(View v) {
         super.onClickRight(v);
@@ -393,10 +383,10 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Override
     public void onClickItem(int postion, View view, Object data, int iconType) {
 
-       if (iconType == OnClickItemListener.ICON_TOP_DELETE_BUTTON) {
+        if (iconType == OnClickItemListener.ICON_TOP_DELETE_BUTTON) {
             //点击头像做删除的按钮
             mParams.isAtler = true;
-       }
+        }
 
     }
 
@@ -419,15 +409,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         if (mState == EDIT_STATE) {
             //编辑界面
             //打开照片
-            new RemindboxAlertDialog(this, new String[]{"是", "否"}, "提醒", "是否删除改标签", new RemindboxAlertDialog.OnClickListener() {
-
-                @Override
-                public void onClick(int position) {
-                    if (position == RemindboxAlertDialog.LEFTBUTTON) {
-                        deleteTag();
-                    }
-                }
-            }).show();
+            showRemindboxAlertDialog(new String[]{"是", "否"}, "提醒", "是否删除改标签", -1);
         } else if (mState == SEE_STATE) {
             //查看
             initPhoto();
@@ -435,6 +417,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
         }
 
 
+    }
+
+    @Override
+    public void onRemindItemClick(int position) {
+        deleteTag();
     }
 
     private void deleteTag() {
@@ -479,7 +466,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     RemindboxAlertDialog.OnClickListener mRemindBoxAlterDialogListener = new RemindboxAlertDialog.OnClickListener() {
 
         @Override
-        public void onClick(int position) {
+        public void onRemindItemClick(int position) {
             if (position == RemindboxAlertDialog.LEFTBUTTON) {
 
             } else if (position == RemindboxAlertDialog.RIGHTBUTTON) {
@@ -492,7 +479,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        mParams.isAtler = mFriendIconList.startForResult(resultCode , data);
+        mParams.isAtler = mFriendIconList.startForResult(resultCode, data);
 
 
         if (mShowPublisFeedView != null) {

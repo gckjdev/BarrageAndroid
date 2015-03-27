@@ -32,9 +32,8 @@ public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
 
     @Override
     public void onClickRight(View v) {
-        mBarrageAndroid.clearActivity();
-        mBarrageAndroid.addActivity(this);
-        ActivityIntent.startIntent(this , FeedPublishedImageActivity.class);
 
+        ActivityIntent.startIntent(this , FeedPublishedImageActivity.class);
+        finish();
     }
 }

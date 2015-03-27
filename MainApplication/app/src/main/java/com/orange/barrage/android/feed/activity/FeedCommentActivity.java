@@ -61,6 +61,8 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     private CircleColorView mCircleColorView;
     private BottonButtonModel mButtonMdoel = new BottonButtonModel();
 
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_feed_comment, R.string.b_comment, R.string.b_send);
