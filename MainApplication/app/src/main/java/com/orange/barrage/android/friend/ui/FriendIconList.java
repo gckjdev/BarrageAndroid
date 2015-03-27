@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -68,6 +69,7 @@ public class FriendIconList extends LinearLayout  {
     private Activity mActivity;
 
     private OnClickItemListener mL;
+
     FriendIconListAdapter mAdapter;
 
     //是否修改了
@@ -83,18 +85,16 @@ public class FriendIconList extends LinearLayout  {
         initView();
     }
 
-//    private void initView(){
-//        View v = LayoutInflater.from(getContext()).inflate(R.layout.view_friends_icon_list , null);
-//
-//        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT , LayoutParams.MATCH_PARENT);
-//
-//        addView(v , params);
-//
-//    }
+
 
     private void initView() {
 
-        LayoutInflater.from(getContext()).inflate(R.layout.view_friend_icon_and_textview , this);
+        View v = LayoutInflater.from(getContext()).inflate(R.layout.view_friend_icon_and_textview , null);
+
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT , LayoutParams.MATCH_PARENT);
+
+        addView(v , params);
+
 
         mPeopleNum = (TextView) findViewById(R.id.chengyuan);
         mGridView = (GridView) findViewById(R.id.frinedIconGridView);
@@ -177,6 +177,7 @@ public class FriendIconList extends LinearLayout  {
 
         mAdapter = new FriendIconListAdapter(getContext(), users, activity, type);
         mGridView.setAdapter(mAdapter);
+
     }
 
 
@@ -207,6 +208,7 @@ public class FriendIconList extends LinearLayout  {
     }
 
 
+
     public UserProtos.PBUserTag getPBUserTag(){
         return mPBUserTag;
     }
@@ -227,20 +229,11 @@ public class FriendIconList extends LinearLayout  {
 
 
     public void refresh(){
-//        setReFresh(mOldBuilder.getUsersList(), mActivity, FriendIconList.ICON_ORDINARY);
-//        mBuilder.clear();
-//        mBuilder = UserProtos.PBUserTag.newBuilder(mOldBuilder.build());
-//        mOldBuilder.clear();
         setReFresh(mOldPbuserLists , mActivity ,FriendIconList.ICON_ORDINARY);
     }
 
 
-//    public void addUserToTag() {
-//        if (mNewPBUserTag != null)
-//            mBuilder.addAllUsers(mNewPBUserTag.getUsersList());
-//        mNewPBUserTag = null;
-//        setMenbertext(mBuilder.getUsersList().size());
-//    }
+
 
 
     private List<UserProtos.PBUser> getListPBUser(List<UserProtos.PBUser> users) {
@@ -257,13 +250,16 @@ public class FriendIconList extends LinearLayout  {
     public void setMenbertext(String text ){
         if(mPeopleNum == null)  return;
         mText = text;
-        mPeopleNum.setText(text+"("+(mAdapter == null ? 0 : mAdapter.getChildCount())+")");
+        setMenbertext("");
     }
 
     public void setMenbertext(int num){
-        if(mPeopleNum == null) return;
+        if(mPeopleNum != null)
         mPeopleNum.setText(mText+"("+(mAdapter == null ? 0 : mAdapter.getChildCount())+")");
+
     }
+
+
 
     /**
      * 设置可以头像的类型,是否可以添加或者删除头像
@@ -296,7 +292,7 @@ public class FriendIconList extends LinearLayout  {
 
     private OnClickItemListener mOnClickItemListener = new OnClickItemListener() {
         @Override
-        public void onClickItem(int postion, View view, Object data, int iconType) {
+        public boolean onClickItem(int postion, View view, Object data, int iconType) {
 
             if (iconType == FriendIconList.OnClickItemListener.INCO_ADD_BUTTON) {
                 startToChooseFriend();
@@ -309,10 +305,13 @@ public class FriendIconList extends LinearLayout  {
 //                mBuilder.removeUsers(postion);
                 setMenbertext(mAdapter.getUsers().size());
                 mIsAlter = true;
+
             }
 
             if(mL != null)
-                mL.onClickItem(postion , view , data , iconType);
+                return mL.onClickItem(postion , view , data , iconType);
+
+            return false;
         }
     };
 
@@ -345,7 +344,7 @@ public class FriendIconList extends LinearLayout  {
         //点击了头像头部的删除按钮
         public static final int ICON_TOP_DELETE_BUTTON = 3;
 
-        public void onClickItem(int postion, View view, Object data, int iconType);
+        public boolean onClickItem(int postion, View view, Object data, int iconType);
     }
 
 

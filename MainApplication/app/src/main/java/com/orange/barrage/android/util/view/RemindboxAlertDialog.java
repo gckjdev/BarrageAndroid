@@ -142,18 +142,18 @@ public class RemindboxAlertDialog {
      * 初始化alert
      */
     private void Installbutton(){
-        if(mAlertDialog == null)
+        if (mAlertDialog == null)
             //设置
             mAlertDialog = new AlertDialog.Builder(mContext).create();
-        if(mIcon == -1) mIcon = R.drawable.alert_dark_frame;
-        mAlertDialog.setIcon(mIcon);
+        if (mIcon != -1)
+            mAlertDialog.setIcon(mIcon);
         mAlertDialog.setTitle(mTitle);
         mAlertDialog.setMessage(mMessage);
-        if(mButton == null || mOnClickListener == null) return;
+        if (mButton == null || mOnClickListener == null) return;
         //设置按钮
-        if(mButton.length == 1){
+        if (mButton.length == 1) {
             setLeftButton(mButton[0]);
-        }else if(mButton.length == 2){
+        } else if (mButton.length == 2) {
             setLeftButton(mButton[0]);
             setRightButton(mButton[1]);
         }else if(mButton.length == 3){

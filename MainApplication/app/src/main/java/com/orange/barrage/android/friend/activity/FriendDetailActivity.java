@@ -68,6 +68,15 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_friend_detail, "详细资料", -1);
         final UserProtos.PBUser user = mUserManager.getUser();
+
+
+//        new MaterialDialog.Builder(this)
+//                .title(R.string.title)
+//                .content(R.string.content)
+//                .positiveText(R.string.agree)
+//                .negativeText(R.string.disagree)
+//                .show();
+
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             Ln.w("FriendDetailActivity show but bundle data null");

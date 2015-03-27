@@ -24,9 +24,8 @@
             android:gravity="center" />
     </RelativeLayout>
 
-    <!--<include layout="@layout/view_friend_icon_and_textview"/>-->
-
     <com.orange.barrage.android.friend.ui.FriendIconList
+        android:layout_marginTop="20dip"
         android:id="@+id/friendIconList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -34,8 +33,9 @@
     </com.orange.barrage.android.friend.ui.FriendIconList>
 
     <Button
+
         android:id="@+id/shareOrDeletebutton"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="20dip"
         android:onClick="onClickSharePhotOrDeleteTag"
         android:text="@string/b_share_photo"
         style="@style/b_button_color_red" />

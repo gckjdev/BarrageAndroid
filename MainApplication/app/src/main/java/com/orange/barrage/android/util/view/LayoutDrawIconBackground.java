@@ -104,14 +104,24 @@ public  class LayoutDrawIconBackground {
 
         canvas.drawBitmap(bitmap , rectMain,rectMain,paint);
 
-        FileUtil.saveBitmapInFile(SystemUtil.getSDCardPath() , "i.png" , bitmap);
+//        FileUtil.saveBitmapInFile(SystemUtil.getSDCardPath() , "i.png" , bitmap);
 
         return bitmap;
 
     }
 
 
-
+    /**
+     *
+     * @param canvas
+     * @param rectfStartY 界面开始 y
+     * @param rectfEndY 界面End y
+     * @param grivity
+     * @param p
+     * @param params
+     * @param child
+     * @param parcent
+     */
     private  void DrawTopAndBottom(Canvas canvas , int rectfStartY , int rectfEndY , int grivity , Paint p , Params params , View child , View parcent){
         p.setColor(params.bgColor);
         p.setAntiAlias(true);// 设置画笔的锯齿效果
@@ -382,7 +392,7 @@ public  class LayoutDrawIconBackground {
 
         public float alpha = 1.0f;
 
-        public int mTriangleHeight = 30;
+        public int mTriangleHeight = 20;
 
         public int mTopHeight = 20;
 

@@ -1,6 +1,7 @@
 package com.orange.barrage.android.feed.mission;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ public class ShowFriendIconView {
 
         params.marginLeft  = 10;
         params.marginRight = 10;
-
+        params.bgColor = Color.WHITE;
         new LayoutDrawIconBackground().setParams(params).setWhitTriangleRadioRoundFrectListenerBg(parent, mFrinedInconList);
 
         mFrinedInconList.setUsers(users , mActivity);
@@ -63,11 +64,11 @@ public class ShowFriendIconView {
 
     private FriendIconList.OnClickItemListener mOnClickItemListener = new FriendIconList.OnClickItemListener() {
         @Override
-        public void onClickItem(int postion, View view, Object data, int iconType) {
+        public boolean onClickItem(int postion, View view, Object data, int iconType) {
             if(iconType == ICON_DELETE_BUTTON){
 
             }
-
+            return false;
         }
     };
 
