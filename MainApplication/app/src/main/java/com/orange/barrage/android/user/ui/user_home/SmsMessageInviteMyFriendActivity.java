@@ -6,17 +6,12 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.ui.FriendListInfoNewListView;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 
 import java.util.ArrayList;
@@ -62,8 +57,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             cursor2.close();
             mAddressList.add(info);
         }
-    }
-
+    }/*
 
 
     class BBaseAdapter extends BaseAdapter {
@@ -108,7 +102,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             ImageView imageView;
         }
 
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,30 +113,32 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
     }
 
 
-    private void initView(){
+    private void initView() {
         getSystemContacts();
         initListView();
 
     }
 
-    private void initListView(){
+    private void initListView() {
 
-        List<Map<String , Object>> data = new ArrayList<>();
+        List<Map<String, Object>> data = new ArrayList<>();
 
 
-        for(UserInfo userInfo : mAddressList){
-            Map<String ,Object> map = new HashMap<>();
-            map.put("1",userInfo.getUserName());
-            map.put("2" , userInfo.getPhoneNum());
-            map.put("3" , FriendListInfoNewListView.SELECT_NOT);
+        listView.setSelectOrNotSelectImageResource(R.drawable.invite_myfriend_select, R.drawable.invite_myfriend_notselect);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        for (UserInfo userInfo : mAddressList) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("1", userInfo.getUserName());
+            map.put("2", userInfo.getPhoneNum());
+            map.put("3", FriendListInfoNewListView.SELECT_NOT);
             data.add(map);
         }
 
         listView.setData(data,
                 R.layout.invite_myfriend_listitem,
-                new String[]{"1","2","3"},
-                new int[]{R.id.userName,R.id.userPhone , R.id.imageview_check} ,
-                mAddressList , 2);
+                new String[]{"1", "2", "3"},
+                new int[]{R.id.userName, R.id.userPhone, R.id.imageview_check},
+                mAddressList, 2);
 
     }
 
@@ -153,8 +149,8 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
 
         List<Object> list = getSelectUserInfo();
 
-        if(list.size() == 0){
-            MessageCenter.postInfoMessage("请选择好友");
+        if (list.size() == 0) {
+            MessageCenter.postInfoMessage("请选择需要发送的联系人");
             return;
         }
 
@@ -164,37 +160,28 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
 
     }
 
-    private List<Object> getSelectUserInfo(){
+    private List<Object> getSelectUserInfo() {
         return listView.getSelectObject();
     }
 
-    private void initRemindAlterDialog(){
+    private void initRemindAlterDialog() {
         mRemindBoxAlertDialog = mRemindBoxAlertDialog == null ?
-                new RemindboxAlertDialog(this , new String[]{"不发送","发送"},"提醒","是否发送短信",-1 , this)
-                :mRemindBoxAlertDialog;
+                new RemindboxAlertDialog(this, new String[]{"不发送", "发送"}, "提醒", "是否发送短信", -1, this)
+                : mRemindBoxAlertDialog;
     }
 
     @Override
     public void onClick(int position) {
-        if(position == RemindboxAlertDialog.RIGHTBUTTON){
+        if (position == RemindboxAlertDialog.RIGHTBUTTON) {
             //发送短信
             List<Object> list = getSelectUserInfo();
 
-            for(int i = 0  ; i < list.size() ; i ++){
+            for (int i = 0; i < list.size(); i++) {
                 UserInfo userInfo = (UserInfo) list.get(i);
-                /*userInfo.getPhoneNum()*/
-                if (StringUtil.isPhoneNumberValid(userInfo.getPhoneNum()))
-                {
-                    SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum(),null,mValues,null,null);
-                }
-                else
-                {
-                    MessageCenter.postInfoMessage("电话号码错误,必须是11位的电话号码");
-                    return;
-                }
+                SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
             }
-
-
+            MessageCenter.postInfoMessage("发送邀请短信成功");
+            finish();
         }
     }
 }

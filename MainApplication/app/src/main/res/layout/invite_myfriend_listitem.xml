@@ -12,7 +12,7 @@
         <TextView
             android:text="测试1"
             android:id="@+id/userName"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginLeft="10dp"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
@@ -26,6 +26,7 @@
             android:layout_alignParentLeft="true"
             android:id="@+id/userPhone"
             android:layout_marginLeft="10dp"
+            android:layout_marginBottom="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
