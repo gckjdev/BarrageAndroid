@@ -63,11 +63,11 @@ public class ShowFriendIconView {
 
     private FriendIconList.OnClickItemListener mOnClickItemListener = new FriendIconList.OnClickItemListener() {
         @Override
-        public void onClickItem(int postion, View view, Object data, int iconType) {
+        public boolean onClickItem(int postion, View view, Object data, int iconType) {
             if(iconType == ICON_DELETE_BUTTON){
 
             }
-
+            return false;
         }
     };
 

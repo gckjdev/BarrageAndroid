@@ -65,11 +65,12 @@ public class UserAvatarView extends ImageView {
 //        int height = 100;
         int borderWidth = 8;
         if(url == null || url.trim().length() == 0) {
-            setImageResource(R.drawable.y_morentouxiang);
+//            setImageResource(R.drawable.y_morentouxiang);
 
             Bitmap bitmap = ImageUtil.getRoundBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.y_morentouxiang));
 
             setImageBitmap(bitmap);
+            setVisibility(View.VISIBLE);
             return;
         }
 

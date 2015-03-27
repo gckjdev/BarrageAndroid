@@ -21,6 +21,7 @@ import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
+import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
 
@@ -53,20 +54,19 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
 
     private int mSelectColor = Color.WHITE;
-    private int mColors[] = {Color.WHITE , 0xFFFF0000,0xFF339900,0xFFFFFF00,
-            0xFF0099FF,0xFF66CC33,0xFFFF3366,0xFF000066,0xFFFF9900,0xFF663399,
-            0xFF33CCCC,0xFF666600, 0XFF383838};
+    private int mColors[] = {Color.WHITE, 0xFFFF0000, 0xFF339900, 0xFFFFFF00,
+            0xFF0099FF, 0xFF66CC33, 0xFFFF3366, 0xFF000066, 0xFFFF9900, 0xFF663399,
+            0xFF33CCCC, 0xFF666600, 0XFF383838};
 
     private FeedActionWidget mCommentsEdit;
     private CircleColorView mCircleColorView;
     private BottonButtonModel mButtonMdoel = new BottonButtonModel();
 
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_feed_comment, R.string.b_comment, R.string.b_send);
-       
+
         // init top bar
         mTopBarView.setNavigationBackgroundChangeOtherType();
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
@@ -180,7 +180,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     }
 
     //Show barrages
-    public void onFeedActionWidgetShow(View v){
+    public void onFeedActionWidgetShow(View v) {
         if (v.getTag() == null || v.getTag().equals("HideBarrage")) {
             v.setTag("ShowBarrage");
             //move to end
@@ -256,8 +256,28 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
     }
 
     @Override
+    public void onClickLeft(View v) {
+        if (mCommentsEdit.getText().toString().trim().length() == 0)
+            super.onClickLeft(v);
+        else showRemindboxAlertDialog(new String[]{"是","否"},"提示","你意见编辑了，是否退出", -1);
+    }
+
+    @Override
     public void onClickRight(View v) {
+
+        if (mCommentsEdit.getText().toString().trim().length() == 0) {
+            MessageCenter.postInfoMessage("你没有输入文字，不可以发表");
+            return;
+        }
+
         sendReply(mCommentsEdit.getText());
+    }
+
+    @Override
+    public void onRemindItemClick(int position) {
+        if(position == RemindboxAlertDialog.LEFTBUTTON){
+            finish();
+        }
     }
 
     public void sendReply(String replyText) {

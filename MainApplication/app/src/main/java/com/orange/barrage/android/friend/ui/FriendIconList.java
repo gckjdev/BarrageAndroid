@@ -296,7 +296,7 @@ public class FriendIconList extends LinearLayout  {
 
     private OnClickItemListener mOnClickItemListener = new OnClickItemListener() {
         @Override
-        public void onClickItem(int postion, View view, Object data, int iconType) {
+        public boolean onClickItem(int postion, View view, Object data, int iconType) {
 
             if (iconType == FriendIconList.OnClickItemListener.INCO_ADD_BUTTON) {
                 startToChooseFriend();
@@ -312,7 +312,9 @@ public class FriendIconList extends LinearLayout  {
             }
 
             if(mL != null)
-                mL.onClickItem(postion , view , data , iconType);
+                return mL.onClickItem(postion , view , data , iconType);
+
+            return false;
         }
     };
 
@@ -345,7 +347,7 @@ public class FriendIconList extends LinearLayout  {
         //点击了头像头部的删除按钮
         public static final int ICON_TOP_DELETE_BUTTON = 3;
 
-        public void onClickItem(int postion, View view, Object data, int iconType);
+        public boolean onClickItem(int postion, View view, Object data, int iconType);
     }
 
 

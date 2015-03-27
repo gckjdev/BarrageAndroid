@@ -1,11 +1,15 @@
 package com.orange.barrage.android.feed.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.mission.FeedMission;
+import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.feed.mission.PublishFeedMission;
 import com.orange.barrage.android.friend.mission.callback.GetTagListCallback;
 import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.barrage.android.friend.model.TagManager;
@@ -13,10 +17,13 @@ import com.orange.barrage.android.friend.ui.FriendIconList;
 import com.orange.barrage.android.friend.ui.FriendTagItemView;
 import com.orange.barrage.android.friend.ui.FriendTagList;
 import com.orange.barrage.android.friend.ui.FriendTagView;
+import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.view.RemindboxAlertDialog;
+import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.ArrayList;
@@ -42,6 +49,9 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Inject
     UserManager mUserManger;
 
+    @Inject
+    FeedMission mFeedMission;
+
     @InjectView(R.id.friendIconList)
     FriendIconList mFriendIconList;
 
@@ -57,8 +67,9 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
     private Map<String, FriendTagItemView> maps = new HashMap<>();
 
-
     private int statue = 0;
+
+    private UserProtos.PBUser pbUser;
 
     @Override
     protected void onCreate(Bundle saveBundle) {
@@ -74,9 +85,10 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
         mFriendTagList = new FriendTagList(this, mTagManager, this);
 
-        UserProtos.PBUser pbUser = mUserManger.getUser();
+        pbUser = mUserManger.getUser();
 
-        if (pbUser == null) {
+
+        if (pbUser != null) {
             mFriendIconList.setUser(pbUser, this, FriendIconList.ICON_ADD_AND_DELETE_BUTTON);
             setMenBerTextView();
         } else {
@@ -136,8 +148,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
             MessageCenter.postTestMessage("你还没有选择好友");
             return;
         }
-
-
         showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "是否发表", -1);
     }
 
@@ -151,12 +161,49 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
                 finish();
             } else if (statue == 1) {
                 //发表
-                MessageCenter.postTestMessage("我发表");
+                publishImage();
             }
 
         }
     }
 
+
+    private void publishImage(){
+
+        Bitmap bitmap = getPublishImage();
+        if(bitmap == null){
+            MessageCenter.postErrorMessage("图片获取失败");
+            return;
+        }
+        showProgress("正在发表");
+        mFeedMission.createFeed(bitmap , "", mFriendIconList.getPBUser() , new FeedMissionCallbackInterface(){
+
+            @Override
+            public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
+                finish();
+                MessageCenter.postSuccessMessage("发送成功");
+                deletePublishImage();
+                dismissProgress();
+            }
+
+            @Override
+            public void handleFailure(int errorCode) {
+                if(errorCode != 0 ){
+                    MessageCenter.postErrorMessage("发送失败");
+                }
+                dismissProgress();
+            }
+        });
+    }
+
+
+    private Bitmap getPublishImage(){
+        return FileUtil.getPhotoFromSDCard(HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME);
+    }
+
+    private void deletePublishImage(){
+        FileUtil.deleteFile(HomeActivity.PHOTOPATH+"/"+HomeActivity.PHOTONAME);
+    }
 
     private void deleteTag(String tagId) {
 
@@ -206,26 +253,29 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
 
     @Override
-    public void onClickItem(int postion, View view, Object data, int iconType) {
+    public boolean onClickItem(int postion, View view, Object data, int iconType) {
         //点击头像
 //        if(iconType == )
 
         if (iconType == FriendIconList.OnClickItemListener.ICON_TOP_DELETE_BUTTON) {
 
-            Ln.e((data == null || !(data instanceof UserProtos.PBUser)) + "");
+            if (pbUser != null && data != null && pbUser.getUserId().equals(((UserProtos.PBUser) data).getUserId())) {
+                MessageCenter.postInfoMessage("不可以把自己删除");
+                return true;
+            }
 
-            if (data == null || !(data instanceof UserProtos.PBUser)) return;
+            if (data == null || !(data instanceof UserProtos.PBUser)) return false;
             dealDeleteIcon(data);
-
         }
+        return false;
     }
+
 
     private void dealDeleteIcon(Object data) {
         List<UserProtos.PBUserTag> pbUserTags = getTag((UserProtos.PBUser) data, mTagManager);
-        Ln.e("你火气了:" + pbUserTags.size());
+
         for (int i = 0; i < pbUserTags.size(); i++) {
             String tagId = pbUserTags.get(i).getTid();
-            Ln.e("ID:" + pbUserTags.get(i).getTid());
             FriendTagItemView friendTagItemView = maps.get(tagId);
 
             if (friendTagItemView == null) continue;

@@ -338,6 +338,7 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
                 dismissProgress();
             }
         });
+
     }
 
     private void setTagIsAlter() {
@@ -381,13 +382,13 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     }
 
     @Override
-    public void onClickItem(int postion, View view, Object data, int iconType) {
+    public boolean onClickItem(int postion, View view, Object data, int iconType) {
 
         if (iconType == OnClickItemListener.ICON_TOP_DELETE_BUTTON) {
             //点击头像做删除的按钮
             mParams.isAtler = true;
         }
-
+        return false;
     }
 
     @Override
