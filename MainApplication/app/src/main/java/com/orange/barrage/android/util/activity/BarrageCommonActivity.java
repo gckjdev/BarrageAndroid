@@ -17,6 +17,7 @@ import com.orange.barrage.android.friend.mission.TagMission;
 import com.orange.barrage.android.friend.model.TagManager;
 import com.orange.barrage.android.user.mission.UserMission;
 import com.orange.barrage.android.util.ContextManager;
+import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 import com.orange.protocol.message.UserProtos;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
@@ -32,7 +33,7 @@ import roboguice.util.Ln;
 /**
  * Created by youjiannuo on 2015/3/3.
  */
-public class BarrageCommonActivity extends RoboActivity  {
+public class BarrageCommonActivity extends RoboActivity implements RemindboxAlertDialog.OnClickListener {
 
     /* 进度条 */
     private BarrageProgressDialog mProgressDialog;
@@ -54,6 +55,9 @@ public class BarrageCommonActivity extends RoboActivity  {
 
     @Inject
     protected TagMission mTagMission;
+
+
+    protected RemindboxAlertDialog mRemindboxAlterDialong;
 
     /**
      *
@@ -164,26 +168,31 @@ public class BarrageCommonActivity extends RoboActivity  {
     }
 
 
-    /**
-     * 点击导航栏右边按钮可继承本方法
-     * @param v
-     */
-    public void onClickRight(View v){
-    }
-
-    /**
-     * 点击导航栏左边按钮可继承本方法
-     * @param v
-     */
-    public void onClickLeft(View v){
-        finish();
-    }
 
 
     public void onClickFinish(View v){
         finish();
     }
 
+
+
+    /**
+     * 开启提醒框
+     */
+    protected  void showRemindboxAlertDialog(String button[] , String title , String Message ,int icon ,RemindboxAlertDialog.OnClickListener l){
+        if(mRemindboxAlterDialong == null){
+            mRemindboxAlterDialong = new RemindboxAlertDialog(this);
+        }
+
+        mRemindboxAlterDialong.show(button , title , Message, icon , l);
+    }
+
+    /**
+     * 开启提醒框
+     */
+     protected void showRemindboxAlertDialog(String button[], String title, String message, int icon){
+         showRemindboxAlertDialog(button , title , message , icon , this);
+     }
 
     /**
      * 获取好友所属的标签
@@ -211,5 +220,30 @@ public class BarrageCommonActivity extends RoboActivity  {
         }
         return pbUserTags;
     }
+
+    /**
+     * 点击提醒框，可以继承这个方法
+     * @param position
+     */
+    @Override
+    public void onRemindItemClick(int position) {
+
+    }
+
+    /**
+     * 点击导航栏右边按钮可继承本方法
+     * @param v
+     */
+    public void onClickRight(View v){
+    }
+
+    /**
+     * 点击导航栏左边按钮可继承本方法
+     * @param v
+     */
+    public void onClickLeft(View v){
+        finish();
+    }
+
 
 }

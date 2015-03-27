@@ -40,7 +40,6 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI
     };
 
-    private RemindboxAlertDialog mRemindBoxAlertDialog;
 
     //得到系统联系人的方法
     public void getSystemContacts() {
@@ -158,9 +157,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             return;
         }
 
-        initRemindAlterDialog();
-
-        mRemindBoxAlertDialog.show();
+        showRemindboxAlertDialog(new String[]{"不发送","发送"},"提醒","是否发送短信",-1 );
 
     }
 
@@ -168,14 +165,9 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
         return listView.getSelectObject();
     }
 
-    private void initRemindAlterDialog(){
-        mRemindBoxAlertDialog = mRemindBoxAlertDialog == null ?
-                new RemindboxAlertDialog(this , new String[]{"不发送","发送"},"提醒","是否发送短信",-1 , this)
-                :mRemindBoxAlertDialog;
-    }
 
     @Override
-    public void onClick(int position) {
+    public void onRemindItemClick(int position) {
         if(position == RemindboxAlertDialog.RIGHTBUTTON){
             //发送短信
             List<Object> list = getSelectUserInfo();

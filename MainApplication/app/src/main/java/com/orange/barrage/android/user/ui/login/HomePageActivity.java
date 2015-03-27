@@ -23,8 +23,10 @@ public class HomePageActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_home_page);
+        super.onCreate(savedInstanceState , R.layout.activity_home_page,"", -1);
+
 
         new Handler().postAtTime(new Runnable() {
             @Override

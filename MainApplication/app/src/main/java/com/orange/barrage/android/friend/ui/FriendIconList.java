@@ -254,7 +254,7 @@ public class FriendIconList extends LinearLayout  {
         mAdapter.setIconType(type);
     }
 
-    public void setMenbertext(String text , int num){
+    public void setMenbertext(String text ){
         if(mPeopleNum == null)  return;
         mText = text;
         mPeopleNum.setText(text+"("+(mAdapter == null ? 0 : mAdapter.getChildCount())+")");

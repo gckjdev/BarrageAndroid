@@ -173,7 +173,7 @@ public class RemindboxAlertDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                mOnClickListener.onClick(LEFTBUTTON);
+                mOnClickListener.onRemindItemClick(LEFTBUTTON);
             }
         });
     }
@@ -188,7 +188,7 @@ public class RemindboxAlertDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                mOnClickListener.onClick(CENTERBUTTON);
+                mOnClickListener.onRemindItemClick(CENTERBUTTON);
             }
         });
     }
@@ -203,7 +203,7 @@ public class RemindboxAlertDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                mOnClickListener.onClick(RIGHTBUTTON);
+                mOnClickListener.onRemindItemClick(RIGHTBUTTON);
             }
         });
     }
@@ -220,10 +220,10 @@ public class RemindboxAlertDialog {
     /**
      * 接口
      * @author
-     *
+     *onRemindItemClick
      */
     public interface OnClickListener{
-        public void onClick(int position);
+        public void onRemindItemClick(int position);
     }
 
 }

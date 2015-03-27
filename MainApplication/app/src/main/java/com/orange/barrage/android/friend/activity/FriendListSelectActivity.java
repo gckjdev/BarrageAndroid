@@ -208,15 +208,8 @@ public class FriendListSelectActivity extends BarrageCommonActivity {
 
         if(mFriendListInfoListView.getSelectObject().size() != 0) {
 
-            new RemindboxAlertDialog(this, new String[]{"是", "否"}, "提醒", "你已经添加了好友，是否退出", new RemindboxAlertDialog.OnClickListener() {
+            showRemindboxAlertDialog(new String[]{"是", "否"}, "提醒", "你已经添加了好友，是否退出", -1);
 
-                @Override
-                public void onClick(int position) {
-                    if (RemindboxAlertDialog.LEFTBUTTON == position) {
-                        finish();
-                    }
-                }
-            }).show();
         }else finish();
     }
 
@@ -226,8 +219,14 @@ public class FriendListSelectActivity extends BarrageCommonActivity {
         addTag();
     }
 
+    @Override
+    public void onRemindItemClick(int position) {
+        if (RemindboxAlertDialog.LEFTBUTTON == position) {
+            finish();
+        }
+    }
 
-//    mTagMission.addTag(builder.build() , new AddTagCallback() {
+    //    mTagMission.addTag(builder.build() , new AddTagCallback() {
 //        @Override
 //        public void handleMessage(int errorCode, UserProtos.PBUserTag userTag) {
 //            if(errorCode == 0) {

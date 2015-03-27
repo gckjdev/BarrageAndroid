@@ -42,9 +42,12 @@ public class ShowFriendIconView {
 
         boolean is = initView();
         mFloatWindow.show(parent);
+
         if(!is) return;
         View v  = mFloatWindow.getContextView();
         mFrinedInconList = (FriendIconList) v .findViewById(R.id.friendIconFrinedInconlist);
+
+        v.findViewById(R.id.chengyuan).setVisibility(View.GONE);
 
         LayoutDrawIconBackground.Params params = new LayoutDrawIconBackground.Params();
 
