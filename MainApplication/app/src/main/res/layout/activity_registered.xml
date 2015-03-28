@@ -1,30 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
     android:background="@color/b_bg_color_gray"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <include layout="@layout/activity_view_top"/>
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        layout="@layout/activity_logn_other_idea"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
 
-    <include layout="@layout/activity_logn_edit"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:background="#FFF8F8F8"
+        android:id="@+id/linearLayout">
 
-    <TextView android:text="@string/y_long_other_idea"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/y_zhuche_4_height"
-        android:textColor="@color/y_inivite_code_pass_font"
-        android:textSize="15dp"
-        style="@style/wrap_content"/>
-    
-    <ImageButton
-        style="@style/wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/b_bg_color_gray"
+        <include layout="@layout/activity_view_top" />
 
-        android:src="@drawable/y_zhuche_xiala"
-        android:onClick="onClickSF" />
+        <include layout="@layout/activity_logn_edit" />
 
-    <include layout="@layout/activity_logn_other_idea"
-        android:visibility="gone"/>
+        <TextView
+            android:text="@string/y_long_other_idea"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/y_zhuche_4_height"
+            android:textColor="@color/y_inivite_code_pass_font"
+            android:textSize="15dp"
+            style="@style/wrap_content" />
 
-</LinearLayout>
+        <ImageButton
+            style="@style/wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/b_bg_color_gray"
+
+            android:src="@drawable/y_zhuche_xiala"
+            android:onClick="onClickSF" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

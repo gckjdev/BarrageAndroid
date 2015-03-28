@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.orange.barrage.android" >
+    package="com.orange.barrage.android">
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,7 +24,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5493c606fd98c571830006cb" />
@@ -34,8 +34,7 @@
 
         <activity
             android:name=".home.HomeActivity"
-            android:label="@string/title_activity_home" >
-        </activity>
+            android:label="@string/title_activity_home"></activity>
         <activity
             android:name=".feed.activity.FeedCreateActivity"
             android:screenOrientation="portrait" />
@@ -44,12 +43,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".user.ui.login.LoginHomeWithInviteCodeActivity"
-            android:label="@string/title_activity_login_home_with_invite_code" >
-        </activity>
+            android:label="@string/title_activity_login_home_with_invite_code"></activity>
         <activity
             android:name=".user.ui.login.LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".user.ui.login.EmailLoginActivity"
             android:label="@string/title_activity_email_login" />
@@ -62,7 +59,14 @@
         <activity
             android:name=".user.ui.invitecode.InviteCodePassActivity"
             android:label="@string/title_activity_invite_code_pass" />
-        <activity android:name=".user.ui.register.MainRegisterActivity" />
+        <activity android:name=".user.ui.register.MainRegisterActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".user.ui.register.EmailRegisterActivity"
             android:label="@string/title_activity_email_register" />
@@ -77,19 +81,13 @@
         <activity
             android:name=".friend.activity.SearchUserActivity"
             android:label="@string/title_activity_search_user"
-            android:windowSoftInputMode="stateVisible|adjustPan" >
-        </activity>
-        <activity android:name=".feed.activity.FeedCommentActivity" >
-        </activity>
-        <activity android:name=".user.ui.login.HomePageActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
+        <activity android:name=".feed.activity.FeedCommentActivity"></activity>
+        <activity android:name=".user.ui.login.HomePageActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".friend.activity.FriendListSelectActivity" />
-        
+
         <activity android:name=".feed.activity.FeedPublishedImageActivity" />
         <!-- Share SDK Activities -->
 
@@ -100,7 +98,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <data android:scheme="tencent100371282" />
 
@@ -128,69 +126,54 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity
             android:name=".user.ui.user_home.UserHomeActivity"
-            android:label="@string/title_activity_user_home" >
-        </activity>
+            android:label="@string/title_activity_user_home"></activity>
         <activity
             android:name=".user.ui.user_home.UserHomeModifyActivity"
-            android:label="@string/title_activity_user_home_modify" >
-        </activity>
+            android:label="@string/title_activity_user_home_modify"></activity>
         <activity
             android:name=".user.ui.user_home.user_settings.UserNickEditTextActivity"
             android:label=""
-            android:windowSoftInputMode="stateVisible" >
-        </activity>
+            android:windowSoftInputMode="stateVisible"></activity>
         <activity
             android:name=".user.ui.user_home.user_settings.UserSignatureEditTextActivity"
             android:label="@string/title_activity_user_signature_edit_text"
-            android:windowSoftInputMode="stateVisible" >
-        </activity>
+            android:windowSoftInputMode="stateVisible"></activity>
         <activity
             android:name=".user.ui.user_home.user_settings.UserHomeModifyPasswordActivity"
             android:label="@string/title_activity_user_home_modify_password"
-            android:windowSoftInputMode="stateVisible" >
-        </activity>
+            android:windowSoftInputMode="stateVisible"></activity>
         <activity
             android:name=".user.ui.user_home.user_settings.UserEmailEditTextActivity"
-            android:label="@string/title_activity_user_email_edit_text" >
-        </activity>
+            android:label="@string/title_activity_user_email_edit_text"></activity>
         <activity android:name=".friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity" />
         <activity
             android:name=".user.ui.user_home.user_settings.UserPhoneNumberEditTextActivity"
-            android:label="@string/title_activity_user_phone_number_edit_text" >
-        </activity>
+            android:label="@string/title_activity_user_phone_number_edit_text"></activity>
         <activity
             android:name=".user.ui.user_home.UserHomeSettingActivity"
-            android:label="@string/title_activity_user_home_setting" >
-        </activity>
+            android:label="@string/title_activity_user_home_setting"></activity>
         <activity
             android:name=".user.ui.user_home.UserHomeSettingAboutActivity"
-            android:label="@string/title_activity_user_home_setting_about" >
-        </activity>
+            android:label="@string/title_activity_user_home_setting_about"></activity>
         <activity
             android:name=".user.ui.user_home.UserHomeSettingStyleActivity"
-            android:label="@string/title_activity_user_home_setting_style" >
-        </activity>
+            android:label="@string/title_activity_user_home_setting_style"></activity>
         <activity
             android:name=".user.ui.user_home.UserHomeSettingSpeedActivity"
-            android:label="@string/title_activity_user_home_setting_speed" >
-        </activity>
+            android:label="@string/title_activity_user_home_setting_speed"></activity>
         <activity
             android:name=".friend.activity.OptionFeedBackActivity"
             android:label="@string/title_activity_option_feed_back"
-            android:windowSoftInputMode="stateVisible" >
-        </activity>
+            android:windowSoftInputMode="stateVisible"></activity>
         <activity
             android:name=".user.ui.user_home.InviteMyFriendActivity"
-            android:label="@string/title_activity_invite_my_friend" >
-        </activity>
+            android:label="@string/title_activity_invite_my_friend"></activity>
         <activity
             android:name=".friend.activity.FriendDetailBigImageViewActivity"
-            android:label="@string/title_activity_friend_detail_big_image_view" >
-        </activity>
+            android:label="@string/title_activity_friend_detail_big_image_view"></activity>
         <activity
             android:name=".user.ui.user_home.SmsMessageInviteMyFriendActivity"
-            android:label="@string/title_activity_sms_message_invite_my_friend" >
-        </activity>
+            android:label="@string/title_activity_sms_message_invite_my_friend"></activity>
     </application>
 
 </manifest>

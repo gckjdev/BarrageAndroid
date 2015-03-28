@@ -39,7 +39,7 @@
     <dimen name="y_zhuche_1_height">30dip</dimen>
     <dimen name="y_zhuche_2_height">52dip</dimen>
     <dimen name="y_zhuche_3_height">16dip</dimen>
-    <dimen name="y_zhuche_4_height">38dip</dimen>
+    <dimen name="y_zhuche_4_height">30dip</dimen>
     <dimen name="y_zhuche_5_height">34dip</dimen>
 
     <dimen name="b_frined_marginright">14dip</dimen>
