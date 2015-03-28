@@ -35,7 +35,7 @@ public class FriendIconListAdapter extends BaseAdapter  {
         mContext = context;
         mActivity = activity;
         mUsers = users;
-        setIconType(type);
+        mType = type;
     }
 
     public void setIconType(int type){

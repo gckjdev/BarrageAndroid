@@ -21,7 +21,7 @@
         android:background="@color/b_color_alpha"
         style="@style/wrap_content"
         android:layout_alignParentTop="true"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_toRightOf="@+id/iconUserAvatarView"
         android:layout_toEndOf="@+id/iconUserAvatarView" />
     </RelativeLayout>

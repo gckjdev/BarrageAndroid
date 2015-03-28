@@ -250,7 +250,7 @@ public class FriendIconList extends LinearLayout  {
     public void setMenbertext(String text ){
         if(mPeopleNum == null)  return;
         mText = text;
-        setMenbertext("");
+        setMenbertext(0);
     }
 
     public void setMenbertext(int num){
