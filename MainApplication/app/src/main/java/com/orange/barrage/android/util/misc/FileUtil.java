@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 
 import roboguice.util.Ln;
 
@@ -366,4 +367,18 @@ public static boolean checkFileIsExits(String filePath)
             return photoBitmap;
         }
     }
+
+    public static String getFromURLToFileName(String url){
+
+        if(url == null || url.trim().length() == 0) return new Date().getSeconds()+"";
+
+        int a = url.lastIndexOf('\\');
+        int b = url.lastIndexOf('/');
+
+        a = a > b ? a :b;
+
+        return url.substring(a + 1 , url.length());
+
+    }
+
 }

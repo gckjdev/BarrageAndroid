@@ -53,23 +53,22 @@ public class SystemUtil {
     }
 
     public static int[] getPhoneScreenWH(Context context) {
-       int wh[] = new int[2];
+        int wh[] = new int[2];
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         wh[0] = dm.widthPixels;
         wh[1] = dm.heightPixels;
         return wh;
     }
 
-    public static int dipTOpx( float dpValue) {
+    public static int dipTOpx(float dpValue) {
         final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public static int pxTodip( float pxValue) {
+    public static int pxTodip(float pxValue) {
         final float scale = ContextManager.getContext().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
-
 
     public static void showInputMethodManager(final View v) {
         v.setFocusable(true);
@@ -84,15 +83,10 @@ public class SystemUtil {
                         InputMethodManager inputManager =
                                 (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                         inputManager.showSoftInput(v, 0);
-
-
-
-
                     }
                 },
                 200);
     }
-
 
     /**
      * 关闭输入软键盘
@@ -104,6 +98,4 @@ public class SystemUtil {
                 (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
-
-
 }
