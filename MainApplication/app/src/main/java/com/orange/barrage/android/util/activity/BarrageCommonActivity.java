@@ -1,16 +1,10 @@
 package com.orange.barrage.android.util.activity;
 
 
-import com.orange.barrage.android.BarrageAndroid;
-
-
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.KeyEvent;
 import android.view.View;
-
-import roboguice.activity.RoboActivity;
 
 import com.orange.barrage.android.BarrageAndroid;
 import com.orange.barrage.android.friend.mission.FriendMission;
@@ -21,15 +15,12 @@ import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 import com.orange.protocol.message.UserProtos;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
-import roboguice.util.Ln;
 
 /**
  * Created by youjiannuo on 2015/3/3.
@@ -255,6 +246,4 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
     public void onClickLeft(View v){
         finish();
     }
-
-
 }

@@ -56,53 +56,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             cursor2.close();
             mAddressList.add(info);
         }
-    }/*
-
-
-    class BBaseAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return mAddressList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return mAddressList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            Holder holder;
-            if (convertView == null) {
-                convertView = getLayoutInflater().from(SmsMessageInviteMyFriendActivity.this).inflate(R.layout.invite_myfriend_listitem, null);
-                holder = new Holder();
-                holder.userName = (TextView) convertView.findViewById(R.id.userName);
-                holder.userPhone = (TextView) convertView.findViewById(R.id.userPhone);
-                holder.imageView = (ImageView) convertView.findViewById(R.id.imageview_check);
-                convertView.setTag(holder);
-            } else {
-                holder = (Holder) convertView.getTag();
-            }
-            holder.userName.setText(mAddressList.get(position).getUserName());
-            holder.userPhone.setText(mAddressList.get(position).getPhoneNum());
-            holder.imageView.setImageResource(R.drawable.checkbox_checked);
-            return convertView;
-        }
-
-        class Holder {
-            TextView userName, userPhone;
-            Button inviteButton;
-            ImageView imageView;
-        }
-
-    }*/
-
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_sms_message_invite_my_friend, "短信邀请", R.string.b_send);
@@ -150,21 +104,17 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             MessageCenter.postInfoMessage("请选择需要发送的联系人");
             return;
         }
-
-        showRemindboxAlertDialog(new String[]{"不发送", "发送"}, "提醒", "是否发送短信", -1);
-
+        showRemindboxAlertDialog(new String[]{"确定", "取消"}, "提醒", "是否发送短信", -1);
     }
 
     private List<Object> getSelectUserInfo() {
         return listView.getSelectObject();
     }
 
-
     @Override
     public void onRemindItemClick(int position) {
-        if (position == RemindboxAlertDialog.RIGHTBUTTON) {
-
-
+        //左边的按钮执行的动作
+        if (position == RemindboxAlertDialog.LEFTBUTTON) {
             //发送短信
             List<Object> list = getSelectUserInfo();
 
@@ -182,6 +132,24 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             }
             MessageCenter.postInfoMessage("发送邀请短信成功");
             finish();
+        }
+        if (position==RemindboxAlertDialog.RIGHTBUTTON)
+        {
+            finish();
+        }
+    }
+
+    @Override
+    public void onClickLeft(View v) {
+        //
+        List<Object> list=getSelectUserInfo();
+        if (list.size()==0)
+        {
+            super.onClickLeft(v);
+        }
+        else
+        {
+            showRemindboxAlertDialog(new String[]{"取消", "确定"}, "提醒", "是否放弃短信邀请用户", -1);
         }
     }
 }
