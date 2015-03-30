@@ -81,7 +81,9 @@
         </activity>
         <activity android:name=".feed.activity.FeedCommentActivity" >
         </activity>
-        <activity android:name=".user.ui.login.HomePageActivity" >
+        <activity android:name=".user.ui.login.HomePageActivity"
+            android:icon="@drawable/bbj_icon"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
