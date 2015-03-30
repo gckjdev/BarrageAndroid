@@ -64,18 +64,20 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
     private void initView(){
 
         mSendButton.setText(R.string.y_logn);
+        setEidtText(getIntentInt(Key , PHONE_LOGIN ));
 
-        String id = "";
+    }
 
-        if(getIntentInt(Key , PHONE_LOGIN ) == EMAIL_LOGIN){
+
+    protected void setEidtText(int type){
+        if(type == EMAIL_LOGIN){
             mType = EMAIL_LOGIN;
             mIdEditText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-           mIdEditText.setHint(R.string.y_pleaseinputEmail);
-           // id = mUserInfoManager.getEmailString();
+            mIdEditText.setHint(R.string.y_pleaseinputEmail);
+            // id = mUserInfoManager.getEmailString();
         }//else //id = mUserInfoManager.getPhoneString();
 
-        mIdEditText.setText(id);
-
+        mIdEditText.setText("");
     }
 
 

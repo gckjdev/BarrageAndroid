@@ -1,12 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/wrap_content"
     android:orientation="vertical"
     android:id = "@+id/zhuche_other_id"
     >
 
     <ImageButton
         android:onClick="onClickQQ"
+        android:layout_marginTop="0dip"
         style="@style/y_logn_all_denglu"
         android:src="@drawable/x_logn_qq"/>
     <ImageButton

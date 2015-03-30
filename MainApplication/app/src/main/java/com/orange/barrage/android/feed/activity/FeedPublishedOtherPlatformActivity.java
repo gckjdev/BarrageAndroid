@@ -26,7 +26,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState , R.layout.activity_feed_publish_other_platform, R.string.b_share_main ,R.string.b_grid );
+        super.onCreate(savedInstanceState, R.layout.activity_feed_publish_other_platform, R.string.b_share_main, R.string.b_grid);
         initView();
 
         FeedModel model = initData();
@@ -37,7 +37,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
         mFeedMainWidget.getInnerView().showAllBarrageActions();
     }
 
-    private void initView(){
+    private void initView() {
 //        mTopBarView.setNavigationBackgroundChangeOtherType();
 
         mFeedMainWidget.initActualWidth(ScreenUtil.getWidthPixels());
@@ -62,21 +62,29 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
     }
 
 
+    @Override
+    public void onClickRight(View v) {
+        if (mFeedMainWidget == null) return;
+        mFeedMainWidget.getInnerView().showOrCloseBarrageGridView();
+    }
 
     //分享到微信朋友圈
-    public void onClickweixinFriend(View v){
+    public void onClickweixinFriend(View v) {
 
     }
+
     //分享到微信好友
-    public void onClickweixin(View v){
+    public void onClickweixin(View v) {
 
     }
+
     //分享到新浪
-    public void onClickXiangLiang(View v){
+    public void onClickXiangLiang(View v) {
 
     }
+
     //分享到QQ空间
-    public void onClickQQZone(View v){
+    public void onClickQQZone(View v) {
 
     }
 
