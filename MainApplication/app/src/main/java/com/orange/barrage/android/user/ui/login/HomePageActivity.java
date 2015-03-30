@@ -19,8 +19,6 @@ public class HomePageActivity extends BarrageCommonActivity {
     @Inject
     UserManager mUserManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -28,12 +26,12 @@ public class HomePageActivity extends BarrageCommonActivity {
         super.onCreate(savedInstanceState , R.layout.activity_home_page,"", -1);
 
 
-        new Handler().postAtTime(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity();
             }
-        } , 500);
+        } , 1000);
 
     }
 
@@ -41,8 +39,10 @@ public class HomePageActivity extends BarrageCommonActivity {
 
         if(mUserManager.hasUser()){
             ActivityIntent.startIntent(this , HomeActivity.class);
+            //overridePendingTransition(R.anim.mainfadein,R.anim.splashfadeout);
         }else{
             ActivityIntent.startIntent(this, LoginHomeWithInviteCodeActivity.class);
+           // overridePendingTransition(R.anim.mainfadein,R.anim.splashfadeout);
         }
         finish();
     }
