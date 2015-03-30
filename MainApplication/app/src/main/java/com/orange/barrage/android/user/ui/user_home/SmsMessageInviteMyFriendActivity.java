@@ -35,6 +35,11 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI
     };
 
+    private static final int BACK = 1;
+    private static final int SENDMSG = 2;
+
+    private int mState = BACK;
+
 
     //得到系统联系人的方法
     public void getSystemContacts() {
@@ -56,52 +61,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             cursor2.close();
             mAddressList.add(info);
         }
-    }/*
-
-
-    class BBaseAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return mAddressList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return mAddressList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            Holder holder;
-            if (convertView == null) {
-                convertView = getLayoutInflater().from(SmsMessageInviteMyFriendActivity.this).inflate(R.layout.invite_myfriend_listitem, null);
-                holder = new Holder();
-                holder.userName = (TextView) convertView.findViewById(R.id.userName);
-                holder.userPhone = (TextView) convertView.findViewById(R.id.userPhone);
-                holder.imageView = (ImageView) convertView.findViewById(R.id.imageview_check);
-                convertView.setTag(holder);
-            } else {
-                holder = (Holder) convertView.getTag();
-            }
-            holder.userName.setText(mAddressList.get(position).getUserName());
-            holder.userPhone.setText(mAddressList.get(position).getPhoneNum());
-            holder.imageView.setImageResource(R.drawable.checkbox_checked);
-            return convertView;
-        }
-
-        class Holder {
-            TextView userName, userPhone;
-            Button inviteButton;
-            ImageView imageView;
-        }
-
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,45 +103,57 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
     @Override
     public void onClickRight(View v) {
         super.onClickRight(v);
-
+        mState = SENDMSG;
         List<Object> list = getSelectUserInfo();
 
         if (list.size() == 0) {
             MessageCenter.postInfoMessage("请选择需要发送的联系人");
             return;
         }
-
-        showRemindboxAlertDialog(new String[]{"不发送", "发送"}, "提醒", "是否发送短信", -1);
-
+        showRemindboxAlertDialog(new String[]{"取消", "确定"}, "提醒", "是否发送短信", -1);
     }
 
     private List<Object> getSelectUserInfo() {
         return listView.getSelectObject();
     }
 
-
     @Override
     public void onRemindItemClick(int position) {
+        //左边的按钮执行的动作
+     /*   MessageCenter.postTestMessage(position + "");*/
         if (position == RemindboxAlertDialog.RIGHTBUTTON) {
 
+            if(mState == SENDMSG ) {
+               //发送短信
+                List<Object> list = getSelectUserInfo();
 
-            //发送短信
-            List<Object> list = getSelectUserInfo();
-
-            for (int i = 0; i < list.size(); i++) {
-                UserInfo userInfo = (UserInfo) list.get(i);
-                //如果短信内容过多，可以分条发送
-                if (mValues.length() >= 70) {
-                    List<String> ms = SmsManager.getDefault().divideMessage(mValues);
-                    for (String str : ms) {
-                        SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, str, null, null);
+                for (int i = 0; i < list.size(); i++) {
+                    UserInfo userInfo = (UserInfo) list.get(i);
+                    //如果短信内容过多，可以分条发送
+                    if (mValues.length() >= 70) {
+                        List<String> ms = SmsManager.getDefault().divideMessage(mValues);
+                        for (String str : ms) {
+                            SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, str, null, null);
+                        }
+                    } else {
+                        SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
                     }
-                } else {
-                    SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
                 }
+                MessageCenter.postInfoMessage("发送邀请短信成功");
             }
-            MessageCenter.postInfoMessage("发送邀请短信成功");
             finish();
+        }
+    }
+
+    @Override
+    public void onClickLeft(View v) {
+        //
+        mState = BACK;
+        List<Object> list = getSelectUserInfo();
+        if (list.size() == 0) {
+            super.onClickLeft(v);
+        } else {
+            showRemindboxAlertDialog(new String[]{"取消", "确定"}, "提醒", "是否放弃短信邀请用户", -1);
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.orange.barrage.android.util.view;
 
-import android.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,7 +12,6 @@ import android.view.WindowManager;
  * 需要添加下面权限
  * <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
  */
-
 public class RemindboxAlertDialog {
 
     /**

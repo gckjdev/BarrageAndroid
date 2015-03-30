@@ -63,11 +63,10 @@ public class FriendDetailBigImageViewActivity extends BarrageCommonActivity {
         if (position == RemindboxAlertDialog.RIGHTBUTTON) {
             //将一张ImageView图片保存为在SD卡上存储的Bitmap类型的图片
             Bitmap bitmap = Bitmap.createBitmap(mUserAvatarBigView.getDrawingCache());
-            FileUtil.savePhotoToSDCard(bitmap, Environment.getExternalStorageDirectory() + "/Orange/barrage", FileUtil.getFromURLToFileName(mUrl));
+            //截取图片地址的后四位
+            FileUtil.savePhotoToSDCard(bitmap, Environment.getExternalStorageDirectory() + "/Orange/barrage",FileUtil.getFromURLToFileName(mUrl));
             MessageCenter.postInfoMessage("保存图片到手机相册成功");
         }
-        if (position == RemindboxAlertDialog.LEFTBUTTON) {
-            return;
-        }
     }
+
 }

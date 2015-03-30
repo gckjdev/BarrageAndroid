@@ -4,13 +4,11 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.litl.leveldb.NotFoundException;
 import com.orange.barrage.android.R;
 
 /**
@@ -75,7 +73,7 @@ public class TopBarView {
         }
 
         TextView mTitle = ((TextView)mActivity.findViewById(R.id.top_title));
-        if (mTitle != null) {
+            if (mTitle != null) {
             mTitle.setText(s);
         }
     }
@@ -131,7 +129,7 @@ public class TopBarView {
         View rightButtonView = null;
         ImageButton image = ((ImageButton)(mActivity.findViewById(R.id.top_right_button)));
         Bitmap bitmap = BitmapFactory.decodeResource(mActivity.getResources(), resId);
-        if(bitmap != null) {
+            if(bitmap != null) {
             image.setImageBitmap(bitmap);
 
             rightButtonView = image;

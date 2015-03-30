@@ -8,35 +8,24 @@
  */
 package com.orange.barrage.android.util.misc;
 
-import android.R.integer;
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.orange.barrage.android.util.ContextManager;
-import com.orange.barrage.android.util.activity.MessageCenter;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import roboguice.util.Ln;
@@ -44,9 +33,6 @@ import roboguice.util.Ln;
 
 public class ImageUtil
 {
-
-
-
     public static Drawable getBitmapChangeDrawable(Bitmap bm){
         if(bm == null) return null;
         return new BitmapDrawable(ContextManager.getContext().getResources(), bm);
