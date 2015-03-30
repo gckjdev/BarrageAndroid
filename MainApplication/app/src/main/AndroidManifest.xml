@@ -61,11 +61,6 @@
             android:label="@string/title_activity_invite_code_pass" />
         <activity android:name=".user.ui.register.MainRegisterActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".user.ui.register.EmailRegisterActivity"
@@ -85,6 +80,11 @@
         <activity android:name=".feed.activity.FeedCommentActivity"></activity>
         <activity android:name=".user.ui.login.HomePageActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".friend.activity.FriendListSelectActivity" />
 

@@ -5,14 +5,19 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+
+
     <include
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         layout="@layout/activity_logn_other_idea"
         android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+       />
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -41,6 +46,14 @@
             android:onClick="onClickSF" />
     </LinearLayout>
 
+    <TextView
+        android:layout_marginTop="50dip"
+        android:id="@+id/text"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:background="@color/b_color_red"
+        android:layout_width="100dip"
+        android:layout_height="100dip" />
 
 
 </RelativeLayout>

@@ -101,6 +101,22 @@ public class FeedMainInnerWidget extends FrameLayout {
         return mGridView;
     }
 
+
+    public void showOrCloseBarrageGridView(){
+        if (mGridView == null) {
+            return;
+        }
+
+        if (mGridView.getTag() == null || mGridView.getTag().equals("o")) {
+            mGridView.setVisibility(View.VISIBLE);
+            mGridView.setTag("y");
+        } else {
+            mGridView.setVisibility(View.GONE);
+            mGridView.setTag("o");
+        }
+    }
+
+
     public void setMode(FeedWidgetMode mode) {
 
         if (mFeedActionViews != null) {
