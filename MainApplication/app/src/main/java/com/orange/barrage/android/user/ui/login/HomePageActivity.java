@@ -22,23 +22,25 @@ public class HomePageActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState , R.layout.activity_home_page,"", -1);
+        super.onCreate(savedInstanceState, R.layout.activity_home_page, "", -1);
 
-
+        /**
+         * 延迟一秒进入主页面
+         */
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity();
             }
-        } , 1000);
+        }, 1000);
 
     }
 
-    private void startActivity(){
+    private void startActivity() {
 
-        if(mUserManager.hasUser()){
-            ActivityIntent.startIntent(this , HomeActivity.class);
-        }else{
+        if (mUserManager.hasUser()) {
+            ActivityIntent.startIntent(this, HomeActivity.class);
+        } else {
             ActivityIntent.startIntent(this, LoginHomeWithInviteCodeActivity.class);
         }
         finish();
