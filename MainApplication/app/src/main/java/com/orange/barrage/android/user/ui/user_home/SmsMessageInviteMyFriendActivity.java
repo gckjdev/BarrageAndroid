@@ -35,6 +35,11 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI
     };
 
+    private static final int BACK = 1;
+    private static final int SENDMSG = 2;
+
+    private int mState = BACK;
+
 
     //得到系统联系人的方法
     public void getSystemContacts() {
@@ -57,6 +62,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
             mAddressList.add(info);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_sms_message_invite_my_friend, "短信邀请", R.string.b_send);
@@ -97,14 +103,14 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
     @Override
     public void onClickRight(View v) {
         super.onClickRight(v);
-
+        mState = SENDMSG;
         List<Object> list = getSelectUserInfo();
 
         if (list.size() == 0) {
             MessageCenter.postInfoMessage("请选择需要发送的联系人");
             return;
         }
-        showRemindboxAlertDialog(new String[]{"确定", "取消"}, "提醒", "是否发送短信", -1);
+        showRemindboxAlertDialog(new String[]{"取消", "确定"}, "提醒", "是否发送短信", -1);
     }
 
     private List<Object> getSelectUserInfo() {
@@ -114,27 +120,27 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
     @Override
     public void onRemindItemClick(int position) {
         //左边的按钮执行的动作
-        if (position == RemindboxAlertDialog.LEFTBUTTON) {
-            //发送短信
-            List<Object> list = getSelectUserInfo();
+     /*   MessageCenter.postTestMessage(position + "");*/
+        if (position == RemindboxAlertDialog.RIGHTBUTTON) {
 
-            for (int i = 0; i < list.size(); i++) {
-                UserInfo userInfo = (UserInfo) list.get(i);
-                //如果短信内容过多，可以分条发送
-                if (mValues.length() >= 70) {
-                    List<String> ms = SmsManager.getDefault().divideMessage(mValues);
-                    for (String str : ms) {
-                        SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, str, null, null);
+            if(mState == SENDMSG ) {
+               //发送短信
+                List<Object> list = getSelectUserInfo();
+
+                for (int i = 0; i < list.size(); i++) {
+                    UserInfo userInfo = (UserInfo) list.get(i);
+                    //如果短信内容过多，可以分条发送
+                    if (mValues.length() >= 70) {
+                        List<String> ms = SmsManager.getDefault().divideMessage(mValues);
+                        for (String str : ms) {
+                            SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, str, null, null);
+                        }
+                    } else {
+                        SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
                     }
-                } else {
-                    SmsManager.getDefault().sendTextMessage(userInfo.getPhoneNum().toString(), null, mValues, null, null);
                 }
+                MessageCenter.postInfoMessage("发送邀请短信成功");
             }
-            MessageCenter.postInfoMessage("发送邀请短信成功");
-            finish();
-        }
-        if (position==RemindboxAlertDialog.RIGHTBUTTON)
-        {
             finish();
         }
     }
@@ -142,13 +148,11 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
     @Override
     public void onClickLeft(View v) {
         //
-        List<Object> list=getSelectUserInfo();
-        if (list.size()==0)
-        {
+        mState = BACK;
+        List<Object> list = getSelectUserInfo();
+        if (list.size() == 0) {
             super.onClickLeft(v);
-        }
-        else
-        {
+        } else {
             showRemindboxAlertDialog(new String[]{"取消", "确定"}, "提醒", "是否放弃短信邀请用户", -1);
         }
     }
