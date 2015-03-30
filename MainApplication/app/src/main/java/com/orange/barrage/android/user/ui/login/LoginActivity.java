@@ -1,20 +1,14 @@
 package com.orange.barrage.android.user.ui.login;
 
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
-import roboguice.inject.InjectView;
 
 public class LoginActivity extends BarrageCommonActivity {
 

@@ -3480,7 +3480,7 @@ public final class UserProtos {
      * 以下信息用于每个用户自己对自己好友的设置信息，仅用于好友列表返回
      * </pre>
      */
-    java.util.List<com.orange.protocol.message.UserProtos.PBUserTag>
+    java.util.List<com.orange.protocol.message.UserProtos.PBUserTag> 
         getTagsList();
     /**
      * <code>repeated .barrage.PBUserTag tags = 100;</code>
@@ -3505,7 +3505,7 @@ public final class UserProtos {
      * 以下信息用于每个用户自己对自己好友的设置信息，仅用于好友列表返回
      * </pre>
      */
-    java.util.List<? extends com.orange.protocol.message.UserProtos.PBUserTagOrBuilder>
+    java.util.List<? extends com.orange.protocol.message.UserProtos.PBUserTagOrBuilder> 
         getTagsOrBuilderList();
     /**
      * <code>repeated .barrage.PBUserTag tags = 100;</code>

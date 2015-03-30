@@ -194,18 +194,19 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     //添加网格
     public void onGridViewShow(View v) {
-        BarrageGridView gridView = mFeedMainWidget.getInnerView().getGridView();
-        if (gridView == null) {
-            return;
-        }
-
-        if (v.getTag() == null || v.getTag().equals("o")) {
-            gridView.setVisibility(View.VISIBLE);
-            v.setTag("y");
-        } else {
-            gridView.setVisibility(View.GONE);
-            v.setTag("o");
-        }
+        mFeedMainWidget.getInnerView().showOrCloseBarrageGridView();
+//        BarrageGridView gridView = mFeedMainWidget.getInnerView().getGridView();
+//        if (gridView == null) {
+//            return;
+//        }
+//
+//        if (v.getTag() == null || v.getTag().equals("o")) {
+//            gridView.setVisibility(View.VISIBLE);
+//            v.setTag("y");
+//        } else {
+//            gridView.setVisibility(View.GONE);
+//            v.setTag("o");
+//        }
 
     }
 
