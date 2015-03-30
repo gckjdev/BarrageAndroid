@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
 
 import roboguice.inject.InjectView;
 import roboguice.util.Ln;
@@ -28,8 +29,6 @@ public class MainRegisterActivity extends BarrageCommonActivity {
     @InjectView(R.id.zhuche_other_id)
     LinearLayout mlayout;
 
-    @InjectView(R.id.text)
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class MainRegisterActivity extends BarrageCommonActivity {
      * 下拉设置
      */
     public void onClickSF(View v) {
-
+        MessageCenter.postErrorMessage("wo ");
         if (v.getTag() == null || v.getTag().equals("c")) {
             mlayout.setVisibility(View.VISIBLE);
             v.setTag("O");
@@ -53,11 +52,6 @@ public class MainRegisterActivity extends BarrageCommonActivity {
         }
 
     }
-
-
-
-
-
 
 
     private void closeMenuAnimation() {
