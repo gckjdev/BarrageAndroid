@@ -56,9 +56,9 @@ public class FeedActionWidget extends LinearLayout {
 
         LayoutDrawIconBackground.Params params = getParams();
 
-        new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, false);
+        new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, true);
 
-        new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, true);
+        new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, false);
 
     }
 
