@@ -100,7 +100,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="80dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -115,4 +115,11 @@
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/dominant_color"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        tools:background="@android:color/darker_gray"/>
 </LinearLayout>

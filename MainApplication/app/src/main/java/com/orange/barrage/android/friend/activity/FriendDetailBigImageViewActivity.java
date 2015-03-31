@@ -1,16 +1,11 @@
 package com.orange.barrage.android.friend.activity;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
-import com.orange.barrage.android.util.misc.FileUtil;
-import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 import com.squareup.picasso.Picasso;
 
 import roboguice.inject.InjectView;
@@ -44,20 +39,20 @@ public class FriendDetailBigImageViewActivity extends BarrageCommonActivity {
                 finish();
             }
         });
-        mUserAvatarBigView.setDrawingCacheEnabled(true);
+       /* mUserAvatarBigView.setDrawingCacheEnabled(true);*/
 
-        mUserAvatarBigView.setOnLongClickListener(new View.OnLongClickListener() {
+        /*mUserAvatarBigView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 showRemindboxAlertDialog(new String[]{"取消", "确定"}, "提醒", "确定需要保存图片吗", -1);
                 return true;
             }
-        });
+        });*/
 
     }
 
     //凡是用了那个对话框的点击按钮的时候调用的方法
-    @Override
+    /*@Override
     public void onRemindItemClick(int position) {
         super.onRemindItemClick(position);
         if (position == RemindboxAlertDialog.RIGHTBUTTON) {
@@ -67,6 +62,5 @@ public class FriendDetailBigImageViewActivity extends BarrageCommonActivity {
             FileUtil.savePhotoToSDCard(bitmap, Environment.getExternalStorageDirectory() + "/Orange/barrage",FileUtil.getFromURLToFileName(mUrl));
             MessageCenter.postInfoMessage("保存图片到手机相册成功");
         }
-    }
-
+    }*/
 }
