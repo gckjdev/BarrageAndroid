@@ -159,6 +159,9 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
             return null;
         }
         FeedActionWidget comment = new FeedActionWidget(this);
+
+
+
         getMoveView().addView(comment, left, top);
         return comment;
     }

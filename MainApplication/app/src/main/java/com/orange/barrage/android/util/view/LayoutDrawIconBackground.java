@@ -1,6 +1,7 @@
 package com.orange.barrage.android.util.view;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -368,6 +369,38 @@ public  class LayoutDrawIconBackground {
     }
 
 
+    public Bitmap getCircleBg(Params params , View v){
+        return getCirclrBg(params , v.getWidth() , v.getHeight());
+    }
+
+    public Bitmap getCirclrBg(Params params , int width ,  int height){
+        mParams = params;
+        Paint paint = getPaint(params.bgColor , Paint.Style.FILL);
+        Bitmap bitmap = getNewBitmap(height , width);
+        Canvas canvas = getCanvas(bitmap);
+        canvas.drawARGB(0 , 0 , 0 ,0);
+        drawCircle(canvas , paint , height , width);
+        Rect rect = new Rect(0 , 0 , width , height);
+
+        canvas.drawBitmap(bitmap , rect , rect , paint);
+        return bitmap;
+    }
+
+    public void drawCircle(Canvas canvas ,Paint paint , int height , int width){
+        paint.setColor(mParams.bgColor);
+        float x = (float) (width / 2.0);
+        float y = (float) (height / 2.0);
+        float radio = x > y ? y : x;
+
+        canvas.drawCircle(x , y , radio ,paint);
+    }
+
+
+
+    public Bitmap getNewBitmap(int height , int width){
+        return Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
+    }
+
 
     public static class Params{
 
@@ -398,6 +431,10 @@ public  class LayoutDrawIconBackground {
 
         public int padding = 10;
 
+
+
+        public int textColor = Color.WHITE;
+        public int textSize = 13;
 
         public int getColor(){
             int alphas = (int)(255 * alpha);

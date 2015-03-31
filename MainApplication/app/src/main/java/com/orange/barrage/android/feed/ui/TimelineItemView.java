@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
-import com.orange.barrage.android.feed.mission.ShowFriendIconView;
 import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 
@@ -39,8 +38,9 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     private ShowFriendIconView mShowFriendIconView;
     private List<UserProtos.PBUser> mToUsers;
     private View mView;
+
     //FIXME: Rollin, unused layout
-    private RelativeLayout mMainRelativeLayout;
+    protected RelativeLayout mMainRelativeLayout;
 
     public TimelineItemView(Context context) {
         super(context);
@@ -137,5 +137,17 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         else if (mPlayerButton == v) onClickPlayer(v);
         else if (mDropDownImageButton == v) onClickDraoDown(v);
     }
+
+
+    public void setVisibleAllView(){
+
+        mShareButton.setVisibility(View.GONE);
+        mLayoutIcon.setVisibility(View.GONE);
+        mTimeTextView .setVisibility(View.GONE);
+        mPlayerButton.setVisibility(View.GONE);
+        mDropDownImageButton.setVisibility(View.GONE);
+        mMainRelativeLayout.setVisibility(View.GONE);
+    }
+
 
 }

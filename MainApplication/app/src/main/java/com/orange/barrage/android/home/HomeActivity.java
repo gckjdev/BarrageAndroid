@@ -19,10 +19,11 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
+import com.orange.barrage.android.feed.activity.FeedNewMessageListActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
-import com.orange.barrage.android.feed.mission.PhotoAndCamera;
-import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
+import com.orange.barrage.android.feed.ui.PhotoAndCamera;
+import com.orange.barrage.android.feed.ui.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
 import com.orange.barrage.android.friend.activity.OptionFeedBackActivity;
 import com.orange.barrage.android.friend.activity.RequestAddFriendActivity;
@@ -73,9 +74,10 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.activity_home, R.string.y_shouyue, R.drawable.y_more_and_more);
+        super.onCreate(savedInstanceState, R.layout.activity_home, R.drawable.y_new_message, R.string.y_shouyue, R.drawable.y_more_and_more);
         initView();
         initTopBar();
+
     }
 
     private void initTopBar() {
@@ -303,5 +305,10 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     }
 
+    @Override
+    public void onClickLeft(View v) {
 
+        ActivityIntent.startIntent(this , FeedNewMessageListActivity.class);
+
+    }
 }

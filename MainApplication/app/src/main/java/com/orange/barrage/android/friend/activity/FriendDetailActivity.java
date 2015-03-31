@@ -3,20 +3,16 @@ package com.orange.barrage.android.friend.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.PhotoAndCamera;
 import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
-import com.orange.barrage.android.friend.model.ComputerDominantColor;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
@@ -25,10 +21,6 @@ import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -60,9 +52,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     @InjectView(R.id.friend_detail_sharephoto)
     private Button shareButton;
 
-    @InjectView(R.id.dominant_color)
-    private LinearLayout mDominantColor;
-
     /*@InjectView(R.id.friend_detail_userbackground)
     private LinearLayout mFriendDetailUserBackground;*/
 
@@ -79,7 +68,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_friend_detail, "详细资料", -1);
         final UserProtos.PBUser user = mUserManager.getUser();
-        mDominantColor.setBackgroundColor(Color.WHITE);
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             Ln.w("FriendDetailActivity show but bundle data null");
@@ -111,7 +99,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
             mSignatureTextView.setText(mUser.getSignature());
         }
 
-
         mUserAvatarImageView.loadUser(mUser);
         if (mUser.hasAvatarBg()) {
             Picasso.with(FriendDetailActivity.this)
@@ -120,6 +107,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                     .error(R.drawable.tab_friend)
                     .into(mUserDetailBg);
         }
+
         //点击头像显示
         mUserAvatarImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,32 +116,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                         FriendDetailBigImageViewActivity.class, mUrlKey, mUser.getAvatar());
             }
         });
-
-        //先判断用户是否有背景图
-        if (mUser.hasAvatarBg())
-        {
-            //获取bitmap
-            Bitmap bitmap=((BitmapDrawable)mUserDetailBg.getDrawable()).getBitmap();
-            List<int[]> result=new ArrayList<>();
-            try {
-                //计算三种颜色即可
-                result= ComputerDominantColor.compute(bitmap, 3);
-            }catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-            /**
-             * 千万不能释放掉内存，因为如果释放掉内存的话，会导致第三次加载的时候出现错误
-             */
-            //bitmap.recycle();
-            int[] dominantColor=result.get(0);
-            mDominantColor.setBackgroundColor(
-                    Color.rgb(dominantColor[0], dominantColor[1], dominantColor[2]));
-        }
-        else
-        {
-            mDominantColor.setVisibility(View.INVISIBLE);
-        }
     }
 
     public static void show(UserProtos.PBUser user, Context context) {

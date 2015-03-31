@@ -35,6 +35,10 @@ public class FeedActionWidget extends LinearLayout {
     private EditText mEditText;
     private BarrageProtos.PBFeedAction mFeedAction;
 
+    private TextView mEditextRight;
+    private TextView mTextRight;
+
+
     private int mColorbg = Color.BLACK;
     private float mAlphabg = 0.4f;
 
@@ -53,12 +57,17 @@ public class FeedActionWidget extends LinearLayout {
         mEditText = (EditText)findViewById(R.id.commentseditText);
         mTextView = (TextView)findViewById(R.id.commentsTextView);
         mUserAvatarView = (UserAvatarView)findViewById(R.id.head);
+        mEditextRight = (TextView) findViewById(R.id.commentseditTextRight);
+        mTextRight = (TextView) findViewById(R.id.commentsTextViewRight);
 
         LayoutDrawIconBackground.Params params = getParams();
 
-        new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, true);
 
-        new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, false);
+        new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, false);
+
+        new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, true);
+
+
 
     }
 
@@ -81,10 +90,17 @@ public class FeedActionWidget extends LinearLayout {
     public void setType(int type ,boolean isFocusable){
         TAG = type;
         if(type == COMMENTS_EDITTEXT) {
+            mTextView.setVisibility(View.GONE);
+            mTextRight.setVisibility(View.GONE);
+
             mEditText.setVisibility(View.VISIBLE);
         } else {
+            mEditText.setVisibility(View.GONE);
+            mEditextRight.setVisibility(View.GONE);
+
             mTextView.setFocusable(isFocusable);
             mTextView.setVisibility(View.VISIBLE);
+//            mTextRight.setVisibility(View.VISIBLE);
         }
     }
 

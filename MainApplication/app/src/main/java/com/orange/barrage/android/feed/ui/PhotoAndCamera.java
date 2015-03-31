@@ -1,4 +1,4 @@
-package com.orange.barrage.android.feed.mission;
+package com.orange.barrage.android.feed.ui;
 
 import android.app.Activity;
 import android.content.Intent;

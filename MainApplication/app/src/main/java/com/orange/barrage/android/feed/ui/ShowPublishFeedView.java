@@ -1,13 +1,11 @@
-package com.orange.barrage.android.feed.mission;
+package com.orange.barrage.android.feed.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.activity.FloatWindow;
-import com.orange.barrage.android.util.activity.MessageCenter;
 
 /**
  * Created by youjiannuo on 2015/3/7.

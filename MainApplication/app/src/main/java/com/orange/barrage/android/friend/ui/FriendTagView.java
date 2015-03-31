@@ -230,11 +230,8 @@ public class FriendTagView extends LinearLayout implements View.OnClickListener 
 
         public static final  int PARAMS_SOLID = 2;
 
+
         public String title;
-
-        public int textColor = Color.WHITE;
-        public int textSize = 13;
-
 
         public int state = -1;//目前是什么样的状态 空心或者实现
 
