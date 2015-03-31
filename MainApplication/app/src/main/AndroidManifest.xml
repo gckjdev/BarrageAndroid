@@ -62,6 +62,8 @@
         <activity android:name=".user.ui.register.MainRegisterActivity">
 
         </activity>
+        <activity android:name=".feed.activity.FeedNewMessageBarrageActivity"/>
+
         <activity
             android:name=".user.ui.register.EmailRegisterActivity"
             android:label="@string/title_activity_email_register" />
@@ -87,7 +89,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".friend.activity.FriendListSelectActivity" />
-
+        <activity android:name=".feed.activity.FeedNewMessageListActivity"/>
         <activity android:name=".feed.activity.FeedPublishedImageActivity" />
         <!-- Share SDK Activities -->
 

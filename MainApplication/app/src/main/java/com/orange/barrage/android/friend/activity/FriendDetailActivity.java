@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.mission.PhotoAndCamera;
-import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
+import com.orange.barrage.android.feed.ui.PhotoAndCamera;
+import com.orange.barrage.android.feed.ui.ShowPublishFeedView;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;

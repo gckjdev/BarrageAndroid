@@ -116,4 +116,8 @@
     <string name="title_activity_sms_message_invite_my_friend">SmsMessageInviteMyFriendActivity
     </string>
 
+    <string name="watch_friend_hudong">观看好友弹幕互动演示</string>
+    <string name="potion_botton_button_share_photo">点击底部中间按钮分享照片</string>
+    <string name="show">展示</string>
+    <string name="newmessage">新消息</string>
 </resources>

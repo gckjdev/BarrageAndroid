@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
@@ -22,6 +23,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.View;
 
 import com.orange.barrage.android.util.ContextManager;
 
@@ -93,7 +95,74 @@ public class ImageUtil
 
 
 
+    //获取之类所在父类的背景图片
+    public static Bitmap getChildBitmap(View child ,View parcent){
+        float XY[] = {0 , 0};
+        getChildFromParencetXY(child, parcent, XY);
 
+        Bitmap bitmap = getViewBitmapCache(parcent);
+        if(bitmap == null)  return null;
+
+        return Bitmap.createBitmap(bitmap, (int)XY[0], (int)XY[1], child.getWidth(), child.getHeight());
+    }
+
+
+    private static void getChildFromParencetXY(View child ,View parcent , float XY[]){
+
+        boolean is = false;
+
+        if(child.getParent() == parcent){
+            is = true;
+        }
+
+        XY[0] += child.getX();
+        XY[1] += child.getY();
+
+        if(is)   return;
+        else getChildFromParencetXY((View) child.getParent(), parcent, XY);
+    }
+
+
+    //获取某一个Vie的截图
+    //该方法不可以放在Oncreate里面执行，否则获取不到
+    public static Bitmap getViewBitmapCache(View v){
+        v.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        v.layout(0, 0, v.getWidth(), v.getHeight());
+        v.buildDrawingCache();
+        return v.getDrawingCache();
+    }
+
+
+    /**
+     * 通过图片可以获取那个颜色显示的最清楚，
+     * @param bm
+     * @return 白色或者黑色
+     */
+    public int getColorBitmap(Bitmap bm){
+        int black = 0;
+        int white = 0;
+        for(int i = 0 ; i < bm.getHeight() ; i ++){
+            for(int j = 0 ;  j< bm.getWidth() ; j ++)
+                getColor(bm.getPixel(j, i) , black , white);
+        }
+
+        return black < white ? Color.BLACK : Color.WHITE;
+
+    }
+
+
+    private void getColor(int color , int balck , int white){
+        int red = Color.red(color);
+        int bule = Color.blue(color);
+        int green = Color.green(color);
+
+        int gray = (int) (red* 0.3 + green * 0.59 + bule * 0.11);
+        if(gray < 127.5f)
+            balck += 1;
+        else
+            white += 1;
+
+    }
 
 
 

@@ -1,5 +1,6 @@
-package com.orange.barrage.android.feed.mission;
+package com.orange.barrage.android.feed.ui;
 
+import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.util.model.CommonMission;
 
 import javax.inject.Inject;

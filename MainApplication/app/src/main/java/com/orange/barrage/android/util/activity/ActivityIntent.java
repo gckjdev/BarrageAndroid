@@ -16,6 +16,7 @@ public class ActivityIntent {
         startIntent(activity , intent);
     }
 
+
     public static void startIntent(Activity activity , Class<?> c , String key , Parcelable parcel){
         Intent intent = getIntent(activity , c );
         intent.putExtra(key , parcel);

@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.util.view.NumberView;
 
 /**
  * Created by pipi on 15/3/13.
@@ -55,6 +57,27 @@ public class TopBarView {
         getTopBar().setBackgroundColor(Color.rgb(12, 12, 12));
 
     }
+
+
+    public void setNumberText(String text){
+        NumberView numberView = (NumberView) mActivity.findViewById(R.id.Number);
+        numberView.setVisibility(View.VISIBLE);
+        NumberView.Params params = numberView.getParams();
+        params.text = text;
+        params.textColor = Color.WHITE;
+        params.bgColor = 0xff8EC54B;
+        numberView.setParams(params);
+    }
+
+
+    public void setLeftButton(int resId){
+        ImageButton imageButton = (ImageButton) mActivity.findViewById(R.id.top_back_button);
+        if(resId == -1) return;
+        imageButton.setImageResource(resId);
+
+    }
+
+
 
     /**
      * 设置标题

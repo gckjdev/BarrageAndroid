@@ -6,6 +6,26 @@
     android:visibility="invisible"
     android:orientation="vertical" >
 
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/notdateshow"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/showFriendButton"
+            android:text="@string/watch_friend_hudong"
+            style="@style/b_button_color_red" />
+
+        <TextView
+            android:layout_marginTop="20dip"
+            android:text="@string/potion_botton_button_share_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"

@@ -2,6 +2,7 @@ package com.orange.barrage.android.ui.topic;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,6 +45,8 @@ public class FeedMainInnerWidget extends FrameLayout {
     private BarrageGridView mGridView;
 
     private MoveViewParentRelativity mMoveView;
+
+    private float mHeight = 0;
 
     //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
     private Modle mModle = new Modle();
@@ -91,6 +94,10 @@ public class FeedMainInnerWidget extends FrameLayout {
         BarragePlayerSpringImpl barragePlayerSpring = new BarragePlayerSpringImpl();
         barragePlayerSpring.setParentHeight((int) height);
         mBarragePlayer = barragePlayerSpring;
+
+        mHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP ,  22.5f, getResources().getDisplayMetrics());
+
+
     }
 
     public MoveViewParentRelativity getMoveView() {
@@ -188,7 +195,7 @@ public class FeedMainInnerWidget extends FrameLayout {
                 case COMMENT:
                 case LIST: {
                     LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    params.leftMargin = (int) action.getPosX();
+                    params.leftMargin = (int) ( action.getPosX());
                     params.topMargin = (int) action.getPosY();
                     addView(actionWidget, params);
                     break;

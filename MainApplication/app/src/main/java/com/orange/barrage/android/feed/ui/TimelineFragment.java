@@ -6,13 +6,17 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.activity.FeedFirstLognShowBarrageActivity;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
@@ -37,6 +41,13 @@ public class TimelineFragment extends RoboFragment {
     @Inject
     FeedMission mFeedMission;
     private View v ;
+
+    @InjectView(R.id.showFriendButton)
+    Button mShowFriendButton;
+
+    @InjectView(R.id.notdateshow)
+    LinearLayout mLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,11 +74,13 @@ public class TimelineFragment extends RoboFragment {
                     public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
                         mListView.onRefreshComplete();
                         mAdapter.notifyDataSetChanged();
+                        showNotMessage();
                     }
 
                     @Override
                     public void handleFailure(int errorCode) {
                         mListView.onRefreshComplete();
+                        showNotMessage();
                     }
                 });
             }
@@ -89,6 +102,17 @@ public class TimelineFragment extends RoboFragment {
             }
         }.sendEmptyMessage(0);
 
+
+        mShowFriendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转
+
+                ActivityIntent.startIntent(getActivity() , FeedFirstLognShowBarrageActivity.class);
+
+            }
+        });
+
     }
 
     private void loadTimeline() {
@@ -98,16 +122,25 @@ public class TimelineFragment extends RoboFragment {
             public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
                 mListView.onRefreshComplete();
                 mAdapter.notifyDataSetChanged();
+                showNotMessage();
             }
 
             @Override
             public void handleFailure(int errorCode) {
                 mListView.onRefreshComplete();
+                showNotMessage();
             }
         });
 
     }
 
+    private void showNotMessage(){
+        if(mAdapter.getCount() != 0){
+            mLayout.setVisibility(View.GONE);
+        }else {
+            mLayout.setVisibility(View.VISIBLE);
+        }
+    }
 
 //    @Override
 //    public void onResume(){

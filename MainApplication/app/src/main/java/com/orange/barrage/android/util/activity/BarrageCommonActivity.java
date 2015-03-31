@@ -15,6 +15,7 @@ import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.view.RemindboxAlertDialog;
 import com.orange.protocol.message.UserProtos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,11 +60,12 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
      * @param rightid  右边按钮的图标资源
      */
     protected  void onCreate(Bundle savedInstanceState , int layoutresid, int titleid , int rightid){
-        onCreate(savedInstanceState ,layoutresid , getString(titleid) , rightid);
+        onCreate(savedInstanceState ,layoutresid ,-1 , getString(titleid) , rightid);
     }
 
-
-
+    protected  void onCreate(Bundle savedInstanceState , int layoutresid ,int leftid ,  int titleid , int rightid){
+        onCreate(savedInstanceState ,layoutresid ,leftid , getString(titleid) , rightid);
+    }
 
     /**
      *
@@ -72,16 +74,20 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
      * @param rightid 右边按钮的图标资源
      */
     protected void onCreate(Bundle savedInstanceState,int layoutresid ,String titleString , int rightid ){
-        super.onCreate(savedInstanceState);
+        onCreate(savedInstanceState, layoutresid, -1, titleString, rightid);
 
+    }
+
+    protected void onCreate(Bundle saveInstanceState  , int layoutresid , int leftid , String titleString , int rightid){
+        super.onCreate(saveInstanceState);
         mBarrageAndroid = (BarrageAndroid)getApplication();
-
         setContentView(layoutresid);
 
         // init top bar
         mTopBarView = new TopBarView(this);
         mTopBarView.setTitleText(titleString);
         mTopBarView.setRightButton(rightid);
+        mTopBarView.setLeftButton(leftid);
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,11 +103,7 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
 
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
-
-
     }
-
-
 
     @Override
     protected void onStart() {
@@ -129,6 +131,10 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
 
     public Parcelable getIntentParcelable(String key){
         return getIntentUtil().getIntentParcelable(key);
+    }
+
+    public Serializable getIntentSerializable(String key){
+        return getIntentUtil().getIntentSerializable(key);
     }
 
     public int getIntentInt(String key ,int defaultValue){

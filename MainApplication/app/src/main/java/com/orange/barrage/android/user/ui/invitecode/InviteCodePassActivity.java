@@ -153,6 +153,13 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
             mPhoneEdiText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         }
 
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSend(v);
+            }
+        });
+
     }
 
     public void onClickSend(View v) {

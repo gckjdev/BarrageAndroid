@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
-import com.orange.barrage.android.feed.mission.PublishFeedMission;
 import com.orange.barrage.android.friend.mission.callback.GetTagListCallback;
 import com.orange.barrage.android.friend.model.FriendManager;
 import com.orange.barrage.android.friend.model.TagManager;
@@ -34,7 +33,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
-import roboguice.util.Ln;
 
 /**
  * Created by youjiannuo on 2015/3/24.

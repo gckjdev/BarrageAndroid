@@ -13,7 +13,7 @@
         layout="@layout/activity_logn_other_idea"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-
+        android:visibility="invisible"
        />
 
     <LinearLayout
@@ -41,7 +41,6 @@
             style="@style/wrap_content"
             android:layout_gravity="center"
             android:background="@color/b_bg_color_gray"
-
             android:src="@drawable/y_zhuche_xiala"
             android:onClick="onClickSF" />
     </LinearLayout>
