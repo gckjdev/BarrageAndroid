@@ -66,9 +66,6 @@ public class InviteMyFriendActivity extends BarrageCommonActivity {
                         .addSheetItem("短信邀请", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
                             @Override
                             public void onClick(int which) {
-                                //MessageCenter.postInfoMessage("测试菜单成功");
-                                //把邀请码传过去,得到邀请码 avail_number.getText().toString();
-                                //Activity之间传递信息,如果两个Activtiy之间传递数据不需要返回的话，那么可以用这个方法
                                 ActivityIntent.startIntent(InviteMyFriendActivity.this,SmsMessageInviteMyFriendActivity.class,AVAILINVITENUMBER,avail_number.getText().toString());
                         }
                         })

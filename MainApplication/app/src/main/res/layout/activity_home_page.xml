@@ -3,6 +3,6 @@
     android:background="@color/white"
     android:layout_width="match_parent" android:layout_height="match_parent">
     <ImageView style="@style/match_content"
-        android:src="@drawable/y_home_page_tab"
+        android:src="@drawable/splash"
         android:scaleType="center"/>
 </LinearLayout>

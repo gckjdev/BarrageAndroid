@@ -3,19 +3,15 @@ package com.orange.barrage.android.user.ui.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
-
-import roboguice.util.Ln;
 
 
 /**
@@ -75,7 +71,7 @@ public class UserAvatarView extends ImageView {
         }
 
         //MessageCenter.postErrorMessage("ni hao wo bei diao yong");
-        Ln.e("头像加载照片"+url);//加载照片
+      /*  Ln.e("头像加载照片"+url);//加载照片*/
         Picasso.with(mContext)
                 .load(url)
                 .resize(300,300)

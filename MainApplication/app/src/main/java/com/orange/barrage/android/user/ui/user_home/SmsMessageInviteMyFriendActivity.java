@@ -145,6 +145,7 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
         }
     }
 
+    //左边箭头的逻辑,如果想在一个页面中调用两个对话框方法，需要判断状态，如果不判断状态，会引起逻辑混乱
     @Override
     public void onClickLeft(View v) {
         //

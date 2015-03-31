@@ -19,29 +19,28 @@ public class HomePageActivity extends BarrageCommonActivity {
     @Inject
     UserManager mUserManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home_page);
-        super.onCreate(savedInstanceState , R.layout.activity_home_page,"", -1);
 
+        super.onCreate(savedInstanceState, R.layout.activity_home_page, "", -1);
 
-        new Handler().postAtTime(new Runnable() {
+        /**
+         * 延迟一秒进入主页面
+         */
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity();
             }
-        } , 500);
+        }, 1000);
 
     }
 
-    private void startActivity(){
+    private void startActivity() {
 
-        if(mUserManager.hasUser()){
-            ActivityIntent.startIntent(this , HomeActivity.class);
-        }else{
+        if (mUserManager.hasUser()) {
+            ActivityIntent.startIntent(this, HomeActivity.class);
+        } else {
             ActivityIntent.startIntent(this, LoginHomeWithInviteCodeActivity.class);
         }
         finish();

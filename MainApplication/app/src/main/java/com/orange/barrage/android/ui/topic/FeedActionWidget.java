@@ -62,9 +62,12 @@ public class FeedActionWidget extends LinearLayout {
 
         LayoutDrawIconBackground.Params params = getParams();
 
+
         new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, false);
-//
+
         new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, true);
+
+
 
     }
 
@@ -142,6 +145,8 @@ public class FeedActionWidget extends LinearLayout {
 //        UserProtos.PBUser user = feedAction.getUser();
 //        setUser(user);
         setText(feedAction.getText());
+
+        // FIXME incorrect color, need conversion
         setTextColor(feedAction.getColor());
     }
 
