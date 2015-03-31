@@ -2,7 +2,6 @@ package com.orange.barrage.android.friend.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,13 +10,10 @@ import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.mission.PhotoAndCamera;
-import com.orange.barrage.android.feed.mission.ShowPublishFeedView;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
-import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
@@ -32,7 +28,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     public static final String mUrlKey = "1";
 
     private static final String BUNDLE_KEY_USER = "BUNDLE_KEY_USER";
-    private ShowPublishFeedView mShowPublishFeedView;
+/*    private ShowPublishFeedView mShowPublishFeedView;*/
 
     @InjectView(R.id.friend_detail_avatar_view)
     private UserAvatarView mUserAvatarImageView;
@@ -143,7 +139,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     }
 
-
+/*
     public void onClickCamera(View v) {
         initPublishFeefView();
         mShowPublishFeedView.showPublishFeedView();
@@ -173,5 +169,5 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     private void initPublishFeefView() {
         mShowPublishFeedView = mShowPublishFeedView
                 == null ? new ShowPublishFeedView(this, mOnGetPhotoCallbak) : mShowPublishFeedView;
-    }
+    }*/
 }
