@@ -33,7 +33,7 @@
 
             <TextView
                 android:text="Bill"
-
+                android:background="@drawable/shadowtwo"
                 android:textSize="20sp"
                 android:id="@+id/friend_detail_nick"
                 android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="30dp" />
 
             <TextView
-
+                android:background="@drawable/shadowtwo"
                 android:id="@+id/friend_detail_signature"
                 android:textSize="18sp"
                 android:text="什么也没有"
