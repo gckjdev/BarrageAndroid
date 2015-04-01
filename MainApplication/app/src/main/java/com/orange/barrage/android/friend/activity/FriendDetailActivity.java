@@ -140,8 +140,8 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                setColor();
             }
         } , 100);
-
     }
+
 
     /**
      *窗口焦点改变的时候调用
@@ -161,10 +161,10 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                             public void onSuccess() {
                                 setColorTime();
                             }
-
                             @Override
                             public void onError() {
                                 setColor();
+
                             }
                         });
             }else setColor();
