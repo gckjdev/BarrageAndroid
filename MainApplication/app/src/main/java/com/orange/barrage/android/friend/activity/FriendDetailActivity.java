@@ -2,20 +2,27 @@ package com.orange.barrage.android.friend.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.ui.PhotoAndCamera;
+import com.orange.barrage.android.feed.ui.ShowPublishFeedView;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.StringUtil;
 import com.orange.protocol.message.UserProtos;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
@@ -28,7 +35,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     public static final String mUrlKey = "1";
 
     private static final String BUNDLE_KEY_USER = "BUNDLE_KEY_USER";
-/*    private ShowPublishFeedView mShowPublishFeedView;*/
+    private ShowPublishFeedView mShowPublishFeedView;
 
     @InjectView(R.id.friend_detail_avatar_view)
     private UserAvatarView mUserAvatarImageView;
@@ -48,13 +55,14 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     @InjectView(R.id.friend_detail_sharephoto)
     private Button shareButton;
 
-    /*@InjectView(R.id.friend_detail_userbackground)
-    private LinearLayout mFriendDetailUserBackground;*/
+    @InjectView(R.id.friend_detail_userbackground)
+    private RelativeLayout mFriendDetailUserBackground;
 
     @InjectView(R.id.user_detail_bg)
     private ImageView mUserDetailBg;
 
     UserProtos.PBUser mUser;
+
 
 
     @Inject
@@ -96,13 +104,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         }
 
         mUserAvatarImageView.loadUser(mUser);
-        if (mUser.hasAvatarBg()) {
-            Picasso.with(FriendDetailActivity.this)
-                    .load(mUser.getAvatarBg().toString())
-                    .placeholder(R.drawable.tab_home)
-                    .error(R.drawable.tab_friend)
-                    .into(mUserDetailBg);
-        }
+
 
         //点击头像显示
         mUserAvatarImageView.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +115,50 @@ public class FriendDetailActivity extends BarrageCommonActivity {
             }
         });
     }
+    private boolean is = false;
+
+    /**
+     * 设置背景的方法
+     *
+     */
+    private void setColor()
+    {
+        Bitmap bitmap = ImageUtil.getChildBitmap(mFriendDetailTag, mFriendDetailUserBackground);
+        mFriendDetailTag.setTextColor(ImageUtil.getColorBitmap(bitmap));
+
+        Bitmap bitmap1=ImageUtil.getChildBitmap(locationTextView,mFriendDetailUserBackground);
+        locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
+    }
+
+    /**
+     *窗口焦点改变的时候调用
+     * @param hasFocus
+     */
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+
+        if(!is) {
+            if (mUser.hasAvatarBg()) {
+                Picasso.with(FriendDetailActivity.this)
+                        .load(mUser.getAvatarBg().toString())
+                        .placeholder(R.drawable.tab_home)
+                        .error(R.drawable.tab_friend)
+                        .into(mUserDetailBg,new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                //这里之所以不能调用这个方法是因为setColor里面中的一个方法不能再onCreate()方法中调用
+                                setColor();
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+            }
+            is = true;
+        }
+    }
 
     public static void show(UserProtos.PBUser user, Context context) {
 
@@ -120,13 +166,11 @@ public class FriendDetailActivity extends BarrageCommonActivity {
             Ln.w("show friend detail but user is null");
             return;
         }
-
         byte[] userBytes = user.toByteArray();
         if (userBytes == null) {
             Ln.w("show friend detail but userBytes is null");
             return;
         }
-
         Bundle bundle = new Bundle();
         bundle.putByteArray(BUNDLE_KEY_USER, userBytes);
 
@@ -139,7 +183,6 @@ public class FriendDetailActivity extends BarrageCommonActivity {
 
     }
 
-/*
     public void onClickCamera(View v) {
         initPublishFeefView();
         mShowPublishFeedView.showPublishFeedView();
@@ -169,5 +212,5 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     private void initPublishFeefView() {
         mShowPublishFeedView = mShowPublishFeedView
                 == null ? new ShowPublishFeedView(this, mOnGetPhotoCallbak) : mShowPublishFeedView;
-    }*/
+    }
 }
