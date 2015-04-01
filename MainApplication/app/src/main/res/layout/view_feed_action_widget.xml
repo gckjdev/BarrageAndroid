@@ -21,7 +21,6 @@
         android:id="@+id/commentsTextView"
         style="@style/comments" />
 
-
     <!-- android:gravity="center_vertical" -->
     <com.orange.barrage.android.user.ui.view.UserAvatarView
         android:id="@+id/head"

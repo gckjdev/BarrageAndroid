@@ -8,7 +8,7 @@
     <include layout="@layout/activity_view_top" />
 
     <RelativeLayout
-
+        android:background="@color/white"
         android:id="@+id/friend_detail_userbackground"
         android:layout_width="match_parent"
         android:layout_height="350dp">
@@ -20,6 +20,7 @@
             android:layout_height="350dp" />
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -60,7 +61,7 @@
                 android:textSize="18sp"
                 android:text="朋友"
                 style="@style/t_textview_limit"
-
+                android:textColor="#0000"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="20dp"
@@ -85,7 +86,7 @@
                 android:layout_marginRight="20dp"
                 android:textSize="18sp"
                 android:text="北京"
-
+                android:textColor="#0000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -100,7 +101,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="80dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -115,4 +116,11 @@
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/dominant_color"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        tools:background="@android:color/darker_gray"/>
 </LinearLayout>
