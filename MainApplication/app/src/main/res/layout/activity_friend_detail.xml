@@ -34,10 +34,10 @@
 
             <TextView
                 android:text="Bill"
-                android:shadowColor="@android:color/black"
+                android:shadowColor="@android:color/white"
                 android:shadowRadius="2"
-                android:shadowDx="5"
-                android:shadowDy="5"
+                android:shadowDx="1"
+                android:shadowDy="1"
                 android:textSize="20sp"
                 android:id="@+id/friend_detail_nick"
                 android:layout_width="wrap_content"
