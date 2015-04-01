@@ -123,12 +123,12 @@ public class FriendDetailActivity extends BarrageCommonActivity {
      */
     private void setColor()
     {
-        Bitmap bitmap = ImageUtil.getChildBitmap(mFriendDetailTag, mFriendDetailUserBackground);
-        mFriendDetailTag.setTextColor(ImageUtil.getColorBitmap(bitmap));
-
-        Bitmap bitmap1=ImageUtil.getChildBitmap(locationTextView,mFriendDetailUserBackground);
-        locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
+                Bitmap bitmap = ImageUtil.getChildBitmap(mFriendDetailTag, mFriendDetailUserBackground);
+                mFriendDetailTag.setTextColor(ImageUtil.getColorBitmap(bitmap));
+                Bitmap bitmap1=ImageUtil.getChildBitmap(locationTextView,mFriendDetailUserBackground);
+                locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
     }
+
 
     /**
      *窗口焦点改变的时候调用
@@ -149,9 +149,8 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                                 //这里之所以不能调用这个方法是因为setColor里面中的一个方法不能再onCreate()方法中调用
                                 setColor();
                             }
-
                             @Override
-                            public void onError() {
+                           public void onError() {
 
                             }
                         });
