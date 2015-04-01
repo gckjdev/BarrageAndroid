@@ -99,7 +99,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".friend.activity.FriendListSelectActivity" />
-
+        <activity android:name=".feed.activity.FeedFirstLognShowBarrageActivity"/>
         <activity android:name=".feed.activity.FeedNewMessageListActivity"/>
 
         <activity android:name=".feed.activity.FeedPublishedImageActivity" />

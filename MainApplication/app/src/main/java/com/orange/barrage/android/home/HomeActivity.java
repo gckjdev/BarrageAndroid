@@ -19,6 +19,7 @@ import com.orange.barrage.android.event.ActionPickEvent;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
+import com.orange.barrage.android.feed.activity.FeedFirstLognShowBarrageActivity;
 import com.orange.barrage.android.feed.activity.FeedNewMessageListActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
@@ -308,7 +309,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Override
     public void onClickLeft(View v) {
 
-        ActivityIntent.startIntent(this , FeedNewMessageListActivity.class);
+        ActivityIntent.startIntent(this , FeedFirstLognShowBarrageActivity.class);
 
     }
 }

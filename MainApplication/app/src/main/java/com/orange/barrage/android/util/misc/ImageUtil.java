@@ -138,7 +138,7 @@ public class ImageUtil
      * @param bm
      * @return 白色或者黑色
      */
-    public int getColorBitmap(Bitmap bm){
+    public static int getColorBitmap(Bitmap bm){
         int black = 0;
         int white = 0;
         for(int i = 0 ; i < bm.getHeight() ; i ++){
@@ -151,7 +151,7 @@ public class ImageUtil
     }
 
 
-    private void getColor(int color , int balck , int white){
+    private static void getColor(int color , int balck , int white){
         int red = Color.red(color);
         int bule = Color.blue(color);
         int green = Color.green(color);
