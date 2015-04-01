@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -117,16 +118,28 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     }
     private boolean is = false;
 
+    private void setColor(){
+        Bitmap bitmap = ImageUtil.getChildBitmap(mFriendDetailTag, mFriendDetailUserBackground);
+        mFriendDetailTag.setTextColor(ImageUtil.getColorBitmap(bitmap));
+
+        Bitmap bitmap1=ImageUtil.getChildBitmap(locationTextView,mFriendDetailUserBackground);
+        locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
+    }
+
+
+
     /**
      * 设置背景的方法
      *
      */
-    private void setColor()
+    private void setColorTime()
     {
-                Bitmap bitmap = ImageUtil.getChildBitmap(mFriendDetailTag, mFriendDetailUserBackground);
-                mFriendDetailTag.setTextColor(ImageUtil.getColorBitmap(bitmap));
-                Bitmap bitmap1=ImageUtil.getChildBitmap(locationTextView,mFriendDetailUserBackground);
-                locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setColor();
+            }
+        } , 100);
     }
 
 
@@ -146,15 +159,15 @@ public class FriendDetailActivity extends BarrageCommonActivity {
                         .into(mUserDetailBg,new Callback() {
                             @Override
                             public void onSuccess() {
-                                //这里之所以不能调用这个方法是因为setColor里面中的一个方法不能再onCreate()方法中调用
-                                setColor();
+                                setColorTime();
                             }
                             @Override
-                           public void onError() {
+                            public void onError() {
+                                setColor();
 
                             }
                         });
-            }
+            }else setColor();
             is = true;
         }
     }
