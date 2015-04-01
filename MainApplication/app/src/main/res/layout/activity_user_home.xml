@@ -7,6 +7,7 @@
 
     <include layout="@layout/activity_view_top" />
     <RelativeLayout
+        android:id="@+id/friend_home_background"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="210dp">
@@ -30,8 +31,12 @@
                 />
             <TextView
                 android:text="123"
-                android:textColor="@android:color/background_dark"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
+                android:shadowColor="@android:color/black"
+                android:shadowRadius="3"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
                 android:id="@+id/friend_home_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,44 +50,6 @@
                 />
         </RelativeLayout>
     </RelativeLayout>
-    <!--<LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="210dp">
-        <RelativeLayout
-            android:id="@+id/user_home_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:scaleType="fitXY"
-                android:id="@+id/userhome_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <com.orange.barrage.android.user.ui.view.UserAvatarView
-                android:id="@+id/friend_home_avatarview"
-                android:src="@drawable/person_detail"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                />
-            <TextView
-                android:text="123"
-                android:textColor="@android:color/background_dark"
-                android:textSize="20sp"
-                android:id="@+id/friend_home_nick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/friend_home_avatarview"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="11dp"
-                android:singleLine="true"
-                android:maxLength="20"
-                android:layout_centerInParent="true"
-                />
-        </RelativeLayout>
-    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/user_home_myfriend_layout"

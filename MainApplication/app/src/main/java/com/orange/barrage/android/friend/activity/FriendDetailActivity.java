@@ -137,6 +137,7 @@ public class FriendDetailActivity extends BarrageCommonActivity {
         Bitmap bitmap1 = ImageUtil.getChildBitmap(locationTextView, mFriendDetailUserBackground);
         locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
     }
+
     /**
      * 设置背景的方法
      */
