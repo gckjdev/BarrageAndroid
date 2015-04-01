@@ -13,9 +13,6 @@ public class CompressColorUtil {
     }
 
     public static int toAndroidColor(int barrageColor){
-        if(barrageColor == 0){
-            return Color.WHITE;
-        }
         float alpha = getAlphaFromColor8(barrageColor);
         float red = getRedFromColor8(barrageColor);
         float green = getGreenFromColor8(barrageColor);

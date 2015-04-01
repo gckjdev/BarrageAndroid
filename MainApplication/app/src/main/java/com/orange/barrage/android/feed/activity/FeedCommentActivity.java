@@ -255,11 +255,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mCircleColorView = ((CircleColorView) v);
         int color = v.getTag() != null ? (int) v.getTag() : Color.BLACK;
         changeTextColor(color);
-
-
-        int barrageColor = CompressColorUtil.toBarrageColor(color);
-        mActionBuilder.setColor(barrageColor);
-//        mActionBuilder.setColor(color);
     }
 
     @Override
@@ -298,6 +293,10 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mActionBuilder.setPosX(mComentRelative.getMoveingViewX());
         mActionBuilder.setPosY(mComentRelative.getMoveingViewY());
 
+        int color = mCommentsEdit.getTextColor();
+        int barrageColor = CompressColorUtil.toBarrageColor(color);
+        mActionBuilder.setColor(barrageColor);
+
         final BarrageProtos.PBFeedAction action = mActionBuilder.build();
 
         mFeedMission.replyFeed(action, new FeedMissionCallbackInterface() {
@@ -311,7 +310,9 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
                 //add action
                 finish();
-                mFeedMainWidget.playFrom(feedActionLis.size() - 1);
+                mFeedMainWidget.playFrom(0);
+
+//                mFeedMainWidget.playFrom(feedActionLis.size() - 1);
             }
 
             @Override

@@ -153,7 +153,12 @@ public class FeedActionWidget extends LinearLayout {
 
     public void setTextColor(int color ){
         TextView tv = getTextView();
-        tv.setTextColor( color);
+        tv.setTextColor(color);
+    }
+
+    public int getTextColor(){
+        TextView tv = getTextView();
+        return tv.getCurrentTextColor();
     }
 }
 
