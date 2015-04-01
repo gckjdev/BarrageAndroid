@@ -121,7 +121,7 @@ public class ImageUtil {
     //该方法不可以放在Oncreate里面执行，否则获取不到
     public static Bitmap getViewBitmapCache(View v) {
         v.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        v.layout(0, 0, v.getWidth(), v.getHeight());
+//        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
         v.buildDrawingCache();
         return v.getDrawingCache();
     }
@@ -133,7 +133,8 @@ public class ImageUtil {
      * @param bm
      * @return 白色或者黑色
      */
-    public static int getColorBitmap(Bitmap bm) {
+
+    public static int getColorBitmap(Bitmap bm){
 
         FileUtil.savePhotoToSDCard(bm, SystemUtil.getSDCardPath(), "you.png");
 
@@ -144,11 +145,11 @@ public class ImageUtil {
         }
         //Ln.e("sdhsds:"+bw[0]+"   "+bw[1]);
         return bw[0] < bw[1] ? Color.BLACK : Color.WHITE;
-
     }
 
 
     private static void getColor(int color, int bw[]) {
+
         int red = Color.red(color);
         int bule = Color.blue(color);
         int green = Color.green(color);

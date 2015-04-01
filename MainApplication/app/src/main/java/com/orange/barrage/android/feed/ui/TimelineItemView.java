@@ -2,6 +2,7 @@ package com.orange.barrage.android.feed.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -43,9 +44,23 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     protected RelativeLayout mMainRelativeLayout;
 
     public TimelineItemView(Context context) {
-        super(context);
+        this(context , null);
+    }
+
+    public TimelineItemView(Context context, AttributeSet attrs) {
+        this(context, attrs , 0);
+    }
+
+    public TimelineItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         initView(context);
     }
+
+    public TimelineItemView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initView(context);
+    }
+
 
     public void initView(Context c){
         mView = LayoutInflater.from(ContextManager.getContext()).inflate(R.layout.view_timeline_list_item, this);
