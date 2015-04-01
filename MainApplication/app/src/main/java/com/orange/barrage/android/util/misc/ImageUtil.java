@@ -121,7 +121,7 @@ public class ImageUtil {
     //该方法不可以放在Oncreate里面执行，否则获取不到
     public static Bitmap getViewBitmapCache(View v) {
         v.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        v.layout(0, 0, v.getWidth(), v.getHeight());
+//        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
         v.buildDrawingCache();
         return v.getDrawingCache();
     }
