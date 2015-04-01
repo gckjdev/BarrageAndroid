@@ -55,6 +55,10 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
         mInnerView.play();
     }
 
+    public void playFrom(int index) {
+        mInnerView.playFrom(index);
+    }
+
     public void pause() {
         mInnerView.pause();
     }

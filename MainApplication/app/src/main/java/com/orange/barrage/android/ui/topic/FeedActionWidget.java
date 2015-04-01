@@ -12,9 +12,12 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
+import com.orange.barrage.android.util.misc.CompressColorUtil;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
+
+import roboguice.util.Ln;
 
 /**
  * Action widget for feed
@@ -54,10 +57,10 @@ public class FeedActionWidget extends LinearLayout {
     private void initView(){
         mView = LayoutInflater.from(getContext()).inflate(R.layout.view_feed_action_widget, this);
 
-        mEditText = (EditText)findViewById(R.id.commentseditText);
+        mEditText = (EditText)findViewById(R.id.commentsEditText);
         mTextView = (TextView)findViewById(R.id.commentsTextView);
         mUserAvatarView = (UserAvatarView)findViewById(R.id.head);
-        mEditextRight = (TextView) findViewById(R.id.commentseditTextRight);
+        mEditextRight = (TextView) findViewById(R.id.commentsEditTextRight);
         mTextRight = (TextView) findViewById(R.id.commentsTextViewRight);
 
         LayoutDrawIconBackground.Params params = getParams();
@@ -100,19 +103,18 @@ public class FeedActionWidget extends LinearLayout {
 
             mTextView.setFocusable(isFocusable);
             mTextView.setVisibility(View.VISIBLE);
-//            mTextRight.setVisibility(View.VISIBLE);
         }
     }
 
 
     public String getText(){
         TextView tv = getTextView();
-        return tv == null ? "" : tv.getText().toString();
+        return tv.getText().toString();
     }
 
     public void setText(String text){
         TextView tv = getTextView();
-        if(tv != null) tv.setText(text);
+        tv.setText(text);
     }
 
     private TextView getTextView(){
@@ -142,12 +144,11 @@ public class FeedActionWidget extends LinearLayout {
     public void setFeedAction(BarrageProtos.PBFeedAction feedAction){
         mFeedAction = feedAction;
         setIconUrl(feedAction.getAvatar());
-//        UserProtos.PBUser user = feedAction.getUser();
-//        setUser(user);
         setText(feedAction.getText());
 
-        // FIXME incorrect color, need conversion
-        setTextColor(feedAction.getColor());
+        int color = CompressColorUtil.toAndroidColor(feedAction.getColor());
+
+        setTextColor(color);
     }
 
     public void setTextColor(int color ){

@@ -44,6 +44,7 @@ public class FeedMainInnerWidget extends FrameLayout {
 
     private BarrageGridView mGridView;
 
+    private FrameLayout mStayView;
     private MoveViewParentRelativity mMoveView;
 
     private float mHeight = 0;
@@ -81,6 +82,9 @@ public class FeedMainInnerWidget extends FrameLayout {
         mGridView.setVisibility(View.GONE);
         this.addView(mGridView, matchParentParams);
 
+        //mStayView
+        mStayView = new FrameLayout(mContext);
+        this.addView(mStayView, matchParentParams);
         //move view
         mMoveView = new MoveViewParentRelativity(mContext);
         this.addView(mMoveView, matchParentParams);
@@ -158,7 +162,7 @@ public class FeedMainInnerWidget extends FrameLayout {
                                 LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                                 params.leftMargin = (int) action.getPosX();
                                 params.topMargin = (int) action.getPosY();
-                                addView(actionWidget, params);
+                                mStayView.addView(actionWidget, params);
                                 break;
                             default:
                                 break;
@@ -181,7 +185,7 @@ public class FeedMainInnerWidget extends FrameLayout {
     public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
         if (mFeedActionViews != null) {
             for (View view : mFeedActionViews) {
-                removeView(view);
+                mStayView.removeView(view);
             }
         }
         mFeedActionViews = Lists.newArrayList();
@@ -197,7 +201,7 @@ public class FeedMainInnerWidget extends FrameLayout {
                     LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     params.leftMargin = (int) ( action.getPosX());
                     params.topMargin = (int) action.getPosY();
-                    addView(actionWidget, params);
+                    mStayView.addView(actionWidget, params);
                     break;
                 }
                 case SHARE: {
@@ -238,6 +242,10 @@ public class FeedMainInnerWidget extends FrameLayout {
 
     public void moveTo(float progress) {
         mBarragePlayer.moveTo(progress);
+    }
+
+    public void playFrom(int index) {
+        mBarragePlayer.playFrom(index);
     }
 
     public void moveToEnd() {

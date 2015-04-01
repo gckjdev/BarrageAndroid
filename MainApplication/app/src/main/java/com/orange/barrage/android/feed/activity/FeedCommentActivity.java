@@ -19,6 +19,7 @@ import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.misc.CompressColorUtil;
 import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.barrage.android.util.view.RemindboxAlertDialog;
@@ -161,7 +162,6 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         FeedActionWidget comment = new FeedActionWidget(this);
 
 
-
         getMoveView().addView(comment, left, top);
         return comment;
     }
@@ -256,14 +256,17 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         int color = v.getTag() != null ? (int) v.getTag() : Color.BLACK;
         changeTextColor(color);
 
-        mActionBuilder.setColor(color);
+
+        int barrageColor = CompressColorUtil.toBarrageColor(color);
+        mActionBuilder.setColor(barrageColor);
+//        mActionBuilder.setColor(color);
     }
 
     @Override
     public void onClickLeft(View v) {
         if (mCommentsEdit.getText().toString().trim().length() == 0)
             super.onClickLeft(v);
-        else showRemindboxAlertDialog(new String[]{"是","否"},"提示","你已经编辑了，是否退出", -1);
+        else showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "你已经编辑了，是否退出", -1);
     }
 
     @Override
@@ -279,7 +282,7 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
 
     @Override
     public void onRemindItemClick(int position) {
-        if(position == RemindboxAlertDialog.LEFTBUTTON){
+        if (position == RemindboxAlertDialog.LEFTBUTTON) {
             finish();
         }
     }
@@ -300,9 +303,15 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
         mFeedMission.replyFeed(action, new FeedMissionCallbackInterface() {
             @Override
             public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
-                //FIXME: need to add the Feed to current widget...
+                //need to add the Feed to current widget...
+                List<BarrageProtos.PBFeedAction> feedActionLis = mFeedMainWidget.getModel().getFeedActionLis();
+                feedActionLis.add(action);
+
+                mFeedMainWidget.setModel(mFeedMainWidget.getModel());
+
                 //add action
                 finish();
+                mFeedMainWidget.playFrom(feedActionLis.size() - 1);
             }
 
             @Override
