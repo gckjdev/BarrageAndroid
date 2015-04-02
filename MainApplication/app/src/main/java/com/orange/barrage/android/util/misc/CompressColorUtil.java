@@ -1,15 +1,23 @@
 package com.orange.barrage.android.util.misc;
 
+import android.graphics.Color;
+
 public class CompressColorUtil {
 
     public static int toBarrageColor(int androidColor){
-        // TODO
-        return 0;
+        float alpha = Color.alpha(androidColor);
+        float red = Color.red(androidColor);
+        float green = Color.green(androidColor);
+        float blue = Color.blue(androidColor);
+        return (int)compressColor8WithRed((int)red, (int)green, (int)blue, (int)alpha);
     }
 
     public static int toAndroidColor(int barrageColor){
-        // TODO
-        return 0;
+        float alpha = getAlphaFromColor8(barrageColor);
+        float red = getRedFromColor8(barrageColor);
+        float green = getGreenFromColor8(barrageColor);
+        float blue = getBlueFromColor8(barrageColor);
+        return Color.argb((int)alpha, (int)red, (int)green, (int)blue);
     }
 
     public static long getUnsignedInt (int data){     //将int数据转换为0~4294967295 (0xFFFFFFFF即DWORD)。

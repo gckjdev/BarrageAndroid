@@ -106,6 +106,7 @@ public class BarrageSpringChain implements SpringListener {
     private Handler mHandler = new Handler();
 
     private CopyOnWriteArrayList<Runnable> mRunnings = new CopyOnWriteArrayList<Runnable>();
+
     /**
      * Add a spring to the chain that will callback to the provided listener.
      *
@@ -124,7 +125,7 @@ public class BarrageSpringChain implements SpringListener {
         return this;
     }
 
-    public void start(){
+    public void start() {
         //stop all
         stop();
 
@@ -132,16 +133,16 @@ public class BarrageSpringChain implements SpringListener {
 
         //find current view already set 1
         int currentIndex = 0;
-        for(int i=0;i<size;i++) {
+        for (int i = 0; i < size; i++) {
             final int index = i;
             final Spring spring = mSprings.get(index);
-            if(spring.getCurrentValue()==1){
+            if (spring.getCurrentValue() == 1) {
                 currentIndex++;
             }
         }
 
         //start from progress not 1, to the end , and set them to 1.
-        for(int i=currentIndex;i<size;i++){
+        for (int i = currentIndex; i < size; i++) {
             final Spring spring = mSprings.get(i);
             Runnable runnable = new Runnable() {
                 @Override
@@ -150,50 +151,50 @@ public class BarrageSpringChain implements SpringListener {
                 }
             };
             mRunnings.add(runnable);
-            int deltaIndex = i- currentIndex;
+            int deltaIndex = i - currentIndex;
             mHandler.postDelayed(runnable, deltaIndex * mDelayBetweenSpring);
         }
     }
 
-    public void stop(){
-        for(Runnable runnable:mRunnings) {
+    public void stop() {
+        for (Runnable runnable : mRunnings) {
             mHandler.removeCallbacks(runnable);
         }
         mRunnings.clear();
     }
 
-    public void moveToEnd(){
+    public void moveToEnd() {
         stop();
         List<Spring> springs = mSprings;
         //set all to 0
-        for(int i=0;i<springs.size();i++){
+        for (int i = 0; i < springs.size(); i++) {
             springs.get(i).setCurrentValue(1, true);
         }
     }
 
-    public void moveTo(float progress){
+    public void moveTo(float progress) {
         stop();
         List<Spring> springs = mSprings;
         //set all to 0
-        for(int i=0;i<springs.size();i++){
+        for (int i = 0; i < springs.size(); i++) {
             springs.get(i).setCurrentValue(0, true);
         }
 
-        if(progress>0){
+        if (progress > 0) {
             //start to move before progress.
-            int currentIndex = (int)progress;
-            for(int i=0;i<currentIndex;i++){
+            int currentIndex = (int) progress;
+            for (int i = 0; i < currentIndex; i++) {
                 springs.get(i).setCurrentValue(1, true);
             }
 
-            float currentSpringProgress = progress - (float)currentIndex;
+            float currentSpringProgress = progress - (float) currentIndex;
             springs.get(currentIndex).setCurrentValue(currentSpringProgress);
         }
     }
 
-    public BarrageSpringChain setCurrentValue(double currentValue){
+    public BarrageSpringChain setCurrentValue(double currentValue) {
         int size = mSprings.size();
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             Spring spring = mSprings.get(i);
             spring.setCurrentValue(currentValue);
         }
