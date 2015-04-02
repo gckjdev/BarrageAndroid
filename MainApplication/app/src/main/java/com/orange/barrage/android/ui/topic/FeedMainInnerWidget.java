@@ -7,12 +7,14 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
+import com.orange.barrage.android.feed.ui.TimelineItemView;
 import com.orange.barrage.android.feed.ui.view.BarrageGridView;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
@@ -22,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import org.roboguice.shaded.goole.common.collect.Lists;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +45,15 @@ public class FeedMainInnerWidget extends FrameLayout {
     private Context mContext;
     private FeedWidgetMode mMode;
 
+    private TimelineItemView.onTouchTimelineItemViewListener mOnTouchTimelineItemViewListener;
+
     private BarrageGridView mGridView;
 
     private MoveViewParentRelativity mMoveView;
 
     private float mHeight = 0;
+
+    private TimelineItemView mTimelineIteView;
 
     //FIXME: there's a typo here, and why need another model, reuse mMode:List and comment
     private Modle mModle = new Modle();
@@ -108,6 +115,17 @@ public class FeedMainInnerWidget extends FrameLayout {
         return mGridView;
     }
 
+    private TimelineItemView getTimelineIteView(){
+        if(mTimelineIteView != null)  return mTimelineIteView;
+        getTimelineIteView(getParent());
+        return mTimelineIteView;
+    }
+
+    private void getTimelineIteView(ViewParent v){
+        if(v instanceof TimelineItemView){
+            mTimelineIteView = (TimelineItemView) v;
+        }else getTimelineIteView(v.getParent());
+    }
 
     public void showOrCloseBarrageGridView(){
         if (mGridView == null) {
@@ -171,7 +189,7 @@ public class FeedMainInnerWidget extends FrameLayout {
     }
 
     public void setImageURL(String url) {
-        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage);
+        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage , getTimelineIteView().buildCallback());
     }
 
     public void setSubtitle(String title) {
@@ -188,7 +206,7 @@ public class FeedMainInnerWidget extends FrameLayout {
         for (BarrageProtos.PBFeedAction action : feedActionList) {
             FeedActionWidget actionWidget = new FeedActionWidget(mContext);
             actionWidget.setType(FeedActionWidget.COMMENETS_TEXTVIEW);
-            actionWidget.setFeedAction(action);
+            actionWidget.setFeedAction(action , getTimelineIteView().buildCallback());
             mFeedActionViews.add(actionWidget);
 
             switch (mMode) {
@@ -208,7 +226,8 @@ public class FeedMainInnerWidget extends FrameLayout {
                 }
             }
         }
-
+        //开始监听
+        getTimelineIteView().startFeedLoadPhotoListener();
         mBarragePlayer.setBarrageViews(mFeedActionViews);
     }
 
@@ -262,9 +281,18 @@ public class FeedMainInnerWidget extends FrameLayout {
         EventBus.getDefault().post(event);
     }
 
+    public void setOnTimelineItemViewTouchListener(TimelineItemView.onTouchTimelineItemViewListener l){
+        mOnTouchTimelineItemViewListener = l;
+    }
+
+
     //FIXME: why not use click action here.
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        if(mOnTouchTimelineItemViewListener != null)
+            return mOnTouchTimelineItemViewListener.onTimelineItemTouch(event);
+
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             mModle.clear();
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
@@ -276,8 +304,13 @@ public class FeedMainInnerWidget extends FrameLayout {
             }
         }
 
+
         return true;
     }
+
+
+
+
 
     class Modle {
         public boolean is = false;

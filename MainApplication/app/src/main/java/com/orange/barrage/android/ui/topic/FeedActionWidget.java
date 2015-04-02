@@ -15,6 +15,7 @@ import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
+import com.squareup.picasso.Callback;
 
 /**
  * Action widget for feed
@@ -120,8 +121,12 @@ public class FeedActionWidget extends LinearLayout {
     }
 
     public void setIconUrl(String url){
+        setIconUrl(url , null);
+    }
+
+    public void setIconUrl(String url ,Callback callback){
         if (mUserAvatarView != null) {
-            mUserAvatarView.setAvartUrl(url);
+            mUserAvatarView.setAvartUrl(url , callback);
         }
     }
 
@@ -140,8 +145,12 @@ public class FeedActionWidget extends LinearLayout {
     }
 
     public void setFeedAction(BarrageProtos.PBFeedAction feedAction){
+        setFeedAction(feedAction , null);
+    }
+
+    public void setFeedAction(BarrageProtos.PBFeedAction feedAction , Callback callback){
         mFeedAction = feedAction;
-        setIconUrl(feedAction.getAvatar());
+        setIconUrl(feedAction.getAvatar() , callback);
 //        UserProtos.PBUser user = feedAction.getUser();
 //        setUser(user);
         setText(feedAction.getText());

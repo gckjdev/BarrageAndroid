@@ -11,6 +11,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.util.misc.ImageUtil;
 import com.orange.barrage.android.util.misc.image.RoundedTransformation;
 import com.orange.protocol.message.UserProtos;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 
@@ -52,9 +53,11 @@ public class UserAvatarView extends ImageView {
         setAvartUrl(user.getAvatar());
 
     }
-
-
     public void setAvartUrl(String url){
+        setAvartUrl(url , null);
+    }
+
+    public void setAvartUrl(String url , Callback callback){
 
         // TODO get height and width from layout configuration
 //        int width = 100;
@@ -78,7 +81,7 @@ public class UserAvatarView extends ImageView {
                 .transform(new RoundedTransformation(borderWidth))
                 .placeholder(R.drawable.y_morentouxiang)       // TODO change to right default
                 .error(R.drawable.y_morentouxiang)           // TODO change to right default
-                .into(this , null);
+                .into(this , callback);
 
 
         //set visible

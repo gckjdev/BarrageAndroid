@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
+import com.orange.barrage.android.ui.topic.FeedLoadingPhotoListener;
 import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 
@@ -20,6 +22,7 @@ import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.protocol.message.UserProtos;
+import com.squareup.picasso.Callback;
 
 import java.util.List;
 
@@ -39,6 +42,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     private ShowFriendIconView mShowFriendIconView;
     private List<UserProtos.PBUser> mToUsers;
     private View mView;
+    private FeedLoadingPhotoListener mFeedLoadPhotoLister;
 
     //FIXME: Rollin, unused layout
     protected RelativeLayout mMainRelativeLayout;
@@ -96,8 +100,30 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mFeedMainWidget.setModel(model);
     }
 
+    //生成一个图片监听器
+    public Callback buildCallback(){
+        initFeedLoadPhoto();
+        return mFeedLoadPhotoLister.buildCallback();
+    }
 
+    public void clearAllOnFeedLoadPhotoListener(){
+       if(mFeedLoadPhotoLister != null)
+           mFeedLoadPhotoLister.clear();
+    }
 
+    //注册监听
+    public void setOnFeedLoadPhotoListener(FeedLoadingPhotoListener.OnLoadPhotoListener l){
+        initFeedLoadPhoto();
+        mFeedLoadPhotoLister.setOnLoadPhotoListener(l);
+    }
+
+    public void startFeedLoadPhotoListener(){
+        mFeedLoadPhotoLister.startListener();
+    }
+
+    private void initFeedLoadPhoto(){
+        mFeedLoadPhotoLister = mFeedLoadPhotoLister != null ? mFeedLoadPhotoLister : new FeedLoadingPhotoListener();
+    }
 
     private void setIcon(FeedModel model){
         mToUsers = model.getFeed().getToUsersList();
@@ -136,6 +162,10 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mFeedMainWidget.play();
     }
 
+    public void stopPlayer(){
+        if(mFeedMainWidget != null)
+            mFeedMainWidget.stop();
+    }
 
     /**
      * 下拉头像
@@ -163,6 +193,15 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mDropDownImageButton.setVisibility(View.GONE);
         mMainRelativeLayout.setVisibility(View.GONE);
     }
+
+    public void setOnTimelineItemViewTouchListener(TimelineItemView.onTouchTimelineItemViewListener l){
+       mFeedMainWidget.setOnTimelineItemViewTouchListener(l);
+    }
+
+    public interface onTouchTimelineItemViewListener{
+        public boolean onTimelineItemTouch(MotionEvent event);
+    }
+
 
 
 }

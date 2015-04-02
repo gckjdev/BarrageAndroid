@@ -303,7 +303,7 @@ public  class LayoutDrawIconBackground {
         //绘画矩形
         canvas.drawRect(rect , paint);
 
-        RectF rectF = new RectF((float) (v.getWidth() - v.getHeight() + 1), 0 , v.getWidth() , v.getHeight());
+        RectF rectF = new RectF((float) (v.getWidth() - v.getHeight()), 0 , v.getWidth() , v.getHeight());
 
         canvas.drawArc(rectF , 270 , 180 , true , paint);
 

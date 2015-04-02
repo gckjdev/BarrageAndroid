@@ -5,11 +5,16 @@
         android:background="@color/b_color_alpha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:text="\n\n\n\ndsads"
-            android:gravity="center"
-            android:layout_width="100dip"
-            android:background="#7bc567"
-            android:layout_height="wrap_content" />
+    <TextView  android:id="@+id/tvText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="text1"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:shadowColor="#ff0000ff"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"/>
   </com.orange.barrage.android.util.view.RelativeLayoutwhitTriangleIcon>
 

@@ -314,25 +314,42 @@ public class FileUtil {
         }
     }
 
-    public static String getFileResurce(int resId, Context context) {
-        InputStream out = context.getResources().openRawResource(resId);
-        InputStreamReader inputStreamReader = null;
+    public static String getResourceSmallFile(int resId ,Context context){
+        return getResourceSmallFile(resId , context , "UTF-8");
+    }
+
+    public static String getResourceSmallFile(int resId, Context context , String encoding) {
+
+        String sb = null;
         try {
-            inputStreamReader = new InputStreamReader(out, "utf-8");
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
+            sb = new String(getResourceSmallFilebytes(resId , context) , encoding);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return sb;
         }
-        BufferedReader reader = new BufferedReader(inputStreamReader);
-        StringBuffer sb = new StringBuffer("");
-        String line;
+        return sb;
+    }
+
+    public static byte[] getResourceSmallFilebytes(int resId , Context context){
+        if(resId <= 0 || context == null) return new byte[0];
+
+        InputStream out = context.getResources().openRawResource(resId);
+        if(out == null) return new byte[0];
+
         try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
+            int length = out.available();
+            byte[] bytes = new byte[length];
+
+            int result = out.read(bytes);
+
+            if(result == -1) return new byte[0];
+            else return bytes;
+
         } catch (IOException e) {
             e.printStackTrace();
+            return new byte[0];
         }
-        return sb.toString();
+
     }
 
         /**

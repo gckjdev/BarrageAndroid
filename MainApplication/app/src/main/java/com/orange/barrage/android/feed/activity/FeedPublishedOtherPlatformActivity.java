@@ -10,8 +10,10 @@ import com.orange.barrage.android.ui.topic.FeedMainWidget;
 import com.orange.barrage.android.ui.topic.FeedWidgetMode;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.misc.FileUtil;
 import com.orange.barrage.android.util.misc.ScreenUtil;
 import com.orange.protocol.message.BarrageProtos;
+import com.orange.protocol.message.CommonProtos;
 
 import roboguice.inject.InjectView;
 import roboguice.util.Ln;
@@ -60,6 +62,22 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
         model.setFeed(feed);
         return model;
     }
+
+
+    private void getPBPoint(int resid){
+
+        byte[] bytes = FileUtil.getResourceSmallFilebytes(resid , this);
+        try {
+            CommonProtos.PBPoint pbPoint = CommonProtos.PBPoint.parseFrom(bytes);
+//            pbPoint
+
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
     @Override

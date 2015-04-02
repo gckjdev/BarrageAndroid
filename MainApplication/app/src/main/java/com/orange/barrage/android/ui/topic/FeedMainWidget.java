@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.ui.TimelineItemView;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.view.ScalableFrameLayout;
 import com.orange.protocol.message.BarrageProtos;
@@ -73,6 +74,10 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
 
     public void setModel(FeedModel model) {
         mInnerView.setModel(model);
+    }
+
+    public void setOnTimelineItemViewTouchListener(TimelineItemView.onTouchTimelineItemViewListener l){
+        mInnerView.setOnTimelineItemViewTouchListener(l);
     }
 
     public FeedModel getModel(){
