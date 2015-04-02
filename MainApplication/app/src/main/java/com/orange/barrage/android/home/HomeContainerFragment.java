@@ -1,22 +1,14 @@
 package com.orange.barrage.android.home;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.util.Log;
 
 import com.orange.barrage.android.R;
 
 import roboguice.fragment.RoboFragment;
 import roboguice.util.Ln;
+
+//import android.support.v4.app.FragmentTransaction;
 
 public class HomeContainerFragment extends RoboFragment {
 
@@ -39,5 +31,4 @@ public class HomeContainerFragment extends RoboFragment {
         }
         return isPop;
     }
-
 }
