@@ -2,6 +2,8 @@ package com.orange.barrage.android.util.misc;
 
 import android.graphics.Color;
 
+import roboguice.util.Ln;
+
 public class CompressColorUtil {
 
     public static int toBarrageColor(int androidColor){
@@ -9,14 +11,17 @@ public class CompressColorUtil {
         float red = Color.red(androidColor);
         float green = Color.green(androidColor);
         float blue = Color.blue(androidColor);
-        return (int)compressColor8WithRed((int)red, (int)green, (int)blue, (int)alpha);
+        int barrageColor = (int)compressColor8WithRed((int)red, (int)green, (int)blue, (int)alpha);
+        Ln.d("<toBarrageColor> value(%d), red(%d) green(%d) blue(%d) alpha(%d), final(%d)", androidColor, red, green, blue, alpha, barrageColor);
+        return barrageColor;
     }
 
     public static int toAndroidColor(int barrageColor){
-        float alpha = getAlphaFromColor8(barrageColor);
-        float red = getRedFromColor8(barrageColor);
-        float green = getGreenFromColor8(barrageColor);
-        float blue = getBlueFromColor8(barrageColor);
+        float alpha = getAlphaFromColor8(getUnsignedInt(barrageColor));
+        float red = getRedFromColor8(getUnsignedInt(barrageColor));
+        float green = getGreenFromColor8(getUnsignedInt(barrageColor));
+        float blue = getBlueFromColor8(getUnsignedInt(barrageColor));
+        Ln.d("<toAndroidColor> value(%d), red(%d) green(%d) blue(%d) alpha(%d)", barrageColor, red, green, blue, alpha);
         return Color.argb((int)alpha, (int)red, (int)green, (int)blue);
     }
 
