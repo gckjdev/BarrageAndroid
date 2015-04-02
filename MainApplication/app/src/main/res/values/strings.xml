@@ -121,4 +121,7 @@
     <string name="potion_botton_button_share_photo">点击底部中间按钮分享照片</string>
     <string name="show">展示</string>
     <string name="newmessage">新消息</string>
+    <string name="title_activity_feed_published_whatch_user_home_image">
+        FeedPublishedWhatchUserHomeImageActivity
+    </string>
 </resources>

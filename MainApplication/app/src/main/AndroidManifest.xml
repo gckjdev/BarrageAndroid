@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.orange.barrage.android" >
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -62,15 +62,10 @@
         <activity
             android:name=".user.ui.invitecode.InviteCodePassActivity"
             android:label="@string/title_activity_invite_code_pass" />
-
-        <activity android:name=".user.ui.register.MainRegisterActivity">
-
+        <activity android:name=".user.ui.register.MainRegisterActivity" >
         </activity>
-        <activity android:name=".feed.activity.FeedNewMessageBarrageActivity"/>
-
-
+        <activity android:name=".feed.activity.FeedNewMessageBarrageActivity" />
         <activity android:name=".user.ui.register.MainRegisterActivity" />
-
         <activity
             android:name=".user.ui.register.EmailRegisterActivity"
             android:label="@string/title_activity_email_register" />
@@ -89,9 +84,9 @@
         </activity>
         <activity android:name=".feed.activity.FeedCommentActivity" >
         </activity>
-        <activity android:name=".user.ui.login.HomePageActivity"
-            android:icon="@drawable/bbj_icon"
-            >
+        <activity
+            android:name=".user.ui.login.HomePageActivity"
+            android:icon="@drawable/bbj_icon" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -99,9 +94,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".friend.activity.FriendListSelectActivity" />
-        <activity android:name=".feed.activity.FeedFirstLognShowBarrageActivity"/>
-        <activity android:name=".feed.activity.FeedNewMessageListActivity"/>
-
+        <activity android:name=".feed.activity.FeedFirstLognShowBarrageActivity" />
+        <activity android:name=".feed.activity.FeedNewMessageListActivity" />
         <activity android:name=".feed.activity.FeedPublishedImageActivity" />
         <!-- Share SDK Activities -->
 
@@ -202,6 +196,10 @@
         <activity
             android:name=".user.ui.user_home.SmsMessageInviteMyFriendActivity"
             android:label="@string/title_activity_sms_message_invite_my_friend" >
+        </activity>
+        <activity
+            android:name=".user.ui.user_home.FeedPublishedWhatchUserHomeImageActivity"
+            android:label="@string/title_activity_feed_published_whatch_user_home_image" >
         </activity>
     </application>
 

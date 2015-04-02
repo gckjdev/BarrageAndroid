@@ -26,7 +26,7 @@
 
             <com.orange.barrage.android.user.ui.view.UserAvatarView
                 android:id="@+id/friend_detail_avatar_view"
-                android:src="@drawable/imageview_yinying"
+
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:layout_marginTop="40dp"

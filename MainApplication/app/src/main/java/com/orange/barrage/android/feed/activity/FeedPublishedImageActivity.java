@@ -72,7 +72,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Override
     protected void onCreate(Bundle saveBundle) {
         super.onCreate(saveBundle, R.layout.activity_publishimage, R.string.b_share_to_who, R.string.b_OK);
-
         initView();
     }
 
@@ -102,13 +101,11 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
                 if (errorCode == 0) {
                     // reload tag view
                     mFriendTagList.loadLocalTagList(FriendTagView.Params.PARAMS_HOLLOW);
-
                 }
                 mFriendIconList.setVisibility(View.VISIBLE);
                 dismissProgress();
             }
         });
-
     }
 
 
@@ -131,7 +128,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
         if (mFriendIconList.getIconCount() == 0) super.onClickLeft(v);
         else {
             showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "是否退出", -1);
-
         }
     }
 
@@ -167,7 +163,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
 
     private void publishImage(){
-
         Bitmap bitmap = getPublishImage();
         if(bitmap == null){
             MessageCenter.postErrorMessage("图片获取失败");
@@ -228,8 +223,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Override
     public void onClickItem(String tagId, FriendTagItemView v, FriendTagView friendTagView) {
         //点击标签
-
-
         FriendTagView.Params params = v.getParams();
 
         maps.put(tagId, v);
