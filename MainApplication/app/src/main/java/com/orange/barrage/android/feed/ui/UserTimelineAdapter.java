@@ -73,7 +73,7 @@ public class UserTimelineAdapter extends BaseAdapter{
         FeedModel model = new FeedModel();
         model.setFeed(feed);
         ((TimelineItemView)convertView).setModel(model);
-
+        //很奇怪
         return convertView;
     }
 }

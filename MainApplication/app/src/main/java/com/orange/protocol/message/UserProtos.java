@@ -4498,8 +4498,8 @@ public final class UserProtos {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          qqOpenId_ = s;
-        }
+              qqOpenId_ = s;
+          }
         return s;
       }
     }
@@ -4653,7 +4653,7 @@ public final class UserProtos {
      */
     public java.lang.String getBirthday() {
       java.lang.Object ref = birthday_;
-      if (ref instanceof java.lang.String) {
+        if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
@@ -6188,7 +6188,7 @@ public final class UserProtos {
       if (((bitField1_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(83, mobileVerifyStatus_);
-      }
+    }
       if (((bitField1_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(91, addConfig_);
@@ -6257,7 +6257,7 @@ public final class UserProtos {
       return PARSER.parseFrom(data);
     }
     public static com.orange.protocol.message.UserProtos.PBUser parseFrom(
-        byte[] data,
+            byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
