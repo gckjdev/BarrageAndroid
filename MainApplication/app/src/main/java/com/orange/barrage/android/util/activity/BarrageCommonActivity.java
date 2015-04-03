@@ -165,7 +165,16 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
         mProgressDialog.close();
     }
 
+    /**
+     * 打开头部等待进度条
+     */
+    public void showTopProgressBar(){
+        mTopBarView.showTopProgress();
+    }
 
+    public void dismissTopProgress(){
+        mTopBarView.dismissTopProgress();
+    }
 
 
     public void onClickFinish(View v){

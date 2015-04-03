@@ -62,8 +62,9 @@ public class FriendDetailActivity extends BarrageCommonActivity {
     @InjectView(R.id.user_detail_bg)
     private ImageView mUserDetailBg;
 
+    @InjectView(R.id.friend_location)
+    private ImageView mFriendLocation;
     UserProtos.PBUser mUser;
-
 
 
     @Inject
@@ -116,58 +117,66 @@ public class FriendDetailActivity extends BarrageCommonActivity {
             }
         });
     }
+
     private boolean is = false;
 
-    private void setColor(){
+    private void setColor() {
+
+        Bitmap bitmapnick = ImageUtil.getChildBitmap(mNickTextView, mFriendDetailUserBackground);
+        mNickTextView.setTextColor(ImageUtil.getColorBitmap(bitmapnick));
+
+     /*   Bitmap bitmapview = ImageUtil.getChildBitmap(mFriendLocation, mFriendDetailUserBackground);
+        mFriendLocation.setBackgroundColor(ImageUtil.getColorBitmap(bitmapview));
+*/
+        Bitmap bitmapsignature = ImageUtil.getChildBitmap(mSignatureTextView, mFriendDetailUserBackground);
+        mSignatureTextView.setTextColor(ImageUtil.getColorBitmap(bitmapsignature));
+
         Bitmap bitmap = ImageUtil.getChildBitmap(mFriendDetailTag, mFriendDetailUserBackground);
         mFriendDetailTag.setTextColor(ImageUtil.getColorBitmap(bitmap));
 
-        Bitmap bitmap1=ImageUtil.getChildBitmap(locationTextView,mFriendDetailUserBackground);
+        Bitmap bitmap1 = ImageUtil.getChildBitmap(locationTextView, mFriendDetailUserBackground);
         locationTextView.setTextColor(ImageUtil.getColorBitmap(bitmap1));
     }
 
-
-
     /**
      * 设置背景的方法
-     *
      */
-    private void setColorTime()
-    {
+    private void setColorTime() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               setColor();
+                setColor();
             }
-        } , 100);
+        }, 100);
     }
 
 
     /**
-     *窗口焦点改变的时候调用
+     * 窗口焦点改变的时候调用
+     *
      * @param hasFocus
      */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
 
-        if(!is) {
+        if (!is) {
             if (mUser.hasAvatarBg()) {
                 Picasso.with(FriendDetailActivity.this)
                         .load(mUser.getAvatarBg().toString())
                         .placeholder(R.drawable.tab_home)
                         .error(R.drawable.tab_friend)
-                        .into(mUserDetailBg,new Callback() {
+                        .into(mUserDetailBg, new Callback() {
                             @Override
                             public void onSuccess() {
                                 setColorTime();
                             }
+
                             @Override
                             public void onError() {
                                 setColor();
-
                             }
                         });
-            }else setColor();
+            } else setColor();
             is = true;
         }
     }

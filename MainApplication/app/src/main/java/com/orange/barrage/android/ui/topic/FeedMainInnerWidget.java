@@ -18,6 +18,8 @@ import com.orange.barrage.android.feed.ui.TimelineItemView;
 import com.orange.barrage.android.feed.ui.view.BarrageGridView;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.ui.topic.player.BarragePlayerSpringImpl;
+import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.barrage.android.util.view.MoveViewParentRelativity;
 import com.orange.protocol.message.BarrageProtos;
 import com.squareup.picasso.Picasso;
@@ -49,6 +51,7 @@ public class FeedMainInnerWidget extends FrameLayout {
 
     private BarrageGridView mGridView;
 
+    private FrameLayout mStayView;
     private MoveViewParentRelativity mMoveView;
 
     private float mHeight = 0;
@@ -88,6 +91,9 @@ public class FeedMainInnerWidget extends FrameLayout {
         mGridView.setVisibility(View.GONE);
         this.addView(mGridView, matchParentParams);
 
+        //mStayView
+        mStayView = new FrameLayout(mContext);
+        this.addView(mStayView, matchParentParams);
         //move view
         mMoveView = new MoveViewParentRelativity(mContext);
         this.addView(mMoveView, matchParentParams);
@@ -117,14 +123,15 @@ public class FeedMainInnerWidget extends FrameLayout {
 
     private TimelineItemView getTimelineIteView(){
         if(mTimelineIteView != null)  return mTimelineIteView;
-        getTimelineIteView(getParent());
+        getTimelineIteView(getParent() , 0);
         return mTimelineIteView;
     }
 
-    private void getTimelineIteView(ViewParent v){
+    private void getTimelineIteView(ViewParent v , int i ){
+        if(i >= 10 || v == null)return;
         if(v instanceof TimelineItemView){
             mTimelineIteView = (TimelineItemView) v;
-        }else getTimelineIteView(v.getParent());
+        }else getTimelineIteView(v.getParent() , i + 1);
     }
 
     public void showOrCloseBarrageGridView(){
@@ -139,6 +146,10 @@ public class FeedMainInnerWidget extends FrameLayout {
             mGridView.setVisibility(View.GONE);
             mGridView.setTag("o");
         }
+    }
+
+    public float getGridViewWidth(){
+        return mGridView.getItemWidth();
     }
 
 
@@ -176,7 +187,7 @@ public class FeedMainInnerWidget extends FrameLayout {
                                 LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                                 params.leftMargin = (int) action.getPosX();
                                 params.topMargin = (int) action.getPosY();
-                                addView(actionWidget, params);
+                                mStayView.addView(actionWidget, params);
                                 break;
                             default:
                                 break;
@@ -189,24 +200,33 @@ public class FeedMainInnerWidget extends FrameLayout {
     }
 
     public void setImageURL(String url) {
-        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage , getTimelineIteView().buildCallback());
+        getTimelineIteView();
+        Picasso.with(mContext).load(url).placeholder(R.drawable.tab_home).error(R.drawable.tab_friend).into(mImage , mTimelineIteView == null ? null : mTimelineIteView.buildCallback());
     }
 
     public void setSubtitle(String title) {
         mSubtitleView.setText(title);
     }
 
-    public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
-        if (mFeedActionViews != null) {
-            for (View view : mFeedActionViews) {
-                removeView(view);
-            }
+    public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList , int layoutListenerType) {
+//        if (mFeedActionViews != null) {
+//            for (View view : mFeedActionViews) {
+//                mStayView.removeView(view);
+//            }
+//        }
+        //alter youjiannuo @time 2015/4/2
+        if(mStayView != null) {
+
+            mStayView.removeAllViews();
         }
+
+        //获取TimelineItemView对象
+        getTimelineIteView();
         mFeedActionViews = Lists.newArrayList();
         for (BarrageProtos.PBFeedAction action : feedActionList) {
             FeedActionWidget actionWidget = new FeedActionWidget(mContext);
             actionWidget.setType(FeedActionWidget.COMMENETS_TEXTVIEW);
-            actionWidget.setFeedAction(action , getTimelineIteView().buildCallback());
+            actionWidget.setFeedAction(action, layoutListenerType, mTimelineIteView == null ? null : mTimelineIteView.buildCallback());
             mFeedActionViews.add(actionWidget);
 
             switch (mMode) {
@@ -215,7 +235,7 @@ public class FeedMainInnerWidget extends FrameLayout {
                     LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     params.leftMargin = (int) ( action.getPosX());
                     params.topMargin = (int) action.getPosY();
-                    addView(actionWidget, params);
+                    mStayView.addView(actionWidget, params);
                     break;
                 }
                 case SHARE: {
@@ -226,9 +246,12 @@ public class FeedMainInnerWidget extends FrameLayout {
                 }
             }
         }
-        //开始监听
-        getTimelineIteView().startFeedLoadPhotoListener();
+
         mBarragePlayer.setBarrageViews(mFeedActionViews);
+        //开始监听图片是否加载完毕  create youjiannuo @time 2015/4/1
+        if (mTimelineIteView != null) {
+            mTimelineIteView.startFeedLoadPhotoListener();
+        }
     }
 
     public void hideAllBarrageActions() {
@@ -259,15 +282,19 @@ public class FeedMainInnerWidget extends FrameLayout {
         mBarragePlayer.moveTo(progress);
     }
 
+    public void playFrom(int index) {
+        mBarragePlayer.playFrom(index);
+    }
+
     public void moveToEnd() {
         mBarragePlayer.moveToEnd();
     }
 
-    public void setModel(FeedModel model) {
+    public void setModel(FeedModel model , int layoutListenerType) {
         mModel = model;
         setSubtitle(model.getSubtitleText());
         setImageURL(model.getImageUrl());
-        setBarrageActions(model.getFeedActionLis());
+        setBarrageActions(model.getFeedActionLis() , layoutListenerType);
     }
 
     public FeedModel getModel() {

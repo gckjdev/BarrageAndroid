@@ -55,7 +55,8 @@ public class FeedLoadingPhotoListener {
     }
 
     public void remove(Callback callback){
-        mCallbacks.remove(callback);
+        if(callback != null)
+            mCallbacks.remove(callback);
 
         if(isStart && mOnLoadPhotoListener != null && mCallbacks.size() == 0){
             mOnLoadPhotoListener.onFinish();
@@ -76,6 +77,11 @@ public class FeedLoadingPhotoListener {
 
     //开始监听的时候，需要调到这个方法，反正不会监听得到的
     public void startListener(){
+        isStart = true;
+        remove(null);
+    }
+
+    public void stopListener(){
         isStart = true;
     }
 

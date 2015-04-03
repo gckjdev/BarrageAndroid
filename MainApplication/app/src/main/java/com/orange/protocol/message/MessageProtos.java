@@ -31336,19 +31336,6 @@ public final class MessageProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .barrage.PBUser user = 1;</code>
-     */
-    boolean hasUser();
-    /**
-     * <code>optional .barrage.PBUser user = 1;</code>
-     */
-    com.orange.protocol.message.UserProtos.PBUser getUser();
-    /**
-     * <code>optional .barrage.PBUser user = 1;</code>
-     */
-    com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder();
-
-    /**
      * <code>optional string destEmail = 2;</code>
      */
     boolean hasDestEmail();
@@ -31440,28 +31427,15 @@ public final class MessageProtos {
               }
               break;
             }
-            case 10: {
-              com.orange.protocol.message.UserProtos.PBUser.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = user_.toBuilder();
-              }
-              user_ = input.readMessage(com.orange.protocol.message.UserProtos.PBUser.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(user_);
-                user_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
             case 18: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               destEmail_ = bs;
               break;
             }
             case 26: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               verifyCode_ = bs;
               break;
             }
@@ -31505,34 +31479,13 @@ public final class MessageProtos {
     }
 
     private int bitField0_;
-    public static final int USER_FIELD_NUMBER = 1;
-    private com.orange.protocol.message.UserProtos.PBUser user_;
-    /**
-     * <code>optional .barrage.PBUser user = 1;</code>
-     */
-    public boolean hasUser() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .barrage.PBUser user = 1;</code>
-     */
-    public com.orange.protocol.message.UserProtos.PBUser getUser() {
-      return user_;
-    }
-    /**
-     * <code>optional .barrage.PBUser user = 1;</code>
-     */
-    public com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder() {
-      return user_;
-    }
-
     public static final int DESTEMAIL_FIELD_NUMBER = 2;
     private java.lang.Object destEmail_;
     /**
      * <code>optional string destEmail = 2;</code>
      */
     public boolean hasDestEmail() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional string destEmail = 2;</code>
@@ -31578,7 +31531,7 @@ public final class MessageProtos {
      * </pre>
      */
     public boolean hasVerifyCode() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional string verifyCode = 3;</code>
@@ -31623,7 +31576,6 @@ public final class MessageProtos {
     }
 
     private void initFields() {
-      user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
       destEmail_ = "";
       verifyCode_ = "";
     }
@@ -31633,12 +31585,6 @@ public final class MessageProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (hasUser()) {
-        if (!getUser().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -31647,12 +31593,9 @@ public final class MessageProtos {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, user_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getDestEmailBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(3, getVerifyCodeBytes());
       }
       getUnknownFields().writeTo(output);
@@ -31666,13 +31609,9 @@ public final class MessageProtos {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, user_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getDestEmailBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getVerifyCodeBytes());
       }
@@ -31785,7 +31724,6 @@ public final class MessageProtos {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -31794,16 +31732,10 @@ public final class MessageProtos {
 
       public Builder clear() {
         super.clear();
-        if (userBuilder_ == null) {
-          user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
         destEmail_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         verifyCode_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -31835,17 +31767,9 @@ public final class MessageProtos {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (userBuilder_ == null) {
-          result.user_ = user_;
-        } else {
-          result.user_ = userBuilder_.build();
-        }
+        result.destEmail_ = destEmail_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
-        }
-        result.destEmail_ = destEmail_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
         }
         result.verifyCode_ = verifyCode_;
         result.bitField0_ = to_bitField0_;
@@ -31864,16 +31788,13 @@ public final class MessageProtos {
 
       public Builder mergeFrom(com.orange.protocol.message.MessageProtos.PBVerifyUserEmailRequest other) {
         if (other == com.orange.protocol.message.MessageProtos.PBVerifyUserEmailRequest.getDefaultInstance()) return this;
-        if (other.hasUser()) {
-          mergeUser(other.getUser());
-        }
         if (other.hasDestEmail()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
           destEmail_ = other.destEmail_;
           onChanged();
         }
         if (other.hasVerifyCode()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
           verifyCode_ = other.verifyCode_;
           onChanged();
         }
@@ -31882,12 +31803,6 @@ public final class MessageProtos {
       }
 
       public final boolean isInitialized() {
-        if (hasUser()) {
-          if (!getUser().isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -31910,128 +31825,12 @@ public final class MessageProtos {
       }
       private int bitField0_;
 
-      private com.orange.protocol.message.UserProtos.PBUser user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder> userBuilder_;
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public boolean hasUser() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public com.orange.protocol.message.UserProtos.PBUser getUser() {
-        if (userBuilder_ == null) {
-          return user_;
-        } else {
-          return userBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public Builder setUser(com.orange.protocol.message.UserProtos.PBUser value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          user_ = value;
-          onChanged();
-        } else {
-          userBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public Builder setUser(
-          com.orange.protocol.message.UserProtos.PBUser.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          user_ = builderForValue.build();
-          onChanged();
-        } else {
-          userBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public Builder mergeUser(com.orange.protocol.message.UserProtos.PBUser value) {
-        if (userBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              user_ != com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance()) {
-            user_ =
-              com.orange.protocol.message.UserProtos.PBUser.newBuilder(user_).mergeFrom(value).buildPartial();
-          } else {
-            user_ = value;
-          }
-          onChanged();
-        } else {
-          userBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public Builder clearUser() {
-        if (userBuilder_ == null) {
-          user_ = com.orange.protocol.message.UserProtos.PBUser.getDefaultInstance();
-          onChanged();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public com.orange.protocol.message.UserProtos.PBUser.Builder getUserBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getUserFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      public com.orange.protocol.message.UserProtos.PBUserOrBuilder getUserOrBuilder() {
-        if (userBuilder_ != null) {
-          return userBuilder_.getMessageOrBuilder();
-        } else {
-          return user_;
-        }
-      }
-      /**
-       * <code>optional .barrage.PBUser user = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder> 
-          getUserFieldBuilder() {
-        if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.orange.protocol.message.UserProtos.PBUser, com.orange.protocol.message.UserProtos.PBUser.Builder, com.orange.protocol.message.UserProtos.PBUserOrBuilder>(
-                  getUser(),
-                  getParentForChildren(),
-                  isClean());
-          user_ = null;
-        }
-        return userBuilder_;
-      }
-
       private java.lang.Object destEmail_ = "";
       /**
        * <code>optional string destEmail = 2;</code>
        */
       public boolean hasDestEmail() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional string destEmail = 2;</code>
@@ -32074,7 +31873,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
         destEmail_ = value;
         onChanged();
         return this;
@@ -32083,7 +31882,7 @@ public final class MessageProtos {
        * <code>optional string destEmail = 2;</code>
        */
       public Builder clearDestEmail() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         destEmail_ = getDefaultInstance().getDestEmail();
         onChanged();
         return this;
@@ -32096,7 +31895,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
         destEmail_ = value;
         onChanged();
         return this;
@@ -32111,7 +31910,7 @@ public final class MessageProtos {
        * </pre>
        */
       public boolean hasVerifyCode() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional string verifyCode = 3;</code>
@@ -32166,7 +31965,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000002;
         verifyCode_ = value;
         onChanged();
         return this;
@@ -32179,7 +31978,7 @@ public final class MessageProtos {
        * </pre>
        */
       public Builder clearVerifyCode() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         verifyCode_ = getDefaultInstance().getVerifyCode();
         onChanged();
         return this;
@@ -32196,7 +31995,7 @@ public final class MessageProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000002;
         verifyCode_ = value;
         onChanged();
         return this;
@@ -34487,12 +34286,6 @@ public final class MessageProtos {
           return false;
         }
       }
-      if (hasVerifyUserEmailRequest()) {
-        if (!getVerifyUserEmailRequest().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -35622,12 +35415,6 @@ public final class MessageProtos {
         }
         if (hasReadMyNewFeedRequest()) {
           if (!getReadMyNewFeedRequest().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasVerifyUserEmailRequest()) {
-          if (!getVerifyUserEmailRequest().isInitialized()) {
             
             return false;
           }
@@ -46150,133 +45937,132 @@ public final class MessageProtos {
       "Info\030\002 \001(\t\022\035\n\004user\030\003 \001(\0132\017.barrage.PBUse" +
       "r\022!\n\006device\030\004 \001(\0132\021.barrage.PBDevice\022\r\n\005" +
       "reqId\030\005 \001(\t\"\034\n\032PBSendUserFeedbackRespons" +
-      "e\"`\n\030PBVerifyUserEmailRequest\022\035\n\004user\030\001 " +
-      "\001(\0132\017.barrage.PBUser\022\021\n\tdestEmail\030\002 \001(\t\022" +
-      "\022\n\nverifyCode\030\003 \001(\t\"\033\n\031PBVerifyUserEmail" +
-      "Response\"\200\017\n\rPBDataRequest\022\014\n\004type\030\001 \002(\005" +
-      "\022\021\n\trequestId\030\002 \001(\005\022\017\n\007version\030\003 \001(\005\022\016\n\006" +
-      "userId\030\004 \001(\t\022!\n\006device\030\036 \001(\0132\021.barrage.P",
-      "BDevice\022\023\n\013countryCode\030\037 \001(\t\022\024\n\014language" +
-      "Code\030  \001(\t\022\022\n\nclientDate\030! \001(\005\0225\n\020loginU" +
-      "serRequest\030( \001(\0132\033.barrage.PBLoginUserRe" +
-      "quest\022;\n\023registerUserRequest\030) \001(\0132\036.bar" +
-      "rage.PBRegisterUserRequest\0227\n\021searchUser" +
-      "Request\030* \001(\0132\034.barrage.PBSearchUserRequ" +
-      "est\022?\n\025updateUserInfoRequest\030+ \001(\0132 .bar" +
-      "rage.PBUpdateUserInfoRequest\022=\n\024addUserF" +
-      "riendRequest\030, \001(\0132\037.barrage.PBAddUserFr" +
-      "iendRequest\022E\n\030getUserFriendListRequest\030",
-      "- \001(\0132#.barrage.PBGetUserFriendListReque" +
-      "st\022C\n\027verifyInviteCodeRequest\030. \001(\0132\".ba" +
-      "rrage.PBVerifyInviteCodeRequest\022E\n\030proce" +
-      "ssUserFriendRequest\030/ \001(\0132#.barrage.PBPr" +
-      "ocessUserFriendRequest\022C\n\027getNewInviteCo" +
-      "deRequest\0300 \001(\0132\".barrage.PBGetNewInvite" +
-      "CodeRequest\0227\n\021addUserTagRequest\0301 \001(\0132\034" +
-      ".barrage.PBAddUserTagRequest\022=\n\024deleteUs" +
-      "erTagRequest\0302 \001(\0132\037.barrage.PBDeleteUse" +
-      "rTagRequest\022?\n\025getUserTagListRequest\0303 \001",
-      "(\0132 .barrage.PBGetUserTagListRequest\022M\n\034" +
-      "getUserInviteCodeListRequest\0304 \001(\0132\'.bar" +
-      "rage.PBGetUserInviteCodeListRequest\022A\n\026a" +
-      "pplyInviteCodeRequest\0305 \001(\0132!.barrage.PB" +
-      "ApplyInviteCodeRequest\022C\n\027updateInviteCo" +
-      "deRequest\0306 \001(\0132\".barrage.PBUpdateInvite" +
-      "CodeRequest\022;\n\023deleteFriendRequest\0307 \001(\013" +
-      "2\036.barrage.PBDeleteFriendRequest\022C\n\027send" +
-      "UserFeedbackRequest\0308 \001(\0132\".barrage.PBSe" +
-      "ndUserFeedbackRequest\022C\n\027getMyNewFeedLis",
-      "tRequest\0309 \001(\0132\".barrage.PBGetMyNewFeedL" +
-      "istRequest\0227\n\021createFeedRequest\030< \001(\0132\034." +
-      "barrage.PBCreateFeedRequest\0225\n\020replyFeed" +
-      "Request\030= \001(\0132\033.barrage.PBReplyFeedReque" +
-      "st\022I\n\032getUserTimelineFeedRequest\030> \001(\0132%" +
-      ".barrage.PBGetUserTimelineFeedRequest\022C\n" +
-      "\027deleteFeedActionRequest\030? \001(\0132\".barrage" +
-      ".PBDeleteFeedActionRequest\0227\n\021deleteFeed" +
-      "Request\030@ \001(\0132\034.barrage.PBDeleteFeedRequ" +
-      "est\0229\n\022getFeedByIdRequest\030A \001(\0132\035.barrag",
-      "e.PBGetFeedByIdRequest\022=\n\024readMyNewFeedR" +
-      "equest\030B \001(\0132\037.barrage.PBReadMyNewFeedRe" +
-      "quest\0229\n\022getUserFeedRequest\030C \001(\0132\035.barr" +
-      "age.PBGetUserFeedRequest\022A\n\026verifyUserEm" +
-      "ailRequest\030Z \001(\0132!.barrage.PBVerifyUserE" +
-      "mailRequest\"\362\016\n\016PBDataResponse\022\025\n\nresult" +
-      "Code\030\001 \002(\005:\0010\022\021\n\trequestId\030\002 \001(\005\022\017\n\007vers" +
-      "ion\030\003 \001(\005\022\022\n\ntotalCount\030\004 \001(\005\022\022\n\nstringD" +
-      "ata\030\005 \001(\t\0227\n\021loginUserResponse\030( \001(\0132\034.b" +
-      "arrage.PBLoginUserResponse\022=\n\024registerUs",
-      "erResponse\030) \001(\0132\037.barrage.PBRegisterUse" +
-      "rResponse\0229\n\022searchUserResponse\030* \001(\0132\035." +
-      "barrage.PBSearchUserResponse\022A\n\026updateUs" +
-      "erInfoResponse\030+ \001(\0132!.barrage.PBUpdateU" +
-      "serInfoResponse\022?\n\025addUserFriendResponse" +
-      "\030, \001(\0132 .barrage.PBAddUserFriendResponse" +
-      "\022G\n\031getUserFriendListResponse\030- \001(\0132$.ba" +
-      "rrage.PBGetUserFriendListResponse\022E\n\030ver" +
-      "ifyInviteCodeResponse\030. \001(\0132#.barrage.PB" +
-      "VerifyInviteCodeResponse\022G\n\031processUserF",
-      "riendResponse\030/ \001(\0132$.barrage.PBProcessU" +
-      "serFriendResponse\022E\n\030getNewInviteCodeRes" +
-      "ponse\0300 \001(\0132#.barrage.PBGetNewInviteCode" +
-      "Response\0229\n\022addUserTagResponse\0301 \001(\0132\035.b" +
-      "arrage.PBAddUserTagResponse\022?\n\025deleteUse" +
-      "rTagResponse\0302 \001(\0132 .barrage.PBDeleteUse" +
-      "rTagResponse\022A\n\026getUserTagListResponse\0303" +
-      " \001(\0132!.barrage.PBGetUserTagListResponse\022" +
-      "O\n\035getUserInviteCodeListResponse\0304 \001(\0132(" +
-      ".barrage.PBGetUserInviteCodeListResponse",
-      "\022C\n\027applyInviteCodeResponse\0305 \001(\0132\".barr" +
-      "age.PBApplyInviteCodeResponse\022E\n\030updateI" +
-      "nviteCodeResponse\0306 \001(\0132#.barrage.PBUpda" +
-      "teInviteCodeResponse\022=\n\024deleteFriendResp" +
-      "onse\0307 \001(\0132\037.barrage.PBDeleteFriendRespo" +
-      "nse\022E\n\030sendUserFeedbackResponse\0308 \001(\0132#." +
-      "barrage.PBSendUserFeedbackResponse\022E\n\030ge" +
-      "tMyNewFeedListResponse\0309 \001(\0132#.barrage.P" +
-      "BGetMyNewFeedListResponse\0229\n\022createFeedR" +
-      "esponse\030< \001(\0132\035.barrage.PBCreateFeedResp",
-      "onse\0227\n\021replyFeedResponse\030= \001(\0132\034.barrag" +
-      "e.PBReplyFeedResponse\022K\n\033getUserTimeline" +
-      "FeedResponse\030> \001(\0132&.barrage.PBGetUserTi" +
-      "melineFeedResponse\022E\n\030deleteFeedActionRe" +
-      "sponse\030? \001(\0132#.barrage.PBDeleteFeedActio" +
-      "nResponse\0229\n\022deleteFeedResponse\030@ \001(\0132\035." +
-      "barrage.PBDeleteFeedResponse\022;\n\023getFeedB" +
-      "yIdResponse\030A \001(\0132\036.barrage.PBGetFeedByI" +
-      "dResponse\022;\n\021myNewFeedResponse\030B \001(\0132 .b" +
-      "arrage.PBReadMyNewFeedResponse\022;\n\023getUse",
-      "rFeedResponse\030C \001(\0132\036.barrage.PBGetUserF" +
-      "eedResponse\022C\n\027verifyUserEmailResponse\030Z" +
-      " \001(\0132\".barrage.PBVerifyUserEmailResponse" +
-      "*Q\n\031PBProcessFriendResultType\022\021\n\rACCEPT_" +
-      "FRIEND\020\000\022\021\n\rREJECT_FRIEND\020\001\022\016\n\nREPLY_MEM" +
-      "O\020\002*\331\006\n\rPBMessageType\022\026\n\022MESSAGE_LOGIN_U" +
-      "SER\020\001\022\031\n\025MESSAGE_REGISTER_USER\020\002\022\027\n\023MESS" +
-      "AGE_SEARCH_USER\020\003\022\034\n\030MESSAGE_UPDATE_USER" +
-      "_INFO\020\004\022\033\n\027MESSAGE_ADD_USER_FRIEND\020\005\022 \n\034" +
-      "MESSAGE_GET_USER_FRIEND_LIST\020\006\022\037\n\033MESSAG",
-      "E_PROCESS_USER_FRIEND\020\007\022\036\n\032MESSAGE_VERIF" +
-      "Y_INVITE_CODE\020\010\022\037\n\033MESSAGE_GET_NEW_INVIT" +
-      "E_CODE\020\t\022\030\n\024MESSAGE_ADD_USER_TAG\020\n\022\033\n\027ME" +
-      "SSAGE_DELETE_USER_TAG\020\013\022\035\n\031MESSAGE_GET_U" +
-      "SER_TAG_LIST\020\014\022%\n!MESSAGE_GET_USER_INVIT" +
-      "E_CODE_LIST\020\r\022\035\n\031MESSAGE_APPLY_INVITE_CO" +
-      "DE\020\016\022\036\n\032MESSAGE_UPDATE_INVITE_CODE\020\017\022\027\n\023" +
-      "MESSAGE_CREATE_FEED\020\036\022\026\n\022MESSAGE_REPLY_F" +
-      "EED\020\037\022\"\n\036MESSAGE_GET_USER_TIMELINE_FEED\020" +
-      " \022\036\n\032MESSAGE_DELETE_FEED_ACTION\020!\022\027\n\023MES",
-      "SAGE_DELETE_FEED\020\"\022\031\n\025MESSAGE_DELETE_FRI" +
-      "END\020#\022\036\n\032MESSAGE_SEND_USER_FEEDBACK\020$\022 \n" +
-      "\034MESSAGE_GET_MY_NEW_FEED_LIST\020%\022\032\n\026MESSA" +
-      "GE_GET_FEED_BY_ID\020&\022\034\n\030MESSAGE_READ_MY_N" +
-      "EW_FEED\020\'\022\031\n\025MESSAGE_GET_USER_FEED\020(\022\035\n\031" +
-      "MESSAGE_VERIFY_USER_EMAIL\020)\022\"\n\036MESSAGE_G" +
-      "ET_QINIU_UPLOAD_TOKEN\020d*[\n\027PBGetUserFrie" +
-      "ndListType\022\024\n\020TYPE_FRIEND_LIST\020\000\022\034\n\030TYPE" +
-      "_REQUEST_FRIEND_LIST\020\001\022\014\n\010TYPE_ALL\020\nB,\n\033" +
-      "com.orange.protocol.messageB\rMessageProt",
-      "os"
+      "e\"A\n\030PBVerifyUserEmailRequest\022\021\n\tdestEma" +
+      "il\030\002 \001(\t\022\022\n\nverifyCode\030\003 \001(\t\"\033\n\031PBVerify" +
+      "UserEmailResponse\"\200\017\n\rPBDataRequest\022\014\n\004t" +
+      "ype\030\001 \002(\005\022\021\n\trequestId\030\002 \001(\005\022\017\n\007version\030" +
+      "\003 \001(\005\022\016\n\006userId\030\004 \001(\t\022!\n\006device\030\036 \001(\0132\021." +
+      "barrage.PBDevice\022\023\n\013countryCode\030\037 \001(\t\022\024\n",
+      "\014languageCode\030  \001(\t\022\022\n\nclientDate\030! \001(\005\022" +
+      "5\n\020loginUserRequest\030( \001(\0132\033.barrage.PBLo" +
+      "ginUserRequest\022;\n\023registerUserRequest\030) " +
+      "\001(\0132\036.barrage.PBRegisterUserRequest\0227\n\021s" +
+      "earchUserRequest\030* \001(\0132\034.barrage.PBSearc" +
+      "hUserRequest\022?\n\025updateUserInfoRequest\030+ " +
+      "\001(\0132 .barrage.PBUpdateUserInfoRequest\022=\n" +
+      "\024addUserFriendRequest\030, \001(\0132\037.barrage.PB" +
+      "AddUserFriendRequest\022E\n\030getUserFriendLis" +
+      "tRequest\030- \001(\0132#.barrage.PBGetUserFriend",
+      "ListRequest\022C\n\027verifyInviteCodeRequest\030." +
+      " \001(\0132\".barrage.PBVerifyInviteCodeRequest" +
+      "\022E\n\030processUserFriendRequest\030/ \001(\0132#.bar" +
+      "rage.PBProcessUserFriendRequest\022C\n\027getNe" +
+      "wInviteCodeRequest\0300 \001(\0132\".barrage.PBGet" +
+      "NewInviteCodeRequest\0227\n\021addUserTagReques" +
+      "t\0301 \001(\0132\034.barrage.PBAddUserTagRequest\022=\n" +
+      "\024deleteUserTagRequest\0302 \001(\0132\037.barrage.PB" +
+      "DeleteUserTagRequest\022?\n\025getUserTagListRe" +
+      "quest\0303 \001(\0132 .barrage.PBGetUserTagListRe",
+      "quest\022M\n\034getUserInviteCodeListRequest\0304 " +
+      "\001(\0132\'.barrage.PBGetUserInviteCodeListReq" +
+      "uest\022A\n\026applyInviteCodeRequest\0305 \001(\0132!.b" +
+      "arrage.PBApplyInviteCodeRequest\022C\n\027updat" +
+      "eInviteCodeRequest\0306 \001(\0132\".barrage.PBUpd" +
+      "ateInviteCodeRequest\022;\n\023deleteFriendRequ" +
+      "est\0307 \001(\0132\036.barrage.PBDeleteFriendReques" +
+      "t\022C\n\027sendUserFeedbackRequest\0308 \001(\0132\".bar" +
+      "rage.PBSendUserFeedbackRequest\022C\n\027getMyN" +
+      "ewFeedListRequest\0309 \001(\0132\".barrage.PBGetM",
+      "yNewFeedListRequest\0227\n\021createFeedRequest" +
+      "\030< \001(\0132\034.barrage.PBCreateFeedRequest\0225\n\020" +
+      "replyFeedRequest\030= \001(\0132\033.barrage.PBReply" +
+      "FeedRequest\022I\n\032getUserTimelineFeedReques" +
+      "t\030> \001(\0132%.barrage.PBGetUserTimelineFeedR" +
+      "equest\022C\n\027deleteFeedActionRequest\030? \001(\0132" +
+      "\".barrage.PBDeleteFeedActionRequest\0227\n\021d" +
+      "eleteFeedRequest\030@ \001(\0132\034.barrage.PBDelet" +
+      "eFeedRequest\0229\n\022getFeedByIdRequest\030A \001(\013" +
+      "2\035.barrage.PBGetFeedByIdRequest\022=\n\024readM",
+      "yNewFeedRequest\030B \001(\0132\037.barrage.PBReadMy" +
+      "NewFeedRequest\0229\n\022getUserFeedRequest\030C \001" +
+      "(\0132\035.barrage.PBGetUserFeedRequest\022A\n\026ver" +
+      "ifyUserEmailRequest\030Z \001(\0132!.barrage.PBVe" +
+      "rifyUserEmailRequest\"\362\016\n\016PBDataResponse\022" +
+      "\025\n\nresultCode\030\001 \002(\005:\0010\022\021\n\trequestId\030\002 \001(" +
+      "\005\022\017\n\007version\030\003 \001(\005\022\022\n\ntotalCount\030\004 \001(\005\022\022" +
+      "\n\nstringData\030\005 \001(\t\0227\n\021loginUserResponse\030" +
+      "( \001(\0132\034.barrage.PBLoginUserResponse\022=\n\024r" +
+      "egisterUserResponse\030) \001(\0132\037.barrage.PBRe",
+      "gisterUserResponse\0229\n\022searchUserResponse" +
+      "\030* \001(\0132\035.barrage.PBSearchUserResponse\022A\n" +
+      "\026updateUserInfoResponse\030+ \001(\0132!.barrage." +
+      "PBUpdateUserInfoResponse\022?\n\025addUserFrien" +
+      "dResponse\030, \001(\0132 .barrage.PBAddUserFrien" +
+      "dResponse\022G\n\031getUserFriendListResponse\030-" +
+      " \001(\0132$.barrage.PBGetUserFriendListRespon" +
+      "se\022E\n\030verifyInviteCodeResponse\030. \001(\0132#.b" +
+      "arrage.PBVerifyInviteCodeResponse\022G\n\031pro" +
+      "cessUserFriendResponse\030/ \001(\0132$.barrage.P",
+      "BProcessUserFriendResponse\022E\n\030getNewInvi" +
+      "teCodeResponse\0300 \001(\0132#.barrage.PBGetNewI" +
+      "nviteCodeResponse\0229\n\022addUserTagResponse\030" +
+      "1 \001(\0132\035.barrage.PBAddUserTagResponse\022?\n\025" +
+      "deleteUserTagResponse\0302 \001(\0132 .barrage.PB" +
+      "DeleteUserTagResponse\022A\n\026getUserTagListR" +
+      "esponse\0303 \001(\0132!.barrage.PBGetUserTagList" +
+      "Response\022O\n\035getUserInviteCodeListRespons" +
+      "e\0304 \001(\0132(.barrage.PBGetUserInviteCodeLis" +
+      "tResponse\022C\n\027applyInviteCodeResponse\0305 \001",
+      "(\0132\".barrage.PBApplyInviteCodeResponse\022E" +
+      "\n\030updateInviteCodeResponse\0306 \001(\0132#.barra" +
+      "ge.PBUpdateInviteCodeResponse\022=\n\024deleteF" +
+      "riendResponse\0307 \001(\0132\037.barrage.PBDeleteFr" +
+      "iendResponse\022E\n\030sendUserFeedbackResponse" +
+      "\0308 \001(\0132#.barrage.PBSendUserFeedbackRespo" +
+      "nse\022E\n\030getMyNewFeedListResponse\0309 \001(\0132#." +
+      "barrage.PBGetMyNewFeedListResponse\0229\n\022cr" +
+      "eateFeedResponse\030< \001(\0132\035.barrage.PBCreat" +
+      "eFeedResponse\0227\n\021replyFeedResponse\030= \001(\013",
+      "2\034.barrage.PBReplyFeedResponse\022K\n\033getUse" +
+      "rTimelineFeedResponse\030> \001(\0132&.barrage.PB" +
+      "GetUserTimelineFeedResponse\022E\n\030deleteFee" +
+      "dActionResponse\030? \001(\0132#.barrage.PBDelete" +
+      "FeedActionResponse\0229\n\022deleteFeedResponse" +
+      "\030@ \001(\0132\035.barrage.PBDeleteFeedResponse\022;\n" +
+      "\023getFeedByIdResponse\030A \001(\0132\036.barrage.PBG" +
+      "etFeedByIdResponse\022;\n\021myNewFeedResponse\030" +
+      "B \001(\0132 .barrage.PBReadMyNewFeedResponse\022" +
+      ";\n\023getUserFeedResponse\030C \001(\0132\036.barrage.P",
+      "BGetUserFeedResponse\022C\n\027verifyUserEmailR" +
+      "esponse\030Z \001(\0132\".barrage.PBVerifyUserEmai" +
+      "lResponse*Q\n\031PBProcessFriendResultType\022\021" +
+      "\n\rACCEPT_FRIEND\020\000\022\021\n\rREJECT_FRIEND\020\001\022\016\n\n" +
+      "REPLY_MEMO\020\002*\331\006\n\rPBMessageType\022\026\n\022MESSAG" +
+      "E_LOGIN_USER\020\001\022\031\n\025MESSAGE_REGISTER_USER\020" +
+      "\002\022\027\n\023MESSAGE_SEARCH_USER\020\003\022\034\n\030MESSAGE_UP" +
+      "DATE_USER_INFO\020\004\022\033\n\027MESSAGE_ADD_USER_FRI" +
+      "END\020\005\022 \n\034MESSAGE_GET_USER_FRIEND_LIST\020\006\022" +
+      "\037\n\033MESSAGE_PROCESS_USER_FRIEND\020\007\022\036\n\032MESS",
+      "AGE_VERIFY_INVITE_CODE\020\010\022\037\n\033MESSAGE_GET_" +
+      "NEW_INVITE_CODE\020\t\022\030\n\024MESSAGE_ADD_USER_TA" +
+      "G\020\n\022\033\n\027MESSAGE_DELETE_USER_TAG\020\013\022\035\n\031MESS" +
+      "AGE_GET_USER_TAG_LIST\020\014\022%\n!MESSAGE_GET_U" +
+      "SER_INVITE_CODE_LIST\020\r\022\035\n\031MESSAGE_APPLY_" +
+      "INVITE_CODE\020\016\022\036\n\032MESSAGE_UPDATE_INVITE_C" +
+      "ODE\020\017\022\027\n\023MESSAGE_CREATE_FEED\020\036\022\026\n\022MESSAG" +
+      "E_REPLY_FEED\020\037\022\"\n\036MESSAGE_GET_USER_TIMEL" +
+      "INE_FEED\020 \022\036\n\032MESSAGE_DELETE_FEED_ACTION" +
+      "\020!\022\027\n\023MESSAGE_DELETE_FEED\020\"\022\031\n\025MESSAGE_D",
+      "ELETE_FRIEND\020#\022\036\n\032MESSAGE_SEND_USER_FEED" +
+      "BACK\020$\022 \n\034MESSAGE_GET_MY_NEW_FEED_LIST\020%" +
+      "\022\032\n\026MESSAGE_GET_FEED_BY_ID\020&\022\034\n\030MESSAGE_" +
+      "READ_MY_NEW_FEED\020\'\022\031\n\025MESSAGE_GET_USER_F" +
+      "EED\020(\022\035\n\031MESSAGE_VERIFY_USER_EMAIL\020)\022\"\n\036" +
+      "MESSAGE_GET_QINIU_UPLOAD_TOKEN\020d*[\n\027PBGe" +
+      "tUserFriendListType\022\024\n\020TYPE_FRIEND_LIST\020" +
+      "\000\022\034\n\030TYPE_REQUEST_FRIEND_LIST\020\001\022\014\n\010TYPE_" +
+      "ALL\020\nB,\n\033com.orange.protocol.messageB\rMe" +
+      "ssageProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -46610,7 +46396,7 @@ public final class MessageProtos {
     internal_static_barrage_PBVerifyUserEmailRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBVerifyUserEmailRequest_descriptor,
-        new java.lang.String[] { "User", "DestEmail", "VerifyCode", });
+        new java.lang.String[] { "DestEmail", "VerifyCode", });
     internal_static_barrage_PBVerifyUserEmailResponse_descriptor =
       getDescriptor().getMessageTypes().get(53);
     internal_static_barrage_PBVerifyUserEmailResponse_fieldAccessorTable = new

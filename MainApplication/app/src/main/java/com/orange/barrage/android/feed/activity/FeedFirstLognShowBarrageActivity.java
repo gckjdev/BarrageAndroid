@@ -14,6 +14,7 @@ import com.orange.barrage.android.ui.topic.FeedLoadingPhotoListener;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.activity.MessageCenter;
 import com.orange.barrage.android.util.misc.FileUtil;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.CommonProtos;
 
@@ -43,9 +44,11 @@ public class FeedFirstLognShowBarrageActivity extends FeedNewMessageBarrageActiv
         setTitle(R.string.show);
     }
 
+
+
     @Override
      public void initView() {
-        super.initView();
+
         mTimelineItemView.setVisibleAllView();
         mTimelineItemView.setOnTimelineItemViewTouchListener(this);
         mTimelineItemView.setOnFeedLoadPhotoListener(this);
@@ -72,7 +75,7 @@ public class FeedFirstLognShowBarrageActivity extends FeedNewMessageBarrageActiv
                 BarrageProtos.PBFeed mFeed = BarrageProtos.PBFeed.parseFrom(bs);
                 FeedModel feedModel = new FeedModel();
                 feedModel.setFeed(mFeed);
-                mTimelineItemView.setModel(feedModel);
+                mTimelineItemView.setModel(feedModel , LayoutDrawIconBackground.LAYOUT_DRAWBAKGROUND);
 
             } catch (InvalidProtocolBufferException e) {
                 Ln.d(e);
@@ -120,6 +123,12 @@ public class FeedFirstLognShowBarrageActivity extends FeedNewMessageBarrageActiv
 
     @Override
     public void onFinish() {
-        mTimelineItemView.onClickPlayer(null);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mTimelineItemView.onClickPlayer(null);
+            }
+        } , 100);
+
     }
 }

@@ -21,6 +21,7 @@ import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.ContextManager;
 import com.orange.barrage.android.util.misc.DateUtil;
 import com.orange.barrage.android.util.misc.ScreenUtil;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Callback;
 
@@ -84,7 +85,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
         mShareButton.setOnClickListener(this);
     }
 
-    public void setModel(FeedModel model) {
+    public void setModel(FeedModel model , int layoutListner) {
         if(model == null) {
             return;
         }
@@ -97,7 +98,7 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
 
         //set user list
         List<UserProtos.PBUser> toUsers = model.getFeed().getToUsersList();
-        mFeedMainWidget.setModel(model);
+        mFeedMainWidget.setModel(model , layoutListner);
     }
 
     //生成一个图片监听器
@@ -167,6 +168,16 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
             mFeedMainWidget.stop();
     }
 
+    public void onPause(){
+        mFeedMainWidget.pause();
+    }
+
+    public void onResume(){
+        mFeedMainWidget.resume();
+    }
+
+
+
     /**
      * 下拉头像
      * @param v
@@ -201,7 +212,5 @@ public class TimelineItemView extends LinearLayout implements View.OnClickListen
     public interface onTouchTimelineItemViewListener{
         public boolean onTimelineItemTouch(MotionEvent event);
     }
-
-
 
 }

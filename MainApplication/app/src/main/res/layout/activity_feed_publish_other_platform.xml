@@ -24,17 +24,20 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="160dip">
-
+        <Button
+            android:onClick="changeLayout"
+            android:layout_marginTop="11dip"
+            android:text="改变弹幕布局"
+            style="@style/b_button_color_red" />
         <TextView
-            android:layout_marginTop="22dip"
-
+            android:layout_marginTop="11dip"
             android:textSize="14sp"
             android:textColor="@color/b_color_gray"
             android:text="@string/b_share_move_barred_head"
             style="@style/wrap_content"/>
 
         <LinearLayout
-            android:layout_marginTop="29.5dip"
+            android:layout_marginTop="20dip"
             android:orientation="horizontal"
             style="@style/match_wrap">
 

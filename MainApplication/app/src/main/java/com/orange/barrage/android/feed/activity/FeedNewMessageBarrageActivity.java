@@ -6,13 +6,16 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.ui.TimelineItemView;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
+
+import roboguice.inject.InjectView;
 
 /**
  * Created by Administrator on 2015/3/30.
  */
 public class FeedNewMessageBarrageActivity extends BarrageCommonActivity{
 
-
+    @InjectView(R.id.timelineitemView)
     protected  TimelineItemView mTimelineItemView = null;
 
     public static String mKey = "1";
@@ -25,12 +28,29 @@ public class FeedNewMessageBarrageActivity extends BarrageCommonActivity{
 
     public void initView(){
 
-        mTimelineItemView = (TimelineItemView) findViewById(R.id.timelineitemView);
         FeedModel feedModel = (FeedModel) getIntentSerializable(mKey);
         if(feedModel != null)
-            mTimelineItemView.setModel(feedModel);
+            mTimelineItemView.setModel(feedModel , LayoutDrawIconBackground.LAYOUT_DRAWBAKGROUND);
 
     }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mTimelineItemView.stopPlayer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
 
 
 }

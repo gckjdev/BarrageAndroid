@@ -8,16 +8,15 @@
         android:layout_toRightOf="@+id/commentsTextView"
         android:layout_toEndOf="@+id/commentsTextView" />
     <TextView
-        android:id="@+id/commentseditTextRight"
+        android:id="@+id/commentsEditTextRight"
         style="@style/comments_right_text"
-        android:layout_alignTop="@+id/commentseditText"
-        android:layout_toRightOf="@+id/commentseditText"
-        android:layout_toEndOf="@+id/commentseditText" />
+        android:layout_alignTop="@+id/commentsEditText"
+        android:layout_toRightOf="@+id/commentsEditText"
+        android:layout_toEndOf="@+id/commentsEditText" />
     <EditText
-        android:id="@+id/commentseditText"
+        android:id="@+id/commentsEditText"
         style="@style/comments"/>
     <TextView
-        android:text="dsdajsdhaskjdhsjkhdsa"
         android:id="@+id/commentsTextView"
         style="@style/comments" />
 

@@ -39,6 +39,14 @@ public  class LayoutDrawIconBackground {
 
     private EditText mEditText;
 
+
+
+    public static final int SCROOL_DRAWBACKGROUND = 1;
+
+    public static final int LAYOUT_DRAWBAKGROUND = 2;
+
+
+    //绘制带有三角形的背景
     public void setWhitTriangleRadioRoundFrectListenerBg(final View Parcent, final View child){
 
 
@@ -52,7 +60,7 @@ public  class LayoutDrawIconBackground {
         });
     }
 
-
+    //绘制带有三角形的背景
     public void setWhitTrianleRadioRoundFrectBg(View parcent , View child){
         mParams = mParams != null ? mParams : new Params();
         child.setPadding(mParams.padding + mParams.marginLeft, mParams.padding + mParams.marginTop + mParams.mTopHeight, mParams.padding + mParams.marginRight, mParams.padding + mParams.marginBottopm);
@@ -61,7 +69,7 @@ public  class LayoutDrawIconBackground {
 
 
 
-
+    //绘制带有三角形的图片
     public  Drawable getWhitTriangleRadioRoundFrectBgDrawle(Params params , View parcent , View child){
         return ImageUtil.getBitmapChangeDrawable(getWhitTriangleRadioRoundFrectBgBitmap(params, parcent, child));
     }
@@ -127,7 +135,7 @@ public  class LayoutDrawIconBackground {
         p.setColor(params.bgColor);
         p.setAntiAlias(true);// 设置画笔的锯齿效果
         RectF oval3 = new RectF(0 + params.marginLeft, rectfStartY, child.getWidth() - params.marginRight, rectfEndY);// 设置个新的长方形
-        canvas.drawRoundRect(oval3, 12, 7, p);//第二个参数是x半径，第三个参数是y半径
+        canvas.drawRoundRect(oval3, 12, 12, p);//第二个参数是x半径，第三个参数是y半径
         int h = params.mTriangleHeight;
         float l = getBestX(h + 15 , parcent , child);
 
@@ -141,6 +149,10 @@ public  class LayoutDrawIconBackground {
         canvas.drawPath(path1, p);
 
     }
+
+
+
+
 
 
     private  float getBestX(int h , View parcent , View child){
@@ -170,9 +182,7 @@ public  class LayoutDrawIconBackground {
         float bottom = XY[1] - rect.bottom;
 
         if(top > child.getHeight() && bottom < child.getHeight() ){
-
             return GRIVITY_BOTTOM;
-
         }
 
         return GRIVITY_TOP;
@@ -189,30 +199,52 @@ public  class LayoutDrawIconBackground {
 
 
     public void setSemicircleRectangleBg(View v , Params params ){
-        setSemicircleRectangleBg(v ,params, true);
+        setSemicircleRectangleBg(v ,params, true , LAYOUT_DRAWBAKGROUND);
     }
 
-    public void setSemicircleRectangleBg(final View v ,  final Params params, final boolean isMove){
+    public void setSemicircleRectangleBg(final View v ,  final Params params, final boolean isMove , int listenerType){
 
-        v.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
+        if(listenerType == LAYOUT_DRAWBAKGROUND) {
+            v.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
 
-                Bitmap bitmap = drawSemicircleRectang(v, params.getColor());
-                v.setBackground(ImageUtil.getBitmapChangeDrawable(bitmap));
-                if(isMove) {
-                    v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }else{
-                    if(v instanceof EditText){
-                        mEditText = ((EditText)v);
-                        mEditText.addTextChangedListener(mTextWatcher);
+                    Bitmap bitmap = drawSemicircleRectang(v, params.getColor());
+                    v.setBackground(ImageUtil.getBitmapChangeDrawable(bitmap));
+                    Ln.e("layout");
+                    if (isMove) {
+                        v.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    } else {
+                        if (v instanceof EditText) {
+                            mEditText = ((EditText) v);
+                            mEditText.addTextChangedListener(mTextWatcher);
+                        }
+
                     }
-
                 }
-            }
-        });
+            });
+        }else if (listenerType == SCROOL_DRAWBACKGROUND) {
+            v.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
 
+                @Override
+                public void onScrollChanged() {
+                    Ln.e("onScrollChanged");
+                    Bitmap bitmap = drawSemicircleRectang(v, params.getColor());
+                    v.setBackground(ImageUtil.getBitmapChangeDrawable(bitmap));
+                    if (isMove) {
+                        v.getViewTreeObserver().removeOnScrollChangedListener(this);
+                    } else {
+                        if (v instanceof EditText) {
+                            mEditText = ((EditText) v);
+                            mEditText.addTextChangedListener(mTextWatcher);
+                        }
+
+                    }
+                }
+            });
+        }
     }
+
 
 
     private TextWatcher mTextWatcher =  new TextWatcher() {

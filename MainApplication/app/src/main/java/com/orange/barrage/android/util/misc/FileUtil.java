@@ -335,21 +335,29 @@ public class FileUtil {
 
         InputStream out = context.getResources().openRawResource(resId);
         if(out == null) return new byte[0];
-
+        byte [] bytes = null;
         try {
             int length = out.available();
-            byte[] bytes = new byte[length];
+            bytes = new byte[length];
 
             int result = out.read(bytes);
 
             if(result == -1) return new byte[0];
-            else return bytes;
+
 
         } catch (IOException e) {
             e.printStackTrace();
             return new byte[0];
+        }finally {
+            if(out != null){
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
+        return bytes;
     }
 
         /**

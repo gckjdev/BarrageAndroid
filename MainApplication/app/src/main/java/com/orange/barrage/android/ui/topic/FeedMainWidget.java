@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.ui.TimelineItemView;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.barrage.android.util.view.ScalableFrameLayout;
 import com.orange.protocol.message.BarrageProtos;
 
@@ -41,8 +42,9 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
     }
 
     public void setBarrageActions(List<BarrageProtos.PBFeedAction> feedActionList) {
-        mInnerView.setBarrageActions(feedActionList);
+        mInnerView.setBarrageActions(feedActionList , LayoutDrawIconBackground.LAYOUT_DRAWBAKGROUND);
     }
+
 
     public void hideAllBarrageActions() {
         mInnerView.hideAllBarrageActions();
@@ -54,6 +56,10 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
 
     public void play() {
         mInnerView.play();
+    }
+
+    public void playFrom(int index) {
+        mInnerView.playFrom(index);
     }
 
     public void pause() {
@@ -72,8 +78,9 @@ public class FeedMainWidget extends ScalableFrameLayout<FeedMainInnerWidget> {
         mInnerView.moveTo(progress);
     }
 
-    public void setModel(FeedModel model) {
-        mInnerView.setModel(model);
+    //alter youjiannuo @time 2015/4/3
+    public void setModel(FeedModel model , int layoutListenerType) {
+        mInnerView.setModel(model , layoutListenerType);
     }
 
     public void setOnTimelineItemViewTouchListener(TimelineItemView.onTouchTimelineItemViewListener l){

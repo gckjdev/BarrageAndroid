@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 
 import com.orange.barrage.android.feed.model.FeedManager;
 import com.orange.barrage.android.ui.topic.model.FeedModel;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.BarrageProtos;
 
 import java.util.List;
@@ -72,7 +73,7 @@ public class UserTimelineAdapter extends BaseAdapter{
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
         FeedModel model = new FeedModel();
         model.setFeed(feed);
-        ((TimelineItemView)convertView).setModel(model);
+        ((TimelineItemView)convertView).setModel(model , LayoutDrawIconBackground.SCROOL_DRAWBACKGROUND);
 
         return convertView;
     }

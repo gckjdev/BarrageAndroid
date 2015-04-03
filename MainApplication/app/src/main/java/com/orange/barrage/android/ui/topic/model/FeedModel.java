@@ -4,7 +4,9 @@ import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Rollin on 2015/1/25.
@@ -38,7 +40,7 @@ public class FeedModel implements Serializable{
     }
 
     public void setFeedActionLis(List<BarrageProtos.PBFeedAction> feedActionLis) {
-        mFeedActionLis = feedActionLis;
+        mFeedActionLis = new ArrayList<>(feedActionLis);
     }
 
     public BarrageProtos.PBFeed getFeed() {

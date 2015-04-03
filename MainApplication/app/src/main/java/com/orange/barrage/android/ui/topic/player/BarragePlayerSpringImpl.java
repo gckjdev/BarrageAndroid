@@ -7,6 +7,7 @@ import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringUtil;
 import com.orange.barrage.android.ui.topic.BarragePlayer;
 import com.orange.barrage.android.ui.topic.FeedActionWidget;
+import com.orange.barrage.android.util.activity.MessageCenter;
 
 import java.util.List;
 
@@ -29,8 +30,8 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
     }
 
     private void reset() {
-        mSpringChain = BarrageSpringChain.create();
-        mSpringChain.setDelayBetweenSpring(mDelayBetweenSpring);
+           mSpringChain = BarrageSpringChain.create();
+           mSpringChain.setDelayBetweenSpring(mDelayBetweenSpring);
     }
 
     @Override
@@ -65,6 +66,7 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
 
     @Override
     public void moveTo(float progress) {
+
         mSpringChain.moveTo(progress);
     }
 

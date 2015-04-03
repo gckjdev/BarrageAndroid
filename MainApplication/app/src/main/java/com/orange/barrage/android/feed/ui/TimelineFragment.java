@@ -16,6 +16,7 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.activity.FeedFirstLognShowBarrageActivity;
 import com.orange.barrage.android.feed.mission.FeedMission;
 import com.orange.barrage.android.feed.mission.FeedMissionCallbackInterface;
+import com.orange.barrage.android.home.HomeActivity;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.protocol.message.BarrageProtos;
 
@@ -86,6 +87,9 @@ public class TimelineFragment extends RoboFragment {
             }
         });
 
+        //启动滚动条
+        ((HomeActivity)getActivity()).showTopProgress();
+
         mAdapter.setFragment(this);
 
 //        EventBus.getDefault().register(this);
@@ -113,6 +117,15 @@ public class TimelineFragment extends RoboFragment {
             }
         });
 
+
+        getActivity().findViewById(R.id.showFriendButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityIntent.startIntent(getActivity() , FeedFirstLognShowBarrageActivity.class);
+            }
+        });
+
+
     }
 
     private void loadTimeline() {
@@ -135,6 +148,7 @@ public class TimelineFragment extends RoboFragment {
     }
 
     private void showNotMessage(){
+        ((HomeActivity)getActivity()).dismissTopProgress();
         if(mAdapter.getCount() != 0){
             mLayout.setVisibility(View.GONE);
         }else {

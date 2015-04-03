@@ -12,10 +12,13 @@ import android.widget.TextView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
+import com.orange.barrage.android.util.misc.CompressColorUtil;
 import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.BarrageProtos;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Callback;
+
+import roboguice.util.Ln;
 
 /**
  * Action widget for feed
@@ -52,23 +55,15 @@ public class FeedActionWidget extends LinearLayout {
         initView();
     }
 
+
     private void initView(){
         mView = LayoutInflater.from(getContext()).inflate(R.layout.view_feed_action_widget, this);
 
-        mEditText = (EditText)findViewById(R.id.commentseditText);
+        mEditText = (EditText)findViewById(R.id.commentsEditText);
         mTextView = (TextView)findViewById(R.id.commentsTextView);
         mUserAvatarView = (UserAvatarView)findViewById(R.id.head);
-        mEditextRight = (TextView) findViewById(R.id.commentseditTextRight);
+        mEditextRight = (TextView) findViewById(R.id.commentsEditTextRight);
         mTextRight = (TextView) findViewById(R.id.commentsTextViewRight);
-
-        LayoutDrawIconBackground.Params params = getParams();
-
-
-        new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, false);
-
-        new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, true);
-
-
 
     }
 
@@ -82,7 +77,7 @@ public class FeedActionWidget extends LinearLayout {
     }
 
     public void setType(int type){
-        setType(type , false);
+        setType(type , true);
     }
 
     /**
@@ -94,26 +89,25 @@ public class FeedActionWidget extends LinearLayout {
             mTextView.setVisibility(View.GONE);
             mTextRight.setVisibility(View.GONE);
 
+            mEditText.setFocusable(isFocusable);
             mEditText.setVisibility(View.VISIBLE);
         } else {
             mEditText.setVisibility(View.GONE);
             mEditextRight.setVisibility(View.GONE);
 
-            mTextView.setFocusable(isFocusable);
             mTextView.setVisibility(View.VISIBLE);
-//            mTextRight.setVisibility(View.VISIBLE);
         }
     }
 
 
     public String getText(){
         TextView tv = getTextView();
-        return tv == null ? "" : tv.getText().toString();
+        return tv.getText().toString();
     }
 
     public void setText(String text){
         TextView tv = getTextView();
-        if(tv != null) tv.setText(text);
+        tv.setText(text);
     }
 
     private TextView getTextView(){
@@ -145,23 +139,36 @@ public class FeedActionWidget extends LinearLayout {
     }
 
     public void setFeedAction(BarrageProtos.PBFeedAction feedAction){
-        setFeedAction(feedAction , null);
+        setFeedAction(feedAction , LayoutDrawIconBackground.LAYOUT_DRAWBAKGROUND , null);
     }
 
-    public void setFeedAction(BarrageProtos.PBFeedAction feedAction , Callback callback){
+    public void setFeedAction(BarrageProtos.PBFeedAction feedAction , int listenerType , Callback callback){
         mFeedAction = feedAction;
+        setBackground(listenerType);
+
         setIconUrl(feedAction.getAvatar() , callback);
-//        UserProtos.PBUser user = feedAction.getUser();
-//        setUser(user);
         setText(feedAction.getText());
 
-        // FIXME incorrect color, need conversion
-        setTextColor(feedAction.getColor());
+        int color = CompressColorUtil.toAndroidColor(feedAction.getColor());
+
+        setTextColor(color);
     }
+
+    public void setBackground(int listenerType){
+        LayoutDrawIconBackground.Params params = getParams();
+        new LayoutDrawIconBackground().setSemicircleRectangleBg(mEditText, params, false , listenerType);
+        new LayoutDrawIconBackground().setSemicircleRectangleBg(mTextView, params, true  , listenerType);
+    }
+
 
     public void setTextColor(int color ){
         TextView tv = getTextView();
-        tv.setTextColor( color);
+        tv.setTextColor(color);
+    }
+
+    public int getTextColor(){
+        TextView tv = getTextView();
+        return tv.getCurrentTextColor();
     }
 }
 

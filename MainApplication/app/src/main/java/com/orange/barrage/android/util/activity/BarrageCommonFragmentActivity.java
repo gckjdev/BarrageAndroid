@@ -2,12 +2,8 @@ package com.orange.barrage.android.util.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
-import com.litl.leveldb.NotFoundException;
 import com.orange.barrage.android.BarrageAndroid;
-import com.orange.barrage.android.R;
 
 import roboguice.activity.RoboFragmentActivity;
 
@@ -97,15 +93,23 @@ public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
      * 打开等待进度条
      * @param text
      */
-    protected  void showProgress(String text){
+    public  void showProgress(String text){
         mProgressDialog.show(text);
     }
 
     /**
      * 关闭等待进度条
      */
-    protected  void dismissProgress(){
+    public  void dismissProgress(){
         mProgressDialog.close();
+    }
+
+    public void showTopProgress(){
+        mTopBarView.showTopProgress();
+    }
+
+    public void dismissTopProgress(){
+        mTopBarView.dismissTopProgress();
     }
 
     /**

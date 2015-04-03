@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
         <ImageButton
+
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:src="@drawable/x_top_left_button_src"
@@ -32,6 +33,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmallTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_progressBar"
+        android:visibility="gone"
+        android:layout_marginRight="10dip"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/top_title"/>
     <TextView
         android:id="@+id/top_title"
         android:layout_width="wrap_content"
@@ -57,4 +67,6 @@
         android:textColor="@drawable/x_top_send"
         style="@style/b_homepage_top_right_button"
         android:textSize="15sp" />
+
+
 </RelativeLayout>

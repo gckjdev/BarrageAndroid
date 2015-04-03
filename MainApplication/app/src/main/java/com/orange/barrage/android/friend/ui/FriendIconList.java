@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Adapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -17,10 +18,14 @@ import com.orange.barrage.android.R;
 import com.orange.barrage.android.friend.activity.FriendListSelectActivity;
 import com.orange.barrage.android.friend.mission.callback.AddTagCallback;
 import com.orange.barrage.android.friend.model.TagManager;
+import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.view.LayoutDrawIconBackground;
 import com.orange.protocol.message.UserProtos;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import roboguice.util.Ln;
 
 /**
  * Created by Administrator on 2015/3/13.
@@ -70,7 +75,7 @@ public class FriendIconList extends LinearLayout  {
 
     private OnClickItemListener mL;
 
-    FriendIconListAdapter mAdapter;
+    private FriendIconListAdapter mAdapter;
 
     //是否修改了
     private boolean mIsAlter = false;
@@ -90,18 +95,50 @@ public class FriendIconList extends LinearLayout  {
     private void initView() {
 
         View v = LayoutInflater.from(getContext()).inflate(R.layout.view_friend_icon_and_textview , null);
-
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT , LayoutParams.MATCH_PARENT);
-
-        addView(v , params);
+        addView(v, params);
 
 
         mPeopleNum = (TextView) findViewById(R.id.chengyuan);
         mGridView = (GridView) findViewById(R.id.frinedIconGridView);
 
+        newCreateFriendIconItemForGetWidth();
+
     }
 
 
+    private void newCreateFriendIconItemForGetWidth(){
+        final FriendIconItem friendIconItem = new FriendIconItem(getContext());
+        friendIconItem.loadResourceImage(R.drawable.y_morentouxiang , FriendIconList.ICON_SHOW_RIGHT_TOP_DELETE);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        addView(friendIconItem , 0 ,params);
+        friendIconItem.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                changeGriviewCol(friendIconItem.getWidth());
+                friendIconItem.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                removeView(friendIconItem);
+
+            }
+        });
+
+    }
+
+    //改变文件的不就大小
+    private void changeGriviewCol(int childWidth){
+        Ln.e("griview width:"+getWidth());
+        Ln.e("griView item width:"+childWidth);
+
+        if(getWidth() == 0){
+            MessageCenter.postTestMessage("I am zero");
+            return;
+        }
+
+        int n = getWidth() / childWidth;
+        if(mGridView == null) return;
+
+        mGridView.setNumColumns(n);
+    }
 
     //初始化数据
     //一定要被调用

@@ -20,9 +20,8 @@ import com.orange.barrage.android.event.StartActivityFeedCommentEvent;
 import com.orange.barrage.android.event.StartActivityFeedPublishedOtherPlatformEvent;
 import com.orange.barrage.android.feed.activity.FeedCommentActivity;
 import com.orange.barrage.android.feed.activity.FeedFirstLognShowBarrageActivity;
-import com.orange.barrage.android.feed.activity.FeedNewMessageListActivity;
-import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.activity.FeedPublishedOtherPlatformActivity;
+import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.ui.PhotoAndCamera;
 import com.orange.barrage.android.feed.ui.ShowPublishFeedView;
 import com.orange.barrage.android.friend.activity.FriendTabDetailInfoAndCreateAndAlterActivity;
@@ -295,7 +294,6 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         } else if (position == 3) {
             //个人资料
             ActivityIntent.startIntent(this, UserHomeActivity.class);
-
         } else if (position == 4) {
             //意见反馈
             ActivityIntent.startIntent(this, OptionFeedBackActivity.class);
@@ -303,13 +301,10 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
         if (mHomePopupWindow != null)
             mHomePopupWindow.close();
-
     }
 
     @Override
     public void onClickLeft(View v) {
-
         ActivityIntent.startIntent(this , FeedFirstLognShowBarrageActivity.class);
-
     }
 }

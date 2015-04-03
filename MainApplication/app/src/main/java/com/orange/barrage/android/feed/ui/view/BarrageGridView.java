@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.orange.barrage.android.util.misc.SystemUtil;
+
 /**
  * 绘制表格
  * @author youjiannuo
@@ -40,6 +42,11 @@ public class BarrageGridView extends View{
 		mColor = color;
 		invalidate();
 	}
+
+    public float getItemWidth(){
+        return SystemUtil.getPhoneScreenWH(getContext())[0] / (mCol * 1.0f);
+    }
+
 
 	@SuppressLint("DrawAllocation")
 	@Override

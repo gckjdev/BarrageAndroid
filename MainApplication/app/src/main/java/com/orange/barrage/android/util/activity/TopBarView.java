@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ public class TopBarView {
 
     View.OnClickListener mRightClickListener;
     View.OnClickListener mLeftClickListener;
+
+    private ProgressBar mProgressBar;
 
 
     public TopBarView(Activity activity){
@@ -77,6 +80,19 @@ public class TopBarView {
 
     }
 
+    private void getProgressBar(){
+        mProgressBar =mProgressBar == null ? (ProgressBar) mActivity.findViewById(R.id.top_progressBar): mProgressBar;
+    }
+
+    public void showTopProgress(){
+        getProgressBar();
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void dismissTopProgress(){
+        getProgressBar();
+        mProgressBar.setVisibility(View.GONE);
+    }
 
 
     /**
