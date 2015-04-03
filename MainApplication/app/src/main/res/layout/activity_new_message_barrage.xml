@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_gravity="center"
     android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <include layout="@layout/activity_view_top" />
+
     <com.orange.barrage.android.feed.ui.TimelineItemView
 
         android:id = "@+id/timelineitemView"

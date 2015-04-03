@@ -9,6 +9,7 @@ import android.widget.GridView;
 
 import com.orange.barrage.android.R;
 import com.orange.barrage.android.feed.mission.FeedMission;
+import com.orange.barrage.android.feed.model.FeedManager;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
 
 import javax.inject.Inject;
@@ -28,6 +29,9 @@ public class FeedNewMessageListActivity extends BarrageCommonActivity{
     @Inject
     FeedMission mFeedMision;
 
+    @Inject
+    FeedManager manager;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.view_timeline_list_item , R.string.newmessage,-1);
@@ -36,7 +40,6 @@ public class FeedNewMessageListActivity extends BarrageCommonActivity{
 
     private void initView(){
         mLayoutInflater = LayoutInflater.from(this);
-
     }
 
 
