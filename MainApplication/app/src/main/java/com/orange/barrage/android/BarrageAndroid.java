@@ -8,6 +8,8 @@ import com.orange.barrage.android.util.ContextManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import roboguice.util.Ln;
+
 /**
  * Created by Rollin on 2015/1/10.
  */
@@ -24,12 +26,12 @@ public class BarrageAndroid extends Application {
         ContextManager.init(this);
         //定义了一个全局的异常处理
         //TODO: comment it out because umneg SDK can provide this
-//        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-//            @Override
-//            public void uncaughtException(Thread thread, Throwable ex) {
-//                Ln.e(ex, "uncaughtException");
-//            }
-//        });
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread thread, Throwable ex) {
+                Ln.e(ex, "uncaughtException");
+            }
+        });
     }
 
     //加入一个Activity

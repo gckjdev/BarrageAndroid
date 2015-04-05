@@ -7,28 +7,48 @@ import roboguice.util.Ln;
 public class CompressColorUtil {
 
     public static int toBarrageColor(int androidColor){
-        float alpha = Color.alpha(androidColor);
-        float red = Color.red(androidColor);
-        float green = Color.green(androidColor);
-        float blue = Color.blue(androidColor);
-        int barrageColor = (int)compressColor8WithRed((int)red, (int)green, (int)blue, (int)alpha);
-        Ln.d("<toBarrageColor> value(%d), red(%d) green(%d) blue(%d) alpha(%d), final(%d)", androidColor, red, green, blue, alpha, barrageColor);
+        int alpha = Color.alpha(androidColor);
+        int red = Color.red(androidColor);
+        int  green = Color.green(androidColor);
+        int blue = Color.blue(androidColor);
+		int barrageColor = (int) compressColor8WithInt(red, green, blue, alpha);
+		Ln.d("<toBarrageColor> value(%d), red(%d) green(%d) blue(%d) alpha(%d), final(%d)", androidColor, red, green, blue, alpha, barrageColor);
         return barrageColor;
     }
 
     public static int toAndroidColor(int barrageColor){
-        float alpha = getAlphaFromColor8(getUnsignedInt(barrageColor));
-        float red = getRedFromColor8(getUnsignedInt(barrageColor));
-        float green = getGreenFromColor8(getUnsignedInt(barrageColor));
-        float blue = getBlueFromColor8(getUnsignedInt(barrageColor));
+        int alpha = getInt(getAlphaFromColor8(getUnsignedInt(barrageColor)));
+		int red = getInt(getRedFromColor8(getUnsignedInt(barrageColor)));
+		int green = getInt(getGreenFromColor8(getUnsignedInt(barrageColor)));
+		int blue = getInt(getBlueFromColor8(getUnsignedInt(barrageColor)));
         Ln.d("<toAndroidColor> value(%d), red(%d) green(%d) blue(%d) alpha(%d)", barrageColor, red, green, blue, alpha);
-        return Color.argb((int)alpha, (int)red, (int)green, (int)blue);
+        return Color.argb(alpha, red, green, blue);
     }
+
+	private static int getInt(float f){
+		float value = f * 255f;
+		return (int)value;
+	}
 
     public static long getUnsignedInt (int data){     //将int数据转换为0~4294967295 (0xFFFFFFFF即DWORD)。
         return data & 0x0FFFFFFFFl;
     }
 
+	public static int compressColor8WithInt(int red, int green, int blue, int alpha){
+		int ret = (alpha) +
+				((blue) << 8) +
+				((green) << 16) +
+				((red) << 24);
+		return ret;
+	}
+
+	public static long compressColor8WithRed(int red, int green, int blue, int alpha){
+		long ret = (long)(alpha) +
+				((long)(blue) << 8) +
+				((long)(green) << 16) +
+				((long)(red) << 24);
+		return ret;
+	}
 	// new compress, with 8 bits for alpha
 	public static long compressColor8WithRed(float red, float green, float blue, float alpha){
 		long ret = (long)(alpha * 255.0f) +
