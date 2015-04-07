@@ -71,21 +71,15 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
     @Override
     protected void onCreate(Bundle saveBundle) {
-        super.onCreate(saveBundle, R.layout.activity_publishimage, R.string.b_share_to_who, R.string.b_OK);
-
+        super.onCreate(saveBundle, R.layout.activity_publishimage,R.string.b_share_to_who, R.string.b_OK);
         initView();
     }
 
     private void initView() {
-
         showProgress("");
         mFriendIconList.initData(mTagManager, "", this);
-
         mFriendTagList = new FriendTagList(this, mTagManager, this);
-
         pbUser = mUserManger.getUser();
-
-
         if (pbUser != null) {
             mFriendIconList.setUser(pbUser, this, FriendIconList.ICON_ADD_AND_DELETE_BUTTON);
             setMenBerTextView();
@@ -102,13 +96,11 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
                 if (errorCode == 0) {
                     // reload tag view
                     mFriendTagList.loadLocalTagList(FriendTagView.Params.PARAMS_HOLLOW);
-
                 }
                 mFriendIconList.setVisibility(View.VISIBLE);
                 dismissProgress();
             }
         });
-
     }
 
 
@@ -124,14 +116,11 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
 
     @Override
     public void onClickLeft(View v) {
-
         statue = 0;
-
         //返回
         if (mFriendIconList.getIconCount() == 0) super.onClickLeft(v);
         else {
             showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "是否退出", -1);
-
         }
     }
 
@@ -139,7 +128,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Override
     public void onClickRight(View v) {
         super.onClickRight(v);
-
         //发表
         statue = 1;
         if (mFriendIconList.getIconCount() == 0) {
@@ -147,13 +135,12 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
             return;
         }
         showRemindboxAlertDialog(new String[]{"是", "否"}, "提示", "是否发表", -1);
-    }
+}
 
 
     @Override
     public void onRemindItemClick(int position) {
         if (position == RemindboxAlertDialog.LEFTBUTTON) {
-
             if (statue == 0) {
                 //退出
                 finish();
@@ -161,21 +148,18 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
                 //发表
                 publishImage();
             }
-
         }
     }
 
 
     private void publishImage(){
-
         Bitmap bitmap = getPublishImage();
         if(bitmap == null){
             MessageCenter.postErrorMessage("图片获取失败");
             return;
         }
         showProgress("正在发表");
-        mFeedMission.createFeed(bitmap , "", mFriendIconList.getPBUser() , new FeedMissionCallbackInterface(){
-
+        mFeedMission.createFeed(bitmap , "", mFriendIconList.getPBUser(),new FeedMissionCallbackInterface(){
             @Override
             public void handleSuccess(String id, List<BarrageProtos.PBFeed> list) {
                 finish();
@@ -228,8 +212,6 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Override
     public void onClickItem(String tagId, FriendTagItemView v, FriendTagView friendTagView) {
         //点击标签
-
-
         FriendTagView.Params params = v.getParams();
 
         maps.put(tagId, v);
@@ -287,13 +269,8 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
                 //修改成为实心
                 params.state = FriendTagView.Params.PARAMS_SOLID;
             }
-
             friendTagItemView.setParams(params);
-
             maps.remove(tagId);
-
         }
     }
-
-
 }

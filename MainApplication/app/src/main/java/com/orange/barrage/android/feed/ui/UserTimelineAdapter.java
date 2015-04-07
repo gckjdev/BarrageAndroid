@@ -73,7 +73,11 @@ public class UserTimelineAdapter extends BaseAdapter{
         BarrageProtos.PBFeed feed = mFeedManager.getUserTimeline().get(position);
         FeedModel model = new FeedModel();
         model.setFeed(feed);
+
+        //alter youjiannuo @time 2015/4/3
+        //为了绘制弹幕的背景颜色，改变观察者的方式
         ((TimelineItemView)convertView).setModel(model , LayoutDrawIconBackground.SCROOL_DRAWBACKGROUND);
+
 
         return convertView;
     }

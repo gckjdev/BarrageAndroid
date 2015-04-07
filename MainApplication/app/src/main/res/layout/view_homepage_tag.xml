@@ -28,7 +28,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_height="10dip"
-        android:layout_width="wrap_content"></LinearLayout>
+        android:layout_width="wrap_content">
+
+        </LinearLayout>
     
     <TextView
         android:layout_width="match_parent"

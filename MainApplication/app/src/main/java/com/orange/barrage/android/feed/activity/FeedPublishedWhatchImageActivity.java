@@ -18,7 +18,7 @@ import roboguice.inject.InjectView;
 public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
 
     @InjectView(R.id.imageview)
-    ImageView mImage;
+    public ImageView mImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
 
     @Override
     public void onClickRight(View v) {
-
         ActivityIntent.startIntent(this , FeedPublishedImageActivity.class);
         finish();
     }

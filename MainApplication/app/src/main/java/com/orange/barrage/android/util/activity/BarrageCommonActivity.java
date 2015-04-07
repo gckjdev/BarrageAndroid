@@ -49,7 +49,6 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
     @Inject
     protected TagMission mTagMission;
 
-
     protected RemindboxAlertDialog mRemindboxAlterDialong;
 
     /**
@@ -103,7 +102,7 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
 
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
-    }
+}
 
     @Override
     protected void onStart() {
@@ -233,7 +232,6 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
                     break;
                 }
             }
-
         }
         return pbUserTags;
     }

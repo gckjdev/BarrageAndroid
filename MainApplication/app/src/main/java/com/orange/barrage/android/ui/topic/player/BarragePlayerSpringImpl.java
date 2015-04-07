@@ -112,7 +112,6 @@ public class BarragePlayerSpringImpl implements BarragePlayer {
                     int topMargin = currentView.getTop();
                     float initY = mParentHeight - topMargin;
                     float translationY = (float)SpringUtil.mapValueFromRangeToRange(spring.getCurrentValue(), 0, 1, initY, 0);
-                    Ln.v("initY: %.2f, translationY: %.2f", initY, translationY);
                     currentView.setTranslationY(translationY);
                 }
             });

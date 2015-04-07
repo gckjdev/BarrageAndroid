@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
-import com.orange.barrage.android.feed.activity.FeedPublishedWhatchImageActivity;
 import com.orange.barrage.android.feed.ui.PhotoAndCamera;
 import com.orange.barrage.android.feed.ui.ShowPublishFeedView;
 import com.orange.barrage.android.user.model.UserManager;
@@ -120,7 +119,7 @@ public class UserHomeActivity extends BarrageCommonActivity {
                                     public void onSuccess(Bitmap bitmap) {
                                         if (bitmap != null) {
                                             FileUtil.savePhotoToSDCard(bitmap, PHOTOPATH, PHOTONAME);
-                                            ActivityIntent.startIntent(UserHomeActivity.this, FeedPublishedWhatchImageActivity.class);
+                                            ActivityIntent.startIntent(UserHomeActivity.this, FeedPublishedWhatchUserHomeImageActivity.class);
                                         }
                                     }
 
@@ -142,7 +141,7 @@ public class UserHomeActivity extends BarrageCommonActivity {
                                         if (bitmap!=null)
                                         {
                                             FileUtil.savePhotoToSDCard(bitmap, PHOTOPATH, PHOTONAME);
-                                            ActivityIntent.startIntent(UserHomeActivity.this, FeedPublishedWhatchImageActivity.class);
+                                            ActivityIntent.startIntent(UserHomeActivity.this, FeedPublishedWhatchUserHomeImageActivity.class);
                                         }
                                     }
 

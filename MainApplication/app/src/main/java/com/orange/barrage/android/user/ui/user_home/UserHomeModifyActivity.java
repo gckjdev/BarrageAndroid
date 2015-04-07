@@ -2,6 +2,8 @@ package com.orange.barrage.android.user.ui.user_home;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,17 +13,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.barrage.android.R;
+import com.orange.barrage.android.feed.ui.PhotoAndCamera;
 import com.orange.barrage.android.user.mission.UserMissionCallback;
 import com.orange.barrage.android.user.model.UserManager;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserEmailEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserHomeModifyPasswordActivity;
+import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserPhoneNumberEditTextActivity;
 import com.orange.barrage.android.user.ui.user_home.user_settings.UserSignatureEditTextActivity;
-import com.orange.barrage.android.user.ui.user_home.user_settings.UserNickEditTextActivity;
 import com.orange.barrage.android.user.ui.view.ActionSheetDialog;
 import com.orange.barrage.android.user.ui.view.UserAvatarView;
 import com.orange.barrage.android.util.activity.ActivityIntent;
 import com.orange.barrage.android.util.activity.BarrageCommonActivity;
+import com.orange.barrage.android.util.activity.MessageCenter;
+import com.orange.barrage.android.util.misc.FileUtil;
+import com.orange.barrage.android.util.misc.SystemUtil;
 import com.orange.protocol.message.UserProtos;
 import com.squareup.picasso.Picasso;
 
@@ -43,7 +49,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
     private UserAvatarView mUserAvatarImageView;
 
     @InjectView(R.id.user_modify_nick)
-    private  TextView mUserModifyNick;
+    private TextView mUserModifyNick;
 
     @InjectView(R.id.user_modify_signature)
     private TextView mUserModifySignature;
@@ -98,9 +104,19 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
     @InjectView(R.id.userhome_modify_background)
     private LinearLayout mUserHomeModifyBackground;
     public boolean panduan;
+
+    private PhotoAndCamera mPhotoAndCamera;
+    public static String PHOTOPATH = SystemUtil.getSDCardPath() + "/bbl/";
+
+    public static String PHOTONAME = "you.png";
+
+    private void initPhoto() {
+        mPhotoAndCamera = mPhotoAndCamera == null ? new PhotoAndCamera(UserHomeModifyActivity.this) : mPhotoAndCamera;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState,R.layout.activity_user_home_modify,"个人资料",-1);
+        super.onCreate(savedInstanceState, R.layout.activity_user_home_modify, "个人资料", -1);
 
         //测试密码
 
@@ -108,19 +124,18 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         userBuilder.setUserId(mUserManager.getUserId());
         MessageCenter.postInfoMessage(userBuilder.getPassword().toString() + "恭喜啦");
       */  //用户只有get方法和has方法，没有set方法,如何为用户设置性别呢，似乎没有set方法
-        final  UserProtos.PBUser user = mUserManager.getUser();
+        final UserProtos.PBUser user = mUserManager.getUser();
         //取得性别
-        panduan=user.getGender();
+        panduan = user.getGender();
 
         //mUserModiSettingWeixin.setText();
         //获取QQ号码
-        mUserModify_QQnumber.setText(user.getQqOpenId()+"这个是QQ号码");
+        mUserModify_QQnumber.setText(user.getQqOpenId() + "这个是QQ号码");
         //获取密码成功,这个是加密的字符串
         //MessageCenter.postInfoMessage(user.getPassword().toString() + "恭喜啦");
         mUserModifyPhoneNumber.setText(user.getMobile());
         mUserAvatarImageView.loadUser(user);
-        if (user.hasAvatarBg())
-        {
+        if (user.hasAvatarBg()) {
             Picasso.with(UserHomeModifyActivity.this)
                     .load(user.getAvatarBg().toString())
                     .placeholder(R.drawable.tab_home)
@@ -130,17 +145,15 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         mUserModifyNick.setText(user.getNick());
         mUserModifySignature.setText(user.getSignature());
         mUserModifyEmail.setText(user.getEmail());
-        if (TextUtils.isEmpty(user.getLocation())){
+        if (TextUtils.isEmpty(user.getLocation())) {
             mUserLocation.setText("什么也没有");
-        }
-        else{
+        } else {
             mUserLocation.setText(user.getLocation());
         }
 
-        if (panduan){
+        if (panduan) {
             mUserModifyGender.setText("男");
-        }
-        else{
+        } else {
             mUserModifyGender.setText("女");
         }
 
@@ -153,20 +166,51 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                         .setTitle("请选择")
                         .setCancelabe(true)
                         .setCanceledOnTouchOutside(true)
-                        .addSheetItem("从相册选择", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                        .addSheetItem("从相册选择", ActionSheetDialog.SheetItemColor.Blue, new ActionSheetDialog.OnSheetItemClickListener() {
                             @Override
                             public void onClick(int which) {
                                 //MessageCenter.postInfoMessage("测试菜单成功");
+                                initPhoto();
+                                mPhotoAndCamera.choosePhoto(new PhotoAndCamera.onGetPhotoCallback() {
+                                    @Override
+                                    public void onSuccess(Bitmap bitmap) {
+                                        if (bitmap != null) {
+                                            FileUtil.savePhotoToSDCard(bitmap, PHOTOPATH, PHOTONAME);
+                                            ActivityIntent.startIntent(UserHomeModifyActivity.this, FeedPublishedWhatchUserHomeImageActivity.class);
+                                        }
+                                    }
+                                    @Override
+                                    public void onError(String reason) {
+                                        MessageCenter.postInfoMessage("获取照片失败");
+                                    }
+                                });
                             }
                         })
-                        .addSheetItem("拍照", ActionSheetDialog.SheetItemColor.Blue,new ActionSheetDialog.OnSheetItemClickListener() {
+                        .addSheetItem("拍照", ActionSheetDialog.SheetItemColor.Blue, new ActionSheetDialog.OnSheetItemClickListener() {
                             @Override
                             public void onClick(int which) {
+                                initPhoto();
+                                mPhotoAndCamera.takePicture(new PhotoAndCamera.onGetPhotoCallback() {
+                                    @Override
+                                    public void onSuccess(Bitmap bitmap) {
+                                        if (bitmap!=null)
+                                        {
+                                            FileUtil.savePhotoToSDCard(bitmap,PHOTOPATH,PHOTONAME);
+                                            ActivityIntent.startIntent(UserHomeModifyActivity.this, FeedPublishedWhatchUserHomeImageActivity.class);
+                                        }
+                                    }
 
+                                    @Override
+                                    public void onError(String reason) {
+                                        MessageCenter.postInfoMessage("获取照片失败");
+                                    }
+                                });
                             }
                         }).show();
             }
         });
+
+
         //修改昵称
         mNickLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,7 +236,7 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         mUserModifyPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityIntent.startIntent(UserHomeModifyActivity.this,UserHomeModifyPasswordActivity.class);
+                ActivityIntent.startIntent(UserHomeModifyActivity.this, UserHomeModifyPasswordActivity.class);
             }
         });
 
@@ -200,28 +244,26 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         mUserSelectGender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view=getLayoutInflater().inflate(R.layout.activity_user_select_gender,null);
+                View view = getLayoutInflater().inflate(R.layout.activity_user_select_gender, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserHomeModifyActivity.this);
                 builder.setView(view);
                 final Dialog dialog = builder.create();
                 dialog.show();
 
-                final LinearLayout mSelectMaleLayout = (LinearLayout)view.findViewById(R.id.select_male);
-                final LinearLayout mSelectFemaleLayout = (LinearLayout)view.findViewById(R.id.select_female);
-                final ImageView mSelectMaleView = (ImageView)view.findViewById(R.id.select_male_view);
-                final ImageView mSelectFemaleView = (ImageView)view.findViewById(R.id.select_female_view);
+                final LinearLayout mSelectMaleLayout = (LinearLayout) view.findViewById(R.id.select_male);
+                final LinearLayout mSelectFemaleLayout = (LinearLayout) view.findViewById(R.id.select_female);
+                final ImageView mSelectMaleView = (ImageView) view.findViewById(R.id.select_male_view);
+                final ImageView mSelectFemaleView = (ImageView) view.findViewById(R.id.select_female_view);
 
 
                 //如果是男的话
-                if (panduan)
-                {
+                if (panduan) {
                     mSelectMaleView.setImageDrawable(getResources().getDrawable(R.drawable.selectgender));
                     mSelectFemaleView.setImageDrawable(null);
                 }
 
                 //否则是女的
-                else
-                {
+                else {
                     mSelectMaleView.setImageDrawable(null);
                     mSelectFemaleView.setImageDrawable(getResources().getDrawable(R.drawable.selectgender));
                 }
@@ -232,11 +274,11 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                         mSelectMaleView.setImageDrawable(getResources().getDrawable(R.drawable.selectgender));
                         mSelectFemaleView.setImageDrawable(null);
                         mUserModifyGender.setText("男");
-                        panduan=true;
-                        mUserMission.updateUserGender(panduan,new UserMissionCallback() {
+                        panduan = true;
+                        mUserMission.updateUserGender(panduan, new UserMissionCallback() {
                             @Override
                             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
-                                if (errorCode == 0){
+                                if (errorCode == 0) {
                                     //MessageCenter.postSuccessMessage("性别已经更新");
                                     //finish();
                                 }
@@ -252,11 +294,11 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
                         mSelectFemaleView.setImageDrawable(getResources().getDrawable(R.drawable.selectgender));
                         mSelectMaleView.setImageDrawable(null);
                         mUserModifyGender.setText("女");
-                        panduan=false;
-                        mUserMission.updateUserGender(panduan,new UserMissionCallback() {
+                        panduan = false;
+                        mUserMission.updateUserGender(panduan, new UserMissionCallback() {
                             @Override
                             public void handleMessage(int errorCode, UserProtos.PBUser pbUser) {
-                                if (errorCode == 0){
+                                if (errorCode == 0) {
                                     //MessageCenter.postSuccessMessage("性别已经更新");
                                     //不需要结束页面
                                     // finish();
@@ -294,4 +336,10 @@ public class UserHomeModifyActivity extends BarrageCommonActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (mPhotoAndCamera!=null) {
+            mPhotoAndCamera.getPicture(requestCode,resultCode,data);
+        }
+    }
 }
