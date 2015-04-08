@@ -82,7 +82,7 @@
             android:label="@string/title_activity_search_user"
             android:windowSoftInputMode="stateVisible|adjustPan" >
         </activity>
-        <activity android:name=".feed.activity.FeedCommentActivity" >
+        <activity android:name=".feed.activity.FeedCommentActivity">
         </activity>
         <activity
             android:name=".user.ui.login.HomePageActivity"

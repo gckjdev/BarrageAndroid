@@ -51,42 +51,55 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
 
     protected RemindboxAlertDialog mRemindboxAlterDialong;
 
-    /**
-     *
-     * @param savedInstanceState
-     * @param layoutresid 布局资源
-     * @param titleid  屏幕标题的字符串资源
-     * @param rightid  右边按钮的图标资源
-     */
-    protected  void onCreate(Bundle savedInstanceState , int layoutresid, int titleid , int rightid){
-        onCreate(savedInstanceState ,layoutresid ,-1 , getString(titleid) , rightid);
-    }
+    private String mTitle;
+    private int mRightId ;
+    private int mLeftId;
 
-    protected  void onCreate(Bundle savedInstanceState , int layoutresid ,int leftid ,  int titleid , int rightid){
-        onCreate(savedInstanceState ,layoutresid ,leftid , getString(titleid) , rightid);
+    protected void onCreate(Bundle savedInstanceState , int layoutresId){
+        onCreate(savedInstanceState , layoutresId , -1 , -1 , -1);
     }
 
     /**
-     *
      * @param savedInstanceState
-     * @param titleString 屏幕标题的字符串
-     * @param rightid 右边按钮的图标资源
+     * @param layoutresid        布局资源
+     * @param titleid            屏幕标题的字符串资源
+     * @param rightid            右边按钮的图标资源
      */
-    protected void onCreate(Bundle savedInstanceState,int layoutresid ,String titleString , int rightid ){
+    protected void onCreate(Bundle savedInstanceState, int layoutresid, int titleid, int rightid) {
+        onCreate(savedInstanceState, layoutresid, -1, getStrings(titleid), rightid);
+    }
+
+    protected void onCreate(Bundle savedInstanceState, int layoutresid, int leftid, int titleid, int rightid) {
+        onCreate(savedInstanceState, layoutresid, leftid, getStrings(titleid), rightid);
+    }
+
+    /**
+     * @param savedInstanceState
+     * @param titleString        屏幕标题的字符串
+     * @param rightid            右边按钮的图标资源
+     */
+    protected void onCreate(Bundle savedInstanceState, int layoutresid, String titleString, int rightid) {
         onCreate(savedInstanceState, layoutresid, -1, titleString, rightid);
 
     }
 
-    protected void onCreate(Bundle saveInstanceState  , int layoutresid , int leftid , String titleString , int rightid){
+    protected void onCreate(Bundle saveInstanceState, int layoutresid, int leftid, String titleString, int rightid) {
         super.onCreate(saveInstanceState);
-        mBarrageAndroid = (BarrageAndroid)getApplication();
+        mBarrageAndroid = (BarrageAndroid) getApplication();
         setContentView(layoutresid);
+        mTitle = titleString;
+        mRightId = rightid;
+        mLeftId = leftid;
 
+        initView();
+    }
+
+    protected void initView() {
         // init top bar
         mTopBarView = new TopBarView(this);
-        mTopBarView.setTitleText(titleString);
-        mTopBarView.setRightButton(rightid);
-        mTopBarView.setLeftButton(leftid);
+        mTopBarView.setTitleText(mTitle);
+        mTopBarView.setRightButton(mRightId);
+        mTopBarView.setLeftButton(mLeftId);
         mTopBarView.setOnClickRightListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,10 +112,15 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
                 onClickLeft(v);
             }
         });
-
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
-}
+    }
+
+
+    protected String getStrings(int resid){
+        if(resid <= 0) return "";
+        return super.getString(resid);
+    }
 
     @Override
     protected void onStart() {
@@ -116,67 +134,68 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
         ContextManager.init(this);
     }
 
-    protected IntentUtil getIntentUtil(){
+    protected IntentUtil getIntentUtil() {
         return mIntentUtil == null ? new IntentUtil(this) : mIntentUtil;
     }
 
-    public String[] getIntentArraysString(String key){
+    public String[] getIntentArraysString(String key) {
         return getIntentUtil().getIntentArrayString(key);
     }
 
-    public String getIntentString(String key){
+    public String getIntentString(String key) {
         return getIntentUtil().getIntentString(key);
     }
 
-    public Parcelable getIntentParcelable(String key){
+    public Parcelable getIntentParcelable(String key) {
         return getIntentUtil().getIntentParcelable(key);
     }
 
-    public Serializable getIntentSerializable(String key){
+    public Serializable getIntentSerializable(String key) {
         return getIntentUtil().getIntentSerializable(key);
     }
 
-    public int getIntentInt(String key ,int defaultValue){
-        return  getIntentUtil().getIntentInt(key , defaultValue);
+    public int getIntentInt(String key, int defaultValue) {
+        return getIntentUtil().getIntentInt(key, defaultValue);
     }
 
-    public byte[] getIntentByteArrays(String key ){
+    public byte[] getIntentByteArrays(String key) {
         return getIntentUtil().getIntentByteArrays(key);
     }
 
-    public int[] getIntentIntArrays(String key){
-        return  getIntentUtil().getIntentIntArray(key);
+    public int[] getIntentIntArrays(String key) {
+        return getIntentUtil().getIntentIntArray(key);
     }
 
 
     /**
      * 打开等待进度条
+     *
      * @param text
      */
-    protected  void showProgress(String text){
+    protected void showProgress(String text) {
         mProgressDialog.show(text);
     }
 
     /**
      * 关闭等待进度条
      */
-    protected  void dismissProgress(){
+    protected void dismissProgress() {
         mProgressDialog.close();
     }
 
     /**
      * 打开头部等待进度条
      */
-    public void showTopProgressBar(){
+    public void showTopProgressBar() {
         mTopBarView.showTopProgress();
     }
 
-    public void dismissTopProgress(){
+    public void dismissTopProgress() {
         mTopBarView.dismissTopProgress();
     }
 
 
-    public void onClickFinish(View v){
+    public void onClickFinish(View v) {
         finish();
     }
 
@@ -184,7 +203,7 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
 
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             onClickLeft(null);
             return true;
         }
@@ -195,39 +214,40 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
     /**
      * 开启提醒框
      */
-    protected  void showRemindboxAlertDialog(String button[] , String title , String Message ,int icon ,RemindboxAlertDialog.OnClickListener l){
-        if(mRemindboxAlterDialong == null){
+    protected void showRemindboxAlertDialog(String button[], String title, String Message, int icon, RemindboxAlertDialog.OnClickListener l) {
+        if (mRemindboxAlterDialong == null) {
             mRemindboxAlterDialong = new RemindboxAlertDialog(this);
         }
 
-        mRemindboxAlterDialong.show(button , title , Message, icon , l);
+        mRemindboxAlterDialong.show(button, title, Message, icon, l);
     }
 
     /**
      * 开启提醒框
      */
-     protected void showRemindboxAlertDialog(String button[], String title, String message, int icon){
-         showRemindboxAlertDialog(button , title , message , icon , this);
-     }
+    protected void showRemindboxAlertDialog(String button[], String title, String message, int icon) {
+        showRemindboxAlertDialog(button, title, message, icon, this);
+    }
 
     /**
      * 获取好友所属的标签
+     *
      * @param pbUser
      * @param tagManager
      * @return
      */
-    protected List<UserProtos.PBUserTag> getTag( UserProtos.PBUser pbUser , TagManager tagManager){
+    protected List<UserProtos.PBUserTag> getTag(UserProtos.PBUser pbUser, TagManager tagManager) {
         List<UserProtos.PBUserTag> pbUserTags = new ArrayList<>();
-        if(pbUser == null || tagManager == null) return pbUserTags;
+        if (pbUser == null || tagManager == null) return pbUserTags;
 
         UserProtos.PBUserTagList pbUserTagList = tagManager.allTags();
 
-        for(UserProtos.PBUserTag pbUserTag : pbUserTagList.getTagsList()){
+        for (UserProtos.PBUserTag pbUserTag : pbUserTagList.getTagsList()) {
 
             List<UserProtos.PBUser> pbUserList = pbUserTag.getUsersList();
 
-            for(UserProtos.PBUser pb : pbUserList){
-                if(pb.getUserId().equals(pbUser.getUserId())){
+            for (UserProtos.PBUser pb : pbUserList) {
+                if (pb.getUserId().equals(pbUser.getUserId())) {
                     pbUserTags.add(pbUserTag);
                     break;
                 }
@@ -238,6 +258,7 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
 
     /**
      * 点击提醒框，可以继承这个方法
+     *
      * @param position
      */
     @Override
@@ -247,16 +268,18 @@ public class BarrageCommonActivity extends RoboActivity implements RemindboxAler
 
     /**
      * 点击导航栏右边按钮可继承本方法
+     *
      * @param v
      */
-    public void onClickRight(View v){
+    public void onClickRight(View v) {
     }
 
     /**
      * 点击导航栏左边按钮可继承本方法
+     *
      * @param v
      */
-    public void onClickLeft(View v){
+    public void onClickLeft(View v) {
         finish();
     }
 }

@@ -35,10 +35,12 @@ public class FeedNewMessageListActivity extends BarrageCommonActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.view_timeline_list_item , R.string.newmessage,-1);
-        initView();
+
     }
 
-    private void initView(){
+    @Override
+    protected void initView(){
+        super.initView();
         mLayoutInflater = LayoutInflater.from(this);
     }
 

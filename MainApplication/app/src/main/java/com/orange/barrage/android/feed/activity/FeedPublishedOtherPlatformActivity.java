@@ -39,7 +39,7 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_feed_publish_other_platform, R.string.b_share_main, R.string.b_grid);
-        initView();
+
         mWidth =  mFeedMainWidget.getInnerView().getGridViewWidth();
         FeedModel model = initData();
         mFeedMainWidget.setMode(FeedWidgetMode.SHARE);
@@ -49,8 +49,9 @@ public class FeedPublishedOtherPlatformActivity extends BarrageCommonActivity {
         mFeedMainWidget.getInnerView().showAllBarrageActions();
     }
 
-    private void initView() {
-//        mTopBarView.setNavigationBackgroundChangeOtherType();
+    @Override
+    protected void initView() {
+        super.initView();
 
         mFeedMainWidget.initActualWidth(ScreenUtil.getWidthPixels());
     }

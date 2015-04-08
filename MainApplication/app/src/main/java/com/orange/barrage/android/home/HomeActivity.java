@@ -9,6 +9,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -75,7 +77,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_home, R.drawable.y_new_message, R.string.y_shouyue, R.drawable.y_more_and_more);
-        initView();
+
         initTopBar();
 
     }
@@ -89,7 +91,8 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
         });
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
 
         //  MobclickAgent.updateOnlineConfig(this);
 
@@ -215,7 +218,7 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
     }
 
 
-    public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event){
+    public void onEvent(StartActivityFeedPublishedOtherPlatformEvent event) {
         Intent intent = new Intent(this, FeedPublishedOtherPlatformActivity.class);
         intent.putExtra(KEYSBYTE, event.getByteArray());
         ActivityIntent.startIntent(this, intent);
@@ -305,6 +308,6 @@ public class HomeActivity extends BarrageCommonFragmentActivity implements View.
 
     @Override
     public void onClickLeft(View v) {
-        ActivityIntent.startIntent(this , FeedFirstLognShowBarrageActivity.class);
+        ActivityIntent.startIntent(this, FeedFirstLognShowBarrageActivity.class);
     }
 }

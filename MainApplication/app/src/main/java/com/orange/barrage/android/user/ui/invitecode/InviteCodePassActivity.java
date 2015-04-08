@@ -55,7 +55,6 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_registered, R.string.y_zhuce, -1);
-        initView();
 
     }
 
@@ -139,7 +138,9 @@ public class InviteCodePassActivity extends BarrageCommonActivity {
     }
 
 
-    private void initView() {
+    @Override
+    protected void initView(){
+        super.initView();
 
         if (PHONE == mType) {
             mLayout.getChildAt(3).setVisibility(View.VISIBLE);

@@ -101,12 +101,11 @@ public class FriendTabDetailInfoAndCreateAndAlterActivity extends BarrageCommonA
     @Override
     protected void onCreate(Bundle saveBundle) {
         super.onCreate(saveBundle, R.layout.activity_tab_detailed_info, R.string.b_tab_detail_info, R.string.b_editext);
-
-        initView();
-
     }
 
-    private void initView() {
+    @Override
+    protected void initView(){
+        super.initView();
 
         mTabId = getIntentString(TABKEY);
         String tab = getIntentString(TABSTATEKEY);

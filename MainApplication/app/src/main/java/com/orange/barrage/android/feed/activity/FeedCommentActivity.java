@@ -77,12 +77,13 @@ public class FeedCommentActivity extends BarrageCommonActivity implements View.O
                 onClickRight(v);
             }
         });
-        initView();
+
 
     }
 
-
-    private void initView() {
+    @Override
+    protected void initView() {
+        super.initView();
         FeedModel model = initData();
         if (model == null) {
             return;

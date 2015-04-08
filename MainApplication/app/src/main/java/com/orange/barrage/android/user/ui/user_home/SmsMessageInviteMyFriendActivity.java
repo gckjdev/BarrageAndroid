@@ -66,11 +66,13 @@ public class SmsMessageInviteMyFriendActivity extends BarrageCommonActivity impl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_sms_message_invite_my_friend, "短信邀请", R.string.b_send);
-        initView();
+
         mValues = getIntentString(AVAILINVITENUMBER);
     }
 
-    private void initView() {
+    @Override
+    protected void initView(){
+        super.initView();
         getSystemContacts();
         initListView();
 

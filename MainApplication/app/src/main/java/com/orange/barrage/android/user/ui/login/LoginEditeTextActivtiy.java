@@ -57,11 +57,13 @@ public class LoginEditeTextActivtiy extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_login_edittext, R.string.y_logn, -1);
-        initView();
+
 
     }
 
-    private void initView(){
+    @Override
+    protected void initView(){
+        super.initView();
 
         mSendButton.setText(R.string.y_logn);
         setEidtText(getIntentInt(Key , PHONE_LOGIN ));

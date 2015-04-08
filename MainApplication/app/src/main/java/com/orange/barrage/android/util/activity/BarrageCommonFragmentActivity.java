@@ -72,7 +72,15 @@ public class BarrageCommonFragmentActivity extends RoboFragmentActivity {
 
         // init dialog
         mProgressDialog = new BarrageProgressDialog(this);
+        initView();
     }
+
+
+
+    protected void initView(){
+
+    }
+
 
     public void setNewMessageNumber(String num){
         mTopBarView.setNumberText(num);

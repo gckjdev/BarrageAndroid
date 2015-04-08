@@ -23,10 +23,11 @@ public class FeedPublishedWhatchImageActivity extends BarrageCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState , R.layout.activity_published_whatch, R.string.b_share_main , R.string.b_next );
-        initView();
-    }
 
-    private void initView(){
+    }
+    @Override
+    protected void initView(){
+        super.initView();
         mImage.setImageBitmap(FileUtil.getPhotoFromSDCard(HomeActivity.PHOTOPATH, HomeActivity.PHOTONAME));
     }
 

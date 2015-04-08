@@ -72,10 +72,12 @@ public class FeedPublishedImageActivity extends BarrageCommonActivity
     @Override
     protected void onCreate(Bundle saveBundle) {
         super.onCreate(saveBundle, R.layout.activity_publishimage,R.string.b_share_to_who, R.string.b_OK);
-        initView();
+
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
+        super.initView();
         showProgress("");
         mFriendIconList.initData(mTagManager, "", this);
         mFriendTagList = new FriendTagList(this, mTagManager, this);

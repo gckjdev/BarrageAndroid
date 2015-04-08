@@ -69,7 +69,6 @@ public class FloatWindow  {
     private void initMppWindow(){
 
         if(mPpWindow != null) return;
-
         mChildView = LayoutInflater.from(mContext).inflate(mLayoutid , null);
         mPpWindow = new PopupWindow(mChildView, mWidth, mHeight, false);
         // 需要设置一下此参数，点击外边可消失

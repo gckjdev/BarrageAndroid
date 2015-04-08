@@ -31,16 +31,15 @@ public class LoginHomeWithInviteCodeActivity extends BarrageCommonActivity imple
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_home_with_invite_code);
+        super.onCreate(savedInstanceState , R.layout.activity_login_home_with_invite_code);
 
         mBarrageAdnroid = (BarrageAndroid)getApplication();
         mBarrageAdnroid.addActivity(this);
-
-        initView();
     }
 
-    private void initView(){
+    @Override
+    protected void initView(){
+        super.initView();
         mLoad.setText(Html.fromHtml("<u>"+getString(R.string.y_first_load)+"</u>"));
         mLoad.setOnClickListener(this);
     }
