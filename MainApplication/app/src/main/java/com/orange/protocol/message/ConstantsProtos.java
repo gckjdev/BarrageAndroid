@@ -14,40 +14,40 @@ public final class ConstantsProtos {
   public enum PBDeviceType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>DEVICE_TYPE_IPHONE = 1;</code>
+     * <code>DEVICE_TYPE_IPHONE = 0;</code>
      */
-    DEVICE_TYPE_IPHONE(0, 1),
+    DEVICE_TYPE_IPHONE(0, 0),
     /**
-     * <code>DEVICE_TYPE_ANDROID = 2;</code>
+     * <code>DEVICE_TYPE_ANDROID = 1;</code>
      */
-    DEVICE_TYPE_ANDROID(1, 2),
+    DEVICE_TYPE_ANDROID(1, 1),
     /**
-     * <code>DEVICE_TYPE_WINDOW = 3;</code>
+     * <code>DEVICE_TYPE_WINDOW = 2;</code>
      */
-    DEVICE_TYPE_WINDOW(2, 3),
+    DEVICE_TYPE_WINDOW(2, 2),
     ;
 
     /**
-     * <code>DEVICE_TYPE_IPHONE = 1;</code>
+     * <code>DEVICE_TYPE_IPHONE = 0;</code>
      */
-    public static final int DEVICE_TYPE_IPHONE_VALUE = 1;
+    public static final int DEVICE_TYPE_IPHONE_VALUE = 0;
     /**
-     * <code>DEVICE_TYPE_ANDROID = 2;</code>
+     * <code>DEVICE_TYPE_ANDROID = 1;</code>
      */
-    public static final int DEVICE_TYPE_ANDROID_VALUE = 2;
+    public static final int DEVICE_TYPE_ANDROID_VALUE = 1;
     /**
-     * <code>DEVICE_TYPE_WINDOW = 3;</code>
+     * <code>DEVICE_TYPE_WINDOW = 2;</code>
      */
-    public static final int DEVICE_TYPE_WINDOW_VALUE = 3;
+    public static final int DEVICE_TYPE_WINDOW_VALUE = 2;
 
 
     public final int getNumber() { return value; }
 
     public static PBDeviceType valueOf(int value) {
       switch (value) {
-        case 1: return DEVICE_TYPE_IPHONE;
-        case 2: return DEVICE_TYPE_ANDROID;
-        case 3: return DEVICE_TYPE_WINDOW;
+        case 0: return DEVICE_TYPE_IPHONE;
+        case 1: return DEVICE_TYPE_ANDROID;
+        case 2: return DEVICE_TYPE_WINDOW;
         default: return null;
       }
     }
@@ -271,8 +271,8 @@ public final class ConstantsProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017Constants.proto\022\007barrage*W\n\014PBDeviceTy" +
-      "pe\022\026\n\022DEVICE_TYPE_IPHONE\020\001\022\027\n\023DEVICE_TYP" +
-      "E_ANDROID\020\002\022\026\n\022DEVICE_TYPE_WINDOW\020\003*!\n\nP" +
+      "pe\022\026\n\022DEVICE_TYPE_IPHONE\020\000\022\027\n\023DEVICE_TYP" +
+      "E_ANDROID\020\001\022\026\n\022DEVICE_TYPE_WINDOW\020\002*!\n\nP" +
       "BFeedType\022\023\n\017FEED_IMAGE_TEXT\020\000*+\n\020PBFeed" +
       "ActionType\022\027\n\023ACTION_BARRAGE_TEXT\020\000B.\n\033c" +
       "om.orange.protocol.messageB\017ConstantsPro" +

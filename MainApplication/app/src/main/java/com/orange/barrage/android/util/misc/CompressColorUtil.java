@@ -81,19 +81,19 @@ public class CompressColorUtil {
 	}
 
 	public static float getRedFromColor8(long longColor){
-		return ((longColor >> 24) % (1<<8)) / 255.0f;
+		return ((longColor >> 24) % (1<<8)); // / 255.0f;
 	}
 
 	public static float getGreenFromColor8(long longColor){
-		return  ((longColor >> 16) % (1<<8)) / 255.0f;
+		return  ((longColor >> 16) % (1<<8)); // / 255.0f;
 	}
 	
 	public static float getBlueFromColor8(long longColor){
-		return ((longColor >> 8) % (1<<8)) / 255.0f;
+		return ((longColor >> 8) % (1<<8)); // / 255.0f;
 	}
 	
 	public static float getAlphaFromColor8(long longColor){
-		return (longColor % (1<<8)) / 255.0f;
+		return (longColor % (1<<8)); // / 255.0f;
 	}	
 	
 	public static float getRedFromColor6(long longColor){
